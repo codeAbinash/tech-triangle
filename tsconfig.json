@@ -1,0 +1,18 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "strict": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@icons/*": ["src/assets/icons/src/*"],
+      "@images/*": ["src/assets/images/src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@utils/*": ["src/utils/*"],
+      "@screens/*": ["src/screens/*"],
+      "@query/*": ["src/query/*"],
+      "@/*": ["src/*"]
+    }
+  }
+}
