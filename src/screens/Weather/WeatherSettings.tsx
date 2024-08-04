@@ -53,7 +53,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
       <ScrollView contentContainerStyle={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
         <Gap20>
           <SettingText className='pt-3'>
-            Settings for the weather app. You can change the temperature unit, distance unit, and manage your data here.
+            Weather settings are used to customize the weather data and the app behavior. You can change the temperature unit, distance unit, and more.
           </SettingText>
           <SettingWrapper single>
             <SettingOption
