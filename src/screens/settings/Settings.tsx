@@ -19,6 +19,7 @@ import type { NavProp } from '@utils/types'
 import React from 'react'
 import { useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import CodeIcon from '@icons/code-stroke-rounded.svg'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
 // }
@@ -75,7 +76,12 @@ export default function Settings({ navigation }: NavProp) {
           </SettingWrapper>
           <Gap12>
             <SettingWrapper single>
-              <SettingOption title='Developer options' Icon={<DeveloperIcon {...iconProps} />} />
+              <SettingOption
+                title='Developer options'
+                Icon={<CodeIcon {...iconProps} />}
+                onPress={() => navigation.navigate('DeveloperOptions')}
+                Right={<RightArrow />}
+              />
             </SettingWrapper>
             <SettingText>These options are intended for developers and may cause data loss. Use them with caution.</SettingText>
           </Gap12>

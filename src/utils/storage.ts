@@ -17,10 +17,13 @@ type WeatherStorage =
   | 'WeatherDistanceUnit'
   | 'WeatherOpenWeatherMapAPIKey'
   | 'WeatherAccuWeatherAPIKey'
+  | 'WeatherWidgetIsActive'
+
+type DeveloperStorage = 'DeveloperAnimationDuration' | 'DeveloperEnabled'
 
 type RoutineStorage = 'routines'
 
-type StorageKeys = WeatherStorage | RoutineStorage
+type StorageKeys = WeatherStorage | RoutineStorage | DeveloperStorage
 
 function getMemo(key: StorageKeys) {
   return useMemo(() => {

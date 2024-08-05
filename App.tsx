@@ -15,6 +15,7 @@ import SensorAnimation from '@screens/animations/SensorAnimation'
 import StableBox from '@screens/animations/StableBox'
 import StableWallpaper from '@screens/animations/StableWallpaper'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
+import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import Explore from '@screens/Explore/Explore'
 import Greeting from '@screens/Home/Greeting'
 import Home from '@screens/index'
@@ -99,6 +100,7 @@ export type RootStackParamList = {
   ComputerScienceSettings: undefined
   WeatherSettings: undefined
   ClearWeatherSearchHistory: undefined
+  DeveloperOptions : undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -144,6 +146,7 @@ function Navigation() {
       <Stack.Screen name='ComputerScienceSettings' component={ComputerScienceSettings} options={{ gestureEnabled: true }} />
       <Stack.Screen name='WeatherSettings' component={WeatherScienceSettings} options={{ gestureEnabled: true }} />
       <Stack.Screen name='ClearWeatherSearchHistory' component={ClearWeatherSearchHistory} options={IOS_BOTTOM_STYLE} />
+      <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={{ gestureEnabled: true }} />
     </Stack.Navigator>
   )
 }

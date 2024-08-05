@@ -1,3 +1,4 @@
+import { useWeatherSettings } from '@/zustand/store'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import SettingsIcon from '@icons/settings-01-stroke-rounded.svg'
 import { useNavigation } from '@react-navigation/native'
@@ -13,9 +14,9 @@ const { width } = Dimensions.get('window')
 
 function Elements() {
   const navigation = useNavigation<StackNav>()
-
+  const weatherWidgetIsActive = useWeatherSettings((state) => state.weatherWidgetIsActive)
   const hw = useMemo(() => {
-    return { width: width * 0.39, height: width * 0.43 }
+    return { width: width * 0.42, height: width * 0.49 }
   }, [width])
   return (
     <ScrollView
@@ -24,16 +25,18 @@ function Elements() {
       contentContainerStyle={{ gap: 12, paddingLeft: 18, paddingRight: 18, paddingTop: 5, paddingBottom: 5 }}
       snapToAlignment='center'
     >
-      <TouchableOpacity
-        style={[hw, styles.shadow]}
-        className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('WeatherWelcome')}
-      >
-        <Text className='text-gray-800 dark:text-gray-200' style={PoppinsMedium}>
-          Weather
-        </Text>
-      </TouchableOpacity>
+      {weatherWidgetIsActive && (
+        <TouchableOpacity
+          style={[hw, styles.shadow]}
+          className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
+          activeOpacity={0.7}
+          onPress={() => navigation.navigate('WeatherWelcome')}
+        >
+          <Text className='text-gray-800 dark:text-gray-200' style={PoppinsMedium}>
+            Weather
+          </Text>
+        </TouchableOpacity>
+      )}
       <TouchableOpacity
         style={[hw, styles.shadow]}
         className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'

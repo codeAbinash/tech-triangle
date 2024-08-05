@@ -1,7 +1,18 @@
 import { useWeatherSearchHistory, useWeatherSettings } from '@/zustand/store'
 import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
 import { PaddingBottom } from '@components/SafePadding'
-import { BackHeader, Check, Gap12, Gap20, iconProps, SettingOption, SettingOptionInput, SettingText, SettingWrapper } from '@components/Settings'
+import {
+  BackHeader,
+  Check,
+  Gap12,
+  Gap20,
+  iconProps,
+  SettingOption,
+  SettingOptionInput,
+  SettingText,
+  SettingWrapper,
+  Toggle,
+} from '@components/Settings'
 import CelsiusIcon from '@icons/celsius-stroke-rounded.svg'
 import City03Icon from '@icons/city-03-stroke-rounded.svg'
 import CleanIcon from '@icons/clean-stroke-rounded.svg'
@@ -14,7 +25,6 @@ import type { NavProp } from '@utils/types'
 import { getLatitude, getS, toReadableSize } from '@utils/utils'
 import React from 'react'
 import { Linking, Text, View } from 'react-native'
-// import HomeIcon from '@icons/home-01-stroke-rounded.svg'
 import DashboardSquare02Icon from '@icons/dashboard-square-02-stroke-rounded.svg'
 
 export default function WeatherScienceSettings({ navigation }: NavProp) {
@@ -29,6 +39,8 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const setAccuApiKey = useWeatherSettings((state) => state.setAccuWeatherApiKey)
   const owApiKey = useWeatherSettings((state) => state.openWeatherApiKey)
   const accuApiKey = useWeatherSettings((state) => state.accuWeatherApiKey)
+  const setWeatherWidgetIsActive = useWeatherSettings((state) => state.setWeatherWidgetIsActive)
+  const weatherWidgetIsActive = useWeatherSettings((state) => state.weatherWidgetIsActive)
 
   return (
     <View className='flex-1 bg-zinc-100 dark:bg-black'>
@@ -43,13 +55,11 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           <Gap12>
             <SettingWrapper title='General Settings'>
               <SettingOption
+                activeOpacity={0.8}
                 title='Weather widget'
+                onPress={() => setWeatherWidgetIsActive(!weatherWidgetIsActive)}
                 Icon={<DashboardSquare02Icon {...iconProps} />}
-                Right={
-                  <PMedium className='text-accent' style={{ fontSize: 15, flex: 0 }} numberOfLines={1}>
-                    {'Yes'}
-                  </PMedium>
-                }
+                Right={<Toggle isActive={weatherWidgetIsActive} />}
               />
               <SettingOption
                 title='Current City'

@@ -28,6 +28,8 @@ type WeatherSettingsStore = {
   accuWeatherApiKey: string
   setAccuWeatherApiKey: (key: string) => void
   setOpenWeatherApiKey: (key: string) => void
+  weatherWidgetIsActive: boolean
+  setWeatherWidgetIsActive: (isActive: boolean) => void
 }
 
 export const useWeatherSettings = create<WeatherSettingsStore>((set) => ({
@@ -62,6 +64,11 @@ export const useWeatherSettings = create<WeatherSettingsStore>((set) => ({
   setOpenWeatherApiKey: (key: string) => {
     S.set('WeatherOpenWeatherMapAPIKey', key)
     set((state) => ({ ...state, openWeatherApiKey: key }))
+  },
+  weatherWidgetIsActive: S.get('WeatherWidgetIsActive') === 'true',
+  setWeatherWidgetIsActive: (isActive: boolean) => {
+    S.set('WeatherWidgetIsActive', isActive.toString())
+    set((state) => ({ ...state, weatherWidgetIsActive: isActive }))
   },
 }))
 

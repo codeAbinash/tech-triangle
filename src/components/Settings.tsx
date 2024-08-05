@@ -1,14 +1,25 @@
 import ArrowLeft01Icon from '@icons/arrow-left-01-stroke-rounded.svg'
 import ArrowRightIcon from '@icons/arrow-right-01-stroke-rounded.svg'
+import Tick01Icon from '@icons/tick-01-stroke-rounded.svg'
 import { Colors } from '@utils/colors'
 import { PMedium, PoppinsMedium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { TouchableOpacity, useColorScheme, View, type TextInputProps, type TextProps, type TouchableOpacityProps, type ViewProps } from 'react-native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+  type TextInputProps,
+  type TextProps,
+  type TouchableOpacityProps,
+  type ViewProps,
+} from 'react-native'
+import { TextInput } from 'react-native-gesture-handler'
 import type { SvgProps } from 'react-native-svg'
 import { PaddingTop } from './SafePadding'
-import Tick01Icon from '@icons/tick-01-stroke-rounded.svg'
-import { TextInput } from 'react-native-gesture-handler'
+import { useDeveloperOptions } from '@/zustand/developerOption'
+import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated'
 
 type SettingOptionProps = TouchableOpacityProps & {
   title: string
@@ -17,10 +28,16 @@ type SettingOptionProps = TouchableOpacityProps & {
 }
 export function SettingOption({ title, onPress, Icon, Right, style, ...rest }: SettingOptionProps) {
   return (
-    <TouchableOpacity className='flex-row justify-between p-2.5 px-7' onPress={onPress} activeOpacity={0.7} style={[{ gap: 10 }, style]} {...rest}>
+    <TouchableOpacity
+      className='flex-row items-center justify-between px-7'
+      onPress={onPress}
+      activeOpacity={0.7}
+      style={[{ gap: 10 }, style]}
+      {...rest}
+    >
       <View className='flex-row items-center justify-center' style={{ gap: 23 }}>
         {Icon}
-        <PMedium className='text-zinc-800 dark:text-zinc-200' style={{ fontSize: 15 }}>
+        <PMedium className='p-2.5 px-0 text-zinc-800 dark:text-zinc-200' style={{ fontSize: 15 }}>
           {title}
         </PMedium>
       </View>
@@ -36,7 +53,7 @@ type SettingOptionInputProps = TextInputProps & {
 export function SettingOptionInput({ Icon, Right, ...rest }: SettingOptionInputProps) {
   const scheme = useColorScheme()
   return (
-    <View className='flex-row justify-between px-7' style={{ gap: 10 }}>
+    <View className='flex-row items-center justify-between px-7' style={{ gap: 10 }}>
       <View className='flex-1 flex-row items-center' style={{ gap: 23 }}>
         {Icon}
         <TextInput
@@ -57,9 +74,9 @@ export function SettingOptionInput({ Icon, Right, ...rest }: SettingOptionInputP
 
 export function SettingWrapper({ children, title, single }: { children?: React.ReactNode; title?: string; single?: boolean }) {
   return (
-    <View className={`bg-white ${single ? 'py-1.5' : 'py-3'} dark:bg-zinc-950`} style={{ gap: 4 }}>
+    <View className={`bg-white ${single ? 'py-2' : 'py-3'} dark:bg-zinc-950`} style={{ gap: 4 }}>
       {title && (
-        <PMedium className='px-6 pb-1 pt-0.5 text-accent' style={{ textTransform: 'none', opacity: 0.9, fontSize: 13.5 }}>
+        <PMedium className='px-6 pb-1 pt-1 text-accent' style={{ textTransform: 'none', opacity: 0.9, fontSize: 13.5 }}>
           {title}
         </PMedium>
       )}
@@ -132,4 +149,55 @@ export type CheckIconProps = {
 } & SvgProps
 export function Check({ checked, ...rest }: CheckIconProps) {
   return checked ? <Tick01Icon {...iconProps} className='text-accent' {...rest} /> : <Tick01Icon {...iconProps} className='opacity-0' />
+}
+
+const TC_W = 50 // Toggle Container Width
+const TC_H = 26 // Toggle Container Height
+const T_W = 17 // Toggle Width
+const PAD = (TC_H - T_W) / 2 + 0.025 // Padding
+const AVAIL_W = TC_W - T_W - PAD * 2 // Available Width
+// const duration = useDeveloperOptions.getState().animationDuration
+
+const styles = StyleSheet.create({
+  toggleContainer: {
+    width: TC_W,
+    height: TC_H,
+    borderRadius: 100,
+    padding: PAD,
+  },
+  toggle: {
+    width: T_W,
+    height: T_W,
+    borderRadius: 100,
+    backgroundColor: 'white',
+  },
+})
+
+interface ToggleProps {
+  isActive: boolean
+  color?: string
+}
+
+export function Toggle({ isActive, color }: ToggleProps) {
+  const scheme = useColorScheme()
+  const progress = useDerivedValue(() => (isActive ? AVAIL_W : 0), [isActive])
+  const duration = useDeveloperOptions((state) => state.animationDuration)
+
+  const backgroundColorStyle = useAnimatedStyle(() => {
+    const backgroundColor = withTiming(
+      interpolateColor(progress.value, [0, AVAIL_W], [scheme === 'dark' ? Colors.zinc[800] : Colors.zinc[200], color || Colors.accent]),
+      { duration },
+    )
+    return { backgroundColor }
+  }, [color, scheme, progress])
+
+  const customSpringStyle = useAnimatedStyle(() => {
+    return { transform: [{ translateX: withTiming(progress.value, { duration }) }] }
+  }, [progress])
+
+  return (
+    <Animated.View style={[styles.toggleContainer, backgroundColorStyle]}>
+      <Animated.View style={[styles.toggle, customSpringStyle]}></Animated.View>
+    </Animated.View>
+  )
 }
