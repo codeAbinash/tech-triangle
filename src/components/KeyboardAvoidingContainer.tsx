@@ -1,5 +1,6 @@
 import React from 'react'
-import { KeyboardAvoidingView, Platform, ScrollView, ScrollViewProps } from 'react-native'
+import { KeyboardAvoidingView, Platform, ScrollViewProps } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 
 interface KeyboardAvoidingContainerProps extends ScrollViewProps {}
 

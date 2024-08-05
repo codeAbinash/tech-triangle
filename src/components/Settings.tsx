@@ -4,25 +4,20 @@ import { Colors } from '@utils/colors'
 import { PMedium, PoppinsMedium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { TouchableOpacity, useColorScheme, View, type TextInputProps, type TextProps, type ViewProps } from 'react-native'
+import { TouchableOpacity, useColorScheme, View, type TextInputProps, type TextProps, type TouchableOpacityProps, type ViewProps } from 'react-native'
 import type { SvgProps } from 'react-native-svg'
 import { PaddingTop } from './SafePadding'
 import Tick01Icon from '@icons/tick-01-stroke-rounded.svg'
 import { TextInput } from 'react-native-gesture-handler'
 
-export function SettingOption({
-  title,
-  onPress,
-  Icon,
-  Right,
-}: {
+type SettingOptionProps = TouchableOpacityProps & {
   title: string
-  onPress?: () => void
   Icon?: React.ReactNode
   Right?: React.ReactNode
-}) {
+}
+export function SettingOption({ title, onPress, Icon, Right, style, ...rest }: SettingOptionProps) {
   return (
-    <TouchableOpacity className='flex-row justify-between p-2.5 px-7' onPress={onPress} activeOpacity={0.7} style={{ gap: 10 }}>
+    <TouchableOpacity className='flex-row justify-between p-2.5 px-7' onPress={onPress} activeOpacity={0.7} style={[{ gap: 10 }, style]} {...rest}>
       <View className='flex-row items-center justify-center' style={{ gap: 23 }}>
         {Icon}
         <PMedium className='text-zinc-800 dark:text-zinc-200' style={{ fontSize: 15 }}>
@@ -45,7 +40,7 @@ export function SettingOptionInput({ Icon, Right, ...rest }: SettingOptionInputP
       <View className='flex-1 flex-row items-center' style={{ gap: 23 }}>
         {Icon}
         <TextInput
-          className='p-2.5 px-0'
+          className='flex-1 p-2.5 px-0 text-zinc-800 dark:text-zinc-200'
           style={[{ fontSize: 15, paddingVertical: 0, flex: 1 }, PoppinsMedium]}
           placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
           cursorColor={Colors.accent}

@@ -7,7 +7,7 @@ const { width } = Dimensions.get('window')
 
 export default function UnderConstruction() {
   return (
-    <View className='h-screen w-screen items-center justify-center bg-neutral-50 px-5 dark:bg-black'>
+    <View className='h-screen w-screen items-center justify-center bg-zinc-50 px-5 dark:bg-black'>
       <LottieView
         source={require('../assets/animations/coming-soon.lottie')}
         autoPlay

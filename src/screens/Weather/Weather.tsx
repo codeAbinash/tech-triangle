@@ -5,7 +5,7 @@ import { View } from 'react-native'
 export default function Weather() {
   return (
     <View className='flex-1 items-center justify-center px-5'>
-      <PMedium className='text-base text-neutral-700 dark:text-neutral-300'>Weather Screen</PMedium>
+      <PMedium className='text-base text-zinc-700 dark:text-zinc-300'>Weather Screen</PMedium>
     </View>
   )
 }

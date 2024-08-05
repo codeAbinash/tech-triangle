@@ -39,12 +39,12 @@ export default function WeatherSearchCity({ navigation, route }: { navigation: S
     <>
       <StatusBar barStyle='default' />
 
-      <View className='p-5 pb-2 pt-4 dark:bg-neutral-950' style={{ gap: 12 }}>
+      <View className='p-5 pb-2 pt-4 dark:bg-zinc-950' style={{ gap: 12 }}>
         <StackHeader title='Search City' navigation={navigation} left='Cancel' right='Done' />
         <Search placeholder='Search City' keyboardType='web-search' value={query} onChangeText={setQuery} autoFocus onEndEditing={() => mutate()} />
       </View>
 
-      <View className='dark:bg-neutral-950'>
+      <View className='dark:bg-zinc-950'>
         {isPending && <Pending />}
         {error && <ErrorFetchingCities error={error} navigation={navigation} />}
         {data && data.length === 0 && <NoCityFound />}
@@ -52,7 +52,7 @@ export default function WeatherSearchCity({ navigation, route }: { navigation: S
       </View>
 
       <FlatList
-        className='px-5 dark:bg-neutral-950'
+        className='px-5 dark:bg-zinc-950'
         contentContainerStyle={{ gap: 3, paddingBottom: 50 }}
         ListFooterComponent={data && data.length > 0 && <PoweredByAccuWeather />}
         data={data}
@@ -67,7 +67,7 @@ function Pending() {
   return (
     <View className='p-10 py-20' style={{ gap: 10 }}>
       <ActivityIndicator size='large' color={Colors.accent} />
-      <Text style={PoppinsMedium} className='mt-2 text-center text-xs text-neutral-500 dark:text-neutral-500'>
+      <Text style={PoppinsMedium} className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>
         Searching for cities...
       </Text>
     </View>
@@ -77,10 +77,10 @@ function Pending() {
 function ErrorFetchingCities({ error, navigation }: { error: any; navigation: StackNav }) {
   return (
     <View className='p-10 py-20' style={{ gap: 10 }}>
-      <Text style={PoppinsSemiBold} className='text-center text-2xl text-neutral-700 dark:text-neutral-300'>
+      <Text style={PoppinsSemiBold} className='text-center text-2xl text-zinc-700 dark:text-zinc-300'>
         {error?.message || 'Failed to fetch cities'}
       </Text>
-      <Text style={PoppinsMedium} className='text-center text-sm text-neutral-500 dark:text-neutral-500'>
+      <Text style={PoppinsMedium} className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
         This error may occur if you are not connected to the internet or API limit exceeded. To fix this, enter a API key in settings.
       </Text>
       <BtnTransparent className='text-sm' onPress={() => navigation.navigate('WeatherSettings')} title='Set API key'></BtnTransparent>
@@ -91,10 +91,10 @@ function ErrorFetchingCities({ error, navigation }: { error: any; navigation: St
 function NoCityFound() {
   return (
     <View className='p-10 py-20' style={{ gap: 10 }}>
-      <Text style={PoppinsSemiBold} className='text-center text-2xl text-neutral-700 dark:text-neutral-300'>
+      <Text style={PoppinsSemiBold} className='text-center text-2xl text-zinc-700 dark:text-zinc-300'>
         No cities found
       </Text>
-      <Text style={PoppinsMedium} className='text-center text-sm text-neutral-500 dark:text-neutral-500'>
+      <Text style={PoppinsMedium} className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
         No cities found for the search query. Try searching with different keywords.
       </Text>
     </View>
@@ -104,7 +104,7 @@ function NoCityFound() {
 function InitialMessage() {
   return (
     <View className='p-10 py-20' style={{ gap: 10 }}>
-      <Text style={PoppinsMedium} className='text-center text-xs text-neutral-500 dark:text-neutral-500'>
+      <Text style={PoppinsMedium} className='text-center text-xs text-zinc-500 dark:text-zinc-500'>
         Enter a city or location name
       </Text>
     </View>
@@ -114,7 +114,7 @@ function InitialMessage() {
 function PoweredByAccuWeather() {
   return (
     <View>
-      <Text style={PoppinsMedium} className='mt-10 text-center text-xs text-neutral-500 dark:text-neutral-500'>
+      <Text style={PoppinsMedium} className='mt-10 text-center text-xs text-zinc-500 dark:text-zinc-500'>
         Powered by AccuWeather
       </Text>
     </View>
@@ -151,7 +151,7 @@ function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResul
         <Text className='text-base text-zinc-800 dark:text-zinc-200' style={PoppinsMedium}>
           {item.EnglishName}
         </Text>
-        <Text className='text-sm text-neutral-600 dark:text-neutral-400' style={PoppinsMedium}>
+        <Text className='text-sm text-zinc-600 dark:text-zinc-400' style={PoppinsMedium}>
           {item.AdministrativeArea.EnglishName}, {item.Country.EnglishName}
         </Text>
       </View>

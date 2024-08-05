@@ -27,7 +27,7 @@ import ClearWeatherSearchHistory from '@screens/Weather/Clear/ClearWeatherSearch
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
 import Weather from '@screens/Weather/Weather'
-import WeatherLocation from '@screens/Weather/WeatherLocation'
+import WeatherLocation, { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
 import WeatherSearchCity, { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
 import WeatherScienceSettings from '@screens/Weather/WeatherSettings'
 import WeatherWelcome from '@screens/Weather/WeatherWelcome'
@@ -89,7 +89,7 @@ export type RootStackParamList = {
   Weather: undefined
   WeatherWelcome: undefined
   WeatherSearchCity: SearchCityParamList
-  WeatherLocation: undefined
+  WeatherLocation: WeatherLocationParamList
   Greeting: undefined
   Settings: undefined
   Explore: undefined

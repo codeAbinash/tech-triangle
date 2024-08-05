@@ -1,16 +1,24 @@
 import StackHeader from '@components/StackHeader'
-import { PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
-import type { NavProp } from '@utils/types'
+import type { RouteProp } from '@react-navigation/native'
+import type { StackNav } from '@utils/types'
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { StatusBar, View } from 'react-native'
+type ParamList = {
+  WeatherLocation: WeatherLocationParamList
+}
 
-export default function WeatherLocation({ navigation }: NavProp) {
+export type WeatherLocationParamList = {
+  shouldGoBack: boolean
+}
+
+export default function WeatherLocation({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'WeatherLocation'> }) {
   return (
-    <ScrollView className='h-screen p-5'>
-      <View style={{ gap: 15 }}>
+    <>
+      <StatusBar barStyle='default' />
+      <View className='p-5 pb-2 pt-4 dark:bg-zinc-950' style={{ gap: 12 }}>
         <StackHeader title='Current Location' navigation={navigation} left='Cancel' right='Done' />
       </View>
-    </ScrollView>
+      <View className='p-16 dark:bg-zinc-950'></View>
+    </>
   )
 }
