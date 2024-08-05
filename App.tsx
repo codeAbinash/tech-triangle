@@ -23,6 +23,7 @@ import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import Settings from '@screens/settings/Settings'
 import Test from '@screens/Test'
+import ClearWeatherSearchHistory from '@screens/Weather/Clear/ClearWeatherSearchHistory'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
 import Weather from '@screens/Weather/Weather'
@@ -35,6 +36,7 @@ import { DarkTheme, DefaultTheme } from '@utils/themes'
 import React from 'react'
 import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+
 
 const queryClient = new QueryClient()
 
@@ -96,6 +98,7 @@ export type RootStackParamList = {
   ConfirmCity: ConfirmCityParamList
   ComputerScienceSettings: undefined
   WeatherSettings: undefined
+  ClearWeatherSearchHistory: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -140,6 +143,7 @@ function Navigation() {
       <Stack.Screen name='ConfirmCity' component={ConfirmCity} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='ComputerScienceSettings' component={ComputerScienceSettings} options={{ gestureEnabled: true }} />
       <Stack.Screen name='WeatherSettings' component={WeatherScienceSettings} options={{ gestureEnabled: true }} />
+      <Stack.Screen name='ClearWeatherSearchHistory' component={ClearWeatherSearchHistory} options={IOS_BOTTOM_STYLE} />
     </Stack.Navigator>
   )
 }

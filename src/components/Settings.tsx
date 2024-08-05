@@ -1,11 +1,15 @@
 import ArrowLeft01Icon from '@icons/arrow-left-01-stroke-rounded.svg'
 import ArrowRightIcon from '@icons/arrow-right-01-stroke-rounded.svg'
 import { Colors } from '@utils/colors'
-import { PMedium, PSemiBold } from '@utils/fonts'
+import { PMedium, PoppinsMedium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { TouchableOpacity, useColorScheme, View, type TextProps, type ViewProps } from 'react-native'
+import { TouchableOpacity, useColorScheme, View, type TextInputProps, type TextProps, type ViewProps } from 'react-native'
+import type { SvgProps } from 'react-native-svg'
 import { PaddingTop } from './SafePadding'
+import Tick01Icon from '@icons/tick-01-stroke-rounded.svg'
+import { TextInput } from 'react-native-gesture-handler'
+
 export function SettingOption({
   title,
   onPress,
@@ -30,9 +34,35 @@ export function SettingOption({
   )
 }
 
+type SettingOptionInputProps = TextInputProps & {
+  Icon?: React.ReactNode
+  Right?: React.ReactNode
+}
+export function SettingOptionInput({ Icon, Right, ...rest }: SettingOptionInputProps) {
+  const scheme = useColorScheme()
+  return (
+    <View className='flex-row justify-between px-7' style={{ gap: 10 }}>
+      <View className='flex-1 flex-row items-center' style={{ gap: 23 }}>
+        {Icon}
+        <TextInput
+          className='p-2.5 px-0'
+          style={[{ fontSize: 15, paddingVertical: 0, flex: 1 }, PoppinsMedium]}
+          placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
+          cursorColor={Colors.accent}
+          selectionColor={Colors.accent + '55'}
+          selectionHandleColor={Colors.accent}
+          placeholder='Default placeholder'
+          {...rest}
+        />
+      </View>
+      {Right}
+    </View>
+  )
+}
+
 export function SettingWrapper({ children, title, single }: { children?: React.ReactNode; title?: string; single?: boolean }) {
   return (
-    <View className={`bg-white ${single ? 'py-1.5' : 'py-3'} dark:bg-zinc-950`} style={{ gap: 3 }}>
+    <View className={`bg-white ${single ? 'py-1.5' : 'py-3'} dark:bg-zinc-950`} style={{ gap: 4 }}>
       {title && (
         <PMedium className='px-6 pb-1 pt-0.5 text-accent' style={{ textTransform: 'none', opacity: 0.9, fontSize: 13.5 }}>
           {title}
@@ -101,3 +131,10 @@ export function BackHeader({ navigation, title, Title }: { navigation: StackNav;
 }
 
 export const iconProps = { width: 22, height: 22, color: Colors.zinc[500] }
+
+export type CheckIconProps = {
+  checked: boolean
+} & SvgProps
+export function Check({ checked, ...rest }: CheckIconProps) {
+  return checked ? <Tick01Icon {...iconProps} className='text-accent' {...rest} /> : <Tick01Icon {...iconProps} className='opacity-0' />
+}

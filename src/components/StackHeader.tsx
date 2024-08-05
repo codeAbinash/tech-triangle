@@ -20,21 +20,21 @@ export default function StackHeader({ left, Left, right, Right, title, Title, Le
       <View className='items-start' style={{ flex: 1 }}>
         <TouchableOpacity onPress={LeftOnPress || (() => navigation.goBack())} activeOpacity={0.7}>
           {Left || (
-            <Text className='px-2 py-1 text-accent' style={[PoppinsMedium, { fontSize: 15.5 }]}>
+            <Text className='p-2 text-accent' style={[PoppinsMedium, { fontSize: 15.5 }]}>
               {left}
             </Text>
           )}
         </TouchableOpacity>
       </View>
       {Title || (
-        <Text className='text-center text-zinc-800 dark:text-zinc-200' style={[PoppinsSemiBold, { fontSize: 16.5 }]}>
+        <Text className='text-center text-zinc-800 dark:text-zinc-200' style={[PoppinsSemiBold, { fontSize: 16 }]}>
           {title}
         </Text>
       )}
       <View className='flex-1 items-end'>
         <TouchableOpacity onPress={RightOnPress || (() => navigation.goBack())} activeOpacity={0.7}>
           {Right || (
-            <Text className='px-2 py-1 text-accent' style={[PoppinsMedium, { fontSize: 15.5 }]}>
+            <Text className='p-2 text-accent' style={[PoppinsMedium, { fontSize: 15.5 }]}>
               {right}
             </Text>
           )}

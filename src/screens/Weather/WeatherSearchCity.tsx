@@ -12,6 +12,7 @@ import React from 'react'
 import { ActivityIndicator, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { searchCity, type WeatherSearchResult } from './api'
+import { useWeatherSearchHistory, useWeatherSettings, type CurrentCityT } from '@/zustand/store'
 
 type ParamList = {
   WeatherSearchCity: SearchCityParamList
@@ -23,18 +24,22 @@ export type SearchCityParamList = {
 
 export default function WeatherSearchCity({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'WeatherSearchCity'> }) {
   const [query, setQuery] = React.useState('')
+  const pushSearchHistory = useWeatherSearchHistory((state) => state.pushSearchHistory)
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['cities'],
     mutationFn: () => searchCity(query.trim()),
     onError: (err) => console.log(err),
+    onSuccess: (data) => {
+      if (data) pushSearchHistory(query.trim(), data)
+    },
   })
 
   return (
     <>
       <StatusBar barStyle='default' />
 
-      <View className='p-5 pb-2 dark:bg-neutral-950' style={{ gap: 10 }}>
+      <View className='p-5 pb-2 pt-4 dark:bg-neutral-950' style={{ gap: 12 }}>
         <StackHeader title='Search City' navigation={navigation} left='Cancel' right='Done' />
         <Search placeholder='Search City' keyboardType='web-search' value={query} onChangeText={setQuery} autoFocus onEndEditing={() => mutate()} />
       </View>
@@ -119,18 +124,18 @@ function PoweredByAccuWeather() {
 function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResult; navigation: StackNav; shouldGoBack: boolean }) {
   const lat = getLatitude(item.GeoPosition.Latitude)
   const lon = getLongitude(item.GeoPosition.Longitude)
+  const setCurrentCity = useWeatherSettings((state) => state.setCurrentCity)
   return (
     <TouchableOpacity
       className='flex-row justify-between rounded-2xl p-3.5 px-2'
       activeOpacity={0.7}
       onPress={() => {
-        const city = {
+        const city: CurrentCityT = {
           name: item.EnglishName,
           lat: item.GeoPosition.Latitude,
           lon: item.GeoPosition.Longitude,
         }
-        S.set('WeatherCurrentCity', JSON.stringify(city))
-        // navigation.reset({ index: 0, routes: [{ name: 'Home' }, { name: 'Weather' }] })
+        setCurrentCity(city)
         navigation.navigate('ConfirmCity', {
           name: item.EnglishName,
           lat: item.GeoPosition.Latitude,

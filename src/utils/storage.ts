@@ -10,7 +10,13 @@ export const secureLs = new MMKV({
   encryptionKey: '524sdr245sdes2',
 })
 
-type WeatherStorage = `WeatherCitySearchResult-${string}` | 'WeatherCurrentCity'
+type WeatherStorage =
+  | `WeatherCitySearchResult-${string}`
+  | 'WeatherCurrentCity'
+  | 'WeatherTemperatureUnit'
+  | 'WeatherDistanceUnit'
+  | 'WeatherOpenWeatherMapAPIKey'
+  | 'WeatherAccuWeatherAPIKey'
 
 type RoutineStorage = 'routines'
 
@@ -32,12 +38,17 @@ function get(key: StorageKeys) {
   return ls.getString(key)
 }
 
+function getParsed<T>(key: StorageKeys) {
+  return JSON.parse(ls.getString(key) || 'null') as T
+}
+
 function set(key: StorageKeys, value: string) {
   ls.set(key, value)
 }
 
 const S = {
   getMemo,
+  getParsed,
   getMemoParsed,
   get,
   set,
