@@ -124,7 +124,6 @@ function PoweredByAccuWeather() {
 function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResult; navigation: StackNav; shouldGoBack: boolean }) {
   const lat = getLatitude(item.GeoPosition.Latitude)
   const lon = getLongitude(item.GeoPosition.Longitude)
-  const setCurrentCity = useWeatherSettings((state) => state.setCurrentCity)
   return (
     <TouchableOpacity
       className='flex-row justify-between rounded-2xl p-3.5 px-2'
@@ -135,7 +134,6 @@ function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResul
           lat: item.GeoPosition.Latitude,
           lon: item.GeoPosition.Longitude,
         }
-        setCurrentCity(city)
         navigation.navigate('ConfirmCity', {
           name: item.EnglishName,
           lat: item.GeoPosition.Latitude,

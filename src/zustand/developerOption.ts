@@ -1,3 +1,4 @@
+import { ANIM_DUR } from '@utils/constants'
 import S from '@utils/storage'
 import { create } from 'zustand'
 
@@ -9,7 +10,7 @@ type DeveloperSettingsStore = {
 }
 
 export const useDeveloperOptions = create<DeveloperSettingsStore>((set) => ({
-  animationDuration: Number(S.get('DeveloperAnimationDuration') || 150),
+  animationDuration: Number(S.get('DeveloperAnimationDuration') || ANIM_DUR),
   setAnimationDuration: (duration: number) => {
     S.set('DeveloperAnimationDuration', duration.toString())
     set({ animationDuration: duration })

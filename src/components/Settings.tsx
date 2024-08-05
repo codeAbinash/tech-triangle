@@ -46,6 +46,14 @@ export function SettingOption({ title, onPress, Icon, Right, style, ...rest }: S
   )
 }
 
+export function RightText({ children, ...rest }: TextProps) {
+  return (
+    <PMedium className='text-accent' style={{ fontSize: 15 }} {...rest}>
+      {children}
+    </PMedium>
+  )
+}
+
 type SettingOptionInputProps = TextInputProps & {
   Icon?: React.ReactNode
   Right?: React.ReactNode
@@ -74,7 +82,7 @@ export function SettingOptionInput({ Icon, Right, ...rest }: SettingOptionInputP
 
 export function SettingWrapper({ children, title, single }: { children?: React.ReactNode; title?: string; single?: boolean }) {
   return (
-    <View className={`bg-white ${single ? 'py-2' : 'py-3'} dark:bg-zinc-950`} style={{ gap: 4 }}>
+    <View className={`bg-white ${single ? 'py-2' : 'py-2.5'} dark:bg-zinc-950`} style={{ gap: 4 }}>
       {title && (
         <PMedium className='px-6 pb-1 pt-1 text-accent' style={{ textTransform: 'none', opacity: 0.9, fontSize: 13.5 }}>
           {title}

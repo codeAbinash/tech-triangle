@@ -9,7 +9,7 @@ import DeleteIcon from '@icons/delete-02-stroke-rounded.svg'
 import { PMedium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React from 'react'
-import { StatusBar, View } from 'react-native'
+import { StatusBar, ToastAndroid, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 export default function ClearWeatherSearchHistory({ navigation }: NavProp) {
@@ -46,6 +46,7 @@ export default function ClearWeatherSearchHistory({ navigation }: NavProp) {
             title={`Clear Search History (${searchHistory.length})`}
             onPress={() => {
               clearSearchHistory()
+              ToastAndroid.show('Search history cleared', ToastAndroid.SHORT)
               navigation.goBack()
             }}
           />

@@ -7,6 +7,7 @@ import {
   Gap12,
   Gap20,
   iconProps,
+  RightText,
   SettingOption,
   SettingOptionInput,
   SettingText,
@@ -16,16 +17,15 @@ import {
 import CelsiusIcon from '@icons/celsius-stroke-rounded.svg'
 import City03Icon from '@icons/city-03-stroke-rounded.svg'
 import CleanIcon from '@icons/clean-stroke-rounded.svg'
+import DashboardSquare02Icon from '@icons/dashboard-square-02-stroke-rounded.svg'
 import Delete02Icon from '@icons/delete-02-stroke-rounded.svg'
 import FahrenheitIcon from '@icons/fahrenheit-stroke-rounded.svg'
 import Key01Icon from '@icons/key-01-stroke-rounded.svg'
 import MapIcon from '@icons/maps-location-02-stroke-rounded.svg'
-import { PMedium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import { getLatitude, getS, toReadableSize } from '@utils/utils'
 import React from 'react'
 import { Linking, Text, View } from 'react-native'
-import DashboardSquare02Icon from '@icons/dashboard-square-02-stroke-rounded.svg'
 
 export default function WeatherScienceSettings({ navigation }: NavProp) {
   const currentCity = useWeatherSettings((state) => state.currentCity)
@@ -64,20 +64,16 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
               <SettingOption
                 title='Current City'
                 Icon={<City03Icon {...iconProps} />}
-                Right={
-                  <PMedium className='text-accent' style={{ fontSize: 15, flex: 0 }} numberOfLines={1}>
-                    {currentCity?.name || 'Not set'}
-                  </PMedium>
-                }
+                Right={<RightText>{currentCity?.name || 'Not set'}</RightText>}
                 onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: true })}
               />
               <SettingOption
                 title='Current Location'
                 Icon={<MapIcon {...iconProps} />}
                 Right={
-                  <PMedium className='text-accent' style={{ fontSize: 15, flex: 0 }} numberOfLines={1}>
+                  <RightText>
                     {getLatitude(currentCity?.lat || 0)}, {getLatitude(currentCity?.lon || 0)}
-                  </PMedium>
+                  </RightText>
                 }
                 onPress={() => {
                   navigation.navigate('WeatherLocation', { shouldGoBack: true })
@@ -145,20 +141,16 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
               title='Clear search history'
               Icon={<CleanIcon {...iconProps} />}
               Right={
-                <PMedium className='text-accent' style={{ fontSize: 15 }}>
+                <RightText>
                   {searchHistoryLength} item{getS(searchHistoryLength)}
-                </PMedium>
+                </RightText>
               }
               onPress={() => navigation.navigate('ClearWeatherSearchHistory')}
             />
             <SettingOption
               title='Clear all data'
               Icon={<Delete02Icon {...iconProps} />}
-              Right={
-                <PMedium className='text-accent' style={{ fontSize: 15 }}>
-                  {toReadableSize(allWeatherDataSize)}
-                </PMedium>
-              }
+              Right={<RightText>{toReadableSize(allWeatherDataSize)}</RightText>}
             />
           </SettingWrapper>
         </Gap20>

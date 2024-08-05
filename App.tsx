@@ -38,7 +38,6 @@ import React from 'react'
 import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-
 const queryClient = new QueryClient()
 
 function App(): React.JSX.Element {
@@ -100,7 +99,7 @@ export type RootStackParamList = {
   ComputerScienceSettings: undefined
   WeatherSettings: undefined
   ClearWeatherSearchHistory: undefined
-  DeveloperOptions : undefined
+  DeveloperOptions: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -144,7 +143,7 @@ function Navigation() {
       <Stack.Screen name='NotesWelcome' component={NotesWelcome} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='ConfirmCity' component={ConfirmCity} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='ComputerScienceSettings' component={ComputerScienceSettings} options={{ gestureEnabled: true }} />
-      <Stack.Screen name='WeatherSettings' component={WeatherScienceSettings} options={{ gestureEnabled: true }} />
+      <Stack.Screen name='WeatherSettings' component={WeatherScienceSettings} options={{ gestureEnabled: true, freezeOnBlur: true }} />
       <Stack.Screen name='ClearWeatherSearchHistory' component={ClearWeatherSearchHistory} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={{ gestureEnabled: true }} />
     </Stack.Navigator>

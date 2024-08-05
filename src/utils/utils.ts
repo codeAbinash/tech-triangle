@@ -1,4 +1,5 @@
 import { Share } from 'react-native'
+import { ls } from '@utils/storage'
 
 export async function shareText(message: string) {
   try {
@@ -93,4 +94,14 @@ export function toReadableSize(size: number) {
   if (size < 1024) return `${size} bytes`
   if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} KB`
   return `${(size / (1024 * 1024)).toFixed(2)} MB`
+}
+
+export function getLocalDataSize(startKey: string) {
+  const keys = ls.getAllKeys().filter((key) => key.startsWith(startKey))
+  let size = 0
+  keys.forEach((key) => {
+    const value = ls.getString(key)
+    if (value) size += value.length
+  })
+  return Math.round(size)
 }

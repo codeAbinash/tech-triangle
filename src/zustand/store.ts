@@ -1,7 +1,7 @@
 import type { WeatherSearchResult } from '@screens/Weather/api'
 import S, { ls } from '@utils/storage'
+import { getLocalDataSize } from '@utils/utils'
 import { create } from 'zustand'
-import { getLocalDataSize } from './utils'
 
 /**
  * Weather settings

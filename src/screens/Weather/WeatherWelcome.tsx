@@ -49,7 +49,14 @@ export default function WeatherWelcome({ navigation }: NavProp) {
       </ScrollView>
       <View className='mb-8 w-full px-[10%] pt-2' style={{ gap: 10 }}>
         <Btn title='Search Your City' onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: false })} />
-        <BtnTransparent title='Use Current Location' onPress={() => navigation.navigate('WeatherLocation')} />
+        <BtnTransparent
+          title='Use Current Location'
+          onPress={() =>
+            navigation.navigate('WeatherLocation', {
+              shouldGoBack: false,
+            })
+          }
+        />
       </View>
     </View>
   )
