@@ -109,14 +109,6 @@ export function Gap20({ children, style, ...rest }: ViewProps) {
   )
 }
 
-export function Title({ children, style, ...rest }: TextProps) {
-  return (
-    <PMedium className='px-6 pb-1 pt-0.5 text-accent' style={[{ textTransform: 'none', fontSize: 13.5 }, style]} {...rest}>
-      {children}
-    </PMedium>
-  )
-}
-
 export function RightArrow() {
   return <ArrowRightIcon width={22} height={22} color={Colors.zinc[500]} />
 }

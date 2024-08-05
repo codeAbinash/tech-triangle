@@ -1,7 +1,7 @@
 import { storageStore } from '@/zustand/storageStore'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
-import { Gap12, Gap20, iconProps, RightArrow, RightText, SettingOption, SettingText, SettingWrapper, Title } from '@components/Settings'
+import { Gap12, Gap20, iconProps, RightArrow, RightText, SettingOption, SettingText, SettingWrapper } from '@components/Settings'
 import BubbleChatIcon from '@icons/bubble-chat-stroke-rounded.svg'
 import CalendarIcon from '@icons/calendar-03-stroke-rounded.svg'
 import CleanIcon from '@icons/clean-stroke-rounded.svg'
@@ -96,8 +96,7 @@ export default function Settings({ navigation }: NavProp) {
             </SettingWrapper>
             <SettingText>These options are intended for developers and may cause unexpected behavior. Use them with caution.</SettingText>
           </Gap12>
-          <SettingWrapper>
-            <Title>Help & Support</Title>
+          <SettingWrapper title='Help & Support'>
             <SettingOption Right={<RightArrow />} title='Ask a question' Icon={<BubbleChatIcon {...iconProps} />} onPress={ask_a_question} />
             <SettingOption Right={<RightArrow />} title='Privacy Policy' Icon={<ShieldUserIcon {...iconProps} />} />
             <SettingOption Right={<RightArrow />} title='Terms of Service' Icon={<PolicyIcon {...iconProps} />} />

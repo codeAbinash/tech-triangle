@@ -63,7 +63,8 @@ function setDistanceUnit(unit: DistanceUnit, set: Set) {
   set((state) => ({ ...state, distanceUnit: unit }))
 }
 function getWeatherWidgetIsActive() {
-  return S.get('WeatherWidgetIsActive') === 'true'
+  const data = S.get('WeatherWidgetIsActive')
+  return data ? data === 'true' : true;
 }
 function setWeatherWidgetIsActive(isActive: boolean, set: Set) {
   S.set('WeatherWidgetIsActive', isActive.toString())

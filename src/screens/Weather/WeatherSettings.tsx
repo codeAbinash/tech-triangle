@@ -75,7 +75,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
                 Icon={<MapIcon {...iconProps} />}
                 Right={
                   <RightText>
-                    {getLatitude(currentCity?.lat || 0)}, {getLatitude(currentCity?.lon || 0)}
+                    {currentCity?.name ? getLatitude(currentCity?.lat || 0) + ', ' + getLatitude(currentCity?.lon || 0) : 'Not set'}
                   </RightText>
                 }
                 onPress={() => {
