@@ -1,4 +1,4 @@
-import { useDeveloperOptions } from '@/zustand/developerOption'
+import { devOptStore } from '@/zustand/devOptStore'
 import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
 import { PaddingBottom } from '@components/SafePadding'
 import {
@@ -25,11 +25,12 @@ import ComputerIcon from '@icons/computer-stroke-rounded.svg'
 import { Alert, Text, ToastAndroid, View } from 'react-native'
 
 export default function DeveloperOptions({ navigation }: NavProp) {
-  const isEnabled = useDeveloperOptions((state) => state.isEnabled)
-  const setEnabled = useDeveloperOptions((state) => state.setEnabled)
-  const animationDuration = useDeveloperOptions((state) => state.animationDuration)
-  const setAnimationDuration = useDeveloperOptions((state) => state.setAnimationDuration)
+  const isEnabled = devOptStore((state) => state.isEnabled)
+  const setEnabled = devOptStore((state) => state.setEnabled)
+  const animationDuration = devOptStore((state) => state.animationDuration)
+  const setAnimationDuration = devOptStore((state) => state.setAnimationDuration)
   const [animError, setAnimError] = React.useState('')
+  const clearDevOptions = devOptStore((state) => state.clearDevOptions)
 
   const setAnim = useCallback((duration: string) => {
     let dur = parseInt(duration)
@@ -45,11 +46,9 @@ export default function DeveloperOptions({ navigation }: NavProp) {
       {
         text: 'Reset',
         onPress: () => {
-          setEnabled(false)
-          setAnim(ANIM_DUR.toString())
+          clearDevOptions()
           setAnimError('')
           navigation.goBack()
-          ToastAndroid.show('Developer options reset', ToastAndroid.SHORT)
         },
       },
     ])

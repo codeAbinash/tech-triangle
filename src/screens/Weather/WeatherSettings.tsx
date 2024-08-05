@@ -1,4 +1,5 @@
-import { useWeatherSearchHistory, useWeatherSettings } from '@/zustand/store'
+import { storageStore } from '@/zustand/storageStore'
+import { weatherStore } from '@/zustand/weatherStore'
 import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
 import { PaddingBottom } from '@components/SafePadding'
 import {
@@ -18,29 +19,31 @@ import CelsiusIcon from '@icons/celsius-stroke-rounded.svg'
 import City03Icon from '@icons/city-03-stroke-rounded.svg'
 import CleanIcon from '@icons/clean-stroke-rounded.svg'
 import DashboardSquare02Icon from '@icons/dashboard-square-02-stroke-rounded.svg'
-import Delete02Icon from '@icons/delete-02-stroke-rounded.svg'
+import DatabaseIcon from '@icons/database-02-stroke-rounded.svg'
 import FahrenheitIcon from '@icons/fahrenheit-stroke-rounded.svg'
 import Key01Icon from '@icons/key-01-stroke-rounded.svg'
 import MapIcon from '@icons/maps-location-02-stroke-rounded.svg'
 import type { NavProp } from '@utils/types'
-import { getLatitude, getS, toReadableSize } from '@utils/utils'
+import { getLatitude, toReadableSize } from '@utils/utils'
 import React from 'react'
 import { Linking, Text, View } from 'react-native'
 
 export default function WeatherScienceSettings({ navigation }: NavProp) {
-  const currentCity = useWeatherSettings((state) => state.currentCity)
-  const searchHistoryLength = useWeatherSearchHistory((state) => state.searchHistoryLength)
-  const allWeatherDataSize = useWeatherSettings((state) => state.allWeatherDataSize)
-  const temperatureUnit = useWeatherSettings((state) => state.temperatureUnit)
-  const setTmpUnit = useWeatherSettings((state) => state.setTemperatureUnit)
-  const distanceUnit = useWeatherSettings((state) => state.distanceUnit)
-  const setDistUnit = useWeatherSettings((state) => state.setDistanceUnit)
-  const setOwApiKey = useWeatherSettings((state) => state.setOpenWeatherApiKey)
-  const setAccuApiKey = useWeatherSettings((state) => state.setAccuWeatherApiKey)
-  const owApiKey = useWeatherSettings((state) => state.openWeatherApiKey)
-  const accuApiKey = useWeatherSettings((state) => state.accuWeatherApiKey)
-  const setWeatherWidgetIsActive = useWeatherSettings((state) => state.setWeatherWidgetIsActive)
-  const weatherWidgetIsActive = useWeatherSettings((state) => state.weatherWidgetIsActive)
+  const currentCity = weatherStore((state) => state.currentCity)
+  const temperatureUnit = weatherStore((state) => state.temperatureUnit)
+  const setTmpUnit = weatherStore((state) => state.setTemperatureUnit)
+  const distanceUnit = weatherStore((state) => state.distanceUnit)
+  const setDistUnit = weatherStore((state) => state.setDistanceUnit)
+  const setOwApiKey = weatherStore((state) => state.setOpenWeatherApiKey)
+  const setAccuApiKey = weatherStore((state) => state.setAccuWeatherApiKey)
+  const owApiKey = weatherStore((state) => state.openWeatherApiKey)
+  const accuApiKey = weatherStore((state) => state.accuWeatherApiKey)
+  const setWeatherWidgetIsActive = weatherStore((state) => state.setWeatherWidgetIsActive)
+  const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
+
+  const searchSize = storageStore((state) => state.weatherSearch)
+  const weatherSize = storageStore((state) => state.weather)
+  const clearSearch = storageStore((state) => state.clearWeatherSearch)
 
   return (
     <View className='flex-1 bg-zinc-100 dark:bg-black'>
@@ -138,19 +141,15 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           </SettingWrapper>
           <SettingWrapper title='Data Management'>
             <SettingOption
-              title='Clear search history'
+              title='Clear search cache'
               Icon={<CleanIcon {...iconProps} />}
-              Right={
-                <RightText>
-                  {searchHistoryLength} item{getS(searchHistoryLength)}
-                </RightText>
-              }
-              onPress={() => navigation.navigate('ClearWeatherSearchHistory')}
+              Right={<RightText>{toReadableSize(searchSize)}</RightText>}
+              onPress={clearSearch}
             />
             <SettingOption
-              title='Clear all data'
-              Icon={<Delete02Icon {...iconProps} />}
-              Right={<RightText>{toReadableSize(allWeatherDataSize)}</RightText>}
+              title='Clear all weather data'
+              Icon={<DatabaseIcon {...iconProps} />}
+              Right={<RightText>{toReadableSize(weatherSize)}</RightText>}
             />
           </SettingWrapper>
         </Gap20>

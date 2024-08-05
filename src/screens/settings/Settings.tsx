@@ -1,4 +1,4 @@
-import { useSettings } from '@/zustand/settingsStore'
+import { storageStore } from '@/zustand/storageStore'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { Gap12, Gap20, iconProps, RightArrow, RightText, SettingOption, SettingText, SettingWrapper, Title } from '@components/Settings'
@@ -39,8 +39,9 @@ function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactN
 
 export default function Settings({ navigation }: NavProp) {
   const scheme = useColorScheme()
-  const totalSize = useSettings((state) => state.totalSize)
-  const totalCache = useSettings((state) => state.totalCacheSize)
+  const totalSize = storageStore((state) => state.totalSize)
+  const totalCache = storageStore((state) => state.totalCacheSize)
+  const clearCache = storageStore((state) => state.clearCache)
 
   return (
     <View className='flex-1 bg-white dark:bg-zinc-950'>
@@ -76,7 +77,12 @@ export default function Settings({ navigation }: NavProp) {
             </SettingText>
           </Gap12>
           <SettingWrapper title='Storage'>
-            <SettingOption title='Clear cache' Icon={<CleanIcon {...iconProps} />} Right={<RightText>{toReadableSize(totalCache)}</RightText>} />
+            <SettingOption
+              title='Clear cache'
+              Icon={<CleanIcon {...iconProps} />}
+              Right={<RightText>{toReadableSize(totalCache)}</RightText>}
+              onPress={clearCache}
+            />
             <SettingOption title='Clear storage' Icon={<StorageIcon {...iconProps} />} Right={<RightText>{toReadableSize(totalSize)}</RightText>} />
           </SettingWrapper>
           <Gap12>

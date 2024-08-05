@@ -18,7 +18,7 @@ import {
 import { TextInput } from 'react-native-gesture-handler'
 import type { SvgProps } from 'react-native-svg'
 import { PaddingTop } from './SafePadding'
-import { useDeveloperOptions } from '@/zustand/developerOption'
+import { devOptStore } from '@/zustand/devOptStore'
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated'
 
 type SettingOptionProps = TouchableOpacityProps & {
@@ -189,7 +189,7 @@ interface ToggleProps {
 export function Toggle({ isActive, color }: ToggleProps) {
   const scheme = useColorScheme()
   const progress = useDerivedValue(() => (isActive ? AVAIL_W : 0), [isActive])
-  const duration = useDeveloperOptions((state) => state.animationDuration)
+  const duration = devOptStore((state) => state.animationDuration)
 
   const backgroundColorStyle = useAnimatedStyle(() => {
     const backgroundColor = withTiming(

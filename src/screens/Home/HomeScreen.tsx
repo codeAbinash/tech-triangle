@@ -1,4 +1,4 @@
-import { useWeatherSettings } from '@/zustand/store'
+import { weatherStore } from '@/zustand/weatherStore'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import SettingsIcon from '@icons/settings-01-stroke-rounded.svg'
 import { useNavigation } from '@react-navigation/native'
@@ -14,7 +14,7 @@ const { width } = Dimensions.get('window')
 
 function Elements() {
   const navigation = useNavigation<StackNav>()
-  const weatherWidgetIsActive = useWeatherSettings((state) => state.weatherWidgetIsActive)
+  const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
   const hw = useMemo(() => {
     return { width: width * 0.42, height: width * 0.49 }
   }, [width])

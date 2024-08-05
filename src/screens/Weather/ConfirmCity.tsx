@@ -1,4 +1,4 @@
-import { useWeatherSettings } from '@/zustand/store'
+import { weatherStore } from '@/zustand/weatherStore'
 import Btn, { BtnTransparent } from '@components/Button'
 import type { RouteProp } from '@react-navigation/native'
 import { W } from '@utils/dimensions'
@@ -24,7 +24,7 @@ export type ConfirmCityParamList = {
 
 export default function ConfirmCity({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'ConfirmCity'> }) {
   let { lon, lat, altitude, shouldGoBack } = route.params
-  const setCurrentCity = useWeatherSettings((state) => state.setCurrentCity)
+  const setCurrentCity = weatherStore((state) => state.setCurrentCity)
 
   return (
     <View className='flex-1 dark:bg-zinc-950'>

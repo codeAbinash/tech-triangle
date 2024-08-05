@@ -1,3 +1,4 @@
+import { storageStore } from '@/zustand/storageStore'
 import { BtnTransparent } from '@components/Button'
 import Search from '@components/Search'
 import StackHeader from '@components/StackHeader'
@@ -5,14 +6,12 @@ import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
 import { PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
-import S from '@utils/storage'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import React from 'react'
 import { ActivityIndicator, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { searchCity, type WeatherSearchResult } from './api'
-import { useWeatherSearchHistory, useWeatherSettings, type CurrentCityT } from '@/zustand/store'
 
 type ParamList = {
   WeatherSearchCity: SearchCityParamList
@@ -24,15 +23,12 @@ export type SearchCityParamList = {
 
 export default function WeatherSearchCity({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'WeatherSearchCity'> }) {
   const [query, setQuery] = React.useState('')
-  const pushSearchHistory = useWeatherSearchHistory((state) => state.pushSearchHistory)
-
+  const computeEverything = storageStore((state) => state.computeEverything)
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['cities'],
     mutationFn: () => searchCity(query.trim()),
     onError: (err) => console.log(err),
-    onSuccess: (data) => {
-      if (data) pushSearchHistory(query.trim(), data)
-    },
+    onSuccess: (data) => computeEverything(),
   })
 
   return (
@@ -129,11 +125,6 @@ function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResul
       className='flex-row justify-between rounded-2xl p-3.5 px-2'
       activeOpacity={0.7}
       onPress={() => {
-        const city: CurrentCityT = {
-          name: item.EnglishName,
-          lat: item.GeoPosition.Latitude,
-          lon: item.GeoPosition.Longitude,
-        }
         navigation.navigate('ConfirmCity', {
           name: item.EnglishName,
           lat: item.GeoPosition.Latitude,
