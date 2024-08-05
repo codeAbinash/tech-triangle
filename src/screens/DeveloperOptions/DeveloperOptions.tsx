@@ -7,6 +7,7 @@ import Timer02Icon from '@icons/timer-02-stroke-rounded.svg'
 import type { NavProp } from '@utils/types'
 import React, { useCallback } from 'react'
 import { Text, View } from 'react-native'
+import CodeIcon from '@icons/code-stroke-rounded.svg'
 
 export default function DeveloperOptions({ navigation }: NavProp) {
   const isEnabled = useDeveloperOptions((state) => state.isEnabled)
@@ -39,7 +40,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
                 activeOpacity={0.8}
                 title='Developer Options'
                 onPress={() => setEnabled(!isEnabled)}
-                Icon={<DashboardSquare02Icon {...iconProps} />}
+                Icon={<CodeIcon {...iconProps} />}
                 Right={<Toggle isActive={isEnabled} />}
               />
             </SettingWrapper>
@@ -59,7 +60,13 @@ export default function DeveloperOptions({ navigation }: NavProp) {
               <SettingText className={animError ? 'text-red-500' : ''}>{animError || 'Set the duration of animations in 0 to 1000 ms.'}</SettingText>
               <SettingText>
                 You may need to restart the app or exit this screen for the changes to take effect. The default value is 150 ms.{' '}
-                <Text className='text-accent' onPress={() => setAnim('150')}>
+                <Text
+                  className='text-accent'
+                  onPress={() => {
+                    setAnim('150')
+                    setAnimError('')
+                  }}
+                >
                   Reset to default.
                 </Text>
               </SettingText>
