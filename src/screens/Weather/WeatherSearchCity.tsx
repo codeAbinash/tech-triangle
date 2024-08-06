@@ -146,7 +146,7 @@ function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResul
       </View>
 
       <View>
-        <Text className='text-right text-zinc-600 dark:text-zinc-400' style={[PoppinsMedium, { fontSize: 13 }]}>
+        <Text className='text-right text-accent' style={[PoppinsMedium, { fontSize: 13 }]}>
           {lat}, {lon}
         </Text>
         <Text className='text-right text-zinc-600 dark:text-zinc-400' style={[PoppinsMedium, { fontSize: 13 }]}>

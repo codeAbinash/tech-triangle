@@ -102,6 +102,8 @@ export type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>()
 
+const GestureEnabled = { gestureEnabled: true }
+
 function Navigation() {
   return (
     <Stack.Navigator
@@ -130,19 +132,19 @@ function Navigation() {
       <Stack.Screen name='KeyboardAnimation' component={KeyboardAnimation} />
       <Stack.Screen name='Animations' component={Animations} />
       <Stack.Screen name='DragAnimation' component={DragAnimation} />
-      <Stack.Screen name='Weather' component={Weather} />
+      <Stack.Screen name='Weather' component={Weather} options={GestureEnabled} />
       <Stack.Screen name='WeatherWelcome' component={WeatherWelcome} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='WeatherSearchCity' component={WeatherSearchCity} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='WeatherLocation' component={WeatherLocation} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='Greeting' component={Greeting} options={IOS_BOTTOM_STYLE} />
-      <Stack.Screen name='Settings' component={Settings} options={{ gestureEnabled: true }} />
+      <Stack.Screen name='Settings' component={Settings} options={GestureEnabled} />
       <Stack.Screen name='Explore' component={Explore} />
       <Stack.Screen name='RoutineWelcome' component={RoutineWelcome} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='NotesWelcome' component={NotesWelcome} options={IOS_BOTTOM_STYLE} />
       <Stack.Screen name='ConfirmCity' component={ConfirmCity} options={IOS_BOTTOM_STYLE} />
-      <Stack.Screen name='ComputerScienceSettings' component={ComputerScienceSettings} options={{ gestureEnabled: true }} />
+      <Stack.Screen name='ComputerScienceSettings' component={ComputerScienceSettings} options={GestureEnabled} />
       <Stack.Screen name='WeatherSettings' component={WeatherScienceSettings} options={{ gestureEnabled: true, freezeOnBlur: true }} />
-      <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={{ gestureEnabled: true }} />
+      <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={GestureEnabled} />
     </Stack.Navigator>
   )
 }

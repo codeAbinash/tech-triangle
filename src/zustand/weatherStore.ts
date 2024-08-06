@@ -1,4 +1,5 @@
 import S from '@utils/storage'
+import { ToastAndroid } from 'react-native'
 import { create } from 'zustand'
 
 export type CurrentCityT = {
@@ -22,6 +23,7 @@ type WeatherSettingsStore = {
   setOpenWeatherApiKey: (key: string) => void
   weatherWidgetIsActive: boolean
   setWeatherWidgetIsActive: (isActive: boolean) => void
+  removeCurrentCityLocation: () => void
 }
 
 export const weatherStore = create<WeatherSettingsStore>((set) => ({
@@ -37,14 +39,20 @@ export const weatherStore = create<WeatherSettingsStore>((set) => ({
   setAccuWeatherApiKey: (key: string) => setAccuWeatherApiKey(key, set),
   setOpenWeatherApiKey: (key: string) => setOpenWeatherApiKey(key, set),
   setWeatherWidgetIsActive: (isActive: boolean) => setWeatherWidgetIsActive(isActive, set),
+  removeCurrentCityLocation: () => removeCurrentCityLocation(set),
 }))
 
 type Set = (fn: (state: WeatherSettingsStore) => WeatherSettingsStore) => void
 
+function removeCurrentCityLocation(set: Set) {
+  setCurrentCity(null, set)
+  ToastAndroid.show('Current city & location removed', ToastAndroid.SHORT)
+}
+
 function getCurrentCity() {
   return S.getParsed<CurrentCityT>('WeatherCurrentCity')
 }
-function setCurrentCity(city: CurrentCityT | null, set: Set) {
+function setCurrentCity(city: CurrentCityT | null ,  set: Set) {
   S.set('WeatherCurrentCity', JSON.stringify(city))
   set((state) => ({ ...state, currentCity: city }))
 }
@@ -64,7 +72,7 @@ function setDistanceUnit(unit: DistanceUnit, set: Set) {
 }
 function getWeatherWidgetIsActive() {
   const data = S.get('WeatherWidgetIsActive')
-  return data ? data === 'true' : true;
+  return data ? data === 'true' : true
 }
 function setWeatherWidgetIsActive(isActive: boolean, set: Set) {
   S.set('WeatherWidgetIsActive', isActive.toString())

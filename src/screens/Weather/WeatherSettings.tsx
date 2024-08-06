@@ -13,7 +13,7 @@ import {
   SettingOptionInput,
   SettingText,
   SettingWrapper,
-  Toggle,
+  Toggle
 } from '@components/Settings'
 import CelsiusIcon from '@icons/celsius-stroke-rounded.svg'
 import City03Icon from '@icons/city-03-stroke-rounded.svg'

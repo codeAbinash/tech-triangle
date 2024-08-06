@@ -1,4 +1,5 @@
 import { devOptStore } from '@/zustand/devOptStore'
+import { weatherStore } from '@/zustand/weatherStore'
 import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
 import { PaddingBottom } from '@components/SafePadding'
 import {
@@ -15,13 +16,13 @@ import {
 } from '@components/Settings'
 import CleanIcon from '@icons/clean-stroke-rounded.svg'
 import CodeIcon from '@icons/code-stroke-rounded.svg'
-import Timer02Icon from '@icons/timer-02-stroke-rounded.svg'
+import ComputerIcon from '@icons/computer-stroke-rounded.svg'
 import StorageIcon from '@icons/database-02-stroke-rounded.svg'
+import Timer02Icon from '@icons/timer-02-stroke-rounded.svg'
 import { ANIM_DUR } from '@utils/constants'
 import { PoppinsMedium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useCallback } from 'react'
-import ComputerIcon from '@icons/computer-stroke-rounded.svg'
 import { Alert, Text, ToastAndroid, View } from 'react-native'
 
 export default function DeveloperOptions({ navigation }: NavProp) {
@@ -31,6 +32,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   const setAnimationDuration = devOptStore((state) => state.setAnimationDuration)
   const [animError, setAnimError] = React.useState('')
   const clearDevOptions = devOptStore((state) => state.clearDevOptions)
+  const removeLocation = weatherStore((state) => state.removeCurrentCityLocation)
 
   const setAnim = useCallback((duration: string) => {
     let dur = parseInt(duration)
@@ -120,6 +122,11 @@ export default function DeveloperOptions({ navigation }: NavProp) {
                     }}
                   />
                   <SettingOption title='MMKV data viewer' Icon={<StorageIcon {...iconProps} />} Right={<RightArrow />} />
+                </SettingWrapper>
+              </Gap12>
+              <Gap12>
+                <SettingWrapper title='Weather Settings'>
+                  <SettingOption title='Remove Current City & Location' Icon={<CleanIcon {...iconProps} />} onPress={removeLocation} />
                 </SettingWrapper>
               </Gap12>
             </>

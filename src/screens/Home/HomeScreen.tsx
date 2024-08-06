@@ -1,3 +1,4 @@
+import { navigateToWeather } from '@/navigation'
 import { weatherStore } from '@/zustand/weatherStore'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import SettingsIcon from '@icons/settings-01-stroke-rounded.svg'
@@ -18,6 +19,9 @@ function Elements() {
   const hw = useMemo(() => {
     return { width: width * 0.42, height: width * 0.49 }
   }, [width])
+
+  const currentCity = weatherStore((state) => state.currentCity)
+
   return (
     <ScrollView
       horizontal
@@ -30,7 +34,7 @@ function Elements() {
           style={[hw, styles.shadow]}
           className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
           activeOpacity={0.7}
-          onPress={() => navigation.navigate('WeatherWelcome')}
+          onPress={() => navigateToWeather(navigation, currentCity)}
         >
           <Text className='text-gray-800 dark:text-gray-200' style={PoppinsMedium}>
             Weather

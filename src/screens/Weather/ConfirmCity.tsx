@@ -1,5 +1,6 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import Btn, { BtnTransparent } from '@components/Button'
+import { PaddingBottom } from '@components/SafePadding'
 import type { RouteProp } from '@react-navigation/native'
 import { W } from '@utils/dimensions'
 import { PoppinsBold, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
@@ -30,27 +31,24 @@ export default function ConfirmCity({ navigation, route }: { navigation: StackNa
     <View className='flex-1 dark:bg-zinc-950'>
       <StatusBar barStyle='default' />
 
-      <View className='w-full flex-1 items-center justify-between p-[10%]'>
+      <View className='w-full flex-1 items-center justify-between px-[10%]'>
         <View>
-          <Text style={[PoppinsBold, { fontSize: 38 }]} className='my-8 mb-0 text-center text-zinc-800 dark:text-zinc-200'>
+          <Text style={[PoppinsBold, { fontSize: 38 }]} className='my-8 mb-0 mt-10 text-center text-zinc-800 dark:text-zinc-200'>
             {route.params.name}
           </Text>
           <Text style={[PoppinsMedium, { fontSize: 18 }]} className='-mt-2 text-center text-zinc-700 dark:text-zinc-300'>
             {route.params.area}, {route.params.country}
           </Text>
-        </View>
-
-        <View>
-          <LottieView source={require('@assets/animations/earth.lottie')} autoPlay loop={false} style={{ width: W * 1.1, height: W * 1.1 }} />
-        </View>
-        <View className='w-full pt-2' style={{ gap: 10 }}>
-          <Text style={[PoppinsSemiBold, { fontSize: 14 }]} className='text-center text-zinc-700 dark:text-zinc-300'>
+          <Text style={[PoppinsSemiBold, { fontSize: 14 }]} className='text-center text-accent'>
             {getLongitude(lon)}
             {'    '}
             {getLatitude(lat)}
             {'    '}
             {altitude} m
           </Text>
+        </View>
+        <LottieView source={require('@assets/animations/earth.lottie')} autoPlay loop={false} style={{ width: W * 1.1, height: W * 1.1 }} />
+        <View className='w-full pb-3 pt-2' style={{ gap: 10 }}>
           <Text style={[PoppinsMedium, { fontSize: 11 }]} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
             By setting this location, you will be able to view the weather of this location in the home screen and the weather screen.
           </Text>
@@ -66,6 +64,7 @@ export default function ConfirmCity({ navigation, route }: { navigation: StackNa
           <BtnTransparent title='Cancel' onPress={() => navigation.goBack()} />
         </View>
       </View>
+      <PaddingBottom />
     </View>
   )
 }

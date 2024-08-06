@@ -54,6 +54,14 @@ export function RightText({ children, ...rest }: TextProps) {
   )
 }
 
+export function Small({ children, ...rest }: TextProps) {
+  return (
+    <PMedium className='text-zinc-500 dark:text-zinc-500' style={{ fontSize: 11 }} {...rest}>
+      {children}
+    </PMedium>
+  )
+}
+
 type SettingOptionInputProps = TextInputProps & {
   Icon?: React.ReactNode
   Right?: React.ReactNode
@@ -124,7 +132,7 @@ export function SettingText({ children, ...rest }: TextProps) {
 export function BackHeader({ navigation, title, Title }: { navigation: StackNav; title?: string; Title?: React.ReactNode }) {
   const scheme = useColorScheme()
   return (
-    <View className='bg-white px-5 pb-0 pl-1 dark:bg-zinc-950'>
+    <View className='bg-white px-5 pb-0.5 pl-1 dark:bg-zinc-950'>
       <PaddingTop />
       <View>
         {Title || (
