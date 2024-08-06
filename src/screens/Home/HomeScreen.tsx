@@ -1,7 +1,7 @@
 import { navigateToWeather } from '@/navigation'
 import { weatherStore } from '@/zustand/weatherStore'
+import { Settings01Icon } from '@assets/icons/icons'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
-import SettingsIcon from '@icons/settings-01-stroke-rounded.svg'
 import { useNavigation } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { PoppinsBold, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
@@ -98,7 +98,7 @@ function TopArea() {
             <NotificationIcon height={22} width={22} color={theme === 'dark' ? COL.gray300 : COL.gray800} />
           </TouchableOpacity> */}
           <TouchableOpacity activeOpacity={0.6} className='p-2 px-2.5' onPress={() => navigation.navigate('Settings')}>
-            <SettingsIcon height={22} width={22} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
+            <Settings01Icon height={22} width={22} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
           </TouchableOpacity>
         </View>
       </View>

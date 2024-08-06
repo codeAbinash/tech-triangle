@@ -1,10 +1,7 @@
+import { CpuIcon, QuillWrite02Icon, SunCloudAngledRainZap01Icon, TimeHalfPassIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import Feature from '@components/Feature'
 import { PaddingBottom } from '@components/SafePadding'
-import CpuIcon from '@icons/cpu-stroke-rounded.svg'
-import QuillIcon from '@icons/quill-write-02-stroke-rounded.svg'
-import WeatherIcon from '@icons/sun-cloud-angled-rain-zap-01-stroke-rounded.svg'
-import TimeIcon from '@icons/time-half-pass-stroke-rounded.svg'
 import { Colors } from '@utils/colors'
 import { APP_VERSION } from '@utils/data'
 import { PoppinsBold, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
@@ -39,17 +36,17 @@ export default function Greeting({ navigation }: NavProp) {
               description={"Computer Science related experiments and implementation. Go to the 'Explore' tab to see more."}
             />
             <Feature
-              Icon={<WeatherIcon height={28} width={28} color={Colors.blue['500']} />}
+              Icon={<SunCloudAngledRainZap01Icon height={28} width={28} color={Colors.blue['500']} />}
               title='Weather Application'
               description='A weather application that shows the current weather and forecast for the next 15 days.'
             />
             <Feature
-              Icon={<TimeIcon height={28} width={28} color={Colors.red['500']} />}
+              Icon={<TimeHalfPassIcon height={28} width={28} color={Colors.red['500']} />}
               title='Manage Routines'
               description='A new routine manager to help you manage your daily routines and to make your life easier.'
             />
             <Feature
-              Icon={<QuillIcon height={28} width={28} color={Colors.green['500']} />}
+              Icon={<QuillWrite02Icon height={28} width={28} color={Colors.green['500']} />}
               title='Take Notes'
               description='A new notes application with a new design and a new color scheme to make it easier to find what you are looking for.'
             />

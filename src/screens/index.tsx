@@ -4,15 +4,16 @@ import COL, { Colors } from '@utils/colors'
 import type { ReactNode } from 'react'
 import React from 'react'
 import { Text, TouchableOpacity, useColorScheme, View, type ColorSchemeName } from 'react-native'
-
-import HomeSolid from '@icons/home-01-solid-rounded.svg'
-import HomeStroke from '@icons/home-01-stroke-rounded.svg'
-import SaturnSolid from '@icons/saturn-01-solid-rounded.svg'
-import SaturnStroke from '@icons/saturn-01-stroke-rounded.svg'
-import TestSolid from '@icons/test-tube-01-solid-rounded.svg'
-import TestStroke from '@icons/test-tube-01-stroke-rounded.svg'
-import WalletSolid from '@icons/wallet-02-solid-rounded.svg'
-import WalletStroke from '@icons/wallet-02-stroke-rounded.svg'
+import {
+  Home01Icon,
+  Home01SolidIcon,
+  Saturn01Icon,
+  Saturn01SolidIcon,
+  TestTube01Icon,
+  TestTube01SolidIcon,
+  Wallet02Icon,
+  Wallet02SolidIcon,
+} from '@assets/icons/icons'
 import HomeScreen from './Home/HomeScreen'
 import ComingSoon from './UnderConstruction'
 const Tab = createBottomTabNavigator()
@@ -126,33 +127,33 @@ const Home = () => {
 
 function HomeIcon(props: { focused: boolean; color: string; size: number }) {
   return props.focused ? (
-    <HomeSolid {...props} height={props.size} width={props.size} color={Colors.accent} />
+    <Home01SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
   ) : (
-    <HomeStroke {...props} height={props.size} width={props.size} />
+    <Home01Icon {...props} height={props.size} width={props.size} />
   )
 }
 
 function WalletIcon(props: { focused: boolean; color: string; size: number }) {
   return props.focused ? (
-    <WalletSolid {...props} height={props.size} width={props.size} color={Colors.accent} />
+    <Wallet02SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
   ) : (
-    <WalletStroke {...props} height={props.size} width={props.size} />
+    <Wallet02Icon {...props} height={props.size} width={props.size} />
   )
 }
 
 function Try(props: { focused: boolean; color: string; size: number }) {
   return props.focused ? (
-    <TestSolid {...props} height={props.size} width={props.size} color={Colors.accent} />
+    <TestTube01SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
   ) : (
-    <TestStroke {...props} height={props.size} width={props.size} />
+    <TestTube01Icon {...props} height={props.size} width={props.size} />
   )
 }
 
 function ExploreIcon(props: { focused: boolean; color: string; size: number }) {
   return props.focused ? (
-    <SaturnSolid {...props} height={props.size} width={props.size} color={Colors.accent} />
+    <Saturn01SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
   ) : (
-    <SaturnStroke {...props} height={props.size} width={props.size} />
+    <Saturn01Icon {...props} height={props.size} width={props.size} />
   )
 }
 

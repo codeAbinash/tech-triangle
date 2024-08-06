@@ -1,18 +1,20 @@
 import { storageStore } from '@/zustand/storageStore'
 import { weatherStore } from '@/zustand/weatherStore'
+import {
+  CelsiusIcon,
+  City03Icon,
+  CleanIcon,
+  DashboardSquare02Icon,
+  Database02Icon,
+  FahrenheitIcon,
+  Key01Icon,
+  MapsLocation02Icon,
+} from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import { Check, SettGroup, SettOption, SettText, SettWrapper, ic } from '@components/Settings'
 import { RightText } from '@components/Text'
 import { Toggle } from '@components/Toggle'
-import CelsiusIcon from '@icons/celsius-stroke-rounded.svg'
-import City03Icon from '@icons/city-03-stroke-rounded.svg'
-import CleanIcon from '@icons/clean-stroke-rounded.svg'
-import DashboardSquare02Icon from '@icons/dashboard-square-02-stroke-rounded.svg'
-import DatabaseIcon from '@icons/database-02-stroke-rounded.svg'
-import FahrenheitIcon from '@icons/fahrenheit-stroke-rounded.svg'
-import Key01Icon from '@icons/key-01-stroke-rounded.svg'
-import MapIcon from '@icons/maps-location-02-stroke-rounded.svg'
 import type { NavProp } from '@utils/types'
 import { getLatitude, toReadableSize } from '@utils/utils'
 import React from 'react'
@@ -55,7 +57,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           />
           <SettOption
             title='Current Location'
-            Icon={<MapIcon {...ic} />}
+            Icon={<MapsLocation02Icon {...ic} />}
             Right={
               <RightText>{currentCity?.name ? getLatitude(currentCity?.lat || 0) + ', ' + getLatitude(currentCity?.lon || 0) : 'Not set'}</RightText>
             }
@@ -117,7 +119,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           Right={<RightText>{toReadableSize(searchCache)}</RightText>}
           onPress={clearCache}
         />
-        <SettOption title='Clear all weather data' Icon={<DatabaseIcon {...ic} />} Right={<RightText>{toReadableSize(weatherSize)}</RightText>} />
+        <SettOption title='Clear all weather data' Icon={<Database02Icon {...ic} />} Right={<RightText>{toReadableSize(weatherSize)}</RightText>} />
       </SettGroup>
     </SettWrapper>
   )

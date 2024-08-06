@@ -1,21 +1,23 @@
 import { storageStore } from '@/zustand/storageStore'
-import { BrushIcon } from '@assets/icons/icons'
+import {
+  BrushIcon,
+  BubbleChatIcon,
+  Calendar03Icon,
+  CleanIcon,
+  CodeIcon,
+  ComputerIcon,
+  Database02Icon,
+  InformationCircleIcon,
+  PolicyIcon,
+  ShieldUserIcon,
+  SunCloudAngledRainZap01Icon,
+  Wallet02Icon,
+} from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { ic, SettGroup, SettOption, SettText } from '@components/Settings'
 import { RightText } from '@components/Text'
-import BubbleChatIcon from '@icons/bubble-chat-stroke-rounded.svg'
-import CalendarIcon from '@icons/calendar-03-stroke-rounded.svg'
-import CleanIcon from '@icons/clean-stroke-rounded.svg'
-import CodeIcon from '@icons/code-stroke-rounded.svg'
-import ComputerIcon from '@icons/computer-stroke-rounded.svg'
-import StorageIcon from '@icons/database-02-stroke-rounded.svg'
-import InformationCircleIcon from '@icons/information-circle-stroke-rounded.svg'
-import PolicyIcon from '@icons/policy-stroke-rounded.svg'
-import ShieldUserIcon from '@icons/shield-user-stroke-rounded.svg'
-import WeatherIcon from '@icons/sun-cloud-angled-rain-zap-01-stroke-rounded.svg'
-import WalletIcon from '@icons/wallet-02-stroke-rounded.svg'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question } from '@utils/data'
 import { PBold } from '@utils/fonts'
@@ -67,9 +69,14 @@ export default function Settings({ navigation }: NavProp) {
                 arrow
                 // onPress={() => navigation.navigate('ComputerScienceSettings')}
               />
-              <SettOption title='Weather Settings' Icon={<WeatherIcon {...ic} />} onPress={() => navigation.navigate('WeatherSettings')} arrow />
-              <SettOption title='Routine Management' Icon={<CalendarIcon {...ic} />} arrow />
-              <SettOption title='My Wallet' Icon={<WalletIcon {...ic} />} arrow />
+              <SettOption
+                title='Weather Settings'
+                Icon={<SunCloudAngledRainZap01Icon {...ic} />}
+                onPress={() => navigation.navigate('WeatherSettings')}
+                arrow
+              />
+              <SettOption title='Routine Management' Icon={<Calendar03Icon {...ic} />} arrow />
+              <SettOption title='My Wallet' Icon={<Wallet02Icon {...ic} />} arrow />
             </SettGroup>
           </Gap12>
           <SettGroup title='Storage'>
@@ -79,7 +86,7 @@ export default function Settings({ navigation }: NavProp) {
               Right={<RightText>{toReadableSize(totalCache)}</RightText>}
               onPress={clearCache}
             />
-            <SettOption title='Clear storage' Icon={<StorageIcon {...ic} />} Right={<RightText>{toReadableSize(totalSize)}</RightText>} />
+            <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<RightText>{toReadableSize(totalSize)}</RightText>} />
           </SettGroup>
           <Gap12>
             <SettGroup title='For Developers'>

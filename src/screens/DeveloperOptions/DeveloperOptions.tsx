@@ -1,14 +1,10 @@
 import { devOptStore } from '@/zustand/devOptStore'
 import { weatherStore } from '@/zustand/weatherStore'
+import { CleanIcon, CodeIcon, ComputerIcon, Database02Icon, Timer02Icon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Toggle } from '@components/Toggle'
-import CleanIcon from '@icons/clean-stroke-rounded.svg'
-import CodeIcon from '@icons/code-stroke-rounded.svg'
-import ComputerIcon from '@icons/computer-stroke-rounded.svg'
-import StorageIcon from '@icons/database-02-stroke-rounded.svg'
-import Timer02Icon from '@icons/timer-02-stroke-rounded.svg'
 import { ANIM_DUR } from '@utils/constants'
 import { PoppinsMedium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
@@ -76,7 +72,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
           </Gap12>
           <Gap12>
             <SettGroup title='Data Viewer'>
-              <SettOption title='MMKV data editor' Icon={<StorageIcon {...ic} />} arrow />
+              <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow />
             </SettGroup>
           </Gap12>
           <Gap12>

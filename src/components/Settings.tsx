@@ -1,5 +1,3 @@
-import ArrowRightIcon from '@icons/arrow-right-01-stroke-rounded.svg'
-import Tick01Icon from '@icons/tick-01-stroke-rounded.svg'
 import { Colors } from '@utils/colors'
 import { PMedium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
@@ -10,6 +8,7 @@ import BackHeader from './BackHeader'
 import { Gap20 } from './Gap'
 import KeyboardAvoidingContainer from './KeyboardAvoidingContainer'
 import { PaddingBottom } from './SafePadding'
+import { ArrowRight01Icon, Tick01Icon } from '@assets/icons/icons'
 
 type SettOptionProps = TouchableOpacityProps & {
   title: string
@@ -55,7 +54,7 @@ export function SettGroup({ children, title, ...rest }: SettGroupProps) {
 }
 
 export function RightArrow() {
-  return <ArrowRightIcon width={22} height={22} color={Colors.zinc[500]} />
+  return <ArrowRight01Icon width={22} height={22} color={Colors.zinc[500]} />
 }
 
 export function SettText({ children, ...rest }: TextProps) {

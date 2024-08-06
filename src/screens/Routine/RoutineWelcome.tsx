@@ -1,9 +1,6 @@
+import { GoForward15SecIcon, MapsLocation02Icon, QuillWrite02Icon, SunCloudAngledRainZap01Icon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import Feature from '@components/Feature'
-import FifteenDaysIcon from '@icons/go-forward-15-sec-stroke-rounded.svg'
-import LocationIcon from '@icons/maps-location-02-stroke-rounded.svg'
-import QuillIcon from '@icons/quill-write-02-stroke-rounded.svg'
-import WeatherIcon from '@icons/sun-cloud-angled-rain-zap-01-stroke-rounded.svg'
 import { Colors } from '@utils/colors'
 import { PoppinsBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
@@ -25,22 +22,22 @@ export default function RoutineWelcome({ navigation }: NavProp) {
           </Text>
           <View style={{ gap: 10 }}>
             <Feature
-              Icon={<WeatherIcon height={30} width={30} color={Colors.blue['500']} />}
+              Icon={<SunCloudAngledRainZap01Icon height={30} width={30} color={Colors.blue['500']} />}
               title='Animated weather icons'
               description='New animated weather icons to give you a better idea of what the weather is like at a glance.'
             />
             <Feature
-              Icon={<FifteenDaysIcon height={30} width={30} color={Colors.red['500']} />}
+              Icon={<GoForward15SecIcon height={30} width={30} color={Colors.red['500']} />}
               title='15 day forecast'
               description='A 15 day forecast to help you plan your week ahead with more accuracy.'
             />
             <Feature
-              Icon={<QuillIcon height={30} width={30} color={Colors.green['500']} />}
+              Icon={<QuillWrite02Icon height={30} width={30} color={Colors.green['500']} />}
               title='New look and feel'
               description='A fresh new look and feel with a new color scheme and a new layout to make it easier to find what you are looking for.'
             />
             <Feature
-              Icon={<LocationIcon height={30} width={30} color={Colors.purple['500']} />}
+              Icon={<MapsLocation02Icon height={30} width={30} color={Colors.purple['500']} />}
               title='Geolocation support'
               description='Geolocation to provide you with the most accurate weather information for your location.'
             />
