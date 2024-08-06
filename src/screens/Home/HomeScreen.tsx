@@ -4,7 +4,7 @@ import { Settings01Icon } from '@assets/icons/icons'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { useNavigation } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
-import { PoppinsBold, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
+import { PMedium, PoppinsBold, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLocalDate, greetingByTime } from '@utils/utils'
 import React, { useMemo } from 'react'
@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 5,
   },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 })
 
 function TopArea() {
@@ -112,14 +116,22 @@ function Shortcuts() {
   }, [width])
   return (
     <View>
-      <Text className='mb-1.5 mt-1.5 px-5 text-xl text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
+      <Text className='my-2 px-5 text-xl text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
         Shortcuts
       </Text>
       <View className='w-full flex-row flex-wrap' style={{ gap: 12, paddingHorizontal: 18 }}>
-        <View style={[hw, styles.shadow]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'></View>
-        <View style={[hw, styles.shadow]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'></View>
-        <View style={[hw, styles.shadow]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'></View>
-        <View style={[hw, styles.shadow]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'></View>
+        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
+          <PMedium className='text-gray-700 dark:text-gray-300'>Shortcut 1</PMedium>
+        </View>
+        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
+          <PMedium className='text-gray-700 dark:text-gray-300'>Shortcut 2</PMedium>
+        </View>
+        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
+          <PMedium className='text-gray-700 dark:text-gray-300'>Shortcut 3</PMedium>
+        </View>
+        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
+          <PMedium className='text-gray-700 dark:text-gray-300'>Shortcut 4</PMedium>
+        </View>
       </View>
     </View>
   )
@@ -128,10 +140,20 @@ function Shortcuts() {
 function Graph() {
   return (
     <View className='px-5'>
-      <Text className='mb-1.5 mt-1.5 text-xl text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
+      <Text className='my-2 text-xl text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
         Weekly Progress
       </Text>
-      <View className='h-60 w-full rounded-3xl bg-white dark:bg-zinc-900'></View>
+      <View
+        style={{
+          shadowColor: '#00000022',
+          shadowOpacity: 0.1,
+          shadowRadius: 10,
+          elevation: 5,
+        }}
+        className='h-52 w-full items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
+      >
+        <PMedium className='text-gray-700 dark:text-gray-300'>Graph</PMedium>
+      </View>
     </View>
   )
 }

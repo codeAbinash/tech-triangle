@@ -71,7 +71,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             </SettGroup>
           </Gap12>
           <Gap12>
-            <SettGroup title='Data Viewer'>
+            <SettGroup title='Data Management'>
               <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow />
             </SettGroup>
           </Gap12>
