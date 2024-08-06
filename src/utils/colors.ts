@@ -1,5 +1,10 @@
+import Tailwind from '../../tailwind.config'
+
+/**
+ * @deprecated
+ */
 const COL = {
-  accent: '#8b5cf6',
+  accent: Tailwind.accent as unknown as string,
   g2: '#3866D5',
   g1: '#8101E9',
   gray50: '#f9fafb',
@@ -309,4 +314,5 @@ export const Colors = {
     '950': '#4c0519',
   },
 }
+
 export default COL
