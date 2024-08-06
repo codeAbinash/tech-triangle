@@ -5,7 +5,7 @@ import { create } from 'zustand'
 type StorageStore = {
   totalSize: number
   totalCacheSize: number
-  weatherSearchCache: number
+  weatherCache: number
   weather: number
   computeTotal: () => void
   clearCache: () => void
@@ -16,7 +16,7 @@ type StorageStore = {
 export const storageStore = create<StorageStore>((set) => ({
   totalSize: getStartWithSize(''),
   totalCacheSize: getStorageSize(Caches),
-  weatherSearchCache: getStorageSize(WeatherCache),
+  weatherCache: getStorageSize(WeatherCache),
   weather: getStorageSize(WeatherStorage),
 
   computeTotal: () => set({ totalSize: getStartWithSize('') }),
@@ -33,7 +33,7 @@ export const storageStore = create<StorageStore>((set) => ({
       const weatherSearchCache = getStorageSize(WeatherCache)
       const totalSize = getStartWithSize('') // All keys
       const weather = getStorageSize(WeatherStorage)
-      return { ...state, totalCacheSize, weatherSearchCache: weatherSearchCache, totalSize, weather }
+      return { ...state, totalCacheSize, weatherCache: weatherSearchCache, totalSize, weather }
     })
   },
 
