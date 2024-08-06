@@ -1,6 +1,6 @@
-import { PoppinsMedium, PoppinsSemiBold } from '@utils/fonts';
-import React from 'react';
-import { Text, View } from 'react-native';
+import { PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
+import React from 'react'
+import { Text, View } from 'react-native'
 
 export default function Feature({ Icon, title, description }: { Icon: React.ReactNode; title: string; description: string | React.ReactNode }) {
   return (

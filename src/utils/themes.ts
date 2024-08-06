@@ -1,5 +1,4 @@
 import type { Theme } from '@react-navigation/native'
-import COL from './colors'
 
 export const DarkTheme: Theme = {
   dark: true,

@@ -20,8 +20,8 @@ export default function NotesWelcome({ navigation }: NavProp) {
         contentContainerStyle={{ justifyContent: 'space-between', alignItems: 'center', gap: 10, paddingVertical: 20 }}
       >
         <View className='w-full'>
-        <Text style={[PoppinsBold, { fontSize: 38 }]} className='my-10 text-center text-zinc-800 dark:text-zinc-200'>
-            Welcome to {"\n"} Notes
+          <Text style={[PoppinsBold, { fontSize: 38 }]} className='my-10 text-center text-zinc-800 dark:text-zinc-200'>
+            Welcome to {'\n'} Notes
           </Text>
           <View style={{ gap: 12 }}>
             <Feature

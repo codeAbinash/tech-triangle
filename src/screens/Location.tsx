@@ -6,8 +6,8 @@
  * @flow strict-local
  */
 import Btn from '@components/Button'
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text, PermissionsAndroid } from 'react-native'
+import React, { useState } from 'react'
+import { PermissionsAndroid, Text, View } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 // Function to get permission for location
 const requestLocationPermission = async () => {

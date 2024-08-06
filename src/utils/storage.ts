@@ -80,6 +80,7 @@ export const DeveloperStorage = {
   keys: {
     DeveloperAnimationDuration: 'DeveloperAnimationDuration',
     DeveloperEnabled: 'DeveloperEnabled',
+    DeveloperEnabledFabButton: 'DeveloperEnabledFabButton',
   },
 }
 export const Caches = {

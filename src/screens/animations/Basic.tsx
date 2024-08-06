@@ -93,7 +93,7 @@ function Example3() {
   return (
     <View className='w-full'>
       <Text className='mb-5 w-full text-center text-lg'>Example 2</Text>
-      <View className='w-full items-center justify-center  px-4'>
+      <View className='w-full items-center justify-center px-4'>
         <Svg width={width} height={200}>
           <AnimatedCircle cx={width / 2} cy='100' r={r} fill={COL.g2} animatedProps={animatedProps} />
         </Svg>

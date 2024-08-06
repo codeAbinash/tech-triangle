@@ -1,7 +1,6 @@
 {
-  "cSpell.words": [
-    "Accu",
-    "openweathermap",
-    "Withs"
-  ]
+  "cSpell.words": ["Accu", "openweathermap", "Withs"]
+  // "editor.codeActionsOnSave": {
+  //   "source.organizeImports": "always"
+  // }
 }

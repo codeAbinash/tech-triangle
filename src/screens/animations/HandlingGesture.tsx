@@ -1,5 +1,4 @@
-import colors from '@utils/colors'
-import COL from '@utils/colors'
+import { default as COL, default as colors } from '@utils/colors'
 import React from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import { Gesture, GestureDetector, GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler'
@@ -119,7 +118,7 @@ function WithDecay() {
       <Text className='mb-5 text-center text-lg'>With Decay</Text>
       <View className='items-center justify-center'>
         <GestureDetector gesture={pan}>
-          <Animated.View className='bg-accent flex h-28 w-28 items-center justify-center rounded-3xl' style={animatedStyles}>
+          <Animated.View className='flex h-28 w-28 items-center justify-center rounded-3xl bg-accent' style={animatedStyles}>
             <Text className='text-lg text-white'>Drag</Text>
           </Animated.View>
         </GestureDetector>

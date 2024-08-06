@@ -1,5 +1,5 @@
-import { Share } from 'react-native'
 import { ls } from '@utils/storage'
+import { Share } from 'react-native'
 
 export async function shareText(message: string) {
   try {

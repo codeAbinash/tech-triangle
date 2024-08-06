@@ -1,7 +1,10 @@
 import { storageStore } from '@/zustand/storageStore'
+import { BrushIcon } from '@assets/icons/icons'
+import { Gap12, Gap20 } from '@components/Gap'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
-import { Gap12, Gap20, iconProps, RightArrow, RightText, SettingOption, SettingText, SettingWrapper } from '@components/Settings'
+import { ic, SettGroup, SettOption, SettText } from '@components/Settings'
+import { RightText } from '@components/Text'
 import BubbleChatIcon from '@icons/bubble-chat-stroke-rounded.svg'
 import CalendarIcon from '@icons/calendar-03-stroke-rounded.svg'
 import CleanIcon from '@icons/clean-stroke-rounded.svg'
@@ -56,55 +59,44 @@ export default function Settings({ navigation }: NavProp) {
         {/* <SettingBackHeader title='Computer Science' navigation={navigation} /> */}
         <Gap20>
           <Gap12>
-            <SettingText className='mt-3'>
-              Go to each section to customize your experience. All settings are saved automatically.
-            </SettingText>
-            <SettingWrapper title='General'>
-              <SettingOption
+            <SettText className='mt-3'>Go to each section to customize your experience. All settings are saved automatically.</SettText>
+            <SettGroup title='General'>
+              <SettOption
                 title='Computer Science'
-                Icon={<ComputerIcon {...iconProps} />}
-                Right={<RightArrow />}
+                Icon={<ComputerIcon {...ic} />}
+                arrow
                 // onPress={() => navigation.navigate('ComputerScienceSettings')}
               />
-              <SettingOption
-                title='Weather Settings'
-                Icon={<WeatherIcon {...iconProps} />}
-                onPress={() => navigation.navigate('WeatherSettings')}
-                Right={<RightArrow />}
-              />
-              <SettingOption title='Routine Management' Icon={<CalendarIcon {...iconProps} />} Right={<RightArrow />} />
-              <SettingOption title='My Wallet' Icon={<WalletIcon {...iconProps} />} Right={<RightArrow />} />
-            </SettingWrapper>
+              <SettOption title='Weather Settings' Icon={<WeatherIcon {...ic} />} onPress={() => navigation.navigate('WeatherSettings')} arrow />
+              <SettOption title='Routine Management' Icon={<CalendarIcon {...ic} />} arrow />
+              <SettOption title='My Wallet' Icon={<WalletIcon {...ic} />} arrow />
+            </SettGroup>
           </Gap12>
-          <SettingWrapper title='Storage'>
-            <SettingOption
+          <SettGroup title='Storage'>
+            <SettOption
               title='Clear cache'
-              Icon={<CleanIcon {...iconProps} />}
+              Icon={<CleanIcon {...ic} />}
               Right={<RightText>{toReadableSize(totalCache)}</RightText>}
               onPress={clearCache}
             />
-            <SettingOption title='Clear storage' Icon={<StorageIcon {...iconProps} />} Right={<RightText>{toReadableSize(totalSize)}</RightText>} />
-          </SettingWrapper>
+            <SettOption title='Clear storage' Icon={<StorageIcon {...ic} />} Right={<RightText>{toReadableSize(totalSize)}</RightText>} />
+          </SettGroup>
           <Gap12>
-            <SettingWrapper single>
-              <SettingOption
-                title='Developer options'
-                Icon={<CodeIcon {...iconProps} />}
-                onPress={() => navigation.navigate('DeveloperOptions')}
-                Right={<RightArrow />}
-              />
-            </SettingWrapper>
-            <SettingText>These options are intended for developers and may cause unexpected behavior. Use them with caution.</SettingText>
+            <SettGroup title='For Developers'>
+              <SettOption title='Developer options' Icon={<CodeIcon {...ic} />} onPress={() => navigation.navigate('DeveloperOptions')} arrow />
+              <SettOption title='UI & Components' Icon={<BrushIcon {...ic} />} onPress={() => navigation.navigate('TestSettings')} arrow />
+            </SettGroup>
+            <SettText>These options are intended for developers and may cause unexpected behavior. Use them with caution.</SettText>
           </Gap12>
-          <SettingWrapper title='Help & Support'>
-            <SettingOption Right={<RightArrow />} title='Ask a question' Icon={<BubbleChatIcon {...iconProps} />} onPress={ask_a_question} />
-            <SettingOption Right={<RightArrow />} title='Privacy Policy' Icon={<ShieldUserIcon {...iconProps} />} />
-            <SettingOption Right={<RightArrow />} title='Terms of Service' Icon={<PolicyIcon {...iconProps} />} />
-            <SettingOption Right={<RightArrow />} title='About' Icon={<InformationCircleIcon {...iconProps} />} />
-          </SettingWrapper>
-          <SettingText className='text-center'>
+          <SettGroup title='Help & Support'>
+            <SettOption arrow title='Ask a question' Icon={<BubbleChatIcon {...ic} />} onPress={ask_a_question} />
+            <SettOption arrow title='Privacy Policy' Icon={<ShieldUserIcon {...ic} />} />
+            <SettOption arrow title='Terms of Service' Icon={<PolicyIcon {...ic} />} />
+            <SettOption arrow title='About' Icon={<InformationCircleIcon {...ic} />} />
+          </SettGroup>
+          <SettText className='text-center'>
             Version v{APP_VERSION} ({APP_VERSION_CODE})
-          </SettingText>
+          </SettText>
         </Gap20>
         <PaddingBottom />
       </ScrollView>

@@ -9,12 +9,16 @@ type DeveloperSettingsStore = {
   animationDuration: number
   setAnimationDuration: (duration: number) => void
   clearDevOptions: () => void
+  isFabEnabled: boolean
+  setFabEnabled: (enabled: boolean) => void
 }
 
 export const devOptStore = create<DeveloperSettingsStore>((set) => ({
   animationDuration: getAnimationDuration(),
   setAnimationDuration: (duration: number) => setAnimationDuration(duration, set),
   isEnabled: getEnabled(),
+  isFabEnabled: getFabEnabled(),
+  setFabEnabled: (enabled: boolean) => setFabEnabled(enabled, set),
   setEnabled: (enabled: boolean) => setEnabled(enabled, set),
   clearDevOptions: () => clearDevOptions(set),
 }))
@@ -23,6 +27,15 @@ type Set = (fn: (state: DeveloperSettingsStore) => DeveloperSettingsStore) => vo
 
 function getEnabled() {
   return S.get('DeveloperEnabled') === 'true'
+}
+
+function getFabEnabled() {
+  return S.get('DeveloperEnabledFabButton') === 'true'
+}
+
+function setFabEnabled(enabled: boolean, set: Set) {
+  S.set('DeveloperEnabledFabButton', enabled.toString())
+  set((state) => ({ ...state, isFabEnabled: enabled }))
 }
 
 function setEnabled(enabled: boolean, set: Set) {
@@ -41,6 +54,7 @@ function setAnimationDuration(duration: number, set: Set) {
 
 function clearDevOptions(set: Set) {
   setEnabled(false, set)
+  setFabEnabled(false, set)
   setAnimationDuration(ANIM_DUR, set)
   ToastAndroid.show('Developer options reset', ToastAndroid.SHORT)
 }

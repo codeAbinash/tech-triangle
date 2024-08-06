@@ -52,7 +52,7 @@ function removeCurrentCityLocation(set: Set) {
 function getCurrentCity() {
   return S.getParsed<CurrentCityT>('WeatherCurrentCity')
 }
-function setCurrentCity(city: CurrentCityT | null ,  set: Set) {
+function setCurrentCity(city: CurrentCityT | null, set: Set) {
   S.set('WeatherCurrentCity', JSON.stringify(city))
   set((state) => ({ ...state, currentCity: city }))
 }

@@ -21,7 +21,7 @@ export default function RoutineWelcome({ navigation }: NavProp) {
       >
         <View className='w-full'>
           <Text style={[PoppinsBold, { fontSize: 38 }]} className='my-10 text-center text-zinc-800 dark:text-zinc-200'>
-            What's New{"\n"}in Routine
+            What's New{'\n'}in Routine
           </Text>
           <View style={{ gap: 10 }}>
             <Feature

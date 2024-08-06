@@ -1,32 +1,23 @@
-import ArrowLeft01Icon from '@icons/arrow-left-01-stroke-rounded.svg'
 import ArrowRightIcon from '@icons/arrow-right-01-stroke-rounded.svg'
 import Tick01Icon from '@icons/tick-01-stroke-rounded.svg'
 import { Colors } from '@utils/colors'
-import { PMedium, PoppinsMedium } from '@utils/fonts'
+import { PMedium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import {
-  StyleSheet,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-  type TextInputProps,
-  type TextProps,
-  type TouchableOpacityProps,
-  type ViewProps,
-} from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
+import { TouchableOpacity, View, type ScrollViewProps, type TextProps, type TouchableOpacityProps, type ViewProps } from 'react-native'
 import type { SvgProps } from 'react-native-svg'
-import { PaddingTop } from './SafePadding'
-import { devOptStore } from '@/zustand/devOptStore'
-import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated'
+import BackHeader from './BackHeader'
+import { Gap20 } from './Gap'
+import KeyboardAvoidingContainer from './KeyboardAvoidingContainer'
+import { PaddingBottom } from './SafePadding'
 
-type SettingOptionProps = TouchableOpacityProps & {
+type SettOptionProps = TouchableOpacityProps & {
   title: string
   Icon?: React.ReactNode
   Right?: React.ReactNode
+  arrow?: boolean
 }
-export function SettingOption({ title, onPress, Icon, Right, style, ...rest }: SettingOptionProps) {
+export function SettOption({ title, onPress, Icon, Right, style, arrow, ...rest }: SettOptionProps) {
   return (
     <TouchableOpacity
       className='flex-row items-center justify-between px-7'
@@ -42,55 +33,17 @@ export function SettingOption({ title, onPress, Icon, Right, style, ...rest }: S
         </PMedium>
       </View>
       {Right}
+      {arrow && <RightArrow />}
     </TouchableOpacity>
   )
 }
 
-export function RightText({ children, ...rest }: TextProps) {
-  return (
-    <PMedium className='text-accent' style={{ fontSize: 15 }} {...rest}>
-      {children}
-    </PMedium>
-  )
+type SettGroupProps = ViewProps & {
+  title?: string
 }
-
-export function Small({ children, ...rest }: TextProps) {
+export function SettGroup({ children, title, ...rest }: SettGroupProps) {
   return (
-    <PMedium className='text-zinc-500 dark:text-zinc-500' style={{ fontSize: 11 }} {...rest}>
-      {children}
-    </PMedium>
-  )
-}
-
-type SettingOptionInputProps = TextInputProps & {
-  Icon?: React.ReactNode
-  Right?: React.ReactNode
-}
-export function SettingOptionInput({ Icon, Right, ...rest }: SettingOptionInputProps) {
-  const scheme = useColorScheme()
-  return (
-    <View className='flex-row items-center justify-between px-7' style={{ gap: 10 }}>
-      <View className='flex-1 flex-row items-center' style={{ gap: 23 }}>
-        {Icon}
-        <TextInput
-          className='flex-1 p-2.5 px-0 text-zinc-800 dark:text-zinc-200'
-          style={[{ fontSize: 15, paddingVertical: 0, flex: 1 }, PoppinsMedium]}
-          placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
-          cursorColor={Colors.accent}
-          selectionColor={Colors.accent + '55'}
-          selectionHandleColor={Colors.accent}
-          placeholder='Default placeholder'
-          {...rest}
-        />
-      </View>
-      {Right}
-    </View>
-  )
-}
-
-export function SettingWrapper({ children, title, single }: { children?: React.ReactNode; title?: string; single?: boolean }) {
-  return (
-    <View className={`bg-white py-2.5 dark:bg-zinc-950`}>
+    <View className={`bg-white py-2.5 dark:bg-zinc-950`} {...rest}>
       {title && (
         <PMedium className={`px-6 py-1.5 text-accent`} style={{ textTransform: 'none', opacity: 1, fontSize: 13.5 }}>
           {title}
@@ -101,27 +54,11 @@ export function SettingWrapper({ children, title, single }: { children?: React.R
   )
 }
 
-export function Gap12({ children, style, ...rest }: ViewProps) {
-  return (
-    <View style={[{ gap: 12 }, style]} {...rest}>
-      {children}
-    </View>
-  )
-}
-
-export function Gap20({ children, style, ...rest }: ViewProps) {
-  return (
-    <View style={[{ gap: 20 }, style]} {...rest}>
-      {children}
-    </View>
-  )
-}
-
 export function RightArrow() {
   return <ArrowRightIcon width={22} height={22} color={Colors.zinc[500]} />
 }
 
-export function SettingText({ children, ...rest }: TextProps) {
+export function SettText({ children, ...rest }: TextProps) {
   return (
     <PMedium className='px-5 text-xs text-zinc-500 dark:text-zinc-500' {...rest}>
       {children}
@@ -129,83 +66,32 @@ export function SettingText({ children, ...rest }: TextProps) {
   )
 }
 
-export function BackHeader({ navigation, title, Title }: { navigation: StackNav; title?: string; Title?: React.ReactNode }) {
-  const scheme = useColorScheme()
-  return (
-    <View className='bg-white px-5 pb-0.5 pl-1 dark:bg-zinc-950'>
-      <PaddingTop />
-      <View>
-        {Title || (
-          <View className='flex-row items-center'>
-            <TouchableOpacity className='p-3' onPress={() => navigation.goBack()} activeOpacity={0.7}>
-              <ArrowLeft01Icon width={26} height={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
-            </TouchableOpacity>
-            <PMedium style={{ fontSize: 18 }} className='mt-0.5 text-zinc-800 dark:text-zinc-200'>
-              {title}
-            </PMedium>
-          </View>
-        )}
-      </View>
-    </View>
-  )
-}
-
-export const iconProps = { width: 22, height: 22, color: Colors.zinc[500] }
-
+export const ic = { width: 22, height: 22, color: Colors.zinc[500] }
 export type CheckIconProps = {
   checked: boolean
 } & SvgProps
 export function Check({ checked, ...rest }: CheckIconProps) {
-  return checked ? <Tick01Icon {...iconProps} className='text-accent' {...rest} /> : <Tick01Icon {...iconProps} className='opacity-0' />
+  return checked ? <Tick01Icon {...ic} className='text-accent' {...rest} /> : <Tick01Icon {...ic} className='opacity-0' />
 }
 
-const TC_W = 50 // Toggle Container Width
-const TC_H = 26 // Toggle Container Height
-const T_W = 17 // Toggle Width
-const PAD = (TC_H - T_W) / 2 + 0.025 // Padding
-const AVAIL_W = TC_W - T_W - PAD * 2 // Available Width
-// const duration = useDeveloperOptions.getState().animationDuration
-
-const styles = StyleSheet.create({
-  toggleContainer: {
-    width: TC_W,
-    height: TC_H,
-    borderRadius: 100,
-    padding: PAD,
-  },
-  toggle: {
-    width: T_W,
-    height: T_W,
-    borderRadius: 100,
-    backgroundColor: 'white',
-  },
-})
-
-interface ToggleProps {
-  isActive: boolean
-  color?: string
+type SettWrapperProps = ScrollViewProps & {
+  Header?: React.ReactNode
+  title?: string
+  navigation: StackNav
 }
-
-export function Toggle({ isActive, color }: ToggleProps) {
-  const scheme = useColorScheme()
-  const progress = useDerivedValue(() => (isActive ? AVAIL_W : 0), [isActive])
-  const duration = devOptStore((state) => state.animationDuration)
-
-  const backgroundColorStyle = useAnimatedStyle(() => {
-    const backgroundColor = withTiming(
-      interpolateColor(progress.value, [0, AVAIL_W], [scheme === 'dark' ? Colors.zinc[800] : Colors.zinc[200], color || Colors.accent]),
-      { duration },
-    )
-    return { backgroundColor }
-  }, [color, scheme, progress])
-
-  const customSpringStyle = useAnimatedStyle(() => {
-    return { transform: [{ translateX: withTiming(progress.value, { duration }) }] }
-  }, [progress])
-
+export function SettWrapper({ Header, title, navigation, children, ...rest }: SettWrapperProps) {
   return (
-    <Animated.View style={[styles.toggleContainer, backgroundColorStyle]}>
-      <Animated.View style={[styles.toggle, customSpringStyle]}></Animated.View>
-    </Animated.View>
+    <View className='flex-1 bg-zinc-100 dark:bg-black'>
+      {Header ? Header : <BackHeader title={title || 'Test Title'} navigation={navigation} />}
+      <KeyboardAvoidingContainer
+        contentContainerStyle={{ paddingBottom: 50 }}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        {...rest}
+      >
+        <Gap20>{children}</Gap20>
+        <PaddingBottom />
+      </KeyboardAvoidingContainer>
+    </View>
   )
 }
