@@ -93,6 +93,14 @@ type WeatherStorage = keyof typeof WeatherStorage.keys | `${keyof typeof Weather
 type DeveloperStorage = keyof typeof DeveloperStorage.keys | `${keyof typeof DeveloperStorage.startWith}${string}`
 type StorageKeys = WeatherStorage | DeveloperStorage
 
+/**
+ * Extra Storages
+ */
+export const WeatherCache: Storage = {
+  startWith: WeatherStorage.startWith,
+  keys: {},
+}
+
 function getMemo(key: StorageKeys) {
   return useMemo(() => {
     return ls.getString(key)

@@ -41,7 +41,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const setWeatherWidgetIsActive = weatherStore((state) => state.setWeatherWidgetIsActive)
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
 
-  const searchSize = storageStore((state) => state.weatherSearch)
+  const searchSize = storageStore((state) => state.weatherSearchCache)
   const weatherSize = storageStore((state) => state.weather)
   const clearSearch = storageStore((state) => state.clearWeatherSearch)
 

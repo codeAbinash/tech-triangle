@@ -1,11 +1,11 @@
-import { Caches, clearStorage, getStartWithSize, getStorageSize, WeatherStorage } from '@utils/storage'
+import { Caches, clearStorage, getStartWithSize, getStorageSize, WeatherCache, WeatherStorage } from '@utils/storage'
 import { ToastAndroid } from 'react-native'
 import { create } from 'zustand'
 
 type StorageStore = {
   totalSize: number
   totalCacheSize: number
-  weatherSearch: number
+  weatherSearchCache: number
   weather: number
   computeTotal: () => void
   clearCache: () => void
@@ -16,7 +16,7 @@ type StorageStore = {
 export const storageStore = create<StorageStore>((set) => ({
   totalSize: getStartWithSize(''),
   totalCacheSize: getStorageSize(Caches),
-  weatherSearch: getStartWithSize('WeatherCitySearchResult-'),
+  weatherSearchCache: getStorageSize(WeatherCache),
   weather: getStorageSize(WeatherStorage),
 
   computeTotal: () => set({ totalSize: getStartWithSize('') }),
@@ -30,10 +30,10 @@ export const storageStore = create<StorageStore>((set) => ({
   computeEverything: () => {
     set((state) => {
       const totalCacheSize = getStorageSize(Caches)
-      const weatherSearch = getStartWithSize('WeatherCitySearchResult-')
-      const totalSize = getStartWithSize('')
+      const weatherSearchCache = getStorageSize(WeatherCache)
+      const totalSize = getStartWithSize('') // All keys
       const weather = getStorageSize(WeatherStorage)
-      return { ...state, totalCacheSize, weatherSearch, totalSize, weather }
+      return { ...state, totalCacheSize, weatherSearchCache: weatherSearchCache, totalSize, weather }
     })
   },
 
