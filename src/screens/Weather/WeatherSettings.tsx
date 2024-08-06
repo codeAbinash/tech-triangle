@@ -86,7 +86,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             <SettingText>Changing one of the two above settings will automatically override the other.</SettingText>
           </Gap12>
           <Gap12>
-            <SettingWrapper title='Accuweather API key'>
+            <SettingWrapper single title='Accuweather API key'>
               <SettingOptionInput
                 Icon={<Key01Icon {...iconProps} />}
                 placeholder='Enter Accuweather API key'
@@ -104,7 +104,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
               </Text>{' '}
               from Accuweather.
             </SettingText>
-            <SettingWrapper title='OpenweatherMap API key'>
+            <SettingWrapper title='OpenweatherMap API key' single>
               <SettingOptionInput
                 Icon={<Key01Icon {...iconProps} />}
                 placeholder='Enter OpenweatherMap API key'

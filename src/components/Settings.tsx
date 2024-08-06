@@ -82,13 +82,13 @@ export function SettingOptionInput({ Icon, Right, ...rest }: SettingOptionInputP
 
 export function SettingWrapper({ children, title, single }: { children?: React.ReactNode; title?: string; single?: boolean }) {
   return (
-    <View className={`bg-white ${single ? 'py-2' : 'py-2.5'} dark:bg-zinc-950`} style={{ gap: 4 }}>
+    <View className={`bg-white py-2.5 dark:bg-zinc-950`}>
       {title && (
-        <PMedium className='px-6 pb-1 pt-1 text-accent' style={{ textTransform: 'none', opacity: 0.9, fontSize: 13.5 }}>
+        <PMedium className={`px-6 py-1.5 text-accent`} style={{ textTransform: 'none', opacity: 1, fontSize: 13.5 }}>
           {title}
         </PMedium>
       )}
-      {children}
+      <View style={{ gap: 6 }}>{children}</View>
     </View>
   )
 }

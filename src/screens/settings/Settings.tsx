@@ -27,7 +27,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactNode }) {
   return (
-    <View style={{ gap: 5 }} className='bg-white px-5 pb-0 dark:bg-zinc-950'>
+    <View style={{ gap: 5 }} className='bg-white px-5 pb-3 dark:bg-zinc-950'>
       {Title}
       <PBold style={{ fontSize: 30 }} className='mt-3 text-zinc-800 dark:text-zinc-200'>
         {title}
@@ -56,6 +56,9 @@ export default function Settings({ navigation }: NavProp) {
         {/* <SettingBackHeader title='Computer Science' navigation={navigation} /> */}
         <Gap20>
           <Gap12>
+            <SettingText className='mt-3'>
+              Go to each section to customize your experience. All settings are saved automatically.
+            </SettingText>
             <SettingWrapper title='General'>
               <SettingOption
                 title='Computer Science'
@@ -72,9 +75,6 @@ export default function Settings({ navigation }: NavProp) {
               <SettingOption title='Routine Management' Icon={<CalendarIcon {...iconProps} />} Right={<RightArrow />} />
               <SettingOption title='My Wallet' Icon={<WalletIcon {...iconProps} />} Right={<RightArrow />} />
             </SettingWrapper>
-            <SettingText>
-              Go to each section to customize your experience. All settings are saved automatically. You can also reset your settings to default.
-            </SettingText>
           </Gap12>
           <SettingWrapper title='Storage'>
             <SettingOption
