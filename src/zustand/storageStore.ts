@@ -9,7 +9,7 @@ type StorageStore = {
   weather: number
   computeTotal: () => void
   clearCache: () => void
-  clearWeatherSearch: () => void
+  clearWeatherCache: () => void
   computeEverything: () => void
 }
 
@@ -37,8 +37,8 @@ export const storageStore = create<StorageStore>((set) => ({
     })
   },
 
-  clearWeatherSearch: () => {
-    clearStorage(Caches)
+  clearWeatherCache: () => {
+    clearStorage(WeatherCache)
     storageStore.getState().computeEverything()
     ToastAndroid.show('Weather search history cleared', ToastAndroid.SHORT)
   },

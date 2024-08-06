@@ -89,12 +89,18 @@ export const Caches = {
   keys: {},
 }
 
-type WeatherStorage = keyof typeof WeatherStorage.keys | `${keyof typeof WeatherStorage.startWith}${string}`
-type DeveloperStorage = keyof typeof DeveloperStorage.keys | `${keyof typeof DeveloperStorage.startWith}${string}`
+interface StorageType {
+  keys: Record<string, string>
+  startWith: Record<string, string>
+}
+type Store<T extends StorageType> = keyof T['keys'] | `${Extract<keyof T['startWith'], string>}${string}`
+
+type WeatherStorage = Store<typeof WeatherStorage>
+type DeveloperStorage = Store<typeof DeveloperStorage>
 type StorageKeys = WeatherStorage | DeveloperStorage
 
 /**
- * Extra Storages
+ * Other variant of storage
  */
 export const WeatherCache: Storage = {
   startWith: WeatherStorage.startWith,

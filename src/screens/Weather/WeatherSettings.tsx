@@ -43,7 +43,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
 
   const searchSize = storageStore((state) => state.weatherSearchCache)
   const weatherSize = storageStore((state) => state.weather)
-  const clearSearch = storageStore((state) => state.clearWeatherSearch)
+  const clearSearch = storageStore((state) => state.clearWeatherCache)
 
   return (
     <View className='flex-1 bg-zinc-100 dark:bg-black'>
