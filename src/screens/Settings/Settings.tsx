@@ -1,3 +1,4 @@
+import { devOptStore } from '@/zustand/devOptStore'
 import { storageStore } from '@/zustand/storageStore'
 import {
   BrushIcon,
@@ -26,6 +27,7 @@ import { toReadableSize } from '@utils/utils'
 import React from 'react'
 import { useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import { isEnabled } from 'react-native/Libraries/Performance/Systrace'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
 // }
@@ -47,7 +49,7 @@ export default function Settings({ navigation }: NavProp) {
   const totalSize = storageStore((state) => state.totalSize)
   const totalCache = storageStore((state) => state.totalCacheSize)
   const clearCache = storageStore((state) => state.clearCache)
-
+  const dev = devOptStore((state) => state.isEnabled)
   return (
     <View className='flex-1 bg-white dark:bg-zinc-950'>
       <PaddingTop />
@@ -80,7 +82,9 @@ export default function Settings({ navigation }: NavProp) {
             </SettGroup>
           </Gap12>
           <SettGroup title='Storage'>
-            <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow onPress={() => navigation.navigate('MMKVDataList')} />
+            {dev && (
+              <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow onPress={() => navigation.navigate('MMKVDataList')} />
+            )}
             <SettOption title='Clear cache' Icon={<CleanIcon {...ic} />} Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>} onPress={clearCache} />
             <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>} />
           </SettGroup>

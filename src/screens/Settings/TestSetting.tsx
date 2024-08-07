@@ -10,6 +10,7 @@ import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native'
+import { TextInput } from 'react-native-gesture-handler'
 
 export default function TestSettings({ navigation }: NavProp) {
   const [toggle1, setToggle1] = useState(true)
@@ -68,6 +69,11 @@ export default function TestSettings({ navigation }: NavProp) {
         <SettText>
           The value of the first input is <Text className='text-accent'>{input1 || 'Empty'}</Text>.
         </SettText>
+
+        <SettGroup title='Text area'>
+          <Input placeholder='This is a input field with multiple lines. You can type as much as you want.' numberOfLines={5} multiline />
+        </SettGroup>
+
         <SettGroup>
           <SettOption
             Icon={<Setting07Icon {...ic} />}

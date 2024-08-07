@@ -1,3 +1,4 @@
+import { devOptStore } from '@/zustand/devOptStore'
 import { storageStore } from '@/zustand/storageStore'
 import { weatherStore } from '@/zustand/weatherStore'
 import {
@@ -6,6 +7,7 @@ import {
   CleanIcon,
   DashboardSquare02Icon,
   Database02Icon,
+  Delete02Icon,
   FahrenheitIcon,
   Key01Icon,
   MapsLocation02Icon,
@@ -32,10 +34,12 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const accuApiKey = weatherStore((state) => state.accuWeatherApiKey)
   const setWeatherWidgetIsActive = weatherStore((state) => state.setWeatherWidgetIsActive)
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
+  const removeLocation = weatherStore((state) => state.removeCurrentCityLocation)
 
   const searchCache = storageStore((state) => state.weatherCache)
   const weatherSize = storageStore((state) => state.weather)
   const clearCache = storageStore((state) => state.clearWeatherCache)
+  const dev = devOptStore((state) => state.isEnabled)
 
   return (
     <SettWrapper navigation={navigation} title='Weather Settings'>
@@ -65,6 +69,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
               navigation.navigate('WeatherLocation', { shouldGoBack: true })
             }}
           />
+          {dev && <SettOption title='Remove location data' Icon={<Delete02Icon {...ic} />} onPress={removeLocation} />}
         </SettGroup>
         <SettText>Changing one of the two above settings will automatically override the other.</SettText>
       </Gap12>

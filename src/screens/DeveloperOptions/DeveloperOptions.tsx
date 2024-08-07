@@ -18,7 +18,6 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   const setAnimationDuration = devOptStore((state) => state.setAnimationDuration)
   const [animError, setAnimError] = React.useState('')
   const clearDevOptions = devOptStore((state) => state.clearDevOptions)
-  const removeLocation = weatherStore((state) => state.removeCurrentCityLocation)
   const isFabEnabled = devOptStore((state) => state.isFabEnabled)
   const setFabEnabled = devOptStore((state) => state.setFabEnabled)
 
@@ -55,7 +54,10 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             Right={<Toggle isActive={isEnabled} />}
           />
         </SettGroup>
-        <SettText className='mt-0'>These options are intended for developers and may cause unexpected behavior. Use them with caution.</SettText>
+        <SettText>
+          These options are intended for developers and may cause unexpected behavior. Use them with caution. It will also display additional settings
+          on various screens.
+        </SettText>
       </Gap12>
 
       {isEnabled ? (
@@ -98,11 +100,6 @@ export default function DeveloperOptions({ navigation }: NavProp) {
                 Reset to default.
               </Text>
             </SettText>
-          </Gap12>
-          <Gap12>
-            <SettGroup title='Weather Settings'>
-              <SettOption title='Clear Current City & Location' Icon={<CleanIcon {...ic} />} onPress={removeLocation} />
-            </SettGroup>
           </Gap12>
         </>
       ) : (

@@ -8,7 +8,7 @@ type InputProps = TextInputProps & {
   Icon?: React.ReactNode
   Right?: React.ReactNode
 }
-export function Input({ Icon, Right, accent = Colors.accent, style, editable, ...rest }: InputProps) {
+export function Input({ Icon, Right, accent = Colors.accent, multiline, style, editable, ...rest }: InputProps) {
   const scheme = useColorScheme()
   return (
     <View className='flex-row items-center justify-between px-7' style={{ gap: 10 }}>
@@ -23,6 +23,8 @@ export function Input({ Icon, Right, accent = Colors.accent, style, editable, ..
           selectionHandleColor={accent}
           placeholder='Default placeholder'
           editable={editable}
+          textAlignVertical={multiline ? 'top' : 'center'}
+          multiline={multiline}
           {...rest}
         />
       </View>
