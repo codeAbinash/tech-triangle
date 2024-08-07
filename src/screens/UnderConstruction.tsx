@@ -1,7 +1,7 @@
-import { PoppinsBold, PoppinsRegular } from '@utils/fonts'
+import { PBold, PRegular } from '@utils/fonts'
 import LottieView from 'lottie-react-native'
 import React from 'react'
-import { Dimensions, Text, View } from 'react-native'
+import { Dimensions, View } from 'react-native'
 
 const { width } = Dimensions.get('window')
 
@@ -18,12 +18,10 @@ export default function UnderConstruction() {
           marginBottom: 20,
         }}
       />
-      <Text style={PoppinsBold} className='text-center text-2xl text-gray-800 dark:text-gray-200'>
-        Under construction
-      </Text>
-      <Text style={PoppinsRegular} className='mt-1 w-4/5 text-center text-gray-500 dark:text-gray-400'>
+      <PBold className='text-center text-2xl text-gray-800 dark:text-gray-200'>Under construction</PBold>
+      <PRegular className='mt-1 w-4/5 text-center text-gray-500 dark:text-gray-400'>
         This screen is under construction. Please check back later.
-      </Text>
+      </PRegular>
     </View>
   )
 }

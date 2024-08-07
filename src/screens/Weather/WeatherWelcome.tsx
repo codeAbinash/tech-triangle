@@ -2,7 +2,7 @@ import { GoForward15SecIcon, MapsLocation02Icon, QuillWrite02Icon, SunCloudAngle
 import Btn, { BtnTransparent } from '@components/Button'
 import Feature from '@components/Feature'
 import { Colors } from '@utils/colors'
-import { PoppinsBold } from '@utils/fonts'
+import { PBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React from 'react'
 import { StatusBar, Text, View } from 'react-native'
@@ -17,9 +17,9 @@ export default function WeatherWelcome({ navigation }: NavProp) {
         contentContainerStyle={{ justifyContent: 'space-between', alignItems: 'center', gap: 10, paddingVertical: 20 }}
       >
         <View className='w-full'>
-          <Text style={[PoppinsBold, { fontSize: 38 }]} className='my-10 text-center text-zinc-800 dark:text-zinc-200'>
+          <PBold style={{ fontSize: 38 }} className='my-10 text-center text-zinc-800 dark:text-zinc-200'>
             Welcome to{'\n'}Weather
-          </Text>
+          </PBold>
           <View style={{ gap: 12 }}>
             <Feature
               Icon={<GoForward15SecIcon height={30} width={30} color={Colors.red['500']} />}

@@ -1,6 +1,5 @@
-import { PoppinsMedium } from '@utils/fonts'
+import { PMedium } from '@utils/fonts'
 import React from 'react'
-import { Text } from 'react-native'
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gesture-handler'
 
 type ButtonProps = TouchableOpacityProps & { title?: string; Content?: React.ReactNode }
@@ -8,9 +7,9 @@ type ButtonProps = TouchableOpacityProps & { title?: string; Content?: React.Rea
 export default function Btn({ title, onPress, Content, style }: ButtonProps) {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress} className='w-full bg-accent' style={[{ borderRadius: 14, paddingVertical: 13 }, style]}>
-      <Text style={[PoppinsMedium, { fontSize: 15 }]} className='text-center text-white'>
+      <PMedium style={{ fontSize: 15 }} className='text-center text-white'>
         {title || Content}
-      </Text>
+      </PMedium>
     </TouchableOpacity>
   )
 }
@@ -18,9 +17,9 @@ export default function Btn({ title, onPress, Content, style }: ButtonProps) {
 export function BtnTransparent({ title, onPress, Content, style }: ButtonProps) {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress} className='w-full' style={[{ borderRadius: 14, paddingVertical: 13 }]}>
-      <Text style={[PoppinsMedium, { fontSize: 15 }, style]} className='text-center text-accent'>
+      <PMedium style={[{ fontSize: 15 }, style]} className='text-center text-accent'>
         {title || Content}
-      </Text>
+      </PMedium>
     </TouchableOpacity>
   )
 }

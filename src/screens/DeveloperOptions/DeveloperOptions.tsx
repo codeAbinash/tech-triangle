@@ -6,7 +6,7 @@ import { Input } from '@components/Input'
 import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Toggle } from '@components/Toggle'
 import { ANIM_DUR } from '@utils/constants'
-import { PoppinsMedium } from '@utils/fonts'
+import { PMedium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useCallback } from 'react'
 import { Alert, Text } from 'react-native'
@@ -84,9 +84,9 @@ export default function DeveloperOptions({ navigation }: NavProp) {
                 defaultValue={animationDuration.toString()}
                 keyboardType='number-pad'
                 Right={
-                  <Text style={[PoppinsMedium, { fontSize: 15 }]} className='text-zinc-800 opacity-50 dark:text-zinc-200'>
+                  <PMedium style={{ fontSize: 15 }} className='text-zinc-800 opacity-50 dark:text-zinc-200'>
                     ms
-                  </Text>
+                  </PMedium>
                 }
               />
             </SettGroup>

@@ -5,7 +5,6 @@ import StackHeader from '@components/StackHeader'
 import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
-import { PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import React from 'react'
@@ -13,6 +12,7 @@ import { ActivityIndicator, StatusBar, Text, TouchableOpacity, View } from 'reac
 import { FlatList } from 'react-native-gesture-handler'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
 import { searchCity, type WeatherSearchResult } from './api'
+import { PMedium, PSemiBold } from '@utils/fonts'
 
 type ParamList = {
   WeatherSearchCity: SearchCityParamList
@@ -74,9 +74,7 @@ function Pending() {
   return (
     <MyFlex>
       <ActivityIndicator size='large' color={Colors.accent} />
-      <Text style={PoppinsMedium} className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>
-        Searching for cities...
-      </Text>
+      <PMedium className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>Searching for cities...</PMedium>
     </MyFlex>
   )
 }
@@ -84,12 +82,10 @@ function Pending() {
 function ErrorFetchingCities({ error, navigation }: { error: any; navigation: StackNav }) {
   return (
     <MyFlex>
-      <Text style={PoppinsSemiBold} className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>
-        {error?.message || 'Failed to fetch cities'}
-      </Text>
-      <Text style={PoppinsMedium} className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
+      <PSemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>{error?.message || 'Failed to fetch cities'}</PSemiBold>
+      <PMedium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
         This error may occur if you are not connected to the internet or API limit exceeded. To fix this, enter a API key in settings.
-      </Text>
+      </PMedium>
       <BtnTransparent className='text-sm' onPress={() => navigation.navigate('WeatherSettings')} title='Set API keys'></BtnTransparent>
     </MyFlex>
   )
@@ -98,12 +94,10 @@ function ErrorFetchingCities({ error, navigation }: { error: any; navigation: St
 function NoCityFound() {
   return (
     <MyFlex>
-      <Text style={PoppinsSemiBold} className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>
-        No cities found
-      </Text>
-      <Text style={PoppinsMedium} className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
+      <PSemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>No cities found</PSemiBold>
+      <PMedium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
         No cities found for the search query. Try searching with different keywords.
-      </Text>
+      </PMedium>
     </MyFlex>
   )
 }
@@ -111,9 +105,7 @@ function NoCityFound() {
 function InitialMessage() {
   return (
     <MyFlex>
-      <Text style={PoppinsMedium} className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
-        Enter a city or location name
-      </Text>
+      <PMedium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>Enter a city or location name</PMedium>
     </MyFlex>
   )
 }
@@ -121,9 +113,7 @@ function InitialMessage() {
 function PoweredByAccuWeather() {
   return (
     <View>
-      <Text style={PoppinsMedium} className='mt-10 text-center text-xs text-zinc-500 dark:text-zinc-500'>
-        Powered by AccuWeather
-      </Text>
+      <PMedium className='mt-10 text-center text-xs text-zinc-500 dark:text-zinc-500'>Powered by AccuWeather</PMedium>
     </View>
   )
 }
@@ -148,21 +138,19 @@ function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResul
       }}
     >
       <View>
-        <Text className='text-base text-zinc-800 dark:text-zinc-200' style={PoppinsMedium}>
-          {item.EnglishName}
-        </Text>
-        <Text className='text-sm text-zinc-600 dark:text-zinc-400' style={PoppinsMedium}>
+        <PMedium className='text-base text-zinc-800 dark:text-zinc-200'>{item.EnglishName}</PMedium>
+        <PMedium className='text-sm text-zinc-600 dark:text-zinc-400'>
           {item.AdministrativeArea.EnglishName}, {item.Country.EnglishName}
-        </Text>
+        </PMedium>
       </View>
 
       <View>
-        <Text className='text-right text-accent' style={[PoppinsMedium, { fontSize: 12 }]}>
+        <PMedium className='text-right text-accent' style={{ fontSize: 12 }}>
           {lat}, {lon}
-        </Text>
-        <Text className='text-right text-accent' style={[PoppinsMedium, { fontSize: 12 }]}>
+        </PMedium>
+        <PMedium className='text-right text-accent' style={{ fontSize: 12 }}>
           Altitude: {item.GeoPosition.Elevation.Metric.Value} {item.GeoPosition.Elevation.Metric.Unit}
-        </Text>
+        </PMedium>
       </View>
     </TouchableOpacity>
   )

@@ -3,7 +3,7 @@ import Btn, { BtnTransparent } from '@components/Button'
 import { PaddingBottom } from '@components/SafePadding'
 import type { RouteProp } from '@react-navigation/native'
 import { W } from '@utils/dimensions'
-import { PoppinsBold, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
+import { PBold, PMedium, PSemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import LottieView from 'lottie-react-native'
@@ -33,25 +33,25 @@ export default function ConfirmCity({ navigation, route }: { navigation: StackNa
 
       <View className='w-full flex-1 items-center justify-between px-[10%]'>
         <View>
-          <Text style={[PoppinsBold, { fontSize: 38 }]} className='my-8 mb-0 mt-10 text-center text-zinc-800 dark:text-zinc-200'>
+          <PBold style={{ fontSize: 38 }} className='my-8 mb-0 mt-10 text-center text-zinc-800 dark:text-zinc-200'>
             {route.params.name}
-          </Text>
-          <Text style={[PoppinsMedium, { fontSize: 18 }]} className='-mt-2 text-center text-zinc-700 dark:text-zinc-300'>
+          </PBold>
+          <PMedium style={{ fontSize: 18 }} className='-mt-2 text-center text-zinc-700 dark:text-zinc-300'>
             {route.params.area}, {route.params.country}
-          </Text>
-          <Text style={[PoppinsSemiBold, { fontSize: 14 }]} className='text-center text-accent'>
+          </PMedium>
+          <PSemiBold style={{ fontSize: 14 }} className='text-center text-accent'>
             {getLongitude(lon)}
             {'    '}
             {getLatitude(lat)}
             {'    '}
             {altitude} m
-          </Text>
+          </PSemiBold>
         </View>
         <LottieView source={require('@assets/animations/earth.lottie')} autoPlay loop={false} style={{ width: W * 1.1, height: W * 1.1 }} />
         <View className='w-full pb-3 pt-2' style={{ gap: 10 }}>
-          <Text style={[PoppinsMedium, { fontSize: 11 }]} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
+          <PMedium style={{ fontSize: 11 }} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
             By setting this location, you will be able to view the weather of this location in the home screen and the weather screen.
-          </Text>
+          </PMedium>
           <Btn
             title='Set this location'
             onPress={() => {
