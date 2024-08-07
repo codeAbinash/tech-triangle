@@ -80,6 +80,7 @@ export default function Settings({ navigation }: NavProp) {
             </SettGroup>
           </Gap12>
           <SettGroup title='Storage'>
+            <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow onPress={() => navigation.navigate('MMKVDataList')} />
             <SettOption title='Clear cache' Icon={<CleanIcon {...ic} />} Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>} onPress={clearCache} />
             <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>} />
           </SettGroup>

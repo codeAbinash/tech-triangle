@@ -15,23 +15,22 @@ type SettOptionProps = TouchableOpacityProps & {
   Icon?: React.ReactNode
   Right?: React.ReactNode
   arrow?: boolean
+  numberOfLines?: number
 }
-export function SettOption({ title, onPress, Icon, Right, style, arrow, ...rest }: SettOptionProps) {
+export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOfLines, ...rest }: SettOptionProps) {
   return (
-    <TouchableOpacity
-      className='flex-row items-center justify-between px-7'
-      onPress={onPress}
-      activeOpacity={0.7}
-      style={[{ gap: 10 }, style]}
-      {...rest}
-    >
-      <View className='flex-row items-center justify-center' style={{ gap: 20 }}>
+    <TouchableOpacity className='flex-row items-center justify-between px-7' onPress={onPress} activeOpacity={0.7} style={[{ gap: 10 }]} {...rest}>
+      <View className='flex-row items-center justify-center' style={{ gap: 20, flexShrink: 1 }}>
         {Icon}
-        <PMedium className='p-2.5 px-0 text-zinc-800 dark:text-zinc-200' style={{ fontSize: 15 }}>
+        <PMedium
+          className='p-2.5 px-0 text-left text-zinc-800 dark:text-zinc-200'
+          style={[{ fontSize: 15, flexShrink: 1 }, style]}
+          numberOfLines={numberOfLines || 0}
+        >
           {title}
         </PMedium>
       </View>
-      <View className='flex-row items-center' style={{ gap: 5 }}>
+      <View className='flex-row items-center' style={{ gap: 5, flexShrink: 1 }}>
         {Right}
         {arrow && <RightArrow />}
       </View>
@@ -41,12 +40,13 @@ export function SettOption({ title, onPress, Icon, Right, style, arrow, ...rest 
 
 type SettGroupProps = ViewProps & {
   title?: string
+  color?: string
 }
-export function SettGroup({ children, title, ...rest }: SettGroupProps) {
+export function SettGroup({ children, title, color = Colors.accent, ...rest }: SettGroupProps) {
   return (
     <View className={`bg-white py-2.5 dark:bg-zinc-950`} {...rest}>
       {title && (
-        <PMedium className={`px-6 py-1.5 text-accent`} style={{ textTransform: 'none', opacity: 1, fontSize: 13.5 }}>
+        <PMedium className={`px-6 py-1.5 text-accent`} style={{ textTransform: 'none', opacity: 1, fontSize: 13.5, color: color }}>
           {title}
         </PMedium>
       )}

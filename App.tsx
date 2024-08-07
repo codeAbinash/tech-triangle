@@ -19,6 +19,8 @@ import StableBox from '@screens/animations/StableBox'
 import StableWallpaper from '@screens/animations/StableWallpaper'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
+import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
+import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
 import Explore from '@screens/Explore/Explore'
 import Greeting from '@screens/Home/Greeting'
 import Home from '@screens/index'
@@ -40,7 +42,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
+import { Dimensions, SafeAreaView, TouchableOpacity, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 const queryClient = new QueryClient()
@@ -104,7 +106,8 @@ export type RootStackParamList = {
   ComputerScienceSettings: undefined
   WeatherSettings: undefined
   DeveloperOptions: undefined
-  MMKVDataEditor: undefined
+  MMKVDataEditor: MMKVDataEditorParamList
+  MMKVDataList: undefined
   TestSettings: undefined
   BlankSettings: undefined
 }
@@ -159,6 +162,8 @@ function Navigation() {
         <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={GestureEnabled} />
         <Stack.Screen name='TestSettings' component={TestSettings} options={GestureEnabled} />
         <Stack.Screen name='BlankSettings' component={BlankSettings} options={GestureEnabled} />
+        <Stack.Screen name='MMKVDataList' component={MMKVDataList} options={GestureEnabled} />
+        <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} />
       </Stack.Navigator>
     </>
   )
@@ -167,14 +172,22 @@ function Navigation() {
 const FabButton = () => {
   const navigation = useNavigation<StackNav>()
   return (
-    <Press
+    <TouchableOpacity
+      style={{
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 2,
+          height: 2,
+        },
+        elevation: 6,
+        shadowOpacity: 0.5,
+      }}
       activeOpacity={0.7}
-      activeScale={0.95}
       className='absolute bottom-7 right-5 z-10 h-14 w-14 items-center justify-center rounded-full bg-accent'
       onPress={() => navigation.navigate('DeveloperOptions')}
     >
       <CodeIcon className='text-white' height={25} width={25} />
-    </Press>
+    </TouchableOpacity>
   )
 }
 

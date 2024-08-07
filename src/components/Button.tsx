@@ -4,9 +4,16 @@ import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gestu
 
 type ButtonProps = TouchableOpacityProps & { title?: string; Content?: React.ReactNode }
 
-export default function Btn({ title, onPress, Content, style }: ButtonProps) {
+export default function Btn({ title, onPress, disabled, Content, style, ...rest }: ButtonProps) {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress} className='w-full bg-accent' style={[{ borderRadius: 14, paddingVertical: 13 }, style]}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={onPress}
+      className='w-full bg-accent'
+      style={[{ borderRadius: 14, paddingVertical: 13, opacity: disabled ? 0.8 : 1 }, style]}
+      disabled={disabled}
+      {...rest}
+    >
       <PMedium style={{ fontSize: 15 }} className='text-center text-white'>
         {title || Content}
       </PMedium>

@@ -98,7 +98,7 @@ type Store<T extends StorageType> = keyof T['keys'] | `${Extract<keyof T['startW
 
 type WeatherStorage = Store<typeof WeatherStorage>
 type DeveloperStorage = Store<typeof DeveloperStorage>
-type StorageKeys = WeatherStorage | DeveloperStorage
+export type StorageKeys = WeatherStorage | DeveloperStorage
 
 /**
  * Other variant of storage
@@ -108,10 +108,11 @@ export const WeatherCache: Storage = {
   keys: {},
 }
 
-function getMemo(key: StorageKeys) {
+function getMemo(key: StorageKeys, deps: any[] = []) {
   return useMemo(() => {
+    console.log('getMemo', key)
     return ls.getString(key)
-  }, [key])
+  }, [key, ...deps])
 }
 
 function getMemoParsed<T>(key: StorageKeys) {

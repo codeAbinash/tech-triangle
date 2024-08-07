@@ -17,9 +17,9 @@ export function Gap20({ children, style, ...rest }: ViewProps) {
   )
 }
 
-export function Gap({ children, size = 20, style, ...rest }: { children?: React.ReactNode; size?: number } & ViewProps) {
+export function Gap({ children, gap = 20, style, ...rest }: { children?: React.ReactNode; gap?: number } & ViewProps) {
   return (
-    <View style={[{ gap: size }, style]} {...rest}>
+    <View style={[{ gap: gap }, style]} {...rest}>
       {children}
     </View>
   )

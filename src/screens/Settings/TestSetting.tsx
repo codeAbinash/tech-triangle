@@ -58,7 +58,7 @@ export default function TestSettings({ navigation }: NavProp) {
             onChangeText={setInput1}
           />
           <Input
-            color={Colors.red[500]}
+            accent={Colors.red[500]}
             Icon={<TextFontIcon {...ic} />}
             placeholder='With red accent color...'
             onChangeText={setInput2}
