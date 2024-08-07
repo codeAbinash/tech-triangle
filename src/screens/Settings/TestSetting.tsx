@@ -4,7 +4,7 @@ import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import Search from '@components/Search'
 import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
-import { Text15 } from '@components/Text'
+import { Txt } from '@components/Text'
 import { Toggle } from '@components/Toggle'
 import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
@@ -53,7 +53,7 @@ export default function TestSettings({ navigation }: NavProp) {
           <Input
             Icon={<KeyboardIcon {...ic} />}
             placeholder='Type something...'
-            Right={<Text15>TS</Text15>}
+            Right={<Txt size={15}>TS</Txt>}
             value={input1}
             onChangeText={setInput1}
           />

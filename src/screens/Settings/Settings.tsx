@@ -17,7 +17,7 @@ import { Gap12, Gap20 } from '@components/Gap'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { ic, SettGroup, SettOption, SettText } from '@components/Settings'
-import { RightText } from '@components/Text'
+import { TxtAcc } from '@components/Text'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question } from '@utils/data'
 import { PBold } from '@utils/fonts'
@@ -80,13 +80,8 @@ export default function Settings({ navigation }: NavProp) {
             </SettGroup>
           </Gap12>
           <SettGroup title='Storage'>
-            <SettOption
-              title='Clear cache'
-              Icon={<CleanIcon {...ic} />}
-              Right={<RightText>{toReadableSize(totalCache)}</RightText>}
-              onPress={clearCache}
-            />
-            <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<RightText>{toReadableSize(totalSize)}</RightText>} />
+            <SettOption title='Clear cache' Icon={<CleanIcon {...ic} />} Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>} onPress={clearCache} />
+            <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>} />
           </SettGroup>
           <Gap12>
             <SettGroup title='For Developers'>

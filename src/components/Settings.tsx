@@ -25,14 +25,16 @@ export function SettOption({ title, onPress, Icon, Right, style, arrow, ...rest 
       style={[{ gap: 10 }, style]}
       {...rest}
     >
-      <View className='flex-row items-center justify-center' style={{ gap: 23 }}>
+      <View className='flex-row items-center justify-center' style={{ gap: 20 }}>
         {Icon}
         <PMedium className='p-2.5 px-0 text-zinc-800 dark:text-zinc-200' style={{ fontSize: 15 }}>
           {title}
         </PMedium>
       </View>
-      {Right}
-      {arrow && <RightArrow />}
+      <View className='flex-row items-center' style={{ gap: 5 }}>
+        {Right}
+        {arrow && <RightArrow />}
+      </View>
     </TouchableOpacity>
   )
 }
@@ -48,7 +50,7 @@ export function SettGroup({ children, title, ...rest }: SettGroupProps) {
           {title}
         </PMedium>
       )}
-      <View style={{ gap: 6 }}>{children}</View>
+      <View style={{ gap: 8 }}>{children}</View>
     </View>
   )
 }
