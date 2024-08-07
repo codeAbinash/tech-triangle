@@ -1,5 +1,4 @@
 import { devOptStore } from '@/zustand/devOptStore'
-import { storageStore } from '@/zustand/storageStore'
 import { weatherStore } from '@/zustand/weatherStore'
 import {
   CelsiusIcon,
@@ -14,12 +13,14 @@ import {
 } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import { Check, SettGroup, SettOption, SettText, SettWrapper, ic } from '@components/Settings'
-import { TxtAcc, Txt } from '@components/Text'
+import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { Txt, TxtAcc } from '@components/Text'
 import { Toggle } from '@components/Toggle'
+import { useIsFocused } from '@react-navigation/native'
+import { clearStorage, getStorageSize, WeatherCache, WeatherStorage } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { getLatitude, toReadableSize } from '@utils/utils'
-import React from 'react'
+import { getLatitude, screenDelay, toReadableSize } from '@utils/utils'
+import React, { useEffect } from 'react'
 import { Linking, Text } from 'react-native'
 
 export default function WeatherScienceSettings({ navigation }: NavProp) {
@@ -36,10 +37,25 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
   const removeLocation = weatherStore((state) => state.removeCurrentCityLocation)
 
-  const searchCache = storageStore((state) => state.weatherCache)
-  const weatherSize = storageStore((state) => state.weather)
-  const clearCache = storageStore((state) => state.clearWeatherCache)
   const dev = devOptStore((state) => state.isEnabled)
+
+  const [searchCache, setSearchCache] = React.useState(0)
+  const [weatherSize, setWeatherSize] = React.useState(0)
+
+  const focused = useIsFocused()
+
+  useEffect(() => {
+    focused &&
+      screenDelay(() => {
+        setWeatherSize(getStorageSize(WeatherStorage))
+        setSearchCache(getStorageSize(WeatherCache))
+      }, 400)
+  }, [focused])
+
+  function clearCache() {
+    clearStorage(WeatherCache)
+    setSearchCache(0)
+  }
 
   return (
     <SettWrapper navigation={navigation} title='Weather Settings'>

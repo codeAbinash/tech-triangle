@@ -26,6 +26,7 @@ export function niceDate(date: Date | null) {
 }
 
 import { Alert } from 'react-native'
+import { SCREEN_TRANSITION } from './constants'
 
 // Utils
 export const p = console.log
@@ -104,4 +105,8 @@ export function getLocalDataSize(startKey: string) {
     if (value) size += value.length
   })
   return Math.round(size)
+}
+
+export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
+  return setTimeout(fn, ms)
 }

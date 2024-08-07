@@ -9,8 +9,8 @@ import type { RouteProp } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import S, { ls, type StorageKeys } from '@utils/storage'
 import type { StackNav } from '@utils/types'
-import { toReadableSize } from '@utils/utils'
-import React, { useState } from 'react'
+import { screenDelay, toReadableSize } from '@utils/utils'
+import React, { useEffect, useState } from 'react'
 import { Alert, Text, ToastAndroid, View } from 'react-native'
 
 type ParamList = {
@@ -19,15 +19,21 @@ type ParamList = {
 
 export type MMKVDataEditorParamList = {
   key?: string
-  value?: string
   new?: boolean
 }
 
 export default function MMKVDataEditor({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'MMKVDataEditor'> }) {
   const isNew = route.params.new === true
   const [key, setKey] = useState(route.params.key || '')
-  const localValue = isNew ? '' : key ? S.getMemo(key as StorageKeys) : ''
-  const [value, setValue] = useState(route.params.value || localValue || '')
+  const [value, setValue] = useState('')
+
+  useEffect(() => {
+    if (!isNew) {
+      screenDelay(() => {
+        if (key) setValue(S.get(key as StorageKeys) || '')
+      }, 400)
+    }
+  }, [])
 
   function save() {
     if (key.length === 0) {
@@ -65,7 +71,7 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
           {isNew && (
             <>
               <SettGroup title='Key'>
-                <Input placeholder='Enter a key' value={key} pointerEvents='none' selectTextOnFocus={false} onChangeText={setKey} editable={isNew} />
+                <Input placeholder='Enter a key' value={key} pointerEvents='none' selectTextOnFocus={false} onChangeText={setKey} />
               </SettGroup>
               <SettText>
                 Key is the identifier of the data. It must be unique. If the key already exists, the data will be overwritten and
@@ -79,7 +85,7 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
           <SettGroup title='Value'>
             <Input
               placeholder='Enter a value'
-              value={value}
+              value={!isNew && key && value === '' ? 'Loading...' : value}
               onChangeText={setValue}
               multiline
               style={{ fontFamily: 'monospace', fontWeight: 'bold', lineHeight: 24 }}

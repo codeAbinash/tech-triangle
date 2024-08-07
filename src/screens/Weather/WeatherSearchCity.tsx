@@ -1,4 +1,3 @@
-import { storageStore } from '@/zustand/storageStore'
 import { BtnTransparent } from '@components/Button'
 import Search from '@components/Search'
 import StackHeader from '@components/StackHeader'
@@ -25,13 +24,12 @@ export type SearchCityParamList = {
 
 export default function WeatherSearchCity({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'WeatherSearchCity'> }) {
   const [query, setQuery] = React.useState('')
-  const computeEverything = storageStore((state) => state.computeEverything)
   const accuApiKey = weatherStore((state) => state.accuWeatherApiKey)
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['cities'],
     mutationFn: () => searchCity(query.trim(), accuApiKey),
     onError: (err) => console.log(err),
-    onSuccess: (_) => computeEverything(),
+    // onSuccess: (_) => (),
   })
 
   const isData = data && data.length > 0

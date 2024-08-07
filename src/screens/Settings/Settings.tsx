@@ -1,5 +1,4 @@
 import { devOptStore } from '@/zustand/devOptStore'
-import { storageStore } from '@/zustand/storageStore'
 import {
   BrushIcon,
   BubbleChatIcon,
@@ -19,15 +18,16 @@ import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { ic, SettGroup, SettOption, SettText } from '@components/Settings'
 import { TxtAcc } from '@components/Text'
+import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question } from '@utils/data'
 import { PBold } from '@utils/fonts'
+import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { toReadableSize } from '@utils/utils'
-import React from 'react'
+import { screenDelay, toReadableSize } from '@utils/utils'
+import React, { useEffect } from 'react'
 import { useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { isEnabled } from 'react-native/Libraries/Performance/Systrace'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
 // }
@@ -46,10 +46,25 @@ function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactN
 
 export default function Settings({ navigation }: NavProp) {
   const scheme = useColorScheme()
-  const totalSize = storageStore((state) => state.totalSize)
-  const totalCache = storageStore((state) => state.totalCacheSize)
-  const clearCache = storageStore((state) => state.clearCache)
+  const [totalSize, setTotalSize] = React.useState(0)
+  const [totalCache, setTotalCache] = React.useState(0)
   const dev = devOptStore((state) => state.isEnabled)
+
+  const focused = useIsFocused()
+
+  useEffect(() => {
+    focused &&
+      screenDelay(() => {
+        setTotalSize(getStartWithSize(''))
+        setTotalCache(getStorageSize(Caches))
+      })
+  }, [])
+
+  function clearCache() {
+    clearStorage(Caches)
+    setTotalCache(0)
+  }
+
   return (
     <View className='flex-1 bg-white dark:bg-zinc-950'>
       <PaddingTop />
