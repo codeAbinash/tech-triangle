@@ -13,6 +13,7 @@ import { FlatList } from 'react-native-gesture-handler'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
 import { searchCity, type WeatherSearchResult } from './api'
 import { PMedium, PSemiBold } from '@utils/fonts'
+import { weatherStore } from '@/zustand/weatherStore'
 
 type ParamList = {
   WeatherSearchCity: SearchCityParamList
@@ -25,9 +26,10 @@ export type SearchCityParamList = {
 export default function WeatherSearchCity({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'WeatherSearchCity'> }) {
   const [query, setQuery] = React.useState('')
   const computeEverything = storageStore((state) => state.computeEverything)
+  const accuApiKey = weatherStore((state) => state.accuWeatherApiKey)
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['cities'],
-    mutationFn: () => searchCity(query.trim()),
+    mutationFn: () => searchCity(query.trim(), accuApiKey),
     onError: (err) => console.log(err),
     onSuccess: (_) => computeEverything(),
   })

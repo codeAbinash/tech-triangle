@@ -1,14 +1,23 @@
+import { ArrowRight01Icon, Tick01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
 import { PMedium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { TouchableOpacity, View, type ScrollViewProps, type TextProps, type TouchableOpacityProps, type ViewProps } from 'react-native'
+import {
+  TouchableOpacity,
+  useColorScheme,
+  View,
+  type ScrollViewProps,
+  type TextProps,
+  type TouchableOpacityProps,
+  type ViewProps,
+} from 'react-native'
 import type { SvgProps } from 'react-native-svg'
 import BackHeader from './BackHeader'
 import { Gap20 } from './Gap'
 import KeyboardAvoidingContainer from './KeyboardAvoidingContainer'
 import { PaddingBottom } from './SafePadding'
-import { ArrowRight01Icon, Tick01Icon } from '@assets/icons/icons'
+import { AutoStatusBar } from './StatusBar'
 
 type SettOptionProps = TouchableOpacityProps & {
   title: string
@@ -81,8 +90,10 @@ type SettWrapperProps = ScrollViewProps & {
   navigation: StackNav
 }
 export function SettWrapper({ Header, title, navigation, children, ...rest }: SettWrapperProps) {
+  const scheme = useColorScheme()
   return (
     <View className='flex-1 bg-zinc-100 dark:bg-black'>
+      <AutoStatusBar scheme={scheme} />
       {Header ? Header : <BackHeader title={title || 'Test Title'} navigation={navigation} />}
       <KeyboardAvoidingContainer
         contentContainerStyle={{ paddingBottom: 50 }}
