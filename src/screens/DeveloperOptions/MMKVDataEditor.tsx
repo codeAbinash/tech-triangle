@@ -7,9 +7,10 @@ import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Se
 import { TxtAcc } from '@components/Text'
 import type { RouteProp } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
+import { PMedium } from '@utils/fonts'
 import S, { ls, type StorageKeys } from '@utils/storage'
 import type { StackNav } from '@utils/types'
-import { screenDelay, toReadableSize } from '@utils/utils'
+import { toReadableSize } from '@utils/utils'
 import React, { useEffect, useState } from 'react'
 import { Alert, Text, ToastAndroid, View } from 'react-native'
 
@@ -29,9 +30,7 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
 
   useEffect(() => {
     if (!isNew) {
-      screenDelay(() => {
-        if (key) setValue(S.get(key as StorageKeys) || '')
-      }, 400)
+      if (key) setValue(S.get(key as StorageKeys) || '')
     }
   }, [])
 
@@ -85,7 +84,7 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
           <SettGroup title='Value'>
             <Input
               placeholder='Enter a value'
-              value={!isNew && key && value === '' ? 'Loading...' : value}
+              value={value}
               onChangeText={setValue}
               multiline
               style={{ fontFamily: 'monospace', fontWeight: 'bold', lineHeight: 24 }}
@@ -100,7 +99,7 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
                 className='text-red-500'
                 Icon={<Delete02Icon {...ic} className='text-red-500' />}
                 onPress={deleteData}
-                Right={<TxtAcc>{toReadableSize(value?.length || 0)}</TxtAcc>}
+                Right={<PMedium className='text-red-500'>{toReadableSize(value?.length || 0)}</PMedium>}
               />
             </SettGroup>
           )}

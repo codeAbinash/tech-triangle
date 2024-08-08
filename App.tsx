@@ -163,7 +163,7 @@ function Navigation() {
         <Stack.Screen name='TestSettings' component={TestSettings} options={GestureEnabled} />
         <Stack.Screen name='BlankSettings' component={BlankSettings} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataList' component={MMKVDataList} options={GestureEnabled} />
-        <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} />
+        <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

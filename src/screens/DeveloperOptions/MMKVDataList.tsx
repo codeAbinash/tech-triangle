@@ -8,21 +8,33 @@ import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { screenDelay } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
+import Animated, { FadeIn } from 'react-native-reanimated'
 
 export default function MMKVDataList({ navigation }: NavProp) {
   const state = useIsFocused()
-  const [storage, setStorage] = React.useState<string[] | null>(null)
+  const [initStorage, setInitStorage] = React.useState<string[] | null>(null)
+  const [search, setSearch] = React.useState('')
+  const [searchResults, setSearchResults] = React.useState<string[]>([])
 
   useEffect(() => {
-    if (state) {
-      screenDelay(() => {
-        setStorage(ls.getAllKeys())
-      })
-    }
+    if (state) setInitStorage(ls.getAllKeys())
   }, [state])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const query = search.toLowerCase().trim()
+      if (query.length === 0) {
+        setSearchResults(initStorage || [])
+        return
+      }
+      const results = initStorage?.filter((item) => item.toLowerCase().includes(query))
+      setSearchResults(results || [])
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [search, initStorage])
 
   return (
     <>
@@ -32,7 +44,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
           <>
             <BackHeader title='MMKV data editor' navigation={navigation} />
             <View className='bg-white px-5 pb-4 dark:bg-zinc-950'>
-              <Search placeholder='Search keys' />
+              <Search placeholder='Search keys' value={search} onChangeText={(text) => setSearch(text)} />
             </View>
           </>
         }
@@ -41,24 +53,25 @@ export default function MMKVDataList({ navigation }: NavProp) {
           <SettText className='mt-3'>You may need to restart the app to see the changes in the app.</SettText>
 
           <SettGroup title='Stored keys' className='pb-4'>
-            {storage?.map((item) => (
-              <SettOption
-                title={item}
-                arrow
-                key={item}
-                numberOfLines={1}
-                Icon={<Database02Icon {...ic} />}
-                onPress={() => navigation.navigate('MMKVDataEditor', { key: item })}
-              />
+            {searchResults?.map((item, i) => (
+              <Animated.View key={item} entering={delayedFadeAnimation(search, i)}>
+                <SettOption
+                  title={item}
+                  arrow
+                  numberOfLines={1}
+                  Icon={<Database02Icon {...ic} />}
+                  onPress={() => navigation.navigate('MMKVDataEditor', { key: item })}
+                />
+              </Animated.View>
             ))}
-            {storage?.length === 0 && (
+            {initStorage?.length === 0 && (
               <SettOption
                 title='Create new data'
                 onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
                 Icon={<Database02Icon {...ic} />}
               />
             )}
-            {storage === null && <SettOption title='Loading all data...' Icon={<Database02Icon {...ic} />} arrow />}
+            {initStorage === null && <SettOption title='Loading all data...' Icon={<Database02Icon {...ic} />} arrow />}
           </SettGroup>
         </Gap12>
         <SettText>You can edit or delete these data. Click on the key to edit the value or click on the plus icon to add new data.</SettText>
@@ -71,4 +84,8 @@ export default function MMKVDataList({ navigation }: NavProp) {
       />
     </>
   )
+}
+
+function delayedFadeAnimation(search: string, i: number) {
+  return FadeIn.duration(250).delay(search.trim().length === 0 ? Math.min((i + 1) * 25, 500) : 20)
 }

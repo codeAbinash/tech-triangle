@@ -85,7 +85,14 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
               navigation.navigate('WeatherLocation', { shouldGoBack: true })
             }}
           />
-          {dev && <SettOption title='Remove location data' Icon={<Delete02Icon {...ic} />} onPress={removeLocation} />}
+          {dev && (
+            <SettOption
+              title='Remove location data'
+              className='text-red-500'
+              Icon={<Delete02Icon className='text-red-500' {...ic} />}
+              onPress={removeLocation}
+            />
+          )}
         </SettGroup>
         <SettText>Changing one of the two above settings will automatically override the other.</SettText>
       </Gap12>
