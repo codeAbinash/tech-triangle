@@ -13,6 +13,8 @@ import {
   Key01Icon,
   MapsLocation02Icon,
   PencilEdit02Icon,
+  Road02Icon,
+  RulerIcon,
   SlowWindsIcon,
   SunCloudFastWind01Icon,
   WindPowerIcon,
@@ -154,6 +156,10 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           onPress={() => setTmpUnit('F')}
         />
       </SettGroup>
+      <SettGroup title='Distance Unit'>
+        <SettOption title='Meter' Right={<Check checked={distanceUnit === 'm'} />} onPress={() => setDistUnit('m')} Icon={<RulerIcon {...ic} />} />
+        <SettOption title='Feet' Right={<Check checked={distanceUnit === 'ft'} />} onPress={() => setDistUnit('ft')} Icon={<Road02Icon {...ic} />} />
+      </SettGroup>
       <SettGroup title='Wind Speed Unit'>
         <SettOption
           title='Kilometer per hour (kph)'
@@ -200,10 +206,6 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         />
         <SettOption title='Millibar (mbar)' Right={<Check checked={atmPressureUnit === 'mbar'} />} onPress={() => setAtmPressureUnit('mbar')} />
         <SettOption title='Atmosphere (atm)' Right={<Check checked={atmPressureUnit === 'atm'} />} onPress={() => setAtmPressureUnit('atm')} />
-      </SettGroup>
-      <SettGroup title='Distance Unit'>
-        <SettOption title='Meter' Right={<Check checked={distanceUnit === 'm'} />} onPress={() => setDistUnit('m')} />
-        <SettOption title='Feet' Right={<Check checked={distanceUnit === 'ft'} />} onPress={() => setDistUnit('ft')} />
       </SettGroup>
       <SettGroup title='Data Management'>
         <SettOption
