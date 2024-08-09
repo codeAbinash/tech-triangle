@@ -21,7 +21,7 @@ import { TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question } from '@utils/data'
-import { PBold } from '@utils/fonts'
+import { Bold } from '@utils/fonts'
 import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
@@ -36,9 +36,9 @@ function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactN
   return (
     <View style={{ gap: 5 }} className='bg-white px-5 pb-3 dark:bg-zinc-950'>
       {Title}
-      <PBold style={{ fontSize: 30 }} className='mt-3 text-zinc-800 dark:text-zinc-200'>
+      <Bold style={{ fontSize: 30 }} className='mt-3 text-zinc-800 dark:text-zinc-200'>
         {title}
-      </PBold>
+      </Bold>
       <Search placeholder='Search settings' />
     </View>
   )

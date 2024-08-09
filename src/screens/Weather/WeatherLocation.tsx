@@ -7,7 +7,7 @@ import { type RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
 import { W } from '@utils/dimensions'
-import { PMedium, PSemiBold } from '@utils/fonts'
+import { Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { screenDelay } from '@utils/utils'
 import LottieView from 'lottie-react-native'
@@ -78,7 +78,7 @@ export default function WeatherLocation({ navigation, route }: { navigation: Sta
         <StackHeader title='Current Location' navigation={navigation} left='Cancel' right='Done' />
       </View>
       <View className='flex-1 items-center justify-between px-5 pb-5 dark:bg-zinc-950'>
-        <PMedium></PMedium>
+        <Medium></Medium>
         <GetMidScreen status={locationStatus} location={location} navigation={navigation} route={route} />
         <View className='h-20 w-full justify-end px-5'>
           <GetTryLocateAgainButton getLocation={getLocation} locationStatus={locationStatus} />
@@ -121,7 +121,7 @@ function CityResult({
     return (
       <View>
         <ActivityIndicator size='large' color={Colors.accent} />
-        <PMedium className='mt-5 text-center text-zinc-700 dark:text-gray-300'>Talking to APIs...</PMedium>
+        <Medium className='mt-5 text-center text-zinc-700 dark:text-gray-300'>Talking to APIs...</Medium>
       </View>
     )
 
@@ -134,13 +134,13 @@ function CityResult({
       <View className='w-full flex-row items-center justify-between px-5'>
         <View className='flex-row items-center' style={{ gap: 5 }}>
           <View className=''>
-            <PSemiBold className='text-xl text-zinc-800 dark:text-zinc-200'>{data?.name}</PSemiBold>
-            <PMedium className='text-base capitalize text-zinc-700 dark:text-zinc-300'>{data?.weather[0].description}</PMedium>
+            <SemiBold className='text-xl text-zinc-800 dark:text-zinc-200'>{data?.name}</SemiBold>
+            <Medium className='text-base capitalize text-zinc-700 dark:text-zinc-300'>{data?.weather[0].description}</Medium>
           </View>
         </View>
         <View>
-          <PSemiBold className='text-right text-xl text-zinc-700 dark:text-zinc-300'>{32}°C</PSemiBold>
-          <PMedium className='text-right text-base text-zinc-700 dark:text-zinc-300'>Humidity {data?.main.humidity}%</PMedium>
+          <SemiBold className='text-right text-xl text-zinc-700 dark:text-zinc-300'>{32}°C</SemiBold>
+          <Medium className='text-right text-base text-zinc-700 dark:text-zinc-300'>Humidity {data?.main.humidity}%</Medium>
         </View>
       </View>
       <View className='mt-5 w-full px-5'>
@@ -184,7 +184,7 @@ function FetchingLocation() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
       <ActivityIndicator size='large' color={Colors.accent} />
-      <PMedium className='text-center text-sm text-zinc-700 dark:text-gray-300'>Fetching location...</PMedium>
+      <Medium className='text-center text-sm text-zinc-700 dark:text-gray-300'>Fetching location...</Medium>
     </View>
   )
 }
@@ -193,7 +193,7 @@ function ErrorFetchingLocation() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
       <LocationOffline01Icon width={28} height={28} className='text-red-500' />
-      <PMedium className='text-center text-sm text-red-500'>Error fetching location.</PMedium>
+      <Medium className='text-center text-sm text-red-500'>Error fetching location.</Medium>
     </View>
   )
 }
@@ -202,7 +202,7 @@ function LocationPermissionDenied() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
       <LocationOffline01Icon width={28} height={28} className='text-red-500' />
-      <PMedium className='text-center text-sm text-red-500'>Location permission denied.</PMedium>
+      <Medium className='text-center text-sm text-red-500'>Location permission denied.</Medium>
     </View>
   )
 }
@@ -218,7 +218,7 @@ function GetTryLocateAgainButton({ getLocation, locationStatus }: { getLocation:
 function GrantPermission() {
   return (
     <View style={{ gap: 8 }}>
-      <PMedium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Please grant location permission.</PMedium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Please grant location permission.</Medium>
       <Button title='Allow location' onPress={() => Linking.openSettings()} />
     </View>
   )
@@ -226,7 +226,7 @@ function GrantPermission() {
 function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
   return (
     <View style={{ gap: 8 }}>
-      <PMedium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Your location is turned off. Turn it on.</PMedium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Your location is turned off. Turn it on.</Medium>
       <Button title='Turn on location' onPress={getLocation} />
     </View>
   )
@@ -235,7 +235,7 @@ function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
 function GrantPermissionFromSettings({ getLocation }: { getLocation: () => void }) {
   return (
     <View style={{ gap: 8 }}>
-      <PMedium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Allow the app to access your location.</PMedium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Allow the app to access your location.</Medium>
       <Button title='Go to settings' onPress={() => Linking.openSettings()} />
     </View>
   )

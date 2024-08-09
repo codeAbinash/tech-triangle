@@ -1,6 +1,6 @@
 import { ArrowLeft01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
-import { PMedium } from '@utils/fonts'
+import { Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import { TouchableOpacity, useColorScheme, View, type ViewProps } from 'react-native'
@@ -24,9 +24,9 @@ export default function BackHeader({ navigation, Right, title, Title }: BackHead
             <TouchableOpacity className='p-3' onPress={() => navigation.goBack()} activeOpacity={0.7}>
               <ArrowLeft01Icon width={26} height={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
             </TouchableOpacity>
-            <PMedium style={{ fontSize: 18, flex: 1 }} className='mt-0.5 text-zinc-800 dark:text-zinc-200' numberOfLines={1}>
+            <Medium style={{ fontSize: 18, flex: 1 }} className='mt-0.5 text-zinc-800 dark:text-zinc-200' numberOfLines={1}>
               {title}
-            </PMedium>
+            </Medium>
             {Right}
           </View>
         )}

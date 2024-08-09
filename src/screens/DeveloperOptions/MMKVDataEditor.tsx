@@ -7,7 +7,7 @@ import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Se
 import { TxtAcc } from '@components/Text'
 import type { RouteProp } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
-import { PMedium } from '@utils/fonts'
+import { Medium } from '@utils/fonts'
 import S, { ls, type StorageKeys } from '@utils/storage'
 import type { StackNav } from '@utils/types'
 import { toReadableSize } from '@utils/utils'
@@ -99,7 +99,7 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
                 className='text-red-500'
                 Icon={<Delete02Icon {...ic} className='text-red-500' />}
                 onPress={deleteData}
-                Right={<PMedium className='text-red-500'>{toReadableSize(value?.length || 0)}</PMedium>}
+                Right={<Medium className='text-red-500'>{toReadableSize(value?.length || 0)}</Medium>}
               />
             </SettGroup>
           )}

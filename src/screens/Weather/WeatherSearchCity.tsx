@@ -11,7 +11,7 @@ import { ActivityIndicator, StatusBar, Text, TouchableOpacity, View } from 'reac
 import { FlatList } from 'react-native-gesture-handler'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
 import { searchCity, type WeatherSearchResult } from './api'
-import { PMedium, PSemiBold } from '@utils/fonts'
+import { Medium, SemiBold } from '@utils/fonts'
 import { weatherStore } from '@/zustand/weatherStore'
 
 type ParamList = {
@@ -74,7 +74,7 @@ function Pending() {
   return (
     <MyFlex>
       <ActivityIndicator size='large' color={Colors.accent} />
-      <PMedium className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>Searching for cities...</PMedium>
+      <Medium className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>Searching for cities...</Medium>
     </MyFlex>
   )
 }
@@ -82,10 +82,10 @@ function Pending() {
 function ErrorFetchingCities({ error, navigation }: { error: any; navigation: StackNav }) {
   return (
     <MyFlex>
-      <PSemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>{error?.message || 'Failed to fetch cities'}</PSemiBold>
-      <PMedium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
+      <SemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>{error?.message || 'Failed to fetch cities'}</SemiBold>
+      <Medium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
         This error may occur if you are not connected to the internet or API limit exceeded. To fix this, enter a API key in settings.
-      </PMedium>
+      </Medium>
       <BtnTransparent className='text-sm' onPress={() => navigation.navigate('WeatherSettings')} title='Set API keys'></BtnTransparent>
     </MyFlex>
   )
@@ -94,10 +94,10 @@ function ErrorFetchingCities({ error, navigation }: { error: any; navigation: St
 function NoCityFound() {
   return (
     <MyFlex>
-      <PSemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>No cities found</PSemiBold>
-      <PMedium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
+      <SemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>No cities found</SemiBold>
+      <Medium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
         No cities found for the search query. Try searching with different keywords.
-      </PMedium>
+      </Medium>
     </MyFlex>
   )
 }
@@ -105,7 +105,7 @@ function NoCityFound() {
 function InitialMessage() {
   return (
     <MyFlex>
-      <PMedium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>Enter a city or location name</PMedium>
+      <Medium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>Enter a city or location name</Medium>
     </MyFlex>
   )
 }
@@ -113,7 +113,7 @@ function InitialMessage() {
 function PoweredByAccuWeather() {
   return (
     <View>
-      <PMedium className='mt-10 text-center text-xs text-zinc-500 dark:text-zinc-500'>Powered by AccuWeather</PMedium>
+      <Medium className='mt-10 text-center text-xs text-zinc-500 dark:text-zinc-500'>Powered by AccuWeather</Medium>
     </View>
   )
 }
@@ -138,19 +138,19 @@ function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResul
       }}
     >
       <View>
-        <PMedium className='text-base text-zinc-800 dark:text-zinc-200'>{item.EnglishName}</PMedium>
-        <PMedium className='text-sm text-zinc-600 dark:text-zinc-400'>
+        <Medium className='text-base text-zinc-800 dark:text-zinc-200'>{item.EnglishName}</Medium>
+        <Medium className='text-sm text-zinc-600 dark:text-zinc-400'>
           {item.AdministrativeArea.EnglishName}, {item.Country.EnglishName}
-        </PMedium>
+        </Medium>
       </View>
 
       <View>
-        <PMedium className='text-right text-accent' style={{ fontSize: 12 }}>
+        <Medium className='text-right text-accent' style={{ fontSize: 12 }}>
           {lat}, {lon}
-        </PMedium>
-        <PMedium className='text-right text-accent' style={{ fontSize: 12 }}>
+        </Medium>
+        <Medium className='text-right text-accent' style={{ fontSize: 12 }}>
           Altitude: {item.GeoPosition.Elevation.Metric.Value} {item.GeoPosition.Elevation.Metric.Unit}
-        </PMedium>
+        </Medium>
       </View>
     </TouchableOpacity>
   )

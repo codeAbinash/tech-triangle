@@ -1,4 +1,4 @@
-import { PBold, PRegular } from '@utils/fonts'
+import { Bold, Regular } from '@utils/fonts'
 import LottieView from 'lottie-react-native'
 import React from 'react'
 import { Dimensions, View } from 'react-native'
@@ -18,10 +18,10 @@ export default function UnderConstruction() {
           marginBottom: 20,
         }}
       />
-      <PBold className='text-center text-2xl text-gray-800 dark:text-gray-200'>Under construction</PBold>
-      <PRegular className='mt-1 w-4/5 text-center text-gray-500 dark:text-gray-400'>
+      <Bold className='text-center text-2xl text-gray-800 dark:text-gray-200'>Under construction</Bold>
+      <Regular className='mt-1 w-4/5 text-center text-gray-500 dark:text-gray-400'>
         This screen is under construction. Please check back later.
-      </PRegular>
+      </Regular>
     </View>
   )
 }

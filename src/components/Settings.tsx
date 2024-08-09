@@ -1,6 +1,6 @@
 import { ArrowRight01Icon, Tick01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
-import { PMedium } from '@utils/fonts'
+import { Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import {
@@ -31,13 +31,13 @@ export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOf
     <TouchableOpacity className='flex-row items-center justify-between px-7' onPress={onPress} activeOpacity={0.7} style={[{ gap: 10 }]} {...rest}>
       <View className='flex-row items-center justify-center' style={{ gap: 20, flexShrink: 1 }}>
         {Icon}
-        <PMedium
+        <Medium
           className='p-2.5 px-0 text-left text-zinc-800 dark:text-zinc-200'
           style={[{ fontSize: 15, flexShrink: 1 }, style]}
           numberOfLines={numberOfLines || 0}
         >
           {title}
-        </PMedium>
+        </Medium>
       </View>
       <View className='flex-row items-center' style={{ gap: 5, flexShrink: 1 }}>
         {Right}
@@ -55,9 +55,9 @@ export function SettGroup({ children, title, color = Colors.accent, ...rest }: S
   return (
     <View className={`bg-white py-2.5 dark:bg-zinc-950`} {...rest}>
       {title && (
-        <PMedium className={`px-6 py-1.5 text-accent`} style={{ textTransform: 'none', opacity: 1, fontSize: 13.5, color: color }}>
+        <Medium className={`px-6 py-1.5 text-accent`} style={{ textTransform: 'none', opacity: 1, fontSize: 13.5, color: color }}>
           {title}
-        </PMedium>
+        </Medium>
       )}
       <View style={{ gap: 8 }}>{children}</View>
     </View>
@@ -70,9 +70,9 @@ export function RightArrow() {
 
 export function SettText({ children, ...rest }: TextProps) {
   return (
-    <PMedium className='px-5 text-xs text-zinc-500 dark:text-zinc-500' {...rest}>
+    <Medium className='px-5 text-xs text-zinc-500 dark:text-zinc-500' {...rest}>
       {children}
-    </PMedium>
+    </Medium>
   )
 }
 

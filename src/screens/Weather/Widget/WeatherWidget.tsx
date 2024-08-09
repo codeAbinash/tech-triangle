@@ -3,7 +3,7 @@ import { weatherStore } from '@/zustand/weatherStore'
 import { CloudSolidIcon } from '@assets/icons/icons'
 import styles, { hw } from '@screens/Home/style'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
-import { PMedium, PRegular } from '@utils/fonts'
+import { Medium, Regular } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
@@ -35,17 +35,17 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
         onPress={() => navigateToWeather(navigation, currentCity)}
       >
         <View>
-          <PMedium className='text-base' style={color}>
+          <Medium className='text-base' style={color}>
             Bankura
-          </PMedium>
-          <PRegular style={[{ fontSize: 65, lineHeight: 83 }, color]}>62°</PRegular>
+          </Medium>
+          <Regular style={[{ fontSize: 65, lineHeight: 83 }, color]}>62°</Regular>
         </View>
         <View>
           <CloudSolidIcon width={25} height={25} color={color.color} />
-          <PMedium style={[color]} className='mt-0.5'>
+          <Medium style={[color]} className='mt-0.5'>
             Cloudy
-          </PMedium>
-          <PMedium style={[color]}>H:64° L:34°</PMedium>
+          </Medium>
+          <Medium style={[color]}>H:64° L:34°</Medium>
         </View>
       </TouchableOpacity>
     </View>

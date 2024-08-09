@@ -1,4 +1,4 @@
-import { PMedium } from '@utils/fonts'
+import { Medium } from '@utils/fonts'
 import React from 'react'
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gesture-handler'
 
@@ -14,9 +14,9 @@ export default function Btn({ title, onPress, disabled, children, style, ...rest
       disabled={disabled}
       {...rest}
     >
-      <PMedium style={{ fontSize: 15 }} className='text-center text-white'>
+      <Medium style={{ fontSize: 15 }} className='text-center text-white'>
         {title || children}
-      </PMedium>
+      </Medium>
     </TouchableOpacity>
   )
 }
@@ -24,9 +24,9 @@ export default function Btn({ title, onPress, disabled, children, style, ...rest
 export function BtnTransparent({ title, onPress, children, style }: ButtonProps) {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress} className='w-full' style={[{ borderRadius: 14, paddingVertical: 13 }]}>
-      <PMedium style={[{ fontSize: 15 }, style]} className='text-center text-accent'>
+      <Medium style={[{ fontSize: 15 }, style]} className='text-center text-accent'>
         {title || children}
-      </PMedium>
+      </Medium>
     </TouchableOpacity>
   )
 }

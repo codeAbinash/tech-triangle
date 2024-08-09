@@ -4,7 +4,7 @@ import Feature from '@components/Feature'
 import { PaddingBottom } from '@components/SafePadding'
 import { Colors } from '@utils/colors'
 import { APP_VERSION } from '@utils/data'
-import { PBold, PoppinsMedium, PSemiBold } from '@utils/fonts'
+import { Bold, PoppinsMedium, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import { getLocalDate, greetingByTime } from '@utils/utils'
 import React from 'react'
@@ -21,8 +21,8 @@ export default function Greeting({ navigation }: NavProp) {
       >
         <View className='w-full'>
           <View className='my-9 mb-9'>
-            <PBold className='text-center text-4xl text-zinc-800 dark:text-zinc-200'>{greetingByTime()}</PBold>
-            <PSemiBold className='mt-2 text-center text-base text-zinc-800 dark:text-zinc-200'>{getLocalDate()}</PSemiBold>
+            <Bold className='text-center text-4xl text-zinc-800 dark:text-zinc-200'>{greetingByTime()}</Bold>
+            <SemiBold className='mt-2 text-center text-base text-zinc-800 dark:text-zinc-200'>{getLocalDate()}</SemiBold>
           </View>
 
           <View style={{ gap: 15 }}>
