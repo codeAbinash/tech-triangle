@@ -130,7 +130,13 @@ function CityResult({
       {/* <PMedium className='text-center text-zinc-700 dark:text-gray-300'>
         {getLatitude(data?.coord.lat || 0)} , {getLongitude(data?.coord.lon || 0)}
       </PMedium> */}
-      <LottieView source={require('../../assets/animations/weather/broken-clouds.lottie')} style={{ height: W * 0.7, width: W * 0.7 }} speed={0.5} autoPlay loop />
+      <LottieView
+        source={require('../../assets/animations/weather/broken-clouds.lottie')}
+        style={{ height: W * 0.7, width: W * 0.7 }}
+        speed={0.5}
+        autoPlay
+        loop
+      />
       <View className='w-full flex-row items-center justify-between px-5'>
         <View className='flex-row items-center' style={{ gap: 5 }}>
           <View className=''>

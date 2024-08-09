@@ -4,12 +4,18 @@ import {
   CelsiusIcon,
   City03Icon,
   CleanIcon,
+  CloudSlowWindIcon,
   DashboardSquare02Icon,
   Database02Icon,
   Delete02Icon,
   FahrenheitIcon,
+  FastWindIcon,
   Key01Icon,
   MapsLocation02Icon,
+  PencilEdit02Icon,
+  SlowWindsIcon,
+  SunCloudFastWind01Icon,
+  WindPowerIcon,
 } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
@@ -36,6 +42,10 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const setWeatherWidgetIsActive = weatherStore((state) => state.setWeatherWidgetIsActive)
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
   const removeLocation = weatherStore((state) => state.removeCurrentCityLocation)
+  const windSpeedUnit = weatherStore((state) => state.windSpeedUnit)
+  const setWindSpeedUnit = weatherStore((state) => state.setWindSpeedUnit)
+  const atmPressureUnit = weatherStore((state) => state.atmPressureUnit)
+  const setAtmPressureUnit = weatherStore((state) => state.setAtmPressureUnit)
 
   const dev = devOptStore((state) => state.isEnabled)
 
@@ -86,12 +96,20 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             }}
           />
           {dev && (
-            <SettOption
-              title='Remove location data'
-              className='text-red-500'
-              Icon={<Delete02Icon className='text-red-500' {...ic} />}
-              onPress={removeLocation}
-            />
+            <>
+              <SettOption
+                title='Manual edit data'
+                Icon={<PencilEdit02Icon {...ic} />}
+                arrow
+                onPress={() => navigation.navigate('MMKVDataEditor', { key: 'WeatherCurrentCity' })}
+              ></SettOption>
+              <SettOption
+                title='Remove location data'
+                className='text-red-500'
+                Icon={<Delete02Icon className='text-red-500' {...ic} />}
+                onPress={removeLocation}
+              />
+            </>
           )}
         </SettGroup>
         <SettText>Changing one of the two above settings will automatically override the other.</SettText>
@@ -135,6 +153,53 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           Right={<Check checked={temperatureUnit === 'F'} />}
           onPress={() => setTmpUnit('F')}
         />
+      </SettGroup>
+      <SettGroup title='Wind Speed Unit'>
+        <SettOption
+          title='Kilometer per hour (kph)'
+          Right={<Check checked={windSpeedUnit === 'kph'} />}
+          Icon={<FastWindIcon {...ic} />}
+          onPress={() => setWindSpeedUnit('kph')}
+        />
+        <SettOption
+          title='Miles per hour (mph)'
+          Right={<Check checked={windSpeedUnit === 'mph'} />}
+          Icon={<SlowWindsIcon {...ic} />}
+          onPress={() => setWindSpeedUnit('mph')}
+        />
+        <SettOption
+          title='Meter per second (m/s)'
+          Right={<Check checked={windSpeedUnit === 'm/s'} />}
+          Icon={<SunCloudFastWind01Icon {...ic} />}
+          onPress={() => setWindSpeedUnit('m/s')}
+        />
+        <SettOption
+          title='Knot (kn)'
+          Right={<Check checked={windSpeedUnit === 'kn'} />}
+          Icon={<CloudSlowWindIcon {...ic} />}
+          onPress={() => setWindSpeedUnit('kn')}
+        />
+        <SettOption
+          title='Beaufort Scale'
+          Right={<Check checked={windSpeedUnit === 'bft'} />}
+          Icon={<WindPowerIcon {...ic} />}
+          onPress={() => setWindSpeedUnit('bft')}
+        />
+      </SettGroup>
+      <SettGroup title='Atmospheric Pressure Unit'>
+        <SettOption title='Hectopascal (hPa)' Right={<Check checked={atmPressureUnit === 'hPa'} />} onPress={() => setAtmPressureUnit('hPa')} />
+        <SettOption
+          title='Inches of mercury (inHg)'
+          Right={<Check checked={atmPressureUnit === 'inHg'} />}
+          onPress={() => setAtmPressureUnit('inHg')}
+        />
+        <SettOption
+          title='Millimeter of mercury (mmHg)'
+          Right={<Check checked={atmPressureUnit === 'mmHg'} />}
+          onPress={() => setAtmPressureUnit('mmHg')}
+        />
+        <SettOption title='Millibar (mbar)' Right={<Check checked={atmPressureUnit === 'mbar'} />} onPress={() => setAtmPressureUnit('mbar')} />
+        <SettOption title='Atmosphere (atm)' Right={<Check checked={atmPressureUnit === 'atm'} />} onPress={() => setAtmPressureUnit('atm')} />
       </SettGroup>
       <SettGroup title='Distance Unit'>
         <SettOption title='Meter' Right={<Check checked={distanceUnit === 'm'} />} onPress={() => setDistUnit('m')} />

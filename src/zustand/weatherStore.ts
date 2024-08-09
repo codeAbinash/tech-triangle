@@ -10,10 +10,17 @@ export type CurrentCityT = {
 
 type TemperatureUnit = 'C' | 'F'
 type DistanceUnit = 'ft' | 'm'
+type WindSpeedUnit = 'kph' | 'mph' | 'm/s' | 'kn' | 'bft'
+type AtmosPressureUnit = 'hPa' | 'inHg' | 'mmHg' | 'mbar' | 'atm'
+
 type WeatherSettingsStore = {
   currentCity: CurrentCityT
   temperatureUnit: TemperatureUnit
   setTemperatureUnit: (unit: TemperatureUnit) => void
+  windSpeedUnit: WindSpeedUnit
+  setWindSpeedUnit: (unit: WindSpeedUnit) => void
+  atmPressureUnit: AtmosPressureUnit
+  setAtmPressureUnit: (unit: AtmosPressureUnit) => void
   distanceUnit: DistanceUnit
   setDistanceUnit: (unit: DistanceUnit) => void
   setCurrentCity: (city: CurrentCityT | null) => void
@@ -33,6 +40,10 @@ export const weatherStore = create<WeatherSettingsStore>((set) => ({
   weatherWidgetIsActive: getWeatherWidgetIsActive(),
   openWeatherApiKey: getOpenWeatherApiKey(),
   accuWeatherApiKey: getAccuWeatherApiKey(),
+  windSpeedUnit: getWindSpeedUnit(),
+  atmPressureUnit: getAtmPressureUnit(),
+  setAtmPressureUnit: (unit: AtmosPressureUnit) => setAtmPressureUnit(unit, set),
+  setWindSpeedUnit: (unit: WindSpeedUnit) => setWindSpeedUnit(unit, set),
   setTemperatureUnit: (unit: TemperatureUnit) => setTemperatureUnit(unit, set),
   setDistanceUnit: (unit: DistanceUnit) => setDistanceUnit(unit, set),
   setCurrentCity: (city: CurrentCityT) => setCurrentCity(city, set),
@@ -43,6 +54,24 @@ export const weatherStore = create<WeatherSettingsStore>((set) => ({
 }))
 
 type Set = (fn: (state: WeatherSettingsStore) => WeatherSettingsStore) => void
+
+function getAtmPressureUnit() {
+  return (S.get('WeatherAtmospherePressureUnit') as AtmosPressureUnit) || 'hPa'
+}
+
+function setAtmPressureUnit(unit: AtmosPressureUnit, set: Set) {
+  S.set('WeatherAtmospherePressureUnit', unit)
+  set((state) => ({ ...state, atmPressureUnit: unit }))
+}
+
+function getWindSpeedUnit() {
+  return (S.get('WeatherWindSpeedUnit') as WindSpeedUnit) || 'kph'
+}
+
+function setWindSpeedUnit(unit: WindSpeedUnit, set: Set) {
+  S.set('WeatherWindSpeedUnit', unit)
+  set((state) => ({ ...state, windSpeedUnit: unit }))
+}
 
 function removeCurrentCityLocation(set: Set) {
   setCurrentCity(null, set)

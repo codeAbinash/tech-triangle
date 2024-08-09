@@ -19,7 +19,7 @@ type ParamList = {
 }
 
 export type MMKVDataEditorParamList = {
-  key?: string
+  key?: StorageKeys
   new?: boolean
 }
 
@@ -104,7 +104,9 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
             </SettGroup>
           )}
         </Gap12>
-        <View className='h-12'></View>
+        <View className='h-12'>
+          <SettText>You may need to restart the app to see the changes in the app.</SettText>
+        </View>
       </SettWrapper>
       <FabIcon navigation={navigation} Icon={<FloppyDiskIcon height={25} width={25} color={Colors.white} />} onPress={save} />
     </>

@@ -73,6 +73,8 @@ export const WeatherStorage = {
     WeatherOpenWeatherMapAPIKey: 'WeatherOpenWeatherMapAPIKey',
     WeatherAccuWeatherAPIKey: 'WeatherAccuWeatherAPIKey',
     WeatherWidgetIsActive: 'WeatherWidgetIsActive',
+    WeatherWindSpeedUnit: 'WeatherWindSpeedUnit',
+    WeatherAtmospherePressureUnit: 'WeatherAtmospherePressureUnit',
   },
 }
 export const DeveloperStorage = {
