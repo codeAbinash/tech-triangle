@@ -8,8 +8,9 @@ import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls } from '@utils/storage'
 import type { NavProp } from '@utils/types'
+import { screenDelay } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { View } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 
 export default function MMKVDataList({ navigation }: NavProp) {
@@ -19,7 +20,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
   const [searchResults, setSearchResults] = React.useState<string[]>([])
 
   useEffect(() => {
-    if (state) setInitStorage(ls.getAllKeys())
+    if (state) screenDelay(() => setInitStorage(ls.getAllKeys()))
   }, [state])
 
   useEffect(() => {
@@ -71,7 +72,8 @@ export default function MMKVDataList({ navigation }: NavProp) {
                 Icon={<Database02Icon {...ic} />}
               />
             )}
-            {initStorage === null && <SettOption title='Loading all data...' Icon={<Database02Icon {...ic} />} arrow />}
+            {initStorage === null && <ActivityIndicator size='large' color={Colors.accent} style={{ marginTop: 30, marginBottom: 30 }} />}
+            {/* {initStorage === null && <SettOption title='Loading all data...' Icon={<Database02Icon {...ic} />} arrow />} */}
           </SettGroup>
         </Gap12>
         <SettText>You can edit or delete these data. Click on the key to edit the value or click on the plus icon to add new data.</SettText>

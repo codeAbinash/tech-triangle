@@ -78,3 +78,9 @@ export async function searchCity(query: string, apiKey: string) {
 
   return data
 }
+
+export async function getLocation(lat: number, lon: number) {
+  const result = await fetch(locationUrl(lat, lon, OPENWEATHER_API_KEY))
+  const data = await result.json()
+  return data
+}

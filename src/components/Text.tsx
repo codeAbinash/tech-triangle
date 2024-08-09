@@ -12,7 +12,7 @@ export function TxtAcc({ children, size, ...rest }: TextProps & { size?: number 
 
 export function Txt({ children, size, ...rest }: TextProps & { size?: number }) {
   return (
-    <PMedium className='text-zinc-500 dark:text-zinc-500' style={{ fontSize: size || 14 }} {...rest}>
+    <PMedium className='text-zinc-500' style={{ fontSize: size || 14 }} {...rest}>
       {children}
     </PMedium>
   )

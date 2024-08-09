@@ -33,29 +33,29 @@ const requestLocationPermission = async () => {
 }
 const Location = () => {
   // state to hold location
-  const [location, setLocation] = useState<any>()
-  // function to check permissions and get Location
-  const getLocation = () => {
-    const result = requestLocationPermission()
-    result.then((res) => {
-      console.log('res is:', res)
-      if (res) {
-        Geolocation.getCurrentPosition(
-          (position) => {
-            console.log(JSON.stringify(position, null, 4))
-            setLocation(position)
-          },
-          (error) => {
-            // See error code charts below.
-            console.log(error.code, error.message)
-            setLocation(false)
-          },
-          { enableHighAccuracy: true, timeout: 15000, maximumAge: 1000 },
-        )
-      }
-    })
-    console.log(location)
-  }
+    const [location, setLocation] = useState<any>()
+    // function to check permissions and get Location
+    const getLocation = () => {
+      const result = requestLocationPermission()
+      result.then((res) => {
+        console.log('res is:', res)
+        if (res) {
+          Geolocation.getCurrentPosition(
+            (position) => {
+              console.log(JSON.stringify(position, null, 4))
+              setLocation(position)
+            },
+            (error) => {
+              // See error code charts below.
+              console.log(error.code, error.message)
+              setLocation(false)
+            },
+            { enableHighAccuracy: true, timeout: 15000, maximumAge: 1000 },
+          )
+        }
+      })
+      console.log(location)
+    }
   return (
     <View className='flex-1 items-center justify-center'>
       <Text>{JSON.stringify(location, null, 4)}</Text>
