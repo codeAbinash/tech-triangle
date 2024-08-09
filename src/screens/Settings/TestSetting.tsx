@@ -27,102 +27,115 @@ export default function TestSettings({ navigation }: NavProp) {
 
   return (
     <SettWrapper navigation={navigation} title='Test Settings'>
-      <Gap12>
-        <SettText className='mt-3'>This is a test screen to show the different settings components</SettText>
-        <SettGroup title='Colorful Toggles'>
-          <SettOption
-            activeOpacity={0.8}
-            title='Sample toggle 1'
-            onPress={() => setToggle1(!toggle1)}
-            Icon={<SidebarRightIcon {...ic} />}
-            Right={<Toggle isActive={toggle1} />}
-          />
-          <SettOption
-            activeOpacity={0.8}
-            title='Sample toggle 2'
-            onPress={() => setToggle2(!toggle2)}
-            Icon={<SidebarRightIcon {...ic} />}
-            Right={<Toggle isActive={toggle2} color={Colors.blue[500]} />}
-          />
-        </SettGroup>
-        <SettText>
-          Here are the states of the toggles. You can also see the states of the toggles in the right side of the. Toggle one is{' '}
-          <Text className='text-accent'>{toggle1 ? 'on' : 'off'}</Text> and toggle two is{' '}
-          <Text className='text-accent'>{toggle2 ? 'on' : 'off'}</Text>.
-        </SettText>
-        <SettGroup title='Text Inputs'>
-          <Input
-            Icon={<KeyboardIcon {...ic} />}
-            placeholder='Type something...'
-            Right={<Txt size={15}>TS</Txt>}
-            value={input1}
-            onChangeText={setInput1}
-          />
-          <Input
-            accent={Colors.red[500]}
-            Icon={<TextFontIcon {...ic} />}
-            placeholder='With red accent color...'
-            onChangeText={setInput2}
-            value={input2}
-          />
-        </SettGroup>
-        <SettText>
-          The value of the first input is <Text className='text-accent'>{input1 || 'Empty'}</Text>.
-        </SettText>
+      <>
+        <Gap12>
+          <SettText className='mt-3'>This is a test screen to show the different settings components</SettText>
+          <SettGroup title='Search bar'>
+            <Gap12 className='px-5 pb-4'>
+              <Search placeholder='Search placeholder' value={search} onChangeText={setSearch} />
+            </Gap12>
+          </SettGroup>
+          <SettText>
+            Here is a search bar with a placeholder of <Text className='text-accent'>{search || 'Nothing'}</Text>.
+          </SettText>
+        </Gap12>
+        <Gap12>
+          <SettGroup title='Colorful Toggles'>
+            <SettOption
+              activeOpacity={0.8}
+              title='Sample toggle 1'
+              onPress={() => setToggle1(!toggle1)}
+              Icon={<SidebarRightIcon {...ic} />}
+              Right={<Toggle isActive={toggle1} />}
+            />
+            <SettOption
+              activeOpacity={0.8}
+              title='Sample toggle 2'
+              onPress={() => setToggle2(!toggle2)}
+              Icon={<SidebarRightIcon {...ic} />}
+              Right={<Toggle isActive={toggle2} color={Colors.blue[500]} />}
+            />
+          </SettGroup>
+          <SettText>
+            Here are the states of the toggles. You can also see the states of the toggles in the right side of the. Toggle one is{' '}
+            <Text className='text-accent'>{toggle1 ? 'on' : 'off'}</Text> and toggle two is{' '}
+            <Text className='text-accent'>{toggle2 ? 'on' : 'off'}</Text>.
+          </SettText>
+        </Gap12>
+        <Gap12>
+          <SettGroup title='Text Inputs'>
+            <Input
+              Icon={<KeyboardIcon {...ic} />}
+              placeholder='Type something...'
+              Right={<Txt size={15}>TS</Txt>}
+              value={input1}
+              onChangeText={setInput1}
+            />
+            <Input
+              accent={Colors.red[500]}
+              Icon={<TextFontIcon {...ic} />}
+              placeholder='With red accent color...'
+              onChangeText={setInput2}
+              value={input2}
+            />
+          </SettGroup>
+          <SettText>
+            The value of the first input is <Text className='text-accent'>{input1 || 'Empty'}</Text>.
+          </SettText>
+        </Gap12>
 
-        <SettGroup title='Text area'>
-          <Input placeholder='This is a input field with multiple lines. You can type as much as you want.' numberOfLines={5} multiline />
-        </SettGroup>
+        <Gap12>
+          <SettGroup title='Text area'>
+            <Input placeholder='This is a input field with multiple lines. You can type as much as you want.' numberOfLines={5} multiline />
+          </SettGroup>
+          <SettText>
+            This is a text area. You can type as much as you want. The text area is not limited to a single line. You can type multiple lines.
+          </SettText>
+        </Gap12>
+        <Gap12>
+          <SettGroup>
+            <SettOption
+              Icon={<Setting07Icon {...ic} />}
+              title='Open Blank Settings '
+              onPress={() => navigation.navigate('BlankSettings')}
+              arrow
+            ></SettOption>
+          </SettGroup>
+          <SettText>This button will take you to the blank settings screen. You can test the settings components there.</SettText>
+        </Gap12>
+        <Gap12>
+          <SettGroup title='Your favorite Programming Language'>
+            <SettOption
+              title='JavaScript'
+              Icon={<JavaScriptIcon {...ic} />}
+              onPress={() => setOption1('JavaScript')}
+              Right={<Check className='text-amber-500' checked={option1 === 'JavaScript'} />}
+            />
+            <SettOption
+              title='TypeScript'
+              Icon={<Typescript01Icon {...ic} />}
+              onPress={() => setOption1('TypeScript')}
+              Right={<Check checked={option1 === 'TypeScript'} />}
+            />
+            <SettOption
+              title='C++'
+              Icon={<CIcon {...ic} />}
+              onPress={() => setOption1('C++')}
+              Right={<Check className='text-blue-500' checked={option1 === 'C++'} />}
+            />
+            <SettOption
+              title='Java'
+              Icon={<JavaIcon {...ic} />}
+              onPress={() => setOption1('Java')}
+              Right={<Check className='text-red-500' checked={option1 === 'Java'} />}
+            />
+          </SettGroup>
+          <SettText>
+            Your favorite programming language is <Text className='text-accent'>{option1}</Text>.
+          </SettText>
+        </Gap12>
+      </>
 
-        <SettGroup>
-          <SettOption
-            Icon={<Setting07Icon {...ic} />}
-            title='Open Blank Settings '
-            onPress={() => navigation.navigate('BlankSettings')}
-            arrow
-          ></SettOption>
-        </SettGroup>
-        <SettText>This button will take you to the blank settings screen. You can test the settings components there.</SettText>
-        <SettGroup title='Your favorite Programming Language'>
-          <SettOption
-            title='JavaScript'
-            Icon={<JavaScriptIcon {...ic} />}
-            onPress={() => setOption1('JavaScript')}
-            Right={<Check className='text-amber-500' checked={option1 === 'JavaScript'} />}
-          />
-          <SettOption
-            title='TypeScript'
-            Icon={<Typescript01Icon {...ic} />}
-            onPress={() => setOption1('TypeScript')}
-            Right={<Check checked={option1 === 'TypeScript'} />}
-          />
-          <SettOption
-            title='C++'
-            Icon={<CIcon {...ic} />}
-            onPress={() => setOption1('C++')}
-            Right={<Check className='text-blue-500' checked={option1 === 'C++'} />}
-          />
-          <SettOption
-            title='Java'
-            Icon={<JavaIcon {...ic} />}
-            onPress={() => setOption1('Java')}
-            Right={<Check className='text-red-500' checked={option1 === 'Java'} />}
-          />
-        </SettGroup>
-        <SettText>
-          Your favorite programming language is <Text className='text-accent'>{option1}</Text>.
-        </SettText>
-      </Gap12>
-      <Gap12>
-        <SettGroup title='Search bar'>
-          <Gap12 className='px-5 pb-4'>
-            <Search placeholder='Search placeholder' value={search} onChangeText={setSearch} />
-          </Gap12>
-        </SettGroup>
-        <SettText>
-          Here is a search bar with a placeholder of <Text className='text-accent'>{search || 'Nothing'}</Text>.
-        </SettText>
-      </Gap12>
       <Gap12>
         <SettGroup title='Buttons' className='pb-5'>
           <Gap12 className='px-5'>
