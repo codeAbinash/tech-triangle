@@ -46,3 +46,4 @@ export { default as FloppyDiskIcon } from '@icons/floppy-disk-stroke-rounded.svg
 export { default as PencilEdit02Icon } from '@icons/pencil-edit-02-stroke-rounded.svg'
 export { default as Delete02Icon } from '@icons/delete-02-stroke-rounded.svg'
 export { default as LocationOffline01Icon } from '@icons/location-offline-01-stroke-rounded.svg'
+export { default as CloudSolidIcon } from '@icons/cloud-solid-rounded.svg'

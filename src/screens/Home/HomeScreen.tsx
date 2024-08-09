@@ -10,17 +10,13 @@ import { getLocalDate, greetingByTime } from '@utils/utils'
 import React, { useMemo } from 'react'
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View, useColorScheme } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import styles, { hw } from './style'
+import WeatherWidget from '@screens/Weather/Widget/WeatherWidget'
 
 const { width } = Dimensions.get('window')
 
 function Elements() {
   const navigation = useNavigation<StackNav>()
-  const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
-  const hw = useMemo(() => {
-    return { width: width * 0.42, height: width * 0.49 }
-  }, [width])
-
-  const currentCity = weatherStore((state) => state.currentCity)
 
   return (
     <ScrollView
@@ -29,18 +25,7 @@ function Elements() {
       contentContainerStyle={{ gap: 12, paddingLeft: 18, paddingRight: 18, paddingTop: 5, paddingBottom: 5 }}
       snapToAlignment='center'
     >
-      {weatherWidgetIsActive && (
-        <TouchableOpacity
-          style={[hw, styles.shadow]}
-          className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
-          activeOpacity={0.7}
-          onPress={() => navigateToWeather(navigation, currentCity)}
-        >
-          <Text className='text-gray-800 dark:text-gray-200' style={PoppinsMedium}>
-            Weather
-          </Text>
-        </TouchableOpacity>
-      )}
+      <WeatherWidget navigation={navigation} />
       <TouchableOpacity
         style={[hw, styles.shadow]}
         className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
@@ -66,19 +51,6 @@ function Elements() {
     </ScrollView>
   )
 }
-
-const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: '#00000044',
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 5,
-  },
-  center: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
 
 function TopArea() {
   const theme = useColorScheme()
