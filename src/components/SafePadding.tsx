@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export function PaddingBottom() {
-  const bottom = useSafeAreaInsets().bottom
+  const bottom = useSafeAreaInsets().bottom 
   return <View style={{ height: bottom }} />
 }
 

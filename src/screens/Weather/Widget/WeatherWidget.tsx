@@ -8,6 +8,7 @@ import type { StackNav } from '@utils/types'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { useDerivedValue } from 'react-native-reanimated'
+import { themeList } from './themes'
 
 export default function WeatherWidget({ navigation }: { navigation: StackNav }) {
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
@@ -15,17 +16,19 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   const h = hw.height
   const w = hw.width
 
-  const colors = useDerivedValue(() => ['#697380', '#525b67'], [])
-
-  const color = { color: 'white' }
+  const theme = themeList.at(-1)!
+  const color = theme.color
+  const gradient = useDerivedValue(() => theme.gradient, [])
 
   if (!weatherWidgetIsActive) return null
+
+  if (!currentCity) return <SetupWeather navigation={navigation} />
 
   return (
     <View className='overflow-hidden rounded-3xl' style={{ position: 'relative' }}>
       <Canvas style={[hw, { position: 'absolute' }]}>
         <Rect x={0} y={0} width={hw.width} height={hw.height}>
-          <LinearGradient colors={colors} start={vec(h, 0)} end={vec(h, w)} />
+          <LinearGradient colors={gradient} start={vec(w / 2, 0)} end={vec(w / 2, h)} />
         </Rect>
       </Canvas>
       <TouchableOpacity
@@ -47,6 +50,34 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
           </Medium>
           <Medium style={[color]}>H:64° L:34°</Medium>
         </View>
+      </TouchableOpacity>
+    </View>
+  )
+}
+
+function SetupWeather({ navigation }: { navigation: StackNav }) {
+  const h = hw.height
+  const w = hw.width
+  const theme = themeList[0]
+  const color = theme.color
+  const g = theme.gradient
+
+  return (
+    <View className='overflow-hidden rounded-3xl' style={{ position: 'relative' }}>
+      <Canvas style={[hw, { position: 'absolute' }]}>
+        <Rect x={0} y={0} width={hw.width} height={hw.height}>
+          <LinearGradient colors={[g[0], g[1]]} start={vec(w / 2, 0)} end={vec(w / 2, h)} />
+        </Rect>
+      </Canvas>
+      <TouchableOpacity
+        style={[hw, styles.shadow]}
+        className='items-center justify-center'
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate('WeatherWelcome')}
+      >
+        <Medium style={color} className='text-center'>
+          Tap to set {'\n'} up weather
+        </Medium>
       </TouchableOpacity>
     </View>
   )
