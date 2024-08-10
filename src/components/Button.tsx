@@ -10,7 +10,7 @@ export default function Btn({ title, onPress, disabled, children, style, ...rest
       activeOpacity={0.8}
       onPress={onPress}
       className='w-full bg-accent'
-      style={[{ borderRadius: 14, paddingVertical: 13, opacity: disabled ? 0.8 : 1 }, style]}
+      style={[{ borderRadius: 14, paddingVertical: 13, paddingHorizontal: 13, opacity: disabled ? 0.8 : 1 }, style]}
       disabled={disabled}
       {...rest}
     >

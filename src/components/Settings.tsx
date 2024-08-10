@@ -87,7 +87,7 @@ export function Check({ checked, ...rest }: CheckIconProps) {
 type SettWrapperProps = ScrollViewProps & {
   Header?: React.ReactNode
   title?: string
-  navigation: StackNav
+  navigation?: StackNav
 }
 export function SettWrapper({ Header, title, navigation, children, ...rest }: SettWrapperProps) {
   const scheme = useColorScheme()

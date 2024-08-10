@@ -16,6 +16,7 @@ import {
 } from '@assets/icons/icons'
 import HomeScreen from './Home/HomeScreen'
 import ComingSoon from './UnderConstruction'
+import TyrItOut from './Try/TyrItOut'
 const Tab = createBottomTabNavigator()
 
 function BottomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
@@ -94,23 +95,23 @@ const Home = () => {
           }}
         />
         <Tab.Screen
-          name='OS'
-          component={ComingSoon}
-          options={{
-            tabBarLabel: 'Explore',
-            headerShown: false,
-            tabBarIcon: ExploreIcon,
-          }}
-        />
-        <Tab.Screen
-          name='Invite'
-          component={ComingSoon}
+          name='TryItOut'
+          component={TyrItOut}
           options={{
             tabBarLabel: 'Try it out',
             headerShown: false,
             tabBarIcon: Try,
           }}
         />
+          <Tab.Screen
+            name='Explore'
+            component={ComingSoon}
+            options={{
+              tabBarLabel: 'Explore',
+              headerShown: false,
+              tabBarIcon: ExploreIcon,
+            }}
+          />
         <Tab.Screen
           name='Wallet'
           component={ComingSoon}
