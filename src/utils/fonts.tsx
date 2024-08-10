@@ -13,6 +13,9 @@ export const PoppinsSemiBold = {
 export const PoppinsBold = {
   fontFamily: 'Poppins-Bold',
 }
+export const PoppinsLight = {
+  fontFamily: 'Poppins-Light',
+}
 
 export function Medium({ children, style, ...props }: TextProps) {
   return (
@@ -41,6 +44,14 @@ export function SemiBold({ children, style, ...props }: TextProps) {
 export function Bold({ children, style, ...props }: TextProps) {
   return (
     <Text style={[PoppinsBold, style]} {...props}>
+      {children}
+    </Text>
+  )
+}
+
+export function Light({ children, style, ...props }: TextProps) {
+  return (
+    <Text style={[PoppinsLight, style]} {...props}>
       {children}
     </Text>
   )

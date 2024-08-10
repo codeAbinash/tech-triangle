@@ -16,7 +16,7 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   const h = hw.height
   const w = hw.width
 
-  const theme = themeList.at(-1)!
+  const theme = themeList.at(0)!
   const color = theme.color
   const gradient = useDerivedValue(() => theme.gradient, [])
 
@@ -41,12 +41,12 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
           <Medium className='text-base' style={color}>
             Bankura
           </Medium>
-          <Regular style={[{ fontSize: 65, lineHeight: 83 }, color]}>62°</Regular>
+          <Regular style={[{ fontSize: 60, lineHeight: 83 }, color]}>62°</Regular>
         </View>
         <View>
           <CloudSolidIcon width={25} height={25} color={color.color} />
           <Medium style={[color]} className='mt-0.5'>
-            Cloudy
+            Thunderstorm
           </Medium>
           <Medium style={[color]}>H:64° L:34°</Medium>
         </View>

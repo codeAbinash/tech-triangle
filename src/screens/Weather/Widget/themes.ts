@@ -30,5 +30,14 @@ export const themeList: Array<Theme> = [
     color: { color: 'white' },
     content: 'light-content',
   },
-
+  {
+    gradient: ['#45457c', '#33335c'],
+    color: { color: 'white' },
+    content: 'light-content',
+  },
+  {
+    gradient: ['#33487f', '#ac8a7a'],
+    color: { color: 'white' },
+    content: 'light-content',
+  },
 ]

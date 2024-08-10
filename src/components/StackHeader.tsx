@@ -20,7 +20,7 @@ export default function StackHeader({ left, Left, right, Right, title, Title, Le
       <View className='items-start' style={{ flex: 1 }}>
         <TouchableOpacity onPress={LeftOnPress || (() => navigation.goBack())} activeOpacity={0.7}>
           {Left || (
-            <Medium className='px-0.5 py-2 text-accent' style={{ fontSize: 15.5 }} numberOfLines={1}>
+            <Medium className='px-0.5 py-1.5 pb-2.5 text-accent' style={{ fontSize: 15.5 }} numberOfLines={1}>
               {left}
             </Medium>
           )}
@@ -34,7 +34,7 @@ export default function StackHeader({ left, Left, right, Right, title, Title, Le
       <View className='flex-1 items-end'>
         <TouchableOpacity onPress={RightOnPress || (() => navigation.goBack())} activeOpacity={0.7}>
           {Right || (
-            <Medium className='px-0.5 py-2 text-accent' style={{ fontSize: 15.5 }}>
+            <Medium className='px-0.5 py-1.5 pb-2.5 text-accent' style={{ fontSize: 15.5 }}>
               {right}
             </Medium>
           )}
