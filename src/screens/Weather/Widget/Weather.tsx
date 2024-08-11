@@ -38,25 +38,25 @@ export default function Weather({ navigation }: NavProp) {
         </Medium>
         <View className='flex-row justify-center'>
           <Light
-            className='mt-2 items-start justify-start text-center'
+            className='mt-2 items-start justify-start pl-2 text-center'
             style={[
               color,
               {
-                lineHeight: 160,
-                fontSize: 140,
+                lineHeight: 170,
+                fontSize: 150,
               },
             ]}
           >
-            62
+            32
           </Light>
           <Medium style={[color, { fontSize: 60 }]}>°</Medium>
         </View>
         <Medium className='-mt-4 text-center text-lg' style={color}>
           Thunderstorm
         </Medium>
-        <Medium className='mt-0.5 text-center text-lg' style={color}>
-          H:30° L:20°
-        </Medium>
+        {/* <Medium className='mt-0.5 text-center text-lg' style={color}>
+          H:30° / L:20°
+        </Medium> */}
         <PaddingBottom />
       </View>
     </>

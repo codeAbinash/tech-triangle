@@ -224,7 +224,7 @@ function GetTryLocateAgainButton({ getLocation, locationStatus }: { getLocation:
 function GrantPermission() {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Please grant location permission.</Medium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>Please grant location permission.</Medium>
       <Button title='Allow location' onPress={() => Linking.openSettings()} />
     </View>
   )
@@ -232,7 +232,7 @@ function GrantPermission() {
 function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Your location is turned off. Turn it on.</Medium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>Your location is turned off. Turn it on.</Medium>
       <Button title='Turn on location' onPress={getLocation} />
     </View>
   )
@@ -241,7 +241,7 @@ function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
 function GrantPermissionFromSettings({ getLocation }: { getLocation: () => void }) {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-900'>Allow the app to access your location.</Medium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>Allow the app to access your location.</Medium>
       <Button title='Go to settings' onPress={() => Linking.openSettings()} />
     </View>
   )
