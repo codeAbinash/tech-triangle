@@ -6,7 +6,7 @@ import { useMutation } from '@tanstack/react-query'
 import { Medium, Regular } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { tempConverter } from '@utils/utils'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { useDerivedValue } from 'react-native-reanimated'
 import { getWeather } from '../api'
@@ -35,23 +35,21 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
     onError: (err) => console.log(err),
     onSuccess: (_) => setCurrentWeather(_),
   })
-
   const w = data || currentWeather
-
   useEffect(() => mutate(), [currentCity])
 
-  async function fetchResult(): Promise<Weather> {
+  const fetchResult = useCallback(async (): Promise<Weather> => {
     const now = new Date().getTime()
     if (now - lastUpdated > weatherCacheTime) {
       setLastUpdated(now)
       return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
     }
     return currentWeather
-  }
+  }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
   if (!weatherWidgetIsActive) return null
-  if (!currentCity) return <WeatherWithText text={`Tap to set {'\n'} up weather`} navigation={navigation} />
-  if (!w) return <WeatherWithText text='Loading...' navigation={navigation} />
+  if (!currentCity) return <WeatherWithText text={`Tap to set {'\n'} up weather`} onPress={() => navigation.navigate('WeatherWelcome')} />
+  if (!w) return <WeatherWithText text='Loading...' />
 
   return (
     <View className='overflow-hidden rounded-3xl' style={{ position: 'relative' }}>
@@ -60,7 +58,12 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
           <LinearGradient colors={gradient} start={vec(width / 2, 0)} end={vec(width / 2, height)} />
         </Rect>
       </Canvas>
-      <TouchableOpacity style={[hw, styles.shadow]} className='justify-between p-4' activeOpacity={0.7}>
+      <TouchableOpacity
+        style={[hw, styles.shadow]}
+        className='justify-between p-4'
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate('Weather')}
+      >
         <View>
           <Medium className='text-base' style={color}>
             {currentCity.name}
@@ -71,9 +74,14 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
           <CloudSolidIcon width={25} height={25} color={color.color} />
           <Medium style={[color]} className='mt-0.5 capitalize'>
             {w ? w.current.weather[0].description : '__'}
+            {/* {w.current.weather[0].icon} */}
           </Medium>
-          <Medium style={[color]}>
+          {/* <Medium style={[color]}>
             H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
+          </Medium> */}
+          <Medium style={[color]}>
+            {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° {currentUnit} / {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
+            ° {currentUnit}
           </Medium>
         </View>
       </TouchableOpacity>
@@ -81,7 +89,7 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   )
 }
 
-function WeatherWithText({ navigation, text }: { navigation: StackNav; text: string }) {
+function WeatherWithText({ text, onPress }: { text: string; onPress?: () => void }) {
   const h = hw.height
   const w = hw.width
   const theme = themeList[0]
@@ -95,12 +103,7 @@ function WeatherWithText({ navigation, text }: { navigation: StackNav; text: str
           <LinearGradient colors={[g[0], g[1]]} start={vec(w / 2, 0)} end={vec(w / 2, h)} />
         </Rect>
       </Canvas>
-      <TouchableOpacity
-        style={[hw, styles.shadow]}
-        className='items-center justify-center'
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('WeatherWelcome')}
-      >
+      <TouchableOpacity style={[hw, styles.shadow]} className='items-center justify-center' activeOpacity={0.7} onPress={onPress}>
         <Medium style={color} className='text-center'>
           {text}
         </Medium>

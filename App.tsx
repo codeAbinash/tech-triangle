@@ -33,11 +33,11 @@ import TestSettings from '@screens/Settings/TestSetting'
 import Test from '@screens/Test'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
+import WeatherScreen from '@screens/Weather/Weather'
 import WeatherLocation, { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
 import WeatherSearchCity, { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
 import WeatherScienceSettings from '@screens/Weather/WeatherSettings'
 import WeatherWelcome from '@screens/Weather/WeatherWelcome'
-import Weather from '@screens/Weather/Widget/Weather'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
 import type { StackNav } from '@utils/types'
@@ -147,7 +147,7 @@ function Navigation() {
         <Stack.Screen name='KeyboardAnimation' component={KeyboardAnimation} />
         <Stack.Screen name='Animations' component={Animations} />
         <Stack.Screen name='DragAnimation' component={DragAnimation} />
-        <Stack.Screen name='Weather' component={Weather} options={GestureEnabled} />
+        <Stack.Screen name='Weather' component={WeatherScreen} options={GestureEnabled} />
         <Stack.Screen name='WeatherWelcome' component={WeatherWelcome} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='WeatherSearchCity' component={WeatherSearchCity} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='WeatherLocation' component={WeatherLocation} options={IOS_BOTTOM_STYLE} />
