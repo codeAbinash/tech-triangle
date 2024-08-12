@@ -48,7 +48,7 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
   if (!weatherWidgetIsActive) return null
-  if (!currentCity) return <WeatherWithText text={`Tap to set {'\n'} up weather`} onPress={() => navigation.navigate('WeatherWelcome')} />
+  if (!currentCity) return <WeatherWithText text={`Tap to set \n up weather`} onPress={() => navigation.navigate('WeatherWelcome')} />
   if (!w) return <WeatherWithText text='Loading...' />
 
   return (
