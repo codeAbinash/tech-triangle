@@ -15,7 +15,7 @@ import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Linking, PermissionsAndroid, StatusBar, View } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 import { getLocation } from './api'
-import type { LocationResult } from './types'
+import type { LocationResult } from './LocationResultTypes'
 
 type ParamList = {
   WeatherLocation: WeatherLocationParamList

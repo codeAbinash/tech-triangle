@@ -75,6 +75,9 @@ export const WeatherStorage = {
     WeatherWidgetIsActive: 'WeatherWidgetIsActive',
     WeatherWindSpeedUnit: 'WeatherWindSpeedUnit',
     WeatherAtmospherePressureUnit: 'WeatherAtmospherePressureUnit',
+    WeatherCurrentWeather: 'WeatherCurrentWeather',
+    WeatherLastUpdated: 'WeatherLastUpdated',
+    WeatherCacheTime: 'WeatherCacheTime',
   },
 }
 export const DeveloperStorage = {

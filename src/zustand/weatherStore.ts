@@ -1,3 +1,5 @@
+import type { Weather } from '@screens/Weather/types'
+import { WEATHER_CACHE_TIME } from '@utils/constants'
 import S from '@utils/storage'
 import { ToastAndroid } from 'react-native'
 import { create } from 'zustand'
@@ -8,7 +10,7 @@ export type CurrentCityT = {
   lon: number
 } | null
 
-type TemperatureUnit = 'C' | 'F'
+export type TemperatureUnit = 'C' | 'F'
 type DistanceUnit = 'ft' | 'm'
 type WindSpeedUnit = 'kph' | 'mph' | 'm/s' | 'kn' | 'bft'
 type AtmosPressureUnit = 'hPa' | 'inHg' | 'mmHg' | 'mbar' | 'atm'
@@ -31,6 +33,12 @@ type WeatherSettingsStore = {
   weatherWidgetIsActive: boolean
   setWeatherWidgetIsActive: (isActive: boolean) => void
   removeCurrentCityLocation: () => void
+  currentWeather: Weather
+  setCurrentWeather: (weather: Weather) => void
+  lastUpdated: number
+  setLastUpdated: (time: number) => void
+  weatherCacheTime: number
+  setWeatherCacheTime: (time: number) => void
 }
 
 export const weatherStore = create<WeatherSettingsStore>((set) => ({
@@ -51,9 +59,44 @@ export const weatherStore = create<WeatherSettingsStore>((set) => ({
   setOpenWeatherApiKey: (key: string) => setOpenWeatherApiKey(key, set),
   setWeatherWidgetIsActive: (isActive: boolean) => setWeatherWidgetIsActive(isActive, set),
   removeCurrentCityLocation: () => removeCurrentCityLocation(set),
+  currentWeather: getCurrentWeather(),
+  setCurrentWeather: (weather: Weather) => setCurrentWeather(weather, set),
+  lastUpdated: getWeatherLastUpdated(),
+  setLastUpdated: (time: number) => setWeatherLastUpdated(time, set),
+  weatherCacheTime: getWeatherCacheTime(),
+  setWeatherCacheTime: (time: number) => setWeatherCacheTime(time, set),
 }))
 
 type Set = (fn: (state: WeatherSettingsStore) => WeatherSettingsStore) => void
+
+function getWeatherCacheTime() {
+  const cacheTime = Number(S.get('WeatherCacheTime'))
+  return isNaN(cacheTime) ? WEATHER_CACHE_TIME : cacheTime
+}
+
+function setWeatherCacheTime(time: number, set: Set) {
+  S.set('WeatherCacheTime', time.toString())
+  set((state) => ({ ...state, weatherCacheTime: time }))
+}
+
+function getWeatherLastUpdated() {
+  const lastUpdated = Number(S.get('WeatherLastUpdated') || '0')
+  return isNaN(lastUpdated) ? 0 : lastUpdated
+}
+
+function setWeatherLastUpdated(time: number, set: Set) {
+  S.set('WeatherLastUpdated', time.toString())
+  set((state) => ({ ...state, lastUpdated: time }))
+}
+
+function getCurrentWeather() {
+  return S.getParsed<Weather>('WeatherCurrentWeather')
+}
+
+function setCurrentWeather(weather: Weather, set: Set) {
+  S.set('WeatherCurrentWeather', JSON.stringify(weather))
+  set((state) => ({ ...state, currentWeather: weather }))
+}
 
 function getAtmPressureUnit() {
   return (S.get('WeatherAtmospherePressureUnit') as AtmosPressureUnit) || 'hPa'

@@ -7,6 +7,7 @@ import {
   CloudSlowWindIcon,
   DashboardSquare02Icon,
   Database02Icon,
+  DatabaseRestoreIcon,
   Delete02Icon,
   FahrenheitIcon,
   FastWindIcon,
@@ -25,9 +26,10 @@ import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@compon
 import { Txt, TxtAcc } from '@components/Text'
 import { Toggle } from '@components/Toggle'
 import { useIsFocused } from '@react-navigation/native'
+import { WEATHER_CACHE_TIME } from '@utils/constants'
 import { clearStorage, getStorageSize, WeatherCache, WeatherStorage } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { getLatitude, screenDelay, toReadableSize } from '@utils/utils'
+import { getLatitude, msToMin, screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { Linking, Text } from 'react-native'
 
@@ -48,6 +50,8 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const setWindSpeedUnit = weatherStore((state) => state.setWindSpeedUnit)
   const atmPressureUnit = weatherStore((state) => state.atmPressureUnit)
   const setAtmPressureUnit = weatherStore((state) => state.setAtmPressureUnit)
+  const setWeatherCacheTime = weatherStore((state) => state.setWeatherCacheTime)
+  const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
 
   const dev = devOptStore((state) => state.isEnabled)
 
@@ -116,6 +120,26 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         </SettGroup>
         <SettText>Changing one of the two above settings will automatically override the other.</SettText>
       </Gap12>
+      {dev && (
+        <Gap12>
+          <SettGroup title='Weather Cache Time'>
+            <Input
+              Icon={<DatabaseRestoreIcon {...ic} />}
+              Right={<Txt>minutes</Txt>}
+              value={(weatherCacheTime / 60000).toString()}
+              onChangeText={(val) => setWeatherCacheTime(parseInt(val) * 60000)}
+              keyboardType='numeric'
+            />
+          </SettGroup>
+          <SettText>
+            The time in minutes to cache the weather data. The default is {msToMin(WEATHER_CACHE_TIME)} minutes.{' '}
+            <Text className='text-accent' onPress={() => setWeatherCacheTime(WEATHER_CACHE_TIME)}>
+              Reset to default
+            </Text>
+            .
+          </SettText>
+        </Gap12>
+      )}
       <Gap12>
         <SettGroup title='Accuweather API key'>
           <Input Icon={<Key01Icon {...ic} />} placeholder='Enter Accuweather API key' onChangeText={setAccuApiKey} defaultValue={accuApiKey} />

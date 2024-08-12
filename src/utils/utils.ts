@@ -1,5 +1,7 @@
 import { ls } from '@utils/storage'
-import { Share } from 'react-native'
+import { Alert, Share } from 'react-native'
+import { SCREEN_TRANSITION } from './constants'
+import type { TemperatureUnit } from '@/zustand/weatherStore'
 
 export async function shareText(message: string) {
   try {
@@ -24,9 +26,6 @@ export function niceDate(date: Date | null) {
     year: 'numeric',
   })
 }
-
-import { Alert } from 'react-native'
-import { SCREEN_TRANSITION } from './constants'
 
 // Utils
 export const p = console.log
@@ -110,3 +109,22 @@ export function getLocalDataSize(startKey: string) {
 export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
   return setTimeout(fn, ms)
 }
+
+/**
+ *
+ * @param temp temperature in kelvin
+ * @param unit unit of temperature
+ * @returns temperature in the specified unit
+ */
+export function tempConverter(temp: number, unit: TemperatureUnit) {
+  if (unit === 'C') return Math.round(temp - 273.15)
+  if (unit === 'F') return Math.round((temp - 273.15) * 1.8 + 32)
+  return temp
+}
+
+/**
+ *
+ * @param ms milliseconds
+ * @returns minutes
+ */
+export const msToMin = (ms: number) => Math.round(ms / 1000 / 60)

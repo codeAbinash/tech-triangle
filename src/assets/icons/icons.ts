@@ -61,3 +61,4 @@ export { default as ArtificialIntelligence04Icon } from '@icons/artificial-intel
 export { default as NeuralNetworkIcon } from '@icons/neural-network-stroke-rounded.svg'
 export { default as SoftwareLicenseIcon } from '@icons/software-license-stroke-rounded.svg'
 export { default as DashboardSpeed01Icon } from '@icons/dashboard-speed-01-stroke-rounded.svg'
+export { default as DatabaseRestoreIcon } from '@icons/database-restore-stroke-rounded.svg'

@@ -84,3 +84,7 @@ export async function getLocation(lat: number, lon: number) {
   const data = await result.json()
   return data
 }
+
+export async function getWeather(lat: number, lon: number) {
+  return await (await fetch(weatherUrl(lat, lon, OPENWEATHER_API_KEY))).json()
+}
