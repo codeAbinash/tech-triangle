@@ -96,13 +96,6 @@ export default function Settings({ navigation }: NavProp) {
               <SettOption title='My Wallet' Icon={<Wallet02Icon {...ic} />} arrow />
             </SettGroup>
           </Gap12>
-          <SettGroup title='Storage'>
-            {dev && (
-              <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow onPress={() => navigation.navigate('MMKVDataList')} />
-            )}
-            <SettOption title='Clear cache' Icon={<CleanIcon {...ic} />} Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>} onPress={clearCache} />
-            <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>} />
-          </SettGroup>
           <Gap12>
             <SettGroup title='For Developers'>
               <SettOption title='Developer options' Icon={<CodeIcon {...ic} />} onPress={() => navigation.navigate('DeveloperOptions')} arrow />
@@ -110,6 +103,13 @@ export default function Settings({ navigation }: NavProp) {
             </SettGroup>
             <SettText>These options are intended for developers and may cause unexpected behavior. Use them with caution.</SettText>
           </Gap12>
+          <SettGroup title='Storage'>
+            {dev && (
+              <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow onPress={() => navigation.navigate('MMKVDataList')} />
+            )}
+            <SettOption title='Clear cache' Icon={<CleanIcon {...ic} />} Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>} onPress={clearCache} />
+            <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>} />
+          </SettGroup>
           <SettGroup title='Help & Support'>
             <SettOption arrow title='Ask a question' Icon={<BubbleChatIcon {...ic} />} onPress={ask_a_question} />
             <SettOption arrow title='Privacy Policy' Icon={<ShieldUserIcon {...ic} />} />
