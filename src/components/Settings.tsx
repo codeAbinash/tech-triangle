@@ -107,3 +107,19 @@ export function SettWrapper({ Header, title, navigation, children, ...rest }: Se
     </View>
   )
 }
+
+export function Bg({ children, ...rest }: ViewProps) {
+  return (
+    <View className='bg-white dark:bg-zinc-950' {...rest}>
+      {children}
+    </View>
+  )
+}
+
+export function BgSecondary({ children, ...rest }: ViewProps) {
+  return (
+    <View className='bg-zinc-100 dark:bg-black' {...rest}>
+      {children}
+    </View>
+  )
+}

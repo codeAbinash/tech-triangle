@@ -18,6 +18,7 @@ import SensorAnimation from '@screens/animations/SensorAnimation'
 import StableBox from '@screens/animations/StableBox'
 import StableWallpaper from '@screens/animations/StableWallpaper'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
+import CoordinatesNotes from '@screens/CoordinateNotes/CoordinatesNotes'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
 import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
@@ -110,6 +111,7 @@ export type RootStackParamList = {
   MMKVDataList: undefined
   TestSettings: undefined
   BlankSettings: undefined
+  CoordinateNotes: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -164,6 +166,7 @@ function Navigation() {
         <Stack.Screen name='BlankSettings' component={BlankSettings} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataList' component={MMKVDataList} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} options={GestureEnabled} />
+        <Stack.Screen name='CoordinateNotes' component={CoordinatesNotes} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

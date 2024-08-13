@@ -11,7 +11,7 @@ import {
   Settings01Icon,
   SoftwareLicenseIcon,
   TestIcon,
-  Timer02Icon
+  Timer02Icon,
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
@@ -66,7 +66,7 @@ export default function TyrItOut({ navigation }: NavProp) {
 
           <SettGroup title='Tools'>
             <SettOption title='Location Speed Meter' Icon={<DashboardSpeed01Icon {...ic} />} arrow />
-            <SettOption title='Current Coordinated' Icon={<MapsLocation02Icon {...ic} />} arrow />
+            <SettOption title='Coordinate Notes' Icon={<MapsLocation02Icon {...ic} />} arrow onPress={() => navigation.navigate('CoordinateNotes')} />
           </SettGroup>
 
           <Gap12>

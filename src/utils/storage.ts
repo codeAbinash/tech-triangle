@@ -94,6 +94,12 @@ export const Caches = {
   },
   keys: {},
 }
+export const CoordinateNotesStorage = {
+  startWith: {},
+  keys: {
+    CoordinateNotes: 'CoordinateNotes',
+  },
+}
 
 interface StorageType {
   keys: Record<string, string>
@@ -103,7 +109,8 @@ type Store<T extends StorageType> = keyof T['keys'] | `${Extract<keyof T['startW
 
 type WeatherStorage = Store<typeof WeatherStorage>
 type DeveloperStorage = Store<typeof DeveloperStorage>
-export type StorageKeys = WeatherStorage | DeveloperStorage
+type CoordinateNotesStorage = Store<typeof CoordinateNotesStorage>
+export type StorageKeys = WeatherStorage | DeveloperStorage | CoordinateNotesStorage
 
 /**
  * Other variant of storage

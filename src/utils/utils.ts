@@ -128,3 +128,11 @@ export function tempConverter(temp: number, unit: TemperatureUnit) {
  * @returns minutes
  */
 export const msToMin = (ms: number) => Math.round(ms / 1000 / 60)
+
+/**
+ *
+ * @returns current timestamp
+ */
+export function timeStamp() {
+  return new Date().getTime()
+}

@@ -3,9 +3,9 @@ import React from 'react'
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-export type FabIconProps = { navigation: StackNav; Icon?: React.ReactNode } & TouchableOpacityProps
+export type FabIconProps = { Icon?: React.ReactNode } & TouchableOpacityProps
 
-export default function FabIcon({ navigation, style, Icon, ...rest }: FabIconProps) {
+export default function FabIcon({ style, Icon, ...rest }: FabIconProps) {
   const bottom = useSafeAreaInsets().bottom
   return (
     <TouchableOpacity

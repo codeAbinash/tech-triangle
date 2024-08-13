@@ -80,7 +80,6 @@ export default function MMKVDataList({ navigation }: NavProp) {
         <View className='h-14'></View>
       </SettWrapper>
       <FabIcon
-        navigation={navigation}
         Icon={<PencilEdit02Icon height={25} width={25} color={Colors.white} />}
         onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
       />
