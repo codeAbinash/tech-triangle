@@ -118,6 +118,7 @@ function setWindSpeedUnit(unit: WindSpeedUnit, set: Set) {
 
 function removeCurrentCityLocation(set: Set) {
   setCurrentCity(null, set)
+  setWeatherLastUpdated(0, set)
   ToastAndroid.show('Current city & location removed', ToastAndroid.SHORT)
 }
 
@@ -125,6 +126,7 @@ function getCurrentCity() {
   return S.getParsed<CurrentCityT>('WeatherCurrentCity')
 }
 function setCurrentCity(city: CurrentCityT | null, set: Set) {
+  setWeatherLastUpdated(0, set)
   S.set('WeatherCurrentCity', JSON.stringify(city))
   set((state) => ({ ...state, currentCity: city }))
 }
