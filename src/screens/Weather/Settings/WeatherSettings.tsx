@@ -1,30 +1,23 @@
 import { devOptStore } from '@/zustand/devOptStore'
-import { weatherStore, type DistanceUnit, type TemperatureUnit } from '@/zustand/weatherStore'
+import { weatherStore } from '@/zustand/weatherStore'
 import {
-  CelsiusIcon,
   City03Icon,
   CleanIcon,
-  CloudSlowWindIcon,
   DashboardSquare02Icon,
   Database02Icon,
   DatabaseRestoreIcon,
   Delete02Icon,
-  FahrenheitIcon,
   FastWindIcon,
   Key01Icon,
   MapsLocation02Icon,
   PencilEdit02Icon,
-  Road02Icon,
   RulerIcon,
-  SlowWindsIcon,
   SortingDownIcon,
-  SunCloudFastWind01Icon,
   TemperatureIcon,
-  WindPowerIcon,
 } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Txt, TxtAcc } from '@components/Text'
 import { Toggle } from '@components/Toggle'
 import { useIsFocused } from '@react-navigation/native'
@@ -37,7 +30,6 @@ import { Linking, Text } from 'react-native'
 
 export default function WeatherScienceSettings({ navigation }: NavProp) {
   const currentCity = weatherStore((state) => state.currentCity)
-
   const setOwApiKey = weatherStore((state) => state.setOpenWeatherApiKey)
   const setAccuApiKey = weatherStore((state) => state.setAccuWeatherApiKey)
   const owApiKey = weatherStore((state) => state.openWeatherApiKey)
@@ -45,13 +37,10 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const setWeatherWidgetIsActive = weatherStore((state) => state.setWeatherWidgetIsActive)
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
   const removeLocation = weatherStore((state) => state.removeCurrentCityLocation)
-
   const setWeatherCacheTime = weatherStore((state) => state.setWeatherCacheTime)
   const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
   const [cacheTimeInputError, setCacheTimeInputError] = React.useState('')
-
   const dev = devOptStore((state) => state.isEnabled)
-
   const [searchCache, setSearchCache] = React.useState(0)
   const [weatherSize, setWeatherSize] = React.useState(0)
 
@@ -188,13 +177,9 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
 
 function Units({ navigation }: { navigation: StackNav }) {
   const temperatureUnit = weatherStore((state) => state.temperatureUnit)
-  const setTmpUnit = weatherStore((state) => state.setTemperatureUnit)
   const distanceUnit = weatherStore((state) => state.distanceUnit)
-  const setDistUnit = weatherStore((state) => state.setDistanceUnit)
   const windSpeedUnit = weatherStore((state) => state.windSpeedUnit)
-  const setWindSpeedUnit = weatherStore((state) => state.setWindSpeedUnit)
   const atmPressureUnit = weatherStore((state) => state.atmPressureUnit)
-  const setAtmPressureUnit = weatherStore((state) => state.setAtmPressureUnit)
   return (
     <>
       <SettGroup title={'Units'}>
@@ -226,37 +211,7 @@ function Units({ navigation }: { navigation: StackNav }) {
           Icon={<SortingDownIcon {...ic} />}
           onPress={() => navigation.navigate('AtmPressureUnit')}
         />
-        {/* <SettOption
-          title='Celsius'
-          Icon={<CelsiusIcon {...ic} />}
-          Right={<Check checked={temperatureUnit === 'C'} />}
-          onPress={() => setTmpUnit('C')}
-        />
-        <SettOption
-          title='Fahrenheit'
-          Icon={<FahrenheitIcon {...ic} />}
-          Right={<Check checked={temperatureUnit === 'F'} />}
-          onPress={() => setTmpUnit('F')}
-        /> */}
       </SettGroup>
-      {/* <SettGroup title='Wind Speed Unit'>
-        
-      </SettGroup> */}
-      {/* <SettGroup title='Atmospheric Pressure Unit'>
-        <SettOption title='Hectopascal (hPa)' Right={<Check checked={atmPressureUnit === 'hPa'} />} onPress={() => setAtmPressureUnit('hPa')} />
-        <SettOption
-          title='Inches of mercury (inHg)'
-          Right={<Check checked={atmPressureUnit === 'inHg'} />}
-          onPress={() => setAtmPressureUnit('inHg')}
-        />
-        <SettOption
-          title='Millimeter of mercury (mmHg)'
-          Right={<Check checked={atmPressureUnit === 'mmHg'} />}
-          onPress={() => setAtmPressureUnit('mmHg')}
-        />
-        <SettOption title='Millibar (mbar)' Right={<Check checked={atmPressureUnit === 'mbar'} />} onPress={() => setAtmPressureUnit('mbar')} />
-        <SettOption title='Atmosphere (atm)' Right={<Check checked={atmPressureUnit === 'atm'} />} onPress={() => setAtmPressureUnit('atm')} />
-      </SettGroup> */}
     </>
   )
 }
