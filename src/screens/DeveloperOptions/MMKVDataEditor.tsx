@@ -78,6 +78,18 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
               </SettText>
             </>
           )}
+
+          {!isNew && (
+            <SettGroup>
+              <SettOption
+                title='Delete this data'
+                className='text-red-500'
+                Icon={<Delete02Icon {...ic} className='text-red-500' />}
+                onPress={deleteData}
+                Right={<Medium className='text-red-500'>{toReadableSize(value?.length || 0)}</Medium>}
+              />
+            </SettGroup>
+          )}
           <SettText>
             Be careful when {!isNew ? 'editing' : ' adding'} MMKV data. Wrong data can cause the app to crash. And make all data unreadable.
           </SettText>
@@ -91,22 +103,9 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
               autoCorrect={false}
             />
           </SettGroup>
-
-          {!isNew && (
-            <SettGroup>
-              <SettOption
-                title='Delete this data'
-                className='text-red-500'
-                Icon={<Delete02Icon {...ic} className='text-red-500' />}
-                onPress={deleteData}
-                Right={<Medium className='text-red-500'>{toReadableSize(value?.length || 0)}</Medium>}
-              />
-            </SettGroup>
-          )}
         </Gap12>
-        <View className='h-12'>
-          <SettText>You may need to restart the app to see the changes in the app.</SettText>
-        </View>
+        <SettText>You may need to restart the app to see the changes in the app.</SettText>
+        <View className='h-12'></View>
       </SettWrapper>
       <FabIcon Icon={<FloppyDiskIcon height={25} width={25} color={Colors.white} />} onPress={save} />
     </>
