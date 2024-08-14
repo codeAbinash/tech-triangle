@@ -17,6 +17,7 @@ import {
   Road02Icon,
   RulerIcon,
   SlowWindsIcon,
+  SortingDownIcon,
   SunCloudFastWind01Icon,
   TemperatureIcon,
   WindPowerIcon,
@@ -222,7 +223,7 @@ function Units({ navigation }: { navigation: StackNav }) {
           arrow
           title='Atmospheric Pressure Unit'
           Right={<Txt>{atmPressureUnit}</Txt>}
-          Icon={<FastWindIcon {...ic} />}
+          Icon={<SortingDownIcon {...ic} />}
           onPress={() => navigation.navigate('AtmPressureUnit')}
         />
         {/* <SettOption

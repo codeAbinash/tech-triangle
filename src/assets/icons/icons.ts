@@ -63,3 +63,4 @@ export { default as SoftwareLicenseIcon } from '@icons/software-license-stroke-r
 export { default as DashboardSpeed01Icon } from '@icons/dashboard-speed-01-stroke-rounded.svg'
 export { default as DatabaseRestoreIcon } from '@icons/database-restore-stroke-rounded.svg'
 export { default as TemperatureIcon } from '@icons/temperature-stroke-rounded.svg'
+export { default as SortingDownIcon } from '@icons/sorting-down-stroke-rounded.svg'
