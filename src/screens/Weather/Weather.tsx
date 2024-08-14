@@ -63,7 +63,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
         <PaddingTop />
         <Header navigation={navigation} color={color} />
         <Medium className='mt-7 text-center' style={[color, { fontSize: 25 }]}>
-          Bankura
+          {currentCity?.name}
         </Medium>
         <View className='flex-row justify-center'>
           <Light className='mt-2 items-start justify-start pl-2 text-center' style={[color, { lineHeight: 180, fontSize: 150 }]}>
