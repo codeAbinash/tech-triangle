@@ -8,8 +8,7 @@ import { Light, Medium } from '@utils/fonts'
 import type { NavProp, StackNav } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
-import { StatusBar, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ActivityIndicator, StatusBar, TouchableOpacity, View } from 'react-native'
 import { useDerivedValue } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getWeather } from './api'
@@ -61,7 +60,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
       </Canvas>
       <View className='flex-1 px-5'>
         <PaddingTop />
-        <Header navigation={navigation} color={color} />
+        <Header navigation={navigation} color={color} isPending={isPending} />
         <Medium className='mt-7 text-center' style={[color, { fontSize: 25 }]}>
           {currentCity?.name}
         </Medium>
@@ -85,13 +84,20 @@ export default function WeatherScreen({ navigation }: NavProp) {
   )
 }
 
-function Header({ navigation, color }: { navigation: StackNav; color: { color: string } }) {
-  // return <View className='h-20 w-full'></View>
+function Header({ navigation, color, isPending }: { navigation: StackNav; color: { color: string }; isPending: boolean }) {
   return (
     <View className='flex-row items-center justify-between'>
       <TouchableOpacity className='py-3 pr-3' onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: true })}>
         <PlusSignIcon width={25} height={25} color={color.color} />
       </TouchableOpacity>
+      <View>
+        {isPending && (
+          <View className='flex-row items-center justify-between gap-2'>
+            <ActivityIndicator size={13} color={color.color} />
+            <Medium style={[color, { fontSize: 13 }]}>Updating...</Medium>
+          </View>
+        )}
+      </View>
       <TouchableOpacity className='py-3 pl-3' onPress={() => navigation.navigate('WeatherSettings')}>
         <Setting07Icon width={24} height={24} color={color.color} />
       </TouchableOpacity>

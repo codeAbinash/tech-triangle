@@ -7,7 +7,7 @@ import { Medium, Regular } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 import { useDerivedValue } from 'react-native-reanimated'
 import { getWeather } from '../api'
 import type { Weather } from '../types'
@@ -65,9 +65,12 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
         onPress={() => navigation.navigate('Weather')}
       >
         <View>
-          <Medium className='text-base' style={color}>
-            {currentCity.name}
-          </Medium>
+          <View className='flex-row justify-between'>
+            <Medium className='text-base' style={color}>
+              {currentCity.name}
+            </Medium>
+            {isPending && <ActivityIndicator size={15} color={color.color} />}
+          </View>
           <Regular style={[{ fontSize: 60, lineHeight: 83 }, color]}>
             {w ? tempConverter(w.current.temp, currentUnit) : '__'}
             {currentUnit === 'K' ? '' : '°'}
