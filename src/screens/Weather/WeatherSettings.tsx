@@ -30,7 +30,7 @@ import { WEATHER_CACHE_TIME } from '@utils/constants'
 import { clearStorage, getStorageSize, WeatherCache, WeatherStorage } from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { getLatitude, msToMin, screenDelay, toReadableSize } from '@utils/utils'
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Linking, Text } from 'react-native'
 
 export default function WeatherScienceSettings({ navigation }: NavProp) {
@@ -52,6 +52,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   const setAtmPressureUnit = weatherStore((state) => state.setAtmPressureUnit)
   const setWeatherCacheTime = weatherStore((state) => state.setWeatherCacheTime)
   const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
+  const [cacheTimeInputError, setCacheTimeInputError] = React.useState('')
 
   const dev = devOptStore((state) => state.isEnabled)
 
@@ -60,6 +61,19 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
 
   const focused = useIsFocused()
 
+  function clearCache() {
+    clearStorage(WeatherCache)
+    setSearchCache(0)
+  }
+
+  const setCacheTime = useCallback((time: string) => {
+    let t = parseInt(time)
+    if (isNaN(t)) return setCacheTimeInputError('Please enter a valid number')
+    if (t < 0) return setCacheTimeInputError('Please enter a number that is greater than 0')
+    setWeatherCacheTime(t)
+    setCacheTimeInputError('')
+  }, [])
+
   useEffect(() => {
     focused &&
       screenDelay(() => {
@@ -67,11 +81,6 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         setSearchCache(getStorageSize(WeatherCache))
       }, 400)
   }, [focused])
-
-  function clearCache() {
-    clearStorage(WeatherCache)
-    setSearchCache(0)
-  }
 
   return (
     <SettWrapper navigation={navigation} title='Weather Settings'>
@@ -125,12 +134,14 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           <SettGroup title='Weather Cache Time'>
             <Input
               Icon={<DatabaseRestoreIcon {...ic} />}
-              Right={<Txt>minutes</Txt>}
-              value={(weatherCacheTime / 60000).toString()}
-              onChangeText={(val) => setWeatherCacheTime(parseInt(val) * 60000)}
+              Right={<Txt>ms</Txt>}
+              defaultValue={weatherCacheTime.toString()}
+              onChangeText={(val) => setCacheTime(val)}
               keyboardType='numeric'
             />
           </SettGroup>
+          {cacheTimeInputError && <SettText className='text-red-500'>{cacheTimeInputError}</SettText>}
+
           <SettText>
             The time in minutes to cache the weather data. The default is {msToMin(WEATHER_CACHE_TIME)} minutes.{' '}
             <Text className='text-accent' onPress={() => setWeatherCacheTime(WEATHER_CACHE_TIME)}>
