@@ -1,20 +1,20 @@
+import { weatherStore } from '@/zustand/weatherStore'
 import { PlusSignIcon, Setting07Icon } from '@assets/icons/icons'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
+import { useMutation } from '@tanstack/react-query'
 import { H, W } from '@utils/dimensions'
 import { Light, Medium } from '@utils/fonts'
 import type { NavProp, StackNav } from '@utils/types'
+import { tempConverter } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
 import { StatusBar, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useDerivedValue } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { weatherStore } from '@/zustand/weatherStore'
-import { useMutation } from '@tanstack/react-query'
-import { tempConverter } from '@utils/utils'
 import { getWeather } from './api'
-import { themeList } from './Widget/themes'
 import type { Weather } from './types'
+import { themeList } from './Widget/themes'
 
 export default function WeatherScreen({ navigation }: NavProp) {
   const currentCity = weatherStore((state) => state.currentCity)
@@ -69,14 +69,15 @@ export default function WeatherScreen({ navigation }: NavProp) {
           <Light className='mt-2 items-start justify-start pl-2 text-center' style={[color, { lineHeight: 180, fontSize: 150 }]}>
             {w ? tempConverter(w.current.temp, currentUnit) : '__'}
           </Light>
-          <Medium style={[color, { fontSize: 60 }]}>°</Medium>
+          <Medium style={[color, { fontSize: 60 }]}>{currentUnit === 'K' ? '' : '°'}</Medium>
         </View>
         <Medium className='-mt-4 text-center text-lg capitalize' style={color}>
           {w ? w.current.weather[0].description : '__'}
         </Medium>
         <Medium className='mt-0.5 text-center text-base' style={color}>
-          {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° {currentUnit} / {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°{' '}
-          {currentUnit}
+          {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}
+          {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} / {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
+          {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
         </Medium>
         <PaddingBottom />
       </View>

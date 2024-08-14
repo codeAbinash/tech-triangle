@@ -68,7 +68,10 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
           <Medium className='text-base' style={color}>
             {currentCity.name}
           </Medium>
-          <Regular style={[{ fontSize: 60, lineHeight: 83 }, color]}>{w ? tempConverter(w.current.temp, currentUnit) : '__'}°</Regular>
+          <Regular style={[{ fontSize: 60, lineHeight: 83 }, color]}>
+            {w ? tempConverter(w.current.temp, currentUnit) : '__'}
+            {currentUnit === 'K' ? '' : '°'}
+          </Regular>
         </View>
         <View>
           <CloudSolidIcon width={25} height={25} color={color.color} />
@@ -80,8 +83,9 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
             H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
           </Medium> */}
           <Medium style={[color]}>
-            {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° {currentUnit} / {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
-            ° {currentUnit}
+            {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}
+            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} / {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
+            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
           </Medium>
         </View>
       </TouchableOpacity>

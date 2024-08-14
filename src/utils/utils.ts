@@ -119,7 +119,7 @@ export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
 export function tempConverter(temp: number, unit: TemperatureUnit) {
   if (unit === 'C') return Math.round(temp - 273.15)
   if (unit === 'F') return Math.round((temp - 273.15) * 1.8 + 32)
-  return temp
+  return Math.round(temp) 
 }
 
 /**
@@ -140,6 +140,7 @@ export function timeStamp() {
 export function getTempName(unit: TemperatureUnit) {
   if (unit === 'C') return 'Celsius'
   else if (unit === 'F') return 'Fahrenheit'
+  else if (unit === 'K') return 'Kelvin'
   else return unit
 }
 

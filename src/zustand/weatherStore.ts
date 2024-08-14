@@ -10,7 +10,7 @@ export type CurrentCityT = {
   lon: number
 } | null
 
-export type TemperatureUnit = 'C' | 'F'
+export type TemperatureUnit = 'C' | 'F' | 'K'
 export type DistanceUnit = 'ft' | 'm'
 export type WindSpeedUnit = 'kph' | 'mph' | 'm/s' | 'kn' | 'bft'
 export type AtmosPressureUnit = 'hPa' | 'inHg' | 'mmHg' | 'mbar' | 'atm'

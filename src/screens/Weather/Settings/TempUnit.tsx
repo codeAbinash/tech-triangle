@@ -1,5 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { CelsiusIcon, FahrenheitIcon } from '@assets/icons/icons'
+import { CelsiusIcon, FahrenheitIcon, TemperatureIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { NavProp } from '@utils/types'
@@ -24,6 +24,12 @@ export default function TempUnit({ navigation }: NavProp) {
             Icon={<FahrenheitIcon {...ic} />}
             Right={<Check checked={temperatureUnit === 'F'} />}
             onPress={() => setTmpUnit('F')}
+          />
+          <SettOption
+            title='Kelvin'
+            Icon={<TemperatureIcon {...ic} />}
+            Right={<Check checked={temperatureUnit === 'K'} />}
+            onPress={() => setTmpUnit('K')}
           />
         </SettGroup>
       </Gap12>
