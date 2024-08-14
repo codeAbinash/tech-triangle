@@ -2,9 +2,11 @@ import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { Canvas, Path, Skia } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
 import { H, W } from '@utils/dimensions'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { useSharedValue, withTiming } from 'react-native-reanimated'
+import { getDBConnection } from './db'
+import { Medium } from '@utils/fonts'
 
 const r = 100
 const strokeW = 28
@@ -13,12 +15,19 @@ const bgColor = Colors.zinc[200]
 const percentAge = 0.34
 export default function Test() {
   const path = Skia.Path.Make()
-  path.addCircle(W / 2, H / 2, r)
+  path.addCircle(W / 2, W / 2, r)
 
+  const [connectionResponse, setConnectionResponse] = useState<any>()
   const percent = useSharedValue(0)
 
   useEffect(() => {
     percent.value = withTiming(percentAge, { duration: 2000 })
+  }, [])
+
+  useEffect(() => {
+    console.log('getDBConnection')
+    const res = getDBConnection()
+    setConnectionResponse(res)
   }, [])
 
   return (
@@ -27,7 +36,7 @@ export default function Test() {
       <View className='relative' style={{ transform: [{ rotateZ: '-90deg' }] }}>
         <Canvas
           style={{
-            height: H,
+            height: W,
             width: W,
           }}
         >
@@ -43,6 +52,9 @@ export default function Test() {
             end={percent}
           />
         </Canvas>
+      </View>
+      <View className='px-5'>
+        <Medium className='text-xs text-black'>{JSON.stringify(connectionResponse, null, 3)}</Medium>
       </View>
       <PaddingBottom />
     </>

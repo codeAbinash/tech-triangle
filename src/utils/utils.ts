@@ -1,7 +1,7 @@
 import { ls } from '@utils/storage'
 import { Alert, Share } from 'react-native'
 import { SCREEN_TRANSITION } from './constants'
-import type { TemperatureUnit } from '@/zustand/weatherStore'
+import type { DistanceUnit, TemperatureUnit } from '@/zustand/weatherStore'
 
 export async function shareText(message: string) {
   try {
@@ -135,4 +135,16 @@ export const msToMin = (ms: number) => Math.round(ms / 1000 / 60)
  */
 export function timeStamp() {
   return new Date().getTime()
+}
+
+export function getTempName(unit: TemperatureUnit) {
+  if (unit === 'C') return 'Celsius'
+  else if (unit === 'F') return 'Fahrenheit'
+  else return unit
+}
+
+export function getDistanceUnit(unit: DistanceUnit) {
+  if (unit === 'ft') return 'Feet'
+  else if (unit === 'm') return 'Meter'
+  else return unit
 }

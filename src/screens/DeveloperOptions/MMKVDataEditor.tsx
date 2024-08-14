@@ -108,7 +108,7 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
           <SettText>You may need to restart the app to see the changes in the app.</SettText>
         </View>
       </SettWrapper>
-      <FabIcon navigation={navigation} Icon={<FloppyDiskIcon height={25} width={25} color={Colors.white} />} onPress={save} />
+      <FabIcon Icon={<FloppyDiskIcon height={25} width={25} color={Colors.white} />} onPress={save} />
     </>
   )
 }

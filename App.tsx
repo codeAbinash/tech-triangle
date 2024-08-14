@@ -34,10 +34,14 @@ import TestSettings from '@screens/Settings/TestSetting'
 import Test from '@screens/Test'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
+import AtmPressureUnit from '@screens/Weather/Settings/AtmPressureUnit'
+import DistanceUnit from '@screens/Weather/Settings/DistanceUnit'
+import TempUnit from '@screens/Weather/Settings/TempUnit'
+import WeatherScienceSettings from '@screens/Weather/Settings/WeatherSettings'
+import WindSpeedUnit from '@screens/Weather/Settings/WindSpeedUnit'
 import WeatherScreen from '@screens/Weather/Weather'
 import WeatherLocation, { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
 import WeatherSearchCity, { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
-import WeatherScienceSettings from '@screens/Weather/WeatherSettings'
 import WeatherWelcome from '@screens/Weather/WeatherWelcome'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
@@ -112,6 +116,10 @@ export type RootStackParamList = {
   TestSettings: undefined
   BlankSettings: undefined
   CoordinateNotes: undefined
+  TempUnit: undefined
+  DistanceUnit: undefined
+  WindSpeedUnit: undefined
+  AtmPressureUnit: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -167,6 +175,10 @@ function Navigation() {
         <Stack.Screen name='MMKVDataList' component={MMKVDataList} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} options={GestureEnabled} />
         <Stack.Screen name='CoordinateNotes' component={CoordinatesNotes} options={GestureEnabled} />
+        <Stack.Screen name='TempUnit' component={TempUnit} options={GestureEnabled} />
+        <Stack.Screen name='DistanceUnit' component={DistanceUnit} options={GestureEnabled} />
+        <Stack.Screen name='WindSpeedUnit' component={WindSpeedUnit} options={GestureEnabled} />
+        <Stack.Screen name='AtmPressureUnit' component={AtmPressureUnit} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

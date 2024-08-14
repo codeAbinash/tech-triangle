@@ -103,15 +103,15 @@ const Home = () => {
             tabBarIcon: Try,
           }}
         />
-          <Tab.Screen
-            name='Explore'
-            component={ComingSoon}
-            options={{
-              tabBarLabel: 'Explore',
-              headerShown: false,
-              tabBarIcon: ExploreIcon,
-            }}
-          />
+        <Tab.Screen
+          name='Explore'
+          component={ComingSoon}
+          options={{
+            tabBarLabel: 'Explore',
+            headerShown: false,
+            tabBarIcon: ExploreIcon,
+          }}
+        />
         <Tab.Screen
           name='Wallet'
           component={ComingSoon}

@@ -11,9 +11,9 @@ export type CurrentCityT = {
 } | null
 
 export type TemperatureUnit = 'C' | 'F'
-type DistanceUnit = 'ft' | 'm'
-type WindSpeedUnit = 'kph' | 'mph' | 'm/s' | 'kn' | 'bft'
-type AtmosPressureUnit = 'hPa' | 'inHg' | 'mmHg' | 'mbar' | 'atm'
+export type DistanceUnit = 'ft' | 'm'
+export type WindSpeedUnit = 'kph' | 'mph' | 'm/s' | 'kn' | 'bft'
+export type AtmosPressureUnit = 'hPa' | 'inHg' | 'mmHg' | 'mbar' | 'atm'
 
 type WeatherSettingsStore = {
   currentCity: CurrentCityT
