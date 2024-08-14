@@ -141,7 +141,7 @@ function Navigation() {
         }}
       >
         <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Test' component={Test} />
+        <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
         <Stack.Screen name='Location' component={Location} />
         <Stack.Screen name='CompassAnimation' component={CompassAnimation} />
         <Stack.Screen name='ParallaxWallpaper' component={ParallaxWallpaper} />
