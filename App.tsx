@@ -29,6 +29,7 @@ import Location from '@screens/Location'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import BlankSettings from '@screens/Settings/BlankSettings'
+import ManageStorage from '@screens/Settings/ManageStorage'
 import Settings from '@screens/Settings/Settings'
 import TestSettings from '@screens/Settings/TestSetting'
 import Test from '@screens/Test'
@@ -120,6 +121,7 @@ export type RootStackParamList = {
   DistanceUnit: undefined
   WindSpeedUnit: undefined
   AtmPressureUnit: undefined
+  ManageStorage: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -183,6 +185,7 @@ function Navigation() {
         <Stack.Screen name='DistanceUnit' component={DistanceUnit} options={GestureEnabled} />
         <Stack.Screen name='WindSpeedUnit' component={WindSpeedUnit} options={GestureEnabled} />
         <Stack.Screen name='AtmPressureUnit' component={AtmPressureUnit} options={GestureEnabled} />
+        <Stack.Screen name='ManageStorage' component={ManageStorage} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

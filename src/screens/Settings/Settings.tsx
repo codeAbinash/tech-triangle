@@ -7,6 +7,7 @@ import {
   CodeIcon,
   ComputerIcon,
   Database02Icon,
+  EditTableIcon,
   InformationCircleIcon,
   PolicyIcon,
   ShieldUserIcon,
@@ -121,21 +122,22 @@ export default function Settings({ navigation }: NavProp) {
             {dev && (
               <SettOption
                 title='MMKV data editor'
-                Icon={<Database02Icon {...ic} />}
+                Icon={<EditTableIcon {...ic} />}
                 arrow
                 onPress={() => navigation.navigate('MMKVDataList')}
               />
             )}
             <SettOption
+              title='Manage Storage'
+              Icon={<Database02Icon {...ic} />}
+              Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
+              onPress={() => navigation.navigate('ManageStorage')}
+            />
+            <SettOption
               title='Clear cache'
               Icon={<CleanIcon {...ic} />}
               Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
               onPress={clearCache}
-            />
-            <SettOption
-              title='Clear storage'
-              Icon={<Database02Icon {...ic} />}
-              Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
             />
           </SettGroup>
           <SettGroup title='Help & Support'>

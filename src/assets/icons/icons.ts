@@ -76,3 +76,5 @@ export { default as MoonCloudAngledRainSolidIcon } from '@icons/moon-cloud-angle
 export { default as CloudAngledRainZapSolidIcon } from '@icons/cloud-angled-rain-zap-solid-rounded.svg'
 export { default as SnowSolidIcon } from '@icons/snow-solid-rounded.svg'
 export { default as SoundcloudSolidIcon } from '@icons/soundcloud-solid-rounded.svg'
+
+export { default as EditTableIcon } from '@icons/edit-table-stroke-rounded.svg'
