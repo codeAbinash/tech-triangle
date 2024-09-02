@@ -1,5 +1,18 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { CloudSolidIcon } from '@assets/icons/icons'
+import {
+  CloudAngledRainSolidIcon,
+  CloudAngledRainZapSolidIcon,
+  CloudFastWindSolidIcon,
+  CloudSolidIcon,
+  Moon02SolidIcon,
+  MoonCloudAngledRainSolidIcon,
+  MoonCloudSolidIcon,
+  SnowSolidIcon,
+  SoundcloudSolidIcon,
+  Sun03SolidIcon,
+  SunCloud02SolidIcon,
+  SunCloudAngledRain02SolidIcon,
+} from '@assets/icons/icons'
 import styles, { hw } from '@screens/Home/style'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
@@ -12,6 +25,27 @@ import { useDerivedValue } from 'react-native-reanimated'
 import { getWeather } from '../api'
 import type { Weather } from '../types'
 import { themeList } from './themes'
+
+const Icons = {
+  '01d': Sun03SolidIcon,
+  '01n': Moon02SolidIcon,
+  '02d': SunCloud02SolidIcon,
+  '02n': MoonCloudSolidIcon,
+  '03d': CloudSolidIcon,
+  '03n': CloudSolidIcon,
+  '04d': CloudFastWindSolidIcon,
+  '04n': CloudFastWindSolidIcon,
+  '09d': CloudAngledRainSolidIcon,
+  '09n': CloudAngledRainSolidIcon,
+  '10d': SunCloudAngledRain02SolidIcon,
+  '10n': MoonCloudAngledRainSolidIcon,
+  '11d': CloudAngledRainZapSolidIcon,
+  '11n': CloudAngledRainZapSolidIcon,
+  '13d': SnowSolidIcon,
+  '13n': SnowSolidIcon,
+  '50d': SoundcloudSolidIcon,
+  '50n': SoundcloudSolidIcon,
+}
 
 export default function WeatherWidget({ navigation }: { navigation: StackNav }) {
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
@@ -28,6 +62,8 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   const theme = themeList.at(0)!
   const color = theme.color
   const gradient = useDerivedValue(() => theme.gradient, [])
+
+  const Icon = Icons[currentWeather?.current.weather[0].icon]
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
@@ -77,7 +113,7 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
           </Regular>
         </View>
         <View>
-          <CloudSolidIcon width={25} height={25} color={color.color} />
+          <Icon width={25} height={25} color={color.color} />
           <Medium style={[color]} className='mt-0.5 capitalize'>
             {w ? w.current.weather[0].description : '__'}
             {/* {w.current.weather[0].icon} */}

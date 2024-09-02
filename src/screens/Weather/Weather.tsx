@@ -45,8 +45,10 @@ export default function WeatherScreen({ navigation }: NavProp) {
     const now = new Date().getTime()
     if (now - lastUpdated > weatherCacheTime) {
       setLastUpdated(now)
+      console.log('fetching weather')
       return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
     }
+    console.log('using cache')
     return currentWeather
   }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
