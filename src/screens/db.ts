@@ -37,7 +37,9 @@ export const getTodoItems = async (db: SQLiteDatabase): Promise<ToDoItem[]> => {
 }
 
 export const saveTodoItems = async (db: SQLiteDatabase, todoItems: ToDoItem[]) => {
-  const insertQuery = `INSERT OR REPLACE INTO ${tableName}(rowid, value) values` + todoItems.map((i) => `(${i.id}, '${i.value}')`).join(',')
+  const insertQuery =
+    `INSERT OR REPLACE INTO ${tableName}(rowid, value) values` +
+    todoItems.map((i) => `(${i.id}, '${i.value}')`).join(',')
 
   return db.executeSql(insertQuery)
 }

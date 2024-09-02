@@ -11,10 +11,16 @@ export default function ComputerScienceSettings({ navigation }: NavProp) {
   return (
     <View className='flex-1 bg-zinc-100 dark:bg-black'>
       <BackHeader title='Computer Science' navigation={navigation} />
-      <ScrollView contentContainerStyle={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 30 }}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
         <Gap20>
           <Gap12>
-            <SettText className='pt-3'>Here are some settings related to Computer Science functionality in the app.</SettText>
+            <SettText className='pt-3'>
+              Here are some settings related to Computer Science functionality in the app.
+            </SettText>
           </Gap12>
         </Gap20>
         <PaddingBottom />

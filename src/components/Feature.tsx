@@ -2,7 +2,15 @@ import { SemiBold, PoppinsSemiBold, PoppinsMedium, Medium } from '@utils/fonts'
 import React from 'react'
 import { Text, View } from 'react-native'
 
-export default function Feature({ Icon, title, description }: { Icon: React.ReactNode; title: string; description: string | React.ReactNode }) {
+export default function Feature({
+  Icon,
+  title,
+  description,
+}: {
+  Icon: React.ReactNode
+  title: string
+  description: string | React.ReactNode
+}) {
   return (
     <View className='w-full flex-row items-center p-2' style={{ gap: 20 }}>
       {Icon}

@@ -168,7 +168,11 @@ function Navigation() {
         <Stack.Screen name='NotesWelcome' component={NotesWelcome} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='ConfirmCity' component={ConfirmCity} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='ComputerScienceSettings' component={ComputerScienceSettings} options={GestureEnabled} />
-        <Stack.Screen name='WeatherSettings' component={WeatherScienceSettings} options={{ gestureEnabled: true, freezeOnBlur: true }} />
+        <Stack.Screen
+          name='WeatherSettings'
+          component={WeatherScienceSettings}
+          options={{ gestureEnabled: true, freezeOnBlur: true }}
+        />
         <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={GestureEnabled} />
         <Stack.Screen name='TestSettings' component={TestSettings} options={GestureEnabled} />
         <Stack.Screen name='BlankSettings' component={BlankSettings} options={GestureEnabled} />

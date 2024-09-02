@@ -1,4 +1,13 @@
-import { CIcon, JavaIcon, JavaScriptIcon, KeyboardIcon, Setting07Icon, SidebarRightIcon, TextFontIcon, Typescript01Icon } from '@assets/icons/icons'
+import {
+  CIcon,
+  JavaIcon,
+  JavaScriptIcon,
+  KeyboardIcon,
+  Setting07Icon,
+  SidebarRightIcon,
+  TextFontIcon,
+  Typescript01Icon,
+} from '@assets/icons/icons'
 import Button from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
@@ -57,8 +66,8 @@ export default function TestSettings({ navigation }: NavProp) {
             />
           </SettGroup>
           <SettText>
-            Here are the states of the toggles. You can also see the states of the toggles in the right side of the. Toggle one is{' '}
-            <Text className='text-accent'>{toggle1 ? 'on' : 'off'}</Text> and toggle two is{' '}
+            Here are the states of the toggles. You can also see the states of the toggles in the right side of the.
+            Toggle one is <Text className='text-accent'>{toggle1 ? 'on' : 'off'}</Text> and toggle two is{' '}
             <Text className='text-accent'>{toggle2 ? 'on' : 'off'}</Text>.
           </SettText>
         </Gap12>
@@ -86,10 +95,15 @@ export default function TestSettings({ navigation }: NavProp) {
 
         <Gap12>
           <SettGroup title='Text area'>
-            <Input placeholder='This is a input field with multiple lines. You can type as much as you want.' numberOfLines={5} multiline />
+            <Input
+              placeholder='This is a input field with multiple lines. You can type as much as you want.'
+              numberOfLines={5}
+              multiline
+            />
           </SettGroup>
           <SettText>
-            This is a text area. You can type as much as you want. The text area is not limited to a single line. You can type multiple lines.
+            This is a text area. You can type as much as you want. The text area is not limited to a single line. You
+            can type multiple lines.
           </SettText>
         </Gap12>
         <Gap12>
@@ -101,7 +115,9 @@ export default function TestSettings({ navigation }: NavProp) {
               arrow
             ></SettOption>
           </SettGroup>
-          <SettText>This button will take you to the blank settings screen. You can test the settings components there.</SettText>
+          <SettText>
+            This button will take you to the blank settings screen. You can test the settings components there.
+          </SettText>
         </Gap12>
         <Gap12>
           <SettGroup title='Your favorite Programming Language'>
@@ -140,7 +156,11 @@ export default function TestSettings({ navigation }: NavProp) {
         <SettGroup title='Buttons' className='pb-5'>
           <Gap12 className='px-5'>
             <Button title='A test button' onPress={() => setButtonClickText('You clicked the button')} />
-            <Button title='A blue button' className='bg-blue-500' onPress={() => setButtonClickText('You clicked the blue button')} />
+            <Button
+              title='A blue button'
+              className='bg-blue-500'
+              onPress={() => setButtonClickText('You clicked the blue button')}
+            />
           </Gap12>
         </SettGroup>
         <SettText>

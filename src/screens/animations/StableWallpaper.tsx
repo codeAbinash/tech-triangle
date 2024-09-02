@@ -1,6 +1,13 @@
 import React from 'react'
 import { Dimensions, StatusBar, Text, View } from 'react-native'
-import Animated, { SensorType, useAnimatedSensor, useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated'
+import Animated, {
+  SensorType,
+  useAnimatedSensor,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated'
 
 const { width, height } = Dimensions.get('window')
 
@@ -38,7 +45,9 @@ export default function StableWallpaper() {
     <View className='flex-1 items-center justify-center bg-white'>
       <StatusBar barStyle='default' />
       <Text className='z-10 rounded-full bg-black/20 p-2 px-5 font-bold text-white'>Stable Wallpaper</Text>
-      <Text className='text- z-10 mt-5 px-10 text-center'>Move your device to see the effect. {'\n'} - Accelerometer Version - </Text>
+      <Text className='text- z-10 mt-5 px-10 text-center'>
+        Move your device to see the effect. {'\n'} - Accelerometer Version -{' '}
+      </Text>
       <Animated.Image
         source={{
           uri: 'https://codeabinash.github.io/wallpapers/w3.jpg',

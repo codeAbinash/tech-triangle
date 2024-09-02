@@ -22,14 +22,18 @@ export default function Greeting({ navigation }: NavProp) {
         <View className='w-full'>
           <View className='my-9 mb-9'>
             <Bold className='text-center text-4xl text-zinc-800 dark:text-zinc-200'>{greetingByTime()}</Bold>
-            <SemiBold className='mt-2 text-center text-base text-zinc-800 dark:text-zinc-200'>{getLocalDate()}</SemiBold>
+            <SemiBold className='mt-2 text-center text-base text-zinc-800 dark:text-zinc-200'>
+              {getLocalDate()}
+            </SemiBold>
           </View>
 
           <View style={{ gap: 15 }}>
             <Feature
               Icon={<CpuIcon height={28} width={28} color={Colors.purple['500']} />}
               title='Computer Science Experiments'
-              description={"Computer Science related experiments and implementation. Go to the 'Explore' tab to see more."}
+              description={
+                "Computer Science related experiments and implementation. Go to the 'Explore' tab to see more."
+              }
             />
             <Feature
               Icon={<SunCloudAngledRainZap01Icon height={28} width={28} color={Colors.blue['500']} />}

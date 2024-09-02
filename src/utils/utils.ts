@@ -119,7 +119,7 @@ export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
 export function tempConverter(temp: number, unit: TemperatureUnit) {
   if (unit === 'C') return Math.round(temp - 273.15)
   if (unit === 'F') return Math.round((temp - 273.15) * 1.8 + 32)
-  return Math.round(temp) 
+  return Math.round(temp)
 }
 
 /**

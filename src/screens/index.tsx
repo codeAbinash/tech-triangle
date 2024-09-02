@@ -20,7 +20,14 @@ import TyrItOut from './Try/TyrItOut'
 const Tab = createBottomTabNavigator()
 
 function BottomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
-  return <TabBar state={state} descriptors={descriptors} navigation={navigation} insets={{ bottom: 0, left: 0, right: 0, top: 0 }} />
+  return (
+    <TabBar
+      state={state}
+      descriptors={descriptors}
+      navigation={navigation}
+      insets={{ bottom: 0, left: 0, right: 0, top: 0 }}
+    />
+  )
 }
 
 function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
@@ -30,7 +37,12 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
       <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key]
-          const label = options.tabBarLabel !== undefined ? options.tabBarLabel : options.title !== undefined ? options.title : route.name
+          const label =
+            options.tabBarLabel !== undefined
+              ? options.tabBarLabel
+              : options.title !== undefined
+                ? options.title
+                : route.name
           const isFocused = state.index === index
 
           const onPress = () => {
@@ -65,7 +77,14 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               style={{ flex: 1, paddingTop: 13.5, paddingBottom: 8 }}
             >
               {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color: getGrayColor(theme), size: 23 })}
-              <Text style={{ color: isFocused ? Colors.accent : getGrayColor(theme), marginTop: 2.5, fontSize: 11, fontFamily: 'Poppins-Medium' }}>
+              <Text
+                style={{
+                  color: isFocused ? Colors.accent : getGrayColor(theme),
+                  marginTop: 2.5,
+                  fontSize: 11,
+                  fontFamily: 'Poppins-Medium',
+                }}
+              >
                 {label as ReactNode}
               </Text>
             </TouchableOpacity>

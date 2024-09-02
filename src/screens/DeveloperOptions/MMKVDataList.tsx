@@ -72,11 +72,16 @@ export default function MMKVDataList({ navigation }: NavProp) {
                 Icon={<Database02Icon {...ic} />}
               />
             )}
-            {initStorage === null && <ActivityIndicator size='large' color={Colors.accent} style={{ marginTop: 30, marginBottom: 30 }} />}
+            {initStorage === null && (
+              <ActivityIndicator size='large' color={Colors.accent} style={{ marginTop: 30, marginBottom: 30 }} />
+            )}
             {/* {initStorage === null && <SettOption title='Loading all data...' Icon={<Database02Icon {...ic} />} arrow />} */}
           </SettGroup>
         </Gap12>
-        <SettText>You can edit or delete these data. Click on the key to edit the value or click on the plus icon to add new data.</SettText>
+        <SettText>
+          You can edit or delete these data. Click on the key to edit the value or click on the plus icon to add new
+          data.
+        </SettText>
         <View className='h-14'></View>
       </SettWrapper>
       <FabIcon

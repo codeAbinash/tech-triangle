@@ -28,7 +28,13 @@ type SettOptionProps = TouchableOpacityProps & {
 }
 export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOfLines, ...rest }: SettOptionProps) {
   return (
-    <TouchableOpacity className='flex-row items-center justify-between px-7' onPress={onPress} activeOpacity={0.7} style={[{ gap: 10 }]} {...rest}>
+    <TouchableOpacity
+      className='flex-row items-center justify-between px-7'
+      onPress={onPress}
+      activeOpacity={0.7}
+      style={[{ gap: 10 }]}
+      {...rest}
+    >
       <View className='flex-row items-center justify-center' style={{ gap: 20, flexShrink: 1 }}>
         {Icon}
         <Medium
@@ -55,7 +61,10 @@ export function SettGroup({ children, title, color = Colors.accent, ...rest }: S
   return (
     <View className={`bg-white py-2.5 dark:bg-zinc-950`} {...rest}>
       {title && (
-        <Medium className={`px-6 py-1.5 text-accent`} style={{ textTransform: 'none', opacity: 1, fontSize: 13.5, color: color }}>
+        <Medium
+          className={`px-6 py-1.5 text-accent`}
+          style={{ textTransform: 'none', opacity: 1, fontSize: 13.5, color: color }}
+        >
           {title}
         </Medium>
       )}
@@ -81,7 +90,11 @@ export type CheckIconProps = {
   checked: boolean
 } & SvgProps
 export function Check({ checked, ...rest }: CheckIconProps) {
-  return checked ? <Tick01Icon {...ic} className='text-accent' {...rest} /> : <Tick01Icon {...ic} className='opacity-0' />
+  return checked ? (
+    <Tick01Icon {...ic} className='text-accent' {...rest} />
+  ) : (
+    <Tick01Icon {...ic} className='opacity-0' />
+  )
 }
 
 type SettWrapperProps = ScrollViewProps & {

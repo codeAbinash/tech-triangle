@@ -22,8 +22,16 @@ export default function AtmPressureUnit({ navigation }: NavProp) {
             Right={<Check checked={atmPressureUnit === 'mmHg'} />}
             onPress={() => setAtmPressureUnit('mmHg')}
           />
-          <SettOption title='Millibar (mbar)' Right={<Check checked={atmPressureUnit === 'mbar'} />} onPress={() => setAtmPressureUnit('mbar')} />
-          <SettOption title='Atmosphere (atm)' Right={<Check checked={atmPressureUnit === 'atm'} />} onPress={() => setAtmPressureUnit('atm')} />
+          <SettOption
+            title='Millibar (mbar)'
+            Right={<Check checked={atmPressureUnit === 'mbar'} />}
+            onPress={() => setAtmPressureUnit('mbar')}
+          />
+          <SettOption
+            title='Atmosphere (atm)'
+            Right={<Check checked={atmPressureUnit === 'atm'} />}
+            onPress={() => setAtmPressureUnit('atm')}
+          />
         </SettGroup>
       </Gap12>
     </SettWrapper>

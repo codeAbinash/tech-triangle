@@ -30,17 +30,21 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   }, [])
 
   const resetDevOptions = useCallback(() => {
-    Alert.alert('Reset Developer Options', 'This will reset all developer options to default. This action cannot be undone.', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Reset',
-        onPress: () => {
-          clearDevOptions()
-          setAnimError('')
-          navigation.goBack()
+    Alert.alert(
+      'Reset Developer Options',
+      'This will reset all developer options to default. This action cannot be undone.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Reset',
+          onPress: () => {
+            clearDevOptions()
+            setAnimError('')
+            navigation.goBack()
+          },
         },
-      },
-    ])
+      ],
+    )
   }, [])
 
   return (
@@ -55,8 +59,8 @@ export default function DeveloperOptions({ navigation }: NavProp) {
           />
         </SettGroup>
         <SettText>
-          These options are intended for developers and may cause unexpected behavior. Use them with caution. It will also display additional settings
-          on various screens.
+          These options are intended for developers and may cause unexpected behavior. Use them with caution. It will
+          also display additional settings on various screens.
         </SettText>
       </Gap12>
 
@@ -87,9 +91,12 @@ export default function DeveloperOptions({ navigation }: NavProp) {
                 }
               />
             </SettGroup>
-            <SettText className={animError ? 'text-red-500' : ''}>{animError || 'Set the duration of animations in 0 to 1000 ms.'}</SettText>
+            <SettText className={animError ? 'text-red-500' : ''}>
+              {animError || 'Set the duration of animations in 0 to 1000 ms.'}
+            </SettText>
             <SettText>
-              You may need to restart the app or exit this screen for the changes to take effect. The default value is {ANIM_DUR} ms.{' '}
+              You may need to restart the app or exit this screen for the changes to take effect. The default value is{' '}
+              {ANIM_DUR} ms.{' '}
               <Text
                 className='text-accent'
                 onPress={() => {
@@ -109,8 +116,8 @@ export default function DeveloperOptions({ navigation }: NavProp) {
         <SettOption title='Rest Developer Options' Icon={<CleanIcon {...ic} />} onPress={resetDevOptions} arrow />
       </SettGroup>
       <SettText>
-        This will reset all developer options to default. This action cannot be undone. You may need to restart the app for the changes to take
-        effect.
+        This will reset all developer options to default. This action cannot be undone. You may need to restart the app
+        for the changes to take effect.
       </SettText>
     </SettWrapper>
   )

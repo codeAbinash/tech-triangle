@@ -78,7 +78,9 @@ export default function Settings({ navigation }: NavProp) {
         {/* <SettingBackHeader title='Computer Science' navigation={navigation} /> */}
         <Gap20>
           <Gap12>
-            <SettText className='mt-3'>Go to each section to customize your experience. All settings are saved automatically.</SettText>
+            <SettText className='mt-3'>
+              Go to each section to customize your experience. All settings are saved automatically.
+            </SettText>
             <SettGroup title='General'>
               <SettOption
                 title='Computer Science'
@@ -98,17 +100,43 @@ export default function Settings({ navigation }: NavProp) {
           </Gap12>
           <Gap12>
             <SettGroup title='For Developers'>
-              <SettOption title='Developer options' Icon={<CodeIcon {...ic} />} onPress={() => navigation.navigate('DeveloperOptions')} arrow />
-              <SettOption title='UI & Components' Icon={<BrushIcon {...ic} />} onPress={() => navigation.navigate('TestSettings')} arrow />
+              <SettOption
+                title='Developer options'
+                Icon={<CodeIcon {...ic} />}
+                onPress={() => navigation.navigate('DeveloperOptions')}
+                arrow
+              />
+              <SettOption
+                title='UI & Components'
+                Icon={<BrushIcon {...ic} />}
+                onPress={() => navigation.navigate('TestSettings')}
+                arrow
+              />
             </SettGroup>
-            <SettText>These options are intended for developers and may cause unexpected behavior. Use them with caution.</SettText>
+            <SettText>
+              These options are intended for developers and may cause unexpected behavior. Use them with caution.
+            </SettText>
           </Gap12>
           <SettGroup title='Storage'>
             {dev && (
-              <SettOption title='MMKV data editor' Icon={<Database02Icon {...ic} />} arrow onPress={() => navigation.navigate('MMKVDataList')} />
+              <SettOption
+                title='MMKV data editor'
+                Icon={<Database02Icon {...ic} />}
+                arrow
+                onPress={() => navigation.navigate('MMKVDataList')}
+              />
             )}
-            <SettOption title='Clear cache' Icon={<CleanIcon {...ic} />} Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>} onPress={clearCache} />
-            <SettOption title='Clear storage' Icon={<Database02Icon {...ic} />} Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>} />
+            <SettOption
+              title='Clear cache'
+              Icon={<CleanIcon {...ic} />}
+              Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
+              onPress={clearCache}
+            />
+            <SettOption
+              title='Clear storage'
+              Icon={<Database02Icon {...ic} />}
+              Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
+            />
           </SettGroup>
           <SettGroup title='Help & Support'>
             <SettOption arrow title='Ask a question' Icon={<BubbleChatIcon {...ic} />} onPress={ask_a_question} />

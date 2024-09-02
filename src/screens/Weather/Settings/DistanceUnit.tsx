@@ -13,7 +13,12 @@ export default function DistanceUnit({ navigation }: NavProp) {
       <Gap12>
         <SettText className='mt-3'>Select the unit of distance you want to use.</SettText>
         <SettGroup>
-          <SettOption title='Meter' Right={<Check checked={distanceUnit === 'm'} />} onPress={() => setDistUnit('m')} Icon={<RulerIcon {...ic} />} />
+          <SettOption
+            title='Meter'
+            Right={<Check checked={distanceUnit === 'm'} />}
+            onPress={() => setDistUnit('m')}
+            Icon={<RulerIcon {...ic} />}
+          />
           <SettOption
             title='Feet'
             Right={<Check checked={distanceUnit === 'ft'} />}

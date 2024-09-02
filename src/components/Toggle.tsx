@@ -37,7 +37,11 @@ export function Toggle({ isActive, color }: ToggleProps) {
 
   const backgroundColorStyle = useAnimatedStyle(() => {
     const backgroundColor = withTiming(
-      interpolateColor(progress.value, [0, AVAIL_W], [scheme === 'dark' ? Colors.zinc[800] : Colors.zinc[200], color || Colors.accent]),
+      interpolateColor(
+        progress.value,
+        [0, AVAIL_W],
+        [scheme === 'dark' ? Colors.zinc[800] : Colors.zinc[200], color || Colors.accent],
+      ),
       { duration },
     )
     return { backgroundColor }

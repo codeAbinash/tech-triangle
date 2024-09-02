@@ -2,12 +2,22 @@ import { PaddingBottom } from '@components/SafePadding'
 import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withSpring, withTiming } from 'react-native-reanimated'
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withSpring,
+  withTiming,
+} from 'react-native-reanimated'
 
 export default function CustomizingAnimations() {
   return (
     <View className='flex-1 items-center justify-center bg-gray-50 dark:bg-gray-950'>
-      <ScrollView className='w-full' contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}>
+      <ScrollView
+        className='w-full'
+        contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}
+      >
         <View />
         <Example1 />
         <PaddingBottom />
@@ -153,67 +163,124 @@ function Example1() {
     <View>
       <Text className='mb-5 text-center text-lg'>Customizing Animations</Text>
       <View className='items-center justify-center'>
-        <Animated.View className='flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[withSpringStyle]}>
+        <Animated.View
+          className='flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[withSpringStyle]}
+        >
           <Text className='text-center text-lg text-white'>Spring {'\n'}Physics</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[animatedDefault]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[animatedDefault]}
+        >
           <Text className='text-center text-lg text-white'>Default {'\n'}In Out</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[linearStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[linearStyle]}
+        >
           <Text className='text-lg text-white'>Linear</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[bounceStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[bounceStyle]}
+        >
           <Text className='text-lg text-white'>Bounce</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[backStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[backStyle]}
+        >
           <Text className='text-lg text-white'>Back</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[easeInStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[easeInStyle]}
+        >
           <Text className='text-lg text-white'>Ease In</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[easeOutStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[easeOutStyle]}
+        >
           <Text className='text-lg text-white'>Ease Out</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[easeInOutStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[easeInOutStyle]}
+        >
           <Text className='text-lg text-white'>Ease In Out</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[bezierStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[bezierStyle]}
+        >
           <Text className='text-lg text-white'>Bezier</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[circleStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[circleStyle]}
+        >
           <Text className='text-lg text-white'>Circle</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[cubicStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[cubicStyle]}
+        >
           <Text className='text-lg text-white'>Cubic</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[easeStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[easeStyle]}
+        >
           <Text className='text-lg text-white'>Ease</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[elasticStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[elasticStyle]}
+        >
           <Text className='text-lg text-white'>Elastic</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[expStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[expStyle]}
+        >
           <Text className='text-lg text-white'>Exp</Text>
         </Animated.View>
         {/* <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[ployStyle]}>
           <Text className='text-lg text-white'>Ploy</Text>
         </Animated.View> */}
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[quadStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[quadStyle]}
+        >
           <Text className='text-lg text-white'>Quad</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[sinStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[sinStyle]}
+        >
           <Text className='text-lg text-white'>Sin</Text>
         </Animated.View>
         {/* <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[stepStyle]}>
           <Text className='text-lg text-white'>Step</Text>
         </Animated.View> */}
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[inStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[inStyle]}
+        >
           <Text className='text-lg text-white'>In</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[outStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[outStyle]}
+        >
           <Text className='text-lg text-white'>Out</Text>
         </Animated.View>
-        <Animated.View className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent' style={[inOutStyle]}>
+        <Animated.View
+          className='mt-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent'
+          style={[inOutStyle]}
+        >
           <Text className='text-lg text-white'>In Out</Text>
         </Animated.View>
       </View>

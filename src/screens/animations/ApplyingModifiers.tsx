@@ -2,12 +2,22 @@ import Btn from '@components/Button'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import Animated, { useAnimatedStyle, useSharedValue, withDelay, withRepeat, withSequence, withTiming } from 'react-native-reanimated'
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withRepeat,
+  withSequence,
+  withTiming,
+} from 'react-native-reanimated'
 
 export default function ApplyingModifiers() {
   return (
     <View className='flex-1 items-center justify-center bg-gray-50 dark:bg-gray-950'>
-      <ScrollView className='w-full' contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}>
+      <ScrollView
+        className='w-full'
+        contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}
+      >
         <View />
         <Example1 />
         <Example2 />

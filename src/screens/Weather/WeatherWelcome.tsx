@@ -1,4 +1,9 @@
-import { GoForward15SecIcon, MapsLocation02Icon, QuillWrite02Icon, SunCloudAngledRainZap01Icon } from '@assets/icons/icons'
+import {
+  GoForward15SecIcon,
+  MapsLocation02Icon,
+  QuillWrite02Icon,
+  SunCloudAngledRainZap01Icon,
+} from '@assets/icons/icons'
 import Btn, { BtnTransparent } from '@components/Button'
 import Feature from '@components/Feature'
 import { Colors } from '@utils/colors'
@@ -45,7 +50,10 @@ export default function WeatherWelcome({ navigation }: NavProp) {
         </View>
       </ScrollView>
       <View className='mb-8 w-full px-[10%] pt-2' style={{ gap: 10 }}>
-        <Btn title='Search Your City' onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: false })} />
+        <Btn
+          title='Search Your City'
+          onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: false })}
+        />
         <BtnTransparent
           title='Use Current Location'
           onPress={() =>

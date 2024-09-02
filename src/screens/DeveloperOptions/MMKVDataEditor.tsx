@@ -23,7 +23,13 @@ export type MMKVDataEditorParamList = {
   new?: boolean
 }
 
-export default function MMKVDataEditor({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'MMKVDataEditor'> }) {
+export default function MMKVDataEditor({
+  navigation,
+  route,
+}: {
+  navigation: StackNav
+  route: RouteProp<ParamList, 'MMKVDataEditor'>
+}) {
   const isNew = route.params.new === true
   const [key, setKey] = useState(route.params.key || '')
   const [value, setValue] = useState('')
@@ -63,17 +69,30 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
       <SettWrapper
         navigation={navigation}
         title={isNew ? (key ? key : 'New MMKV data') : key}
-        Header={<BackHeader navigation={navigation} title={isNew ? 'New MMKV data' : key} Right={<TxtAcc onPress={save}>Save</TxtAcc>} />}
+        Header={
+          <BackHeader
+            navigation={navigation}
+            title={isNew ? 'New MMKV data' : key}
+            Right={<TxtAcc onPress={save}>Save</TxtAcc>}
+          />
+        }
       >
         <Gap12>
           <SettText className='mt-3'>Make sure you click on the save icon to save the data.</SettText>
           {isNew && (
             <>
               <SettGroup title='Key'>
-                <Input placeholder='Enter a key' value={key} pointerEvents='none' selectTextOnFocus={false} onChangeText={setKey} />
+                <Input
+                  placeholder='Enter a key'
+                  value={key}
+                  pointerEvents='none'
+                  selectTextOnFocus={false}
+                  onChangeText={setKey}
+                />
               </SettGroup>
               <SettText>
-                Key is the identifier of the data. It must be unique. If the key already exists, the data will be overwritten and
+                Key is the identifier of the data. It must be unique. If the key already exists, the data will be
+                overwritten and
                 <Text className={key.length === 0 ? 'text-red-500' : ''}> cannot be empty.</Text>
               </SettText>
             </>
@@ -91,7 +110,8 @@ export default function MMKVDataEditor({ navigation, route }: { navigation: Stac
             </SettGroup>
           )}
           <SettText>
-            Be careful when {!isNew ? 'editing' : ' adding'} MMKV data. Wrong data can cause the app to crash. And make all data unreadable.
+            Be careful when {!isNew ? 'editing' : ' adding'} MMKV data. Wrong data can cause the app to crash. And make
+            all data unreadable.
           </SettText>
           <SettGroup title='Value'>
             <Input

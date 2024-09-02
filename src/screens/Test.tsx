@@ -40,7 +40,16 @@ export default function Test() {
             width: W,
           }}
         >
-          <Path path={path} strokeWidth={strokeW} color={bgColor} style={'stroke'} strokeJoin={'round'} strokeCap={'round'} start={0} end={1} />
+          <Path
+            path={path}
+            strokeWidth={strokeW}
+            color={bgColor}
+            style={'stroke'}
+            strokeJoin={'round'}
+            strokeCap={'round'}
+            start={0}
+            end={1}
+          />
           <Path
             path={path}
             strokeWidth={strokeW}

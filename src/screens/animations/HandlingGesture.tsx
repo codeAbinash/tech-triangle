@@ -8,7 +8,10 @@ export default function HandlingGesture() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View className='flex-1 items-center justify-center bg-gray-50 dark:bg-gray-950'>
-        <ScrollView className='w-full' contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}>
+        <ScrollView
+          className='w-full'
+          contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}
+        >
           <View />
           <TapGesture />
           <PanGesture />
@@ -44,7 +47,10 @@ function TapGesture() {
       <View className='items-center justify-center'>
         <GestureDetector gesture={tap}>
           <View className='p-2 pt-0'>
-            <Animated.View className='flex h-28 w-28 items-center justify-center rounded-3xl bg-accent' style={animatedStyles}>
+            <Animated.View
+              className='flex h-28 w-28 items-center justify-center rounded-3xl bg-accent'
+              style={animatedStyles}
+            >
               <Text className='text-lg text-white'>Tap</Text>
             </Animated.View>
           </View>
@@ -81,7 +87,10 @@ function PanGesture() {
       <Text className='mb-5 text-center text-lg'>Pan Gesture</Text>
       <View className='items-center justify-center'>
         <GestureDetector gesture={pan}>
-          <Animated.View className='flex h-28 w-28 items-center justify-center rounded-3xl bg-accent' style={animatedStyles}>
+          <Animated.View
+            className='flex h-28 w-28 items-center justify-center rounded-3xl bg-accent'
+            style={animatedStyles}
+          >
             <Text className='text-lg text-white'>Drag</Text>
           </Animated.View>
         </GestureDetector>
@@ -118,7 +127,10 @@ function WithDecay() {
       <Text className='mb-5 text-center text-lg'>With Decay</Text>
       <View className='items-center justify-center'>
         <GestureDetector gesture={pan}>
-          <Animated.View className='flex h-28 w-28 items-center justify-center rounded-3xl bg-accent' style={animatedStyles}>
+          <Animated.View
+            className='flex h-28 w-28 items-center justify-center rounded-3xl bg-accent'
+            style={animatedStyles}
+          >
             <Text className='text-lg text-white'>Drag</Text>
           </Animated.View>
         </GestureDetector>

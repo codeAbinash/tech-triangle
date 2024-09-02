@@ -1,5 +1,11 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { CloudSlowWindIcon, FastWindIcon, SlowWindsIcon, SunCloudFastWind01Icon, WindPowerIcon } from '@assets/icons/icons'
+import {
+  CloudSlowWindIcon,
+  FastWindIcon,
+  SlowWindsIcon,
+  SunCloudFastWind01Icon,
+  WindPowerIcon,
+} from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { NavProp } from '@utils/types'

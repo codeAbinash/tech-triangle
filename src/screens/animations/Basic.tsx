@@ -12,7 +12,10 @@ const { width } = Dimensions.get('window')
 export default function Basic() {
   return (
     <View className='flex-1 items-center justify-center bg-white dark:bg-gray-950'>
-      <ScrollView className='w-full' contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}>
+      <ScrollView
+        className='w-full'
+        contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', gap: 50 }}
+      >
         <View />
         <Example1 />
         <Example2 />

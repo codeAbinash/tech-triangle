@@ -14,7 +14,9 @@ width = width - PADDING * 2
 export default function SensorAnimation() {
   return (
     <View className='flex-1 items-center justify-center bg-gray-50 dark:bg-gray-950'>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40, gap: 30, paddingHorizontal: PADDING, paddingTop: PADDING + 15 }}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 40, gap: 30, paddingHorizontal: PADDING, paddingTop: PADDING + 15 }}
+      >
         <Rotation />
         <Gyroscope />
         <Accelerometer />
@@ -59,9 +61,24 @@ function Gravity() {
   return (
     <View className='w-full' style={{ gap: 10 }}>
       <Text className='mb-2 text-center text-base font-bold text-gray-700'>Gravity - Accelerometer</Text>
-      <SensorDisplayData title='Gravity along the X-axis in m/s²' maxVal={MAX_GRAVITY_VALUE} style={styleX} color={COL.g1} />
-      <SensorDisplayData title='Gravity along the Y-axis in m/s²' maxVal={MAX_GRAVITY_VALUE} style={styleY} color={COL.g2} />
-      <SensorDisplayData title='Gravity along the Z-axis in m/s²' maxVal={MAX_GRAVITY_VALUE} style={styleZ} color={COL.gray100} />
+      <SensorDisplayData
+        title='Gravity along the X-axis in m/s²'
+        maxVal={MAX_GRAVITY_VALUE}
+        style={styleX}
+        color={COL.g1}
+      />
+      <SensorDisplayData
+        title='Gravity along the Y-axis in m/s²'
+        maxVal={MAX_GRAVITY_VALUE}
+        style={styleY}
+        color={COL.g2}
+      />
+      <SensorDisplayData
+        title='Gravity along the Z-axis in m/s²'
+        maxVal={MAX_GRAVITY_VALUE}
+        style={styleZ}
+        color={COL.gray100}
+      />
     </View>
   )
 }
@@ -92,9 +109,24 @@ function Magnet() {
   return (
     <View className='w-full' style={{ gap: 10 }}>
       <Text className='mb-2 text-center text-base font-bold text-gray-700'>Magnetic Field - Magnetometer</Text>
-      <SensorDisplayData title='Magnetic Field along the X-axis in μT' maxVal={MAX_MAGNET} style={styleX} color={COL.g1} />
-      <SensorDisplayData title='Magnetic Field along the Y-axis in μT' maxVal={MAX_MAGNET} style={styleY} color={COL.g2} />
-      <SensorDisplayData title='Magnetic Field along the Z-axis in μT' maxVal={MAX_MAGNET} style={styleZ} color={Colors.accent} />
+      <SensorDisplayData
+        title='Magnetic Field along the X-axis in μT'
+        maxVal={MAX_MAGNET}
+        style={styleX}
+        color={COL.g1}
+      />
+      <SensorDisplayData
+        title='Magnetic Field along the Y-axis in μT'
+        maxVal={MAX_MAGNET}
+        style={styleY}
+        color={COL.g2}
+      />
+      <SensorDisplayData
+        title='Magnetic Field along the Z-axis in μT'
+        maxVal={MAX_MAGNET}
+        style={styleZ}
+        color={Colors.accent}
+      />
     </View>
   )
 }
@@ -154,9 +186,14 @@ function Rotation() {
 
   return (
     <View className='w-full' style={{ gap: 10 }}>
-      <Text className='mt-5 text-center text-base font-bold text-gray-700'> Euler Angles and Quaternion - Rotation</Text>
+      <Text className='mt-5 text-center text-base font-bold text-gray-700'>
+        {' '}
+        Euler Angles and Quaternion - Rotation
+      </Text>
       <View className='flex flex-row items-center justify-center'>
-        <Text className='rounded-lg bg-purple-500/10 px-6 py-2 text-center text-purple-500'>QX² + QY² + QZ² + QW² = 1</Text>
+        <Text className='rounded-lg bg-purple-500/10 px-6 py-2 text-center text-purple-500'>
+          QX² + QY² + QZ² + QW² = 1
+        </Text>
       </View>
       <SensorDisplayData title='Yaw in rad' maxVal={'π'} style={styleYaw} color={colors.accent} />
       <SensorDisplayData title='Pitch in rad' maxVal={'π / 2'} style={stylePitch} color={colors.g2} />
@@ -195,9 +232,24 @@ function Gyroscope() {
   return (
     <View className='w-full' style={{ gap: 10 }}>
       <Text className='mb-2 text-center text-base font-bold text-gray-700'>Angular Velocity - Gyroscope</Text>
-      <SensorDisplayData title='Angular velocity around X-axis in rad/s' maxVal={'10π'} style={styleX} color={colors.accent} />
-      <SensorDisplayData title='Angular velocity around Y-axis in rad/s' maxVal={'10π'} style={styleY} color={colors.g2} />
-      <SensorDisplayData title='Angular velocity around Z-axis in rad/s' maxVal={'10π'} style={styleZ} color={colors.gray500} />
+      <SensorDisplayData
+        title='Angular velocity around X-axis in rad/s'
+        maxVal={'10π'}
+        style={styleX}
+        color={colors.accent}
+      />
+      <SensorDisplayData
+        title='Angular velocity around Y-axis in rad/s'
+        maxVal={'10π'}
+        style={styleY}
+        color={colors.g2}
+      />
+      <SensorDisplayData
+        title='Angular velocity around Z-axis in rad/s'
+        maxVal={'10π'}
+        style={styleZ}
+        color={colors.gray500}
+      />
     </View>
   )
 }
@@ -227,14 +279,39 @@ function Accelerometer() {
   return (
     <View className='w-full' style={{ gap: 10 }}>
       <Text className='mb-2 text-center text-base font-bold text-gray-700'>Linear Acceleration - Accelerometer</Text>
-      <SensorDisplayData title='Linear Acc. along the X-axis in m/s²' maxVal={MAX_ACCELEROMETER_VALUE} style={styleX} color={colors.accent} />
-      <SensorDisplayData title='Linear Acc. along the Y-axis in m/s²' maxVal={MAX_ACCELEROMETER_VALUE} style={styleY} color={colors.g2} />
-      <SensorDisplayData title='Linear Acc. along the Z-axis in m/s²' maxVal={MAX_ACCELEROMETER_VALUE} style={styleZ} color={colors.gray500} />
+      <SensorDisplayData
+        title='Linear Acc. along the X-axis in m/s²'
+        maxVal={MAX_ACCELEROMETER_VALUE}
+        style={styleX}
+        color={colors.accent}
+      />
+      <SensorDisplayData
+        title='Linear Acc. along the Y-axis in m/s²'
+        maxVal={MAX_ACCELEROMETER_VALUE}
+        style={styleY}
+        color={colors.g2}
+      />
+      <SensorDisplayData
+        title='Linear Acc. along the Z-axis in m/s²'
+        maxVal={MAX_ACCELEROMETER_VALUE}
+        style={styleZ}
+        color={colors.gray500}
+      />
     </View>
   )
 }
 
-function SensorDisplayData({ title, maxVal, style, color }: { title: string; maxVal: number | string; style: any; color: string }) {
+function SensorDisplayData({
+  title,
+  maxVal,
+  style,
+  color,
+}: {
+  title: string
+  maxVal: number | string
+  style: any
+  color: string
+}) {
   return (
     <View className='w-full'>
       <View className='w-full'>

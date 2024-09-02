@@ -23,7 +23,12 @@ export default function Btn({ title, onPress, disabled, children, style, ...rest
 
 export function BtnTransparent({ title, onPress, children, style }: ButtonProps) {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress} className='w-full' style={[{ borderRadius: 14, paddingVertical: 13 }]}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={onPress}
+      className='w-full'
+      style={[{ borderRadius: 14, paddingVertical: 13 }]}
+    >
       <Medium style={[{ fontSize: 15 }, style]} className='text-center text-accent'>
         {title || children}
       </Medium>

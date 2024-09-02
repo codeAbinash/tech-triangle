@@ -13,7 +13,14 @@ export type CustomPressProps = PressableProps & {
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-export default function Press({ children, style, activeOpacity = 0.8, activeScale = 0.98, duration = 100, ...props }: CustomPressProps) {
+export default function Press({
+  children,
+  style,
+  activeOpacity = 0.8,
+  activeScale = 0.98,
+  duration = 100,
+  ...props
+}: CustomPressProps) {
   const scale = useSharedValue(1)
   const opacity = useSharedValue(1)
   const pan = Gesture.Pan()

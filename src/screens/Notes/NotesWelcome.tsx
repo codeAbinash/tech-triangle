@@ -1,4 +1,9 @@
-import { GoForward15SecIcon, MapsLocation02Icon, QuillWrite02Icon, SunCloudAngledRainZap01Icon } from '@assets/icons/icons'
+import {
+  GoForward15SecIcon,
+  MapsLocation02Icon,
+  QuillWrite02Icon,
+  SunCloudAngledRainZap01Icon,
+} from '@assets/icons/icons'
 import Btn from '@components/Button'
 import Feature from '@components/Feature'
 import { Colors } from '@utils/colors'

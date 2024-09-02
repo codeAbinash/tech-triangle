@@ -1,7 +1,14 @@
 import { PaddingBottom } from '@components/SafePadding'
 import React, { useState } from 'react'
 import { Dimensions, Text, View } from 'react-native'
-import Animated, { SensorType, runOnJS, useAnimatedSensor, useAnimatedStyle, useDerivedValue, useSharedValue } from 'react-native-reanimated'
+import Animated, {
+  SensorType,
+  runOnJS,
+  useAnimatedSensor,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+} from 'react-native-reanimated'
 
 const INTERVAL = {}
 const { width, height } = Dimensions.get('window')

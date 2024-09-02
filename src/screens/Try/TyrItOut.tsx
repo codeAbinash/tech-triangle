@@ -36,7 +36,11 @@ export default function TyrItOut({ navigation }: NavProp) {
       <PaddingTop />
       <View className='flex-row items-center justify-between px-5 pr-3'>
         <Bold className='text-xl text-gray-700 dark:text-gray-300'>Try it out</Bold>
-        <TouchableOpacity activeOpacity={0.6} className='p-2.5 pb-4 pt-3.5' onPress={() => navigation.navigate('Settings')}>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          className='p-2.5 pb-4 pt-3.5'
+          onPress={() => navigation.navigate('Settings')}
+        >
           <Settings01Icon height={22} width={22} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
         </TouchableOpacity>
       </View>
@@ -48,7 +52,9 @@ export default function TyrItOut({ navigation }: NavProp) {
       >
         <Gap20>
           <Gap12>
-            <SettText className='mt-3'>Here are some applications related to computer science. You can try them out and see how they work.</SettText>
+            <SettText className='mt-3'>
+              Here are some applications related to computer science. You can try them out and see how they work.
+            </SettText>
             <SettGroup title='Computer Science'>
               <SettOption title='Operating System' Icon={<SoftwareLicenseIcon {...ic} />} arrow />
               <SettOption title='Compiler Design' Icon={<Setting07Icon {...ic} />} arrow />
@@ -60,19 +66,35 @@ export default function TyrItOut({ navigation }: NavProp) {
               <SettOption title='Numerical Methods' Icon={<MathIcon {...ic} />} arrow />
             </SettGroup>
             <SettText>
-              Some of these applications are in development and may not work as expected. You can try them out and see how they work.
+              Some of these applications are in development and may not work as expected. You can try them out and see
+              how they work.
             </SettText>
           </Gap12>
 
           <SettGroup title='Tools'>
             <SettOption title='Location Speed Meter' Icon={<DashboardSpeed01Icon {...ic} />} arrow />
-            <SettOption title='Coordinate Notes' Icon={<MapsLocation02Icon {...ic} />} arrow onPress={() => navigation.navigate('CoordinateNotes')} />
+            <SettOption
+              title='Coordinate Notes'
+              Icon={<MapsLocation02Icon {...ic} />}
+              arrow
+              onPress={() => navigation.navigate('CoordinateNotes')}
+            />
           </SettGroup>
 
           <Gap12>
             <SettGroup title='Others'>
-              <SettOption title='Animations' Icon={<Timer02Icon {...ic} />} arrow onPress={() => navigation.navigate('Animations')} />
-              <SettOption title='Test Screen' Icon={<TestIcon {...ic} />} arrow onPress={() => navigation.navigate('Test')} />
+              <SettOption
+                title='Animations'
+                Icon={<Timer02Icon {...ic} />}
+                arrow
+                onPress={() => navigation.navigate('Animations')}
+              />
+              <SettOption
+                title='Test Screen'
+                Icon={<TestIcon {...ic} />}
+                arrow
+                onPress={() => navigation.navigate('Test')}
+              />
             </SettGroup>
             <SettText>Just for testing purposes. You can try them out and see how they work.</SettText>
           </Gap12>

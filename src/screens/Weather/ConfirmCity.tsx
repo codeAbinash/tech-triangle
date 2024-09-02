@@ -23,7 +23,13 @@ export type ConfirmCityParamList = {
   shouldGoBack: boolean
 }
 
-export default function ConfirmCity({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'ConfirmCity'> }) {
+export default function ConfirmCity({
+  navigation,
+  route,
+}: {
+  navigation: StackNav
+  route: RouteProp<ParamList, 'ConfirmCity'>
+}) {
   let { lon, lat, altitude, shouldGoBack } = route.params
   const setCurrentCity = weatherStore((state) => state.setCurrentCity)
 
@@ -47,10 +53,16 @@ export default function ConfirmCity({ navigation, route }: { navigation: StackNa
             {altitude} m
           </SemiBold>
         </View>
-        <LottieView source={require('@assets/animations/earth.lottie')} autoPlay loop={false} style={{ width: W * 1.1, height: W * 1.1 }} />
+        <LottieView
+          source={require('@assets/animations/earth.lottie')}
+          autoPlay
+          loop={false}
+          style={{ width: W * 1.1, height: W * 1.1 }}
+        />
         <View className='w-full pb-3 pt-2' style={{ gap: 10 }}>
           <Medium style={{ fontSize: 11 }} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
-            By setting this location, you will be able to view the weather of this location in the home screen and the weather screen.
+            By setting this location, you will be able to view the weather of this location in the home screen and the
+            weather screen.
           </Medium>
           <Btn
             title='Set this location'

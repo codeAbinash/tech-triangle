@@ -44,7 +44,13 @@ enum LocationStatus {
   NOT_FETCHED,
 }
 
-export default function WeatherLocation({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'WeatherLocation'> }) {
+export default function WeatherLocation({
+  navigation,
+  route,
+}: {
+  navigation: StackNav
+  route: RouteProp<ParamList, 'WeatherLocation'>
+}) {
   const [locationStatus, setLocationStatus] = useState<LocationStatus>(LocationStatus.NOT_FETCHED)
   const [location, setLocation] = useState<Geolocation.GeoPosition>()
 
@@ -141,12 +147,16 @@ function CityResult({
         <View className='flex-row items-center' style={{ gap: 5 }}>
           <View className=''>
             <SemiBold className='text-xl text-zinc-800 dark:text-zinc-200'>{data?.name}</SemiBold>
-            <Medium className='text-base capitalize text-zinc-700 dark:text-zinc-300'>{data?.weather[0].description}</Medium>
+            <Medium className='text-base capitalize text-zinc-700 dark:text-zinc-300'>
+              {data?.weather[0].description}
+            </Medium>
           </View>
         </View>
         <View>
           <SemiBold className='text-right text-xl text-zinc-700 dark:text-zinc-300'>{32}°C</SemiBold>
-          <Medium className='text-right text-base text-zinc-700 dark:text-zinc-300'>Humidity {data?.main.humidity}%</Medium>
+          <Medium className='text-right text-base text-zinc-700 dark:text-zinc-300'>
+            Humidity {data?.main.humidity}%
+          </Medium>
         </View>
       </View>
       <View className='mt-5 w-full px-5'>
@@ -179,7 +189,8 @@ function GetMidScreen({
   route: RouteProp<ParamList, 'WeatherLocation'>
 }) {
   if (status === LocationStatus.FETCHING) return <FetchingLocation />
-  else if (status === LocationStatus.FETCHED) return <CityResult location={location} navigation={navigation} route={route} />
+  else if (status === LocationStatus.FETCHED)
+    return <CityResult location={location} navigation={navigation} route={route} />
   else if (status === LocationStatus.ERROR) return <ErrorFetchingLocation />
   else if (status === LocationStatus.PERMISSION_DENIED) return <LocationPermissionDenied />
   else if (status === LocationStatus.NEVER_ASK_AGAIN) return <LocationPermissionDenied />
@@ -213,10 +224,17 @@ function LocationPermissionDenied() {
   )
 }
 
-function GetTryLocateAgainButton({ getLocation, locationStatus }: { getLocation: () => void; locationStatus: LocationStatus }) {
+function GetTryLocateAgainButton({
+  getLocation,
+  locationStatus,
+}: {
+  getLocation: () => void
+  locationStatus: LocationStatus
+}) {
   if (locationStatus === LocationStatus.FETCHING) return null
   else if (locationStatus === LocationStatus.PERMISSION_DENIED) return <GrantPermission />
-  else if (locationStatus === LocationStatus.NEVER_ASK_AGAIN) return <GrantPermissionFromSettings getLocation={getLocation} />
+  else if (locationStatus === LocationStatus.NEVER_ASK_AGAIN)
+    return <GrantPermissionFromSettings getLocation={getLocation} />
   else if (locationStatus === LocationStatus.ERROR) return <TurnOnLocation getLocation={getLocation} />
   else return null
 }
@@ -224,7 +242,9 @@ function GetTryLocateAgainButton({ getLocation, locationStatus }: { getLocation:
 function GrantPermission() {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>Please grant location permission.</Medium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>
+        Please grant location permission.
+      </Medium>
       <Button title='Allow location' onPress={() => Linking.openSettings()} />
     </View>
   )
@@ -232,7 +252,9 @@ function GrantPermission() {
 function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>Your location is turned off. Turn it on.</Medium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>
+        Your location is turned off. Turn it on.
+      </Medium>
       <Button title='Turn on location' onPress={getLocation} />
     </View>
   )
@@ -241,7 +263,9 @@ function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
 function GrantPermissionFromSettings({ getLocation }: { getLocation: () => void }) {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>Allow the app to access your location.</Medium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>
+        Allow the app to access your location.
+      </Medium>
       <Button title='Go to settings' onPress={() => Linking.openSettings()} />
     </View>
   )

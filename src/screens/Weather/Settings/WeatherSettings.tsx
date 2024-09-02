@@ -90,7 +90,13 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             title='Location'
             Icon={<MapsLocation02Icon {...ic} />}
             arrow
-            Right={<Txt>{currentCity?.name ? getLatitude(currentCity?.lat || 0) + ', ' + getLatitude(currentCity?.lon || 0) : 'Not set'}</Txt>}
+            Right={
+              <Txt>
+                {currentCity?.name
+                  ? getLatitude(currentCity?.lat || 0) + ', ' + getLatitude(currentCity?.lon || 0)
+                  : 'Not set'}
+              </Txt>
+            }
             onPress={() => {
               navigation.navigate('WeatherLocation', { shouldGoBack: true })
             }}
@@ -117,20 +123,34 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
       <Units navigation={navigation} />
       <Gap12>
         <SettGroup title='Accuweather API key'>
-          <Input Icon={<Key01Icon {...ic} />} placeholder='Enter Accuweather API key' onChangeText={setAccuApiKey} defaultValue={accuApiKey} />
+          <Input
+            Icon={<Key01Icon {...ic} />}
+            placeholder='Enter Accuweather API key'
+            onChangeText={setAccuApiKey}
+            defaultValue={accuApiKey}
+          />
         </SettGroup>
         <SettText>
           Generate a new API key if you haven't already. Make sure that key is compatible with the{' '}
           <Text
             className='text-accent'
-            onPress={() => Linking.openURL('https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/search')}
+            onPress={() =>
+              Linking.openURL(
+                'https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/search',
+              )
+            }
           >
             City Search API
           </Text>{' '}
           from Accuweather.
         </SettText>
         <SettGroup title='OpenweatherMap API key'>
-          <Input Icon={<Key01Icon {...ic} />} placeholder='Enter OpenweatherMap API key' onChangeText={setOwApiKey} defaultValue={owApiKey} />
+          <Input
+            Icon={<Key01Icon {...ic} />}
+            placeholder='Enter OpenweatherMap API key'
+            onChangeText={setOwApiKey}
+            defaultValue={owApiKey}
+          />
         </SettGroup>
         <SettText>
           Make sure that the key is compatible with the{' '}
@@ -169,7 +189,11 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           Right={<TxtAcc>{toReadableSize(searchCache)}</TxtAcc>}
           onPress={clearCache}
         />
-        <SettOption title='Clear all weather data' Icon={<Database02Icon {...ic} />} Right={<TxtAcc>{toReadableSize(weatherSize)}</TxtAcc>} />
+        <SettOption
+          title='Clear all weather data'
+          Icon={<Database02Icon {...ic} />}
+          Right={<TxtAcc>{toReadableSize(weatherSize)}</TxtAcc>}
+        />
       </SettGroup>
     </SettWrapper>
   )

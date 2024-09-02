@@ -84,7 +84,8 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
   if (!weatherWidgetIsActive) return null
-  if (!currentCity) return <WeatherWithText text={`Tap to set \n up weather`} onPress={() => navigation.navigate('WeatherWelcome')} />
+  if (!currentCity)
+    return <WeatherWithText text={`Tap to set \n up weather`} onPress={() => navigation.navigate('WeatherWelcome')} />
   if (!w) return <WeatherWithText text='Loading...' />
 
   return (
@@ -123,7 +124,8 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
           </Medium> */}
           <Medium style={[color]}>
             {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}
-            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} / {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
+            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
+            {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
           </Medium>
         </View>
@@ -146,7 +148,12 @@ function WeatherWithText({ text, onPress }: { text: string; onPress?: () => void
           <LinearGradient colors={[g[0], g[1]]} start={vec(w / 2, 0)} end={vec(w / 2, h)} />
         </Rect>
       </Canvas>
-      <TouchableOpacity style={[hw, styles.shadow]} className='items-center justify-center' activeOpacity={0.7} onPress={onPress}>
+      <TouchableOpacity
+        style={[hw, styles.shadow]}
+        className='items-center justify-center'
+        activeOpacity={0.7}
+        onPress={onPress}
+      >
         <Medium style={color} className='text-center'>
           {text}
         </Medium>

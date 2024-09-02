@@ -1,7 +1,14 @@
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import React from 'react'
 import { Text, View } from 'react-native'
-import Animated, { SensorType, useAnimatedSensor, useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated'
+import Animated, {
+  SensorType,
+  useAnimatedSensor,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated'
 
 const INTERVAL = {
   // interval: 100,
@@ -44,8 +51,8 @@ export default function StableBox() {
       </Animated.View>
       <View className='pb-2'>
         <Text className='px-10 text-center text-xs text-gray-600'>
-          By using accelerometer sensor, we can get the acceleration of the device in 3D space. Here, we are using the x, y and z values to move the
-          box in 3D space translateX, translateY and scale respectively.
+          By using accelerometer sensor, we can get the acceleration of the device in 3D space. Here, we are using the
+          x, y and z values to move the box in 3D space translateX, translateY and scale respectively.
         </Text>
         <Text className='text-center text-xs text-gray-600'>
           By <Text className='text-blue-500'>codeAbinash</Text>

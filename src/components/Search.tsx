@@ -28,7 +28,10 @@ export default function Search({ onChangeText, value, ...all }: SearchProps) {
   }, [onChangeText])
 
   return (
-    <View className='w-full flex-row items-center justify-center overflow-hidden bg-zinc-100 pl-3.5 dark:bg-zinc-900' style={{ borderRadius: 14 }}>
+    <View
+      className='w-full flex-row items-center justify-center overflow-hidden bg-zinc-100 pl-3.5 dark:bg-zinc-900'
+      style={{ borderRadius: 14 }}
+    >
       <Search01Icon width={17} height={17} color={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]} />
       <TextInput
         ref={ref}
@@ -42,7 +45,12 @@ export default function Search({ onChangeText, value, ...all }: SearchProps) {
         onChangeText={onChangeText}
         {...all}
       />
-      <AnimatedTouchableOpacity className='py-2.5 pl-1 pr-3' activeOpacity={1} onPress={clearText} style={animatedStyle}>
+      <AnimatedTouchableOpacity
+        className='py-2.5 pl-1 pr-3'
+        activeOpacity={1}
+        onPress={clearText}
+        style={animatedStyle}
+      >
         <CancelCircleSolidIcon color={scheme === 'dark' ? Colors.zinc[600] : Colors.zinc[400]} width={20} height={20} />
       </AnimatedTouchableOpacity>
     </View>

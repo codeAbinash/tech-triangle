@@ -15,7 +15,10 @@ export default function TopArea() {
       <View className='flex-row items-center justify-between'>
         <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('Greeting')}>
           <View className='flex-row items-center'>
-            <Text style={[PoppinsBold, { fontSize: 21 }]} className='items-center justify-center text-gray-800 dark:text-gray-200'>
+            <Text
+              style={[PoppinsBold, { fontSize: 21 }]}
+              className='items-center justify-center text-gray-800 dark:text-gray-200'
+            >
               {greetingByTime()}
             </Text>
             {/* <Image source={{ uri: emoji(getEmojiOfDayByTime()) }} height={23} width={23} className='ml-1' /> */}

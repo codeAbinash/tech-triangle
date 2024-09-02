@@ -1,6 +1,13 @@
 import React from 'react'
 import { Dimensions, StatusBar, Text, View } from 'react-native'
-import Animated, { SensorType, useAnimatedSensor, useAnimatedStyle, useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated'
+import Animated, {
+  SensorType,
+  useAnimatedSensor,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated'
 
 const { width, height } = Dimensions.get('window')
 
@@ -24,7 +31,10 @@ export default function ParallaxWallpaper() {
   const roll = useSharedValue(0)
 
   useDerivedValue(() => {
-    pitch.value = withSpring(Math.min(Math.max((rotation.sensor.value.pitch + DEFAULT_PHONE_ANGLE) * PITCH_FACTOR, -MAX_PITCH), MAX_PITCH), DURATION)
+    pitch.value = withSpring(
+      Math.min(Math.max((rotation.sensor.value.pitch + DEFAULT_PHONE_ANGLE) * PITCH_FACTOR, -MAX_PITCH), MAX_PITCH),
+      DURATION,
+    )
     roll.value = withSpring(Math.min(Math.max(rotation.sensor.value.roll * ROLL_FACTOR, -MAX_ROLL), MAX_ROLL), DURATION)
   }, [])
 
@@ -39,7 +49,9 @@ export default function ParallaxWallpaper() {
     <View className='flex-1 items-center justify-center bg-white'>
       <StatusBar barStyle='default' />
       <Text className='z-10 rounded-full bg-black/20 p-2 px-5 font-bold text-white'>Parallax Wallpaper</Text>
-      <Text className='text- z-10 mt-5 px-10 text-center'>Move your device to see the effect. {'\n'} - Quaternion Version - </Text>
+      <Text className='text- z-10 mt-5 px-10 text-center'>
+        Move your device to see the effect. {'\n'} - Quaternion Version -{' '}
+      </Text>
       <Animated.Image
         source={{
           uri: 'https://codeabinash.github.io/wallpapers/w3.jpg',

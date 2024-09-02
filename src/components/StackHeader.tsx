@@ -14,7 +14,17 @@ type CardHeaderProps = {
   LeftOnPress?: () => void
   RightOnPress?: () => void
 }
-export default function StackHeader({ left, Left, right, Right, title, Title, LeftOnPress, RightOnPress, navigation }: CardHeaderProps) {
+export default function StackHeader({
+  left,
+  Left,
+  right,
+  Right,
+  title,
+  Title,
+  LeftOnPress,
+  RightOnPress,
+  navigation,
+}: CardHeaderProps) {
   return (
     <View className='w-full flex-row items-center justify-between' style={{ gap: 5 }}>
       <View className='items-start' style={{ flex: 1 }}>

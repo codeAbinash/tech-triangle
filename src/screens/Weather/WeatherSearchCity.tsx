@@ -22,7 +22,13 @@ export type SearchCityParamList = {
   shouldGoBack: boolean
 }
 
-export default function WeatherSearchCity({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'WeatherSearchCity'> }) {
+export default function WeatherSearchCity({
+  navigation,
+  route,
+}: {
+  navigation: StackNav
+  route: RouteProp<ParamList, 'WeatherSearchCity'>
+}) {
   const [query, setQuery] = React.useState('')
   const accuApiKey = weatherStore((state) => state.accuWeatherApiKey)
   const { isPending, error, data, mutate } = useMutation({
@@ -40,7 +46,14 @@ export default function WeatherSearchCity({ navigation, route }: { navigation: S
 
       <View className='p-5 pb-2 pt-4' style={{ gap: 12 }}>
         <StackHeader title='Search City' navigation={navigation} left='Cancel' right='Done' />
-        <Search placeholder='Search City' keyboardType='web-search' value={query} onChangeText={setQuery} autoFocus onEndEditing={() => mutate()} />
+        <Search
+          placeholder='Search City'
+          keyboardType='web-search'
+          value={query}
+          onChangeText={setQuery}
+          autoFocus
+          onEndEditing={() => mutate()}
+        />
       </View>
 
       {isPending && <Pending />}
@@ -55,7 +68,9 @@ export default function WeatherSearchCity({ navigation, route }: { navigation: S
           ListFooterComponent={data && data.length > 0 && <PoweredByAccuWeather />}
           data={data}
           keyExtractor={(item) => item.Key}
-          renderItem={({ item }) => <CityCard item={item} navigation={navigation} shouldGoBack={route.params.shouldGoBack} />}
+          renderItem={({ item }) => (
+            <CityCard item={item} navigation={navigation} shouldGoBack={route.params.shouldGoBack} />
+          )}
         />
       )}
     </View>
@@ -82,11 +97,18 @@ function Pending() {
 function ErrorFetchingCities({ error, navigation }: { error: any; navigation: StackNav }) {
   return (
     <MyFlex>
-      <SemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>{error?.message || 'Failed to fetch cities'}</SemiBold>
+      <SemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>
+        {error?.message || 'Failed to fetch cities'}
+      </SemiBold>
       <Medium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
-        This error may occur if you are not connected to the internet or API limit exceeded. To fix this, enter a API key in settings.
+        This error may occur if you are not connected to the internet or API limit exceeded. To fix this, enter a API
+        key in settings.
       </Medium>
-      <BtnTransparent className='text-sm' onPress={() => navigation.navigate('WeatherSettings')} title='Set API keys'></BtnTransparent>
+      <BtnTransparent
+        className='text-sm'
+        onPress={() => navigation.navigate('WeatherSettings')}
+        title='Set API keys'
+      ></BtnTransparent>
     </MyFlex>
   )
 }
@@ -118,7 +140,15 @@ function PoweredByAccuWeather() {
   )
 }
 
-function CityCard({ item, navigation, shouldGoBack }: { item: WeatherSearchResult; navigation: StackNav; shouldGoBack: boolean }) {
+function CityCard({
+  item,
+  navigation,
+  shouldGoBack,
+}: {
+  item: WeatherSearchResult
+  navigation: StackNav
+  shouldGoBack: boolean
+}) {
   const lat = getLatitude(item.GeoPosition.Latitude)
   const lon = getLongitude(item.GeoPosition.Longitude)
   return (
