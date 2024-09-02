@@ -3,6 +3,7 @@ import { PlusSignIcon, Setting07Icon } from '@assets/icons/icons'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
+import { WeatherColors } from '@utils/colors'
 import { H, W } from '@utils/dimensions'
 import { Light, Medium } from '@utils/fonts'
 import type { NavProp, StackNav } from '@utils/types'
@@ -13,7 +14,6 @@ import { useDerivedValue } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getWeather } from './api'
 import type { Weather } from './types'
-import { themeList } from './Widget/themes'
 
 export default function WeatherScreen({ navigation }: NavProp) {
   const currentCity = weatherStore((state) => state.currentCity)
@@ -23,7 +23,8 @@ export default function WeatherScreen({ navigation }: NavProp) {
   const setCurrentWeather = weatherStore((state) => state.setCurrentWeather)
   const setLastUpdated = weatherStore((state) => state.setLastUpdated)
   const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
-  const theme = themeList.at(0)!
+  const theme = WeatherColors[currentWeather?.current.weather[0].icon]
+  // const theme = WeatherColors['01n']
   const color = theme.color
   const gradient = useDerivedValue(() => theme.gradient, [])
 

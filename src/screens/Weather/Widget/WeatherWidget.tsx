@@ -16,17 +16,17 @@ import {
 import styles, { hw } from '@screens/Home/style'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
+import { WeatherColors } from '@utils/colors'
 import { Medium, Regular } from '@utils/fonts'
-import type { StackNav } from '@utils/types'
+import type { StackNav, Theme, WeatherIconsKeys } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 import { useDerivedValue } from 'react-native-reanimated'
+import type { SvgProps } from 'react-native-svg'
 import { getWeather } from '../api'
 import type { Weather } from '../types'
-import { themeList } from './themes'
-
-const Icons = {
+const Icons: { [K in WeatherIconsKeys]: React.FC<SvgProps> } = {
   '01d': Sun03SolidIcon,
   '01n': Moon02SolidIcon,
   '02d': SunCloud02SolidIcon,
@@ -45,7 +45,7 @@ const Icons = {
   '13n': SnowSolidIcon,
   '50d': SoundcloudSolidIcon,
   '50n': SoundcloudSolidIcon,
-}
+} as const
 
 export default function WeatherWidget({ navigation }: { navigation: StackNav }) {
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
@@ -59,7 +59,9 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   const height = hw.height
   const width = hw.width
 
-  const theme = themeList.at(0)!
+  const theme = WeatherColors[currentWeather?.current.weather[0].icon]
+  // const theme = WeatherColors['03n']
+
   const color = theme.color
   const gradient = useDerivedValue(() => theme.gradient, [])
 
@@ -85,8 +87,14 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
 
   if (!weatherWidgetIsActive) return null
   if (!currentCity)
-    return <WeatherWithText text={`Tap to set \n up weather`} onPress={() => navigation.navigate('WeatherWelcome')} />
-  if (!w) return <WeatherWithText text='Loading...' />
+    return (
+      <WeatherWithText
+        text={`Tap to set \n up weather`}
+        onPress={() => navigation.navigate('WeatherWelcome')}
+        theme={theme}
+      />
+    )
+  if (!w) return <WeatherWithText text='Loading...' theme={theme} />
 
   return (
     <View className='overflow-hidden rounded-3xl' style={{ position: 'relative' }}>
@@ -134,10 +142,9 @@ export default function WeatherWidget({ navigation }: { navigation: StackNav }) 
   )
 }
 
-function WeatherWithText({ text, onPress }: { text: string; onPress?: () => void }) {
+function WeatherWithText({ text, onPress, theme }: { text: string; onPress?: () => void; theme: Theme }) {
   const h = hw.height
   const w = hw.width
-  const theme = themeList[0]
   const color = theme.color
   const g = theme.gradient
 

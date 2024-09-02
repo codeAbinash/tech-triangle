@@ -1,4 +1,5 @@
 import Tailwind from '../../tailwind.config'
+import type { Theme, WeatherIconsKeys } from './types'
 
 /**
  * @deprecated
@@ -316,3 +317,26 @@ export const Colors = {
 }
 
 export default COL
+
+export const WeatherColors: {
+  [K in WeatherIconsKeys]: Theme
+} = {
+  '01d': { gradient: ['#4d9dd3', '#73bae1'], content: 'light-content', color: { color: 'white' } },
+  '01n': { gradient: ['#112159', '#865c9c'], content: 'dark-content', color: { color: 'white' } },
+  '02d': { gradient: ['#4d9dd3', '#73bae1'], content: 'light-content', color: { color: 'white' } },
+  '02n': { gradient: ['#112159', '#865c9c'], content: 'dark-content', color: { color: 'white' } },
+  '03d': { gradient: ['#5493b2', '#a5bdc7'], content: 'light-content', color: { color: 'white' } },
+  '03n': { gradient: ['#112159', '#865c9c'], content: 'dark-content', color: { color: 'white' } },
+  '04d': { gradient: ['#33487f', '#ac8a7a'], content: 'light-content', color: { color: 'white' } },
+  '04n': { gradient: ['#33487f', '#ac8a7a'], content: 'dark-content', color: { color: 'white' } },
+  '09d': { gradient: ['#33487f', '#ac8a7a'], content: 'light-content', color: { color: 'white' } },
+  '09n': { gradient: ['#33487f', '#ac8a7a'], content: 'dark-content', color: { color: 'white' } },
+  '10d': { gradient: ['#33487f', '#ac8a7a'], content: 'light-content', color: { color: 'white' } },
+  '10n': { gradient: ['#33487f', '#ac8a7a'], content: 'dark-content', color: { color: 'white' } },
+  '11d': { gradient: ['#33487f', '#ac8a7a'], content: 'light-content', color: { color: 'white' } },
+  '11n': { gradient: ['#33487f', '#ac8a7a'], content: 'dark-content', color: { color: 'white' } },
+  '13d': { gradient: ['#4d9dd3', '#73bae1'], content: 'light-content', color: { color: 'white' } },
+  '13n': { gradient: ['#1a1a2e', '#1e1e3a'], content: 'dark-content', color: { color: 'white' } },
+  '50d': { gradient: ['#4d9dd3', '#73bae1'], content: 'light-content', color: { color: 'white' } },
+  '50n': { gradient: ['#1a1a2e', '#1e1e3a'], content: 'dark-content', color: { color: 'white' } },
+}
