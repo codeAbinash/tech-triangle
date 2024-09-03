@@ -63,7 +63,7 @@ export default function Test() {
         </Canvas>
       </View>
       <View className='px-5'>
-        <Medium className='text-xs text-black'>{JSON.stringify(connectionResponse, null, 3)}</Medium>
+        <Medium className='text-xs text-black dark:text-white'>{JSON.stringify(connectionResponse, null, 3)}</Medium>
       </View>
       <PaddingBottom />
     </>

@@ -10,12 +10,12 @@ import type { NavProp, StackNav } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
 import { ActivityIndicator, StatusBar, TouchableOpacity, View } from 'react-native'
-import { useDerivedValue } from 'react-native-reanimated'
+import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getWeather } from './api'
 import type { Weather } from './types'
 
-export default function WeatherScreen({ navigation }: NavProp) {
+function WeatherScreen({ navigation }: NavProp) {
   const currentCity = weatherStore((state) => state.currentCity)
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   const lastUpdated = weatherStore((state) => state.lastUpdated)
@@ -23,24 +23,36 @@ export default function WeatherScreen({ navigation }: NavProp) {
   const setCurrentWeather = weatherStore((state) => state.setCurrentWeather)
   const setLastUpdated = weatherStore((state) => state.setLastUpdated)
   const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
-  const theme = WeatherColors[currentWeather?.current.weather[0].icon]
-  // const theme = WeatherColors['01n']
-  const color = theme.color
-  const gradient = useDerivedValue(() => theme.gradient, [])
 
-  const bottom = useSafeAreaInsets().bottom
-  const top = useSafeAreaInsets().top
-  const height = H + bottom + top
-  const width = W
+  const icon = currentWeather?.current.weather[0].icon || '02d'
+  const theme = WeatherColors[icon]
+  const color = theme.color
+
+  const startColor = useSharedValue(theme.gradient[0])
+  const endColor = useSharedValue(theme.gradient[1])
+  const colors = useDerivedValue(() => [startColor.value, endColor.value], [])
+
+  useEffect(() => {
+    startColor.value = withTiming(theme.gradient[0])
+    endColor.value = withTiming(theme.gradient[1])
+  }, [currentWeather.current.weather[0].icon])
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
     mutationFn: () => fetchResult(),
     onError: (err) => console.log(err),
-    onSuccess: (_) => setCurrentWeather(_),
+    onSuccess: setCurrentWeather,
   })
   const w = data || currentWeather
-  useEffect(() => mutate(), [currentCity])
+
+  useEffect(() => {
+    if (currentCity) mutate()
+  }, [currentCity])
+
+  const bottom = useSafeAreaInsets().bottom
+  const top = useSafeAreaInsets().top
+  const height = H + bottom + top
+  const width = W
 
   const fetchResult = useCallback(async (): Promise<Weather> => {
     const now = new Date().getTime()
@@ -58,7 +70,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
       <StatusBar backgroundColor='transparent' barStyle={'light-content'} />
       <Canvas style={[{ position: 'absolute', height: height, width: width }]}>
         <Rect x={0} y={0} width={width} height={height}>
-          <LinearGradient colors={gradient} start={vec(width / 2, 0)} end={vec(width / 2, height)} />
+          <LinearGradient colors={colors} start={vec(width / 2, 0)} end={vec(width / 2, height)} />
         </Rect>
       </Canvas>
       <View className='flex-1 px-5'>
@@ -122,3 +134,5 @@ function Header({
     </View>
   )
 }
+
+export default React.memo(WeatherScreen)
