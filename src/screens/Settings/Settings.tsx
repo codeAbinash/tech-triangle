@@ -8,6 +8,7 @@ import {
   ComputerIcon,
   Database02Icon,
   EditTableIcon,
+  FolderFileStorageIcon,
   InformationCircleIcon,
   PolicyIcon,
   ShieldUserIcon,
@@ -119,6 +120,12 @@ export default function Settings({ navigation }: NavProp) {
             </SettText>
           </Gap12>
           <SettGroup title='Storage'>
+            <SettOption
+              title='Backup and Restore'
+              Icon={<FolderFileStorageIcon {...ic} />}
+              arrow
+              onPress={() => navigation.navigate('BackupAndRestore')}
+            />
             {dev && (
               <SettOption
                 title='MMKV data editor'
@@ -132,6 +139,7 @@ export default function Settings({ navigation }: NavProp) {
               Icon={<Database02Icon {...ic} />}
               Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
               onPress={() => navigation.navigate('ManageStorage')}
+              arrow
             />
             <SettOption
               title='Clear cache'

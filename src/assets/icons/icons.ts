@@ -78,3 +78,5 @@ export { default as SnowSolidIcon } from '@icons/snow-solid-rounded.svg'
 export { default as SoundcloudSolidIcon } from '@icons/soundcloud-solid-rounded.svg'
 
 export { default as EditTableIcon } from '@icons/edit-table-stroke-rounded.svg'
+export { default as FolderFileStorageIcon } from '@icons/folder-file-storage-stroke-rounded.svg'
+export { default as FileManagementIcon } from '@icons/file-management-stroke-rounded.svg'

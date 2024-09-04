@@ -6,21 +6,16 @@ import { TextInput, type TextInputProps, useColorScheme, View } from 'react-nati
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
 
-const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
-
-type SearchProps = TextInputProps
-export default function Search({ onChangeText, value, ...all }: SearchProps) {
+export default function Search({ onChangeText, value, ...all }: TextInputProps) {
   const scheme = useColorScheme()
   const opacity = useSharedValue(value ? 1 : 0)
   const ref = React.useRef<TextInput>(null)
 
   useDerivedValue(() => {
-    opacity.value = withTiming(value ? 1 : 0, { duration: 200 })
+    opacity.value = withTiming(value ? 1 : 0, { duration: 300 })
   }, [value])
 
-  const animatedStyle = useAnimatedStyle(() => {
-    return { opacity: opacity.value }
-  }, [value])
+  const animatedStyle = useAnimatedStyle(() => ({ opacity: opacity.value }))
 
   const clearText = useCallback(() => {
     onChangeText && onChangeText('')
@@ -45,14 +40,15 @@ export default function Search({ onChangeText, value, ...all }: SearchProps) {
         onChangeText={onChangeText}
         {...all}
       />
-      <AnimatedTouchableOpacity
-        className='py-2.5 pl-1 pr-3'
-        activeOpacity={1}
-        onPress={clearText}
-        style={animatedStyle}
-      >
-        <CancelCircleSolidIcon color={scheme === 'dark' ? Colors.zinc[600] : Colors.zinc[400]} width={20} height={20} />
-      </AnimatedTouchableOpacity>
+      <Animated.View style={animatedStyle}>
+        <TouchableOpacity className='py-2.5 pl-1 pr-3' activeOpacity={1} onPress={clearText}>
+          <CancelCircleSolidIcon
+            color={scheme === 'dark' ? Colors.zinc[600] : Colors.zinc[400]}
+            width={20}
+            height={20}
+          />
+        </TouchableOpacity>
+      </Animated.View>
     </View>
   )
 }
