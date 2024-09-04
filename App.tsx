@@ -30,6 +30,7 @@ import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
 import BlankSettings from '@screens/Settings/BlankSettings'
+import About from '@screens/Settings/Extra/About'
 import ManageStorage from '@screens/Settings/ManageStorage'
 import Settings from '@screens/Settings/Settings'
 import TestSettings from '@screens/Settings/TestSetting'
@@ -124,6 +125,7 @@ export type RootStackParamList = {
   AtmPressureUnit: undefined
   ManageStorage: undefined
   BackupAndRestore: undefined
+  About: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -189,6 +191,7 @@ function Navigation() {
         <Stack.Screen name='AtmPressureUnit' component={AtmPressureUnit} options={GestureEnabled} />
         <Stack.Screen name='ManageStorage' component={ManageStorage} options={GestureEnabled} />
         <Stack.Screen name='BackupAndRestore' component={BackupAndRestore} options={GestureEnabled} />
+        <Stack.Screen name='About' component={About} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

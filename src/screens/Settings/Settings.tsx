@@ -152,7 +152,12 @@ export default function Settings({ navigation }: NavProp) {
             <SettOption arrow title='Ask a question' Icon={<BubbleChatIcon {...ic} />} onPress={ask_a_question} />
             <SettOption arrow title='Privacy Policy' Icon={<ShieldUserIcon {...ic} />} />
             <SettOption arrow title='Terms of Service' Icon={<PolicyIcon {...ic} />} />
-            <SettOption arrow title='About' Icon={<InformationCircleIcon {...ic} />} />
+            <SettOption
+              arrow
+              title='About'
+              Icon={<InformationCircleIcon {...ic} />}
+              onPress={() => navigation.navigate('About')}
+            />
           </SettGroup>
           <SettText className='text-center'>
             Version v{APP_VERSION} ({APP_VERSION_CODE})
