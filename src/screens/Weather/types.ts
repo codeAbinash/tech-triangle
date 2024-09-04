@@ -1,4 +1,4 @@
-export interface Weather {
+export type Weather = {
   lat: number
   lon: number
   timezone: string
@@ -6,7 +6,7 @@ export interface Weather {
   current: Current
   hourly: Current[]
   daily: Daily[]
-}
+} | null
 
 export interface Current {
   dt: number

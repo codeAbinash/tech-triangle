@@ -35,7 +35,7 @@ function WeatherScreen({ navigation }: NavProp) {
   useEffect(() => {
     startColor.value = withTiming(theme.gradient[0])
     endColor.value = withTiming(theme.gradient[1])
-  }, [currentWeather.current.weather[0].icon])
+  }, [currentWeather?.current.weather[0].icon])
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
