@@ -146,6 +146,7 @@ export default function Settings({ navigation }: NavProp) {
               Icon={<CleanIcon {...ic} />}
               Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
               onPress={clearCache}
+              arrow
             />
           </SettGroup>
           <SettGroup title='Help & Support'>
