@@ -11,7 +11,7 @@ const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpaci
 type SearchProps = TextInputProps
 export default function Search({ onChangeText, value, ...all }: SearchProps) {
   const scheme = useColorScheme()
-  const opacity = useSharedValue(1)
+  const opacity = useSharedValue(value ? 1 : 0)
   const ref = React.useRef<TextInput>(null)
 
   useDerivedValue(() => {
