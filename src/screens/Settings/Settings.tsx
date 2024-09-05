@@ -13,6 +13,7 @@ import {
   PolicyIcon,
   ShieldUserIcon,
   SunCloudAngledRainZap01Icon,
+  UserIcon,
   Wallet02Icon,
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
@@ -84,6 +85,12 @@ export default function Settings({ navigation }: NavProp) {
               Go to each section to customize your experience. All settings are saved automatically.
             </SettText>
             <SettGroup title='General'>
+              <SettOption
+                title='Your Profile'
+                Icon={<UserIcon {...ic} />}
+                arrow
+                onPress={() => navigation.navigate('YourProfile')}
+              />
               <SettOption
                 title='Computer Science'
                 Icon={<ComputerIcon {...ic} />}

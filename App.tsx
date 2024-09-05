@@ -1,6 +1,5 @@
 import { devOptStore } from '@/zustand/devOptStore'
 import { CodeIcon } from '@assets/icons/icons'
-import Press from '@components/Press'
 import { AutoStatusBar } from '@components/StatusBar'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
@@ -34,6 +33,7 @@ import About from '@screens/Settings/Extra/About'
 import ManageStorage from '@screens/Settings/ManageStorage'
 import Settings from '@screens/Settings/Settings'
 import TestSettings from '@screens/Settings/TestSetting'
+import YourProfile from '@screens/Settings/YourProfile'
 import Test from '@screens/Test'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
@@ -126,6 +126,7 @@ export type RootStackParamList = {
   ManageStorage: undefined
   BackupAndRestore: undefined
   About: undefined
+  YourProfile: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -192,6 +193,7 @@ function Navigation() {
         <Stack.Screen name='ManageStorage' component={ManageStorage} options={GestureEnabled} />
         <Stack.Screen name='BackupAndRestore' component={BackupAndRestore} options={GestureEnabled} />
         <Stack.Screen name='About' component={About} options={GestureEnabled} />
+        <Stack.Screen name='YourProfile' component={YourProfile} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

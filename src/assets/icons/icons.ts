@@ -80,3 +80,8 @@ export { default as SoundcloudSolidIcon } from '@icons/soundcloud-solid-rounded.
 export { default as EditTableIcon } from '@icons/edit-table-stroke-rounded.svg'
 export { default as FolderFileStorageIcon } from '@icons/folder-file-storage-stroke-rounded.svg'
 export { default as FileManagementIcon } from '@icons/file-management-stroke-rounded.svg'
+
+export { default as UserIcon } from '@icons/user-stroke-rounded.svg'
+export { default as BirthdayCakeIcon } from '@icons/birthday-cake-stroke-rounded.svg'
+export { default as Mail01Icon } from '@icons/mail-01-stroke-rounded.svg'
+export { default as WeightScale01Icon } from '@icons/weight-scale-01-stroke-rounded.svg'
