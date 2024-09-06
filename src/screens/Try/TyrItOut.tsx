@@ -84,7 +84,7 @@ const tools: Group[] = [
 ]
 
 function searchTools(searchTerm: string): Group[] {
-  const lowerCaseSearchTerm = searchTerm.toLowerCase()
+  const lowerCaseSearchTerm = searchTerm.toLowerCase().trim()
   if (!searchTerm) return tools
   const result: Group[] = []
   for (const group of tools) {
