@@ -13,6 +13,11 @@ export default function AtmPressureUnit({ navigation }: NavProp) {
         <SettText className='mt-3'>Select the unit of atmospheric pressure you want to use.</SettText>
         <SettGroup>
           <SettOption
+            title='Hectopascal (hPa)'
+            Right={<Check checked={atmPressureUnit === 'hPa'} />}
+            onPress={() => setAtmPressureUnit('hPa')}
+          />
+          <SettOption
             title='Inches of mercury (inHg)'
             Right={<Check checked={atmPressureUnit === 'inHg'} />}
             onPress={() => setAtmPressureUnit('inHg')}
