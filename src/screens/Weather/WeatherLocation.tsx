@@ -27,7 +27,7 @@ export type WeatherLocationParamList = {
 
 const requestLocationPermission = async () => {
   try {
-    const permission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+    const permission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION!)
     console.log('Permission', permission)
     return permission
   } catch (err) {
@@ -148,7 +148,7 @@ function CityResult({
           <View className=''>
             <SemiBold className='text-xl text-zinc-800 dark:text-zinc-200'>{data?.name}</SemiBold>
             <Medium className='text-base capitalize text-zinc-700 dark:text-zinc-300'>
-              {data?.weather[0].description}
+              {data?.weather[0]!.description}
             </Medium>
           </View>
         </View>

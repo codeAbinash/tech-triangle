@@ -21,7 +21,7 @@ export type Storage = {
 
 export function getStorageSize(s: Storage) {
   let keysSize = getKeysSize(Object.values(s.keys))
-  let startWithSize = Object.keys(s.startWith).reduce((acc, key) => acc + getStartWithSize(s.startWith[key]), 0)
+  let startWithSize = Object.keys(s.startWith).reduce((acc, key) => acc + getStartWithSize(s.startWith[key]!), 0)
   return keysSize + startWithSize
 }
 

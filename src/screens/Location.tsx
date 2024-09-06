@@ -12,7 +12,7 @@ import Geolocation from 'react-native-geolocation-service'
 // Function to get permission for location
 const requestLocationPermission = async () => {
   try {
-    const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, {
+    const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION!, {
       title: 'Geolocation Permission',
       message: 'Can we access your location?',
       buttonNeutral: 'Ask Me Later',

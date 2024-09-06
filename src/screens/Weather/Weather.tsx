@@ -24,7 +24,7 @@ function WeatherScreen({ navigation }: NavProp) {
   const setLastUpdated = weatherStore((state) => state.setLastUpdated)
   const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
 
-  const icon = currentWeather?.current.weather[0].icon || '02d'
+  const icon = currentWeather?.current.weather[0]!.icon || '02d'
   const theme = WeatherColors[icon]
   const color = theme.color
 
@@ -35,7 +35,7 @@ function WeatherScreen({ navigation }: NavProp) {
   useEffect(() => {
     startColor.value = withTiming(theme.gradient[0])
     endColor.value = withTiming(theme.gradient[1])
-  }, [currentWeather?.current.weather[0].icon])
+  }, [currentWeather?.current.weather[0]!.icon])
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
@@ -89,12 +89,12 @@ function WeatherScreen({ navigation }: NavProp) {
           <Medium style={[color, { fontSize: 60 }]}>{currentUnit === 'K' ? '' : '°'}</Medium>
         </View>
         <Medium className='-mt-4 text-center text-lg capitalize' style={color}>
-          {w ? w.current.weather[0].description : '__'}
+          {w ? w.current.weather[0]!.description : '__'}
         </Medium>
         <Medium className='mt-0.5 text-center text-base' style={color}>
-          {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}
+          {w ? tempConverter(w.daily[0]!.temp.max, currentUnit) : '__'}
           {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
-          {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
+          {w ? tempConverter(w.daily[0]!.temp.min, currentUnit) : '__'}
           {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
         </Medium>
         <PaddingBottom />

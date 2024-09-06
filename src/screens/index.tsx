@@ -36,7 +36,7 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
     <View className='bg-white dark:bg-zinc-950'>
       <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
         {state.routes.map((route, index) => {
-          const { options } = descriptors[route.key]
+          const { options } = descriptors[route.key]!
           const label =
             options.tabBarLabel !== undefined
               ? options.tabBarLabel

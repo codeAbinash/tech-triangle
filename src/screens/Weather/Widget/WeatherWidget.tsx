@@ -59,7 +59,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   const height = hw.height
   const width = hw.width
 
-  const icon = currentWeather?.current.weather[0].icon || '02d'
+  const icon = currentWeather?.current.weather[0]!.icon || '02d'
   const theme = WeatherColors[icon]
   const Icon = Icons[icon]
   const color = theme.color
@@ -71,7 +71,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   useEffect(() => {
     startColor.value = withTiming(theme.gradient[0])
     endColor.value = withTiming(theme.gradient[1])
-  }, [currentWeather?.current.weather[0].icon])
+  }, [currentWeather?.current.weather[0]!.icon])
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
@@ -133,16 +133,16 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
         <View>
           <Icon width={25} height={25} color={color.color} />
           <Medium style={[color]} className='mt-0.5 capitalize'>
-            {w ? w.current.weather[0].description : '__'}
+            {w ? w.current.weather[0]!.description : '__'}
             {/* {w.current.weather[0].icon} */}
           </Medium>
           {/* <Medium style={[color]}>
             H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
           </Medium> */}
           <Medium style={[color]}>
-            {w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}
+            {w ? tempConverter(w.daily[0]!.temp.max, currentUnit) : '__'}
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
-            {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}
+            {w ? tempConverter(w.daily[0]!.temp.min, currentUnit) : '__'}
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
           </Medium>
         </View>
