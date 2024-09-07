@@ -12,6 +12,7 @@ import {
   InformationCircleIcon,
   PolicyIcon,
   ShieldUserIcon,
+  SquareLock02Icon,
   SunCloudAngledRainZap01Icon,
   TelegramIcon,
   UserIcon,
@@ -107,6 +108,18 @@ export default function Settings({ navigation }: NavProp) {
               <SettOption title='Routine Management' Icon={<Calendar03Icon {...ic} />} arrow />
               <SettOption title='My Wallet' Icon={<Wallet02Icon {...ic} />} arrow />
             </SettGroup>
+          </Gap12>
+          <Gap12>
+            <SettGroup title='Password and Security'>
+              <SettOption
+                title='App Lock'
+                Icon={<SquareLock02Icon {...ic} />}
+                arrow
+                Right={<TxtAcc>Off</TxtAcc>}
+                onPress={() => navigation.navigate('AppLock')}
+              />
+            </SettGroup>
+            <SettText>Enable app lock to protect your data.</SettText>
           </Gap12>
           <Gap12>
             <SettGroup title='For Developers'>

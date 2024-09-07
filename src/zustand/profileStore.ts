@@ -23,44 +23,44 @@ type ProfileStore = {
 }
 
 export const profileStore = create<ProfileStore>((set) => ({
-  firstName: S.get('profileFirstName') || '',
+  firstName: S.get('ProfileFirstName') || '',
   setFirstName: (firstName: string) => {
-    S.set('profileFirstName', firstName)
+    S.set('ProfileFirstName', firstName)
     set({ firstName })
   },
-  lastName: S.get('profileLastName') || '',
+  lastName: S.get('ProfileLastName') || '',
   setLastName: (lastName: string) => {
-    S.set('profileLastName', lastName)
+    S.set('ProfileLastName', lastName)
     set({ lastName })
   },
-  // email: S.get('profileEmail') || '',
+  // email: S.get('ProfileEmail') || '',
   // setEmail: (email: string) => {
-  //   S.set('profileEmail', email)
+  //   S.set('ProfileEmail', email)
   //   set({ email })
   // },
-  nickName: S.get('profileNickName') || '',
+  nickName: S.get('ProfileNickName') || '',
   setNickName: (nickName: string) => {
-    S.set('profileNickName', nickName)
+    S.set('ProfileNickName', nickName)
     set({ nickName })
   },
-  birthday: S.get('profileBirthday') || '',
+  birthday: S.get('ProfileBirthday') || '',
   setBirthday: (birthday: string) => {
-    S.set('profileBirthday', birthday)
+    S.set('ProfileBirthday', birthday)
     set({ birthday })
   },
-  height: S.get('profileHeight') || '',
+  height: S.get('ProfileHeight') || '',
   setHeight: (height: string) => {
-    S.set('profileHeight', height)
+    S.set('ProfileHeight', height)
     set({ height })
   },
-  weight: S.get('profileWeight') || '',
+  weight: S.get('ProfileWeight') || '',
   setWeight: (weight: string) => {
-    S.set('profileWeight', weight)
+    S.set('ProfileWeight', weight)
     set({ weight })
   },
-  gender: (S.get('profileGender') as Gender) || 'Male',
+  gender: (S.get('ProfileGender') as Gender) || 'Male',
   setGender: (gender: Gender) => {
-    S.set('profileGender', gender)
+    S.set('ProfileGender', gender)
     set({ gender })
   },
 }))

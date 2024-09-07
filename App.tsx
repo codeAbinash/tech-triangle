@@ -27,6 +27,7 @@ import Home from '@screens/index'
 import Location from '@screens/Location'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
+import AppLock from '@screens/Settings/AppLock/AppLock'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
 import BlankSettings from '@screens/Settings/BlankSettings'
 import About from '@screens/Settings/Extra/About'
@@ -131,6 +132,7 @@ export type RootStackParamList = {
   YourProfile: undefined
   YourAge: undefined
   RandomColor: undefined
+  AppLock: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -200,6 +202,7 @@ function Navigation() {
         <Stack.Screen name='YourProfile' component={YourProfile} options={GestureEnabled} />
         <Stack.Screen name='YourAge' component={YourAge} options={GestureEnabled} />
         <Stack.Screen name='RandomColor' component={RandomColor} options={GestureEnabled} />
+        <Stack.Screen name='AppLock' component={AppLock} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

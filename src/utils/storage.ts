@@ -104,14 +104,23 @@ export const CoordinateNotesStorage = {
 const UserProfileStorage = {
   startWith: {},
   keys: {
-    profileFirstName: 'profileFirstName',
-    profileLastName: 'profileLastName',
-    profileNickName: 'profileNickName',
-    profileBirthday: 'profileBirthday',
-    // profileEmail: 'profileEmail',
-    profileHeight: 'profileHeight',
-    profileWeight: 'profileWeight',
-    profileGender: 'profileGender',
+    ProfileFirstName: 'ProfileFirstName',
+    ProfileLastName: 'ProfileLastName',
+    ProfileNickName: 'ProfileNickName',
+    ProfileBirthday: 'ProfileBirthday',
+    // ProfileEmail: 'ProfileEmail',
+    ProfileHeight: 'ProfileHeight',
+    ProfileWeight: 'ProfileWeight',
+    ProfileGender: 'ProfileGender',
+  },
+}
+
+const AppLockStorage = {
+  startWith: {},
+  keys: {
+    AppLockEnabled: 'AppLockEnabled',
+    AppLockPassword: 'AppLockPassword',
+    AppLockTimeout: 'AppLockTimeout',
   },
 }
 
@@ -125,7 +134,13 @@ type WeatherStorage = Store<typeof WeatherStorage>
 type DeveloperStorage = Store<typeof DeveloperStorage>
 type CoordinateNotesStorage = Store<typeof CoordinateNotesStorage>
 type UserProfileStorage = Store<typeof UserProfileStorage>
-export type StorageKeys = WeatherStorage | DeveloperStorage | CoordinateNotesStorage | UserProfileStorage
+type AppLockStorage = Store<typeof AppLockStorage>
+export type StorageKeys =
+  | WeatherStorage
+  | DeveloperStorage
+  | CoordinateNotesStorage
+  | UserProfileStorage
+  | AppLockStorage
 
 /**
  * Other variant of storage

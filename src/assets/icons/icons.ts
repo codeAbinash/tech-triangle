@@ -93,3 +93,6 @@ export { default as BabyGirlDressIcon } from '@icons/baby-girl-dress-stroke-roun
 export { default as TextIcon } from '@icons/text-stroke-rounded.svg'
 export { default as TextNumberSignIcon } from '@icons/text-number-sign-stroke-rounded.svg'
 export { default as TelegramIcon } from '@icons/telegram-stroke-rounded.svg'
+export { default as SquareLock02Icon } from '@icons/square-lock-02-stroke-rounded.svg'
+export { default as ViewIcon } from '@icons/view-stroke-rounded.svg'
+export { default as ViewOffSlashIcon } from '@icons/view-off-slash-stroke-rounded.svg'
