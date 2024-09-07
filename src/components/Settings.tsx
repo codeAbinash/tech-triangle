@@ -109,7 +109,7 @@ export function SettWrapper({ Header, title, navigation, children, ...rest }: Se
       <AutoStatusBar scheme={scheme} />
       {Header ? Header : <BackHeader title={title || 'Test Title'} navigation={navigation} />}
       <KeyboardAvoidingContainer
-        contentContainerStyle={{ paddingBottom: 50 }}
+        contentContainerStyle={{ paddingBottom: 100 }}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         {...rest}
