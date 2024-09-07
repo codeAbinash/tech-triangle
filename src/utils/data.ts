@@ -7,3 +7,7 @@ export const ASK_QN_URL = 'tg://resolve?domain=codeAbinash'
 export function ask_a_question() {
   Linking.openURL(ASK_QN_URL)
 }
+
+export function join_telegram_channel() {
+  Linking.openURL('tg://resolve?domain=tech_tool_box')
+}

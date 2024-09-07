@@ -92,3 +92,4 @@ export { default as BabyBoyDressIcon } from '@icons/baby-boy-dress-stroke-rounde
 export { default as BabyGirlDressIcon } from '@icons/baby-girl-dress-stroke-rounded.svg'
 export { default as TextIcon } from '@icons/text-stroke-rounded.svg'
 export { default as TextNumberSignIcon } from '@icons/text-number-sign-stroke-rounded.svg'
+export { default as TelegramIcon } from '@icons/telegram-stroke-rounded.svg'

@@ -63,7 +63,7 @@ export function SettGroup({ children, title, color = Colors.accent, ...rest }: S
       {title && (
         <Medium
           className={`px-6 py-1.5 text-accent`}
-          style={{ textTransform: 'none', opacity: 1, fontSize: 13.5, color: color }}
+          style={{ textTransform: 'none', opacity: 1, fontSize: 13, color: color }}
         >
           {title}
         </Medium>

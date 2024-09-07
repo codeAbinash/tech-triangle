@@ -13,6 +13,7 @@ import {
   PolicyIcon,
   ShieldUserIcon,
   SunCloudAngledRainZap01Icon,
+  TelegramIcon,
   UserIcon,
   Wallet02Icon,
 } from '@assets/icons/icons'
@@ -23,7 +24,7 @@ import { ic, SettGroup, SettOption, SettText } from '@components/Settings'
 import { TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
-import { APP_VERSION, APP_VERSION_CODE, ask_a_question } from '@utils/data'
+import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/data'
 import { Bold } from '@utils/fonts'
 import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/storage'
 import type { NavProp } from '@utils/types'
@@ -158,6 +159,12 @@ export default function Settings({ navigation }: NavProp) {
           </SettGroup>
           <SettGroup title='Help & Support'>
             <SettOption arrow title='Ask a question' Icon={<BubbleChatIcon {...ic} />} onPress={ask_a_question} />
+            <SettOption
+              arrow
+              title='Join telegram channel'
+              Icon={<TelegramIcon {...ic} />}
+              onPress={join_telegram_channel}
+            />
             <SettOption arrow title='Privacy Policy' Icon={<ShieldUserIcon {...ic} />} />
             <SettOption arrow title='Terms of Service' Icon={<PolicyIcon {...ic} />} />
             <SettOption
