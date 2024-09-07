@@ -1,3 +1,4 @@
+import { profileStore } from '@/zustand/profileStore'
 import { Settings01Icon } from '@assets/icons/icons'
 import { useNavigation } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
@@ -10,6 +11,7 @@ import { Text, TouchableOpacity, View, useColorScheme } from 'react-native'
 export default function TopArea() {
   const theme = useColorScheme()
   const navigation = useNavigation<StackNav>()
+  const nickName = profileStore((state) => state.nickName)
   return (
     <View className='px-5 pr-3'>
       <View className='flex-row items-center justify-between'>
@@ -19,7 +21,7 @@ export default function TopArea() {
               style={[PoppinsBold, { fontSize: 21 }]}
               className='items-center justify-center text-gray-800 dark:text-gray-200'
             >
-              {greetingByTime()}
+              {nickName ? 'Hello ' + nickName : greetingByTime()}
             </Text>
             {/* <Image source={{ uri: emoji(getEmojiOfDayByTime()) }} height={23} width={23} className='ml-1' /> */}
           </View>

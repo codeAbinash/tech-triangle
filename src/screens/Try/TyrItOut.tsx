@@ -1,5 +1,6 @@
 import {
   ArtificialIntelligence04Icon,
+  Calendar03Icon,
   ColorsIcon,
   ComputerIcon,
   DashboardSpeed01Icon,
@@ -51,11 +52,12 @@ const tools: Group[] = [
     startText: 'Here are some tools related to computer science. You can try them out and see how they work.',
     title: 'Tools',
     tools: [
-      { title: 'Location Speed Meter', Icon: DashboardSpeed01Icon },
-      { title: 'Coordinate Notes', Icon: MapsLocation02Icon, to: 'CoordinateNotes' },
-      { title: 'Random Color', Icon: PaintBoardIcon },
+      { title: 'Your Age', Icon: Calendar03Icon, to: 'YourAge' },
+      { title: 'Random Color', Icon: PaintBoardIcon, to: 'RandomColor' },
       { title: 'Gradient Colors', Icon: ColorsIcon },
       { title: 'Random Password', Icon: LockPasswordIcon },
+      { title: 'Location Speed Meter', Icon: DashboardSpeed01Icon },
+      { title: 'Coordinate Notes', Icon: MapsLocation02Icon, to: 'CoordinateNotes' },
     ],
   },
   {

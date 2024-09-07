@@ -19,6 +19,7 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
+    "@react-native-clipboard/clipboard": "^1.14.1",
     "@react-native-community/netinfo": "^11.3.2",
     "@react-navigation/bottom-tabs": "^6.6.1",
     "@react-navigation/native": "^6.1.18",

@@ -35,6 +35,8 @@ import Settings from '@screens/Settings/Settings'
 import TestSettings from '@screens/Settings/TestSetting'
 import YourProfile from '@screens/Settings/YourProfile'
 import Test from '@screens/Test'
+import RandomColor from '@screens/Try/RandomColor'
+import YourAge from '@screens/Try/YourAge'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
 import AtmPressureUnit from '@screens/Weather/Settings/AtmPressureUnit'
@@ -127,6 +129,8 @@ export type RootStackParamList = {
   BackupAndRestore: undefined
   About: undefined
   YourProfile: undefined
+  YourAge: undefined
+  RandomColor: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -194,6 +198,8 @@ function Navigation() {
         <Stack.Screen name='BackupAndRestore' component={BackupAndRestore} options={GestureEnabled} />
         <Stack.Screen name='About' component={About} options={GestureEnabled} />
         <Stack.Screen name='YourProfile' component={YourProfile} options={GestureEnabled} />
+        <Stack.Screen name='YourAge' component={YourAge} options={GestureEnabled} />
+        <Stack.Screen name='RandomColor' component={RandomColor} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

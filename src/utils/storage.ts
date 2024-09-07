@@ -101,6 +101,20 @@ export const CoordinateNotesStorage = {
   },
 }
 
+const UserProfileStorage = {
+  startWith: {},
+  keys: {
+    profileFirstName: 'profileFirstName',
+    profileLastName: 'profileLastName',
+    profileNickName: 'profileNickName',
+    profileBirthday: 'profileBirthday',
+    // profileEmail: 'profileEmail',
+    profileHeight: 'profileHeight',
+    profileWeight: 'profileWeight',
+    profileGender: 'profileGender',
+  },
+}
+
 interface StorageType {
   keys: Record<string, string>
   startWith: Record<string, string>
@@ -110,7 +124,8 @@ type Store<T extends StorageType> = keyof T['keys'] | `${Extract<keyof T['startW
 type WeatherStorage = Store<typeof WeatherStorage>
 type DeveloperStorage = Store<typeof DeveloperStorage>
 type CoordinateNotesStorage = Store<typeof CoordinateNotesStorage>
-export type StorageKeys = WeatherStorage | DeveloperStorage | CoordinateNotesStorage
+type UserProfileStorage = Store<typeof UserProfileStorage>
+export type StorageKeys = WeatherStorage | DeveloperStorage | CoordinateNotesStorage | UserProfileStorage
 
 /**
  * Other variant of storage
