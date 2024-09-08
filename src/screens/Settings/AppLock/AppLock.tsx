@@ -2,7 +2,7 @@ import { appLockStore } from '@/zustand/appLockStore'
 import { LockPasswordIcon, Setting07Icon, ViewIcon, ViewOffSlashIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { Check, SettGroup, SettOption, SettText, SettWrapper, ic } from '@components/Settings'
 import { Toggle } from '@components/Toggle'
 import type { NavProp } from '@utils/types'
 import React, { useEffect } from 'react'
@@ -30,10 +30,7 @@ export default function AppLock({ navigation }: NavProp) {
   return (
     <SettWrapper navigation={navigation} title='App Lock'>
       <Gap12>
-        <SettText className='mt-3 text-orange-500'>
-          When app lock is enabled you will need to enter your password to use the app. If you forget your password, you
-          will loose all your data.
-        </SettText>
+        <SettText className='mt-3 text-blue-500'>This feature will be available in the next release. CodeAntu</SettText>
         <SettGroup title='App Lock Settings'>
           <SettOption
             title='App Lock'
@@ -42,6 +39,10 @@ export default function AppLock({ navigation }: NavProp) {
             onPress={handleAppLockPress}
           />
         </SettGroup>
+        <SettText className='text-orange-500'>
+          When app lock is enabled you will need to enter your password to use the app. If you forget your password, you
+          will loose all your data.
+        </SettText>
         <SettGroup title='Password'>
           <Input
             value={appLockPassword}

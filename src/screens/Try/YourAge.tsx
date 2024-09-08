@@ -1,13 +1,41 @@
+import { profileStore } from '@/zustand/profileStore'
 import { Gap12 } from '@components/Gap'
 import { SettText, SettWrapper } from '@components/Settings'
+import { Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 
 export default function YourAge({ navigation }: NavProp) {
+  const birthDay = profileStore((state) => state.birthday)
+  const [second, setSecond] = React.useState(0)
+
+  const dateData = useMemo(() => {
+    const birthDateArray = birthDay.split('-')
+    const date = +birthDateArray[0]!
+    const month = +birthDateArray[1]!
+    const year = +birthDateArray[2]!
+    return { date, month, year }
+  }, [birthDay])
+
+  useEffect(() => {
+    const timer = setTimeout(() => getAge(), 1000)
+    return () => clearTimeout(timer)
+  }, [second])
+
+  useEffect(() => getAge(), [birthDay])
+
+  const getAge = useCallback(() => {
+    const { date, month, year } = dateData
+    const today = new Date().getTime()
+    const birthDate = new Date(year, month, date).getTime()
+    setSecond(Math.floor((today - birthDate) / 1000))
+  }, [birthDay])
+
   return (
     <SettWrapper navigation={navigation} title='Your Age'>
       <Gap12>
         <SettText className='mt-3'>Here you can see your age in years, months, days etc.</SettText>
+        <Medium className='mt-6 text-center text-3xl text-black/70 dark:text-white/70'>{second}s</Medium>
       </Gap12>
     </SettWrapper>
   )
