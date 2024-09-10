@@ -1,18 +1,18 @@
+import { weatherStore } from '@/zustand/weatherStore'
 import { BtnTransparent } from '@components/Button'
 import Search from '@components/Search'
 import StackHeader from '@components/StackHeader'
 import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
+import { Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import React from 'react'
-import { ActivityIndicator, StatusBar, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, StatusBar, TouchableOpacity, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
 import { searchCity, type WeatherSearchResult } from './api'
-import { Medium, SemiBold } from '@utils/fonts'
-import { weatherStore } from '@/zustand/weatherStore'
 
 type ParamList = {
   WeatherSearchCity: SearchCityParamList

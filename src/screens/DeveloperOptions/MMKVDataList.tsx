@@ -1,9 +1,10 @@
-import { Database02Icon, PencilEdit02Icon } from '@assets/icons/icons'
+import { Database02SolidIcon, PencilEdit02Icon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import FabIcon from '@components/FabIcon'
 import { Gap12 } from '@components/Gap'
+import RoundedIcon from '@components/RoundedIcon'
 import Search from '@components/Search'
-import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls, type StorageKeys } from '@utils/storage'
@@ -60,7 +61,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
                   title={item}
                   arrow
                   numberOfLines={1}
-                  Icon={<Database02Icon {...ic} />}
+                  Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
                   onPress={() => navigation.navigate('MMKVDataEditor', { key: item as StorageKeys })}
                 />
               </Animated.View>
@@ -69,7 +70,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
               <SettOption
                 title='Create new data'
                 onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
-                Icon={<Database02Icon {...ic} />}
+                Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
               />
             )}
             {initStorage === null && (

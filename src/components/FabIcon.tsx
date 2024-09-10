@@ -1,4 +1,3 @@
-import type { StackNav } from '@utils/types'
 import React from 'react'
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'

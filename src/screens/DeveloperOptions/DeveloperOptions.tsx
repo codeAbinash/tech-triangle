@@ -1,8 +1,8 @@
 import { devOptStore } from '@/zustand/devOptStore'
-import { weatherStore } from '@/zustand/weatherStore'
-import { CleanIcon, CodeIcon, ComputerIcon, Database02Icon, Timer02Icon } from '@assets/icons/icons'
+import { CleanSolidIcon, CodeIcon, ComputerSolidIcon, Timer02Icon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
+import RoundedIcon from '@components/RoundedIcon'
 import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Toggle } from '@components/Toggle'
 import { ANIM_DUR } from '@utils/constants'
@@ -22,11 +22,12 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   const setFabEnabled = devOptStore((state) => state.setFabEnabled)
 
   const setAnim = useCallback((duration: string) => {
-    let dur = parseInt(duration)
+    let dur = parseInt(duration, 10)
     if (isNaN(dur)) return setAnimError('Please enter a valid number')
     if (dur < 0 || dur > 1000) return setAnimError('Please enter a number between 0 and 1000')
     setAnimationDuration(dur)
     setAnimError('')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const resetDevOptions = useCallback(() => {
@@ -45,6 +46,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
         },
       ],
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -70,7 +72,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             <SettGroup title='General'>
               <SettOption
                 title='Toggle fab button'
-                Icon={<ComputerIcon {...ic} />}
+                Icon={<RoundedIcon Icon={ComputerSolidIcon} className='bg-green-500' />}
                 Right={<Toggle isActive={isFabEnabled} />}
                 onPress={() => setFabEnabled(!isFabEnabled)}
               />
@@ -113,7 +115,12 @@ export default function DeveloperOptions({ navigation }: NavProp) {
         <SettText>Turn on developer options to see more settings.</SettText>
       )}
       <SettGroup>
-        <SettOption title='Rest Developer Options' Icon={<CleanIcon {...ic} />} onPress={resetDevOptions} arrow />
+        <SettOption
+          title='Rest Developer Options'
+          Icon={<RoundedIcon Icon={CleanSolidIcon} className='bg-amber-500' />}
+          onPress={resetDevOptions}
+          arrow
+        />
       </SettGroup>
       <SettText>
         This will reset all developer options to default. This action cannot be undone. You may need to restart the app

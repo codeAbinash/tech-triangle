@@ -1,9 +1,10 @@
-import { Delete02Icon, FloppyDiskIcon } from '@assets/icons/icons'
+import { Delete02SolidIcon, FloppyDiskIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import FabIcon from '@components/FabIcon'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import RoundedIcon from '@components/RoundedIcon'
+import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { TxtAcc } from '@components/Text'
 import type { RouteProp } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
@@ -38,6 +39,7 @@ export default function MMKVDataEditor({
     if (!isNew) {
       if (key) setValue(S.get(key as StorageKeys) || '')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function save() {
@@ -103,7 +105,7 @@ export default function MMKVDataEditor({
               <SettOption
                 title='Delete this data'
                 className='text-red-500'
-                Icon={<Delete02Icon {...ic} className='text-red-500' />}
+                Icon={<RoundedIcon Icon={Delete02SolidIcon} className='bg-red-500' />}
                 onPress={deleteData}
                 Right={<Medium className='text-red-500'>{toReadableSize(value?.length || 0)}</Medium>}
               />

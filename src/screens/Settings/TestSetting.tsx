@@ -35,7 +35,7 @@ export default function TestSettings({ navigation }: NavProp) {
   }, [option1])
 
   return (
-    <SettWrapper navigation={navigation} title='Test Settings'>
+    <SettWrapper navigation={navigation} title='UI & Components'>
       <>
         <Gap12>
           <SettText className='mt-3'>This is a test screen to show the different settings components</SettText>

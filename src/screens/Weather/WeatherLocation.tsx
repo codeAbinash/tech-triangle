@@ -14,7 +14,7 @@ import LottieView from 'lottie-react-native'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Linking, PermissionsAndroid, StatusBar, View } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
-import { getLocation } from './api'
+import { getLocation as getLoc } from './api'
 import type { LocationResult } from './LocationResultTypes'
 
 type ParamList = {
@@ -115,12 +115,13 @@ function CityResult({
   })
 
   async function fetchResult() {
-    const result = await getLocation(location?.coords.latitude || 0, location?.coords.longitude || 0)
+    const result = await getLoc(location?.coords.latitude || 0, location?.coords.longitude || 0)
     return result as LocationResult
   }
 
   useEffect(() => {
     mutate()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (!data || isPending)

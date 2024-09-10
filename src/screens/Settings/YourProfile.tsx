@@ -1,21 +1,21 @@
 import { profileStore } from '@/zustand/profileStore'
 import {
-  BabyBoyDressIcon,
-  BabyGirlDressIcon,
-  BirthdayCakeIcon,
-  RulerIcon,
-  TextFontIcon,
-  TextIcon,
-  TextNumberSignIcon,
-  WeightScale01Icon,
+  BabyBoyDressSolidIcon,
+  BabyGirlDressSolidIcon,
+  BirthdayCakeSolidIcon,
+  RulerSolidIcon,
+  TextFontSolidIcon,
+  TextNumberSignSolidIcon,
+  TextSolidIcon,
+  WeightScale01SolidIcon,
 } from '@assets/icons/icons'
-import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
+import RoundedIcon from '@components/RoundedIcon'
 import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { Txt } from '@components/Text'
 import type { NavProp } from '@utils/types'
 import React from 'react'
-import { View } from 'react-native'
 
 export default function YourProfile({ navigation }: NavProp) {
   const firstName = profileStore((s) => s.firstName)
@@ -40,17 +40,22 @@ export default function YourProfile({ navigation }: NavProp) {
         <SettGroup title='First and Last Name'>
           <Input
             placeholder='First Name'
-            Icon={<TextFontIcon {...ic} />}
+            Icon={<RoundedIcon Icon={TextFontSolidIcon} className='bg-blue-500' />}
             value={firstName}
             onChangeText={setFirstName}
           />
-          <Input placeholder='Last Name' Icon={<TextIcon {...ic} />} value={lastName} onChangeText={setLastName} />
+          <Input
+            placeholder='Last Name'
+            Icon={<RoundedIcon Icon={TextSolidIcon} className='bg-rose-500' />}
+            value={lastName}
+            onChangeText={setLastName}
+          />
         </SettGroup>
         <SettText>Your name is used to personalize your experience in the app.</SettText>
         <SettGroup title='What do you want to be called?'>
           <Input
             placeholder='Nickname'
-            Icon={<TextNumberSignIcon {...ic} />}
+            Icon={<RoundedIcon Icon={TextNumberSignSolidIcon} className='bg-accent' />}
             value={nickName}
             onChangeText={setNickName}
           />
@@ -62,7 +67,7 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='dd-mm-yy'
             keyboardType='number-pad'
-            Icon={<BirthdayCakeIcon {...ic} />}
+            Icon={<RoundedIcon Icon={BirthdayCakeSolidIcon} className='bg-green-500' />}
             value={birthday}
             onChangeText={setBirthday}
           />
@@ -72,29 +77,31 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='Height in cm'
             keyboardType='number-pad'
-            Icon={<RulerIcon {...ic} />}
+            Icon={<RoundedIcon Icon={RulerSolidIcon} className='bg-accent' />}
             value={height}
             onChangeText={setHeight}
+            Right={<Txt>cm</Txt>}
           />
           <Input
             placeholder='Weight in kg'
             keyboardType='number-pad'
-            Icon={<WeightScale01Icon {...ic} />}
+            Icon={<RoundedIcon Icon={WeightScale01SolidIcon} className='bg-amber-500' />}
             value={weight}
             onChangeText={setWeight}
+            Right={<Txt>kg</Txt>}
           />
         </SettGroup>
         <SettText>Your height and weight are used to calculate your BMI and other health-related information.</SettText>
         <SettGroup title='Gender'>
           <SettOption
             title='Male'
-            Icon={<BabyBoyDressIcon {...ic} />}
+            Icon={<RoundedIcon Icon={BabyBoyDressSolidIcon} className='bg-blue-500' />}
             Right={<Check checked={gender === 'Male'} />}
             onPress={() => setGender('Male')}
           />
           <SettOption
             title='Female'
-            Icon={<BabyGirlDressIcon {...ic} />}
+            Icon={<RoundedIcon Icon={BabyGirlDressSolidIcon} className='bg-rose-500' />}
             Right={<Check checked={gender === 'Female'} />}
             onPress={() => setGender('Female')}
           />

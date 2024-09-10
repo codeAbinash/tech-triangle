@@ -1,69 +1,69 @@
 export { default as ArrowLeft01Icon } from '@icons/arrow-left-01-stroke-rounded.svg'
 export { default as ArrowRight01Icon } from '@icons/arrow-right-01-stroke-rounded.svg'
-export { default as BrushIcon } from '@icons/brush-stroke-rounded.svg'
-export { default as BubbleChatIcon } from '@icons/bubble-chat-stroke-rounded.svg'
+
+
 export { default as CIcon } from '@icons/c-stroke-rounded.svg'
-export { default as Calendar03Icon } from '@icons/calendar-03-stroke-rounded.svg'
+
 export { default as CancelCircleSolidIcon } from '@icons/cancel-circle-solid-rounded.svg'
-export { default as CelsiusIcon } from '@icons/celsius-stroke-rounded.svg'
-export { default as City03Icon } from '@icons/city-03-stroke-rounded.svg'
-export { default as CleanIcon } from '@icons/clean-stroke-rounded.svg'
-export { default as CloudSlowWindIcon } from '@icons/cloud-slow-wind-stroke-rounded.svg'
+
+
+
+
 export { default as CloudSolidIcon } from '@icons/cloud-solid-rounded.svg'
-export { default as CodeIcon } from '@icons/code-stroke-rounded.svg'
-export { default as ComputerIcon } from '@icons/computer-stroke-rounded.svg'
+
+
 export { default as CpuIcon } from '@icons/cpu-stroke-rounded.svg'
-export { default as DashboardSquare02Icon } from '@icons/dashboard-square-02-stroke-rounded.svg'
-export { default as Database02Icon } from '@icons/database-02-stroke-rounded.svg'
-export { default as Delete02Icon } from '@icons/delete-02-stroke-rounded.svg'
-export { default as FahrenheitIcon } from '@icons/fahrenheit-stroke-rounded.svg'
-export { default as FastWindIcon } from '@icons/fast-wind-stroke-rounded.svg'
+
+
+
+
+
 export { default as FloppyDiskIcon } from '@icons/floppy-disk-stroke-rounded.svg'
 export { default as GoForward15SecIcon } from '@icons/go-forward-15-sec-stroke-rounded.svg'
 export { default as Home01SolidIcon } from '@icons/home-01-solid-rounded.svg'
 export { default as Home01Icon } from '@icons/home-01-stroke-rounded.svg'
-export { default as InformationCircleIcon } from '@icons/information-circle-stroke-rounded.svg'
+
 export { default as JavaScriptIcon } from '@icons/java-script-stroke-rounded.svg'
 export { default as JavaIcon } from '@icons/java-stroke-rounded.svg'
-export { default as Key01Icon } from '@icons/key-01-stroke-rounded.svg'
+
 export { default as KeyboardIcon } from '@icons/keyboard-stroke-rounded.svg'
 export { default as LocationOffline01Icon } from '@icons/location-offline-01-stroke-rounded.svg'
-export { default as MapsLocation02Icon } from '@icons/maps-location-02-stroke-rounded.svg'
-export { default as PencilEdit02Icon } from '@icons/pencil-edit-02-stroke-rounded.svg'
+
+
 export { default as PlusSignIcon } from '@icons/plus-sign-stroke-rounded.svg'
-export { default as PolicyIcon } from '@icons/policy-stroke-rounded.svg'
+
 export { default as QuillWrite02Icon } from '@icons/quill-write-02-stroke-rounded.svg'
-export { default as Road02Icon } from '@icons/road-02-stroke-rounded.svg'
-export { default as RulerIcon } from '@icons/ruler-stroke-rounded.svg'
+
+
 export { default as Saturn01SolidIcon } from '@icons/saturn-01-solid-rounded.svg'
 export { default as Saturn01Icon } from '@icons/saturn-01-stroke-rounded.svg'
 export { default as Search01Icon } from '@icons/search-01-stroke-rounded.svg'
 export { default as Setting07Icon } from '@icons/setting-07-stroke-rounded.svg'
 export { default as Settings01Icon } from '@icons/settings-01-stroke-rounded.svg'
-export { default as ShieldUserIcon } from '@icons/shield-user-stroke-rounded.svg'
+
 export { default as SidebarRightIcon } from '@icons/sidebar-right-stroke-rounded.svg'
 export { default as SlowWindsIcon } from '@icons/slow-winds-stroke-rounded.svg'
-export { default as SunCloudAngledRainZap01Icon } from '@icons/sun-cloud-angled-rain-zap-01-stroke-rounded.svg'
-export { default as SunCloudFastWind01Icon } from '@icons/sun-cloud-fast-wind-01-stroke-rounded.svg'
+
+
 export { default as TestTube01SolidIcon } from '@icons/test-tube-01-solid-rounded.svg'
 export { default as TestIcon, default as TestTube01Icon } from '@icons/test-tube-01-stroke-rounded.svg'
-export { default as TextFontIcon } from '@icons/text-font-stroke-rounded.svg'
+
 export { default as Tick01Icon } from '@icons/tick-01-stroke-rounded.svg'
 export { default as TimeHalfPassIcon } from '@icons/time-half-pass-stroke-rounded.svg'
 export { default as Timer02Icon } from '@icons/timer-02-stroke-rounded.svg'
 export { default as Typescript01Icon } from '@icons/typescript-01-stroke-rounded.svg'
 export { default as Wallet02SolidIcon } from '@icons/wallet-02-solid-rounded.svg'
-export { default as Wallet02Icon } from '@icons/wallet-02-stroke-rounded.svg'
-export { default as WindPowerIcon } from '@icons/wind-power-stroke-rounded.svg'
+
+
 export { default as Image02Icon } from '@icons/image-02-stroke-rounded.svg'
 export { default as MathIcon } from '@icons/math-stroke-rounded.svg'
 export { default as ArtificialIntelligence04Icon } from '@icons/artificial-intelligence-04-stroke-rounded.svg'
 export { default as NeuralNetworkIcon } from '@icons/neural-network-stroke-rounded.svg'
 export { default as SoftwareLicenseIcon } from '@icons/software-license-stroke-rounded.svg'
 export { default as DashboardSpeed01Icon } from '@icons/dashboard-speed-01-stroke-rounded.svg'
-export { default as DatabaseRestoreIcon } from '@icons/database-restore-stroke-rounded.svg'
-export { default as TemperatureIcon } from '@icons/temperature-stroke-rounded.svg'
-export { default as SortingDownIcon } from '@icons/sorting-down-stroke-rounded.svg'
+
+
+
 export { default as Sun03SolidIcon } from '@icons/sun-03-solid-rounded.svg'
 export { default as Moon02SolidIcon } from '@icons/moon-02-solid-rounded.svg'
 export { default as SunCloud02SolidIcon } from '@icons/sun-cloud-02-solid-rounded.svg'
@@ -77,22 +77,70 @@ export { default as CloudAngledRainZapSolidIcon } from '@icons/cloud-angled-rain
 export { default as SnowSolidIcon } from '@icons/snow-solid-rounded.svg'
 export { default as SoundcloudSolidIcon } from '@icons/soundcloud-solid-rounded.svg'
 
-export { default as EditTableIcon } from '@icons/edit-table-stroke-rounded.svg'
-export { default as FolderFileStorageIcon } from '@icons/folder-file-storage-stroke-rounded.svg'
+
+
 export { default as FileManagementIcon } from '@icons/file-management-stroke-rounded.svg'
 
-export { default as UserIcon } from '@icons/user-stroke-rounded.svg'
-export { default as BirthdayCakeIcon } from '@icons/birthday-cake-stroke-rounded.svg'
+
+
 export { default as Mail01Icon } from '@icons/mail-01-stroke-rounded.svg'
-export { default as WeightScale01Icon } from '@icons/weight-scale-01-stroke-rounded.svg'
+
 export { default as PaintBoardIcon } from '@icons/paint-board-stroke-rounded.svg'
 export { default as LockPasswordIcon } from '@icons/lock-password-stroke-rounded.svg'
 export { default as ColorsIcon } from '@icons/colors-stroke-rounded.svg'
-export { default as BabyBoyDressIcon } from '@icons/baby-boy-dress-stroke-rounded.svg'
-export { default as BabyGirlDressIcon } from '@icons/baby-girl-dress-stroke-rounded.svg'
-export { default as TextIcon } from '@icons/text-stroke-rounded.svg'
-export { default as TextNumberSignIcon } from '@icons/text-number-sign-stroke-rounded.svg'
-export { default as TelegramIcon } from '@icons/telegram-stroke-rounded.svg'
-export { default as SquareLock02Icon } from '@icons/square-lock-02-stroke-rounded.svg'
+
+
+
+
+
+
 export { default as ViewIcon } from '@icons/view-stroke-rounded.svg'
 export { default as ViewOffSlashIcon } from '@icons/view-off-slash-stroke-rounded.svg'
+
+export { default as UserSolidIcon } from '@icons/user-solid-rounded.svg'
+export { default as ComputerSolidIcon } from '@icons/computer-solid-rounded.svg'
+
+export { default as SunCloudAngledRainZap01SolidIcon } from '@icons/sun-cloud-angled-rain-zap-01-solid-rounded.svg'
+export { default as Calendar03SolidIcon } from '@icons/calendar-03-solid-rounded.svg'
+export { default as SquareLock02SolidIcon } from '@icons/square-lock-02-solid-rounded.svg'
+export { default as CodeSolidIcon } from '@icons/code-solid-rounded.svg'
+
+export { default as FolderFileStorageSolidIcon } from '@icons/folder-file-storage-solid-rounded.svg'
+export { default as Database02SolidIcon } from '@icons/database-02-solid-rounded.svg'
+export { default as CleanSolidIcon } from '@icons/clean-solid-rounded.svg'
+export { default as EditTableSolidIcon } from '@icons/edit-table-solid-rounded.svg'
+export { default as BubbleChatSolidIcon } from '@icons/bubble-chat-solid-rounded.svg'
+export { default as ShieldUserSolidIcon } from '@icons/shield-user-solid-rounded.svg'
+export { default as TelegramSolidIcon } from '@icons/telegram-solid-rounded.svg'
+export { default as InformationCircleSolidIcon } from '@icons/information-circle-solid-rounded.svg'
+export { default as PolicySolidIcon } from '@icons/policy-solid-rounded.svg'
+export { default as BrushSolidIcon } from '@icons/brush-solid-rounded.svg'
+export { default as CodeIcon } from '@icons/code-stroke-rounded.svg'
+export { default as SunCloudAngledRainZap01Icon } from '@icons/sun-cloud-angled-rain-zap-01-stroke-rounded.svg'
+export { default as Wallet02Icon } from '@icons/wallet-02-stroke-rounded.svg'
+export { default as DashboardSquare02SolidIcon } from '@icons/dashboard-square-02-solid-rounded.svg'
+export { default as City03SolidIcon } from '@icons/city-03-solid-rounded.svg'
+export { default as MapsLocation02SolidIcon } from '@icons/maps-location-02-solid-rounded.svg'
+export { default as PencilEdit02SolidIcon } from '@icons/pencil-edit-02-solid-rounded.svg'
+export { default as Delete02SolidIcon } from '@icons/delete-02-solid-rounded.svg'
+export { default as TemperatureSolidIcon } from '@icons/temperature-solid-rounded.svg'
+export { default as RulerSolidIcon } from '@icons/ruler-solid-rounded.svg'
+export { default as FastWindSolidIcon } from '@icons/fast-wind-solid-rounded.svg'
+export { default as SortingDownSolidIcon } from '@icons/sorting-down-solid-rounded.svg'
+export { default as Key01SolidIcon } from '@icons/key-01-solid-rounded.svg'
+export { default as DatabaseRestoreSolidIcon } from '@icons/database-restore-solid-rounded.svg'
+export { default as WeightScale01SolidIcon } from '@icons/weight-scale-01-solid-rounded.svg'
+export { default as BirthdayCakeSolidIcon } from '@icons/birthday-cake-solid-rounded.svg'
+export { default as BabyBoyDressSolidIcon } from '@icons/baby-boy-dress-solid-rounded.svg'
+export { default as BabyGirlDressSolidIcon } from '@icons/baby-girl-dress-solid-rounded.svg'
+export { default as TextFontSolidIcon } from '@icons/text-font-solid-rounded.svg'
+export { default as TextSolidIcon } from '@icons/text-solid-rounded.svg'
+export { default as TextNumberSignSolidIcon } from '@icons/text-number-sign-solid-rounded.svg'
+export { default as CelsiusSolidIcon } from '@icons/celsius-solid-rounded.svg'
+export { default as FahrenheitSolidIcon } from '@icons/fahrenheit-solid-rounded.svg'
+export { default as Road02SolidIcon } from '@icons/road-02-solid-rounded.svg'
+export { default as SlowWindsSolidIcon } from '@icons/slow-winds-solid-rounded.svg'
+export { default as SunCloudFastWind01SolidIcon } from '@icons/sun-cloud-fast-wind-01-solid-rounded.svg'
+export { default as CloudSlowWindSolidIcon } from '@icons/cloud-slow-wind-solid-rounded.svg'
+export { default as WindPowerSolidIcon } from '@icons/wind-power-solid-rounded.svg'
+export { default as PencilEdit02Icon } from '@icons/pencil-edit-02-stroke-rounded.svg'

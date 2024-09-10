@@ -1,26 +1,28 @@
 import { devOptStore } from '@/zustand/devOptStore'
 import { weatherStore } from '@/zustand/weatherStore'
 import {
-  City03Icon,
-  CleanIcon,
-  DashboardSquare02Icon,
-  Database02Icon,
-  DatabaseRestoreIcon,
-  Delete02Icon,
-  FastWindIcon,
-  Key01Icon,
-  MapsLocation02Icon,
-  PencilEdit02Icon,
-  RulerIcon,
-  SortingDownIcon,
-  TemperatureIcon,
+  City03SolidIcon,
+  CleanSolidIcon,
+  DashboardSquare02SolidIcon,
+  Database02SolidIcon,
+  DatabaseRestoreSolidIcon,
+  Delete02SolidIcon,
+  FastWindSolidIcon,
+  Key01SolidIcon,
+  MapsLocation02SolidIcon,
+  PencilEdit02SolidIcon,
+  RulerSolidIcon,
+  SortingDownSolidIcon,
+  TemperatureSolidIcon,
 } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import RoundedIcon from '@components/RoundedIcon'
+import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Txt, TxtAcc } from '@components/Text'
 import { Toggle } from '@components/Toggle'
 import { useIsFocused } from '@react-navigation/native'
+import { Colors } from '@utils/colors'
 import { WEATHER_CACHE_TIME } from '@utils/constants'
 import { clearStorage, getStorageSize, WeatherCache, WeatherStorage } from '@utils/storage'
 import type { NavProp, StackNav } from '@utils/types'
@@ -52,11 +54,12 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   }
 
   const setCacheTime = useCallback((time: string) => {
-    let t = parseInt(time)
+    let t = parseInt(time, 10)
     if (isNaN(t)) return setCacheTimeInputError('Please enter a valid number')
     if (t < 0) return setCacheTimeInputError('Please enter a number that is greater than 0')
     setWeatherCacheTime(t)
     setCacheTimeInputError('')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -76,19 +79,22 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             activeOpacity={0.8}
             title='Weather widget'
             onPress={() => setWeatherWidgetIsActive(!weatherWidgetIsActive)}
-            Icon={<DashboardSquare02Icon {...ic} />}
-            Right={<Toggle isActive={weatherWidgetIsActive} />}
+            // Icon={<DashboardSquare02Icon {...ic} />}
+            Icon={<RoundedIcon Icon={DashboardSquare02SolidIcon} className='bg-blue-500' />}
+            Right={<Toggle isActive={weatherWidgetIsActive} color={Colors.blue[500]} />}
           />
           <SettOption
             title='Current City'
-            Icon={<City03Icon {...ic} />}
+            // Icon={<City03SolidIcon {...ic} />}
+            Icon={<RoundedIcon Icon={City03SolidIcon} className='bg-slate-500' />}
             arrow
             Right={<Txt>{currentCity?.name || 'Not set'}</Txt>}
             onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: true })}
           />
           <SettOption
             title='Location'
-            Icon={<MapsLocation02Icon {...ic} />}
+            Icon={<RoundedIcon Icon={MapsLocation02SolidIcon} className='bg-green-500' />}
+            // Icon={<MapsLocation02SolidIcon {...ic} />}
             arrow
             Right={
               <Txt>
@@ -105,14 +111,15 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             <>
               <SettOption
                 title='Manual edit data'
-                Icon={<PencilEdit02Icon {...ic} />}
+                Icon={<RoundedIcon Icon={PencilEdit02SolidIcon} className='bg-yellow-500' />}
                 arrow
                 onPress={() => navigation.navigate('MMKVDataEditor', { key: 'WeatherCurrentCity' })}
               ></SettOption>
               <SettOption
                 title='Remove location data'
                 className='text-red-500'
-                Icon={<Delete02Icon className='text-red-500' {...ic} />}
+                Icon={<RoundedIcon Icon={Delete02SolidIcon} className='bg-red-500' />}
+                // Icon={<Delete02Icon className='text-red-500' {...ic} />}
                 onPress={removeLocation}
               />
             </>
@@ -124,7 +131,8 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
       <Gap12>
         <SettGroup title='Accuweather API key'>
           <Input
-            Icon={<Key01Icon {...ic} />}
+            // Icon={<Key01Icon {...ic} />}
+            Icon={<RoundedIcon Icon={Key01SolidIcon} className='bg-blue-500' />}
             placeholder='Enter Accuweather API key'
             onChangeText={setAccuApiKey}
             defaultValue={accuApiKey}
@@ -146,7 +154,8 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         </SettText>
         <SettGroup title='OpenweatherMap API key'>
           <Input
-            Icon={<Key01Icon {...ic} />}
+            // Icon={<Key01SolidIcon {...ic} />}
+            Icon={<RoundedIcon Icon={Key01SolidIcon} className='bg-blue-500' />}
             placeholder='Enter OpenweatherMap API key'
             onChangeText={setOwApiKey}
             defaultValue={owApiKey}
@@ -164,7 +173,8 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Weather Cache Time'>
             <Input
-              Icon={<DatabaseRestoreIcon {...ic} />}
+              // Icon={<DatabaseRestoreIcon {...ic} />}
+              Icon={<RoundedIcon Icon={DatabaseRestoreSolidIcon} className='bg-slate-500' />}
               Right={<Txt>ms</Txt>}
               defaultValue={weatherCacheTime.toString()}
               onChangeText={(val) => setCacheTime(val)}
@@ -185,13 +195,13 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
       <SettGroup title='Data Management'>
         <SettOption
           title='Clear search cache'
-          Icon={<CleanIcon {...ic} />}
+          Icon={<RoundedIcon Icon={CleanSolidIcon} className='bg-amber-500' />}
           Right={<TxtAcc>{toReadableSize(searchCache)}</TxtAcc>}
           onPress={clearCache}
         />
         <SettOption
           title='Clear all weather data'
-          Icon={<Database02Icon {...ic} />}
+          Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
           Right={<TxtAcc>{toReadableSize(weatherSize)}</TxtAcc>}
         />
       </SettGroup>
@@ -209,7 +219,8 @@ function Units({ navigation }: { navigation: StackNav }) {
       <SettGroup title={'Units'}>
         <SettOption
           arrow
-          Icon={<TemperatureIcon {...ic} />}
+          // Icon={<TemperatureSolidIcon {...ic} />}
+          Icon={<RoundedIcon Icon={TemperatureSolidIcon} className='bg-rose-500' />}
           title='Temperature Unit'
           Right={<Txt>{getTempName(temperatureUnit)}</Txt>}
           onPress={() => navigation.navigate('TempUnit')}
@@ -218,21 +229,23 @@ function Units({ navigation }: { navigation: StackNav }) {
           arrow
           title='Distance Unit'
           Right={<Txt>{getDistanceUnit(distanceUnit)}</Txt>}
-          Icon={<RulerIcon {...ic} />}
+          Icon={<RoundedIcon Icon={RulerSolidIcon} className='bg-blue-500' />}
           onPress={() => navigation.navigate('DistanceUnit')}
         />
         <SettOption
           arrow
           title='Wind Speed Unit'
           Right={<Txt>{windSpeedUnit}</Txt>}
-          Icon={<FastWindIcon {...ic} />}
+          // Icon={<FastWindSolidIcon {...ic} />}
+          Icon={<RoundedIcon Icon={FastWindSolidIcon} className='bg-green-500' />}
           onPress={() => navigation.navigate('WindSpeedUnit')}
         />
         <SettOption
           arrow
           title='Atmospheric Pressure Unit'
           Right={<Txt>{atmPressureUnit}</Txt>}
-          Icon={<SortingDownIcon {...ic} />}
+          Icon={<RoundedIcon Icon={SortingDownSolidIcon} className='bg-slate-500' />}
+          // Icon={<SortingDownSolidIcon {...ic} />}
           onPress={() => navigation.navigate('AtmPressureUnit')}
         />
       </SettGroup>

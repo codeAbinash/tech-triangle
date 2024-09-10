@@ -64,5 +64,3 @@ export const profileStore = create<ProfileStore>((set) => ({
     set({ gender })
   },
 }))
-
-type Set = (fn: (state: ProfileStore) => ProfileStore) => void

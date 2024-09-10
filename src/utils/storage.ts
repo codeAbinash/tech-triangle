@@ -150,7 +150,7 @@ export const WeatherCache: Storage = {
   keys: {},
 }
 
-function getMemoParsed<T>(key: StorageKeys) {
+function useMemoParsed<T>(key: StorageKeys) {
   return useMemo(() => {
     return JSON.parse(ls.getString(key) || 'null') as T
   }, [key])
@@ -170,7 +170,7 @@ function set(key: StorageKeys, value: string) {
 
 const S = {
   getParsed,
-  getMemoParsed,
+  getMemoParsed: useMemoParsed,
   get,
   set,
   ls,

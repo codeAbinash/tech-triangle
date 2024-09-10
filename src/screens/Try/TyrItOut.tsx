@@ -1,13 +1,13 @@
 import {
   ArtificialIntelligence04Icon,
-  Calendar03Icon,
+  Calendar03SolidIcon,
   ColorsIcon,
-  ComputerIcon,
+  ComputerSolidIcon,
   DashboardSpeed01Icon,
-  Database02Icon,
+  Database02SolidIcon,
   Image02Icon,
   LockPasswordIcon,
-  MapsLocation02Icon,
+  MapsLocation02SolidIcon,
   MathIcon,
   NeuralNetworkIcon,
   PaintBoardIcon,
@@ -52,12 +52,12 @@ const tools: Group[] = [
     startText: 'Here are some tools related to computer science. You can try them out and see how they work.',
     title: 'Tools',
     tools: [
-      { title: 'Your Age', Icon: Calendar03Icon, to: 'YourAge' },
+      { title: 'Your Age', Icon: Calendar03SolidIcon, to: 'YourAge' },
       { title: 'Random Color', Icon: PaintBoardIcon, to: 'RandomColor' },
       { title: 'Gradient Colors', Icon: ColorsIcon },
       { title: 'Random Password', Icon: LockPasswordIcon },
       { title: 'Location Speed Meter', Icon: DashboardSpeed01Icon },
-      { title: 'Coordinate Notes', Icon: MapsLocation02Icon, to: 'CoordinateNotes' },
+      { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, to: 'CoordinateNotes' },
     ],
   },
   {
@@ -74,9 +74,9 @@ const tools: Group[] = [
       { title: 'Operating System', Icon: SoftwareLicenseIcon },
       { title: 'Compiler Design', Icon: Setting07Icon },
       { title: 'Computer Networks', Icon: NeuralNetworkIcon },
-      { title: 'Database Management', Icon: Database02Icon },
+      { title: 'Database Management', Icon: Database02SolidIcon },
       { title: 'Artificial Intelligence', Icon: ArtificialIntelligence04Icon },
-      { title: 'Software Engineering', Icon: ComputerIcon },
+      { title: 'Software Engineering', Icon: ComputerSolidIcon },
       { title: 'Image Processing', Icon: Image02Icon },
       { title: 'Numerical Methods', Icon: MathIcon },
     ],
@@ -125,10 +125,10 @@ export default function TyrItOut({ navigation }: NavProp) {
             <Gap12 key={index}>
               {group.startText && <SettText>{group.startText}</SettText>}
               <SettGroup title={group.title}>
-                {group.tools.map((tool, index) => (
-                  <Animated.View key={index} entering={delayedFadeAnimation(search, index)}>
+                {group.tools.map((tool, i) => (
+                  <Animated.View key={i} entering={delayedFadeAnimation(search, i)}>
                     <SettOption
-                      key={index}
+                      key={i}
                       title={tool.title}
                       Icon={<tool.Icon {...ic} />}
                       arrow={tool.arrow ?? true}

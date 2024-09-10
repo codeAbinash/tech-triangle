@@ -1,13 +1,14 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import {
-  CloudSlowWindIcon,
-  FastWindIcon,
+  CloudSlowWindSolidIcon,
   SlowWindsIcon,
-  SunCloudFastWind01Icon,
-  WindPowerIcon,
+  SlowWindsSolidIcon,
+  SunCloudFastWind01SolidIcon,
+  WindPowerSolidIcon,
 } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
-import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import RoundedIcon from '@components/RoundedIcon'
+import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { NavProp } from '@utils/types'
 import React from 'react'
 
@@ -22,31 +23,31 @@ export default function WindSpeedUnit({ navigation }: NavProp) {
           <SettOption
             title='Kilometer per hour (kph)'
             Right={<Check checked={windSpeedUnit === 'kph'} />}
-            Icon={<FastWindIcon {...ic} />}
+            Icon={<RoundedIcon Icon={SlowWindsSolidIcon} className='bg-green-500' />}
             onPress={() => setWindSpeedUnit('kph')}
           />
           <SettOption
             title='Miles per hour (mph)'
             Right={<Check checked={windSpeedUnit === 'mph'} />}
-            Icon={<SlowWindsIcon {...ic} />}
+            Icon={<RoundedIcon Icon={SlowWindsIcon} className='bg-blue-500' />}
             onPress={() => setWindSpeedUnit('mph')}
           />
           <SettOption
             title='Meter per second (m/s)'
             Right={<Check checked={windSpeedUnit === 'm/s'} />}
-            Icon={<SunCloudFastWind01Icon {...ic} />}
+            Icon={<RoundedIcon Icon={SunCloudFastWind01SolidIcon} className='bg-rose-500' />}
             onPress={() => setWindSpeedUnit('m/s')}
           />
           <SettOption
             title='Knot (kn)'
             Right={<Check checked={windSpeedUnit === 'kn'} />}
-            Icon={<CloudSlowWindIcon {...ic} />}
+            Icon={<RoundedIcon Icon={CloudSlowWindSolidIcon} className='bg-accent' />}
             onPress={() => setWindSpeedUnit('kn')}
           />
           <SettOption
             title='Beaufort Scale'
             Right={<Check checked={windSpeedUnit === 'bft'} />}
-            Icon={<WindPowerIcon {...ic} />}
+            Icon={<RoundedIcon Icon={WindPowerSolidIcon} className='bg-amber-500' />}
             onPress={() => setWindSpeedUnit('bft')}
           />
         </SettGroup>

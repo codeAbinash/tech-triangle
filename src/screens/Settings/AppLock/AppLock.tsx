@@ -1,7 +1,8 @@
 import { appLockStore } from '@/zustand/appLockStore'
-import { LockPasswordIcon, Setting07Icon, ViewIcon, ViewOffSlashIcon } from '@assets/icons/icons'
+import { LockPasswordIcon, SquareLock02SolidIcon, ViewIcon, ViewOffSlashIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
+import RoundedIcon from '@components/RoundedIcon'
 import { Check, SettGroup, SettOption, SettText, SettWrapper, ic } from '@components/Settings'
 import { Toggle } from '@components/Toggle'
 import type { NavProp } from '@utils/types'
@@ -34,7 +35,7 @@ export default function AppLock({ navigation }: NavProp) {
         <SettGroup title='App Lock Settings'>
           <SettOption
             title='App Lock'
-            Icon={<Setting07Icon {...ic} />}
+            Icon={<RoundedIcon Icon={SquareLock02SolidIcon} className='bg-green-500' />}
             Right={<Toggle isActive={isAppLockEnabled} />}
             onPress={handleAppLockPress}
           />

@@ -1,27 +1,28 @@
 import { devOptStore } from '@/zustand/devOptStore'
 import {
-  BrushIcon,
-  BubbleChatIcon,
-  Calendar03Icon,
-  CleanIcon,
-  CodeIcon,
-  ComputerIcon,
-  Database02Icon,
-  EditTableIcon,
-  FolderFileStorageIcon,
-  InformationCircleIcon,
-  PolicyIcon,
-  ShieldUserIcon,
-  SquareLock02Icon,
-  SunCloudAngledRainZap01Icon,
-  TelegramIcon,
-  UserIcon,
-  Wallet02Icon,
+  BrushSolidIcon,
+  BubbleChatSolidIcon,
+  Calendar03SolidIcon,
+  CleanSolidIcon,
+  CodeSolidIcon,
+  ComputerSolidIcon,
+  Database02SolidIcon,
+  EditTableSolidIcon,
+  FolderFileStorageSolidIcon,
+  InformationCircleSolidIcon,
+  PolicySolidIcon,
+  ShieldUserSolidIcon,
+  SquareLock02SolidIcon,
+  SunCloudAngledRainZap01SolidIcon,
+  TelegramSolidIcon,
+  UserSolidIcon,
+  Wallet02SolidIcon,
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
+import RoundedIcon from '@components/RoundedIcon'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
-import { ic, SettGroup, SettOption, SettText } from '@components/Settings'
+import { SettGroup, SettOption, SettText } from '@components/Settings'
 import { TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
@@ -63,6 +64,7 @@ export default function Settings({ navigation }: NavProp) {
         setTotalSize(getStartWithSize(''))
         setTotalCache(getStorageSize(Caches))
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function clearCache() {
@@ -89,31 +91,36 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='General'>
               <SettOption
                 title='Your Profile'
-                Icon={<UserIcon {...ic} />}
+                Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
                 arrow
                 onPress={() => navigation.navigate('YourProfile')}
               />
-              <SettOption
-                title='Computer Science'
-                Icon={<ComputerIcon {...ic} />}
-                arrow
-                // onPress={() => navigation.navigate('ComputerScienceSettings')}
-              />
+              <SettOption title='Computer Science' Icon={<RoundedIcon Icon={ComputerSolidIcon} />} arrow />
               <SettOption
                 title='Weather Settings'
-                Icon={<SunCloudAngledRainZap01Icon {...ic} />}
+                // Icon={<SunCloudAngledRainZap01SolidIcon {...ic} />}
+                Icon={<RoundedIcon Icon={SunCloudAngledRainZap01SolidIcon} className='bg-blue-500' />}
                 onPress={() => navigation.navigate('WeatherSettings')}
                 arrow
               />
-              <SettOption title='Routine Management' Icon={<Calendar03Icon {...ic} />} arrow />
-              <SettOption title='My Wallet' Icon={<Wallet02Icon {...ic} />} arrow />
+              <SettOption
+                title='Routine Management'
+                Icon={<RoundedIcon Icon={Calendar03SolidIcon} className='bg-red-500' />}
+                arrow
+              />
+              <SettOption
+                title='My Wallet'
+                Icon={<RoundedIcon Icon={Wallet02SolidIcon} className='bg-amber-500' />}
+                arrow
+              />
             </SettGroup>
           </Gap12>
           <Gap12>
             <SettGroup title='Password and Security'>
               <SettOption
                 title='App Lock'
-                Icon={<SquareLock02Icon {...ic} />}
+                // Icon={<SquareLock02SolidIcon {...ic} />}
+                Icon={<RoundedIcon Icon={SquareLock02SolidIcon} className='bg-green-500' />}
                 arrow
                 Right={<TxtAcc>Off</TxtAcc>}
                 onPress={() => navigation.navigate('AppLock')}
@@ -125,13 +132,15 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='For Developers'>
               <SettOption
                 title='Developer options'
-                Icon={<CodeIcon {...ic} />}
+                // Icon={<CodeIcon {...ic} />}
+                Icon={<RoundedIcon Icon={CodeSolidIcon} className='bg-blue-500' />}
                 onPress={() => navigation.navigate('DeveloperOptions')}
                 arrow
               />
               <SettOption
                 title='UI & Components'
-                Icon={<BrushIcon {...ic} />}
+                // Icon={<BrushIcon {...ic} />}
+                Icon={<RoundedIcon Icon={BrushSolidIcon} className='bg-rose-500' />}
                 onPress={() => navigation.navigate('TestSettings')}
                 arrow
               />
@@ -143,47 +152,60 @@ export default function Settings({ navigation }: NavProp) {
           <SettGroup title='Storage'>
             <SettOption
               title='Backup and Restore'
-              Icon={<FolderFileStorageIcon {...ic} />}
+              Icon={<RoundedIcon Icon={FolderFileStorageSolidIcon} className='bg-yellow-500' />}
               arrow
               onPress={() => navigation.navigate('BackupAndRestore')}
             />
             {dev && (
               <SettOption
                 title='MMKV data editor'
-                Icon={<EditTableIcon {...ic} />}
+                Icon={<RoundedIcon Icon={EditTableSolidIcon} className='bg-green-500' />}
                 arrow
                 onPress={() => navigation.navigate('MMKVDataList')}
               />
             )}
             <SettOption
               title='Manage Storage'
-              Icon={<Database02Icon {...ic} />}
+              Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
               Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
               onPress={() => navigation.navigate('ManageStorage')}
               arrow
             />
             <SettOption
               title='Clear cache'
-              Icon={<CleanIcon {...ic} />}
+              Icon={<RoundedIcon Icon={CleanSolidIcon} className='bg-amber-500' />}
               Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
               onPress={clearCache}
               arrow
             />
           </SettGroup>
           <SettGroup title='Help & Support'>
-            <SettOption arrow title='Ask a question' Icon={<BubbleChatIcon {...ic} />} onPress={ask_a_question} />
+            <SettOption
+              arrow
+              title='Ask a question'
+              Icon={<RoundedIcon Icon={BubbleChatSolidIcon} className='bg-rose-500' />}
+              onPress={ask_a_question}
+            />
             <SettOption
               arrow
               title='Join telegram channel'
-              Icon={<TelegramIcon {...ic} />}
+              Icon={<RoundedIcon Icon={TelegramSolidIcon} className='bg-sky-500' />}
               onPress={join_telegram_channel}
             />
-            <SettOption arrow title='Privacy Policy' Icon={<ShieldUserIcon {...ic} />} />
-            <SettOption arrow title='Terms of Service' Icon={<PolicyIcon {...ic} />} />
+            <SettOption
+              arrow
+              title='Privacy Policy'
+              Icon={<RoundedIcon Icon={ShieldUserSolidIcon} className='bg-green-500' />}
+            />
+            <SettOption
+              arrow
+              title='Terms of Service'
+              Icon={<RoundedIcon Icon={PolicySolidIcon} className='bg-yellow-500' />}
+            />
             <SettOption
               arrow
               title='About'
-              Icon={<InformationCircleIcon {...ic} />}
+              Icon={<RoundedIcon Icon={InformationCircleSolidIcon} className='bg-slate-500' />}
               onPress={() => navigation.navigate('About')}
             />
           </SettGroup>

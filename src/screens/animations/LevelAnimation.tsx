@@ -1,10 +1,5 @@
 import React from 'react'
-import { Dimensions, Text, View } from 'react-native'
-
-const INTERVAL = {}
-const { width, height } = Dimensions.get('window')
-
-const W = width * 0.63
+import { Text, View } from 'react-native'
 
 export default function LevelAnimation() {
   return (

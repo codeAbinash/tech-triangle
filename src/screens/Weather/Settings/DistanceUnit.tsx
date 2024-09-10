@@ -1,7 +1,8 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { Road02Icon, RulerIcon } from '@assets/icons/icons'
+import { Road02SolidIcon, RulerSolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
-import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import RoundedIcon from '@components/RoundedIcon'
+import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { NavProp } from '@utils/types'
 import React from 'react'
 
@@ -17,13 +18,13 @@ export default function DistanceUnit({ navigation }: NavProp) {
             title='Meter'
             Right={<Check checked={distanceUnit === 'm'} />}
             onPress={() => setDistUnit('m')}
-            Icon={<RulerIcon {...ic} />}
+            Icon={<RoundedIcon Icon={RulerSolidIcon} className='bg-blue-500' />}
           />
           <SettOption
             title='Feet'
             Right={<Check checked={distanceUnit === 'ft'} />}
             onPress={() => setDistUnit('ft')}
-            Icon={<Road02Icon {...ic} />}
+            Icon={<RoundedIcon Icon={Road02SolidIcon} className='bg-rose-500' />}
           />
         </SettGroup>
       </Gap12>

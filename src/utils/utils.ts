@@ -5,7 +5,7 @@ import type { DistanceUnit, TemperatureUnit } from '@/zustand/weatherStore'
 
 export async function shareText(message: string) {
   try {
-    const result = await Share.share({ message })
+    await Share.share({ message })
   } catch (error) {}
 }
 

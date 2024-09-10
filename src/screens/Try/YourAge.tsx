@@ -20,17 +20,17 @@ export default function YourAge({ navigation }: NavProp) {
   useEffect(() => {
     const timer = setTimeout(() => getAge(), 1000)
     return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [second])
-
-  useEffect(() => getAge(), [birthDay])
 
   const getAge = useCallback(() => {
     const { date, month, year } = dateData
     const today = new Date().getTime()
     const birthDate = new Date(year, month, date).getTime()
     setSecond(Math.floor((today - birthDate) / 1000))
-  }, [birthDay])
+  }, [dateData])
 
+  useEffect(() => getAge(), [birthDay, getAge])
   return (
     <SettWrapper navigation={navigation} title='Your Age'>
       <Gap12>

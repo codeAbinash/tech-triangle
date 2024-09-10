@@ -29,17 +29,17 @@ type SettOptionProps = TouchableOpacityProps & {
 export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOfLines, ...rest }: SettOptionProps) {
   return (
     <TouchableOpacity
-      className='flex-row items-center justify-between px-7'
+      className='flex-row items-center justify-between px-6'
       onPress={onPress}
       activeOpacity={0.7}
       style={[{ gap: 10 }]}
       {...rest}
     >
-      <View className='flex-row items-center justify-center' style={{ gap: 20, flexShrink: 1 }}>
+      <View className='flex-row items-center justify-center' style={{ gap: 15, flexShrink: 1 }}>
         {Icon}
         <Medium
           className='p-2.5 px-0 text-left text-zinc-800 dark:text-zinc-200'
-          style={[{ fontSize: 15, flexShrink: 1 }, style]}
+          style={[{ fontSize: 14.5, flexShrink: 1 }, style]}
           numberOfLines={numberOfLines || 0}
         >
           {title}
@@ -59,10 +59,10 @@ type SettGroupProps = ViewProps & {
 }
 export function SettGroup({ children, title, color = Colors.accent, ...rest }: SettGroupProps) {
   return (
-    <View className={`bg-white py-2.5 dark:bg-zinc-950`} {...rest}>
+    <View className={'bg-white py-2.5 dark:bg-zinc-950'} {...rest}>
       {title && (
         <Medium
-          className={`px-6 py-1.5 text-accent`}
+          className={'px-6 py-1.5 text-accent'}
           style={{ textTransform: 'none', opacity: 1, fontSize: 13, color: color }}
         >
           {title}

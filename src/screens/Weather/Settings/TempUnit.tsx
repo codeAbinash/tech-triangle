@@ -1,7 +1,12 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { CelsiusIcon, FahrenheitIcon, TemperatureIcon } from '@assets/icons/icons'
+import {
+  CelsiusSolidIcon,
+  FahrenheitSolidIcon,
+  TemperatureSolidIcon,
+} from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
-import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import RoundedIcon from '@components/RoundedIcon'
+import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { NavProp } from '@utils/types'
 import React from 'react'
 
@@ -15,19 +20,19 @@ export default function TempUnit({ navigation }: NavProp) {
         <SettGroup>
           <SettOption
             title='Celsius'
-            Icon={<CelsiusIcon {...ic} />}
+            Icon={<RoundedIcon Icon={CelsiusSolidIcon} className='bg-blue-500' />}
             Right={<Check checked={temperatureUnit === 'C'} />}
             onPress={() => setTmpUnit('C')}
           />
           <SettOption
             title='Fahrenheit'
-            Icon={<FahrenheitIcon {...ic} />}
+            Icon={<RoundedIcon Icon={FahrenheitSolidIcon} className='bg-green-500' />}
             Right={<Check checked={temperatureUnit === 'F'} />}
             onPress={() => setTmpUnit('F')}
           />
           <SettOption
             title='Kelvin'
-            Icon={<TemperatureIcon {...ic} />}
+            Icon={<RoundedIcon Icon={TemperatureSolidIcon} className='bg-rose-500' />}
             Right={<Check checked={temperatureUnit === 'K'} />}
             onPress={() => setTmpUnit('K')}
           />

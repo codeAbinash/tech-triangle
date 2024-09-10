@@ -7,7 +7,7 @@ import type { StackNav } from '@utils/types'
 import React, { useMemo } from 'react'
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import styles, { hw } from './style'
+import styles, { hw as height_weight } from './style'
 
 const { width } = Dimensions.get('window')
 
@@ -23,7 +23,7 @@ function Elements() {
     >
       <WeatherWidget navigation={navigation} />
       <TouchableOpacity
-        style={[hw, styles.shadow]}
+        style={[height_weight, styles.shadow]}
         className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
         activeOpacity={0.7}
         onPress={() => navigation.navigate('RoutineWelcome')}
@@ -33,7 +33,7 @@ function Elements() {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[hw, styles.shadow]}
+        style={[height_weight, styles.shadow]}
         className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
         activeOpacity={0.7}
         onPress={() => navigation.navigate('NotesWelcome')}
@@ -42,8 +42,8 @@ function Elements() {
           Notes
         </Text>
       </TouchableOpacity>
-      <View style={[hw, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
-      <View style={[hw, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
+      <View style={[height_weight, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
+      <View style={[height_weight, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
     </ScrollView>
   )
 }
@@ -51,6 +51,7 @@ function Elements() {
 function Shortcuts() {
   const hw = useMemo(() => {
     return { width: (width - 18 * 2 - 12) / 2, height: width * 0.2 }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width])
   return (
     <View>
