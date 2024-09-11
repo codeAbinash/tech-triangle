@@ -20,10 +20,11 @@ import BlankSettings from '@screens/Settings/BlankSettings'
 import About from '@screens/Settings/Extra/About'
 import ManageStorage from '@screens/Settings/ManageStorage'
 import Settings from '@screens/Settings/Settings'
-import TestSettings from '@screens/Settings/TestSetting'
+import UiAndComponents from '@screens/Settings/UiAndComponents'
 import YourProfile from '@screens/Settings/YourProfile'
 import Test from '@screens/Test'
 import RandomColor from '@screens/Try/RandomColor'
+import RandomPassword from '@screens/Try/RandomPassword'
 import YourAge from '@screens/Try/YourAge'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
@@ -119,7 +120,7 @@ export type RootStackParamList = {
   DeveloperOptions: undefined
   MMKVDataEditor: MMKVDataEditorParamList
   MMKVDataList: undefined
-  TestSettings: undefined
+  UiAndComponents: undefined
   BlankSettings: undefined
   CoordinateNotes: undefined
   TempUnit: undefined
@@ -133,6 +134,7 @@ export type RootStackParamList = {
   YourAge: undefined
   RandomColor: undefined
   AppLock: undefined
+  RandomPassword: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -187,7 +189,7 @@ function Navigation() {
           options={{ gestureEnabled: true, freezeOnBlur: true }}
         />
         <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={GestureEnabled} />
-        <Stack.Screen name='TestSettings' component={TestSettings} options={GestureEnabled} />
+        <Stack.Screen name='UiAndComponents' component={UiAndComponents} options={GestureEnabled} />
         <Stack.Screen name='BlankSettings' component={BlankSettings} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataList' component={MMKVDataList} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} options={GestureEnabled} />
@@ -203,6 +205,7 @@ function Navigation() {
         <Stack.Screen name='YourAge' component={YourAge} options={GestureEnabled} />
         <Stack.Screen name='RandomColor' component={RandomColor} options={GestureEnabled} />
         <Stack.Screen name='AppLock' component={AppLock} options={GestureEnabled} />
+        <Stack.Screen name='RandomPassword' component={RandomPassword} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

@@ -139,7 +139,7 @@ export default function Settings({ navigation }: NavProp) {
               <SettOption
                 title='UI & Components'
                 Icon={<RoundedIcon Icon={BrushSolidIcon} className='bg-rose-500' />}
-                onPress={() => navigation.navigate('TestSettings')}
+                onPress={() => navigation.navigate('UiAndComponents')}
                 arrow
               />
             </SettGroup>

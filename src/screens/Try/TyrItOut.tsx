@@ -59,7 +59,7 @@ const tools: Group[] = [
       { title: 'Gradient Colors', Icon: ColorsSolidIcon, className: 'bg-green-500' },
       { title: 'Location Speed Meter', Icon: DashboardSpeed01SolidIcon, className: 'bg-blue-500' },
       { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, to: 'CoordinateNotes', className: 'bg-yellow-500' },
-      { title: 'Random Password', Icon: LockPasswordSolidIcon, className: 'bg-slate-500' },
+      { title: 'Random Password', Icon: LockPasswordSolidIcon, className: 'bg-slate-500', to: 'RandomPassword' },
     ],
   },
   {

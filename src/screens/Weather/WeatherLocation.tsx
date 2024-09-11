@@ -143,6 +143,8 @@ function CityResult({
         speed={0.5}
         autoPlay
         loop
+        hardwareAccelerationAndroid
+        cacheComposition
       />
       <View className='w-full flex-row items-center justify-between px-5'>
         <View className='flex-row items-center' style={{ gap: 5 }}>

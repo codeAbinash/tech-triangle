@@ -131,3 +131,4 @@ export { default as NeuralNetworkSolidIcon } from '@icons/neural-network-solid-r
 export { default as ArtificialIntelligence04SolidIcon } from '@icons/artificial-intelligence-04-solid-rounded.svg'
 export { default as Image02SolidIcon } from '@icons/image-02-solid-rounded.svg'
 export { default as MathSolidIcon } from '@icons/math-solid-rounded.svg'
+

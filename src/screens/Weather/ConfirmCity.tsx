@@ -57,6 +57,8 @@ export default function ConfirmCity({
           source={require('@assets/animations/earth.lottie')}
           autoPlay
           loop={false}
+          hardwareAccelerationAndroid
+          cacheComposition
           style={{ width: W * 1.1, height: W * 1.1 }}
         />
         <View className='w-full pb-3 pt-2' style={{ gap: 10 }}>

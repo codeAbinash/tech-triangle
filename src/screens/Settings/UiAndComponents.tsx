@@ -21,7 +21,7 @@ import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native'
 
-export default function TestSettings({ navigation }: NavProp) {
+export default function UiAndComponents({ navigation }: NavProp) {
   const [toggle1, setToggle1] = useState(true)
   const [toggle2, setToggle2] = useState(true)
   const [option1, setOption1] = useState('TypeScript')

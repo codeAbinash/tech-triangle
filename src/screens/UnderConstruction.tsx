@@ -17,6 +17,8 @@ export default function UnderConstruction() {
           height: width - 70,
           marginBottom: 20,
         }}
+        hardwareAccelerationAndroid
+        cacheComposition
       />
       <Bold className='text-center text-2xl text-gray-800 dark:text-gray-200'>Under construction</Bold>
       <Regular className='mt-1 w-4/5 text-center text-gray-500 dark:text-gray-400'>
