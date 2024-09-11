@@ -6,28 +6,16 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const { height } = Dimensions.get('window')
 
-export default function KeyboardAnimation({ navigation }: { navigation: StackNav }) {
+export default function KeyboardAnimation() {
   const keyboard = useAnimatedKeyboard()
   const bottom = useSafeAreaInsets().bottom
-  const [stateHeight, setHeight] = React.useState(0)
   const translateStyle = useAnimatedStyle(() => {
     console.log('height', height)
     console.log('keyboard.height.value', keyboard.height.value)
     return {
-      // transform: [{ translateY: -keyboard.height.value }],
       height: height - keyboard.height.value + bottom,
     }
   })
-
-  function updateHeight(value: number) {
-    setHeight(value)
-  }
-
-  useDerivedValue(() => {
-    'worklet'
-    runOnJS(updateHeight)(height)
-    console.log('height', height)
-  }, [keyboard.height.value])
 
   return (
     <>

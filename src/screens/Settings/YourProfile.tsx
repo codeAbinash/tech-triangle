@@ -12,7 +12,7 @@ import {
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
-import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Txt } from '@components/Text'
 import type { NavProp } from '@utils/types'
 import React from 'react'
@@ -89,6 +89,12 @@ export default function YourProfile({ navigation }: NavProp) {
             value={weight}
             onChangeText={setWeight}
             Right={<Txt>kg</Txt>}
+          />
+          <SettOption
+            title='Use Imperial Units'
+            Icon={<RoundedIcon Icon={RulerSolidIcon} className='bg-accent' />}
+            Right={<Check checked={false} />}
+            onPress={() => {}}
           />
         </SettGroup>
         <SettText>Your height and weight are used to calculate your BMI and other health-related information.</SettText>

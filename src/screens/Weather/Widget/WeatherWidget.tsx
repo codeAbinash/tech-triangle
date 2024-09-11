@@ -71,7 +71,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   useEffect(() => {
     startColor.value = withTiming(theme.gradient[0])
     endColor.value = withTiming(theme.gradient[1])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeather?.current.weather[0]!.icon])
 
   const { isPending, error, data, mutate } = useMutation({
@@ -84,7 +84,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
 
   useEffect(() => {
     if (currentCity) mutate()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCity])
 
   const fetchResult = useCallback(async (): Promise<Weather> => {
@@ -94,7 +94,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
       return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
     }
     return currentWeather
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
   if (!weatherWidgetIsActive) return null

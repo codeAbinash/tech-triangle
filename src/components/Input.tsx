@@ -12,7 +12,7 @@ export function Input({ Icon, Right, accent = Colors.accent, multiline, style, .
   const scheme = useColorScheme()
   return (
     <View className='flex-row items-center justify-between px-7' style={{ gap: 10 }}>
-      <View className='flex-1 flex-row items-center' style={{ gap: 23 }}>
+      <View className='flex-1 flex-row items-center' style={{ gap: 22 }}>
         {Icon}
         <TextInput
           className='flex-1 p-2.5 px-0 text-zinc-800 dark:text-zinc-200'

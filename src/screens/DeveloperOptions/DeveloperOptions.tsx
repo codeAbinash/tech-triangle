@@ -1,9 +1,9 @@
 import { devOptStore } from '@/zustand/devOptStore'
-import { CleanSolidIcon, CodeIcon, ComputerSolidIcon, Timer02Icon } from '@assets/icons/icons'
+import { CleanSolidIcon, CodeSolidIcon, ComputerSolidIcon, Timer02SolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
-import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Toggle } from '@components/Toggle'
 import { ANIM_DUR } from '@utils/constants'
 import { Medium } from '@utils/fonts'
@@ -56,7 +56,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
           <SettOption
             title='Developer Options'
             onPress={() => setEnabled(!isEnabled)}
-            Icon={<CodeIcon {...ic} />}
+            Icon={<RoundedIcon Icon={CodeSolidIcon} className='bg-accent' />}
             Right={<Toggle isActive={isEnabled} />}
           />
         </SettGroup>
@@ -81,7 +81,8 @@ export default function DeveloperOptions({ navigation }: NavProp) {
           <Gap12>
             <SettGroup title='Animation Duration'>
               <Input
-                Icon={<Timer02Icon {...ic} />}
+                // Icon={<Timer02Icon {...ic} />}
+                Icon={<RoundedIcon Icon={Timer02SolidIcon} className='bg-rose-500' />}
                 placeholder='Enter animation duration'
                 onChangeText={setAnim}
                 defaultValue={animationDuration.toString()}

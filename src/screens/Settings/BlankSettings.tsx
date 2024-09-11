@@ -1,4 +1,4 @@
-import { Setting07Icon } from '@assets/icons/icons'
+import { Setting07SolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { NavProp } from '@utils/types'
@@ -10,7 +10,7 @@ export default function BlankSettings({ navigation }: NavProp) {
       <Gap12>
         <SettText className='mt-3'>Beginning Text</SettText>
         <SettGroup title='Sample title'>
-          <SettOption title='A blank setting' Icon={<Setting07Icon {...ic} />} arrow />
+          <SettOption title='A blank setting' Icon={<Setting07SolidIcon {...ic} />} arrow />
         </SettGroup>
         <SettText>Sample text</SettText>
       </Gap12>

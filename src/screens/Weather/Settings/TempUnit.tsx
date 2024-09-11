@@ -1,9 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import {
-  CelsiusSolidIcon,
-  FahrenheitSolidIcon,
-  TemperatureSolidIcon,
-} from '@assets/icons/icons'
+import { CelsiusSolidIcon, FahrenheitSolidIcon, TemperatureSolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'

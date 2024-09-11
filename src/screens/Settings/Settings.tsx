@@ -132,14 +132,12 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='For Developers'>
               <SettOption
                 title='Developer options'
-                // Icon={<CodeIcon {...ic} />}
-                Icon={<RoundedIcon Icon={CodeSolidIcon} className='bg-blue-500' />}
+                Icon={<RoundedIcon Icon={CodeSolidIcon} className='bg-accent' />}
                 onPress={() => navigation.navigate('DeveloperOptions')}
                 arrow
               />
               <SettOption
                 title='UI & Components'
-                // Icon={<BrushIcon {...ic} />}
                 Icon={<RoundedIcon Icon={BrushSolidIcon} className='bg-rose-500' />}
                 onPress={() => navigation.navigate('TestSettings')}
                 arrow

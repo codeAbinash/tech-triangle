@@ -8,7 +8,7 @@ import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import LottieView from 'lottie-react-native'
 import React from 'react'
-import { StatusBar, Text, ToastAndroid, View } from 'react-native'
+import { StatusBar, ToastAndroid, View } from 'react-native'
 type ParamList = {
   ConfirmCity: ConfirmCityParamList
 }

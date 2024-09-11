@@ -1,27 +1,28 @@
 import {
-  ArtificialIntelligence04Icon,
+  ArtificialIntelligence04SolidIcon,
   Calendar03SolidIcon,
-  ColorsIcon,
+  ColorsSolidIcon,
   ComputerSolidIcon,
-  DashboardSpeed01Icon,
+  DashboardSpeed01SolidIcon,
   Database02SolidIcon,
-  Image02Icon,
-  LockPasswordIcon,
+  Image02SolidIcon,
+  LockPasswordSolidIcon,
   MapsLocation02SolidIcon,
-  MathIcon,
-  NeuralNetworkIcon,
-  PaintBoardIcon,
-  Setting07Icon,
+  MathSolidIcon,
+  NeuralNetworkSolidIcon,
+  PaintBoardSolidIcon,
+  Setting07SolidIcon,
   Settings01Icon,
-  SoftwareLicenseIcon,
-  TestIcon,
-  Timer02Icon,
+  SoftwareLicenseSolidIcon,
+  TestTube01SolidIcon,
+  Timer02SolidIcon,
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
+import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
-import { ic, SettGroup, SettOption, SettText } from '@components/Settings'
+import { SettGroup, SettOption, SettText } from '@components/Settings'
 import { Group } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
@@ -38,6 +39,7 @@ type Tool = {
   Icon: React.FC<SvgProps>
   to?: keyof RootStackParamList // Ensure 'to' is correctly typed
   arrow?: boolean
+  className?: string
 }
 
 type Group = {
@@ -52,33 +54,33 @@ const tools: Group[] = [
     startText: 'Here are some tools related to computer science. You can try them out and see how they work.',
     title: 'Tools',
     tools: [
-      { title: 'Your Age', Icon: Calendar03SolidIcon, to: 'YourAge' },
-      { title: 'Random Color', Icon: PaintBoardIcon, to: 'RandomColor' },
-      { title: 'Gradient Colors', Icon: ColorsIcon },
-      { title: 'Random Password', Icon: LockPasswordIcon },
-      { title: 'Location Speed Meter', Icon: DashboardSpeed01Icon },
-      { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, to: 'CoordinateNotes' },
+      { title: 'Your Age', Icon: Calendar03SolidIcon, to: 'YourAge', className: 'bg-rose-500' },
+      { title: 'Random Color', Icon: PaintBoardSolidIcon, to: 'RandomColor', className: 'bg-orange-500' },
+      { title: 'Gradient Colors', Icon: ColorsSolidIcon, className: 'bg-green-500' },
+      { title: 'Location Speed Meter', Icon: DashboardSpeed01SolidIcon, className: 'bg-blue-500' },
+      { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, to: 'CoordinateNotes', className: 'bg-yellow-500' },
+      { title: 'Random Password', Icon: LockPasswordSolidIcon, className: 'bg-slate-500' },
     ],
   },
   {
     title: 'Others',
     tools: [
-      { title: 'Animations', Icon: Timer02Icon, to: 'Animations' },
-      { title: 'Test Screen', Icon: TestIcon, to: 'Test' },
+      { title: 'Animations', Icon: Timer02SolidIcon, to: 'Animations', className: 'bg-red-500' },
+      { title: 'Test Screen', Icon: TestTube01SolidIcon, to: 'Test', className: 'bg-purple-500' },
     ],
     endText: 'Just for testing purposes. You can try them out and see how they work.',
   },
   {
     title: 'Computer Science',
     tools: [
-      { title: 'Operating System', Icon: SoftwareLicenseIcon },
-      { title: 'Compiler Design', Icon: Setting07Icon },
-      { title: 'Computer Networks', Icon: NeuralNetworkIcon },
-      { title: 'Database Management', Icon: Database02SolidIcon },
-      { title: 'Artificial Intelligence', Icon: ArtificialIntelligence04Icon },
-      { title: 'Software Engineering', Icon: ComputerSolidIcon },
-      { title: 'Image Processing', Icon: Image02Icon },
-      { title: 'Numerical Methods', Icon: MathIcon },
+      { title: 'Operating System', Icon: SoftwareLicenseSolidIcon, className: 'bg-black' },
+      { title: 'Compiler Design', Icon: Setting07SolidIcon, className: 'bg-slate-500' },
+      { title: 'Computer Networks', Icon: NeuralNetworkSolidIcon, className: 'bg-green-500' },
+      { title: 'Artificial Intelligence', Icon: ArtificialIntelligence04SolidIcon, className: 'bg-rose-500' },
+      { title: 'Software Engineering', Icon: ComputerSolidIcon, className: 'bg-orange-500' },
+      { title: 'Database Management', Icon: Database02SolidIcon, className: 'bg-slate-500' },
+      { title: 'Image Processing', Icon: Image02SolidIcon, className: 'bg-yellow-500' },
+      { title: 'Numerical Methods', Icon: MathSolidIcon, className: 'bg-blue-500' },
     ],
     endText:
       'Some of these applications are in development and may not work as expected. You can try them out and see how they work.',
@@ -130,7 +132,7 @@ export default function TyrItOut({ navigation }: NavProp) {
                     <SettOption
                       key={i}
                       title={tool.title}
-                      Icon={<tool.Icon {...ic} />}
+                      Icon={<RoundedIcon Icon={tool.Icon} className={tool.className} />}
                       arrow={tool.arrow ?? true}
                       // Update onPress handlers to correctly navigate using the 'to' property
                       onPress={() => tool.to && navigation.navigate(tool.to as any)}

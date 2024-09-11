@@ -97,7 +97,7 @@ function Graph() {
   )
 }
 
-export default function HomeScreen({ navigation }: { navigation: StackNav }) {
+export default function HomeScreen({}: { navigation: StackNav }) {
   return (
     <>
       <View className='bg-zinc-50 px-5 pb-1.5 dark:bg-black'>

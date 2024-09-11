@@ -1,25 +1,25 @@
 import {
-  CIcon,
-  JavaIcon,
-  JavaScriptIcon,
+  CSolidIcon,
+  JavaScriptSolidIcon,
+  JavaSolidIcon,
   KeyboardIcon,
-  Setting07Icon,
-  SidebarRightIcon,
-  TextFontIcon,
-  Typescript01Icon,
+  Setting07SolidIcon,
+  SidebarRightSolidIcon,
+  TextFontSolidIcon,
+  Typescript01SolidIcon,
 } from '@assets/icons/icons'
 import Button from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
+import RoundedIcon from '@components/RoundedIcon'
 import Search from '@components/Search'
-import { Check, ic, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { Txt } from '@components/Text'
 import { Toggle } from '@components/Toggle'
 import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
 
 export default function TestSettings({ navigation }: NavProp) {
   const [toggle1, setToggle1] = useState(true)
@@ -54,14 +54,16 @@ export default function TestSettings({ navigation }: NavProp) {
               activeOpacity={0.8}
               title='Sample toggle 1'
               onPress={() => setToggle1(!toggle1)}
-              Icon={<SidebarRightIcon {...ic} />}
+              // Icon={<SidebarRightIcon {...ic} />}
+              Icon={<RoundedIcon Icon={SidebarRightSolidIcon} className='bg-green-500' />}
               Right={<Toggle isActive={toggle1} />}
             />
             <SettOption
               activeOpacity={0.8}
               title='Sample toggle 2'
               onPress={() => setToggle2(!toggle2)}
-              Icon={<SidebarRightIcon {...ic} />}
+              // Icon={<SidebarRightIcon {...ic} />}
+              Icon={<RoundedIcon Icon={SidebarRightSolidIcon} className='bg-rose-500' />}
               Right={<Toggle isActive={toggle2} color={Colors.blue[500]} />}
             />
           </SettGroup>
@@ -74,15 +76,16 @@ export default function TestSettings({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Text Inputs'>
             <Input
-              Icon={<KeyboardIcon {...ic} />}
+              // Icon={<KeyboardIcon {...ic} />}
+              Icon={<RoundedIcon Icon={KeyboardIcon} className='bg-accent' />}
               placeholder='Type something...'
               Right={<Txt size={15}>TS</Txt>}
               value={input1}
               onChangeText={setInput1}
             />
             <Input
-              accent={Colors.red[500]}
-              Icon={<TextFontIcon {...ic} />}
+              accent={Colors.rose[500]}
+              Icon={<RoundedIcon Icon={TextFontSolidIcon} className='bg-rose-500' />}
               placeholder='With red accent color...'
               onChangeText={setInput2}
               value={input2}
@@ -109,7 +112,7 @@ export default function TestSettings({ navigation }: NavProp) {
         <Gap12>
           <SettGroup>
             <SettOption
-              Icon={<Setting07Icon {...ic} />}
+              Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
               title='Open Blank Settings '
               onPress={() => navigation.navigate('BlankSettings')}
               arrow
@@ -122,26 +125,26 @@ export default function TestSettings({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Your favorite Programming Language'>
             <SettOption
-              title='JavaScript'
-              Icon={<JavaScriptIcon {...ic} />}
-              onPress={() => setOption1('JavaScript')}
-              Right={<Check className='text-amber-500' checked={option1 === 'JavaScript'} />}
-            />
-            <SettOption
               title='TypeScript'
-              Icon={<Typescript01Icon {...ic} />}
+              Icon={<Typescript01SolidIcon className='text-blue-500' height={35} width={35} />}
               onPress={() => setOption1('TypeScript')}
               Right={<Check checked={option1 === 'TypeScript'} />}
             />
             <SettOption
+              title='JavaScript'
+              Icon={<JavaScriptSolidIcon className='text-yellow-500' height={35} width={35} />}
+              onPress={() => setOption1('JavaScript')}
+              Right={<Check className='text-amber-500' checked={option1 === 'JavaScript'} />}
+            />
+            <SettOption
               title='C++'
-              Icon={<CIcon {...ic} />}
+              Icon={<CSolidIcon className='text-blue-500' height={35} width={35} />}
               onPress={() => setOption1('C++')}
               Right={<Check className='text-blue-500' checked={option1 === 'C++'} />}
             />
             <SettOption
               title='Java'
-              Icon={<JavaIcon {...ic} />}
+              Icon={<RoundedIcon Icon={JavaSolidIcon} className='bg-rose-500' />}
               onPress={() => setOption1('Java')}
               Right={<Check className='text-red-500' checked={option1 === 'Java'} />}
             />

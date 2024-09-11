@@ -107,7 +107,7 @@ function CityResult({
   const setCurrentCity = weatherStore((state) => state.setCurrentCity)
   const shouldGoBack = route.params.shouldGoBack
 
-  const { isPending, error, data, mutate } = useMutation({
+  const { isPending, data, mutate } = useMutation({
     mutationKey: ['location'],
     mutationFn: () => fetchResult(),
     onError: (err) => console.log(err),
@@ -234,8 +234,7 @@ function GetTryLocateAgainButton({
 }) {
   if (locationStatus === LocationStatus.FETCHING) return null
   else if (locationStatus === LocationStatus.PERMISSION_DENIED) return <GrantPermission />
-  else if (locationStatus === LocationStatus.NEVER_ASK_AGAIN)
-    return <GrantPermissionFromSettings getLocation={getLocation} />
+  else if (locationStatus === LocationStatus.NEVER_ASK_AGAIN) return <GrantPermissionFromSettings />
   else if (locationStatus === LocationStatus.ERROR) return <TurnOnLocation getLocation={getLocation} />
   else return null
 }
@@ -261,7 +260,7 @@ function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
   )
 }
 
-function GrantPermissionFromSettings({ getLocation }: { getLocation: () => void }) {
+function GrantPermissionFromSettings() {
   return (
     <View style={{ gap: 8 }}>
       <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>

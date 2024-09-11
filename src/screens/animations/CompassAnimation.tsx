@@ -11,7 +11,7 @@ import Animated, {
 } from 'react-native-reanimated'
 
 const INTERVAL = {}
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 const W = width * 0.7
 

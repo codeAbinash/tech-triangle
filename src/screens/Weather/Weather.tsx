@@ -35,10 +35,10 @@ function WeatherScreen({ navigation }: NavProp) {
   useEffect(() => {
     startColor.value = withTiming(theme.gradient[0])
     endColor.value = withTiming(theme.gradient[1])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeather?.current.weather[0]!.icon])
 
-  const { isPending, error, data, mutate } = useMutation({
+  const { isPending, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
     mutationFn: () => fetchResult(),
     onError: (err) => console.log(err),
@@ -48,7 +48,7 @@ function WeatherScreen({ navigation }: NavProp) {
 
   useEffect(() => {
     if (currentCity) mutate()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCity])
 
   const bottom = useSafeAreaInsets().bottom
@@ -65,7 +65,7 @@ function WeatherScreen({ navigation }: NavProp) {
     }
     console.log('using cache')
     return currentWeather
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
   return (

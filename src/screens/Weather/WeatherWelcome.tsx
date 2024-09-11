@@ -1,6 +1,6 @@
 import {
   GoForward15SecIcon,
-  MapsLocation02Icon,
+  MapsLocation02SolidIcon,
   QuillWrite02Icon,
   SunCloudAngledRainZap01Icon,
 } from '@assets/icons/icons'
@@ -42,7 +42,7 @@ export default function WeatherWelcome({ navigation }: NavProp) {
               description='A fresh new look and feel with a new color scheme and a new layout to make it easier to find what you are looking for.'
             />
             <Feature
-              Icon={<MapsLocation02Icon height={30} width={30} color={Colors.purple['500']} />}
+              Icon={<MapsLocation02SolidIcon height={30} width={30} color={Colors.purple['500']} />}
               title='Geolocation support'
               description='Geolocation to provide you with the most accurate weather information for your location.'
             />

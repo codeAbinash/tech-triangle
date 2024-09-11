@@ -1,8 +1,7 @@
 import NetInfo from '@react-native-community/netinfo'
 import { useFocusEffect } from '@react-navigation/native'
-import { focusManager, onlineManager, type NotifyOnChangeProps } from '@tanstack/react-query'
+import { onlineManager, type NotifyOnChangeProps } from '@tanstack/react-query'
 import React from 'react'
-import { Platform, type AppStateStatus } from 'react-native'
 
 // Online Status Manager
 onlineManager.setEventListener((setOnline) => {
@@ -12,11 +11,11 @@ onlineManager.setEventListener((setOnline) => {
 })
 
 // Refetch on App Focus
-function onAppStateChange(status: AppStateStatus) {
-  if (Platform.OS !== 'web') {
-    focusManager.setFocused(status === 'active')
-  }
-}
+// function onAppStateChange(status: AppStateStatus) {
+//   if (Platform.OS !== 'web') {
+//     focusManager.setFocused(status === 'active')
+//   }
+// }
 // useEffect(() => {
 //   const subscription = AppState.addEventListener('change', onAppStateChange)
 //   return () => subscription.remove()
@@ -64,7 +63,7 @@ export function useFocusNotifyOnChangeProps(notifyOnChangeProps?: NotifyOnChange
 }
 
 // Disable re-renders on out of focus Screens
-export function useQueryFocusAware(notifyOnChangeProps?: NotifyOnChangeProps) {
+export function useQueryFocusAware() {
   const focusedRef = React.useRef(true)
 
   useFocusEffect(

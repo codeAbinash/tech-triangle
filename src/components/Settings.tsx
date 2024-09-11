@@ -35,7 +35,7 @@ export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOf
       style={[{ gap: 10 }]}
       {...rest}
     >
-      <View className='flex-row items-center justify-center' style={{ gap: 15, flexShrink: 1 }}>
+      <View className='flex-row items-center justify-center' style={{ gap: 22, flexShrink: 1 }}>
         {Icon}
         <Medium
           className='p-2.5 px-0 text-left text-zinc-800 dark:text-zinc-200'

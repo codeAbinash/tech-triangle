@@ -1,5 +1,5 @@
 import { appLockStore } from '@/zustand/appLockStore'
-import { LockPasswordIcon, SquareLock02SolidIcon, ViewIcon, ViewOffSlashIcon } from '@assets/icons/icons'
+import { LockPasswordSolidIcon, SquareLock02SolidIcon, ViewIcon, ViewOffSlashIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
@@ -50,7 +50,8 @@ export default function AppLock({ navigation }: NavProp) {
             onChangeText={setAppLockPassword}
             placeholder='Password'
             secureTextEntry={!isVisible}
-            Icon={<LockPasswordIcon {...ic} />}
+            // Icon={<LockPasswordSolidIcon {...ic} />}
+            Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-rose-500' />}
             Right={
               <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
                 {isVisible ? (
@@ -65,7 +66,7 @@ export default function AppLock({ navigation }: NavProp) {
         <SettGroup title='Confirm Password'>
           <Input
             placeholder='Confirm Password'
-            Icon={<LockPasswordIcon {...ic} />}
+            Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-rose-500' />}
             secureTextEntry={!isVisible}
             value={confirmPassword}
             onChangeText={setConfirmPassword}

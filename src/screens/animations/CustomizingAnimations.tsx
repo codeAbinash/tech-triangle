@@ -106,9 +106,9 @@ function Example1() {
     transform: [{ translateX: exp.value }],
   }))
 
-  const ployStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: ploy.value }],
-  }))
+  // const ployStyle = useAnimatedStyle(() => ({
+  //   transform: [{ translateX: ploy.value }],
+  // }))
 
   const quadStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: quad.value }],
@@ -118,9 +118,9 @@ function Example1() {
     transform: [{ translateX: sin.value }],
   }))
 
-  const stepStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: step.value }],
-  }))
+  // const stepStyle = useAnimatedStyle(() => ({
+  //   transform: [{ translateX: step.value }],
+  // }))
 
   const inStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: in_.value }],
@@ -155,7 +155,6 @@ function Example1() {
     in_.value = withRepeat(withTiming(-in_.value, { duration, easing: Easing.in(Easing.quad) }), -1, true)
     out.value = withRepeat(withTiming(-out.value, { duration, easing: Easing.out(Easing.quad) }), -1, true)
     inOut.value = withRepeat(withTiming(-inOut.value, { duration, easing: Easing.inOut(Easing.quad) }), -1, true)
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

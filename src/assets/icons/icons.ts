@@ -1,39 +1,23 @@
 export { default as ArrowLeft01Icon } from '@icons/arrow-left-01-stroke-rounded.svg'
 export { default as ArrowRight01Icon } from '@icons/arrow-right-01-stroke-rounded.svg'
 
-
-export { default as CIcon } from '@icons/c-stroke-rounded.svg'
-
 export { default as CancelCircleSolidIcon } from '@icons/cancel-circle-solid-rounded.svg'
-
-
-
 
 export { default as CloudSolidIcon } from '@icons/cloud-solid-rounded.svg'
 
-
 export { default as CpuIcon } from '@icons/cpu-stroke-rounded.svg'
-
-
-
-
 
 export { default as FloppyDiskIcon } from '@icons/floppy-disk-stroke-rounded.svg'
 export { default as GoForward15SecIcon } from '@icons/go-forward-15-sec-stroke-rounded.svg'
 export { default as Home01SolidIcon } from '@icons/home-01-solid-rounded.svg'
 export { default as Home01Icon } from '@icons/home-01-stroke-rounded.svg'
 
-export { default as JavaScriptIcon } from '@icons/java-script-stroke-rounded.svg'
-export { default as JavaIcon } from '@icons/java-stroke-rounded.svg'
-
 export { default as KeyboardIcon } from '@icons/keyboard-stroke-rounded.svg'
 export { default as LocationOffline01Icon } from '@icons/location-offline-01-stroke-rounded.svg'
-
 
 export { default as PlusSignIcon } from '@icons/plus-sign-stroke-rounded.svg'
 
 export { default as QuillWrite02Icon } from '@icons/quill-write-02-stroke-rounded.svg'
-
 
 export { default as Saturn01SolidIcon } from '@icons/saturn-01-solid-rounded.svg'
 export { default as Saturn01Icon } from '@icons/saturn-01-stroke-rounded.svg'
@@ -41,26 +25,21 @@ export { default as Search01Icon } from '@icons/search-01-stroke-rounded.svg'
 export { default as Setting07Icon } from '@icons/setting-07-stroke-rounded.svg'
 export { default as Settings01Icon } from '@icons/settings-01-stroke-rounded.svg'
 
-export { default as SidebarRightIcon } from '@icons/sidebar-right-stroke-rounded.svg'
 export { default as SlowWindsIcon } from '@icons/slow-winds-stroke-rounded.svg'
-
 
 export { default as TestTube01SolidIcon } from '@icons/test-tube-01-solid-rounded.svg'
 export { default as TestIcon, default as TestTube01Icon } from '@icons/test-tube-01-stroke-rounded.svg'
 
 export { default as Tick01Icon } from '@icons/tick-01-stroke-rounded.svg'
 export { default as TimeHalfPassIcon } from '@icons/time-half-pass-stroke-rounded.svg'
-export { default as Timer02Icon } from '@icons/timer-02-stroke-rounded.svg'
-export { default as Typescript01Icon } from '@icons/typescript-01-stroke-rounded.svg'
+
+
 export { default as Wallet02SolidIcon } from '@icons/wallet-02-solid-rounded.svg'
 
 
-export { default as Image02Icon } from '@icons/image-02-stroke-rounded.svg'
-export { default as MathIcon } from '@icons/math-stroke-rounded.svg'
-export { default as ArtificialIntelligence04Icon } from '@icons/artificial-intelligence-04-stroke-rounded.svg'
-export { default as NeuralNetworkIcon } from '@icons/neural-network-stroke-rounded.svg'
-export { default as SoftwareLicenseIcon } from '@icons/software-license-stroke-rounded.svg'
-export { default as DashboardSpeed01Icon } from '@icons/dashboard-speed-01-stroke-rounded.svg'
+
+
+
 
 
 
@@ -77,18 +56,9 @@ export { default as CloudAngledRainZapSolidIcon } from '@icons/cloud-angled-rain
 export { default as SnowSolidIcon } from '@icons/snow-solid-rounded.svg'
 export { default as SoundcloudSolidIcon } from '@icons/soundcloud-solid-rounded.svg'
 
-
-
 export { default as FileManagementIcon } from '@icons/file-management-stroke-rounded.svg'
 
-
-
 export { default as Mail01Icon } from '@icons/mail-01-stroke-rounded.svg'
-
-export { default as PaintBoardIcon } from '@icons/paint-board-stroke-rounded.svg'
-export { default as LockPasswordIcon } from '@icons/lock-password-stroke-rounded.svg'
-export { default as ColorsIcon } from '@icons/colors-stroke-rounded.svg'
-
 
 
 
@@ -144,3 +114,20 @@ export { default as SunCloudFastWind01SolidIcon } from '@icons/sun-cloud-fast-wi
 export { default as CloudSlowWindSolidIcon } from '@icons/cloud-slow-wind-solid-rounded.svg'
 export { default as WindPowerSolidIcon } from '@icons/wind-power-solid-rounded.svg'
 export { default as PencilEdit02Icon } from '@icons/pencil-edit-02-stroke-rounded.svg'
+export { default as LockPasswordSolidIcon } from '@icons/lock-password-solid-rounded.svg'
+export { default as Timer02SolidIcon } from '@icons/timer-02-solid-rounded.svg'
+export { default as SidebarRightSolidIcon } from '@icons/sidebar-right-solid-rounded.svg'
+export { default as KeyboardSolidIcon } from '@icons/keyboard-solid-rounded.svg'
+export { default as Setting07SolidIcon } from '@icons/setting-07-solid-rounded.svg'
+export { default as JavaScriptSolidIcon } from '@icons/java-script-solid-rounded.svg'
+export { default as Typescript01SolidIcon } from '@icons/typescript-01-solid-rounded.svg'
+export { default as CSolidIcon } from '@icons/c-solid-rounded.svg'
+export { default as JavaSolidIcon } from '@icons/java-solid-rounded.svg'
+export { default as PaintBoardSolidIcon } from '@icons/paint-board-solid-rounded.svg'
+export { default as ColorsSolidIcon } from '@icons/colors-solid-rounded.svg'
+export { default as DashboardSpeed01SolidIcon } from '@icons/dashboard-speed-01-solid-rounded.svg'
+export { default as SoftwareLicenseSolidIcon } from '@icons/software-license-solid-rounded.svg'
+export { default as NeuralNetworkSolidIcon } from '@icons/neural-network-solid-rounded.svg'
+export { default as ArtificialIntelligence04SolidIcon } from '@icons/artificial-intelligence-04-solid-rounded.svg'
+export { default as Image02SolidIcon } from '@icons/image-02-solid-rounded.svg'
+export { default as MathSolidIcon } from '@icons/math-solid-rounded.svg'

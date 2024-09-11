@@ -1,16 +1,16 @@
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { Canvas, Path, Skia } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
-import { H, W } from '@utils/dimensions'
+import { W } from '@utils/dimensions'
+import { Medium } from '@utils/fonts'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { useSharedValue, withTiming } from 'react-native-reanimated'
 import { getDBConnection } from './db'
-import { Medium } from '@utils/fonts'
 
 const r = 100
 const strokeW = 28
-const innerR = r - strokeW / 2
+// const innerR = r - strokeW / 2
 const bgColor = Colors.zinc[200]
 const percentAge = 0.34
 export default function Test() {
@@ -22,7 +22,7 @@ export default function Test() {
 
   useEffect(() => {
     percent.value = withTiming(percentAge, { duration: 2000 })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
