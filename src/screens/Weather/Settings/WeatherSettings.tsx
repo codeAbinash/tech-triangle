@@ -201,7 +201,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         />
         <SettOption
           title='Clear all weather data'
-          Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
+          Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-red-500' />}
           Right={<TxtAcc>{toReadableSize(weatherSize)}</TxtAcc>}
         />
       </SettGroup>

@@ -11,7 +11,7 @@ type InputProps = TextInputProps & {
 export function Input({ Icon, Right, accent = Colors.accent, multiline, style, ...rest }: InputProps) {
   const scheme = useColorScheme()
   return (
-    <View className='flex-row items-center justify-between px-7' style={{ gap: 10 }}>
+    <View className='flex-row items-center justify-between px-6' style={{ gap: 10 }}>
       <View className='flex-1 flex-row items-center' style={{ gap: 22 }}>
         {Icon}
         <TextInput

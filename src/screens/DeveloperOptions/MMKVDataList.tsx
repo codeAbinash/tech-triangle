@@ -22,6 +22,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
 
   useEffect(() => {
     if (state) screenDelay(() => setInitStorage(ls.getAllKeys()))
+    // setInitStorage([])
   }, [state])
 
   useEffect(() => {
@@ -37,6 +38,10 @@ export default function MMKVDataList({ navigation }: NavProp) {
 
     return () => clearTimeout(timer)
   }, [search, initStorage])
+
+  useEffect(() => {
+    console.log(searchResults)
+  }, [searchResults])
 
   return (
     <>
@@ -67,15 +72,22 @@ export default function MMKVDataList({ navigation }: NavProp) {
               </Animated.View>
             ))}
             {initStorage?.length === 0 && (
-              <SettOption
-                title='Create new data'
-                onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
-                Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
-              />
+              <>
+                <SettOption
+                  title='Create new data'
+                  onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
+                  Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
+                  arrow
+                />
+              </>
             )}
             {initStorage === null && (
               <ActivityIndicator size='large' color={Colors.accent} style={{ marginTop: 30, marginBottom: 30 }} />
             )}
+            {searchResults.length === 0 && (
+              <SettText className='mt-2 pl-6'>No data found. Try searching with another keyword.</SettText>
+            )}
+
             {/* {initStorage === null && <SettOption title='Loading all data...' Icon={<Database02Icon {...ic} />} arrow />} */}
           </SettGroup>
         </Gap12>
