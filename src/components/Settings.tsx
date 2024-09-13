@@ -77,9 +77,9 @@ export function RightArrow() {
   return <ArrowRight01Icon width={22} height={22} color={Colors.zinc[500]} />
 }
 
-export function SettText({ children, ...rest }: TextProps) {
+export function SettText({ children, style, ...rest }: TextProps) {
   return (
-    <Medium className='px-5 text-xs text-zinc-500 dark:text-zinc-500' {...rest}>
+    <Medium className='px-5 text-xs text-zinc-500 dark:text-zinc-500' {...rest} style={[{ fontSize: 11 }, style]}>
       {children}
     </Medium>
   )
