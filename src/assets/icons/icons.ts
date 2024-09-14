@@ -33,15 +33,7 @@ export { default as TestIcon, default as TestTube01Icon } from '@icons/test-tube
 export { default as Tick01Icon } from '@icons/tick-01-stroke-rounded.svg'
 export { default as TimeHalfPassIcon } from '@icons/time-half-pass-stroke-rounded.svg'
 
-
 export { default as Wallet02SolidIcon } from '@icons/wallet-02-solid-rounded.svg'
-
-
-
-
-
-
-
 
 export { default as Sun03SolidIcon } from '@icons/sun-03-solid-rounded.svg'
 export { default as Moon02SolidIcon } from '@icons/moon-02-solid-rounded.svg'
@@ -59,10 +51,6 @@ export { default as SoundcloudSolidIcon } from '@icons/soundcloud-solid-rounded.
 export { default as FileManagementIcon } from '@icons/file-management-stroke-rounded.svg'
 
 export { default as Mail01Icon } from '@icons/mail-01-stroke-rounded.svg'
-
-
-
-
 
 export { default as ViewIcon } from '@icons/view-stroke-rounded.svg'
 export { default as ViewOffSlashIcon } from '@icons/view-off-slash-stroke-rounded.svg'
@@ -131,4 +119,3 @@ export { default as NeuralNetworkSolidIcon } from '@icons/neural-network-solid-r
 export { default as ArtificialIntelligence04SolidIcon } from '@icons/artificial-intelligence-04-solid-rounded.svg'
 export { default as Image02SolidIcon } from '@icons/image-02-solid-rounded.svg'
 export { default as MathSolidIcon } from '@icons/math-solid-rounded.svg'
-
