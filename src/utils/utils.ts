@@ -1,7 +1,7 @@
 import { ls } from '@utils/storage'
 import { Alert, Share } from 'react-native'
 import { SCREEN_TRANSITION } from './constants'
-import type { DistanceUnit, TemperatureUnit } from '@/zustand/weatherStore'
+import type { DistanceUnit, TemperatureUnit, TimeFormat } from '@/zustand/weatherStore'
 
 export async function shareText(message: string) {
   try {
@@ -148,4 +148,35 @@ export function getDistanceUnit(unit: DistanceUnit) {
   if (unit === 'ft') return 'Feet'
   else if (unit === 'm') return 'Meter'
   else return unit
+}
+
+/**
+ * Prints the provided arguments to the console. If an argument is an object,
+ * it will be stringified with a 2-space indentation for better readability.
+ *
+ * @param {...any[]} args - The arguments to be printed. Can be of any type.
+ */
+export function print(...args: any[]) {
+  for (const arg of args) console.log(typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg)
+}
+
+export function getHour(unix: number, unit: TimeFormat) {
+  if (unit === '24h') return getTime24(unix)
+  return getTime12(unix)
+}
+
+function getTime24(unix: number) {
+  const date = new Date(unix * 1000)
+  let hours: string | number = date.getHours()
+  if (hours < 10) hours = '0' + hours
+  return `${hours}`
+}
+
+function getTime12(unix: number) {
+  const date = new Date(unix * 1000)
+  let hours: string | number = date.getHours()
+  if (hours > 12) hours = hours - 12
+  if (hours === 0) hours = 12
+  if (hours < 10) hours = '0' + hours
+  return hours
 }

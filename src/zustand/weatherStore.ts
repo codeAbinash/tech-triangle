@@ -14,6 +14,7 @@ export type TemperatureUnit = 'C' | 'F' | 'K'
 export type DistanceUnit = 'ft' | 'm'
 export type WindSpeedUnit = 'kph' | 'mph' | 'm/s' | 'kn' | 'bft'
 export type AtmosPressureUnit = 'hPa' | 'inHg' | 'mmHg' | 'mbar' | 'atm'
+export type TimeFormat = '12h' | '24h'
 
 type WeatherSettingsStore = {
   currentCity: CurrentCityT
@@ -39,6 +40,8 @@ type WeatherSettingsStore = {
   setLastUpdated: (time: number) => void
   weatherCacheTime: number
   setWeatherCacheTime: (time: number) => void
+  weatherTimeFormat: TimeFormat
+  setWeatherTimeFormat: (format: TimeFormat) => void
 }
 
 export const weatherStore = create<WeatherSettingsStore>((set) => ({
@@ -65,9 +68,19 @@ export const weatherStore = create<WeatherSettingsStore>((set) => ({
   setLastUpdated: (time: number) => setWeatherLastUpdated(time, set),
   weatherCacheTime: getWeatherCacheTime(),
   setWeatherCacheTime: (time: number) => setWeatherCacheTime(time, set),
+  weatherTimeFormat: getWeatherTimeFormat(),
+  setWeatherTimeFormat: (format: TimeFormat) => setWeatherTimeFormat(format, set),
 }))
 
 type Set = (fn: (state: WeatherSettingsStore) => WeatherSettingsStore) => void
+
+function getWeatherTimeFormat() {
+  return (S.get('WeatherTimeFormat') as TimeFormat) || '12h'
+}
+
+function setWeatherTimeFormat(format: TimeFormat, set: Set) {
+  set((state) => ({ ...state, weatherTimeFormat: format }))
+}
 
 function getWeatherCacheTime() {
   const cacheTime = Number(S.get('WeatherCacheTime'))

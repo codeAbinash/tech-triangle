@@ -78,6 +78,7 @@ export const WeatherStorage = {
     WeatherCurrentWeather: 'WeatherCurrentWeather',
     WeatherLastUpdated: 'WeatherLastUpdated',
     WeatherCacheTime: 'WeatherCacheTime',
+    WeatherTimeFormat: 'WeatherTimeFormat',
   },
 }
 export const DeveloperStorage = {

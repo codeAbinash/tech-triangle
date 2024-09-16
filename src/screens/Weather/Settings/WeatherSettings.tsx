@@ -3,6 +3,7 @@ import { weatherStore } from '@/zustand/weatherStore'
 import {
   City03SolidIcon,
   CleanSolidIcon,
+  Clock01SolidIcon,
   DashboardSquare02SolidIcon,
   Database02SolidIcon,
   DatabaseRestoreSolidIcon,
@@ -214,12 +215,12 @@ function Units({ navigation }: { navigation: StackNav }) {
   const distanceUnit = weatherStore((state) => state.distanceUnit)
   const windSpeedUnit = weatherStore((state) => state.windSpeedUnit)
   const atmPressureUnit = weatherStore((state) => state.atmPressureUnit)
+  const timeFormat = weatherStore((state) => state.weatherTimeFormat)
   return (
     <>
       <SettGroup title={'Units'}>
         <SettOption
           arrow
-          // Icon={<TemperatureSolidIcon {...ic} />}
           Icon={<RoundedIcon Icon={TemperatureSolidIcon} className='bg-rose-500' />}
           title='Temperature Unit'
           Right={<Txt>{getTempName(temperatureUnit)}</Txt>}
@@ -236,7 +237,6 @@ function Units({ navigation }: { navigation: StackNav }) {
           arrow
           title='Wind Speed Unit'
           Right={<Txt>{windSpeedUnit}</Txt>}
-          // Icon={<FastWindSolidIcon {...ic} />}
           Icon={<RoundedIcon Icon={FastWindSolidIcon} className='bg-green-500' />}
           onPress={() => navigation.navigate('WindSpeedUnit')}
         />
@@ -245,8 +245,14 @@ function Units({ navigation }: { navigation: StackNav }) {
           title='Atmospheric Pressure Unit'
           Right={<Txt>{atmPressureUnit}</Txt>}
           Icon={<RoundedIcon Icon={SortingDownSolidIcon} className='bg-slate-500' />}
-          // Icon={<SortingDownSolidIcon {...ic} />}
           onPress={() => navigation.navigate('AtmPressureUnit')}
+        />
+        <SettOption
+          arrow
+          title='Weather Time Format'
+          Right={<Txt>{timeFormat === '12h' ? '12 Hour' : '24 Hour'}</Txt>}
+          Icon={<RoundedIcon Icon={Clock01SolidIcon} className='bg-yellow-500' />}
+          onPress={() => navigation.navigate('TimeFormatUnit')}
         />
       </SettGroup>
     </>

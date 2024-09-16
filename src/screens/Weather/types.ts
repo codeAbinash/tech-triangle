@@ -6,7 +6,16 @@ export type Weather = {
   current: Current
   hourly: Current[]
   daily: Daily[]
+  alerts?: Alert[]
 } | null
+
+export interface Alert {
+  sender_name: string
+  event: string
+  start: number
+  end: number
+  description: string[]
+}
 
 export interface Current {
   dt: number

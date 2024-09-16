@@ -28,12 +28,13 @@ import RandomPassword from '@screens/Try/RandomPassword'
 import YourAge from '@screens/Try/YourAge'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
+import WeatherScreen from '@screens/Weather/Main/Weather'
 import AtmPressureUnit from '@screens/Weather/Settings/AtmPressureUnit'
 import DistanceUnit from '@screens/Weather/Settings/DistanceUnit'
 import TempUnit from '@screens/Weather/Settings/TempUnit'
+import TimeFormatUnit from '@screens/Weather/Settings/TimeFormatUnit'
 import WeatherScienceSettings from '@screens/Weather/Settings/WeatherSettings'
 import WindSpeedUnit from '@screens/Weather/Settings/WindSpeedUnit'
-import WeatherScreen from '@screens/Weather/Weather'
 import WeatherLocation, { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
 import WeatherSearchCity, { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
 import WeatherWelcome from '@screens/Weather/WeatherWelcome'
@@ -127,6 +128,7 @@ export type RootStackParamList = {
   DistanceUnit: undefined
   WindSpeedUnit: undefined
   AtmPressureUnit: undefined
+  TimeFormatUnit: undefined
   ManageStorage: undefined
   BackupAndRestore: undefined
   About: undefined
@@ -198,6 +200,7 @@ function Navigation() {
         <Stack.Screen name='DistanceUnit' component={DistanceUnit} options={GestureEnabled} />
         <Stack.Screen name='WindSpeedUnit' component={WindSpeedUnit} options={GestureEnabled} />
         <Stack.Screen name='AtmPressureUnit' component={AtmPressureUnit} options={GestureEnabled} />
+        <Stack.Screen name='TimeFormatUnit' component={TimeFormatUnit} options={GestureEnabled} />
         <Stack.Screen name='ManageStorage' component={ManageStorage} options={GestureEnabled} />
         <Stack.Screen name='BackupAndRestore' component={BackupAndRestore} options={GestureEnabled} />
         <Stack.Screen name='About' component={About} options={GestureEnabled} />

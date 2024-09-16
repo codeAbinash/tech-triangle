@@ -1,51 +1,17 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import {
-  CloudAngledRainSolidIcon,
-  CloudAngledRainZapSolidIcon,
-  CloudFastWindSolidIcon,
-  CloudSolidIcon,
-  Moon02SolidIcon,
-  MoonCloudAngledRainSolidIcon,
-  MoonCloudSolidIcon,
-  SnowSolidIcon,
-  SoundcloudSolidIcon,
-  Sun03SolidIcon,
-  SunCloud02SolidIcon,
-  SunCloudAngledRain02SolidIcon,
-} from '@assets/icons/icons'
 import styles, { hw } from '@screens/Home/style'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
 import { Medium, Regular } from '@utils/fonts'
-import type { StackNav, Theme, WeatherIconsKeys } from '@utils/types'
+import type { StackNav, Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
-import type { SvgProps } from 'react-native-svg'
 import { getWeather } from '../api'
 import type { Weather } from '../types'
-const Icons: { [K in WeatherIconsKeys]: React.FC<SvgProps> } = {
-  '01d': Sun03SolidIcon,
-  '01n': Moon02SolidIcon,
-  '02d': SunCloud02SolidIcon,
-  '02n': MoonCloudSolidIcon,
-  '03d': CloudSolidIcon,
-  '03n': CloudSolidIcon,
-  '04d': CloudFastWindSolidIcon,
-  '04n': CloudFastWindSolidIcon,
-  '09d': CloudAngledRainSolidIcon,
-  '09n': CloudAngledRainSolidIcon,
-  '10d': SunCloudAngledRain02SolidIcon,
-  '10n': MoonCloudAngledRainSolidIcon,
-  '11d': CloudAngledRainZapSolidIcon,
-  '11n': CloudAngledRainZapSolidIcon,
-  '13d': SnowSolidIcon,
-  '13n': SnowSolidIcon,
-  '50d': SoundcloudSolidIcon,
-  '50n': SoundcloudSolidIcon,
-} as const
+import { Icons } from '../utils'
 
 const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
