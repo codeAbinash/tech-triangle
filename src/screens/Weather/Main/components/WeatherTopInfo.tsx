@@ -22,8 +22,6 @@ export default function WeatherTopInfo({ navigation, color, isPending, w }: Weat
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   return (
     <View className='flex-1 px-5'>
-      <PaddingTop />
-      <Header navigation={navigation} color={color} isPending={isPending} />
       <Medium className='mt-7 text-center' style={[color, { fontSize: 25 }]}>
         {currentCity?.name}
       </Medium>

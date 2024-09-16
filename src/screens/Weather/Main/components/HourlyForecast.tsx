@@ -2,14 +2,15 @@ import { weatherStore } from '@/zustand/weatherStore'
 import { Clock01SolidIcon } from '@assets/icons/icons'
 import type { Current, Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
-import { Medium } from '@utils/fonts'
-import { getHour, print, screenDelay, tempConverter } from '@utils/utils'
+import { Medium, SemiBold } from '@utils/fonts'
+import { getHour, screenDelay, tempConverter } from '@utils/utils'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import type { SvgProps } from 'react-native-svg'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
+import WeatherLabel from './WeatherLabel'
 
 type HourlyWeather = {
   color: {
@@ -33,12 +34,7 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
   return (
     <Animated.View className='mt-5 px-4' entering={FadeIn.duration(500).delay(100)}>
       <View className='rounded-3xl bg-black/10'>
-        <View className='flex-row gap-2 px-4 py-3 pb-0.5'>
-          <Clock01SolidIcon width={15} height={15} color={color.color} style={{ opacity: 0.5 }} />
-          <Medium style={color} className='uppercase opacity-50'>
-            Hourly Forecast
-          </Medium>
-        </View>
+        <WeatherLabel Icon={Clock01SolidIcon} color={color} label='Hourly Forecast' />
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -50,7 +46,8 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
                 color={color}
                 time='Now'
                 Icon={Icon}
-                temp={w ? tempConverter(w.current.temp, currentUnit) + '°' : '__'}
+                temp={w ? tempConverter(w.current.temp, currentUnit, true) : '__'}
+                probability={Math.round((w?.current.pop || 0) * 100)}
               />
             </View>
             {data?.map((h, i) => (
@@ -59,7 +56,8 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
                 key={i}
                 time={getHour(h.dt + 3600, timeFormat)}
                 color={color}
-                temp={h ? tempConverter(h.temp, currentUnit) + '°' : '__'}
+                temp={h ? tempConverter(h.temp, currentUnit, true) : '__'}
+                probability={Math.round((h.pop || 0) * 100)}
               />
             ))}
           </>
@@ -76,19 +74,31 @@ type SmallWeatherProps = {
   time: number | string
   temp: string
   Icon: React.FC<SvgProps>
+  probability: number
 }
 
-function SmallWeather({ color, time, temp, Icon, style, ...rest }: SmallWeatherProps & ViewProps) {
+function SmallWeather({ color, time, temp, Icon, style, probability, ...rest }: SmallWeatherProps & ViewProps) {
   return (
     <Animated.View
       className='flex-col items-center justify-center px-3.5 py-2'
-      style={[{ gap: 11 }, style]}
+      style={[{ gap: 5 }, style]}
       {...rest}
       entering={FadeIn.duration(1000)}
     >
-      <Medium style={{ color: color.color }}>{temp}</Medium>
-      <Icon width={22} height={22} color={color.color} />
-      <Medium style={{ color: color.color, fontSize: 13 }}>{time}</Medium>
+      <Medium style={{ color: color.color }} className='mb-1 text-center'>
+        {temp}
+      </Medium>
+      <View>
+        <Icon width={22} height={22} color={color.color} />
+        {
+          <SemiBold className='text-center text-xs text-sky-500' style={{ opacity: probability ? 1 : 0 }}>
+            {probability}%
+          </SemiBold>
+        }
+        <Medium style={{ color: color.color, fontSize: 13 }} className='text-center'>
+          {time}
+        </Medium>
+      </View>
     </Animated.View>
   )
 }

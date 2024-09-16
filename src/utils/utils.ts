@@ -116,10 +116,10 @@ export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
  * @param unit unit of temperature
  * @returns temperature in the specified unit
  */
-export function tempConverter(temp: number, unit: TemperatureUnit) {
-  if (unit === 'C') return Math.round(temp - 273.15)
-  if (unit === 'F') return Math.round((temp - 273.15) * 1.8 + 32)
-  return Math.round(temp)
+export function tempConverter(temp: number, unit: TemperatureUnit, degree: boolean = false) {
+  if (unit === 'C') return Math.round(temp - 273.15) + (degree ? '°' : '')
+  if (unit === 'F') return Math.round((temp - 273.15) * 1.8 + 32) + (degree ? '°' : '')
+  return Math.round(temp).toString()
 }
 
 /**
@@ -179,4 +179,11 @@ function getTime12(unix: number) {
   if (hours === 0) hours = 12
   if (hours < 10) hours = '0' + hours
   return hours
+}
+
+export function getDay(dt: number) {
+  const date = new Date(dt * 1000)
+  return date.toLocaleDateString('en-US', {
+    weekday: 'short',
+  })
 }
