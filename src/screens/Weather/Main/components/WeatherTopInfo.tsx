@@ -29,7 +29,7 @@ export default function WeatherTopInfo({ navigation, color, isPending, w }: Weat
       </Medium>
       <View className='flex-row justify-center'>
         <Light
-          className='mt-2 items-start justify-start pl-2 text-center'
+          className='mt-2 items-start justify-start pl-5 text-center'
           style={[color, { lineHeight: 180, fontSize: 150 }]}
         >
           {w ? tempConverter(w.current.temp, currentUnit) : '__'}

@@ -1,13 +1,14 @@
-import { weatherStore, type TimeFormat } from '@/zustand/weatherStore'
+import { weatherStore } from '@/zustand/weatherStore'
 import { Clock01SolidIcon } from '@assets/icons/icons'
+import { PaddingBottom } from '@components/SafePadding'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
 import { H, W } from '@utils/dimensions'
 import { Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import { getHour, print, tempConverter } from '@utils/utils'
-import React, { useCallback, useEffect } from 'react'
+import { getHour, screenDelay, tempConverter } from '@utils/utils'
+import React, { useCallback, useEffect, useState } from 'react'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
@@ -82,6 +83,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
         <StatusBar backgroundColor='transparent' barStyle={'light-content'} />
         <WeatherTopInfo navigation={navigation} color={color} isPending={isPending} w={w} />
         <HourlyForecast color={color} w={w} hourly={data?.hourly} />
+        <PaddingBottom />
       </ScrollView>
     </>
   )
@@ -99,11 +101,15 @@ function HourlyForecast({ color, w, hourly }: HourlyWeather) {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   const timeFormat = weatherStore((state) => state.weatherTimeFormat)
   const Icon = Icons[w?.current.weather[0]!.icon || '02d']
+  const [data, setData] = useState<Current[] | undefined>()
+
   useEffect(() => {
-    print(hourly)
+    const timer = screenDelay(() => setData(hourly))
+    return () => clearTimeout(timer)
   }, [hourly])
+
   return (
-    <View className='mt-5 px-4'>
+    <Animated.View className='mt-5 px-4' entering={FadeIn.duration(500)}>
       <View className='rounded-3xl bg-black/10'>
         <View className='flex-row gap-2 px-4 py-3 pb-0.5'>
           <Clock01SolidIcon width={15} height={15} color={color.color} style={{ opacity: 0.5 }} />
@@ -117,7 +123,7 @@ function HourlyForecast({ color, w, hourly }: HourlyWeather) {
           contentContainerStyle={{ flexDirection: 'row', paddingBottom: 10, paddingHorizontal: 10 }}
         >
           <>
-            <View style={{ opacity: hourly ? 1 : 0 }}>
+            <View style={{ opacity: data ? 1 : 0 }}>
               <SmallWeather
                 color={color}
                 time='Now'
@@ -125,7 +131,7 @@ function HourlyForecast({ color, w, hourly }: HourlyWeather) {
                 temp={w ? tempConverter(w.current.temp, currentUnit) + '°' : '__'}
               />
             </View>
-            {hourly?.map((h, i) => (
+            {data?.map((h, i) => (
               <SmallWeather
                 Icon={Icons[h.weather[0]!.icon]}
                 key={i}
@@ -137,7 +143,7 @@ function HourlyForecast({ color, w, hourly }: HourlyWeather) {
           </>
         </ScrollView>
       </View>
-    </View>
+    </Animated.View>
   )
 }
 
@@ -156,14 +162,14 @@ function SmallWeather({
 } & ViewProps) {
   return (
     <Animated.View
-      className='flex-col items-center justify-center px-3 py-2'
-      style={[{ gap: 10 }, style]}
+      className='flex-col items-center justify-center px-3.5 py-2'
+      style={[{ gap: 11 }, style]}
       {...rest}
-      entering={FadeIn}
+      entering={FadeIn.duration(1000)}
     >
-      <Medium style={{ color: color.color, fontSize: 13 }}>{time}</Medium>
-      <Icon width={22} height={22} color={color.color} />
       <Medium style={{ color: color.color }}>{temp}</Medium>
+      <Icon width={22} height={22} color={color.color} />
+      <Medium style={{ color: color.color, fontSize: 13 }}>{time}</Medium>
     </Animated.View>
   )
 }
