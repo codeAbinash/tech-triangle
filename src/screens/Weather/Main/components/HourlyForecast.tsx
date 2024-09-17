@@ -44,9 +44,9 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
             <View style={{ opacity: data ? 1 : 0 }}>
               <SmallWeather
                 color={color}
-                time=''
+                time='Now'
                 Icon={Icon}
-                ap='Now'
+                ap=''
                 temp={w ? tempConverter(w.current.temp, currentUnit, true) : '__'}
                 probability={Math.round((w?.current.pop || 0) * 100)}
               />
@@ -77,7 +77,7 @@ type SmallWeatherProps = {
   temp: string
   Icon: React.FC<SvgProps>
   probability: number
-  ap: 'AM' | 'PM' | 'Now' | ''
+  ap: 'AM' | 'PM' | ''
 }
 
 function SmallWeather({ color, time, ap, temp, Icon, style, probability, ...rest }: SmallWeatherProps & ViewProps) {
