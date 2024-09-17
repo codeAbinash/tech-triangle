@@ -29,7 +29,7 @@ export default function DailyForecast({ color, daily }: WeatherForecastProps) {
   }, [daily])
 
   return (
-    <Animated.View className='mt-3.5 px-4' entering={FadeIn.duration(500).delay(100)}>
+    <Animated.View className='mt-3.5 px-4' entering={FadeIn.duration(700).delay(100)}>
       <View className='rounded-3xl bg-black/10 pb-2'>
         <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
         {!data && <View style={{ height: 14 * 4 * 8 }}></View>}
@@ -45,7 +45,7 @@ export default function DailyForecast({ color, daily }: WeatherForecastProps) {
             />
           ))}
         </View>
-        <Medium className='mt-2 px-5 text-center text-xs opacity-50'>
+        <Medium className='mb-1 mt-3 px-5 text-center text-xs opacity-60' style={color}>
           Percentage represents the probability of precipitation.
         </Medium>
       </View>
@@ -83,7 +83,9 @@ function DailyWeather({ color, d, currentUnit, min, max }: DailyWeatherProps) {
         style={{ height: 14 * 4 }}
         entering={FadeIn.duration(500)}
       >
-        <Medium className='w-1/6 text-base'>{getDay(d.dt)}</Medium>
+        <Medium className='w-1/6 pl-1 text-base' style={color}>
+          {getDay(d.dt)}
+        </Medium>
         <View className='w-1/6 flex-row items-center'>
           <Icon width={21} height={21} color={color.color} style={{ marginRight: 10 }} />
           <Medium className='text-center text-sky-500' style={{ display: probability ? 'flex' : 'none' }}>
@@ -91,8 +93,10 @@ function DailyWeather({ color, d, currentUnit, min, max }: DailyWeatherProps) {
           </Medium>
         </View>
         <View className='flex-1'>
-          <View className='flex-row justify-between px-2'>
-            <Medium className='text-base'>{tempConverter(d.temp.min, currentUnit, true)}</Medium>
+          <View className='flex-row justify-between px-1'>
+            <Medium className='text-base' style={color}>
+              {tempConverter(d.temp.min, currentUnit, true)}
+            </Medium>
             <View className='flex-1 justify-center px-3'>
               <View className='h-1.5 flex-row rounded-full bg-white/10' style={{ width: '100%' }}>
                 <View className='bg-lime h-10 rounded-full' style={{ width: `${left}%` }}></View>
@@ -102,7 +106,9 @@ function DailyWeather({ color, d, currentUnit, min, max }: DailyWeatherProps) {
                 </Gradient>
               </View>
             </View>
-            <Medium className='text-base'>{tempConverter(d.temp.max, currentUnit, true)}</Medium>
+            <Medium className='text-base' style={color}>
+              {tempConverter(d.temp.max, currentUnit, true)}
+            </Medium>
           </View>
         </View>
       </Animated.View>

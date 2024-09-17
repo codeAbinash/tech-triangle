@@ -44,7 +44,10 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
     mutationKey: ['currentWeather'],
     mutationFn: () => fetchResult(),
     onError: (err) => console.log(err),
-    onSuccess: setCurrentWeather,
+    onSuccess: (d) => {
+      setCurrentWeather(d)
+      setLastUpdated(new Date().getTime())
+    },
   })
   const w = data || currentWeather
 
@@ -56,11 +59,9 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   const fetchResult = useCallback(async (): Promise<Weather> => {
     const now = new Date().getTime()
     if (now - lastUpdated > weatherCacheTime) {
-      setLastUpdated(now)
       return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
     }
     return currentWeather
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
   if (!weatherWidgetIsActive) return null
@@ -94,7 +95,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
             </Medium>
             {isPending && <ActivityIndicator size={15} color={color.color} />}
           </View>
-          <Regular style={[{ fontSize: 60, lineHeight: 83 }, color]}>
+          <Regular style={[{ fontSize: 50, lineHeight: 70 }, color]}>
             {w ? tempConverter(w.current.temp, currentUnit) : '__'}
             {currentUnit === 'K' ? '' : '°'}
           </Regular>

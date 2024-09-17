@@ -15,8 +15,8 @@ export default function WeatherLabel({ color, label: title, Icon }: WeatherHeade
   return (
     <View>
       <View className='flex-row gap-2 px-4 py-3 pb-0.5'>
-        <Icon width={15} height={15} color={color.color} style={{ opacity: 0.5 }} />
-        <Medium style={color} className='uppercase opacity-50'>
+        <Icon width={15} height={15} color={color.color} style={{ opacity: 0.6 }} />
+        <Medium style={color} className='uppercase opacity-60'>
           {title}
         </Medium>
       </View>

@@ -32,7 +32,7 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
   }, [hourly])
 
   return (
-    <Animated.View className='mt-10 px-4' entering={FadeIn.duration(500).delay(100)}>
+    <Animated.View className='mt-10 px-4' entering={FadeIn.duration(700).delay(100)}>
       <View className='rounded-3xl bg-black/10'>
         <WeatherLabel Icon={Clock01SolidIcon} color={color} label='Hourly Forecast' />
         <ScrollView

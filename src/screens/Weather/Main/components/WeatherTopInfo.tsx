@@ -1,23 +1,19 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { PaddingBottom, PaddingTop } from '@components/SafePadding'
+import { PaddingBottom } from '@components/SafePadding'
 import type { Weather } from '@screens/Weather/types'
 import { Light, Medium } from '@utils/fonts'
-import type { StackNav } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React from 'react'
 import { View } from 'react-native'
-import Header from './Header'
 
 type WeatherTopInfoProps = {
-  navigation: StackNav
   color: {
     color: string
   }
-  isPending: boolean
   w: Weather
 }
 
-export default function WeatherTopInfo({ navigation, color, isPending, w }: WeatherTopInfoProps) {
+export default function WeatherTopInfo({ color, w }: WeatherTopInfoProps) {
   const currentCity = weatherStore((state) => state.currentCity)
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   return (
