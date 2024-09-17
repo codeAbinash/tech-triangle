@@ -34,16 +34,19 @@ export default function DailyForecast({ color, daily }: WeatherForecastProps) {
         <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
         {!data && <View style={{ height: 14 * 4 * 8 }}></View>}
         <View>
-          {data?.map((d, i) => (
-            <DailyWeather
-              key={i}
-              color={color}
-              d={d}
-              currentUnit={currentUnit}
-              min={weeklyMinMax.min}
-              max={weeklyMinMax.max}
-            />
-          ))}
+          {data?.map((d, i) => {
+            return (
+              <DailyWeather
+                day={i === 0 ? 'Today' : getDay(d.dt)}
+                key={i}
+                color={color}
+                d={d}
+                currentUnit={currentUnit}
+                min={weeklyMinMax.min}
+                max={weeklyMinMax.max}
+              />
+            )
+          })}
         </View>
         <Medium className='mb-1 mt-3 px-5 text-center text-xs opacity-60' style={color}>
           Percentage represents the probability of precipitation.
@@ -59,6 +62,7 @@ type DailyWeatherProps = {
   currentUnit: TemperatureUnit
   min: number
   max: number
+  day: string
 }
 
 function calculateWeeklyMinMax(daily: Daily[] | undefined): { min: number; max: number } {
@@ -68,7 +72,7 @@ function calculateWeeklyMinMax(daily: Daily[] | undefined): { min: number; max: 
   return { min, max }
 }
 
-function DailyWeather({ color, d, currentUnit, min, max }: DailyWeatherProps) {
+function DailyWeather({ color, d, day, currentUnit, min, max }: DailyWeatherProps) {
   const Icon = Icons[d.weather[0]!.icon]
   const probability = Math.round((d.pop || 0) * 100)
   const range = max - min
@@ -84,7 +88,7 @@ function DailyWeather({ color, d, currentUnit, min, max }: DailyWeatherProps) {
         entering={FadeIn.duration(500)}
       >
         <Medium className='w-1/6 pl-1 text-base' style={color}>
-          {getDay(d.dt)}
+          {day}
         </Medium>
         <View className='w-1/6 flex-row items-center'>
           <Icon width={21} height={21} color={color.color} style={{ marginRight: 10 }} />
@@ -100,7 +104,7 @@ function DailyWeather({ color, d, currentUnit, min, max }: DailyWeatherProps) {
             <View className='flex-1 justify-center px-3'>
               <View className='h-1.5 flex-row rounded-full bg-white/10' style={{ width: '100%' }}>
                 <View className='bg-lime h-10 rounded-full' style={{ width: `${left}%` }}></View>
-                <Gradient colors={['#fff', '#ffffff99']} className='h-1.5 rounded-full' style={{ width: `${width}%` }}>
+                <Gradient colors={['#fff', '#ffffffaa']} className='h-1.5 rounded-full' style={{ width: `${width}%` }}>
                   <View></View>
                   <View></View>
                 </Gradient>

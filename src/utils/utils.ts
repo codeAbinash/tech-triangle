@@ -177,8 +177,15 @@ function getTime12(unix: number) {
   let hours: string | number = date.getHours()
   if (hours > 12) hours = hours - 12
   if (hours === 0) hours = 12
-  if (hours < 10) hours = '0' + hours
   return hours
+}
+
+export function getAp(unix: number, unit: TimeFormat) {
+  if (unit === '24h') return ''
+  const date = new Date(unix * 1000)
+  let hours: string | number = date.getHours()
+  if (hours >= 12) return 'PM'
+  else return 'AM'
 }
 
 export function getDay(dt: number) {

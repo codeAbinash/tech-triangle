@@ -3,7 +3,7 @@ import { Clock01SolidIcon } from '@assets/icons/icons'
 import type { Current, Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { Medium, SemiBold } from '@utils/fonts'
-import { getHour, screenDelay, tempConverter } from '@utils/utils'
+import { getAp, getHour, screenDelay, tempConverter } from '@utils/utils'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -44,8 +44,9 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
             <View style={{ opacity: data ? 1 : 0 }}>
               <SmallWeather
                 color={color}
-                time='Now'
+                time=''
                 Icon={Icon}
+                ap='Now'
                 temp={w ? tempConverter(w.current.temp, currentUnit, true) : '__'}
                 probability={Math.round((w?.current.pop || 0) * 100)}
               />
@@ -56,6 +57,7 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
                 key={i}
                 time={getHour(h.dt + 3600, timeFormat)}
                 color={color}
+                ap={getAp(h.dt, timeFormat)}
                 temp={h ? tempConverter(h.temp, currentUnit, true) : '__'}
                 probability={Math.round((h.pop || 0) * 100)}
               />
@@ -75,9 +77,10 @@ type SmallWeatherProps = {
   temp: string
   Icon: React.FC<SvgProps>
   probability: number
+  ap: 'AM' | 'PM' | 'Now' | ''
 }
 
-function SmallWeather({ color, time, temp, Icon, style, probability, ...rest }: SmallWeatherProps & ViewProps) {
+function SmallWeather({ color, time, ap, temp, Icon, style, probability, ...rest }: SmallWeatherProps & ViewProps) {
   return (
     <Animated.View
       className='flex-col items-center justify-center px-3.5 py-2'
@@ -85,7 +88,7 @@ function SmallWeather({ color, time, temp, Icon, style, probability, ...rest }: 
       {...rest}
       entering={FadeIn.duration(1000)}
     >
-      <Medium style={{ color: color.color }} className='mb-1 text-center'>
+      <Medium style={{ color: color.color, fontSize: 15 }} className='mb-1 text-center'>
         {temp}
       </Medium>
       <View>
@@ -95,8 +98,11 @@ function SmallWeather({ color, time, temp, Icon, style, probability, ...rest }: 
             {probability}%
           </SemiBold>
         }
-        <Medium style={{ color: color.color, fontSize: 13 }} className='text-center'>
+        <Medium style={{ color: color.color, fontSize: 14 }} className='text-center'>
           {time}
+          <Medium style={{ color: color.color, fontSize: 11 }} className='text-center'>
+            {ap}
+          </Medium>
         </Medium>
       </View>
     </Animated.View>
