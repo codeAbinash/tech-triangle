@@ -116,10 +116,20 @@ export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
  * @param unit unit of temperature
  * @returns temperature in the specified unit
  */
-export function tempConverter(temp: number, unit: TemperatureUnit, degree: boolean = false) {
-  if (unit === 'C') return Math.round(temp - 273.15) + (degree ? '°' : '')
-  if (unit === 'F') return Math.round((temp - 273.15) * 1.8 + 32) + (degree ? '°' : '')
-  return Math.round(temp).toString()
+export function tempConverter(temp: number, unit: TemperatureUnit, degree: boolean = false, decimalPlaces: number = 0) {
+  if (unit === 'C') return roundToDecimal(temp - 273.15, decimalPlaces) + (degree ? '°' : '')
+  if (unit === 'F') return roundToDecimal((temp - 273.15) * 1.8 + 32, decimalPlaces) + (degree ? '°' : '')
+  return roundToDecimal(temp, decimalPlaces).toString()
+}
+/**
+ *
+ * @param num  number to round
+ * @param places  number of decimal places
+ * @returns rounded number
+ */
+function roundToDecimal(num: number, places: number) {
+  const factor = Math.pow(10, places)
+  return Math.round(num * factor) / factor
 }
 
 /**

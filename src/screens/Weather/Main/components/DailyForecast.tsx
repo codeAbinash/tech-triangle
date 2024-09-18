@@ -154,7 +154,6 @@ function DotPosition({ dotPosition, theme }: { dotPosition: number; theme: Theme
   )
 }
 
-function Dot() {}
 
 // 55 to -20
 // const TempColor = {
