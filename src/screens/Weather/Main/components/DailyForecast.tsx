@@ -4,6 +4,7 @@ import Gradient from '@components/Gradient'
 import type { Daily } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { Medium } from '@utils/fonts'
+import type { Theme } from '@utils/types'
 import { getDay, screenDelay, tempConverter } from '@utils/utils'
 import React, { useEffect, useMemo, useState } from 'react'
 import { View } from 'react-native'
@@ -15,14 +16,15 @@ type WeatherForecastProps = {
     color: string
   }
   daily: Daily[] | undefined
+  theme: Theme
 }
 
-export default function DailyForecast({ color, daily }: WeatherForecastProps) {
+export default function DailyForecast({ color, daily, theme }: WeatherForecastProps) {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   const [data, setData] = useState<Daily[] | undefined>()
-
+  const currentTemp = weatherStore((state) => state.currentWeather?.current.temp)
   const weeklyMinMax = useMemo(() => calculateWeeklyMinMax(daily), [daily])
-
+  const dotPosition = useMemo(() => calculateDotPosition(currentTemp, daily && daily[0]), [currentTemp, daily])
   useEffect(() => {
     const timer = screenDelay(() => setData(daily))
     return () => clearTimeout(timer)
@@ -38,12 +40,13 @@ export default function DailyForecast({ color, daily }: WeatherForecastProps) {
             return (
               <DailyWeather
                 day={i === 0 ? 'Today' : getDay(d.dt)}
+                dotPosition={i === 0 ? dotPosition : null}
                 key={i}
-                color={color}
                 d={d}
                 currentUnit={currentUnit}
                 min={weeklyMinMax.min}
                 max={weeklyMinMax.max}
+                theme={theme}
               />
             )
           })}
@@ -56,13 +59,10 @@ export default function DailyForecast({ color, daily }: WeatherForecastProps) {
   )
 }
 
-type DailyWeatherProps = {
-  color: { color: string }
-  d: Daily
-  currentUnit: TemperatureUnit
-  min: number
-  max: number
-  day: string
+function calculateDotPosition(currentTemp: number | undefined, daily: Daily | undefined) {
+  const { min, max } = daily?.temp || { min: 0, max: 0 }
+  if (!currentTemp || !min || !max) return null
+  return ((currentTemp - min) / (max - min)) * 100
 }
 
 function calculateWeeklyMinMax(daily: Daily[] | undefined): { min: number; max: number } {
@@ -72,14 +72,22 @@ function calculateWeeklyMinMax(daily: Daily[] | undefined): { min: number; max: 
   return { min, max }
 }
 
-function DailyWeather({ color, d, day, currentUnit, min, max }: DailyWeatherProps) {
+type DailyWeatherProps = {
+  d: Daily
+  currentUnit: TemperatureUnit
+  min: number
+  max: number
+  day: string
+  dotPosition: number | null
+  theme: Theme
+}
+function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: DailyWeatherProps) {
   const Icon = Icons[d.weather[0]!.icon]
   const probability = Math.round((d.pop || 0) * 100)
   const range = max - min
   const width = range !== 0 ? ((d.temp.max - d.temp.min) / range) * 100 : 0
   const left = range !== 0 ? ((d.temp.min - min) / range) * 100 : 0
-  const currentTemp = weatherStore((state) => state.currentWeather?.current.temp)
-
+  const color = theme.color
   return (
     <>
       <Animated.View
@@ -102,11 +110,14 @@ function DailyWeather({ color, d, day, currentUnit, min, max }: DailyWeatherProp
               {tempConverter(d.temp.min, currentUnit, true)}
             </Medium>
             <View className='flex-1 justify-center px-3'>
-              <View className='h-1.5 flex-row rounded-full bg-white/10' style={{ width: '100%' }}>
+              <View className='flex-row rounded-full bg-white/10' style={{ width: '100%', height: 6 }}>
                 <View className='bg-lime h-10 rounded-full' style={{ width: `${left}%` }}></View>
-                <Gradient colors={['#fff', '#ffffffaa']} className='h-1.5 rounded-full' style={{ width: `${width}%` }}>
-                  <View></View>
-                  <View></View>
+                <Gradient
+                  colors={['#ffffffdd', '#ffffffdd']}
+                  className='flex-row items-center overflow-auto rounded-full'
+                  style={{ width: `${width}%`, height: 6 }}
+                >
+                  {dotPosition && <DotPosition dotPosition={dotPosition} theme={theme} />}
                 </Gradient>
               </View>
             </View>
@@ -122,6 +133,28 @@ function DailyWeather({ color, d, day, currentUnit, min, max }: DailyWeatherProp
     </>
   )
 }
+
+function DotPosition({ dotPosition, theme }: { dotPosition: number; theme: Theme }): React.ReactNode {
+  return (
+    <>
+      <View style={{ width: `${dotPosition}%` }}></View>
+      <View
+        className='items-center justify-center rounded-full bg-red-500'
+        style={{ backgroundColor: theme.gradient[1], height: 8, width: 8 }}
+      >
+        <View
+          className='rounded-full bg-white'
+          style={{
+            width: 3.7,
+            height: 3.7,
+          }}
+        ></View>
+      </View>
+    </>
+  )
+}
+
+function Dot() {}
 
 // 55 to -20
 // const TempColor = {
