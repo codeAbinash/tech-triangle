@@ -5,9 +5,10 @@ import WeatherWidget from '@screens/Weather/Widget/WeatherWidget'
 import { Medium, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React, { useMemo } from 'react'
-import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styles, { hw as height_weight } from './style'
+import Search from '@components/Search'
 
 const { width } = Dimensions.get('window')
 
@@ -97,15 +98,28 @@ function Graph() {
   )
 }
 
-export default function HomeScreen({}: { navigation: StackNav }) {
+export default function HomeScreen({ navigation }: { navigation: StackNav }) {
   return (
     <>
-      <View className='bg-zinc-50 px-5 pb-1.5 dark:bg-black'>
+      <View className='bg-zinc-50 px-5 pb-1 dark:bg-black'>
         <PaddingTop />
       </View>
       <ScrollView className='flex-1 bg-zinc-50 dark:bg-black' showsVerticalScrollIndicator={false}>
         <View style={{ gap: 10 }} className='pb-10'>
-          <TopArea />
+          <View className=''>
+            <TopArea />
+            <View className='px-5 pt-1'>
+              <Search
+                onPress={() => {
+                  navigation.navigate('GlobalSearch')
+                }}
+                // editable={false}
+                selectTextOnFocus={false}
+                contextMenuHidden
+                placeholder='Search for anything...'
+              />
+            </View>
+          </View>
           <Elements />
           <Shortcuts />
           <Graph />

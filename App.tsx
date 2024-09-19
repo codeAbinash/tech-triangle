@@ -14,6 +14,7 @@ import Greeting from '@screens/Home/Greeting'
 import Location from '@screens/Location'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
+import GlobalSearch from '@screens/Search/GlobalSearch'
 import AppLock from '@screens/Settings/AppLock/AppLock'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
 import BlankSettings from '@screens/Settings/BlankSettings'
@@ -137,6 +138,7 @@ export type RootStackParamList = {
   RandomColor: undefined
   AppLock: undefined
   RandomPassword: undefined
+  GlobalSearch: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -209,6 +211,7 @@ function Navigation() {
         <Stack.Screen name='RandomColor' component={RandomColor} options={GestureEnabled} />
         <Stack.Screen name='AppLock' component={AppLock} options={GestureEnabled} />
         <Stack.Screen name='RandomPassword' component={RandomPassword} options={GestureEnabled} />
+        <Stack.Screen name='GlobalSearch' component={GlobalSearch} options={IOS_BOTTOM_STYLE} />
       </Stack.Navigator>
     </>
   )

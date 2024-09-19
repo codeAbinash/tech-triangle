@@ -18,7 +18,7 @@ export default function TopArea() {
         <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('Greeting')}>
           <View className='flex-row items-center'>
             <Text
-              style={[PoppinsBold, { fontSize: 21 }]}
+              style={[PoppinsBold, { fontSize: 20 }]}
               className='items-center justify-center text-gray-800 dark:text-gray-200'
             >
               {nickName ? 'Hello ' + nickName : greetingByTime()}
@@ -31,7 +31,7 @@ export default function TopArea() {
         </TouchableOpacity>
         <View className='flex-row items-center justify-center' style={{ gap: 5 }}>
           {/* <TouchableOpacity activeOpacity={0.7} className='p-2 py-2'>
-            <NotificationIcon height={22} width={22} color={theme === 'dark' ? COL.gray300 : COL.gray800} />
+            <Search02Icon height={22} width={22} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
           </TouchableOpacity> */}
           <TouchableOpacity activeOpacity={0.6} className='p-2 px-2.5' onPress={() => navigation.navigate('Settings')}>
             <Settings01Icon height={22} width={22} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
