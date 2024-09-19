@@ -34,16 +34,10 @@ export default function WeatherTopInfo({ color, w }: WeatherTopInfoProps) {
         {w ? w.current.weather[0]!.description : '__'}
       </Medium>
       <Medium className='mt-0.5 text-center text-base' style={color}>
-<<<<<<< HEAD
-        {w ? tempConverter(w.daily[0]!.temp.min, currentUnit) : '__'}
-        {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
-        {w ? tempConverter(w.daily[0]!.temp.max, currentUnit) : '__'}
-=======
+        {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit, decimal: 1 }) : '__'}
+        {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
         {w ? tempConverter({ temp: w.daily[0]!.temp.max, unit: currentUnit, decimal: 1 }) : '__'}
         {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
-        {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit, decimal: 1 }) : '__'}
->>>>>>> 180418174ee7e99691b63c2fd65b9838c52f691e
-        {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
       </Medium>
       <PaddingBottom />
     </View>
