@@ -96,7 +96,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
             {isPending && <ActivityIndicator size={15} color={color.color} />}
           </View>
           <Regular style={[{ fontSize: 50, lineHeight: 70 }, color]}>
-            {w ? tempConverter(w.current.temp, currentUnit) : '__'}
+            {w ? tempConverter({ temp: w.current.temp, unit: currentUnit, decimal: 1 }) : '__'}
             {currentUnit === 'K' ? '' : '°'}
           </Regular>
         </View>
@@ -110,9 +110,15 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
             H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
           </Medium> */}
           <Medium style={[color]}>
+<<<<<<< HEAD
             {w ? tempConverter(w.daily[0]!.temp.min, currentUnit) : '__'}
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}/{' '}
             {w ? tempConverter(w.daily[0]!.temp.max, currentUnit) : '__'}
+=======
+            {w ? tempConverter({ temp: w.daily[0]!.temp.max, unit: currentUnit }) : '__'}
+            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
+            {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit }) : '__'}
+>>>>>>> 180418174ee7e99691b63c2fd65b9838c52f691e
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
           </Medium>
         </View>

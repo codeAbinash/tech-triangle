@@ -47,7 +47,8 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
                 time='Now'
                 Icon={Icon}
                 ap=''
-                temp={w ? tempConverter(w.current.temp, currentUnit, true) : '__'}
+                // temp={w ? tempConverter(w.current.temp, currentUnit, true) : '__'}
+                temp={w ? tempConverter({ temp: w.current.temp, unit: currentUnit, degree: true }) : '__'}
                 probability={Math.round((w?.current.pop || 0) * 100)}
               />
             </View>
@@ -58,7 +59,7 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
                 time={getHour(h.dt + 3600, timeFormat)}
                 color={color}
                 ap={getAp(h.dt, timeFormat)}
-                temp={h ? tempConverter(h.temp, currentUnit, true) : '__'}
+                temp={h ? tempConverter({ temp: h.temp, unit: currentUnit, degree: true }) : '__'}
                 probability={Math.round((h.pop || 0) * 100)}
               />
             ))}
@@ -88,7 +89,7 @@ function SmallWeather({ color, time, ap, temp, Icon, style, probability, ...rest
       {...rest}
       entering={FadeIn.duration(1000)}
     >
-      <Medium style={{ color: color.color, fontSize: 15 }} className='mb-1 text-center'>
+      <Medium style={{ color: color.color, fontSize: 14 }} className='mb-1 text-center'>
         {temp}
       </Medium>
       <View>
