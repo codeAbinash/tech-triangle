@@ -107,7 +107,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
         <View className='flex-1'>
           <View className='flex-row justify-between px-1'>
             <Medium className='text-base' style={color}>
-              {tempConverter(d.temp.min, currentUnit, true)}
+              {tempConverter({ temp: d.temp.min, unit: currentUnit, degree: true })}
             </Medium>
             <View className='flex-1 justify-center px-3'>
               <View className='flex-row rounded-full bg-white/10' style={{ width: '100%', height: 6 }}>
@@ -122,7 +122,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
               </View>
             </View>
             <Medium className='text-base' style={color}>
-              {tempConverter(d.temp.max, currentUnit, true)}
+              {tempConverter({ temp: d.temp.max, unit: currentUnit, degree: true })}
             </Medium>
           </View>
         </View>
@@ -153,7 +153,6 @@ function DotPosition({ dotPosition, theme }: { dotPosition: number; theme: Theme
     </>
   )
 }
-
 
 // 55 to -20
 // const TempColor = {
