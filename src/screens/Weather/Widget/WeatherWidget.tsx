@@ -110,9 +110,9 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
             H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
           </Medium> */}
           <Medium style={[color]}>
-            {w ? tempConverter(w.daily[0]!.temp.max, currentUnit) : '__'}
-            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
             {w ? tempConverter(w.daily[0]!.temp.min, currentUnit) : '__'}
+            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}/{' '}
+            {w ? tempConverter(w.daily[0]!.temp.max, currentUnit) : '__'}
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
           </Medium>
         </View>
