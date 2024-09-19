@@ -110,27 +110,24 @@ export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
   return setTimeout(fn, ms)
 }
 
+type TemperatureData = {
+  temp: number
+  unit: TemperatureUnit
+  degree?: boolean
+  decimal?: number
+}
 /**
  *
  * @param temp temperature in kelvin
  * @param unit unit of temperature
  * @returns temperature in the specified unit
  */
-export function tempConverter({
-  temp,
-  unit,
-  decimal: decimalPlaces = 0,
-  degree,
-}: {
-  temp: number
-  unit: TemperatureUnit
-  degree?: boolean
-  decimal?: number
-}) {
+export function tempConverter({ temp, unit, decimal: decimalPlaces = 0, degree }: TemperatureData) {
   if (unit === 'C') return roundToDecimal(temp - 273.15, decimalPlaces) + (degree ? '°' : '')
   if (unit === 'F') return roundToDecimal((temp - 273.15) * 1.8 + 32, decimalPlaces) + (degree ? '°' : '')
   return roundToDecimal(temp, decimalPlaces).toString()
 }
+
 /**
  *
  * @param num  number to round
