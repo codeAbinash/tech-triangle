@@ -6,6 +6,7 @@ import {
   DashboardSpeed01SolidIcon,
   Database02SolidIcon,
   Image02SolidIcon,
+  ListSettingIcon,
   LockPasswordSolidIcon,
   MapsLocation02SolidIcon,
   MathSolidIcon,
@@ -107,13 +108,17 @@ export default function TyrItOut({ navigation }: NavProp) {
       <PaddingTop />
       <View className='px-5 pb-3'>
         <View className='flex-row items-center justify-between'>
-          <Bold className='text-lg text-gray-800 dark:text-gray-200'>Try it out</Bold>
+          <Bold className='text-xl text-gray-800 dark:text-gray-200'>Try it out</Bold>
           <TouchableOpacity
             activeOpacity={0.6}
-            className='p-2.5 pb-3.5 pt-2'
+            className='p-2.5 pb-3.5 pr-0.5 pt-2'
             onPress={() => navigation.navigate('Settings')}
           >
-            <Settings01Icon height={22} width={22} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
+            <ListSettingIcon
+              height={23}
+              width={23}
+              color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']}
+            />
           </TouchableOpacity>
         </View>
         <Search placeholder='Search tools' value={search} onChangeText={setSearch} />

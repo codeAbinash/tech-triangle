@@ -101,7 +101,7 @@ function Graph() {
 export default function HomeScreen({ navigation }: { navigation: StackNav }) {
   return (
     <>
-      <View className='bg-zinc-50 px-5 pb-1 dark:bg-black'>
+      <View className='bg-zinc-50 px-5 pt-1 dark:bg-black'>
         <PaddingTop />
       </View>
       <ScrollView className='flex-1 bg-zinc-50 dark:bg-black' showsVerticalScrollIndicator={false}>

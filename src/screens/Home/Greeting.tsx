@@ -21,9 +21,9 @@ export default function Greeting({ navigation }: NavProp) {
       >
         <View className='w-full'>
           <View className='my-9 mb-9'>
-            <Bold className='text-center text-4xl text-zinc-800 dark:text-zinc-200'>{greetingByTime()}</Bold>
-            <SemiBold className='mt-2 text-center text-base text-zinc-800 dark:text-zinc-200'>
-              {getLocalDate()}
+            <Bold className='text-center text-3xl text-zinc-800 dark:text-zinc-200'>{getLocalDate()}</Bold>
+            <SemiBold className='mt-2 text-center text-lg text-zinc-800 dark:text-zinc-200'>
+              {greetingByTime()}
             </SemiBold>
           </View>
 

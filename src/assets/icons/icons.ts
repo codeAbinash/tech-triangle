@@ -120,3 +120,4 @@ export { default as ArtificialIntelligence04SolidIcon } from '@icons/artificial-
 export { default as Image02SolidIcon } from '@icons/image-02-solid-rounded.svg'
 export { default as MathSolidIcon } from '@icons/math-solid-rounded.svg'
 export { default as Clock01SolidIcon } from '@icons/clock-01-solid-rounded.svg'
+export { default as ListSettingIcon } from '@icons/list-setting-stroke-rounded.svg'

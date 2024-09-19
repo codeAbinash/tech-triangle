@@ -84,9 +84,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
         <WeatherTopInfo color={color} w={w} />
         <HourlyForecast color={color} w={w} hourly={data?.hourly} />
-        <DailyForecast color={color} daily={data?.daily}
-          theme={theme}
-        />
+        <DailyForecast color={color} daily={data?.daily} theme={theme} />
         <PaddingBottom />
       </ScrollView>
     </>

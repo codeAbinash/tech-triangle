@@ -71,7 +71,7 @@ export function greetingByTime() {
 }
 
 export function getLocalDate() {
-  return new Date().toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
+  return new Date().toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })
 }
 
 export function getLatitude(lat: number) {
@@ -116,7 +116,17 @@ export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
  * @param unit unit of temperature
  * @returns temperature in the specified unit
  */
-export function tempConverter({temp, unit, decimal: decimalPlaces = 0, degree}:{temp: number, unit: TemperatureUnit, degree?: boolean, decimal?:number}) {
+export function tempConverter({
+  temp,
+  unit,
+  decimal: decimalPlaces = 0,
+  degree,
+}: {
+  temp: number
+  unit: TemperatureUnit
+  degree?: boolean
+  decimal?: number
+}) {
   if (unit === 'C') return roundToDecimal(temp - 273.15, decimalPlaces) + (degree ? '°' : '')
   if (unit === 'F') return roundToDecimal((temp - 273.15) * 1.8 + 32, decimalPlaces) + (degree ? '°' : '')
   return roundToDecimal(temp, decimalPlaces).toString()
