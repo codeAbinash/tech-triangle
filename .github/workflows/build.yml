@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: computer-science.apk
-          path: android/app/build/outputs/apk/release/app-arm64-v8a-release.apk
+          path: android/app/build/outputs/apk/release/Tech_Triangle-arm64-v8a.apk
