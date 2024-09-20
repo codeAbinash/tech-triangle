@@ -1,6 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import { SortingDownSolidIcon } from '@assets/icons/icons'
-import type { Weather } from '@screens/Weather/types'
 import { boxSize } from '@screens/Weather/utils'
 import { Medium } from '@utils/fonts'
 import type { Theme } from '@utils/types'
@@ -9,8 +8,8 @@ import { StyleSheet, View } from 'react-native'
 import GradientPath from './GradientPath'
 import WeatherLabel from './WeatherLabel'
 
-const minPressure = 970
-const maxPressure = 1030
+export const minPressure = 970
+export const maxPressure = 1030
 
 export default function Pressure({ theme, pressure, percent }: { theme: Theme; pressure: number; percent: number }) {
   const unit = weatherStore((state) => state.atmPressureUnit)
@@ -26,11 +25,4 @@ export default function Pressure({ theme, pressure, percent }: { theme: Theme; p
       </View>
     </View>
   )
-}
-
-export function calculatePressurePercentage(w: Weather) {
-  let percent = ((w?.current.pressure || 0) - minPressure) / (maxPressure - minPressure)
-  percent = percent >= 1 ? 0.999 : percent
-  percent = percent < 0 ? 0 : percent
-  return percent
 }

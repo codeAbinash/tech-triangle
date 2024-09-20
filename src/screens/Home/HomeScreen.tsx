@@ -29,9 +29,7 @@ function Elements() {
         activeOpacity={0.7}
         onPress={() => navigation.navigate('RoutineWelcome')}
       >
-        <Text className='text-gray-800 dark:text-gray-200' style={PoppinsMedium}>
-          Routine
-        </Text>
+        <Medium className='text-xs text-gray-800 dark:text-gray-200'>Routine</Medium>
       </TouchableOpacity>
       <TouchableOpacity
         style={[height_weight, styles.shadow]}
@@ -39,9 +37,7 @@ function Elements() {
         activeOpacity={0.7}
         onPress={() => navigation.navigate('NotesWelcome')}
       >
-        <Text className='text-gray-800 dark:text-gray-200' style={PoppinsMedium}>
-          Notes
-        </Text>
+        <Medium className='text-xs text-gray-800 dark:text-gray-200'>Notes</Medium>
       </TouchableOpacity>
       <View style={[height_weight, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
       <View style={[height_weight, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
@@ -56,21 +52,21 @@ function Shortcuts() {
   }, [width])
   return (
     <View>
-      <Text className='my-2 px-5 text-xl text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
+      <Text className='my-2 px-5 text-base text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
         Shortcuts
       </Text>
       <View className='w-full flex-row flex-wrap' style={{ gap: 12, paddingHorizontal: 18 }}>
         <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
-          <Medium className='text-gray-700 dark:text-gray-300'>Shortcut 1</Medium>
+          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 1</Medium>
         </View>
         <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
-          <Medium className='text-gray-700 dark:text-gray-300'>Shortcut 2</Medium>
+          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 2</Medium>
         </View>
         <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
-          <Medium className='text-gray-700 dark:text-gray-300'>Shortcut 3</Medium>
+          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 3</Medium>
         </View>
         <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
-          <Medium className='text-gray-700 dark:text-gray-300'>Shortcut 4</Medium>
+          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 4</Medium>
         </View>
       </View>
     </View>
@@ -80,7 +76,7 @@ function Shortcuts() {
 function Graph() {
   return (
     <View className='px-5'>
-      <Text className='my-2 text-xl text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
+      <Text className='my-2 text-base text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
         Weekly Progress
       </Text>
       <View
@@ -92,7 +88,7 @@ function Graph() {
         }}
         className='h-52 w-full items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
       >
-        <Medium className='text-gray-700 dark:text-gray-300'>Graph</Medium>
+        <Medium className='text-xs text-gray-700 dark:text-gray-300'>Graph</Medium>
       </View>
     </View>
   )

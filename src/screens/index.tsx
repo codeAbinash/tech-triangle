@@ -17,6 +17,7 @@ import {
 import HomeScreen from './Home/HomeScreen'
 import ComingSoon from './UnderConstruction'
 import TyrItOut from './Try/TyrItOut'
+import { SemiBold } from '@utils/fonts'
 const Tab = createBottomTabNavigator()
 
 function BottomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
@@ -77,16 +78,15 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               style={{ flex: 1, paddingTop: 13.5, paddingBottom: 8 }}
             >
               {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color: getGrayColor(theme), size: 23 })}
-              <Text
+              <SemiBold
                 style={{
                   color: isFocused ? Colors.accent : getGrayColor(theme),
-                  marginTop: 2.5,
-                  fontSize: 11,
-                  fontFamily: 'Poppins-Medium',
+                  marginTop: 3.5,
+                  fontSize: 8.5,
                 }}
               >
                 {label as ReactNode}
-              </Text>
+              </SemiBold>
             </TouchableOpacity>
           )
         })}

@@ -17,7 +17,7 @@ export default function TopArea() {
       <View className='flex-row items-center justify-between'>
         <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('Greeting')}>
           <View className='flex-row items-center'>
-            <Bold style={[{ fontSize: 20 }]} className='items-center justify-center text-gray-800 dark:text-gray-200'>
+            <Bold style={[{ fontSize: 16 }]} className='items-center justify-center text-gray-800 dark:text-gray-200'>
               {/* {nickName ? 'Hello ' + nickName : greetingByTime()} */}
               {getLocalDate()}
             </Bold>

@@ -15,13 +15,17 @@ import { Icons } from '../utils'
 
 const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
-  const currentCity = weatherStore((state) => state.currentCity)
-  const currentUnit = weatherStore((state) => state.temperatureUnit)
-  const lastUpdated = weatherStore((state) => state.lastUpdated)
-  const currentWeather = weatherStore((state) => state.currentWeather)
-  const setCurrentWeather = weatherStore((state) => state.setCurrentWeather)
-  const setLastUpdated = weatherStore((state) => state.setLastUpdated)
-  const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
+  const { currentCity, currentUnit, lastUpdated, currentWeather, setCurrentWeather, setLastUpdated, weatherCacheTime } =
+    weatherStore((state) => ({
+      currentCity: state.currentCity,
+      currentUnit: state.temperatureUnit,
+      lastUpdated: state.lastUpdated,
+      currentWeather: state.currentWeather,
+      setCurrentWeather: state.setCurrentWeather,
+      setLastUpdated: state.setLastUpdated,
+      weatherCacheTime: state.weatherCacheTime,
+    }))
+
   const height = hw.height
   const width = hw.width
 
@@ -90,26 +94,26 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
       >
         <View>
           <View className='flex-row justify-between'>
-            <Medium className='text-base' style={color}>
+            <Medium className='text-sm' style={color}>
               {currentCity.name}
             </Medium>
             {isPending && <ActivityIndicator size={15} color={color.color} />}
           </View>
-          <Regular style={[{ fontSize: 50, lineHeight: 70 }, color]}>
+          <Regular style={[{ fontSize: 45, lineHeight: 65 }, color]}>
             {w ? tempConverter({ temp: w.current.temp, unit: currentUnit }) : '__'}
             {currentUnit === 'K' ? '' : '°'}
           </Regular>
         </View>
         <View>
           <Icon width={25} height={25} color={color.color} />
-          <Medium style={[color]} className='mt-0.5 capitalize'>
+          <Medium style={[color]} className='mt-0.5 text-xs capitalize'>
             {w ? w.current.weather[0]!.description : '__'}
             {/* {w.current.weather[0].icon} */}
           </Medium>
           {/* <Medium style={[color]}>
             H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
           </Medium> */}
-          <Medium style={[color]}>
+          <Medium style={[color]} className='text-xs'>
             {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit }) : '__'}
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
             {w ? tempConverter({ temp: w.daily[0]!.temp.max, unit: currentUnit }) : '__'}
@@ -142,7 +146,7 @@ const WeatherWithText = React.memo<{ text: string; onPress?: () => void; theme: 
         activeOpacity={0.7}
         onPress={onPress}
       >
-        <Medium style={color} className='text-center'>
+        <Medium style={color} className='text-center text-xs'>
           {text}
         </Medium>
       </TouchableOpacity>

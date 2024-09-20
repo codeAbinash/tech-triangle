@@ -25,11 +25,3 @@ export default function Visibility({ theme, visibility, visibilityStatus }: Visi
     </View>
   )
 }
-
-export function getVisibilityStatusString(distance: number): string {
-  if (distance >= 10000) return "It's perfectly clear. Visibility is excellent."
-  if (distance >= 5000) return 'Visibility is good, clear conditions ahead.'
-  if (distance >= 1000) return 'Visibility is moderate, some haze may be present.'
-  if (distance >= 500) return 'Visibility is poor, expect mist or fog.'
-  return 'Visibility is very poor, dense fog or heavy mist is likely.'
-}

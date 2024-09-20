@@ -4,7 +4,7 @@ import Feature from '@components/Feature'
 import { PaddingBottom } from '@components/SafePadding'
 import { Colors } from '@utils/colors'
 import { APP_VERSION } from '@utils/data'
-import { Bold, PoppinsMedium, SemiBold } from '@utils/fonts'
+import { Bold, Medium, PoppinsMedium, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import { getLocalDate, greetingByTime } from '@utils/utils'
 import React from 'react'
@@ -21,8 +21,8 @@ export default function Greeting({ navigation }: NavProp) {
       >
         <View className='w-full'>
           <View className='my-9 mb-9'>
-            <Bold className='text-center text-3xl text-zinc-800 dark:text-zinc-200'>{getLocalDate()}</Bold>
-            <SemiBold className='mt-2 text-center text-lg text-zinc-800 dark:text-zinc-200'>
+            <Bold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>{getLocalDate()}</Bold>
+            <SemiBold className='mt-2 text-center text-base text-zinc-800 dark:text-zinc-200'>
               {greetingByTime()}
             </SemiBold>
           </View>
@@ -54,13 +54,11 @@ export default function Greeting({ navigation }: NavProp) {
         </View>
       </ScrollView>
       <View className='w-full px-10 pt-2'>
-        <Text style={[PoppinsMedium, { fontSize: 11 }]} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
+        <Medium style={[{ fontSize: 9.5 }]} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
           The above are some of the features of the application that have been added or improved in the latest version.
-        </Text>
+        </Medium>
         <Btn title='Close' onPress={() => navigation.goBack()} className='bg-accent' />
-        <Text style={PoppinsMedium} className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>
-          Version {APP_VERSION}
-        </Text>
+        <Medium className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>Version {APP_VERSION}</Medium>
         <PaddingBottom />
       </View>
     </View>

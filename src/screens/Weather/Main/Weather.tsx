@@ -17,8 +17,10 @@ import FeelsLike, { getFeelsLikeStatusString } from './components/FeelsLike'
 import Header from './components/Header'
 import HourlyForecast from './components/HourlyForecast'
 import Humidity from './components/Humidity'
-import Pressure, { calculatePressurePercentage } from './components/Pressure'
-import Visibility, { getVisibilityStatusString } from './components/Visibility'
+import Pressure from './components/Pressure'
+import { calculatePressurePercentage } from '../utils'
+import Visibility from './components/Visibility'
+import { getVisibilityStatusString } from '../utils'
 import WeatherTopInfo from './components/WeatherTopInfo'
 
 export default function WeatherScreen({ navigation }: NavProp) {

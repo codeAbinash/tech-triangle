@@ -31,7 +31,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       <TextInput
         ref={ref}
         className='flex-1 p-2 px-3 text-zinc-800 dark:text-zinc-200'
-        style={[PoppinsMedium, { fontSize: 15.5 }]}
+        style={[PoppinsMedium, { fontSize: 12.2 }]}
         placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
         cursorColor={Colors.accent}
         selectionColor={Colors.accent + '55'}
