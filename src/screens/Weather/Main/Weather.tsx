@@ -4,8 +4,8 @@ import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
 import { H, W } from '@utils/dimensions'
-import type { NavProp } from '@utils/types'
-import React, { useCallback, useEffect } from 'react'
+import type { NavProp, Theme } from '@utils/types'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
@@ -13,17 +13,24 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getWeather } from '../api'
 import type { Weather } from '../types'
 import DailyForecast from './components/DailyForecast'
+import FeelsLike, { getFeelsLikeStatusString } from './components/FeelsLike'
 import Header from './components/Header'
 import HourlyForecast from './components/HourlyForecast'
+import Humidity from './components/Humidity'
+import Pressure, { calculatePressurePercentage } from './components/Pressure'
+import Visibility, { getVisibilityStatusString } from './components/Visibility'
 import WeatherTopInfo from './components/WeatherTopInfo'
 
 export default function WeatherScreen({ navigation }: NavProp) {
-  const currentCity = weatherStore((state) => state.currentCity)
-  const lastUpdated = weatherStore((state) => state.lastUpdated)
-  const currentWeather = weatherStore((state) => state.currentWeather)
-  const setCurrentWeather = weatherStore((state) => state.setCurrentWeather)
-  const setLastUpdated = weatherStore((state) => state.setLastUpdated)
-  const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
+  const { currentCity, lastUpdated, currentWeather, setCurrentWeather, setLastUpdated, weatherCacheTime } =
+    weatherStore((state) => ({
+      currentCity: state.currentCity,
+      lastUpdated: state.lastUpdated,
+      currentWeather: state.currentWeather,
+      setCurrentWeather: state.setCurrentWeather,
+      setLastUpdated: state.setLastUpdated,
+      weatherCacheTime: state.weatherCacheTime,
+    }))
 
   const icon = currentWeather?.current.weather[0]!.icon || '02d'
   const theme = WeatherColors[icon]
@@ -81,12 +88,31 @@ export default function WeatherScreen({ navigation }: NavProp) {
         <PaddingTop />
         <Header navigation={navigation} color={color} isPending={isPending} />
       </View>
-      <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 100, gap: 12 }}>
         <WeatherTopInfo color={color} w={w} />
         <HourlyForecast color={color} w={w} hourly={data?.hourly} />
         <DailyForecast color={color} daily={data?.daily} theme={theme} />
+        <Boxes w={w} theme={theme} />
         <PaddingBottom />
       </ScrollView>
     </>
+  )
+}
+
+function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
+  let pressurePercent = useMemo(() => calculatePressurePercentage(w), [w])
+  let feelsLikeStatus = useMemo(() => getFeelsLikeStatusString(w?.current.feels_like || 0, w?.current.temp || 0), [w])
+  let visibilityStatus = useMemo(() => getVisibilityStatusString(w?.current.visibility || 10000), [w])
+  return (
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', rowGap: 12 }} className='flex-wrap px-4'>
+      <FeelsLike theme={theme} feelsLike={w?.current.feels_like || 0} feelsLikeStatus={feelsLikeStatus} />
+      <Humidity theme={theme} humidity={w?.current.humidity || 0} dew_point={w?.current.dew_point || 0} />
+      <Pressure percent={pressurePercent} pressure={w?.current.pressure || 0} theme={theme} />
+      <Visibility
+        theme={theme}
+        visibility={(w?.current.visibility || 0) / 1000 + ' km'}
+        visibilityStatus={visibilityStatus}
+      />
+    </View>
   )
 }

@@ -21,24 +21,28 @@ export default function WeatherTopInfo({ color, w }: WeatherTopInfoProps) {
       <Medium className='mt-7 text-center' style={[color, { fontSize: 25 }]}>
         {currentCity?.name}
       </Medium>
-      <View className='flex-row justify-center'>
+      <View className='flex-row justify-center pb-3'>
         <Light
-          className='mt-2 items-start justify-start pl-5 text-center'
-          style={[color, { lineHeight: 180, fontSize: 130 }]}
+          className='mt-4 items-start justify-start pl-5 text-center'
+          style={[color, { lineHeight: 180, fontSize: 150 }]}
         >
           {w ? tempConverter({ temp: w.current.temp, unit: currentUnit }) : '__'}
         </Light>
         <Medium style={[color, { fontSize: 60 }]}>{currentUnit === 'K' ? '' : '°'}</Medium>
       </View>
-      <Medium className='-mt-4 text-center text-lg capitalize' style={color}>
+      <Medium className='-mt-4 text-center text-base' style={color}>
+        {'Feels like ' + tempConverter({ temp: w?.current.feels_like || 0, unit: currentUnit, degree: true })}{' '}
+        {currentUnit}
+      </Medium>
+      <Medium className='mt-1 text-center text-lg capitalize' style={color}>
         {w ? w.current.weather[0]!.description : '__'}
       </Medium>
-      <Medium className='mt-0.5 text-center text-base' style={color}>
+      {/* <Medium className='mt-0.5 text-center text-base' style={color}>
         {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit }) : '__'}
         {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
         {w ? tempConverter({ temp: w.daily[0]!.temp.max, unit: currentUnit }) : '__'}
         {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
-      </Medium>
+      </Medium> */}
       <PaddingBottom />
     </View>
   )

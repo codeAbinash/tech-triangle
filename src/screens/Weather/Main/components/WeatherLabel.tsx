@@ -1,6 +1,6 @@
 import { Medium } from '@utils/fonts'
 import React from 'react'
-import { View } from 'react-native'
+import { View, type ViewProps } from 'react-native'
 import type { SvgProps } from 'react-native-svg'
 
 type WeatherHeaderProps = {
@@ -20,9 +20,14 @@ export default function WeatherLabel({ color, label: title, Icon }: WeatherHeade
           {title}
         </Medium>
       </View>
-      <View className='px-4'>
-        <View className='my-0.5 w-full bg-white/5' style={{ height: 1 }}></View>
-      </View>
+    </View>
+  )
+}
+
+export function Underline({ style, ...props }: ViewProps) {
+  return (
+    <View className='px-4'>
+      <View className='my-0.5 w-full bg-white/5' style={[{ height: 1 }, style]} {...props}></View>
     </View>
   )
 }

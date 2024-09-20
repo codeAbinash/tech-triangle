@@ -9,7 +9,7 @@ import { getDay, screenDelay, tempConverter } from '@utils/utils'
 import React, { useEffect, useMemo, useState } from 'react'
 import { View } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
-import WeatherLabel from './WeatherLabel'
+import WeatherLabel, { Underline } from './WeatherLabel'
 
 type WeatherForecastProps = {
   color: {
@@ -31,10 +31,11 @@ export default function DailyForecast({ color, daily, theme }: WeatherForecastPr
   }, [daily])
 
   return (
-    <Animated.View className='mt-3.5 px-4' entering={FadeIn.duration(700).delay(100)}>
+    <Animated.View className='px-4' entering={FadeIn.duration(700).delay(100)}>
       <View className='rounded-3xl bg-black/10 pb-2'>
         <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
-        {!data && <View style={{ height: 14 * 4 * 8 }}></View>}
+        <Underline />
+        {!data && <View style={{ height: 56 * 5.855 }}></View>}
         <View>
           {data?.map((d, i) => {
             return (
@@ -92,10 +93,10 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
     <>
       <Animated.View
         className='flex-row items-center gap-4 px-4 py-2'
-        style={{ height: 14 * 4 }}
+        style={{ height: 56 }}
         entering={FadeIn.duration(500)}
       >
-        <Medium className='w-1/6 pl-1 text-base' style={color}>
+        <Medium className='w-1/6 pl-1' style={color}>
           {day}
         </Medium>
         <View className='w-1/6 flex-row items-center'>

@@ -12,6 +12,7 @@ import {
   SunCloud02SolidIcon,
   SunCloudAngledRain02SolidIcon,
 } from '@assets/icons/icons'
+import { W } from '@utils/dimensions'
 import type { WeatherIconsKeys } from '@utils/types'
 import type { SvgProps } from 'react-native-svg'
 
@@ -35,3 +36,8 @@ export const Icons: { [K in WeatherIconsKeys]: React.FC<SvgProps> } = {
   '50d': SoundcloudSolidIcon,
   '50n': SoundcloudSolidIcon,
 } as const
+
+export const boxSize = {
+  width: W / 2 - 22,
+  height: W / 2 - 22,
+}

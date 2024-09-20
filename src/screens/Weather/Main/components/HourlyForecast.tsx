@@ -10,7 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import type { SvgProps } from 'react-native-svg'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
-import WeatherLabel from './WeatherLabel'
+import WeatherLabel, { Underline } from './WeatherLabel'
 
 type HourlyWeather = {
   color: {
@@ -35,6 +35,7 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
     <Animated.View className='mt-10 px-4' entering={FadeIn.duration(700).delay(100)}>
       <View className='rounded-3xl bg-black/10'>
         <WeatherLabel Icon={Clock01SolidIcon} color={color} label='Hourly Forecast' />
+        <Underline />
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}

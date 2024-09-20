@@ -111,7 +111,7 @@ export function screenDelay(fn: () => void, ms: number = SCREEN_TRANSITION) {
 }
 
 type TemperatureData = {
-  temp: number
+  temp: number | undefined | null
   unit: TemperatureUnit
   degree?: boolean
   decimal?: number
@@ -123,6 +123,7 @@ type TemperatureData = {
  * @returns temperature in the specified unit
  */
 export function tempConverter({ temp, unit, decimal: decimalPlaces = 0, degree }: TemperatureData) {
+  if (!temp) return '__'
   if (unit === 'C') return roundToDecimal(temp - 273.15, decimalPlaces) + (degree ? '°' : '')
   if (unit === 'F') return roundToDecimal((temp - 273.15) * 1.8 + 32, decimalPlaces) + (degree ? '°' : '')
   return roundToDecimal(temp, decimalPlaces).toString()
