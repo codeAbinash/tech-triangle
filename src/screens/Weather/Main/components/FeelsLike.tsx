@@ -1,6 +1,6 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import { TemperatureSolidIcon } from '@assets/icons/icons'
-import { Medium, Regular } from '@utils/fonts'
+import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React from 'react'
@@ -23,9 +23,7 @@ export default function FeelsLike({ theme, feelsLike, feelsLikeStatus }: FeelsLi
         <Medium style={[{ fontSize: 37 }, theme.color]}>
           {tempConverter({ temp: feelsLike, unit: unit, degree: true })}
         </Medium>
-        <Regular className='text-xs' style={theme.color}>
-          {feelsLikeStatus}
-        </Regular>
+        <Regular style={[theme.color, F.F12]}>{feelsLikeStatus}</Regular>
       </View>
     </View>
   )

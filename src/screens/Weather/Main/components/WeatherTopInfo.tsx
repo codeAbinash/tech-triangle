@@ -18,7 +18,7 @@ export default function WeatherTopInfo({ color, w }: WeatherTopInfoProps) {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   return (
     <View className='flex-1 px-5'>
-      <Medium className='mt-7 text-center' style={[color, { fontSize: 22 }]}>
+      <Medium className='mt-7 text-center' style={[color, { fontSize: 20 }]}>
         {currentCity?.name}
       </Medium>
       <View className='flex-row justify-center pb-3'>
@@ -30,11 +30,11 @@ export default function WeatherTopInfo({ color, w }: WeatherTopInfoProps) {
         </Light>
         <Regular style={[color, { fontSize: 50 }]}>{currentUnit === 'K' ? '' : '°'}</Regular>
       </View>
-      <Medium className='-mt-4 text-center text-sm' style={[color, { fontSize: 14 }]}>
+      <Medium className='-mt-4 text-center text-sm' style={[color, { fontSize: 13 }]}>
         {'Feels like ' + tempConverter({ temp: w?.current.feels_like || 0, unit: currentUnit, degree: true })}{' '}
         {currentUnit}
       </Medium>
-      <Medium className='mt-1 text-center text-base capitalize' style={[color, { fontSize: 15 }]}>
+      <Medium className='mt-1 text-center text-base capitalize' style={[color, { fontSize: 14 }]}>
         {w ? w.current.weather[0]!.description : '__'}
       </Medium>
       {/* <Medium className='mt-0.5 text-center text-base' style={color}>

@@ -1,6 +1,6 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import { HumiditySolidIcon } from '@assets/icons/icons'
-import { Medium, Regular } from '@utils/fonts'
+import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React from 'react'
@@ -24,7 +24,7 @@ export default function Humidity({ humidity, theme, dew_point }: HumidityProps) 
         <View className='w-full rounded-full bg-white/10'>
           <View className='h-1.5 rounded-full bg-white/70' style={{ width: `${humidity}%` }} />
         </View>
-        <Regular className='text-xs' style={theme.color}>
+        <Regular style={[theme.color, F.F12]}>
           The due point is {tempConverter({ temp: dew_point, unit: unit, degree: true })} right now.
         </Regular>
       </View>

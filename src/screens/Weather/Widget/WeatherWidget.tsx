@@ -3,7 +3,7 @@ import styles, { hw } from '@screens/Home/style'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
-import { Medium, Regular } from '@utils/fonts'
+import { F, Medium, Regular } from '@utils/fonts'
 import type { StackNav, Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
@@ -88,7 +88,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
       </Canvas>
       <TouchableOpacity
         style={[hw, styles.shadow]}
-        className='justify-between p-4'
+        className='justify-between p-4 pb-3.5'
         activeOpacity={0.7}
         onPress={() => navigation.navigate('Weather')}
       >
@@ -106,14 +106,14 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
         </View>
         <View>
           <Icon width={25} height={25} color={color.color} />
-          <Medium style={[color]} className='mt-0.5 text-xs capitalize'>
+          <Medium style={[color, F.F11]} className='mt-0.5 capitalize'>
             {w ? w.current.weather[0]!.description : '__'}
             {/* {w.current.weather[0].icon} */}
           </Medium>
           {/* <Medium style={[color]}>
             H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
           </Medium> */}
-          <Medium style={[color]} className='text-xs'>
+          <Medium style={[color, F.F11]}>
             {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit }) : '__'}
             {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
             {w ? tempConverter({ temp: w.daily[0]!.temp.max, unit: currentUnit }) : '__'}

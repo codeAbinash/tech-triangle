@@ -5,7 +5,7 @@ import StackHeader from '@components/StackHeader'
 import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
-import { F, Medium, SemiBold } from '@utils/fonts'
+import { F, Medium, Regular, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import React from 'react'
@@ -173,18 +173,18 @@ function CityCard({
     >
       <View>
         <Medium className='text-sm text-zinc-800 dark:text-zinc-200'>{item.EnglishName}</Medium>
-        <Medium className='text-xs text-zinc-600 dark:text-zinc-400'>
+        <Regular className='text-xs text-zinc-600 dark:text-zinc-400'>
           {item.AdministrativeArea.EnglishName}, {item.Country.EnglishName}
-        </Medium>
+        </Regular>
       </View>
 
       <View>
-        <Medium className='text-right text-accent' style={F.F9_5}>
+        <Regular className='text-right text-accent' style={F.F9_5}>
           {lat}, {lon}
-        </Medium>
-        <Medium className='text-right text-accent' style={F.F9_5}>
+        </Regular>
+        <Regular className='text-right text-accent' style={F.F9_5}>
           Altitude: {item.GeoPosition.Elevation.Metric.Value} {item.GeoPosition.Elevation.Metric.Unit}
-        </Medium>
+        </Regular>
       </View>
     </TouchableOpacity>
   )
