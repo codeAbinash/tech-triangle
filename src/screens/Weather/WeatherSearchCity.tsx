@@ -5,7 +5,7 @@ import StackHeader from '@components/StackHeader'
 import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
-import { Medium, SemiBold } from '@utils/fonts'
+import { F, Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import React from 'react'
@@ -89,7 +89,9 @@ function Pending() {
   return (
     <MyFlex>
       <ActivityIndicator size='large' color={Colors.accent} />
-      <Medium className='mt-2 text-center text-xs text-zinc-500 dark:text-zinc-500'>Searching for cities...</Medium>
+      <Medium className='mt-2 text-center text-zinc-500 dark:text-zinc-500' style={F.F9_5}>
+        Searching for cities...
+      </Medium>
     </MyFlex>
   )
 }
@@ -97,15 +99,15 @@ function Pending() {
 function ErrorFetchingCities({ error, navigation }: { error: any; navigation: StackNav }) {
   return (
     <MyFlex>
-      <SemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>
+      <SemiBold className='text-center text-xl text-zinc-800 dark:text-zinc-200'>
         {error?.message || 'Failed to fetch cities'}
       </SemiBold>
-      <Medium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
+      <Medium className='text-center text-zinc-500 dark:text-zinc-500' style={F.F9_5}>
         This error may occur if you are not connected to the internet or API limit exceeded. To fix this, enter a API
         key in settings.
       </Medium>
       <BtnTransparent
-        className='text-sm'
+        className='text-xs'
         onPress={() => navigation.navigate('WeatherSettings')}
         title='Set API keys'
       ></BtnTransparent>
@@ -116,8 +118,8 @@ function ErrorFetchingCities({ error, navigation }: { error: any; navigation: St
 function NoCityFound() {
   return (
     <MyFlex>
-      <SemiBold className='text-center text-2xl text-zinc-800 dark:text-zinc-200'>No cities found</SemiBold>
-      <Medium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>
+      <SemiBold className='text-center text-xl text-zinc-800 dark:text-zinc-200'>No cities found</SemiBold>
+      <Medium className='text-center text-xs text-zinc-500 dark:text-zinc-500'>
         No cities found for the search query. Try searching with different keywords.
       </Medium>
     </MyFlex>
@@ -127,7 +129,7 @@ function NoCityFound() {
 function InitialMessage() {
   return (
     <MyFlex>
-      <Medium className='text-center text-sm text-zinc-500 dark:text-zinc-500'>Enter a city or location name</Medium>
+      <Medium className='text-center text-xs text-zinc-500 dark:text-zinc-500'>Enter a city or location name</Medium>
     </MyFlex>
   )
 }
@@ -135,7 +137,9 @@ function InitialMessage() {
 function PoweredByAccuWeather() {
   return (
     <View>
-      <Medium className='mt-10 text-center text-xs text-zinc-500 dark:text-zinc-500'>Powered by AccuWeather</Medium>
+      <Medium className='mt-10 text-center text-zinc-500 dark:text-zinc-500' style={F.F9_5}>
+        Powered by AccuWeather
+      </Medium>
     </View>
   )
 }
@@ -168,17 +172,17 @@ function CityCard({
       }}
     >
       <View>
-        <Medium className='text-base text-zinc-800 dark:text-zinc-200'>{item.EnglishName}</Medium>
-        <Medium className='text-sm text-zinc-600 dark:text-zinc-400'>
+        <Medium className='text-sm text-zinc-800 dark:text-zinc-200'>{item.EnglishName}</Medium>
+        <Medium className='text-xs text-zinc-600 dark:text-zinc-400'>
           {item.AdministrativeArea.EnglishName}, {item.Country.EnglishName}
         </Medium>
       </View>
 
       <View>
-        <Medium className='text-right text-accent' style={{ fontSize: 12 }}>
+        <Medium className='text-right text-accent' style={F.F9_5}>
           {lat}, {lon}
         </Medium>
-        <Medium className='text-right text-accent' style={{ fontSize: 12 }}>
+        <Medium className='text-right text-accent' style={F.F9_5}>
           Altitude: {item.GeoPosition.Elevation.Metric.Value} {item.GeoPosition.Elevation.Metric.Unit}
         </Medium>
       </View>

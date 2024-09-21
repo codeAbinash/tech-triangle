@@ -5,6 +5,7 @@ import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
 import { Check, SettGroup, SettOption, SettText, SettWrapper, ic } from '@components/Settings'
 import { Toggle } from '@components/Toggle'
+import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
 import React, { useEffect } from 'react'
 import { ToastAndroid, TouchableOpacity } from 'react-native'
@@ -36,7 +37,7 @@ export default function AppLock({ navigation }: NavProp) {
           <SettOption
             title='App Lock'
             Icon={<RoundedIcon Icon={SquareLock02SolidIcon} className='bg-green-500' />}
-            Right={<Toggle isActive={isAppLockEnabled} />}
+            Right={<Toggle isActive={isAppLockEnabled} color={Colors.green['500']} />}
             onPress={handleAppLockPress}
           />
         </SettGroup>

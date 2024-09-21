@@ -42,7 +42,7 @@ function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactN
   return (
     <View style={{ gap: 5 }} className='bg-white px-5 pb-3 dark:bg-zinc-950'>
       {Title}
-      <Bold style={{ fontSize: 30 }} className='mt-3 text-zinc-800 dark:text-zinc-200'>
+      <Bold style={{ fontSize: 24 }} className='mt-3 text-zinc-800 dark:text-zinc-200'>
         {title}
       </Bold>
       <Search placeholder='Search settings' />

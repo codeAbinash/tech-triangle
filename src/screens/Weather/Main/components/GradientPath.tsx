@@ -3,7 +3,7 @@ import { W } from '@utils/dimensions'
 import type { Theme } from '@utils/types'
 import React, { useEffect, useMemo } from 'react'
 import { View } from 'react-native'
-const scale = W / 1050
+const scale = W / 1000
 // Define control points for the cubic Bezier curves
 const controlPoints = [
   {

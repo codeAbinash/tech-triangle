@@ -16,7 +16,7 @@ export function Input({ Icon, Right, accent = Colors.accent, multiline, style, .
         {Icon}
         <TextInput
           className='flex-1 p-2.5 px-0 text-zinc-800 dark:text-zinc-200'
-          style={[{ fontSize: 14.5, paddingVertical: 0, flex: 1 }, PoppinsMedium, style]}
+          style={[{ fontSize: 12, paddingVertical: 0, flex: 1 }, PoppinsMedium, style]}
           placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
           cursorColor={accent}
           selectionColor={accent + '55'}

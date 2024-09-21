@@ -10,11 +10,11 @@ export default function Btn({ title, onPress, disabled, children, style, ...rest
       activeOpacity={0.8}
       onPress={onPress}
       className='w-full bg-accent'
-      style={[{ borderRadius: 14, paddingVertical: 13, paddingHorizontal: 13, opacity: disabled ? 0.8 : 1 }, style]}
+      style={[{ borderRadius: 14.5, paddingVertical: 13, paddingHorizontal: 13, opacity: disabled ? 0.8 : 1 }, style]}
       disabled={disabled}
       {...rest}
     >
-      <Medium style={{ fontSize: 15 }} className='text-center text-white'>
+      <Medium style={{ fontSize: 12.2 }} className='text-center text-white'>
         {title || children}
       </Medium>
     </TouchableOpacity>
@@ -27,9 +27,9 @@ export function BtnTransparent({ title, onPress, children, style }: ButtonProps)
       activeOpacity={0.7}
       onPress={onPress}
       className='w-full'
-      style={[{ borderRadius: 14, paddingVertical: 13 }]}
+      style={[{ borderRadius: 14.5, paddingVertical: 13 }]}
     >
-      <Medium style={[{ fontSize: 15 }, style]} className='text-center text-accent'>
+      <Medium style={[{ fontSize: 12.2 }, style]} className='text-center text-accent'>
         {title || children}
       </Medium>
     </TouchableOpacity>

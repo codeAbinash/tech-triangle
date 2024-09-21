@@ -6,6 +6,7 @@ import {
 } from '@assets/icons/icons'
 import Btn, { BtnTransparent } from '@components/Button'
 import Feature from '@components/Feature'
+import { PaddingBottom } from '@components/SafePadding'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
@@ -22,7 +23,7 @@ export default function WeatherWelcome({ navigation }: NavProp) {
         contentContainerStyle={{ justifyContent: 'space-between', alignItems: 'center', gap: 10, paddingVertical: 20 }}
       >
         <View className='w-full'>
-          <Bold style={{ fontSize: 38 }} className='my-10 text-center text-zinc-800 dark:text-zinc-200'>
+          <Bold style={{ fontSize: 32 }} className='my-10 text-center text-zinc-800 dark:text-zinc-200'>
             Welcome to{'\n'}Weather
           </Bold>
           <View style={{ gap: 12 }}>
@@ -49,7 +50,7 @@ export default function WeatherWelcome({ navigation }: NavProp) {
           </View>
         </View>
       </ScrollView>
-      <View className='mb-8 w-full px-[10%] pt-2' style={{ gap: 10 }}>
+      <View className='w-full px-[10%] pt-2' style={{ gap: 10 }}>
         <Btn
           title='Search Your City'
           onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: false })}
@@ -62,6 +63,7 @@ export default function WeatherWelcome({ navigation }: NavProp) {
             })
           }
         />
+        <PaddingBottom />
       </View>
     </View>
   )

@@ -7,12 +7,12 @@ import { type RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
 import { W } from '@utils/dimensions'
-import { Medium, SemiBold } from '@utils/fonts'
+import { F, Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { screenDelay } from '@utils/utils'
 import LottieView from 'lottie-react-native'
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Linking, PermissionsAndroid, StatusBar, View } from 'react-native'
+import { ActivityIndicator, Linking, PermissionsAndroid, StatusBar, ToastAndroid, View } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 import { getLocation as getLoc } from './api'
 import type { LocationResult } from './LocationResultTypes'
@@ -111,12 +111,23 @@ function CityResult({
     mutationKey: ['location'],
     mutationFn: () => fetchResult(),
     onError: (err) => console.log(err),
-    onSuccess: (_) => console.log('Success', _),
+    onSuccess: updateCurrentCityNavigate,
   })
 
   async function fetchResult() {
     const result = await getLoc(location?.coords.latitude || 0, location?.coords.longitude || 0)
     return result as LocationResult
+  }
+
+  function updateCurrentCityNavigate(d: LocationResult) {
+    setCurrentCity({
+      lat: d?.coord.lat || 0,
+      lon: d?.coord.lon || 0,
+      name: d?.name || '',
+    })
+    ToastAndroid.show('Current city is updated', ToastAndroid.SHORT)
+    if (shouldGoBack) return navigation.pop(1)
+    navigation.reset({ index: 0, routes: [{ name: 'Home' }, { name: 'Weather' }] })
   }
 
   useEffect(() => {
@@ -128,10 +139,9 @@ function CityResult({
     return (
       <View>
         <ActivityIndicator size='large' color={Colors.accent} />
-        <Medium className='mt-5 text-center text-zinc-700 dark:text-gray-300'>Talking to APIs...</Medium>
+        <Medium className='mt-5 text-center text-xs text-zinc-700 dark:text-gray-300'>Talking to APIs...</Medium>
       </View>
     )
-
   return (
     <View className='w-full items-center' style={{ gap: 20 }}>
       {/* <PMedium className='text-center text-zinc-700 dark:text-gray-300'>
@@ -149,32 +159,21 @@ function CityResult({
       <View className='w-full flex-row items-center justify-between px-5'>
         <View className='flex-row items-center' style={{ gap: 5 }}>
           <View className=''>
-            <SemiBold className='text-xl text-zinc-800 dark:text-zinc-200'>{data?.name}</SemiBold>
-            <Medium className='text-base capitalize text-zinc-700 dark:text-zinc-300'>
+            <SemiBold className='text-lg text-zinc-800 dark:text-zinc-200'>{data?.name}</SemiBold>
+            <Medium className='text-sm capitalize text-zinc-700 dark:text-zinc-300'>
               {data?.weather[0]!.description}
             </Medium>
           </View>
         </View>
         <View>
-          <SemiBold className='text-right text-xl text-zinc-700 dark:text-zinc-300'>{32}°C</SemiBold>
-          <Medium className='text-right text-base text-zinc-700 dark:text-zinc-300'>
+          <SemiBold className='text-right text-lg text-zinc-700 dark:text-zinc-300'>{32}°C</SemiBold>
+          <Medium className='text-right text-sm text-zinc-700 dark:text-zinc-300'>
             Humidity {data?.main.humidity}%
           </Medium>
         </View>
       </View>
       <View className='mt-5 w-full px-5'>
-        <Button
-          title='Set this location'
-          onPress={() => {
-            setCurrentCity({
-              lat: data?.coord.lat || 0,
-              lon: data?.coord.lon || 0,
-              name: data?.name || '',
-            })
-            if (shouldGoBack) return navigation.pop(1)
-            navigation.reset({ index: 0, routes: [{ name: 'Home' }, { name: 'Weather' }] })
-          }}
-        />
+        <Button title='Set this location' onPress={() => updateCurrentCityNavigate(data)} />
       </View>
     </View>
   )
@@ -204,7 +203,7 @@ function FetchingLocation() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
       <ActivityIndicator size='large' color={Colors.accent} />
-      <Medium className='text-center text-sm text-zinc-700 dark:text-gray-300'>Fetching location...</Medium>
+      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>Fetching location...</Medium>
     </View>
   )
 }
@@ -213,7 +212,7 @@ function ErrorFetchingLocation() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
       <LocationOffline01Icon width={28} height={28} className='text-red-500' />
-      <Medium className='text-center text-sm text-red-500'>Error fetching location.</Medium>
+      <Medium className='text-center text-xs text-red-500'>Error fetching location.</Medium>
     </View>
   )
 }
@@ -222,7 +221,7 @@ function LocationPermissionDenied() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
       <LocationOffline01Icon width={28} height={28} className='text-red-500' />
-      <Medium className='text-center text-sm text-red-500'>Location permission denied.</Medium>
+      <Medium className='text-center text-xs text-red-500'>Location permission denied.</Medium>
     </View>
   )
 }
@@ -244,7 +243,7 @@ function GetTryLocateAgainButton({
 function GrantPermission() {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>
+      <Medium className='text-center text-zinc-700 dark:text-gray-300' style={F.F9_5}>
         Please grant location permission.
       </Medium>
       <Button title='Allow location' onPress={() => Linking.openSettings()} />
@@ -254,7 +253,7 @@ function GrantPermission() {
 function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>
+      <Medium className='text-center text-zinc-700 dark:text-gray-300' style={F.F9_5}>
         Your location is turned off. Turn it on.
       </Medium>
       <Button title='Turn on location' onPress={getLocation} />
@@ -265,7 +264,7 @@ function TurnOnLocation({ getLocation }: { getLocation: () => void }) {
 function GrantPermissionFromSettings() {
   return (
     <View style={{ gap: 8 }}>
-      <Medium className='text-center text-xs text-zinc-700 dark:text-gray-300'>
+      <Medium className='text-center text-zinc-700 dark:text-gray-300' style={F.F9_5}>
         Allow the app to access your location.
       </Medium>
       <Button title='Go to settings' onPress={() => Linking.openSettings()} />

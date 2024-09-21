@@ -2,7 +2,7 @@ import { weatherStore } from '@/zustand/weatherStore'
 import { Clock01SolidIcon } from '@assets/icons/icons'
 import type { Current, Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
-import { Medium, SemiBold } from '@utils/fonts'
+import { Medium, Regular, SemiBold } from '@utils/fonts'
 import { getAp, getHour, screenDelay, tempConverter } from '@utils/utils'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
@@ -90,21 +90,21 @@ function SmallWeather({ color, time, ap, temp, Icon, style, probability, ...rest
       {...rest}
       entering={FadeIn.duration(1000)}
     >
-      <Medium style={{ color: color.color, fontSize: 14 }} className='mb-1 text-center'>
+      <Medium style={{ color: color.color, fontSize: 11 }} className='mb-1 text-center'>
         {temp}
       </Medium>
       <View>
         <Icon width={22} height={22} color={color.color} />
         {
-          <SemiBold className='text-center text-xs text-sky-500' style={{ opacity: probability ? 1 : 0 }}>
+          <SemiBold className='text-center text-sky-500' style={{ opacity: probability ? 1 : 0, fontSize: 9 }}>
             {probability}%
           </SemiBold>
         }
-        <Medium style={{ color: color.color, fontSize: 14 }} className='text-center'>
+        <Medium style={{ color: color.color, fontSize: 10 }} className='text-center'>
           {time}
-          <Medium style={{ color: color.color, fontSize: 11 }} className='text-center'>
+          <Regular style={{ color: color.color, fontSize: 8.5 }} className='text-center'>
             {ap}
-          </Medium>
+          </Regular>
         </Medium>
       </View>
     </Animated.View>

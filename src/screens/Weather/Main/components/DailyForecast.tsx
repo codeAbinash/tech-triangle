@@ -3,7 +3,7 @@ import { Calendar03SolidIcon } from '@assets/icons/icons'
 import Gradient from '@components/Gradient'
 import type { Daily } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
-import { Medium } from '@utils/fonts'
+import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { getDay, screenDelay, tempConverter } from '@utils/utils'
 import React, { useEffect, useMemo, useState } from 'react'
@@ -52,9 +52,9 @@ export default function DailyForecast({ color, daily, theme }: WeatherForecastPr
             )
           })}
         </View>
-        <Medium className='mb-1 mt-3 px-5 text-center text-xs opacity-60' style={color}>
+        <Regular className='mb-1 mt-3 px-5 text-center opacity-60' style={[color, F.F9]}>
           Percentage represents the probability of precipitation.
-        </Medium>
+        </Regular>
       </View>
     </Animated.View>
   )
@@ -96,18 +96,21 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
         style={{ height: 56 }}
         entering={FadeIn.duration(500)}
       >
-        <Medium className='w-1/6 pl-1' style={color}>
+        <Medium className='w-1/6 pl-1' style={[color, { fontSize: 12 }]}>
           {day}
         </Medium>
         <View className='w-1/6 flex-row items-center'>
           <Icon width={21} height={21} color={color.color} style={{ marginRight: 10 }} />
-          <Medium className='text-center text-sky-500' style={{ display: probability ? 'flex' : 'none' }}>
+          <Medium
+            className='text-center text-sky-500'
+            style={{ display: probability ? 'flex' : 'none', fontSize: 10.5 }}
+          >
             {probability}%
           </Medium>
         </View>
         <View className='flex-1'>
-          <View className='flex-row justify-between px-1'>
-            <Medium className='text-base' style={color}>
+          <View className='flex-row items-center justify-between px-1'>
+            <Medium className='text-xs' style={color}>
               {tempConverter({ temp: d.temp.min, unit: currentUnit, degree: true })}
             </Medium>
             <View className='flex-1 justify-center px-3'>
@@ -122,7 +125,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
                 </Gradient>
               </View>
             </View>
-            <Medium className='text-base' style={color}>
+            <Medium style={[color]} className='text-xs'>
               {tempConverter({ temp: d.temp.max, unit: currentUnit, degree: true })}
             </Medium>
           </View>

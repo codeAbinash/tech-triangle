@@ -1,4 +1,4 @@
-import { Medium } from '@utils/fonts'
+import { F, Medium } from '@utils/fonts'
 import React from 'react'
 import { View, type ViewProps } from 'react-native'
 import type { SvgProps } from 'react-native-svg'
@@ -16,7 +16,7 @@ export default function WeatherLabel({ color, label: title, Icon }: WeatherHeade
     <View>
       <View className='flex-row gap-2 px-4 py-3 pb-0.5'>
         <Icon width={15} height={15} color={color.color} style={{ opacity: 0.6 }} />
-        <Medium style={color} className='uppercase opacity-60'>
+        <Medium style={[color, F.F10_5]} className='uppercase opacity-60'>
           {title}
         </Medium>
       </View>

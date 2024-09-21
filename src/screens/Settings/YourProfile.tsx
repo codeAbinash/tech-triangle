@@ -90,12 +90,6 @@ export default function YourProfile({ navigation }: NavProp) {
             onChangeText={setWeight}
             Right={<Txt>kg</Txt>}
           />
-          <SettOption
-            title='Use Imperial Units'
-            Icon={<RoundedIcon Icon={RulerSolidIcon} className='bg-accent' />}
-            Right={<Check checked={false} />}
-            onPress={() => {}}
-          />
         </SettGroup>
         <SettText>Your height and weight are used to calculate your BMI and other health-related information.</SettText>
         <SettGroup title='Gender'>

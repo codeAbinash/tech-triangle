@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, type TextProps } from 'react-native'
+import { StyleSheet, Text, type TextProps } from 'react-native'
 
 export const PoppinsRegular = {
   fontFamily: 'Poppins-Regular',
@@ -56,3 +56,33 @@ export function Light({ children, style, ...props }: TextProps) {
     </Text>
   )
 }
+
+export const F = StyleSheet.create({
+  F9: {
+    fontSize: 9,
+  },
+  F9_5: {
+    fontSize: 9.5,
+  },
+  F10: {
+    fontSize: 10,
+  },
+  F10_5: {
+    fontSize: 10.5,
+  },
+  F11: {
+    fontSize: 11,
+  },
+  F11_5: {
+    fontSize: 11.5,
+  },
+  F12: {
+    fontSize: 12,
+  },
+  F12_5: {
+    fontSize: 12.5,
+  },
+  F13: {
+    fontSize: 13,
+  },
+})

@@ -1,15 +1,12 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import { SortingDownSolidIcon } from '@assets/icons/icons'
 import { boxSize } from '@screens/Weather/utils'
-import { Medium } from '@utils/fonts'
+import { Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import GradientPath from './GradientPath'
 import WeatherLabel from './WeatherLabel'
-
-export const minPressure = 970
-export const maxPressure = 1030
 
 export default function Pressure({ theme, pressure, percent }: { theme: Theme; pressure: number; percent: number }) {
   const unit = weatherStore((state) => state.atmPressureUnit)
@@ -19,8 +16,8 @@ export default function Pressure({ theme, pressure, percent }: { theme: Theme; p
       <View className='flex-1 items-center justify-center px-5 pb-4 pt-0'>
         <GradientPath theme={theme} percent={percent} />
         <View style={StyleSheet.absoluteFill} className='items-center justify-center'>
-          <Medium style={[{ fontSize: 17 }, theme.color]}>{pressure}</Medium>
-          <Medium>{unit}</Medium>
+          <Medium style={[{ fontSize: 15 }, theme.color]}>{pressure}</Medium>
+          <Regular className='text-xs'>{unit}</Regular>
         </View>
       </View>
     </View>

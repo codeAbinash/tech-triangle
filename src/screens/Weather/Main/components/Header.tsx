@@ -1,5 +1,5 @@
 import { PlusSignIcon, Setting07Icon } from '@assets/icons/icons'
-import { Medium } from '@utils/fonts'
+import { F, Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
@@ -25,7 +25,7 @@ export default function Header({
         {isPending && (
           <View className='flex-row items-center justify-between gap-2'>
             <ActivityIndicator size={13} color={color.color} />
-            <Medium style={[color, { fontSize: 13 }]}>Updating...</Medium>
+            <Medium style={[color, F.F9_5]}>Updating...</Medium>
           </View>
         )}
       </View>

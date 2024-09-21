@@ -15,7 +15,6 @@ import {
 import { W } from '@utils/dimensions'
 import type { WeatherIconsKeys } from '@utils/types'
 import type { SvgProps } from 'react-native-svg'
-import { minPressure, maxPressure } from './Main/components/Pressure'
 import type { Weather } from './types'
 
 export const Icons: { [K in WeatherIconsKeys]: React.FC<SvgProps> } = {
@@ -43,12 +42,17 @@ export const boxSize = {
   width: W / 2 - 22,
   height: W / 2 - 22,
 }
+
+export const minPressure = 970
+export const maxPressure = 1030
+
 export function calculatePressurePercentage(w: Weather) {
   let percent = ((w?.current.pressure || 0) - minPressure) / (maxPressure - minPressure)
   percent = percent >= 1 ? 0.999 : percent
   percent = percent < 0 ? 0 : percent
   return percent
-}export function getVisibilityStatusString(distance: number): string {
+}
+export function getVisibilityStatusString(distance: number): string {
   if (distance >= 10000) return "It's perfectly clear. Visibility is excellent."
   if (distance >= 5000) return 'Visibility is good, clear conditions ahead.'
   if (distance >= 1000) return 'Visibility is moderate, some haze may be present.'

@@ -22,14 +22,14 @@ export default function BackHeader({ navigation, Right, title, Title }: BackHead
         {Title || (
           <View className='flex-row items-center' style={{ gap: 10 }}>
             <TouchableOpacity
-              className='p-3 pr-2'
+              className='p-3 pr-0.5'
               onPress={() => navigation && navigation.goBack()}
               activeOpacity={0.7}
             >
               <ArrowLeft01Icon width={26} height={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
             </TouchableOpacity>
             <Medium
-              style={{ fontSize: 18, flex: 1 }}
+              style={{ fontSize: 14.3, flex: 1 }}
               className='mt-0.5 text-zinc-800 dark:text-zinc-200'
               numberOfLines={1}
             >

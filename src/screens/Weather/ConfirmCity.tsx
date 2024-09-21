@@ -3,7 +3,7 @@ import Btn, { BtnTransparent } from '@components/Button'
 import { PaddingBottom } from '@components/SafePadding'
 import type { RouteProp } from '@react-navigation/native'
 import { W } from '@utils/dimensions'
-import { Bold, Medium, SemiBold } from '@utils/fonts'
+import { Bold, F, Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
 import LottieView from 'lottie-react-native'
@@ -39,13 +39,13 @@ export default function ConfirmCity({
 
       <View className='w-full flex-1 items-center justify-between px-[10%]'>
         <View>
-          <Bold style={{ fontSize: 38 }} className='my-8 mb-0 mt-10 text-center text-zinc-800 dark:text-zinc-200'>
+          <Bold style={{ fontSize: 32 }} className='my-8 mb-0 mt-10 text-center text-zinc-800 dark:text-zinc-200'>
             {route.params.name}
           </Bold>
-          <Medium style={{ fontSize: 18 }} className='-mt-2 text-center text-zinc-700 dark:text-zinc-300'>
+          <Medium style={{ fontSize: 15.5 }} className='-mt-2 text-center text-zinc-700 dark:text-zinc-300'>
             {route.params.area}, {route.params.country}
           </Medium>
-          <SemiBold style={{ fontSize: 14 }} className='text-center text-accent'>
+          <SemiBold style={{ fontSize: 11.5 }} className='text-center text-accent'>
             {getLongitude(lon)}
             {'    '}
             {getLatitude(lat)}
@@ -62,7 +62,7 @@ export default function ConfirmCity({
           style={{ width: W * 1.1, height: W * 1.1 }}
         />
         <View className='w-full pb-3 pt-2' style={{ gap: 10 }}>
-          <Medium style={{ fontSize: 11 }} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
+          <Medium style={F.F9_5} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
             By setting this location, you will be able to view the weather of this location in the home screen and the
             weather screen.
           </Medium>

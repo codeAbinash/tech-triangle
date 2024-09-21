@@ -1,6 +1,6 @@
 import { ArrowRight01Icon, Tick01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
-import { Medium } from '@utils/fonts'
+import { F, Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import {
@@ -39,7 +39,7 @@ export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOf
         {Icon}
         <Medium
           className='p-2.5 px-0 text-left text-zinc-800 dark:text-zinc-200'
-          style={[{ fontSize: 14.5, flexShrink: 1 }, style]}
+          style={[{ fontSize: 12, flexShrink: 1 }, style]}
           numberOfLines={numberOfLines || 0}
         >
           {title}
@@ -63,7 +63,7 @@ export function SettGroup({ children, title, color = Colors.accent, ...rest }: S
       {title && (
         <Medium
           className={'px-6 py-1.5 text-accent'}
-          style={{ textTransform: 'none', opacity: 1, fontSize: 13, color: color }}
+          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: color }}
         >
           {title}
         </Medium>
@@ -79,7 +79,7 @@ export function RightArrow() {
 
 export function SettText({ children, style, ...rest }: TextProps) {
   return (
-    <Medium className='px-5 text-xs text-zinc-500 dark:text-zinc-500' {...rest} style={[{ fontSize: 11 }, style]}>
+    <Medium className='px-5 text-zinc-500 dark:text-zinc-500' {...rest} style={[F.F9, style]}>
       {children}
     </Medium>
   )

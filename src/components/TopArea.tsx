@@ -1,5 +1,4 @@
-import { profileStore } from '@/zustand/profileStore'
-import { ListSettingIcon } from '@assets/icons/icons'
+import { ListSettingIcon, Setting07Icon } from '@assets/icons/icons'
 import { useNavigation } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
@@ -11,13 +10,12 @@ import { TouchableOpacity, View, useColorScheme } from 'react-native'
 export default function TopArea() {
   const theme = useColorScheme()
   const navigation = useNavigation<StackNav>()
-  const nickName = profileStore((state) => state.nickName)
   return (
     <View className='px-5 pr-3'>
       <View className='flex-row items-center justify-between'>
         <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('Greeting')}>
           <View className='flex-row items-center'>
-            <Bold style={[{ fontSize: 16 }]} className='items-center justify-center text-gray-800 dark:text-gray-200'>
+            <Bold style={[{ fontSize: 16.5 }]} className='items-center justify-center text-gray-800 dark:text-gray-200'>
               {/* {nickName ? 'Hello ' + nickName : greetingByTime()} */}
               {getLocalDate()}
             </Bold>
@@ -36,11 +34,7 @@ export default function TopArea() {
             className='p-1 px-2.5 pb-2.5'
             onPress={() => navigation.navigate('Settings')}
           >
-            <ListSettingIcon
-              height={23}
-              width={23}
-              color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']}
-            />
+            <Setting07Icon height={24} width={24} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
           </TouchableOpacity>
         </View>
       </View>
