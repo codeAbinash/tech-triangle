@@ -17,7 +17,9 @@ export default function Pressure({ theme, pressure, percent }: { theme: Theme; p
         <GradientPath theme={theme} percent={percent} />
         <View style={StyleSheet.absoluteFill} className='items-center justify-center'>
           <Medium style={[{ fontSize: 15 }, theme.color]}>{pressure}</Medium>
-          <Regular className='text-xs'>{unit}</Regular>
+          <Regular className='text-xs' style={theme.color}>
+            {unit}
+          </Regular>
         </View>
       </View>
     </View>

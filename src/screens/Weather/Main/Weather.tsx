@@ -12,16 +12,16 @@ import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanim
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getWeather } from '../api'
 import type { Weather } from '../types'
+import { calculatePressurePercentage, getVisibilityStatusString } from '../utils'
 import DailyForecast from './components/DailyForecast'
 import FeelsLike, { getFeelsLikeStatusString } from './components/FeelsLike'
 import Header from './components/Header'
 import HourlyForecast from './components/HourlyForecast'
 import Humidity from './components/Humidity'
 import Pressure from './components/Pressure'
-import { calculatePressurePercentage } from '../utils'
 import Visibility from './components/Visibility'
-import { getVisibilityStatusString } from '../utils'
 import WeatherTopInfo from './components/WeatherTopInfo'
+import UVIndex from './components/UVIndex'
 
 export default function WeatherScreen({ navigation }: NavProp) {
   const { currentCity, lastUpdated, currentWeather, setCurrentWeather, setLastUpdated, weatherCacheTime } =
@@ -115,6 +115,7 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
         visibility={(w?.current.visibility || 0) / 1000 + ' km'}
         visibilityStatus={visibilityStatus}
       />
+      <UVIndex uvIndex={w?.current.uvi || 0} theme={theme} />
     </View>
   )
 }
