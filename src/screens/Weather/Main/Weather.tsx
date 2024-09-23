@@ -4,7 +4,7 @@ import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
 import { H, W } from '@utils/dimensions'
-import { F, Medium, Regular, SemiBold } from '@utils/fonts'
+import { F, SemiBold } from '@utils/fonts'
 import type { NavProp, Theme } from '@utils/types'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { StatusBar, View } from 'react-native'
@@ -57,7 +57,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
-    mutationFn: () => fetchResult(),
+    mutationFn: () => getWeather(currentCity?.lat || 0, currentCity?.lon || 0),
     onError: (err) => console.log(err),
     onSuccess: (d) => {
       setCurrentWeather(d)
@@ -66,18 +66,18 @@ export default function WeatherScreen({ navigation }: NavProp) {
   })
   const w = data || currentWeather
 
-  useEffect(() => {
-    if (currentCity) mutate()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCity])
-
-  const fetchResult = useCallback(async (): Promise<Weather> => {
+  const fetchResult = useCallback(async () => {
     const now = new Date().getTime()
     if (now - lastUpdated > weatherCacheTime) {
-      return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
+      console.log('Fetching from API')
+      mutate()
     }
-    return currentWeather
-  }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastUpdated, weatherCacheTime, currentWeather])
+
+  useEffect(() => {
+    currentCity && fetchResult()
+  }, [currentCity, fetchResult])
 
   const bottom = useSafeAreaInsets().bottom
   const top = useSafeAreaInsets().top
@@ -98,8 +98,8 @@ export default function WeatherScreen({ navigation }: NavProp) {
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: bottom + 20, gap: 12 }}>
         <WeatherTopInfo color={color} w={w} />
-        <HourlyForecast color={color} w={w} hourly={data?.hourly} />
-        <DailyForecast color={color} daily={data?.daily} theme={theme} />
+        <HourlyForecast color={color} w={w} />
+        <DailyForecast color={color} w={w} theme={theme} />
         <Boxes w={w} theme={theme} />
         <PaddingBottom />
       </ScrollView>

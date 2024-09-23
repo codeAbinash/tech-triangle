@@ -1,7 +1,7 @@
 import S from '@utils/storage'
 
-export const ACCUWEATHER_API_KEY = 'FqLdDZQkQofVcwsdCHX7uKdPVgWcPGHI'
-// export const ACCUWEATHER_API_KEY = 'C42OAAd8AANIyi8SLoqvq3mm59vADvRA'
+// export const ACCUWEATHER_API_KEY = 'FqLdDZQkQofVcwsdCHX7uKdPVgWcPGHI'
+export const ACCUWEATHER_API_KEY = 'C42OAAd8AANIyi8SLoqvq3mm59vADvRA'
 
 export const OPENWEATHER_API_KEY = '0e376e0750966cdba160fc85a4bb0427'
 

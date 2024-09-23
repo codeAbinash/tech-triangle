@@ -46,7 +46,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
 
   const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
-    mutationFn: () => fetchResult(),
+    mutationFn: () => getWeather(currentCity?.lat || 0, currentCity?.lon || 0),
     onError: (err) => console.log(err),
     onSuccess: (d) => {
       setCurrentWeather(d)
@@ -55,18 +55,18 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   })
   const w = data || currentWeather
 
-  useEffect(() => {
-    if (currentCity) mutate()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCity])
-
-  const fetchResult = useCallback(async (): Promise<Weather> => {
+  const fetchResult = useCallback(async () => {
     const now = new Date().getTime()
     if (now - lastUpdated > weatherCacheTime) {
-      return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
+      console.log('Fetching from API')
+      mutate()
     }
-    return currentWeather
-  }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastUpdated, weatherCacheTime, currentWeather])
+
+  useEffect(() => {
+    currentCity && fetchResult()
+  }, [currentCity, fetchResult])
 
   if (!weatherWidgetIsActive) return null
   if (!currentCity)

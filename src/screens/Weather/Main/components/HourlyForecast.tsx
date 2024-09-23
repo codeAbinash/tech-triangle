@@ -17,15 +17,14 @@ type HourlyWeather = {
     color: string
   }
   w: Weather
-  hourly: Current[] | undefined
 }
 
-const HourlyForecast = React.memo<HourlyWeather>(({ color, w, hourly }) => {
+const HourlyForecast = React.memo<HourlyWeather>(({ color, w }) => {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   const timeFormat = weatherStore((state) => state.weatherTimeFormat)
   const Icon = Icons[w?.current.weather[0]!.icon || '02d']
   // const [data, setData] = useState<Current[] | undefined>()
-  const data = hourly
+  const data = w?.hourly
 
   // useEffect(() => {
   //   const timer = screenDelay(() => setData(hourly))

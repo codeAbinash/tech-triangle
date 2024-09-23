@@ -2,7 +2,7 @@ import { weatherStore, type TemperatureUnit } from '@/zustand/weatherStore'
 import { Calendar03SolidIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import Gradient from '@components/Gradient'
-import type { Daily } from '@screens/Weather/types'
+import type { Daily, Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
@@ -16,13 +16,14 @@ type WeatherForecastProps = {
   color: {
     color: string
   }
-  daily: Daily[] | undefined
   theme: Theme
+  w: Weather
 }
 
-export default function DailyForecast({ color, daily, theme }: WeatherForecastProps) {
+export default function DailyForecast({ color, w, theme }: WeatherForecastProps) {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   // const [data, setData] = useState<Daily[] | undefined>()
+  const daily = w?.daily
   const currentTemp = weatherStore((state) => state.currentWeather?.current.temp)
   const weeklyMinMax = useMemo(() => calculateWeeklyMinMax(daily), [daily])
   const dotPosition = useMemo(() => calculateDotPosition(currentTemp, daily && daily[0]), [currentTemp, daily])
