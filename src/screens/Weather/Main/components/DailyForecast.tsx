@@ -44,7 +44,7 @@ export default function DailyForecast({ color, daily, theme }: WeatherForecastPr
         <View className='rounded-3xl bg-black/10 pb-2'>
           <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
           <Underline />
-          {!data && <View style={{ height: 56 * 5.855 }}></View>}
+          {!data && <View style={{ height: 56 * 6.855 }}></View>}
           <View>
             {data?.map((d, i) => {
               return (

@@ -4,6 +4,7 @@ import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useMutation } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
 import { H, W } from '@utils/dimensions'
+import { F, Medium, Regular, SemiBold } from '@utils/fonts'
 import type { NavProp, Theme } from '@utils/types'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { StatusBar, View } from 'react-native'
@@ -20,6 +21,7 @@ import FeelsLike, { getFeelsLikeStatusString } from './components/FeelsLike'
 import Header from './components/Header'
 import HourlyForecast from './components/HourlyForecast'
 import Humidity from './components/Humidity'
+import MoonPhase from './components/MoonPhase'
 import Precipitation from './components/Precipitation'
 import Pressure from './components/Pressure'
 import SunRiseSet from './components/SunRiseSet'
@@ -65,10 +67,6 @@ export default function WeatherScreen({ navigation }: NavProp) {
   const w = data || currentWeather
 
   useEffect(() => {
-    console.log(currentCity)
-  }, [currentCity])
-
-  useEffect(() => {
     if (currentCity) mutate()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCity])
@@ -98,7 +96,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
         <PaddingTop />
         <Header navigation={navigation} color={color} isPending={isPending} />
       </View>
-      <ScrollView contentContainerStyle={{ paddingBottom: 100, gap: 12 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: bottom + 20, gap: 12 }}>
         <WeatherTopInfo color={color} w={w} />
         <HourlyForecast color={color} w={w} hourly={data?.hourly} />
         <DailyForecast color={color} daily={data?.daily} theme={theme} />
@@ -164,7 +162,18 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
       <AirQualityIndex aqi={currentAQI?.list?.[0]?.main?.aqi} theme={theme} aqiStatus={aqiStatus} />
       <Cloudiness theme={theme} clouds={w?.current.clouds || 0} />
       <Precipitation theme={theme} rain={w?.daily[0]?.rain} snow={w?.daily[0]?.snow} status={rainStatus} />
-      <SunRiseSet w={w} theme={theme} now={w?.current?.dt} sunrise={w?.current?.sunrise} sunset={w?.current?.sunset} />
+      <SunRiseSet theme={theme} now={w?.current?.dt} sunrise={w?.current?.sunrise} sunset={w?.current?.sunset} />
+      <MoonPhase
+        theme={theme}
+        moonrise={w?.daily[0]?.moonrise}
+        moonset={w?.daily[0]?.moonset}
+        phase={w?.daily[0]?.moon_phase}
+      />
+      <View className='w-full items-center justify-center'>
+        <SemiBold className='mt-5 text-center opacity-50' style={F.F10}>
+          Powered by OpenWeatherMap
+        </SemiBold>
+      </View>
     </View>
   )
 }

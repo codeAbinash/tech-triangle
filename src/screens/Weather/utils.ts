@@ -75,9 +75,12 @@ export function getAQIStatus(aqi: number) {
   return 'Hazardous'
 }
 export function getRainStatus(rain: number | undefined) {
-  if (!rain) return ''
+  if (!rain) return 'No rain expected.'
   if (rain === 0) return 'No rain expected.'
   else if (rain < 2) return 'Light rain expected.'
   else if (rain < 5) return 'Moderate rain expected.'
   else return 'Heavy rain expected.'
+}
+export function mapMoonPhaseToImage(phase: number) {
+  return Math.round(phase * 27) + 1
 }

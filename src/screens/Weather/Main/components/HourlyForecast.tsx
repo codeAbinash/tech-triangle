@@ -20,7 +20,7 @@ type HourlyWeather = {
   hourly: Current[] | undefined
 }
 
-export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
+const HourlyForecast = React.memo<HourlyWeather>(({ color, w, hourly }) => {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   const timeFormat = weatherStore((state) => state.weatherTimeFormat)
   const Icon = Icons[w?.current.weather[0]!.icon || '02d']
@@ -69,7 +69,9 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
       </View>
     </Animated.View>
   )
-}
+})
+
+export default HourlyForecast
 
 type SmallWeatherProps = {
   color: {

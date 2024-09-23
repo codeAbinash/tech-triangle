@@ -100,3 +100,7 @@ export async function getWeather(lat: number, lon: number) {
 export async function getAQI(lat: number, lon: number) {
   return await (await fetch(AQIUrl(lat, lon, OPENWEATHER_API_KEY))).json()
 }
+
+export function getMoonImageLink(n: number) {
+  return `https://codeabinash.github.io/moon/moon-${n}.png`
+}

@@ -19,13 +19,13 @@ export default function Precipitation({ theme, rain, snow, status }: Precipitati
       <WeatherLabel Icon={CloudAngledRainSolidIcon} color={theme.color} label='Precipitation' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <View className='flex-row items-end'>
-          <Medium style={[{ fontSize: 33 }, theme.color]}>{rain || '__'}</Medium>
+          <Medium style={[{ fontSize: 33 }, theme.color]}>{rain || '0'}</Medium>
           <Medium style={[{ fontSize: 20, paddingBottom: 8 }, theme.color]} className='pl-1'>
             mm{' '}
           </Medium>
         </View>
         {snow ? (
-          <Regular style={[theme.color, F.F12]}>{snow || '__'} mm snowfall.</Regular>
+          <Regular style={[theme.color, F.F12]}>{snow || '0'} mm snowfall.</Regular>
         ) : (
           <Regular style={[theme.color, F.F12]}>{status}</Regular>
         )}
