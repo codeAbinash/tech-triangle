@@ -14,7 +14,15 @@ function locationUrl(lat: number, lon: number, apiKey: string) {
 }
 
 function weatherUrl(lat: number, lon: number, apiKey: string) {
-  return `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}`
+  return `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}&include=aqi`
+}
+
+function AQIUrl(lat: number, lon: number, apiKey: string) {
+  return `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey || OPENWEATHER_API_KEY}`
+}
+
+function AQIForecastUrl(lat: number, lon: number, apiKey: string) {
+  return `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${lat}&lon=${lon}&appid=${apiKey || OPENWEATHER_API_KEY}`
 }
 
 export const WeatherAPI = {
@@ -87,4 +95,8 @@ export async function getLocation(lat: number, lon: number) {
 
 export async function getWeather(lat: number, lon: number) {
   return await (await fetch(weatherUrl(lat, lon, OPENWEATHER_API_KEY))).json()
+}
+
+export async function getAQI(lat: number, lon: number) {
+  return await (await fetch(AQIUrl(lat, lon, OPENWEATHER_API_KEY))).json()
 }

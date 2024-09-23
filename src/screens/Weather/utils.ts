@@ -67,11 +67,11 @@ export function getVisibilityStatusString(distance: number): string {
 }
 
 export function getAQIStatus(aqi: number) {
-  if (aqi < 50) return 'Good'
-  if (aqi < 100) return 'Moderate'
+  if (aqi < 50) return 'Good air quality'
+  if (aqi < 100) return 'Moderate air quality'
   if (aqi < 150) return 'Unhealthy for Sensitive Groups'
-  if (aqi < 200) return 'Unhealthy'
-  if (aqi < 300) return 'Very Unhealthy'
+  if (aqi < 200) return 'Unhealthy air quality'
+  if (aqi < 300) return 'Very Unhealthy air quality'
   return 'Hazardous'
 }
 export function getRainStatus(rain: number | undefined) {

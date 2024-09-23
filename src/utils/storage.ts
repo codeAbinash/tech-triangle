@@ -77,6 +77,8 @@ export const WeatherStorage = {
     WeatherAtmospherePressureUnit: 'WeatherAtmospherePressureUnit',
     WeatherCurrentWeather: 'WeatherCurrentWeather',
     WeatherLastUpdated: 'WeatherLastUpdated',
+    WeatherLastUpdatedAQI: 'WeatherLastUpdatedAQI',
+    WeatherCurrentAQI: 'WeatherCurrentAQI',
     WeatherCacheTime: 'WeatherCacheTime',
     WeatherTimeFormat: 'WeatherTimeFormat',
   },

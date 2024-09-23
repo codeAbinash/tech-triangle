@@ -1,4 +1,4 @@
-import type { Weather } from '@screens/Weather/types'
+import type { AQI, Weather } from '@screens/Weather/types'
 import { WEATHER_CACHE_TIME } from '@utils/constants'
 import S from '@utils/storage'
 import { ToastAndroid } from 'react-native'
@@ -38,10 +38,14 @@ type WeatherSettingsStore = {
   setCurrentWeather: (weather: Weather) => void
   lastUpdated: number
   setLastUpdated: (time: number) => void
+  lastUpdatedAQI: number
+  setLastUpdatedAQI: (time: number) => void
   weatherCacheTime: number
   setWeatherCacheTime: (time: number) => void
   weatherTimeFormat: TimeFormat
   setWeatherTimeFormat: (format: TimeFormat) => void
+  currentAQI: AQI
+  setCurrentAQI: (aqi: AQI) => void
 }
 
 export const weatherStore = create<WeatherSettingsStore>((set) => ({
@@ -66,13 +70,27 @@ export const weatherStore = create<WeatherSettingsStore>((set) => ({
   setCurrentWeather: (weather: Weather) => setCurrentWeather(weather, set),
   lastUpdated: getWeatherLastUpdated(),
   setLastUpdated: (time: number) => setWeatherLastUpdated(time, set),
+  lastUpdatedAQI: getLastUpdatedAQI(),
+  setLastUpdatedAQI: (time: number) => setLastUpdatedAQI(time, set),
   weatherCacheTime: getWeatherCacheTime(),
   setWeatherCacheTime: (time: number) => setWeatherCacheTime(time, set),
   weatherTimeFormat: getWeatherTimeFormat(),
   setWeatherTimeFormat: (format: TimeFormat) => setWeatherTimeFormat(format, set),
+  currentAQI: getCurrentAQI(),
+  setCurrentAQI: (aqi: AQI) => setCurrentAQI(aqi, set),
 }))
 
 type Set = (fn: (state: WeatherSettingsStore) => WeatherSettingsStore) => void
+
+function setLastUpdatedAQI(time: number, set: Set) {
+  S.set('WeatherLastUpdatedAQI', time.toString())
+  set((state) => ({ ...state, lastUpdatedAQI: time }))
+}
+
+function getLastUpdatedAQI() {
+  const lastUpdated = Number(S.get('WeatherLastUpdatedAQI') || '0')
+  return isNaN(lastUpdated) ? 0 : lastUpdated
+}
 
 function getWeatherTimeFormat() {
   return (S.get('WeatherTimeFormat') as TimeFormat) || '12h'
@@ -109,6 +127,15 @@ function getCurrentWeather() {
 function setCurrentWeather(weather: Weather, set: Set) {
   S.set('WeatherCurrentWeather', JSON.stringify(weather))
   set((state) => ({ ...state, currentWeather: weather }))
+}
+
+function getCurrentAQI() {
+  return S.getParsed<AQI>('WeatherCurrentAQI')
+}
+
+function setCurrentAQI(aqi: AQI, set: Set) {
+  S.set('WeatherCurrentAQI', JSON.stringify(aqi))
+  set((state) => ({ ...state, currentAQI: aqi }))
 }
 
 function getAtmPressureUnit() {

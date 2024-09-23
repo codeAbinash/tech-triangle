@@ -1,10 +1,16 @@
+import { weatherStore } from '@/zustand/weatherStore'
 import { NaturalFoodSolidIcon } from '@assets/icons/icons'
 import Gradient from '@components/Gradient'
-import { boxSize } from '@screens/Weather/utils'
+import { hw } from '@screens/Home/style'
+import { getAQI, getWeather } from '@screens/Weather/api'
+import type { Weather } from '@screens/Weather/types'
+import { boxSize, Icons } from '@screens/Weather/utils'
+import { useMutation } from '@tanstack/react-query'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
+import { useDerivedValue, useSharedValue } from 'react-native-reanimated'
 import WeatherLabel from './WeatherLabel'
 
 const gradientColors = [
@@ -25,8 +31,16 @@ const gradientColors = [
   '#890045',
   '#7c0023',
 ].reverse()
-export default function AQI({ aqi, theme, aqiStatus }: { aqi: number; theme: Theme; aqiStatus?: string }) {
-  let aqiPercent = (aqi * 100) / 500
+export default function AirQualityIndex({
+  aqi,
+  theme,
+  aqiStatus,
+}: {
+  aqi: number | undefined
+  theme: Theme
+  aqiStatus?: string
+}) {
+  let aqiPercent = (aqi || 0 * 100) / 500
   aqiPercent = aqiPercent > 95 ? 95 : aqiPercent
   return (
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>

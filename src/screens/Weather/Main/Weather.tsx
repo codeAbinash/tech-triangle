@@ -10,10 +10,10 @@ import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { getWeather } from '../api'
-import type { Weather } from '../types'
+import { getAQI, getWeather } from '../api'
+import type { AQI, Weather } from '../types'
 import { calculatePressurePercentage, getAQIStatus, getRainStatus, getVisibilityStatusString } from '../utils'
-import AQI from './components/AQI'
+import AirQualityIndex from './components/AirQualityIndex'
 import Cloudiness from './components/Cloudiness'
 import DailyForecast from './components/DailyForecast'
 import FeelsLike, { getFeelsLikeStatusString } from './components/FeelsLike'
@@ -53,35 +53,38 @@ export default function WeatherScreen({ navigation }: NavProp) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeather?.current.weather[0]!.icon])
 
-  const { isPending, data, mutate } = useMutation({
+  const { isPending, error, data, mutate } = useMutation({
     mutationKey: ['currentWeather'],
     mutationFn: () => fetchResult(),
     onError: (err) => console.log(err),
-    onSuccess: setCurrentWeather,
+    onSuccess: (d) => {
+      setCurrentWeather(d)
+      setLastUpdated(new Date().getTime())
+    },
   })
   const w = data || currentWeather
+
+  useEffect(() => {
+    console.log(currentCity)
+  }, [currentCity])
 
   useEffect(() => {
     if (currentCity) mutate()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCity])
 
+  const fetchResult = useCallback(async (): Promise<Weather> => {
+    const now = new Date().getTime()
+    if (now - lastUpdated > weatherCacheTime) {
+      return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
+    }
+    return currentWeather
+  }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
+
   const bottom = useSafeAreaInsets().bottom
   const top = useSafeAreaInsets().top
   const height = H + bottom + top
   const width = W
-
-  const fetchResult = useCallback(async (): Promise<Weather> => {
-    const now = new Date().getTime()
-    if (now - lastUpdated > weatherCacheTime) {
-      setLastUpdated(now)
-      console.log('fetching weather')
-      return (await getWeather(currentCity?.lat || 0, currentCity?.lon || 0)) as Weather
-    }
-    console.log('using cache')
-    return currentWeather
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWeather, lastUpdated, weatherCacheTime, currentCity])
 
   return (
     <>
@@ -107,11 +110,44 @@ export default function WeatherScreen({ navigation }: NavProp) {
 }
 
 function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
+  const { currentCity, lastUpdatedAQI, currentAQI, setLastUpdatedAQI, weatherCacheTime, setCurrentAQI } = weatherStore(
+    (state) => ({
+      currentCity: state.currentCity,
+      currentUnit: state.temperatureUnit,
+      lastUpdatedAQI: state.lastUpdatedAQI,
+      currentAQI: state.currentAQI,
+      setCurrentWeather: state.setCurrentWeather,
+      setLastUpdatedAQI: state.setLastUpdatedAQI,
+      weatherCacheTime: state.weatherCacheTime,
+      setCurrentAQI: state.setCurrentAQI,
+    }),
+  )
+
+  const { mutate } = useMutation({
+    mutationKey: ['currentWeatherAQI'],
+    mutationFn: () => fetchResult(),
+    onError: (err) => console.log(err),
+    onSuccess: (d: AQI) => {
+      setCurrentAQI(d)
+    },
+  })
+  const aqiStatus = useMemo(() => getAQIStatus(currentAQI?.list?.[0]?.main?.aqi || 0), [currentAQI])
   const pressurePercent = useMemo(() => calculatePressurePercentage(w), [w])
   const feelsLikeStatus = useMemo(() => getFeelsLikeStatusString(w?.current.feels_like || 0, w?.current.temp || 0), [w])
   const visibilityStatus = useMemo(() => getVisibilityStatusString(w?.current.visibility || 10000), [w])
-  const aqiStatus = useMemo(() => getAQIStatus(140), [])
   const rainStatus = useMemo(() => getRainStatus(w?.daily[0]?.rain), [w])
+
+  const fetchResult = useCallback(async (): Promise<AQI> => {
+    const now = new Date().getTime()
+    if (now - lastUpdatedAQI > weatherCacheTime) {
+      setLastUpdatedAQI(now)
+      return (await getAQI(currentCity?.lat || 0, currentCity?.lon || 0)) as AQI
+    }
+    return currentAQI
+  }, [lastUpdatedAQI, weatherCacheTime, currentAQI, setLastUpdatedAQI, currentCity?.lat, currentCity?.lon])
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => mutate, [currentCity])
 
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', rowGap: 12 }} className='flex-wrap px-4'>
@@ -125,7 +161,7 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
         visibilityStatus={visibilityStatus}
       />
       <Wind theme={theme} w={w} />
-      <AQI aqi={140} theme={theme} aqiStatus={aqiStatus} />
+      <AirQualityIndex aqi={currentAQI?.list?.[0]?.main?.aqi} theme={theme} aqiStatus={aqiStatus} />
       <Cloudiness theme={theme} clouds={w?.current.clouds || 0} />
       <Precipitation theme={theme} rain={w?.daily[0]?.rain} snow={w?.daily[0]?.snow} status={rainStatus} />
       <SunRiseSet w={w} theme={theme} now={w?.current?.dt} sunrise={w?.current?.sunrise} sunset={w?.current?.sunset} />

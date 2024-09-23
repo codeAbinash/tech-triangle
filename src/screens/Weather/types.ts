@@ -123,3 +123,19 @@ export interface Temp {
   eve: number
   morn: number
 }
+
+export interface AQI {
+  coord: Coord
+  list: List[]
+}
+
+export interface Coord {
+  lon: number
+  lat: number
+}
+
+export interface List {
+  main: { aqi: number }
+  components: { [key: string]: number }
+  dt: number
+}
