@@ -76,8 +76,9 @@ export default function WeatherScreen({ navigation }: NavProp) {
   }, [lastUpdated, weatherCacheTime, currentWeather])
 
   useEffect(() => {
-    currentCity && fetchResult()
-  }, [currentCity, fetchResult])
+    currentCity && !isPending && fetchResult()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCity])
 
   const bottom = useSafeAreaInsets().bottom
   const top = useSafeAreaInsets().top
@@ -121,12 +122,13 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
     }),
   )
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ['currentWeatherAQI'],
-    mutationFn: () => fetchResult(),
+    mutationFn: () => getAQI(currentCity?.lat || 0, currentCity?.lon || 0),
     onError: (err) => console.log(err),
     onSuccess: (d: AQI) => {
       setCurrentAQI(d)
+      setLastUpdatedAQI(new Date().getTime())
     },
   })
   const aqiStatus = useMemo(() => getAQIStatus(currentAQI?.list?.[0]?.main?.aqi || 0), [currentAQI])
@@ -138,14 +140,17 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
   const fetchResult = useCallback(async (): Promise<AQI> => {
     const now = new Date().getTime()
     if (now - lastUpdatedAQI > weatherCacheTime) {
-      setLastUpdatedAQI(now)
-      return (await getAQI(currentCity?.lat || 0, currentCity?.lon || 0)) as AQI
+      console.log('Fetching AQI from API')
+      mutate()
     }
     return currentAQI
-  }, [lastUpdatedAQI, weatherCacheTime, currentAQI, setLastUpdatedAQI, currentCity?.lat, currentCity?.lon])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastUpdatedAQI, weatherCacheTime, currentAQI])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => mutate, [currentCity])
+  useEffect(() => {
+    currentCity && !isPending && fetchResult()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCity])
 
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', rowGap: 12 }} className='flex-wrap px-4'>

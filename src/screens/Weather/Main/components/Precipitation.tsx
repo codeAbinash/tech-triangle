@@ -19,8 +19,8 @@ export default function Precipitation({ theme, rain, snow, status }: Precipitati
       <WeatherLabel Icon={CloudAngledRainSolidIcon} color={theme.color} label='Precipitation' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <View className='flex-row items-end'>
-          <Medium style={[{ fontSize: 33 }, theme.color]}>{rain || '0'}</Medium>
-          <Medium style={[{ fontSize: 20, paddingBottom: 8 }, theme.color]} className='pl-1'>
+          <Medium style={[{ fontSize: 28 }, theme.color]}>{rain || '0'}</Medium>
+          <Medium style={[{ fontSize: 20, paddingBottom: 5 }, theme.color]} className='pl-1'>
             mm{' '}
           </Medium>
         </View>

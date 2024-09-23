@@ -195,7 +195,7 @@ export function getHoursMinutes(unix: number, unit: TimeFormat) {
 
   // if (hours < 10) hours = '0' + hours
   if (minutes < 10) minutes = '0' + minutes
-  return `${hours}:${minutes} ${getAp(unix, unit)}`
+  return `${hours}:${minutes}`
 }
 
 function getTime24(unix: number) {

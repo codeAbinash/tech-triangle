@@ -1,16 +1,10 @@
-import { weatherStore } from '@/zustand/weatherStore'
 import { NaturalFoodSolidIcon } from '@assets/icons/icons'
 import Gradient from '@components/Gradient'
-import { hw } from '@screens/Home/style'
-import { getAQI, getWeather } from '@screens/Weather/api'
-import type { Weather } from '@screens/Weather/types'
-import { boxSize, Icons } from '@screens/Weather/utils'
-import { useMutation } from '@tanstack/react-query'
+import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { View } from 'react-native'
-import { useDerivedValue, useSharedValue } from 'react-native-reanimated'
 import WeatherLabel from './WeatherLabel'
 
 const gradientColors = [

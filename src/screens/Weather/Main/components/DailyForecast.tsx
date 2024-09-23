@@ -41,7 +41,7 @@ export default function DailyForecast({ color, w, theme }: WeatherForecastProps)
 
   return (
     <>
-      <Animated.View className='px-4' entering={FadeIn.duration(700).delay(100)}>
+      <Animated.View className='px-4' entering={FadeIn.duration(400)}>
         <View className='rounded-3xl bg-black/10 pb-2'>
           <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
           <Underline />

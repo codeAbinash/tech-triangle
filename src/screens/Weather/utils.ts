@@ -45,7 +45,7 @@ export const boxSize = {
 
 export const boxFullSize = {
   width: W - 33,
-  height: W / 2 - 22,
+  // height: W / 2 - 22,
 }
 
 export const minPressure = 970

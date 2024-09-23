@@ -4,7 +4,7 @@ import { getMoonImageLink } from '@screens/Weather/api'
 import { boxFullSize, mapMoonPhaseToImage } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
-import { getHoursMinutes } from '@utils/utils'
+import { getAp, getHoursMinutes } from '@utils/utils'
 import React from 'react'
 import { Image, View } from 'react-native'
 import WeatherLabel from './WeatherLabel'
@@ -28,15 +28,19 @@ export default function MoonPhase({ moonrise, moonset, phase, theme }: MoonRiseS
             <Medium style={[{ fontSize: 35 }, theme.color]}>{phase || '__'}</Medium>
             <Regular style={[theme.color, F.F12]}>{moonPhaseString(phase || 1)}</Regular>
             {/* <View> */}
-            <Regular style={[theme.color, F.F12]}>Moonrise at {getHoursMinutes(moonrise || 0, timeFormat)}, </Regular>
-            <Regular style={[theme.color, F.F12]}>Moonset at {getHoursMinutes(moonset || 0, timeFormat)}</Regular>
+            <Regular style={[theme.color, F.F12]}>
+              Moonrise at {getHoursMinutes(moonrise || 0, timeFormat)} {getAp(moonrise || 0, timeFormat)},{' '}
+            </Regular>
+            <Regular style={[theme.color, F.F12]}>
+              Moonset at {getHoursMinutes(moonset || 0, timeFormat)} {getAp(moonset || 0, timeFormat)}
+            </Regular>
             {/* </View> */}
           </View>
           <Image
             source={{ uri: getMoonImageLink(mapMoonPhaseToImage(phase || 1)) }}
             style={{
-              height: 31 * 4,
-              width: 31 * 4,
+              height: 30 * 4,
+              width: 30 * 4,
               marginTop: -7,
             }}
           />
