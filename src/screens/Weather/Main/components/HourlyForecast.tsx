@@ -3,10 +3,10 @@ import { Clock01SolidIcon } from '@assets/icons/icons'
 import type { Current, Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
-import { getAp, getHour, screenDelay, tempConverter } from '@utils/utils'
-import React, { useEffect, useState } from 'react'
+import { getAp, getHour, tempConverter } from '@utils/utils'
+import React from 'react'
 import { View } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { FlatList } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import type { SvgProps } from 'react-native-svg'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
@@ -37,36 +37,35 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
       <View className='rounded-3xl bg-black/10'>
         <WeatherLabel Icon={Clock01SolidIcon} color={color} label='Hourly Forecast' />
         <Underline />
-        <ScrollView
-          horizontal={true}
+        <FlatList
           showsHorizontalScrollIndicator={false}
+          horizontal={true}
           contentContainerStyle={{ flexDirection: 'row', paddingBottom: 10, paddingHorizontal: 10 }}
-        >
-          <>
+          renderItem={({ item }) => (
+            <SmallWeather
+              key={item.dt}
+              Icon={Icons[item.weather[0]!.icon]}
+              time={getHour(item.dt + 3600, timeFormat)}
+              color={color}
+              ap={getAp(item.dt, timeFormat)}
+              temp={item ? tempConverter({ temp: item.temp, unit: currentUnit, degree: true }) : '__'}
+              probability={Math.round((item.pop || 0) * 100)}
+            />
+          )}
+          ListHeaderComponent={
             <View style={{ opacity: data ? 1 : 0 }}>
               <SmallWeather
                 color={color}
                 time='Now'
                 Icon={Icon}
                 ap=''
-                // temp={w ? tempConverter(w.current.temp, currentUnit, true) : '__'}
                 temp={w ? tempConverter({ temp: w.current.temp, unit: currentUnit, degree: true }) : '__'}
                 probability={Math.round((w?.current.pop || 0) * 100)}
               />
             </View>
-            {data?.map((h, i) => (
-              <SmallWeather
-                Icon={Icons[h.weather[0]!.icon]}
-                key={i}
-                time={getHour(h.dt + 3600, timeFormat)}
-                color={color}
-                ap={getAp(h.dt, timeFormat)}
-                temp={h ? tempConverter({ temp: h.temp, unit: currentUnit, degree: true }) : '__'}
-                probability={Math.round((h.pop || 0) * 100)}
-              />
-            ))}
-          </>
-        </ScrollView>
+          }
+          data={data}
+        />
       </View>
     </Animated.View>
   )
