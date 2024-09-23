@@ -1,12 +1,13 @@
 import { weatherStore, type TemperatureUnit } from '@/zustand/weatherStore'
 import { Calendar03SolidIcon } from '@assets/icons/icons'
+import Btn from '@components/Button'
 import Gradient from '@components/Gradient'
 import type { Daily } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { getDay, tempConverter } from '@utils/utils'
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { View } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import WeatherLabel, { Underline } from './WeatherLabel'
@@ -25,7 +26,12 @@ export default function DailyForecast({ color, daily, theme }: WeatherForecastPr
   const currentTemp = weatherStore((state) => state.currentWeather?.current.temp)
   const weeklyMinMax = useMemo(() => calculateWeeklyMinMax(daily), [daily])
   const dotPosition = useMemo(() => calculateDotPosition(currentTemp, daily && daily[0]), [currentTemp, daily])
-  const data = daily
+  const [is7Day, setIs7Day] = React.useState(false)
+
+  const data = useMemo(() => {
+    if (is7Day) return daily
+    else return daily?.slice(0, 3)
+  }, [daily, is7Day])
 
   // useEffect(() => {
   //   const timer = screenDelay(() => setData(daily))
@@ -33,32 +39,41 @@ export default function DailyForecast({ color, daily, theme }: WeatherForecastPr
   // }, [daily])
 
   return (
-    <Animated.View className='px-4' entering={FadeIn.duration(700).delay(100)}>
-      <View className='rounded-3xl bg-black/10 pb-2'>
-        <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
-        <Underline />
-        {!data && <View style={{ height: 56 * 5.855 }}></View>}
-        <View>
-          {data?.map((d, i) => {
-            return (
-              <DailyWeather
-                day={i === 0 ? 'Today' : getDay(d.dt || new Date().getTime())}
-                dotPosition={i === 0 ? dotPosition : null}
-                key={i}
-                d={d}
-                currentUnit={currentUnit}
-                min={weeklyMinMax.min}
-                max={weeklyMinMax.max}
-                theme={theme}
-              />
-            )
-          })}
+    <>
+      <Animated.View className='px-4' entering={FadeIn.duration(700).delay(100)}>
+        <View className='rounded-3xl bg-black/10 pb-2'>
+          <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
+          <Underline />
+          {!data && <View style={{ height: 56 * 5.855 }}></View>}
+          <View>
+            {data?.map((d, i) => {
+              return (
+                <DailyWeather
+                  day={i === 0 ? 'Today' : getDay(d.dt || new Date().getTime())}
+                  dotPosition={i === 0 ? dotPosition : null}
+                  key={i}
+                  d={d}
+                  currentUnit={currentUnit}
+                  min={weeklyMinMax.min}
+                  max={weeklyMinMax.max}
+                  theme={theme}
+                />
+              )
+            })}
+          </View>
+          <Regular className='mb-1 mt-3 px-5 text-center opacity-60' style={[color, F.F9]}>
+            Percentage represents the probability of precipitation.
+          </Regular>
+          <View className='mb-2 mt-2 px-4'>
+            <Btn
+              title={is7Day ? '3-Day Forecast' : '7-Day Forecast'}
+              onPress={() => setIs7Day(!is7Day)}
+              className='bg-white/10'
+            />
+          </View>
         </View>
-        <Regular className='mb-1 mt-3 px-5 text-center opacity-60' style={[color, F.F9]}>
-          Percentage represents the probability of precipitation.
-        </Regular>
-      </View>
-    </Animated.View>
+      </Animated.View>
+    </>
   )
 }
 
