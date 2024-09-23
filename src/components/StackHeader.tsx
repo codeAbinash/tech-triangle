@@ -26,11 +26,11 @@ export default function StackHeader({
   navigation,
 }: CardHeaderProps) {
   return (
-    <View className='w-full flex-row items-center justify-between pb-1.5' style={{ gap: 5 }}>
+    <View className='w-full flex-row items-center justify-between pb-1' style={{ gap: 5 }}>
       <View className='items-start' style={{ flex: 1 }}>
         <TouchableOpacity onPress={LeftOnPress || (() => navigation.goBack())} activeOpacity={0.7}>
           {Left || (
-            <Medium className='px-0.5 py-1.5 pb-1 text-accent' style={{ fontSize: 13 }} numberOfLines={1}>
+            <Medium className='px-0.5 py-1 pb-1 text-accent' style={{ fontSize: 13 }} numberOfLines={1}>
               {left}
             </Medium>
           )}
@@ -44,7 +44,7 @@ export default function StackHeader({
       <View className='flex-1 items-end'>
         <TouchableOpacity onPress={RightOnPress || (() => navigation.goBack())} activeOpacity={0.7}>
           {Right || (
-            <Medium className='px-0.5 py-1 pb-1.5 text-accent' style={{ fontSize: 13 }}>
+            <Medium className='px-0.5 py-1 pb-1 text-accent' style={{ fontSize: 13 }}>
               {right}
             </Medium>
           )}

@@ -110,14 +110,11 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
             {w ? w.current.weather[0]!.description : '__'}
             {/* {w.current.weather[0].icon} */}
           </Medium>
-          {/* <Medium style={[color]}>
-            H:{w ? tempConverter(w.daily[0].temp.max, currentUnit) : '__'}° L: {w ? tempConverter(w.daily[0].temp.min, currentUnit) : '__'}°
-          </Medium> */}
           <Medium style={[color, F.F11]}>
-            {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit }) : '__'}
-            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit} /{' '}
-            {w ? tempConverter({ temp: w.daily[0]!.temp.max, unit: currentUnit }) : '__'}
-            {currentUnit === 'K' ? currentUnit : '° ' + currentUnit}
+            Feels Like {w ? tempConverter({ temp: w.current.feels_like, unit: currentUnit }) : '__'}{' '}
+            {currentUnit === 'K' ? 'K' : '°' + currentUnit}
+            {/* {w ? tempConverter({ temp: w?.daily?.[0]?.temp?.min, unit: currentUnit, degree: true }) : '__'} /{' '} */}
+            {/* {w ? tempConverter({ temp: w?.daily?.[0]?.temp?.max, unit: currentUnit, degree: true }) : '__'} */}
           </Medium>
         </View>
       </TouchableOpacity>

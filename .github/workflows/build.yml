@@ -36,5 +36,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: computer-science.apk
+          name: tech-triangle
           path: android/app/build/outputs/apk/release/Tech_Triangle-arm64-v8a.apk

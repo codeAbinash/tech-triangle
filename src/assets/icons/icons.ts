@@ -124,3 +124,4 @@ export { default as ListSettingIcon } from '@icons/list-setting-stroke-rounded.s
 export { default as HumiditySolidIcon } from '@icons/humidity-solid-rounded.svg'
 
 export { default as EyeSolidIcon } from '@icons/eye-solid-rounded.svg'
+export { default as NaturalFoodSolidIcon } from '@icons/natural-food-solid-rounded.svg'

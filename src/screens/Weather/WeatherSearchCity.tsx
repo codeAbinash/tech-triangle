@@ -179,12 +179,12 @@ function CityCard({
       </View>
 
       <View>
-        <Regular className='text-right text-accent' style={F.F9_5}>
+        <Medium className='text-right text-accent' style={F.F9_5}>
           {lat}, {lon}
-        </Regular>
-        <Regular className='text-right text-accent' style={F.F9_5}>
+        </Medium>
+        <Medium className='text-right text-accent' style={F.F9_5}>
           Altitude: {item.GeoPosition.Elevation.Metric.Value} {item.GeoPosition.Elevation.Metric.Unit}
-        </Regular>
+        </Medium>
       </View>
     </TouchableOpacity>
   )

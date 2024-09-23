@@ -43,6 +43,11 @@ export const boxSize = {
   height: W / 2 - 22,
 }
 
+export const boxFullSize = {
+  width: W - 33,
+  height: W / 2 - 22,
+}
+
 export const minPressure = 970
 export const maxPressure = 1030
 
@@ -52,10 +57,27 @@ export function calculatePressurePercentage(w: Weather) {
   percent = percent < 0 ? 0 : percent
   return percent
 }
+
 export function getVisibilityStatusString(distance: number): string {
   if (distance >= 10000) return "It's perfectly clear. Visibility is excellent."
   if (distance >= 5000) return 'Visibility is good, clear conditions ahead.'
   if (distance >= 1000) return 'Visibility is moderate, some haze may be present.'
   if (distance >= 500) return 'Visibility is poor, expect mist or fog.'
   return 'Visibility is very poor, dense fog or heavy mist is likely.'
+}
+
+export function getAQIStatus(aqi: number) {
+  if (aqi < 50) return 'Good'
+  if (aqi < 100) return 'Moderate'
+  if (aqi < 150) return 'Unhealthy for Sensitive Groups'
+  if (aqi < 200) return 'Unhealthy'
+  if (aqi < 300) return 'Very Unhealthy'
+  return 'Hazardous'
+}
+export function getRainStatus(rain: number | undefined) {
+  if (!rain) return ''
+  if (rain === 0) return 'No rain expected.'
+  else if (rain < 2) return 'Light rain expected.'
+  else if (rain < 5) return 'Moderate rain expected.'
+  else return 'Heavy rain expected.'
 }

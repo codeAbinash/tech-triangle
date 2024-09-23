@@ -12,16 +12,21 @@ import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanim
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getWeather } from '../api'
 import type { Weather } from '../types'
-import { calculatePressurePercentage, getVisibilityStatusString } from '../utils'
+import { calculatePressurePercentage, getAQIStatus, getRainStatus, getVisibilityStatusString } from '../utils'
+import AQI from './components/AQI'
+import Cloudiness from './components/Cloudiness'
 import DailyForecast from './components/DailyForecast'
 import FeelsLike, { getFeelsLikeStatusString } from './components/FeelsLike'
 import Header from './components/Header'
 import HourlyForecast from './components/HourlyForecast'
 import Humidity from './components/Humidity'
+import Precipitation from './components/Precipitation'
 import Pressure from './components/Pressure'
+import SunRiseSet from './components/SunRiseSet'
+import UVIndex from './components/UVIndex'
 import Visibility from './components/Visibility'
 import WeatherTopInfo from './components/WeatherTopInfo'
-import UVIndex from './components/UVIndex'
+import Wind from './components/Wind'
 
 export default function WeatherScreen({ navigation }: NavProp) {
   const { currentCity, lastUpdated, currentWeather, setCurrentWeather, setLastUpdated, weatherCacheTime } =
@@ -102,20 +107,28 @@ export default function WeatherScreen({ navigation }: NavProp) {
 }
 
 function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
-  let pressurePercent = useMemo(() => calculatePressurePercentage(w), [w])
-  let feelsLikeStatus = useMemo(() => getFeelsLikeStatusString(w?.current.feels_like || 0, w?.current.temp || 0), [w])
-  let visibilityStatus = useMemo(() => getVisibilityStatusString(w?.current.visibility || 10000), [w])
+  const pressurePercent = useMemo(() => calculatePressurePercentage(w), [w])
+  const feelsLikeStatus = useMemo(() => getFeelsLikeStatusString(w?.current.feels_like || 0, w?.current.temp || 0), [w])
+  const visibilityStatus = useMemo(() => getVisibilityStatusString(w?.current.visibility || 10000), [w])
+  const aqiStatus = useMemo(() => getAQIStatus(140), [])
+  const rainStatus = useMemo(() => getRainStatus(w?.daily[0]?.rain), [w])
+
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', rowGap: 12 }} className='flex-wrap px-4'>
       <FeelsLike theme={theme} feelsLike={w?.current.feels_like || 0} feelsLikeStatus={feelsLikeStatus} />
       <Humidity theme={theme} humidity={w?.current.humidity || 0} dew_point={w?.current.dew_point || 0} />
       <Pressure percent={pressurePercent} pressure={w?.current.pressure || 0} theme={theme} />
+      <UVIndex uvIndex={w?.current.uvi || 0} theme={theme} />
       <Visibility
         theme={theme}
         visibility={(w?.current.visibility || 0) / 1000 + ' km'}
         visibilityStatus={visibilityStatus}
       />
-      <UVIndex uvIndex={w?.current.uvi || 0} theme={theme} />
+      <Wind theme={theme} w={w} />
+      <AQI aqi={140} theme={theme} aqiStatus={aqiStatus} />
+      <Cloudiness theme={theme} clouds={w?.current.clouds || 0} />
+      <Precipitation theme={theme} rain={w?.daily[0]?.rain} snow={w?.daily[0]?.snow} status={rainStatus} />
+      <SunRiseSet w={w} theme={theme} now={w?.current?.dt} sunrise={w?.current?.sunrise} sunset={w?.current?.sunset} />
     </View>
   )
 }

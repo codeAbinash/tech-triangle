@@ -24,12 +24,13 @@ export default function HourlyForecast({ color, w, hourly }: HourlyWeather) {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   const timeFormat = weatherStore((state) => state.weatherTimeFormat)
   const Icon = Icons[w?.current.weather[0]!.icon || '02d']
-  const [data, setData] = useState<Current[] | undefined>()
+  // const [data, setData] = useState<Current[] | undefined>()
+  const data = hourly
 
-  useEffect(() => {
-    const timer = screenDelay(() => setData(hourly))
-    return () => clearTimeout(timer)
-  }, [hourly])
+  // useEffect(() => {
+  //   const timer = screenDelay(() => setData(hourly))
+  //   return () => clearTimeout(timer)
+  // }, [hourly])
 
   return (
     <Animated.View className='mt-10 px-4' entering={FadeIn.duration(700).delay(100)}>

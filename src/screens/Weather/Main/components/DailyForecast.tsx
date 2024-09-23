@@ -5,8 +5,8 @@ import type { Daily } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
-import { getDay, screenDelay, tempConverter } from '@utils/utils'
-import React, { useEffect, useMemo, useState } from 'react'
+import { getDay, tempConverter } from '@utils/utils'
+import React, { useEffect, useMemo } from 'react'
 import { View } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import WeatherLabel, { Underline } from './WeatherLabel'
@@ -21,14 +21,16 @@ type WeatherForecastProps = {
 
 export default function DailyForecast({ color, daily, theme }: WeatherForecastProps) {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
-  const [data, setData] = useState<Daily[] | undefined>()
+  // const [data, setData] = useState<Daily[] | undefined>()
   const currentTemp = weatherStore((state) => state.currentWeather?.current.temp)
   const weeklyMinMax = useMemo(() => calculateWeeklyMinMax(daily), [daily])
   const dotPosition = useMemo(() => calculateDotPosition(currentTemp, daily && daily[0]), [currentTemp, daily])
-  useEffect(() => {
-    const timer = screenDelay(() => setData(daily))
-    return () => clearTimeout(timer)
-  }, [daily])
+  const data = daily
+
+  // useEffect(() => {
+  //   const timer = screenDelay(() => setData(daily))
+  //   return () => clearTimeout(timer)
+  // }, [daily])
 
   return (
     <Animated.View className='px-4' entering={FadeIn.duration(700).delay(100)}>
@@ -40,7 +42,7 @@ export default function DailyForecast({ color, daily, theme }: WeatherForecastPr
           {data?.map((d, i) => {
             return (
               <DailyWeather
-                day={i === 0 ? 'Today' : getDay(d.dt)}
+                day={i === 0 ? 'Today' : getDay(d.dt || new Date().getTime())}
                 dotPosition={i === 0 ? dotPosition : null}
                 key={i}
                 d={d}
@@ -63,13 +65,14 @@ export default function DailyForecast({ color, daily, theme }: WeatherForecastPr
 function calculateDotPosition(currentTemp: number | undefined, daily: Daily | undefined) {
   const { min, max } = daily?.temp || { min: 0, max: 0 }
   if (!currentTemp || !min || !max) return null
-  return ((currentTemp - min) / (max - min)) * 100
+  const v = ((currentTemp - min) / (max - min)) * 100
+  return v >= 90 ? 90 : v
 }
 
 function calculateWeeklyMinMax(daily: Daily[] | undefined): { min: number; max: number } {
   if (!daily) return { min: 0, max: 0 }
-  const max = Math.max(...daily.map((d) => d.temp.max))
-  const min = Math.min(...daily.map((d) => d.temp.min))
+  const max = Math.max(...daily.map((d) => d?.temp?.max || 0))
+  const min = Math.min(...daily.map((d) => d?.temp?.min || 0))
   return { min, max }
 }
 
@@ -83,12 +86,16 @@ type DailyWeatherProps = {
   theme: Theme
 }
 function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: DailyWeatherProps) {
-  const Icon = Icons[d.weather[0]!.icon]
+  const Icon = d.weather && d.weather[0] ? Icons[d.weather[0].icon] : Icons['01d']
   const probability = Math.round((d.pop || 0) * 100)
   const range = max - min
-  const width = range !== 0 ? ((d.temp.max - d.temp.min) / range) * 100 : 0
-  const left = range !== 0 ? ((d.temp.min - min) / range) * 100 : 0
+  const left = useMemo(() => (range !== 0 ? (((d?.temp?.min || 0) - min) / range) * 100 : 0), [d, min, range])
+  const width = useMemo(
+    () => (range !== 0 ? (((d?.temp?.max || 0) - (d?.temp?.min || 0)) / range) * 100 : 0),
+    [d, range],
+  )
   const color = theme.color
+
   return (
     <>
       <Animated.View
@@ -111,7 +118,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
         <View className='flex-1'>
           <View className='flex-row items-center justify-between px-1'>
             <Medium className='text-xs' style={color}>
-              {tempConverter({ temp: d.temp.min, unit: currentUnit, degree: true })}
+              {tempConverter({ temp: d?.temp?.min, unit: currentUnit, degree: true })}
             </Medium>
             <View className='flex-1 justify-center px-3'>
               <View className='flex-row rounded-full bg-white/10' style={{ width: '100%', height: 6 }}>
@@ -126,7 +133,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
               </View>
             </View>
             <Medium style={[color]} className='text-xs'>
-              {tempConverter({ temp: d.temp.max, unit: currentUnit, degree: true })}
+              {tempConverter({ temp: d?.temp?.max, unit: currentUnit, degree: true })}
             </Medium>
           </View>
         </View>

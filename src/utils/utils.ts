@@ -183,6 +183,21 @@ export function getHour(unix: number, unit: TimeFormat) {
   return getTime12(unix)
 }
 
+export function getHoursMinutes(unix: number, unit: TimeFormat) {
+  const date = new Date(unix * 1000)
+  let hours: string | number = date.getHours()
+  let minutes: string | number = date.getMinutes()
+
+  if (unit === '12h') {
+    if (hours > 12) hours = hours - 12
+    if (hours === 0) hours = 12
+  }
+
+  // if (hours < 10) hours = '0' + hours
+  if (minutes < 10) minutes = '0' + minutes
+  return `${hours}:${minutes} ${getAp(unix, unit)}`
+}
+
 function getTime24(unix: number) {
   const date = new Date(unix * 1000)
   let hours: string | number = date.getHours()
