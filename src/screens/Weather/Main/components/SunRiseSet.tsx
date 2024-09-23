@@ -27,7 +27,7 @@ export default function SunRiseSet({ theme, now, sunrise, sunset }: SunRiseSetPr
         label={isDay === null ? 'Daylight' : isDay ? 'Sunset' : 'Sunrise'}
       />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
-        <Medium style={[{ fontSize: 28 }, theme.color]}>
+        <Medium style={[{ fontSize: 30 }, theme.color]}>
           {isDay === null
             ? '__:__'
             : isDay

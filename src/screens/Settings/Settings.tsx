@@ -11,6 +11,7 @@ import {
   FolderFileStorageSolidIcon,
   InformationCircleSolidIcon,
   PolicySolidIcon,
+  Setting07SolidIcon,
   ShieldUserSolidIcon,
   SquareLock02SolidIcon,
   SunCloudAngledRainZap01SolidIcon,
@@ -27,7 +28,7 @@ import { TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/data'
-import { Bold } from '@utils/fonts'
+import { Bold, SemiBold } from '@utils/fonts'
 import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
@@ -89,6 +90,22 @@ export default function Settings({ navigation }: NavProp) {
               Go to each section to customize your experience. All settings are saved automatically.
             </SettText>
             <SettGroup title='General'>
+              <SettOption
+                title='App Update'
+                Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
+                arrow
+                Right={
+                  <View
+                    className='items-center justify-center rounded-full bg-red-500'
+                    style={{ height: 22, width: 22 }}
+                  >
+                    <SemiBold className='text-xs text-white' style={{ paddingTop: 2 }}>
+                      1
+                    </SemiBold>
+                  </View>
+                }
+                onPress={() => navigation.navigate('Update')}
+              />
               <SettOption
                 title='Your Profile'
                 Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}

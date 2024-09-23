@@ -27,6 +27,7 @@ import Test from '@screens/Test'
 import RandomColor from '@screens/Try/RandomColor'
 import RandomPassword from '@screens/Try/RandomPassword'
 import YourAge from '@screens/Try/YourAge'
+import Update from '@screens/Update/Update'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
 import WeatherScreen from '@screens/Weather/Main/Weather'
@@ -139,6 +140,7 @@ export type RootStackParamList = {
   AppLock: undefined
   RandomPassword: undefined
   GlobalSearch: undefined
+  Update: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -212,6 +214,7 @@ function Navigation() {
         <Stack.Screen name='AppLock' component={AppLock} options={GestureEnabled} />
         <Stack.Screen name='RandomPassword' component={RandomPassword} options={GestureEnabled} />
         <Stack.Screen name='GlobalSearch' component={GlobalSearch} options={IOS_BOTTOM_STYLE} />
+        <Stack.Screen name='Update' component={Update} options={IOS_BOTTOM_STYLE} />
       </Stack.Navigator>
     </>
   )
