@@ -1,11 +1,11 @@
-import { AndroidSolidIcon, CodeSolidIcon, GithubSolidIcon } from '@assets/icons/icons'
+import { AndroidSolidIcon, GithubSolidIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { RouteProp } from '@react-navigation/native'
-import { GITHUB_LATEST_RELEASE, GITHUB_REPO, LATEST_APK_FILE } from '@utils/constants'
+import { GITHUB_LATEST_RELEASE, GITHUB_REPO } from '@utils/constants'
 import type { StackNav } from '@utils/types'
 import React, { useEffect } from 'react'
 import { BackHandler, Linking, ToastAndroid, View } from 'react-native'
@@ -69,26 +69,20 @@ export default function ForceUpdate({
           <UpdateAvailableUI version={version} size={size} whatsNew={whatsNew} />
         </View>
         <View className='mt-2 px-10'>
-          <Btn title='Download Update' onPress={() => Linking.openURL(LATEST_APK_FILE)} />
+          <Btn title='Download Update' onPress={() => Linking.openURL(GITHUB_LATEST_RELEASE)} />
         </View>
         <SettGroup title='Download Options' className='mt-3'>
           <SettOption
             title='Download From Github'
-            Icon={<RoundedIcon Icon={GithubSolidIcon} className='bg-black' />}
+            Icon={<RoundedIcon Icon={AndroidSolidIcon} className='bg-green-500' />}
             arrow
             onPress={() => Linking.openURL(GITHUB_LATEST_RELEASE)}
           />
           <SettOption
             title='Source on Github'
-            Icon={<RoundedIcon Icon={CodeSolidIcon} className='bg-accent' />}
+            Icon={<RoundedIcon Icon={GithubSolidIcon} className='bg-black' />}
             onPress={() => Linking.openURL(GITHUB_REPO)}
             arrow
-          />
-          <SettOption
-            title='Download APK'
-            Icon={<RoundedIcon Icon={AndroidSolidIcon} className='bg-green-500' />}
-            arrow
-            onPress={() => Linking.openURL(LATEST_APK_FILE)}
           />
         </SettGroup>
         <SettText>

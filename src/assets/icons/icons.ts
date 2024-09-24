@@ -73,7 +73,7 @@ export { default as TelegramSolidIcon } from '@icons/telegram-solid-rounded.svg'
 export { default as InformationCircleSolidIcon } from '@icons/information-circle-solid-rounded.svg'
 export { default as PolicySolidIcon } from '@icons/policy-solid-rounded.svg'
 export { default as BrushSolidIcon } from '@icons/brush-solid-rounded.svg'
-export { default as CodeIcon } from '@icons/code-stroke-rounded.svg'
+
 export { default as SunCloudAngledRainZap01Icon } from '@icons/sun-cloud-angled-rain-zap-01-stroke-rounded.svg'
 export { default as Wallet02Icon } from '@icons/wallet-02-stroke-rounded.svg'
 export { default as DashboardSquare02SolidIcon } from '@icons/dashboard-square-02-solid-rounded.svg'
@@ -125,6 +125,8 @@ export { default as HumiditySolidIcon } from '@icons/humidity-solid-rounded.svg'
 
 export { default as EyeSolidIcon } from '@icons/eye-solid-rounded.svg'
 export { default as NaturalFoodSolidIcon } from '@icons/natural-food-solid-rounded.svg'
-export { default as AndroidSolidIcon } from '@icons/android-solid-rounded.svg'
+
 
 export { default as GithubSolidIcon } from '@icons/github-solid-rounded.svg'
+
+export { default as AndroidSolidIcon } from '@icons/android-solid-rounded.svg'
