@@ -125,3 +125,6 @@ export { default as HumiditySolidIcon } from '@icons/humidity-solid-rounded.svg'
 
 export { default as EyeSolidIcon } from '@icons/eye-solid-rounded.svg'
 export { default as NaturalFoodSolidIcon } from '@icons/natural-food-solid-rounded.svg'
+export { default as AndroidSolidIcon } from '@icons/android-solid-rounded.svg'
+
+export { default as GithubSolidIcon } from '@icons/github-solid-rounded.svg'

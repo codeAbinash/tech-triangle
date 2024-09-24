@@ -21,6 +21,7 @@ import {
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
+import RoundNotification from '@components/RoundNotification'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { SettGroup, SettOption, SettText } from '@components/Settings'
@@ -90,22 +91,34 @@ export default function Settings({ navigation }: NavProp) {
               Go to each section to customize your experience. All settings are saved automatically.
             </SettText>
             <SettGroup title='General'>
+              {/* <SettOption
+                title='App Update'
+                Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
+                arrow
+                Right={<RoundNotification n={4} />}
+                onPress={() =>
+                  navigation.navigate('Update', {
+                    version: '2.7.3',
+                    size: '10MB',
+                    whatsNew: ['New features', 'Bug fixes', 'Performance improvements'],
+                  })
+                }
+              /> */}
               <SettOption
                 title='App Update'
                 Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
                 arrow
-                Right={
-                  <View
-                    className='items-center justify-center rounded-full bg-red-500'
-                    style={{ height: 22, width: 22 }}
-                  >
-                    <SemiBold className='text-xs text-white' style={{ paddingTop: 2 }}>
-                      1
-                    </SemiBold>
-                  </View>
+                Right={<RoundNotification n={1} />}
+                onPress={() =>
+                  navigation.navigate('ForceUpdate', {
+                    shouldGoBack: true,
+                    version: '2.7.3',
+                    size: '10MB',
+                    whatsNew: ['New features', 'Bug fixes', 'Performance improvements'],
+                  })
                 }
-                onPress={() => navigation.navigate('Update')}
               />
+
               <SettOption
                 title='Your Profile'
                 Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
