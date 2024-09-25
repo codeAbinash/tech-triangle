@@ -1,27 +1,27 @@
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
+import Search from '@components/Search'
 import TopArea from '@components/TopArea'
 import { useNavigation } from '@react-navigation/native'
 import WeatherWidget from '@screens/Weather/Widget/WeatherWidget'
-import { Medium, PoppinsMedium, PoppinsSemiBold } from '@utils/fonts'
+import { Medium, PoppinsSemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
-import React, { useEffect, useMemo } from 'react'
-import { Alert, Dimensions, Text, TouchableOpacity, View } from 'react-native'
+import React, { useMemo } from 'react'
+import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styles, { hw as height_weight } from './style'
-import Search from '@components/Search'
 
 const { width } = Dimensions.get('window')
 
 export default function HomeScreen({ navigation }: { navigation: StackNav }) {
-  useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('Update', {
-        version: '1.0.0',
-        size: '10MB',
-        whatsNew: ['New Features', 'Bug Fixes'],
-      })
-    }, 1000)
-  }, [navigation])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     navigation.navigate('Update', {
+  //       version: '1.0.0',
+  //       size: '10MB',
+  //       whatsNew: ['New Features', 'Bug Fixes'],
+  //     })
+  //   }, 1000)
+  // }, [navigation])
 
   return (
     <>

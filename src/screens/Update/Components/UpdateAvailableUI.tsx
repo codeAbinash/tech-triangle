@@ -1,7 +1,7 @@
+import AppIcon from '@assets/icons/icon.svg'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
 import React from 'react'
 import { View } from 'react-native'
-import AppIcon from '@assets/icons/icon.svg'
 
 export default function UpdateAvailableUI({
   version,

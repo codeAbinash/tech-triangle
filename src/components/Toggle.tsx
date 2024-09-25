@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
 
 interface ToggleProps {
   isActive: boolean
-  color?: string
+  accent?: string
 }
 
-export function Toggle({ isActive, color }: ToggleProps) {
+export function Toggle({ isActive, accent }: ToggleProps) {
   const scheme = useColorScheme()
   const progress = useDerivedValue(() => (isActive ? AVAIL_W : 0), [isActive])
   const duration = devOptStore((state) => state.animationDuration)
@@ -40,12 +40,12 @@ export function Toggle({ isActive, color }: ToggleProps) {
       interpolateColor(
         progress.value,
         [0, AVAIL_W],
-        [scheme === 'dark' ? Colors.zinc[800] : Colors.zinc[200], color || Colors.accent],
+        [scheme === 'dark' ? Colors.zinc[800] : Colors.zinc[200], accent || Colors.accent],
       ),
       { duration },
     )
     return { backgroundColor }
-  }, [color, scheme, progress])
+  }, [accent, scheme, progress])
 
   const customSpringStyle = useAnimatedStyle(() => {
     return { transform: [{ translateX: withTiming(progress.value, { duration }) }] }

@@ -37,7 +37,7 @@ export default function AppLock({ navigation }: NavProp) {
           <SettOption
             title='App Lock'
             Icon={<RoundedIcon Icon={SquareLock02SolidIcon} className='bg-green-500' />}
-            Right={<Toggle isActive={isAppLockEnabled} color={Colors.green['500']} />}
+            Right={<Toggle isActive={isAppLockEnabled} accent={Colors.green['500']} />}
             onPress={handleAppLockPress}
           />
         </SettGroup>

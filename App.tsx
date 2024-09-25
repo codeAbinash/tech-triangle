@@ -1,5 +1,5 @@
 import { devOptStore } from '@/zustand/devOptStore'
-import { CodeIcon } from '@assets/icons/icons'
+import { CodeSolidIcon } from '@assets/icons/icons'
 import { AutoStatusBar } from '@components/StatusBar'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
@@ -217,7 +217,7 @@ function Navigation() {
         <Stack.Screen name='RandomPassword' component={RandomPassword} options={GestureEnabled} />
         <Stack.Screen name='GlobalSearch' component={GlobalSearch} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Update' component={Update} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='ForceUpdate' component={ForceUpdate} />
+        <Stack.Screen name='ForceUpdate' component={ForceUpdate} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )
@@ -240,7 +240,7 @@ const FabButton = () => {
       className='absolute bottom-7 right-5 z-10 h-14 w-14 items-center justify-center rounded-full bg-accent'
       onPress={() => navigation.navigate('DeveloperOptions')}
     >
-      <CodeIcon className='text-white' height={25} width={25} />
+      <CodeSolidIcon className='text-white' height={25} width={25} />
     </TouchableOpacity>
   )
 }

@@ -3,14 +3,18 @@ import {
   JavaScriptSolidIcon,
   JavaSolidIcon,
   KeyboardIcon,
+  MusicNote04SolidIcon,
   Setting07SolidIcon,
   SidebarRightSolidIcon,
   TextFontSolidIcon,
   Typescript01SolidIcon,
+  VolumeHighIcon,
+  VolumeLowIcon
 } from '@assets/icons/icons'
 import Button from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
+import Range from '@components/Range'
 import RoundedIcon from '@components/RoundedIcon'
 import Search from '@components/Search'
 import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
@@ -19,7 +23,7 @@ import { Toggle } from '@components/Toggle'
 import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 
 export default function UiAndComponents({ navigation }: NavProp) {
   const [toggle1, setToggle1] = useState(true)
@@ -64,7 +68,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
               onPress={() => setToggle2(!toggle2)}
               // Icon={<SidebarRightIcon {...ic} />}
               Icon={<RoundedIcon Icon={SidebarRightSolidIcon} className='bg-rose-500' />}
-              Right={<Toggle isActive={toggle2} color={Colors.blue[500]} />}
+              Right={<Toggle isActive={toggle2} accent={Colors.blue[500]} />}
             />
           </SettGroup>
           <SettText>
@@ -73,6 +77,12 @@ export default function UiAndComponents({ navigation }: NavProp) {
             <Text className='text-accent'>{toggle2 ? 'on' : 'off'}</Text>.
           </SettText>
         </Gap12>
+
+        <Gap12>
+          <RangeSliderMemo />
+          <RangeSliderMemo2 />
+        </Gap12>
+
         <Gap12>
           <SettGroup title='Text Inputs'>
             <Input
@@ -172,5 +182,43 @@ export default function UiAndComponents({ navigation }: NavProp) {
         </SettText>
       </Gap12>
     </SettWrapper>
+  )
+}
+
+const RangeSliderMemo = () => {
+  const [value, setValue] = React.useState(0.23)
+  return (
+    <SettGroup title='Range Slider'>
+      <View className='px-2 pb-2'>
+        <Range
+          value={value}
+          setValue={setValue}
+          Left={<VolumeLowIcon className='text-accent' height={24} width={24} />}
+          Right={<VolumeHighIcon className='text-accent' height={24} width={24} />}
+        />
+      </View>
+      <SettText>
+        The value of the range slider is <Text className='text-accent'>{value}</Text>.
+      </SettText>
+    </SettGroup>
+  )
+}
+
+const RangeSliderMemo2 = () => {
+  const [value, setValue] = React.useState(0.57)
+  return (
+    <SettGroup title='Range Slider' accent={Colors.rose[500]}>
+      <View className='px-2.5 pb-2'>
+        <Range
+          value={value}
+          setValue={setValue}
+          accent={Colors.rose[500]}
+          Left={<RoundedIcon Icon={MusicNote04SolidIcon} className='bg-rose-500' />}
+        />
+      </View>
+      <SettText>
+        The value of the range slider is <Text className='text-rose-500'>{value}</Text>.
+      </SettText>
+    </SettGroup>
   )
 }

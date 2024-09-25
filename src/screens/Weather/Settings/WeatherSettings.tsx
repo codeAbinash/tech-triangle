@@ -82,7 +82,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             onPress={() => setWeatherWidgetIsActive(!weatherWidgetIsActive)}
             // Icon={<DashboardSquare02Icon {...ic} />}
             Icon={<RoundedIcon Icon={DashboardSquare02SolidIcon} className='bg-blue-500' />}
-            Right={<Toggle isActive={weatherWidgetIsActive} color={Colors.blue[500]} />}
+            Right={<Toggle isActive={weatherWidgetIsActive} accent={Colors.blue[500]} />}
           />
           <SettOption
             title='Current City'

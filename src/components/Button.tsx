@@ -1,10 +1,10 @@
-import { Medium } from '@utils/fonts'
-import React from 'react'
-import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gesture-handler'
+import { Medium } from '@utils/fonts';
+import React from 'react';
+import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gesture-handler';
 
 type ButtonProps = TouchableOpacityProps & { title?: string; Content?: React.ReactNode }
 
-export default function Btn({ title, onPress, disabled, children, style, ...rest }: ButtonProps) {
+const Btn = React.memo(({ title, onPress, disabled, children, style, ...rest }: ButtonProps) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -19,9 +19,11 @@ export default function Btn({ title, onPress, disabled, children, style, ...rest
       </Medium>
     </TouchableOpacity>
   )
-}
+})
 
-export function BtnTransparent({ title, onPress, children, style }: ButtonProps) {
+export default Btn
+
+export const BtnTransparent = React.memo(({ title, onPress, children, style }: ButtonProps) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -34,4 +36,4 @@ export function BtnTransparent({ title, onPress, children, style }: ButtonProps)
       </Medium>
     </TouchableOpacity>
   )
-}
+})

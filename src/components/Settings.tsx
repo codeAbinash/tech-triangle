@@ -55,15 +55,15 @@ export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOf
 
 type SettGroupProps = ViewProps & {
   title?: string
-  color?: string
+  accent?: string
 }
-export function SettGroup({ children, title, color = Colors.accent, ...rest }: SettGroupProps) {
+export function SettGroup({ children, title, accent = Colors.accent, ...rest }: SettGroupProps) {
   return (
     <View className={'bg-white py-2.5 dark:bg-zinc-950'} {...rest}>
       {title && (
         <Medium
           className={'px-6 py-1.5 text-accent'}
-          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: color }}
+          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: accent }}
         >
           {title}
         </Medium>
