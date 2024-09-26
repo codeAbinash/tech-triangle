@@ -24,7 +24,7 @@ export { default as Saturn01Icon } from '@icons/saturn-01-stroke-rounded.svg'
 export { default as Search01Icon } from '@icons/search-01-stroke-rounded.svg'
 export { default as Setting07Icon } from '@icons/setting-07-stroke-rounded.svg'
 export { default as Settings01Icon } from '@icons/settings-01-stroke-rounded.svg'
-
+export {default as AppIcon } from '@assets/icons/icon.svg'
 export { default as SlowWindsIcon } from '@icons/slow-winds-stroke-rounded.svg'
 
 export { default as TestTube01SolidIcon } from '@icons/test-tube-01-solid-rounded.svg'

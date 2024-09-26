@@ -1,7 +1,8 @@
 import AppIcon from '@assets/icons/icon.svg'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated'
 
 export default function UpdateAvailableUI({
   version,
@@ -12,9 +13,24 @@ export default function UpdateAvailableUI({
   size: string
   whatsNew: Array<string>
 }) {
+  const rotate = useSharedValue(0)
+
+  useEffect(() => {
+    rotate.value = withRepeat(withTiming(360, { duration: 7000, easing: Easing.linear }), -1)
+  }, [rotate])
+
+  const animatedImageStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotate: `${rotate.value}deg` }],
+    }
+  }, [])
   return (
     <View className='flex-1 rounded-3xl bg-appIconBg p-8 pb-12'>
-      <AppIcon width={80} height={80} className='mt-8' />
+      <View className='flex-row'>
+        <Animated.View style={[animatedImageStyle]} className='mt-8'>
+          <AppIcon width={80} height={80} />
+        </Animated.View>
+      </View>
       <SemiBold style={{ fontSize: 24 }} className='mt-5 text-white'>
         Update Available
       </SemiBold>

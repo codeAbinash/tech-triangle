@@ -1,4 +1,5 @@
-import Images from '@assets/images/images'
+import { AppIcon } from '@assets/icons/icons'
+import { Colors } from '@utils/colors'
 import React, { useEffect } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler'
@@ -67,7 +68,9 @@ export default function DragAnimation() {
       <View className='border border-gray-100 dark:border-gray-900' style={{ borderRadius: 23 }}>
         <PanGestureHandler onGestureEvent={GestureHandler}>
           <Animated.View style={[styles.square, animationStyle]} className='bg-gray-100 dark:bg-gray-900'>
-            <Animated.Image source={Images.app_icon} style={[styles.image, animatedImageStyle]} />
+            <Animated.View style={animatedImageStyle}>
+              <AppIcon width={80} height={80} />
+            </Animated.View>
           </Animated.View>
         </PanGestureHandler>
       </View>
@@ -92,10 +95,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: '#555555',
     elevation: 3,
-  },
-  image: {
-    width: 65,
-    height: 65,
-    resizeMode: 'contain',
+    backgroundColor: Colors.appIconBg,
   },
 })

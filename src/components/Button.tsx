@@ -1,6 +1,6 @@
-import { Medium } from '@utils/fonts';
-import React from 'react';
-import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gesture-handler';
+import { Medium } from '@utils/fonts'
+import React from 'react'
+import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gesture-handler'
 
 type ButtonProps = TouchableOpacityProps & { title?: string; Content?: React.ReactNode }
 

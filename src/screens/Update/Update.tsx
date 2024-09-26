@@ -3,10 +3,11 @@ import { PaddingBottom } from '@components/SafePadding'
 import StackHeader from '@components/StackHeader'
 import type { RouteProp } from '@react-navigation/native'
 import type { StackNav } from '@utils/types'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import UpdateAvailableUI from './Components/UpdateAvailableUI'
+import { useAnimatedStyle, useSharedValue, withRepeat, withSpring } from 'react-native-reanimated'
 
 type ParamList = {
   Update: UpdateParamList

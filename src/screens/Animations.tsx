@@ -1,9 +1,11 @@
-import Images from '@assets/images/images'
+import { AppIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
+import { Colors } from '@utils/colors'
+import { Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React, { useEffect } from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, StyleSheet, View } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withSpring } from 'react-native-reanimated'
 
@@ -34,47 +36,53 @@ export default function Home({ navigation }: { navigation: StackNav }) {
           navigation.navigate('Animations')
         }}
       >
-        <Animated.Image source={Images.app_icon} style={[styles.icon, animatedStyle]} />
-        <Text className='mt-4 text-center text-lg text-gray-900 dark:text-gray-100'>Welcome to Animations</Text>
+        {/* <Animated.Image source={Images.app_icon} style={[styles.icon, animatedStyle]} /> */}
 
-        <Text className='mt-2 text-center text-gray-400 dark:text-gray-600'>Tap on the icon to start</Text>
+        <Animated.View style={[styles.icon, animatedStyle]}>
+          <AppIcon width={ICON_SIZE} height={ICON_SIZE} />
+        </Animated.View>
+        <SemiBold className='mt-4 text-center text-base text-gray-900 dark:text-gray-100'>
+          Welcome to Animations
+        </SemiBold>
+
+        <Medium className='mt-2 text-center text-xs text-gray-400 dark:text-gray-600'>Tap on the icon to start</Medium>
       </TouchableOpacity>
       <View className='mt-5 w-full flex-row flex-wrap items-center justify-center px-5' style={{ gap: 10 }}>
         <Btn onPress={() => navigation.navigate('Basic')}>
-          <Text className='text-white'>Basic</Text>
+          <Medium className='text-xs text-white'>Basic</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('DragAnimation')}>
-          <Text className='text-white'>Drag Animation</Text>
+          <Medium className='text-xs text-white'>Drag Animation</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('CustomizingAnimations')}>
-          <Text className='text-white'>Customizing Animations</Text>
+          <Medium className='text-xs text-white'>Customizing Animations</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('ApplyingModifiers')}>
-          <Text className='text-white'>Applying Modifiers</Text>
+          <Medium className='text-xs text-white'>Applying Modifiers</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('KeyboardAnimation')}>
-          <Text className='text-white'>Keyboard Animation</Text>
+          <Medium className='text-xs text-white'>Keyboard Animation</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('HandlingGesture')}>
-          <Text className='text-white'>Handling Gesture</Text>
+          <Medium className='text-xs text-white'>Handling Gesture</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('SensorAnimation')}>
-          <Text className='text-white'>Sensor Animation</Text>
+          <Medium className='text-xs text-white'>Sensor Animation</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('StableBox')}>
-          <Text className='text-white'>Stable Box</Text>
+          <Medium className='text-xs text-white'>Stable Box</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('StableWallpaper')}>
-          <Text className='text-white'>Stable Wallpaper Acc</Text>
+          <Medium className='text-xs text-white'>Stable Wallpaper Acc</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('CompassAnimation')}>
-          <Text className='text-white'>Compass Animation</Text>
+          <Medium className='text-xs text-white'>Compass Animation</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('LevelAnimation')}>
-          <Text className='text-white'>Level Animation</Text>
+          <Medium className='text-xs text-white'>Level Animation</Medium>
         </Btn>
         <Btn onPress={() => navigation.navigate('ParallaxWallpaper')}>
-          <Text className='text-white'>Parallax Wallpaper</Text>
+          <Medium className='text-xs text-white'>Parallax Wallpaper</Medium>
         </Btn>
       </View>
       <PaddingBottom />
@@ -88,5 +96,7 @@ const styles = StyleSheet.create({
     height: ICON_SIZE,
     resizeMode: 'contain',
     marginTop: 100,
+    backgroundColor: Colors.appIconBg,
+    borderRadius: 30,
   },
 })
