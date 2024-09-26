@@ -18,15 +18,13 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
   const scale = useSharedValue(1)
 
   useEffect(() => {
-    offset.value = withTiming(containerWidth * value)
-    // offset.value = containerWidth * value
+    // offset.value = withTiming(containerWidth * value)
+    offset.value = containerWidth * value
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerWidth])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      offset.value = containerWidth * value
-    }, 100)
+    const timer = setTimeout(() => (offset.value = containerWidth * value), 100)
     return () => clearTimeout(timer)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
