@@ -20,7 +20,7 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
   useEffect(() => {
     const timer = setTimeout(() => {
       if (containerWidth > 0) offset.value = withTiming(containerWidth * value)
-    }, 50)
+    }, 0)
     return () => clearTimeout(timer)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerWidth])
