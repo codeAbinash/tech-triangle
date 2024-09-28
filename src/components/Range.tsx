@@ -18,9 +18,10 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
   const scale = useSharedValue(1)
 
   useEffect(() => {
-    if (containerWidth > 0) {
-      offset.value = withTiming(containerWidth * value)
-    }
+    const timer = setTimeout(() => {
+      if (containerWidth > 0) offset.value = withTiming(containerWidth * value)
+    }, 50)
+    return () => clearTimeout(timer)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerWidth])
 
@@ -48,7 +49,7 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
 
   const handleLayout = useCallback((event: LayoutChangeEvent) => {
     const { width } = event.nativeEvent.layout
-    setContainerWidth(width)
+    if (width !== 0) setContainerWidth(width)
   }, [])
 
   return (
