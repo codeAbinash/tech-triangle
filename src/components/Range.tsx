@@ -18,8 +18,9 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
   const scale = useSharedValue(1)
 
   useEffect(() => {
-    // offset.value = withTiming(containerWidth * value)
-    offset.value = containerWidth * value
+    if (containerWidth > 0) {
+      offset.value = withTiming(containerWidth * value)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerWidth])
 
