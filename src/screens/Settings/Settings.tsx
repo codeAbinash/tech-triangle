@@ -104,7 +104,7 @@ export default function Settings({ navigation }: NavProp) {
                   })
                 }
               /> */}
-              <SettOption
+              {/* <SettOption
                 title='App Update'
                 Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
                 arrow
@@ -117,7 +117,7 @@ export default function Settings({ navigation }: NavProp) {
                     whatsNew: ['New features', 'Bug fixes', 'Performance improvements'],
                   })
                 }
-              />
+              /> */}
 
               <SettOption
                 title='Your Profile'
