@@ -1,8 +1,8 @@
+import AppIconRound from '@assets/icons/icon_round.svg'
 import { APP_VERSION } from '@utils/data'
 import { SemiBold } from '@utils/fonts'
 import React from 'react'
-import { Image, View } from 'react-native'
-import AppIcon from '@assets/icons/icon.svg'
+import { View } from 'react-native'
 
 export default function About() {
   return (
@@ -18,7 +18,7 @@ export function AppIconUI() {
   return (
     <View className='flex-row items-center justify-center'>
       <View className='my-5 bg-appIconBg p-1' style={{ borderRadius: 28 }}>
-        <AppIcon width={100} height={100} />
+        <AppIconRound width={100} height={100} />
       </View>
     </View>
   )

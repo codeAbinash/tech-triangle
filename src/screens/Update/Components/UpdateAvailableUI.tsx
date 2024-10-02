@@ -1,4 +1,4 @@
-import AppIcon from '@assets/icons/icon.svg'
+import { AppIconRound } from '@assets/icons/icons'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
@@ -28,7 +28,7 @@ export default function UpdateAvailableUI({
     <View className='flex-1 rounded-3xl bg-appIconBg p-8 pb-12'>
       <View className='flex-row'>
         <Animated.View style={[animatedImageStyle]} className='mt-8'>
-          <AppIcon width={80} height={80} />
+          <AppIconRound width={80} height={80} />
         </Animated.View>
       </View>
       <SemiBold style={{ fontSize: 24 }} className='mt-5 text-white'>
