@@ -18,6 +18,7 @@ type MoonRiseSetProps = {
 
 export default function MoonPhase({ moonrise, moonset, phase, theme }: MoonRiseSetProps) {
   const timeFormat = weatherStore((state) => state.weatherTimeFormat)
+  const phaseNumber = phase === 0 ? 0 : phase || '__'
 
   return (
     <View className='rounded-3xl bg-black/10' style={boxFullSize}>
@@ -25,7 +26,7 @@ export default function MoonPhase({ moonrise, moonset, phase, theme }: MoonRiseS
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <View className='flex-row justify-between'>
           <View className='flex-1'>
-            <Medium style={[{ fontSize: 35 }, theme.color]}>{phase || '__'}</Medium>
+            <Medium style={[{ fontSize: 35 }, theme.color]}>{phaseNumber}</Medium>
             <Regular style={[theme.color, F.F12]}>{moonPhaseString(phase || 1)}</Regular>
             {/* <View> */}
             <Regular style={[theme.color, F.F12]}>
