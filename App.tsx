@@ -60,6 +60,7 @@ import type { StackNav } from '@utils/types'
 import React from 'react'
 import { Dimensions, SafeAreaView, TouchableOpacity, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import Animated, { BounceIn, FadeIn, ZoomIn, ZoomOut } from 'react-native-reanimated'
 
 const queryClient = new QueryClient()
 
@@ -226,22 +227,28 @@ function Navigation() {
 const FabButton = () => {
   const navigation = useNavigation<StackNav>()
   return (
-    <TouchableOpacity
-      style={{
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 2,
-          height: 2,
-        },
-        elevation: 6,
-        shadowOpacity: 0.5,
-      }}
-      activeOpacity={0.7}
-      className='absolute bottom-7 right-5 z-10 h-14 w-14 items-center justify-center rounded-full bg-accent'
-      onPress={() => navigation.navigate('DeveloperOptions')}
+    <Animated.View
+      entering={ZoomIn.duration(200)}
+      exiting={ZoomOut.duration(200)}
+      className='absolute bottom-7 right-5 z-10'
     >
-      <CodeSolidIcon className='text-white' height={25} width={25} />
-    </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 2,
+            height: 2,
+          },
+          elevation: 6,
+          shadowOpacity: 0.5,
+        }}
+        activeOpacity={0.7}
+        className='h-14 w-14 items-center justify-center rounded-full bg-accent'
+        onPress={() => navigation.navigate('DeveloperOptions')}
+      >
+        <CodeSolidIcon className='text-white' height={25} width={25} />
+      </TouchableOpacity>
+    </Animated.View>
   )
 }
 
