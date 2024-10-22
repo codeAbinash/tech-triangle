@@ -1,34 +1,24 @@
 import AppIconRound from '@assets/icons/icon_round.svg'
+import { client } from '@utils/client'
 // import { client } from '@utils/client'
 import { APP_VERSION } from '@utils/data'
 import { SemiBold } from '@utils/fonts'
-import React, { version } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
-//@ts-ignore
-// import { hc } from '../../../../node_modules/hono/dist/client/client'
-
-// import hcWithType from './hcWithType'
-
-// const c = hcWithType('https://techtriangle.vercel.app/')
-
-// import { x } from '../../../../../tech-triangle-web/test'
-// import hcWithType from '../../../../../tech-triangle-web/app/rpc/hcWithType'
-
-// export const client = hcWithType('https://techtriangle.vercel.app/')
 
 export default function About() {
-  // const [version, setVersion] = useState('')
+  const [version, setVersion] = useState('')
 
-  // async function loadVersion() {
-  //   const res = await c.api.version.$get()
-  //   // const res = await client.api.version.$get()
-  //   const v = await res.json()
-  //   setVersion(v.data?.version)
-  // }
-  // useEffect(() => {
-  //   loadVersion()
-  //   // console.log(x)
-  // }, [])
+  async function loadVersion() {
+    const res = await client.api.version.$get()
+    const v = await res.json()
+    setVersion(v.data?.version)
+    console.log(v.data?.version)
+    // Device remove
+  }
+  useEffect(() => {
+    loadVersion()
+  }, [])
 
   return (
     <View className='flex-1 items-center justify-center'>

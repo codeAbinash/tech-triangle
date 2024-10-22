@@ -1,6 +1,7 @@
 {
   "cSpell.words": ["Accu", "Casteljau's", "CMYK", "Hectopascal", "mbar", "openweathermap", "Soundcloud", "Withs"],
-  "files.autoSave": "onFocusChange"
+  "files.autoSave": "onFocusChange",
+  "typescript.tsdk": "node_modules\\typescript\\lib"
   // "editor.codeActionsOnSave": {
   //   "source.organizeImports": "always"
   // }
