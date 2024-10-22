@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
+    "allowJs": true,
     "jsx": "react",
     "baseUrl": ".",
     "strict": true,

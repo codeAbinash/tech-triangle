@@ -45,7 +45,7 @@ export default function HomeScreen({ navigation }: { navigation: StackNav }) {
             </View>
           </View>
           <Elements />
-          <Shortcuts />
+          <Shortcuts navigation={navigation} />
           <Graph />
         </View>
         <PaddingBottom />
@@ -86,7 +86,7 @@ function Elements() {
   )
 }
 
-function Shortcuts() {
+function Shortcuts({ navigation }: { navigation: StackNav }) {
   const hw = useMemo(() => {
     return { width: (width - 18 * 2 - 12) / 2, height: width * 0.2 }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -97,9 +97,13 @@ function Shortcuts() {
         Shortcuts
       </Text>
       <View className='w-full flex-row flex-wrap' style={{ gap: 12, paddingHorizontal: 18 }}>
-        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
+        <TouchableOpacity
+          onPressOut={() => navigation.navigate('About')}
+          style={[hw, styles.shadow, styles.center]}
+          className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
+        >
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 1</Medium>
-        </View>
+        </TouchableOpacity>
         <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 2</Medium>
         </View>

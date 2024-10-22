@@ -1,12 +1,15 @@
 import S from '@utils/storage'
 
 // export const ACCUWEATHER_API_KEY = 'FqLdDZQkQofVcwsdCHX7uKdPVgWcPGHI'
-export const ACCUWEATHER_API_KEY = 'C42OAAd8AANIyi8SLoqvq3mm59vADvRA'
+// export const ACCUWEATHER_API_KEY = 'C42OAAd8AANIyi8SLoqvq3mm59vADvRA'
+export const ACCUWEATHER_API_KEY = '949004d9a7086cfddfc21ef59baca2a4'
 
-export const OPENWEATHER_API_KEY = '0e376e0750966cdba160fc85a4bb0427'
+export const OPENWEATHER_API_KEY = '138278b70c2b6e56abece2ddac69db6a'
 
 function citySearchUrl(query: string, apiKey: string) {
-  return `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey || ACCUWEATHER_API_KEY}&q=${query}`
+  const url = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey || ACCUWEATHER_API_KEY}&q=${query}`
+  console.log(url)
+  return url
 }
 
 function locationUrl(lat: number, lon: number, apiKey: string) {
@@ -14,8 +17,12 @@ function locationUrl(lat: number, lon: number, apiKey: string) {
 }
 
 function weatherUrl(lat: number, lon: number, apiKey: string) {
-  return `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}&include=aqi`
+  const url =  `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}&include=aqi`
+  console.log(url)
+  return url
 }
+
+weatherUrl(0, 0, OPENWEATHER_API_KEY)
 
 function AQIUrl(lat: number, lon: number, apiKey: string) {
   return `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey || OPENWEATHER_API_KEY}`

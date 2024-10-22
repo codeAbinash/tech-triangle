@@ -1,5 +1,5 @@
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config')
-
+// const path = require('path')
 const defaultConfig = getDefaultConfig(__dirname)
 const { assetExts, sourceExts } = defaultConfig.resolver
 
@@ -17,6 +17,7 @@ const config = {
     assetExts: [...assetExts.filter((ext) => ext !== 'svg'), 'lottie', 'css'],
     sourceExts: [...sourceExts, 'svg'],
   },
+  // watchFolders: [path.resolve(__dirname, '../tech-triangle-web')],
 }
 
 module.exports = mergeConfig(defaultConfig, config)
