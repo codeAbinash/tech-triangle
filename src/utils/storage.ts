@@ -138,12 +138,14 @@ type DeveloperStorage = Store<typeof DeveloperStorage>
 type CoordinateNotesStorage = Store<typeof CoordinateNotesStorage>
 type UserProfileStorage = Store<typeof UserProfileStorage>
 type AppLockStorage = Store<typeof AppLockStorage>
+type misc = 'token'
 export type StorageKeys =
   | WeatherStorage
   | DeveloperStorage
   | CoordinateNotesStorage
   | UserProfileStorage
   | AppLockStorage
+  | misc
 
 /**
  * Other variant of storage

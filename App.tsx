@@ -3,7 +3,6 @@ import { CodeSolidIcon } from '@assets/icons/icons'
 import { AutoStatusBar } from '@components/StatusBar'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
-import Animations from '@screens/Animations'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
 import CoordinatesNotes from '@screens/CoordinateNotes/CoordinatesNotes'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
@@ -11,13 +10,13 @@ import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/Developer
 import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
 import Explore from '@screens/Explore/Explore'
 import Greeting from '@screens/Home/Greeting'
-import Location from '@screens/Location'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import GlobalSearch from '@screens/Search/GlobalSearch'
 import AppLock from '@screens/Settings/AppLock/AppLock'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
 import BlankSettings from '@screens/Settings/BlankSettings'
+import Devices from '@screens/Settings/Devices/Devices'
 import About from '@screens/Settings/Extra/About'
 import ManageStorage from '@screens/Settings/ManageStorage'
 import Settings from '@screens/Settings/Settings'
@@ -30,37 +29,18 @@ import YourAge from '@screens/Try/YourAge'
 import ForceUpdate, { type ForceUpdateParamList } from '@screens/Update/ForceUpdate'
 import Update, { type UpdateParamList } from '@screens/Update/Update'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
-import ConfirmCity from '@screens/Weather/ConfirmCity'
-import WeatherScreen from '@screens/Weather/Main/Weather'
-import AtmPressureUnit from '@screens/Weather/Settings/AtmPressureUnit'
-import DistanceUnit from '@screens/Weather/Settings/DistanceUnit'
-import TempUnit from '@screens/Weather/Settings/TempUnit'
-import TimeFormatUnit from '@screens/Weather/Settings/TimeFormatUnit'
-import WeatherScienceSettings from '@screens/Weather/Settings/WeatherSettings'
-import WindSpeedUnit from '@screens/Weather/Settings/WindSpeedUnit'
-import WeatherLocation, { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
-import WeatherSearchCity, { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
-import WeatherWelcome from '@screens/Weather/WeatherWelcome'
-import ApplyingModifiers from '@screens/animations/ApplyingModifiers'
-import Basic from '@screens/animations/Basic'
-import CompassAnimation from '@screens/animations/CompassAnimation'
-import CustomizingAnimations from '@screens/animations/CustomizingAnimations'
-import DragAnimation from '@screens/animations/DragAnimation'
-import HandlingGesture from '@screens/animations/HandlingGesture'
-import KeyboardAnimation from '@screens/animations/KeyboardAnimation'
-import LevelAnimation from '@screens/animations/LevelAnimation'
-import ParallaxWallpaper from '@screens/animations/ParallaxWallpaper'
-import SensorAnimation from '@screens/animations/SensorAnimation'
-import StableBox from '@screens/animations/StableBox'
-import StableWallpaper from '@screens/animations/StableWallpaper'
+import { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
+import { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
+import Login from '@screens/auth/Login'
 import Home from '@screens/index'
+import Splash from '@screens/splash/Splash'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import { Dimensions, SafeAreaView, TouchableOpacity, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import Animated, { BounceIn, FadeIn, ZoomIn, ZoomOut } from 'react-native-reanimated'
+import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 
 const queryClient = new QueryClient()
 
@@ -144,6 +124,9 @@ export type RootStackParamList = {
   GlobalSearch: undefined
   Update: UpdateParamList
   ForceUpdate: ForceUpdateParamList
+  Splash: undefined
+  Login: undefined
+  Devices: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -164,50 +147,52 @@ function Navigation() {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
       >
+        <Stack.Screen name='Splash' component={Splash} options={NO_ANIMATION} />
+        <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
-        <Stack.Screen name='Location' component={Location} />
-        <Stack.Screen name='CompassAnimation' component={CompassAnimation} />
-        <Stack.Screen name='ParallaxWallpaper' component={ParallaxWallpaper} />
-        <Stack.Screen name='LevelAnimation' component={LevelAnimation} />
-        <Stack.Screen name='StableWallpaper' component={StableWallpaper} />
-        <Stack.Screen name='StableBox' component={StableBox} />
-        <Stack.Screen name='HandlingGesture' component={HandlingGesture} />
-        <Stack.Screen name='SensorAnimation' component={SensorAnimation} />
-        <Stack.Screen name='ApplyingModifiers' component={ApplyingModifiers} />
-        <Stack.Screen name='CustomizingAnimations' component={CustomizingAnimations} />
+        {/* <Stack.Screen name='Location' component={Location} /> */}
+        {/* <Stack.Screen name='CompassAnimation' component={CompassAnimation} /> */}
+        {/* <Stack.Screen name='ParallaxWallpaper' component={ParallaxWallpaper} /> */}
+        {/* <Stack.Screen name='LevelAnimation' component={LevelAnimation} /> */}
+        {/* <Stack.Screen name='StableWallpaper' component={StableWallpaper} /> */}
+        {/* <Stack.Screen name='StableBox' component={StableBox} /> */}
+        {/* <Stack.Screen name='HandlingGesture' component={HandlingGesture} /> */}
+        {/* <Stack.Screen name='SensorAnimation' component={SensorAnimation} /> */}
+        {/* <Stack.Screen name='ApplyingModifiers' component={ApplyingModifiers} /> */}
+        {/* <Stack.Screen name='CustomizingAnimations' component={CustomizingAnimations} /> */}
         {/* <Stack.Screen name='Basic' component={Basic} /> */}
-        <Stack.Screen name='Basic' component={Basic} />
-        <Stack.Screen name='KeyboardAnimation' component={KeyboardAnimation} />
-        <Stack.Screen name='Animations' component={Animations} />
-        <Stack.Screen name='DragAnimation' component={DragAnimation} />
-        <Stack.Screen name='Weather' component={WeatherScreen} options={GestureEnabled} />
-        <Stack.Screen name='WeatherWelcome' component={WeatherWelcome} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='WeatherSearchCity' component={WeatherSearchCity} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='WeatherLocation' component={WeatherLocation} options={IOS_BOTTOM_STYLE} />
+        {/* <Stack.Screen name='Basic' component={Basic} /> */}
+        {/* <Stack.Screen name='KeyboardAnimation' component={KeyboardAnimation} /> */}
+        {/* <Stack.Screen name='Animations' component={Animations} /> */}
+        {/* <Stack.Screen name='DragAnimation' component={DragAnimation} /> */}
+        {/* <Stack.Screen name='Weather' component={WeatherScreen} options={GestureEnabled} /> */}
+        {/* <Stack.Screen name='WeatherWelcome' component={WeatherWelcome} options={IOS_BOTTOM_STYLE} /> */}
+        {/* <Stack.Screen name='WeatherSearchCity' component={WeatherSearchCity} options={IOS_BOTTOM_STYLE} /> */}
+        {/* <Stack.Screen name='WeatherLocation' component={WeatherLocation} options={IOS_BOTTOM_STYLE} /> */}
         <Stack.Screen name='Greeting' component={Greeting} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Settings' component={Settings} options={GestureEnabled} />
         <Stack.Screen name='Explore' component={Explore} />
         <Stack.Screen name='RoutineWelcome' component={RoutineWelcome} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='NotesWelcome' component={NotesWelcome} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='ConfirmCity' component={ConfirmCity} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='ComputerScienceSettings' component={ComputerScienceSettings} options={GestureEnabled} />
-        <Stack.Screen
+        {/* <Stack.Screen name='ConfirmCity' component={ConfirmCity} options={IOS_BOTTOM_STYLE} /> */}
+        {/* <Stack.Screen
           name='WeatherSettings'
           component={WeatherScienceSettings}
           options={{ gestureEnabled: true, freezeOnBlur: true }}
-        />
+          /> */}
         <Stack.Screen name='DeveloperOptions' component={DeveloperOptions} options={GestureEnabled} />
         <Stack.Screen name='UiAndComponents' component={UiAndComponents} options={GestureEnabled} />
         <Stack.Screen name='BlankSettings' component={BlankSettings} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataList' component={MMKVDataList} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} options={GestureEnabled} />
         <Stack.Screen name='CoordinateNotes' component={CoordinatesNotes} options={GestureEnabled} />
-        <Stack.Screen name='TempUnit' component={TempUnit} options={GestureEnabled} />
-        <Stack.Screen name='DistanceUnit' component={DistanceUnit} options={GestureEnabled} />
-        <Stack.Screen name='WindSpeedUnit' component={WindSpeedUnit} options={GestureEnabled} />
-        <Stack.Screen name='AtmPressureUnit' component={AtmPressureUnit} options={GestureEnabled} />
-        <Stack.Screen name='TimeFormatUnit' component={TimeFormatUnit} options={GestureEnabled} />
+        {/* <Stack.Screen name='TempUnit' component={TempUnit} options={GestureEnabled} /> */}
+        {/* <Stack.Screen name='DistanceUnit' component={DistanceUnit} options={GestureEnabled} /> */}
+        {/* <Stack.Screen name='WindSpeedUnit' component={WindSpeedUnit} options={GestureEnabled} /> */}
+        {/* <Stack.Screen name='AtmPressureUnit' component={AtmPressureUnit} options={GestureEnabled} /> */}
+        {/* <Stack.Screen name='TimeFormatUnit' component={TimeFormatUnit} options={GestureEnabled} /> */}
         <Stack.Screen name='ManageStorage' component={ManageStorage} options={GestureEnabled} />
         <Stack.Screen name='BackupAndRestore' component={BackupAndRestore} options={GestureEnabled} />
         <Stack.Screen name='About' component={About} options={GestureEnabled} />
@@ -219,6 +204,7 @@ function Navigation() {
         <Stack.Screen name='GlobalSearch' component={GlobalSearch} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Update' component={Update} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='ForceUpdate' component={ForceUpdate} options={GestureEnabled} />
+        <Stack.Screen name='Devices' component={Devices} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

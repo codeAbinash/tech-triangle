@@ -26,7 +26,17 @@ type SettOptionProps = TouchableOpacityProps & {
   arrow?: boolean
   numberOfLines?: number
 }
-export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOfLines, ...rest }: SettOptionProps) {
+export function SettOption({
+  title,
+  children,
+  onPress,
+  Icon,
+  Right,
+  style,
+  arrow,
+  numberOfLines,
+  ...rest
+}: SettOptionProps) {
   return (
     <TouchableOpacity
       className='flex-row items-center justify-between px-6'
@@ -37,13 +47,16 @@ export function SettOption({ title, onPress, Icon, Right, style, arrow, numberOf
     >
       <View className='flex-row items-center justify-center' style={{ gap: 22, flexShrink: 1 }}>
         {Icon}
-        <Medium
-          className='p-2.5 px-0 text-left text-zinc-800 dark:text-zinc-200'
-          style={[{ fontSize: 12, flexShrink: 1 }, style]}
-          numberOfLines={numberOfLines || 0}
-        >
-          {title}
-        </Medium>
+        <View className='p-2.5 px-0 flex-1' style={style}>
+          <Medium
+            className='text-left text-zinc-800 dark:text-zinc-200'
+            style={{ fontSize: 12, flexShrink: 1 }}
+            numberOfLines={numberOfLines || 0}
+          >
+            {title}
+          </Medium>
+          {children}
+        </View>
       </View>
       <View className='flex-row items-center' style={{ gap: 5, flexShrink: 1 }}>
         {Right}

@@ -7,21 +7,19 @@ import {
   CodeSolidIcon,
   ComputerSolidIcon,
   Database02SolidIcon,
+  DeviceAccessSolidIcon,
   EditTableSolidIcon,
   FolderFileStorageSolidIcon,
   InformationCircleSolidIcon,
   PolicySolidIcon,
-  Setting07SolidIcon,
   ShieldUserSolidIcon,
   SquareLock02SolidIcon,
-  SunCloudAngledRainZap01SolidIcon,
   TelegramSolidIcon,
   UserSolidIcon,
   Wallet02SolidIcon,
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
-import RoundNotification from '@components/RoundNotification'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { SettGroup, SettOption, SettText } from '@components/Settings'
@@ -29,7 +27,7 @@ import { TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/data'
-import { Bold, SemiBold } from '@utils/fonts'
+import { Bold } from '@utils/fonts'
 import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
@@ -126,13 +124,13 @@ export default function Settings({ navigation }: NavProp) {
                 onPress={() => navigation.navigate('YourProfile')}
               />
               <SettOption title='Computer Science' Icon={<RoundedIcon Icon={ComputerSolidIcon} />} arrow />
-              <SettOption
+              {/* <SettOption
                 title='Weather Settings'
                 // Icon={<SunCloudAngledRainZap01SolidIcon {...ic} />}
                 Icon={<RoundedIcon Icon={SunCloudAngledRainZap01SolidIcon} className='bg-blue-500' />}
                 onPress={() => navigation.navigate('WeatherSettings')}
                 arrow
-              />
+              /> */}
               <SettOption
                 title='Routine Management'
                 Icon={<RoundedIcon Icon={Calendar03SolidIcon} className='bg-red-500' />}
@@ -142,6 +140,16 @@ export default function Settings({ navigation }: NavProp) {
                 title='My Wallet'
                 Icon={<RoundedIcon Icon={Wallet02SolidIcon} className='bg-amber-500' />}
                 arrow
+              />
+            </SettGroup>
+          </Gap12>
+          <Gap12>
+            <SettGroup title='Devices'>
+              <SettOption
+                title='Devices'
+                Icon={<RoundedIcon Icon={DeviceAccessSolidIcon} />}
+                arrow
+                onPressOut={() => navigation.navigate('Devices')}
               />
             </SettGroup>
           </Gap12>

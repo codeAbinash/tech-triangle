@@ -66,7 +66,7 @@ const tools: Group[] = [
   {
     title: 'Others',
     tools: [
-      { title: 'Animations', Icon: Timer02SolidIcon, to: 'Animations', className: 'bg-red-500' },
+      // { title: 'Animations', Icon: Timer02SolidIcon, to: 'Animations', className: 'bg-red-500' },
       { title: 'Test Screen', Icon: TestTube01SolidIcon, to: 'Test', className: 'bg-purple-500' },
     ],
     endText: 'Just for testing purposes. You can try them out and see how they work.',

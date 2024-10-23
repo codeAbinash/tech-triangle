@@ -17,7 +17,10 @@ const config = {
     assetExts: [...assetExts.filter((ext) => ext !== 'svg'), 'lottie', 'css'],
     sourceExts: [...sourceExts, 'svg'],
   },
-  // watchFolders: [path.resolve(__dirname, '../tech-triangle-web')],
+  // watchFolders: [
+  //   path.resolve(__dirname, '../tech-triangle-web/zod/'),
+  //   path.resolve(__dirname, '../tech-triangle-web/node_modules/'),
+  // ],
 }
 
 module.exports = mergeConfig(defaultConfig, config)

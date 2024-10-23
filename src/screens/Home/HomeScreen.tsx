@@ -63,7 +63,7 @@ function Elements() {
       contentContainerStyle={{ gap: 12, paddingLeft: 18, paddingRight: 18, paddingTop: 5, paddingBottom: 5 }}
       snapToAlignment='center'
     >
-      <WeatherWidget navigation={navigation} />
+      {/* <WeatherWidget navigation={navigation} /> */}
       <TouchableOpacity
         style={[height_weight, styles.shadow]}
         className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
