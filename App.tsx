@@ -16,6 +16,8 @@ import GlobalSearch from '@screens/Search/GlobalSearch'
 import AppLock from '@screens/Settings/AppLock/AppLock'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
 import BlankSettings from '@screens/Settings/BlankSettings'
+import type { DeviceParamList } from '@screens/Settings/Devices/Device'
+import Device from '@screens/Settings/Devices/Device'
 import Devices from '@screens/Settings/Devices/Devices'
 import About from '@screens/Settings/Extra/About'
 import ManageStorage from '@screens/Settings/ManageStorage'
@@ -127,6 +129,7 @@ export type RootStackParamList = {
   Splash: undefined
   Login: undefined
   Devices: undefined
+  Device: DeviceParamList
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -205,6 +208,7 @@ function Navigation() {
         <Stack.Screen name='Update' component={Update} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='ForceUpdate' component={ForceUpdate} options={GestureEnabled} />
         <Stack.Screen name='Devices' component={Devices} options={GestureEnabled} />
+        <Stack.Screen name='Device' component={Device} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

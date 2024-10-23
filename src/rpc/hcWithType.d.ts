@@ -187,6 +187,7 @@ declare const client: {
                         devices: ({
                             time: number;
                             device: string;
+                            id: string;
                         } | null)[];
                     };
                 };

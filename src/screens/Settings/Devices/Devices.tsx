@@ -10,6 +10,7 @@ import type { NavProp } from '@utils/types'
 import { print } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
+import { getDate } from './utils'
 
 export default function Devices({ navigation }: NavProp) {
   const client = getClient()
@@ -37,9 +38,10 @@ export default function Devices({ navigation }: NavProp) {
             data.data.devices.map((device, i) => {
               return (
                 <SettOption
+                  onPress={() => navigation.navigate('Device', { device })}
                   title={device?.device || 'Unknown'}
                   numberOfLines={1}
-                  key={device?.time}
+                  key={device?.id}
                   Icon={<RoundedIcon Icon={DeviceAccessSolidIcon} />}
                   arrow
                 >
@@ -53,9 +55,4 @@ export default function Devices({ navigation }: NavProp) {
       </Gap12>
     </SettWrapper>
   )
-}
-
-function getDate(n: number | undefined) {
-  if (!n) return 'Unknown'
-  return 'On ' + new Date(n).toLocaleString()
 }
