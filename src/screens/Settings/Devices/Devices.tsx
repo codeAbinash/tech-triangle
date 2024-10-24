@@ -56,20 +56,23 @@ export default function Devices({ navigation }: NavProp) {
                 title={data.data.currentDevice?.name || 'Unknown'}
                 numberOfLines={1}
                 Icon={<RoundedIcon Icon={DeviceAccessSolidIcon} />}
-                arrow
               >
                 <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
                   {getDate(data.data.currentDevice?.time)}
                 </Medium>
               </SettOption>
-              <SettOption
-                disabled={isRemoving}
-                onPress={handelRemove}
-                className='text-red-500'
-                title={isRemoving ? 'Removing...' : 'Remove All Other Devices'}
-                Icon={<RoundedIcon Icon={WavingHand02SolidIcon} className='bg-red-500' />}
-              />
             </>
+          )}
+        </SettGroup>
+        <SettGroup>
+          {data && data.data && data.data.devices.length > 0 && (
+            <SettOption
+              disabled={isRemoving}
+              onPress={handelRemove}
+              className='text-red-500'
+              title={isRemoving ? 'Removing...' : 'Remove All Other Devices'}
+              Icon={<RoundedIcon Icon={WavingHand02SolidIcon} className='bg-red-500' />}
+            />
           )}
         </SettGroup>
 
@@ -82,7 +85,7 @@ export default function Devices({ navigation }: NavProp) {
                   title={device?.name || 'Unknown'}
                   numberOfLines={1}
                   key={device?.id}
-                  Icon={<RoundedIcon Icon={DeviceAccessSolidIcon} />}
+                  Icon={<RoundedIcon Icon={DeviceAccessSolidIcon} className='bg-orange-500' />}
                   arrow
                 >
                   <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
@@ -93,6 +96,9 @@ export default function Devices({ navigation }: NavProp) {
             })}
           </SettGroup>
         )}
+        <SettText className='mt-2'>
+          Click on a device to view more details. You can remove a device by clicking on the remove button.
+        </SettText>
       </Gap12>
     </SettWrapper>
   )

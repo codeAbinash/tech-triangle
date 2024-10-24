@@ -122,3 +122,5 @@ export { default as BubbleChatLockSolidIcon } from '@icons/bubble-chat-lock-soli
 
 export { default as MailSend02SolidIcon } from '@icons/mail-send-02-solid-rounded.svg'
 export { default as Login03SolidIcon } from '@icons/login-03-solid-rounded.svg'
+export { default as Cancel01SolidIcon } from '@icons/cancel-01-solid-rounded.svg'
+export { default as Tick01SolidIcon } from '@icons/tick-01-solid-rounded.svg'

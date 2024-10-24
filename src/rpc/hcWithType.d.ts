@@ -113,6 +113,29 @@ declare const client: {
     };
 } & {
     api: {
+        auth: {
+            username: {
+                status: import("hono/client").ClientRequest<{
+                    $post: {
+                        input: {
+                            form: {
+                                username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            };
+                        };
+                        output: {
+                            status: boolean;
+                            message: string;
+                            username: string;
+                        };
+                        outputFormat: "json";
+                        status: import("hono/utils/http-status").StatusCode;
+                    };
+                }>;
+            };
+        };
+    };
+} & {
+    api: {
         changelog: import("hono/client").ClientRequest<{
             $get: {
                 input: {};

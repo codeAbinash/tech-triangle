@@ -67,7 +67,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
           <Medium className='mt-10 text-center text-2xl text-white'>Device</Medium>
         </View>
       </View> */}
-      <SettWrapper title='Device' navigation={navigation}>
+      <SettWrapper title={device?.name || 'Unknown Device'} navigation={navigation}>
         <Gap gap={15}>
           <SettText className='mt-3'>
             If you see a device that you don't recognize, you can remove it from the list. Just click on the 'Remove

@@ -1,11 +1,13 @@
-import { signupZodValidator } from '@/zod/auth'
+import { signupZodValidator, usernameStatusZodValidator } from '@/zod/auth'
 import {
+  Cancel01SolidIcon,
   HelpCircleSolidIcon,
   LockPasswordSolidIcon,
   Login03SolidIcon,
   Mail02SolidIcon,
   StarSolidIcon,
-  UserSolidIcon,
+  TextFontSolidIcon,
+  Tick01Icon,
 } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
@@ -15,16 +17,26 @@ import { PaddingTop } from '@components/SafePadding'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
+import { Colors } from '@utils/colors'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { useState } from 'react'
-import { Alert, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, Alert, ToastAndroid, View } from 'react-native'
+import { PasswordEye } from './components/PasswordEye'
 
+enum NameStatus {
+  Available,
+  Checking,
+  Unavailable,
+  Initial,
+}
 export default function Signup({ navigation }: NavProp) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
+  const [isVisible, setIsVisible] = useState(false)
+  const [status, setStatus] = useState<NameStatus>(NameStatus.Initial)
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
@@ -40,6 +52,35 @@ export default function Signup({ navigation }: NavProp) {
       Alert.alert('Error', 'An error occurred')
     },
   })
+
+  const { mutate: checkUsername } = useMutation({
+    mutationKey: ['checkUsername'],
+    mutationFn: async ({ u }: { u: string }) =>
+      await (await client.api.auth.username.status.$post({ form: { username: u } })).json(),
+    onSuccess: (data) => {
+      console.log(data)
+      setStatus(data.status ? NameStatus.Available : NameStatus.Unavailable)
+    },
+    onError: (error) => {
+      console.log(error)
+      setStatus(NameStatus.Initial)
+      ToastAndroid.show('An error occurred', ToastAndroid.SHORT)
+    },
+  })
+
+  useEffect(() => {
+    setStatus(NameStatus.Checking)
+    const timer = setTimeout(() => {
+      const { error, data } = usernameStatusZodValidator.safeParse({ username })
+      if (error) {
+        console.log(error)
+        setStatus(NameStatus.Initial)
+        return
+      }
+      checkUsername({ u: data.username })
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [checkUsername, email, username])
 
   function handelSubmit() {
     const { error } = signupZodValidator.safeParse({ username, password, email, name })
@@ -61,8 +102,8 @@ export default function Signup({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Full Name'>
             <Input
-              Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
-              placeholder='Enter your full name'
+              Icon={<RoundedIcon Icon={TextFontSolidIcon} className='bg-blue-500' />}
+              placeholder='Full Name'
               value={name}
               onChangeText={setName}
             />
@@ -70,7 +111,7 @@ export default function Signup({ navigation }: NavProp) {
           <SettGroup title='Email'>
             <Input
               Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
-              placeholder='Enter your email'
+              placeholder='Email'
               value={email}
               keyboardType='email-address'
               onChangeText={setEmail}
@@ -79,17 +120,21 @@ export default function Signup({ navigation }: NavProp) {
           <SettGroup title='Username'>
             <Input
               Icon={<RoundedIcon Icon={StarSolidIcon} className='bg-amber-500' />}
-              placeholder='Enter your username'
+              placeholder='Username'
               value={username}
               onChangeText={setUsername}
+              Right={<UsernameStatus isAvail={status} />}
             />
           </SettGroup>
+
           <SettGroup title='Password'>
             <Input
-              Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
-              placeholder='Enter your password'
               value={password}
               onChangeText={setPassword}
+              placeholder='Password'
+              secureTextEntry={!isVisible}
+              Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
+              Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
             />
           </SettGroup>
           <SettText>
@@ -127,5 +172,14 @@ export default function Signup({ navigation }: NavProp) {
         </SettText>
       </View>
     </SettWrapper>
+  )
+}
+function UsernameStatus({ isAvail }: { isAvail: NameStatus }) {
+  return (
+    <>
+      {isAvail === NameStatus.Checking && <ActivityIndicator size={23} color={Colors.accent} />}
+      {isAvail === NameStatus.Available && <Tick01Icon className='text-green-500' height={22} width={22} />}
+      {isAvail === NameStatus.Unavailable && <Cancel01SolidIcon className='text-red-500' width={20} height={20} />}
+    </>
   )
 }

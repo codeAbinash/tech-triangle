@@ -13,10 +13,13 @@ import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useState } from 'react'
 import { Alert, View } from 'react-native'
+import { PasswordEye } from './components/PasswordEye'
 
 export default function Login({ navigation }: NavProp) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [isVisible, setIsVisible] = useState(false)
+
   const { setToken } = authStore()
 
   const { mutate, isPending } = useMutation({
@@ -66,7 +69,7 @@ export default function Login({ navigation }: NavProp) {
           <SettGroup title='Email or Username'>
             <Input
               Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
-              placeholder='Enter your email or username'
+              placeholder='Email or Username'
               value={username}
               onChangeText={setUsername}
             />
@@ -77,10 +80,12 @@ export default function Login({ navigation }: NavProp) {
           </SettText>
           <SettGroup title='Password'>
             <Input
-              Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
-              placeholder='Enter your email or username'
               value={password}
               onChangeText={setPassword}
+              placeholder='Password'
+              secureTextEntry={!isVisible}
+              Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
+              Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
             />
           </SettGroup>
           <SettText>
