@@ -137,7 +137,7 @@ function Example4() {
     <View className='w-full pb-20'>
       <Text className='mb-5 w-full text-center text-lg'>Example 4</Text>
       <View className='w-full items-center justify-center px-4'>
-        <Animated.Image source={Images.app_icon} style={[styles.icon, animatedStyle]} />
+        {/* <Animated.Image source={Images.app_icon} style={[styles.icon, animatedStyle]} /> */}
       </View>
       <View className='flex flex-row items-center justify-center'>
         <Btn onPress={handlePress} className='bg-pinkPrimary mt-5'>

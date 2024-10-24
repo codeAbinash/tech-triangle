@@ -33,7 +33,7 @@ export default function Signup({ navigation }: NavProp) {
     onSuccess: (data) => {
       console.log(data)
       if (!data.status) return Alert.alert('Error', data.message)
-      navigation.replace('Verify')
+      navigation.replace('Verify', { username })
     },
     onError: (error) => {
       console.log(error)
