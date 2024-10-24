@@ -117,3 +117,8 @@ export { default as UserAdd02SolidIcon } from '@icons/user-add-02-solid-rounded.
 export { default as DeviceAccessSolidIcon } from '@icons/device-access-solid-rounded.svg'
 export { default as Logout02SolidIcon } from '@icons/logout-02-solid-rounded.svg'
 export { default as WavingHand02SolidIcon } from '@icons/waving-hand-02-solid-rounded.svg'
+export { default as StarSolidIcon } from '@icons/star-solid-rounded.svg'
+export { default as BubbleChatLockSolidIcon } from '@icons/bubble-chat-lock-solid-rounded.svg'
+
+export { default as MailSend02SolidIcon } from '@icons/mail-send-02-solid-rounded.svg'
+export { default as Login03SolidIcon } from '@icons/login-03-solid-rounded.svg'

@@ -92,6 +92,27 @@ declare const client: {
     };
 } & {
     api: {
+        auth: {
+            verify: import("hono/client").ClientRequest<{
+                $post: {
+                    input: {
+                        form: {
+                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            otp: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                        };
+                    };
+                    output: {
+                        message: string;
+                        status: boolean;
+                    };
+                    outputFormat: "json";
+                    status: import("hono/utils/http-status").StatusCode;
+                };
+            }>;
+        };
+    };
+} & {
+    api: {
         changelog: import("hono/client").ClientRequest<{
             $get: {
                 input: {};

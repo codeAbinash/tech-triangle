@@ -1,6 +1,12 @@
-import { loginZodValidator } from '@/zod/auth'
-import authStore from '@/zustand/authStore'
-import { HelpCircleSolidIcon, LockPasswordSolidIcon, Mail02SolidIcon, UserAdd02SolidIcon } from '@assets/icons/icons'
+import { signupZodValidator } from '@/zod/auth'
+import {
+  HelpCircleSolidIcon,
+  LockPasswordSolidIcon,
+  Login03SolidIcon,
+  Mail02SolidIcon,
+  StarSolidIcon,
+  UserSolidIcon,
+} from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
@@ -8,37 +14,26 @@ import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { useMutation } from '@tanstack/react-query'
-import { client, updateClientHeader } from '@utils/client'
+import { client } from '@utils/client'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useState } from 'react'
 import { Alert, View } from 'react-native'
 
-export default function Login({ navigation }: NavProp) {
+export default function Signup({ navigation }: NavProp) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const { setToken } = authStore()
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
-    mutationFn: async () => await (await client.api.auth.login.$post({ form: { password, username } })).json(),
+    mutationFn: async () =>
+      await (await client.api.auth.signup.$post({ form: { password, username, email, name } })).json(),
     onSuccess: (data) => {
       console.log(data)
-
-      if (data.verificationRequired) return navigation.replace('Verify', { username })
-
       if (!data.status) return Alert.alert('Error', data.message)
-
-      if (data.data?.token) {
-        // Navigate to home screen
-        setToken(data.data.token)
-        updateClientHeader(data.data.token)
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'Home' }],
-        })
-        return
-      }
+      navigation.replace('Verify')
     },
     onError: (error) => {
       console.log(error)
@@ -47,7 +42,8 @@ export default function Login({ navigation }: NavProp) {
   })
 
   function handelSubmit() {
-    const { error } = loginZodValidator.safeParse({ username, password })
+    const { error } = signupZodValidator.safeParse({ username, password, email, name })
+    console.log(error)
     if (error) {
       Alert.alert('Error', error.errors[0]?.message || '')
       return
@@ -60,21 +56,34 @@ export default function Login({ navigation }: NavProp) {
       <View className='py-5'>
         <PaddingTop />
         <View className='px-5 py-5 pb-10'>
-          <Bold className='text-3xl text-black dark:text-white'>Welcome to Tech Triangle</Bold>
+          <Bold className='text-3xl text-black dark:text-white'>Create an Account to Get Started</Bold>
         </View>
         <Gap12>
-          <SettGroup title='Email or Username'>
+          <SettGroup title='Full Name'>
+            <Input
+              Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
+              placeholder='Enter your full name'
+              value={name}
+              onChangeText={setName}
+            />
+          </SettGroup>
+          <SettGroup title='Email'>
             <Input
               Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
-              placeholder='Enter your email or username'
+              placeholder='Enter your email'
+              value={email}
+              keyboardType='email-address'
+              onChangeText={setEmail}
+            />
+          </SettGroup>
+          <SettGroup title='Username'>
+            <Input
+              Icon={<RoundedIcon Icon={StarSolidIcon} className='bg-amber-500' />}
+              placeholder='Enter your username'
               value={username}
               onChangeText={setUsername}
             />
           </SettGroup>
-          <SettText>
-            Enter your email or username to login to your account. If you don't have an account, you can create one by
-            clicking the button below.
-          </SettText>
           <SettGroup title='Password'>
             <Input
               Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
@@ -84,14 +93,13 @@ export default function Login({ navigation }: NavProp) {
             />
           </SettGroup>
           <SettText>
-            Enter your password to login to your account. If you forgot your password, you can reset it by clicking the
-            button below.
+            An email will be sent to you to verify your account. Make sure that you have access to it.
           </SettText>
         </Gap12>
 
         <View className='mt-5 px-6'>
           <Btn
-            title={isPending ? 'Logging in...' : 'Login'}
+            title={isPending ? 'Signing up...' : 'Signup'}
             className='w-full'
             disabled={isPending}
             onPress={handelSubmit}
@@ -99,12 +107,12 @@ export default function Login({ navigation }: NavProp) {
         </View>
         <SettGroup title='More Options' className='mt-5'>
           <SettOption
-            title='Create Account'
+            title='Login instead'
             onPress={() => {
-              navigation.replace('Signup')
+              navigation.replace('Login')
             }}
             arrow
-            Icon={<RoundedIcon Icon={UserAdd02SolidIcon} className='bg-green-500' />}
+            Icon={<RoundedIcon Icon={Login03SolidIcon} className='bg-green-500' />}
           />
           <SettOption
             title='Forgot Password?'

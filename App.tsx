@@ -35,6 +35,8 @@ import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
 import { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
 import Login from '@screens/auth/Login'
+import Signup from '@screens/auth/Signup'
+import Verify, { type VerifyParamList } from '@screens/auth/Verify'
 import Home from '@screens/index'
 import Splash from '@screens/splash/Splash'
 import { QueryClientProvider } from '@tanstack/react-query'
@@ -127,6 +129,8 @@ export type RootStackParamList = {
   ForceUpdate: ForceUpdateParamList
   Splash: undefined
   Login: undefined
+  Signup: undefined
+  Verify: VerifyParamList
   Devices: undefined
   Device: DeviceParamList
 }
@@ -150,7 +154,9 @@ function Navigation() {
         }}
       >
         <Stack.Screen name='Splash' component={Splash} options={NO_ANIMATION} />
-        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
+        <Stack.Screen name='Signup' component={Signup} options={GestureEnabled} />
+        <Stack.Screen name='Verify' component={Verify} options={GestureEnabled} />
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
         {/* <Stack.Screen name='Location' component={Location} /> */}
