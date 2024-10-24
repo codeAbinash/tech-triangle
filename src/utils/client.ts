@@ -8,16 +8,38 @@ import { hc } from 'hono/dist/client/client'
 import { WEB } from './constants'
 
 const address = WEB
+// const address = 'http://192.168.137.40:3000/'
 
-export const client = (hc as typeof hcWithType)(address)
+let client = (hc as typeof hcWithType)(address, {
+  headers() {
+    const { token } = authStore.getState()
+    if (!token)
+      return {
+        Authorization: '',
+      }
+    return {
+      Authorization: `Bearer ${token}`,
+    }
+  },
+})
 
-export function getClient() {
-  const { token } = authStore()
-  if (!token) return client
-  else
-    return (hc as typeof hcWithType)(address, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+// export function getClient() {
+//   const { token } = authStore()
+//   if (!token) return client
+//   else
+//     return (hc as typeof hcWithType)(address, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     })
+// }
+
+export function updateClientHeader(token: string) {
+  client = (hc as typeof hcWithType)(address, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
 }
+
+export { client }

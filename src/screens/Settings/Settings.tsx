@@ -1,3 +1,4 @@
+import authStore from '@/zustand/authStore'
 import { devOptStore } from '@/zustand/devOptStore'
 import {
   BrushSolidIcon,
@@ -11,6 +12,7 @@ import {
   EditTableSolidIcon,
   FolderFileStorageSolidIcon,
   InformationCircleSolidIcon,
+  Logout02SolidIcon,
   PolicySolidIcon,
   ShieldUserSolidIcon,
   SquareLock02SolidIcon,
@@ -32,7 +34,7 @@ import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/s
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { useColorScheme, View } from 'react-native'
+import { Alert, useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
@@ -55,6 +57,7 @@ export default function Settings({ navigation }: NavProp) {
   const [totalSize, setTotalSize] = React.useState(0)
   const [totalCache, setTotalCache] = React.useState(0)
   const dev = devOptStore((state) => state.isEnabled)
+  const { removeToken } = authStore()
 
   const focused = useIsFocused()
 
@@ -70,6 +73,23 @@ export default function Settings({ navigation }: NavProp) {
   function clearCache() {
     clearStorage(Caches)
     setTotalCache(0)
+  }
+
+  function handelLogout() {
+    Alert.alert('Log out', 'Are you sure you want to log out?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Log out',
+        onPress: () => {
+          removeToken()
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }],
+          })
+        },
+        style: 'destructive',
+      },
+    ])
   }
 
   return (
@@ -150,6 +170,12 @@ export default function Settings({ navigation }: NavProp) {
                 Icon={<RoundedIcon Icon={DeviceAccessSolidIcon} />}
                 arrow
                 onPressOut={() => navigation.navigate('Devices')}
+              />
+              <SettOption
+                arrow
+                title='Log Out'
+                Icon={<RoundedIcon Icon={Logout02SolidIcon} className='bg-red-500' />}
+                onPress={handelLogout}
               />
             </SettGroup>
           </Gap12>

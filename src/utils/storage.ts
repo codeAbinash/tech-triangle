@@ -173,11 +173,16 @@ function set(key: StorageKeys, value: string) {
   ls.set(key, value)
 }
 
+function remove(key: StorageKeys) {
+  ls.delete(key)
+}
+
 const S = {
   getParsed,
   getMemoParsed: useMemoParsed,
   get,
   set,
+  remove,
   ls,
 }
 

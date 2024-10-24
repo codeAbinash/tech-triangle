@@ -1,6 +1,7 @@
 import { devOptStore } from '@/zustand/devOptStore'
 import { CodeSolidIcon } from '@assets/icons/icons'
 import { AutoStatusBar } from '@components/StatusBar'
+import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
@@ -36,15 +37,13 @@ import { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
 import Login from '@screens/auth/Login'
 import Home from '@screens/index'
 import Splash from '@screens/splash/Splash'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import { Dimensions, SafeAreaView, TouchableOpacity, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
-
-const queryClient = new QueryClient()
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()

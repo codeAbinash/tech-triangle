@@ -185,10 +185,15 @@ declare const client: {
                     status: boolean;
                     data: {
                         devices: ({
-                            time: number;
-                            device: string;
                             id: string;
+                            time: number;
+                            name: string;
                         } | null)[];
+                        currentDevice: {
+                            id: string;
+                            time: number;
+                            name: string;
+                        } | null;
                     };
                 };
                 outputFormat: "json";

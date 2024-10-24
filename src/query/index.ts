@@ -1,6 +1,6 @@
 import NetInfo from '@react-native-community/netinfo'
 import { useFocusEffect } from '@react-navigation/native'
-import { onlineManager, type NotifyOnChangeProps } from '@tanstack/react-query'
+import { onlineManager, QueryClient, type NotifyOnChangeProps } from '@tanstack/react-query'
 import React from 'react'
 
 // Online Status Manager
@@ -78,3 +78,15 @@ export function useQueryFocusAware() {
 
   return () => focusedRef.current
 }
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {},
+    mutations: {
+      onSuccess: (data) => {
+        console.log(data)
+        console.log('Mutation Success')
+      },
+    },
+  },
+})

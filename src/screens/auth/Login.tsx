@@ -8,7 +8,7 @@ import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { useMutation } from '@tanstack/react-query'
-import { client } from '@utils/client'
+import { client, updateClientHeader } from '@utils/client'
 import { Bold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useState } from 'react'
@@ -41,12 +41,17 @@ export default function Login({ navigation }: NavProp) {
       if (data.data?.token) {
         // Navigate to home screen
         setToken(data.data.token)
+        updateClientHeader(data.data.token)
         navigation.reset({
           index: 0,
           routes: [{ name: 'Home' }],
         })
         return
       }
+    },
+    onError: (error) => {
+      console.log(error)
+      Alert.alert('Error', 'An error occurred')
     },
   })
 
