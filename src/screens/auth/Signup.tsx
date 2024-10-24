@@ -87,7 +87,7 @@ export default function Signup({ navigation }: NavProp) {
           <SettGroup title='Password'>
             <Input
               Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
-              placeholder='Enter your email or username'
+              placeholder='Enter your password'
               value={password}
               onChangeText={setPassword}
             />

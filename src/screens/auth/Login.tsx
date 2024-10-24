@@ -78,7 +78,7 @@ export default function Login({ navigation }: NavProp) {
           <SettGroup title='Password'>
             <Input
               Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
-              placeholder='Enter your password'
+              placeholder='Enter your email or username'
               value={password}
               onChangeText={setPassword}
             />
