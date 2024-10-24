@@ -14,6 +14,7 @@ import Greeting from '@screens/Home/Greeting'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import GlobalSearch from '@screens/Search/GlobalSearch'
+import AllUsers from '@screens/Settings/AppLock/AllUsers'
 import AppLock from '@screens/Settings/AppLock/AppLock'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
 import BlankSettings from '@screens/Settings/BlankSettings'
@@ -133,6 +134,7 @@ export type RootStackParamList = {
   Verify: VerifyParamList
   Devices: undefined
   Device: DeviceParamList
+  AllUsers: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -157,8 +159,9 @@ function Navigation() {
         <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
         <Stack.Screen name='Signup' component={Signup} options={GestureEnabled} />
         <Stack.Screen name='Verify' component={Verify} options={GestureEnabled} />
-        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Home' component={Home} options={NO_ANIMATION} />
         <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
+        <Stack.Screen name='AllUsers' component={AllUsers} options={GestureEnabled} />
         {/* <Stack.Screen name='Location' component={Location} /> */}
         {/* <Stack.Screen name='CompassAnimation' component={CompassAnimation} /> */}
         {/* <Stack.Screen name='ParallaxWallpaper' component={ParallaxWallpaper} /> */}

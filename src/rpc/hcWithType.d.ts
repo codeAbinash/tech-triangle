@@ -284,6 +284,37 @@ declare const client: {
         };
     };
 } & {
+    api: {
+        admin: {
+            users: {
+                all: import("hono/client").ClientRequest<{
+                    $post: {
+                        input: {};
+                        output: {
+                            message: string;
+                            status: boolean;
+                            data: null;
+                        };
+                        outputFormat: "json";
+                        status: import("hono/utils/http-status").StatusCode;
+                    } | {
+                        input: {};
+                        output: {
+                            message: string;
+                            status: boolean;
+                            data: {
+                                name: string;
+                                email: string;
+                            }[];
+                        };
+                        outputFormat: "json";
+                        status: import("hono/utils/http-status").StatusCode;
+                    };
+                }>;
+            };
+        };
+    };
+} & {
     api: import("hono/client").ClientRequest<{
         $get: {
             input: {};

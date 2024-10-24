@@ -180,6 +180,16 @@ export default function Settings({ navigation }: NavProp) {
             </SettGroup>
           </Gap12>
           <Gap12>
+            <SettGroup title='Admin Settings'>
+              <SettOption
+                title='All users'
+                Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
+                arrow
+                onPress={() => navigation.navigate('AllUsers')}
+              />
+            </SettGroup>
+          </Gap12>
+          <Gap12>
             <SettGroup title='Password and Security'>
               <SettOption
                 title='App Lock'

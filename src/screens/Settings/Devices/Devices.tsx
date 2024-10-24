@@ -64,8 +64,8 @@ export default function Devices({ navigation }: NavProp) {
             </>
           )}
         </SettGroup>
-        <SettGroup>
-          {data && data.data && data.data.devices.length > 0 && (
+        {data && data.data && data.data.devices.length > 0 && (
+          <SettGroup>
             <SettOption
               disabled={isRemoving}
               onPress={handelRemove}
@@ -73,8 +73,8 @@ export default function Devices({ navigation }: NavProp) {
               title={isRemoving ? 'Removing...' : 'Remove All Other Devices'}
               Icon={<RoundedIcon Icon={WavingHand02SolidIcon} className='bg-red-500' />}
             />
-          )}
-        </SettGroup>
+          </SettGroup>
+        )}
 
         {data && data.data && data.data.devices.length > 0 && (
           <SettGroup title='Other Devices'>

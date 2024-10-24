@@ -37,7 +37,13 @@ const otp = z
   .max(6, 'OTP must contain at most 6 characters')
   .refine((o) => /^[0-9]*$/.test(o), 'OTP must contain only numbers')
 
-export const loginZodValidator = z.object({ username, password })
+const usernameOrEmail = z
+  .string({ required_error: 'Username or email is required.' })
+  .trim()
+  .min(3, 'Username or email must contain at least 3 characters')
+  .max(255, 'Username or email must contain at most 255 characters')
+
+export const loginZodValidator = z.object({ username: usernameOrEmail, password })
 
 export const signupZodValidator = z.object({ name, username, email, password })
 
