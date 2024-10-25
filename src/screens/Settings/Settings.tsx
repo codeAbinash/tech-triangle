@@ -27,6 +27,8 @@ import Search from '@components/Search'
 import { SettGroup, SettOption, SettText } from '@components/Settings'
 import { TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
+import { useMutation } from '@tanstack/react-query'
+import { client } from '@utils/client'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/data'
 import { Bold } from '@utils/fonts'
@@ -57,7 +59,7 @@ export default function Settings({ navigation }: NavProp) {
   const [totalSize, setTotalSize] = React.useState(0)
   const [totalCache, setTotalCache] = React.useState(0)
   const dev = devOptStore((state) => state.isEnabled)
-  const { removeToken } = authStore()
+
 
   const focused = useIsFocused()
 
@@ -73,23 +75,6 @@ export default function Settings({ navigation }: NavProp) {
   function clearCache() {
     clearStorage(Caches)
     setTotalCache(0)
-  }
-
-  function handelLogout() {
-    Alert.alert('Log out', 'Are you sure you want to log out?', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Log out',
-        onPress: () => {
-          removeToken()
-          navigation.reset({
-            index: 0,
-            routes: [{ name: 'Login' }],
-          })
-        },
-        style: 'destructive',
-      },
-    ])
   }
 
   return (
@@ -175,7 +160,7 @@ export default function Settings({ navigation }: NavProp) {
                 arrow
                 title='Log Out'
                 Icon={<RoundedIcon Icon={Logout02SolidIcon} className='bg-red-500' />}
-                onPress={handelLogout}
+                onPress={() => navigation.navigate('Logout')}
               />
             </SettGroup>
           </Gap12>

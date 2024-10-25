@@ -285,6 +285,24 @@ declare const client: {
     };
 } & {
     api: {
+        devices: {
+            delete: {
+                all: import("hono/client").ClientRequest<{
+                    $post: {
+                        input: {};
+                        output: {
+                            status: boolean;
+                            message: string;
+                        };
+                        outputFormat: "json";
+                        status: import("hono/utils/http-status").StatusCode;
+                    };
+                }>;
+            };
+        };
+    };
+} & {
+    api: {
         admin: {
             users: {
                 all: import("hono/client").ClientRequest<{
@@ -313,6 +331,20 @@ declare const client: {
                 }>;
             };
         };
+    };
+} & {
+    api: {
+        logout: import("hono/client").ClientRequest<{
+            $post: {
+                input: {};
+                output: {
+                    message: string;
+                    status: boolean;
+                };
+                outputFormat: "json";
+                status: import("hono/utils/http-status").StatusCode;
+            };
+        }>;
     };
 } & {
     api: import("hono/client").ClientRequest<{

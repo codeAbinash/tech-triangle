@@ -46,9 +46,7 @@ export default function Devices({ navigation }: NavProp) {
           You can manage your devices here. You can remove unwanted devices from the list.
         </SettText>
         <SettGroup title='This Device'>
-          {isPending && (
-            <ActivityIndicator size='large' color={Colors.accent} style={{ marginTop: 30, marginBottom: 30 }} />
-          )}
+          {isPending && <ActivityIndicator size='large' color={Colors.accent} className='mb-10 mt-5' />}
           {data && data.data && (
             <>
               <SettOption

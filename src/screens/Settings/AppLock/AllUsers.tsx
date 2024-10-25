@@ -46,7 +46,7 @@ export default function AllUsers({ navigation }: NavProp) {
       <Gap12>
         <SettText className='mt-3'>You can see all users here. Also you can add or remove users.</SettText>
         <SettGroup title='All users'>
-          {isPending && <ActivityIndicator color={Colors.accent} size='large' />}
+          {isPending && <ActivityIndicator color={Colors.accent} size='large' className='mb-10 mt-5' />}
           {data?.data?.map((user) => (
             <SettOption title={user.name} key={user.email} Icon={<RoundedIcon Icon={UserSolidIcon} />} arrow>
               <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
