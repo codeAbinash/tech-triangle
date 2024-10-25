@@ -42,7 +42,7 @@ export default function Logout({ navigation }: NavProp) {
       <View className='w-full flex-1 items-center justify-between pt-2'>
         <View></View>
         <LogoutIcon height={W * 0.85} width={W * 0.85} />
-        <View className='w-full gap-y-2'>
+        <View className='w-full gap-y-2 px-2.5 pb-2.5'>
           <SettText className='mb-5 text-center'>
             Are you sure you want to log out? To remove all logged in sessions, log out from all devices. You will need
             to log in again to use the app. Are you sure you want to log out?
