@@ -60,7 +60,6 @@ export default function Settings({ navigation }: NavProp) {
   const [totalCache, setTotalCache] = React.useState(0)
   const dev = devOptStore((state) => state.isEnabled)
 
-
   const focused = useIsFocused()
 
   useEffect(() => {
