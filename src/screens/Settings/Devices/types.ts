@@ -5,4 +5,5 @@ export type Device = {
   time: number
   name: string | NU
   os: string | NU
+  isSelf?: boolean
 } | null

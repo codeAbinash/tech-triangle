@@ -26,8 +26,8 @@ export function getDeviceIcon(os: string | NU, name: string | NU) {
   else if (name?.includes('Opera')) return <RoundedIcon Icon={OperaIcon} className='bg-rose-600' />
   else if (name?.includes('Firefox')) return <RoundedIcon Icon={FirefoxIcon} className='bg-orange-500' />
   else if (name?.includes('Safari')) return <RoundedIcon Icon={SafariIcon} className='bg-blue-500' />
-  else if (os?.startsWith('Windows')) return <RoundedIcon Icon={WindowsOldSolidIcon} className='bg-blue-500' />
-  else if (os?.startsWith('Linux')) return <RoundedIcon Icon={LinuxIcon} className='bg-black' />
+  else if (os?.includes('Windows')) return <RoundedIcon Icon={WindowsOldSolidIcon} className='bg-blue-500' />
+  else if (os?.includes('Linux')) return <RoundedIcon Icon={LinuxIcon} className='bg-black' />
   else return <RoundedIcon Icon={DeviceAccessSolidIcon} className='bg-rose-500' />
 }
 

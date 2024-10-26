@@ -10,6 +10,8 @@ import React, { useEffect, useMemo } from 'react'
 import { Alert, ToastAndroid, View } from 'react-native'
 import type { Device } from './types'
 import { getDate, getDeviceIcon, getOSIcon } from './utils'
+import { getRelativeTime } from '@utils/timeFormat'
+import { Medium, F } from '@utils/fonts'
 
 type ParamList = {
   Device: DeviceParamList
@@ -21,12 +23,18 @@ export type DeviceParamList = {
 
 export default function Device({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'Device'> }) {
   const device = route.params.device
+
+  useEffect(() => {
+    console.log(route.params.device?.isSelf)
+  }, [route.params.device?.isSelf])
+
   // const client = getClient()
   const { mutate, isPending, data } = useMutation({
     mutationKey: ['removeDevice', device?.id],
     mutationFn: async () =>
       await (await client.api.devices.delete.$post({ form: { device: device?.id || '' } })).json(),
   })
+  const relativeTime = useMemo(() => getRelativeTime(device?.time), [device?.time])
 
   const DeviceIcon = useMemo(() => getDeviceIcon(device?.os, device?.name), [device?.os, device?.name])
   const OsIcon = useMemo(() => getOSIcon(device?.os), [device?.os])
@@ -49,6 +57,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
   }, [data])
 
   function handelRemove() {
+    if (route.params.device?.isSelf) return navigation.navigate('Logout')
     Alert.alert('Remove Device', 'Are you sure you want to remove this device?', [
       { text: 'Cancel', style: 'cancel' },
       { text: 'Remove', onPress: () => mutate(), style: 'destructive' },
@@ -64,10 +73,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
       </View> */}
       <SettWrapper title={device?.name || 'Unknown Device'} navigation={navigation}>
         <Gap gap={15}>
-          <SettText className='mt-3'>
-            If you see a device that you don't recognize, you can remove it from the list. Just click on the 'Remove
-            Device' button.
-          </SettText>
+          <SettText className='mt-3'>If you cannot identify this device, you can remove it from the list.</SettText>
           <SettGroup title='Device' className='pb-4'>
             <SettOption title={device?.name || 'Unknown'} Icon={DeviceIcon}></SettOption>
           </SettGroup>
@@ -75,7 +81,11 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
             <SettOption title={device?.os || 'Unknown'} Icon={OsIcon}></SettOption>
           </SettGroup>
           <SettGroup title='Logged In'>
-            <SettOption title={getDate(device?.time)}></SettOption>
+            <SettOption title={relativeTime}>
+              <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
+                {getDate(device?.time)}
+              </Medium>
+            </SettOption>
           </SettGroup>
           <SettGroup title='Device ID'>
             <SettOption title={device?.id || 'Unknown'}></SettOption>
@@ -84,7 +94,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
             Removing a device will log you out from the device. You will need to log in again to use the app on that
             device.
           </SettText>
-          <View className='px-5'>
+          <View className='px-6'>
             <Btn
               title={isPending ? 'Removing Device...' : 'Remove Device'}
               onPress={handelRemove}

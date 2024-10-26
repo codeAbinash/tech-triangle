@@ -273,7 +273,7 @@ function AdminSettings({ navigation }: NavProp) {
 
   return (
     <Gap12>
-      <SettGroup title='Admin Settings'>
+      <SettGroup title='Admin Settings' className='pb-3.5'>
         <SettOption
           title='All users'
           Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}

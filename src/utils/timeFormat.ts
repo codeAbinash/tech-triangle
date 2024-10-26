@@ -1,4 +1,4 @@
-const f = new Intl.RelativeTimeFormat('en-us', { numeric: 'auto', style: 'long' })
+// const f = new Intl.RelativeTimeFormat('en-us', { numeric: 'auto', style: 'long' })
 
 const MIN = 60
 const HOUR = MIN * 60
@@ -15,14 +15,31 @@ const units: { unit: Intl.RelativeTimeFormatUnit; value: number }[] = [
   { unit: 'second', value: 1 },
 ]
 
+// export function getRelativeTime(date1: number | undefined, date2: number = new Date().getTime()) {
+//   if (!date1) return 'Unknown Time'
+//   const diffInSeconds = (date1 - date2) / 1000
+//   for (const { unit, value } of units) {
+//     const relativeValue = diffInSeconds / value
+//     if (Math.abs(relativeValue) >= 1) {
+//       return f.format(Math.round(relativeValue), unit)
+//     }
+//   }
+//   return f.format(0, 'second')
+// }
+
 export function getRelativeTime(date1: number | undefined, date2: number = new Date().getTime()) {
   if (!date1) return 'Unknown Time'
   const diffInSeconds = (date1 - date2) / 1000
   for (const { unit, value } of units) {
     const relativeValue = diffInSeconds / value
     if (Math.abs(relativeValue) >= 1) {
-      return f.format(Math.round(relativeValue), unit)
+      const roundedValue = Math.round(relativeValue)
+      if (relativeValue > 0) {
+        return `in ${roundedValue} ${unit}${roundedValue > 1 ? 's' : ''}`
+      } else {
+        return `${Math.abs(roundedValue)} ${unit}${Math.abs(roundedValue) > 1 ? 's' : ''} ago`
+      }
     }
   }
-  return f.format(0, 'second')
+  return 'just now'
 }
