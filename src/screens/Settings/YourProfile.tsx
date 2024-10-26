@@ -1,4 +1,4 @@
-import { profileStore } from '@/zustand/profileStore'
+import { profileStore } from '@/zustand/profileStore-x'
 import {
   BabyBoyDressSolidIcon,
   BabyGirlDressSolidIcon,

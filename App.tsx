@@ -78,6 +78,13 @@ const NO_ANIMATION: StackNavigationOptions = {
   cardStyleInterpolator: CardStyleInterpolators.forNoAnimation,
 }
 
+const SMOOTH_ANIMATION: StackNavigationOptions = {
+  cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+  gestureEnabled: true,
+  gestureDirection: 'horizontal',
+  gestureResponseDistance: height,
+}
+
 export type RootStackParamList = {
   Home: undefined
   Location: undefined
@@ -158,7 +165,7 @@ function Navigation() {
         }}
       >
         <Stack.Screen name='Splash' component={Splash} options={NO_ANIMATION} />
-        <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
+        <Stack.Screen name='Login' component={Login} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Signup' component={Signup} options={GestureEnabled} />
         <Stack.Screen name='Verify' component={Verify} options={GestureEnabled} />
         <Stack.Screen name='Home' component={Home} options={NO_ANIMATION} />

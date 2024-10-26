@@ -6,20 +6,17 @@ import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import type { StackNav } from '@utils/types'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Alert, ToastAndroid, View } from 'react-native'
-import { getDate } from './utils'
+import type { Device } from './types'
+import { getDate, getDeviceIcon, getOSIcon } from './utils'
 
 type ParamList = {
   Device: DeviceParamList
 }
 
 export type DeviceParamList = {
-  device: {
-    time: number
-    name: string
-    id: string
-  } | null
+  device: Device
 }
 
 export default function Device({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'Device'> }) {
@@ -31,10 +28,8 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
       await (await client.api.devices.delete.$post({ form: { device: device?.id || '' } })).json(),
   })
 
-  // const { mutate: mutateDeviceList } = useMutation({
-  //   mutationKey: ['devices'],
-  //   mutationFn: async () => await (await client.api.devices.$get()).json(),
-  // })
+  const DeviceIcon = useMemo(() => getDeviceIcon(device?.os, device?.name), [device?.os, device?.name])
+  const OsIcon = useMemo(() => getOSIcon(device?.os), [device?.os])
 
   async function onSuccess() {
     if (data) {
@@ -73,8 +68,11 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
             If you see a device that you don't recognize, you can remove it from the list. Just click on the 'Remove
             Device' button.
           </SettText>
-          <SettGroup title='Device'>
-            <SettOption title={device?.name || 'Unknown'}></SettOption>
+          <SettGroup title='Device' className='pb-4'>
+            <SettOption title={device?.name || 'Unknown'} Icon={DeviceIcon}></SettOption>
+          </SettGroup>
+          <SettGroup title='Operating System' className='pb-4'>
+            <SettOption title={device?.os || 'Unknown'} Icon={OsIcon}></SettOption>
           </SettGroup>
           <SettGroup title='Logged In'>
             <SettOption title={getDate(device?.time)}></SettOption>

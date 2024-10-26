@@ -104,6 +104,13 @@ export const CoordinateNotesStorage = {
   },
 }
 
+export const UserStorage = {
+  startWith: {},
+  keys: {
+    User: 'User',
+  },
+}
+
 const UserProfileStorage = {
   startWith: {},
   keys: {
@@ -138,6 +145,7 @@ type DeveloperStorage = Store<typeof DeveloperStorage>
 type CoordinateNotesStorage = Store<typeof CoordinateNotesStorage>
 type UserProfileStorage = Store<typeof UserProfileStorage>
 type AppLockStorage = Store<typeof AppLockStorage>
+type UserStorage = Store<typeof UserStorage>
 type misc = 'token'
 export type StorageKeys =
   | WeatherStorage
@@ -145,6 +153,7 @@ export type StorageKeys =
   | CoordinateNotesStorage
   | UserProfileStorage
   | AppLockStorage
+  | UserStorage
   | misc
 
 /**

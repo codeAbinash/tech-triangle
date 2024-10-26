@@ -1,4 +1,4 @@
-import { profileStore } from '@/zustand/profileStore'
+import { profileStore } from '@/zustand/profileStore-x'
 import { Gap12 } from '@components/Gap'
 import { SettText, SettWrapper } from '@components/Settings'
 import { Medium } from '@utils/fonts'

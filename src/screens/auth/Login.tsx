@@ -11,20 +11,42 @@ import { useMutation } from '@tanstack/react-query'
 import { client, updateClientHeader } from '@utils/client'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { useState } from 'react'
-import { Alert, View } from 'react-native'
+import React, { useEffect, useMemo, useState } from 'react'
+import { Alert, Platform, View } from 'react-native'
+import DeviceInfo from 'react-native-device-info'
 import { PasswordEye } from './components/PasswordEye'
 
+function getOs() {
+  const os = Platform.OS.split('')
+  if (os[0]) {
+    const firstLetter = os[0].toUpperCase()
+    os[0] = firstLetter
+  }
+  return os.join('') + ' ' + DeviceInfo.getSystemVersion()
+  //  + ', Tech Triangle v' + APP_VERSION
+}
+
 export default function Login({ navigation }: NavProp) {
+  const { setToken } = authStore()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isVisible, setIsVisible] = useState(false)
+  const deviceOs = useMemo(() => getOs(), [])
+  const deviceName = useMemo(() => DeviceInfo.getModel(), [])
 
-  const { setToken } = authStore()
+  useEffect(() => {
+    console.log(deviceName)
+    console.log(deviceOs)
+  })
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
-    mutationFn: async () => await (await client.api.auth.login.$post({ form: { password, username } })).json(),
+    mutationFn: async () =>
+      await (
+        await client.api.auth.login.$post({
+          form: { password, username, deviceName, deviceOs },
+        })
+      ).json(),
     onSuccess: (data) => {
       console.log(data)
 
@@ -50,7 +72,7 @@ export default function Login({ navigation }: NavProp) {
   })
 
   function handelSubmit() {
-    const { error } = loginZodValidator.safeParse({ username, password })
+    const { error } = loginZodValidator.safeParse({ username, password, deviceName, deviceOs })
     if (error) {
       Alert.alert('Error', error.errors[0]?.message || '')
       return

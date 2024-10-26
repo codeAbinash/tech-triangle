@@ -36,6 +36,8 @@ declare const client: {
                         form: {
                             username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            deviceName: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            deviceOs: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                         };
                     };
                     output: {
@@ -51,6 +53,8 @@ declare const client: {
                         form: {
                             username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            deviceName: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            deviceOs: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                         };
                     };
                     output: {
@@ -214,8 +218,15 @@ declare const client: {
         profile: import("hono/client").ClientRequest<{
             $get: {
                 input: {};
-                output: {};
-                outputFormat: string;
+                output: {
+                    status: boolean;
+                    data: {
+                        name: string;
+                        email: string;
+                        isAdmin: boolean;
+                    };
+                };
+                outputFormat: "json";
                 status: import("hono/utils/http-status").StatusCode;
             };
         }>;
@@ -231,12 +242,14 @@ declare const client: {
                         devices: ({
                             id: string;
                             time: number;
-                            name: string;
+                            name: string | null | undefined;
+                            os: string | null | undefined;
                         } | null)[];
                         currentDevice: {
                             id: string;
                             time: number;
-                            name: string;
+                            name: string | null | undefined;
+                            os: string | null | undefined;
                         } | null;
                     };
                 };

@@ -1,5 +1,5 @@
-import authStore from '@/zustand/authStore'
 import { devOptStore } from '@/zustand/devOptStore'
+import profileStore from '@/zustand/profileStore'
 import {
   BrushSolidIcon,
   BubbleChatSolidIcon,
@@ -27,8 +27,6 @@ import Search from '@components/Search'
 import { SettGroup, SettOption, SettText } from '@components/Settings'
 import { TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
-import { useMutation } from '@tanstack/react-query'
-import { client } from '@utils/client'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/data'
 import { Bold } from '@utils/fonts'
@@ -36,7 +34,7 @@ import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/s
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { Alert, useColorScheme, View } from 'react-native'
+import { useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
@@ -59,6 +57,7 @@ export default function Settings({ navigation }: NavProp) {
   const [totalSize, setTotalSize] = React.useState(0)
   const [totalCache, setTotalCache] = React.useState(0)
   const dev = devOptStore((state) => state.isEnabled)
+  const user = profileStore((state) => state.user)
 
   const focused = useIsFocused()
 
@@ -90,7 +89,8 @@ export default function Settings({ navigation }: NavProp) {
         <Gap20>
           <Gap12>
             <SettText className='mt-3'>
-              Go to each section to customize your experience. All settings are saved automatically.
+              Hello {user?.name.split(' ')[0]}, Go to each section to customize your experience. All settings are saved
+              automatically.
             </SettText>
             <SettGroup title='General'>
               {/* <SettOption
@@ -147,6 +147,7 @@ export default function Settings({ navigation }: NavProp) {
               />
             </SettGroup>
           </Gap12>
+          <AdminSettings navigation={navigation} />
           <Gap12>
             <SettGroup title='Devices'>
               <SettOption
@@ -160,16 +161,6 @@ export default function Settings({ navigation }: NavProp) {
                 title='Log Out'
                 Icon={<RoundedIcon Icon={Logout02SolidIcon} className='bg-red-500' />}
                 onPress={() => navigation.navigate('Logout')}
-              />
-            </SettGroup>
-          </Gap12>
-          <Gap12>
-            <SettGroup title='Admin Settings'>
-              <SettOption
-                title='All users'
-                Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
-                arrow
-                onPress={() => navigation.navigate('AllUsers')}
               />
             </SettGroup>
           </Gap12>
@@ -272,5 +263,24 @@ export default function Settings({ navigation }: NavProp) {
         <PaddingBottom />
       </ScrollView>
     </View>
+  )
+}
+
+function AdminSettings({ navigation }: NavProp) {
+  const user = profileStore((state) => state.user)
+
+  if (!user?.isAdmin) return null
+
+  return (
+    <Gap12>
+      <SettGroup title='Admin Settings'>
+        <SettOption
+          title='All users'
+          Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
+          arrow
+          onPress={() => navigation.navigate('AllUsers')}
+        />
+      </SettGroup>
+    </Gap12>
   )
 }

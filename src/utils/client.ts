@@ -7,8 +7,8 @@ import hcWithType from '../rpc/hcWithType'
 import { hc } from 'hono/dist/client/client'
 import { WEB } from './constants'
 
-const address = WEB
-// const address = 'http://192.168.137.40:3000/'
+// const address = WEB
+const address = __DEV__ ? 'http://192.168.111.94:3000/' : WEB
 
 let client = (hc as typeof hcWithType)(address, {
   headers() {

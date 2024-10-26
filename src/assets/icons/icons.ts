@@ -124,3 +124,7 @@ export { default as MailSend02SolidIcon } from '@icons/mail-send-02-solid-rounde
 export { default as Login03SolidIcon } from '@icons/login-03-solid-rounded.svg'
 export { default as Cancel01SolidIcon } from '@icons/cancel-01-solid-rounded.svg'
 export { default as Tick01SolidIcon } from '@icons/tick-01-solid-rounded.svg'
+
+export { default as WindowsOldSolidIcon } from '@icons/windows-old-solid-rounded.svg'
+export { default as AppleSolidIcon } from '@icons/apple-solid-rounded.svg'
+export { default as ChromeSolidIcon } from '@icons/chrome-solid-rounded.svg'

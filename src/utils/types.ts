@@ -29,3 +29,5 @@ export type WeatherIconsKeys =
   | '13n'
   | '50d'
   | '50n'
+
+export type NU = null | undefined

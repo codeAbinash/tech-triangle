@@ -1,11 +1,13 @@
+import profileStore from '@/zustand/profileStore'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import TopArea from '@components/TopArea'
 import { useNavigation } from '@react-navigation/native'
-import WeatherWidget from '@screens/Weather/Widget/WeatherWidget'
+import { useMutation } from '@tanstack/react-query'
+import { client } from '@utils/client'
 import { Medium, PoppinsSemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styles, { hw as height_weight } from './style'
@@ -22,6 +24,22 @@ export default function HomeScreen({ navigation }: { navigation: StackNav }) {
   //     })
   //   }, 1000)
   // }, [navigation])
+
+  const setUser = profileStore((state) => state.setUser)
+
+  const { mutate } = useMutation({
+    mutationKey: ['user'],
+    mutationFn: async () => await (await client.api.profile.$get()).json(),
+    onSuccess: (data) => {
+      if (!data || !data.status) return
+      setUser(data.data)
+    },
+  })
+
+  useEffect(() => {
+    mutate()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
