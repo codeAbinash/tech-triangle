@@ -24,6 +24,13 @@ import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Alert, ToastAndroid, View } from 'react-native'
 import { PasswordEye } from './components/PasswordEye'
 
+type SignupParams = {
+  name: string
+  username: string
+  email: string
+  password: string
+}
+
 enum NameStatus {
   Available,
   Checking,
@@ -40,8 +47,7 @@ export default function Signup({ navigation }: NavProp) {
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
-    mutationFn: async () =>
-      await (await client.api.auth.signup.$post({ form: { password, username, email, name } })).json(),
+    mutationFn: async (data: SignupParams) => await (await client.api.auth.signup.$post({ form: { ...data } })).json(),
     onSuccess: (data) => {
       console.log(data)
       if (!data.status) return Alert.alert('Error', data.message)
@@ -80,16 +86,16 @@ export default function Signup({ navigation }: NavProp) {
       checkUsername({ u: data.username })
     }, 500)
     return () => clearTimeout(timer)
-  }, [checkUsername, email, username])
+  }, [checkUsername, username])
 
   function handelSubmit() {
-    const { error } = signupZodValidator.safeParse({ username, password, email, name })
+    const { error, data } = signupZodValidator.safeParse({ username, password, email, name })
     console.log(error)
     if (error) {
       Alert.alert('Error', error.errors[0]?.message || '')
       return
     }
-    mutate()
+    mutate(data)
   }
 
   return (
@@ -161,7 +167,7 @@ export default function Signup({ navigation }: NavProp) {
           />
           <SettOption
             title='Forgot Password?'
-            onPress={() => {}}
+            onPress={() => ToastAndroid.show('Relax and try to remember your password.', ToastAndroid.SHORT)}
             arrow
             Icon={<RoundedIcon Icon={HelpCircleSolidIcon} className='bg-rose-500' />}
           />

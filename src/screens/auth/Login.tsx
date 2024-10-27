@@ -11,8 +11,8 @@ import { useMutation } from '@tanstack/react-query'
 import { client, updateClientHeader } from '@utils/client'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { useEffect, useMemo, useState } from 'react'
-import { Alert, Platform, View } from 'react-native'
+import React, { useMemo, useState } from 'react'
+import { Alert, Platform, ToastAndroid, View } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 import { PasswordEye } from './components/PasswordEye'
 
@@ -26,6 +26,13 @@ function getOs() {
   //  + ', Tech Triangle v' + APP_VERSION
 }
 
+type LoginParams = {
+  username: string
+  password: string
+  deviceName: string
+  deviceOs: string
+}
+
 export default function Login({ navigation }: NavProp) {
   const { setToken } = authStore()
   const [username, setUsername] = useState('')
@@ -34,34 +41,17 @@ export default function Login({ navigation }: NavProp) {
   const deviceOs = useMemo(() => getOs(), [])
   const deviceName = useMemo(() => DeviceInfo.getModel(), [])
 
-  useEffect(() => {
-    console.log(deviceName)
-    console.log(deviceOs)
-  })
-
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
-    mutationFn: async () =>
-      await (
-        await client.api.auth.login.$post({
-          form: { password, username, deviceName, deviceOs },
-        })
-      ).json(),
+    mutationFn: async (data: LoginParams) => await (await client.api.auth.login.$post({ form: { ...data } })).json(),
     onSuccess: (data) => {
-      console.log(data)
-
       if (data.verificationRequired) return navigation.replace('Verify', { username })
-
       if (!data.status) return Alert.alert('Error', data.message)
-
       if (data.data?.token) {
         // Navigate to home screen
         setToken(data.data.token)
         updateClientHeader(data.data.token)
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'Home' }],
-        })
+        navigation.reset({ index: 0, routes: [{ name: 'Home' }] })
         return
       }
     },
@@ -72,12 +62,12 @@ export default function Login({ navigation }: NavProp) {
   })
 
   function handelSubmit() {
-    const { error } = loginZodValidator.safeParse({ username, password, deviceName, deviceOs })
+    const { error, data } = loginZodValidator.safeParse({ username, password, deviceName, deviceOs })
     if (error) {
       Alert.alert('Error', error.errors[0]?.message || '')
       return
     }
-    mutate()
+    mutate(data)
   }
 
   return (
@@ -135,7 +125,7 @@ export default function Login({ navigation }: NavProp) {
           />
           <SettOption
             title='Forgot Password?'
-            onPress={() => {}}
+            onPress={() => ToastAndroid.show('Relax and try to remember your password.', ToastAndroid.SHORT)}
             arrow
             Icon={<RoundedIcon Icon={HelpCircleSolidIcon} className='bg-rose-500' />}
           />

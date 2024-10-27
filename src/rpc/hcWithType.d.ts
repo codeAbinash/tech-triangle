@@ -34,8 +34,8 @@ declare const client: {
                 $post: {
                     input: {
                         form: {
-                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             deviceName: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             deviceOs: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                         };
@@ -51,8 +51,8 @@ declare const client: {
                 } | {
                     input: {
                         form: {
-                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             deviceName: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             deviceOs: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                         };
@@ -78,10 +78,10 @@ declare const client: {
                 $post: {
                     input: {
                         form: {
+                            password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             name: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                             email: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
                         };
                     };
                     output: {
@@ -151,67 +151,6 @@ declare const client: {
                 status: import("hono/utils/http-status").StatusCode;
             };
         }>;
-    };
-} & {
-    api: {
-        redis: import("hono/client").ClientRequest<{
-            $get: {
-                input: {};
-                output: {
-                    message: string;
-                    status: boolean;
-                };
-                outputFormat: "json";
-                status: import("hono/utils/http-status").StatusCode;
-            };
-        }>;
-    };
-} & {
-    api: {
-        redis: {
-            ":key": import("hono/client").ClientRequest<{
-                $get: {
-                    input: {
-                        param: {
-                            key: string;
-                        };
-                    };
-                    output: {
-                        message: string;
-                        data: any;
-                    };
-                    outputFormat: "json";
-                    status: import("hono/utils/http-status").StatusCode;
-                };
-            }>;
-        };
-    };
-} & {
-    api: {
-        redis: {
-            ":key": {
-                ":value": import("hono/client").ClientRequest<{
-                    $get: {
-                        input: {
-                            param: {
-                                key: string;
-                            } & {
-                                value: string;
-                            };
-                        };
-                        output: {
-                            message: string;
-                            data: {
-                                key: string;
-                                value: string;
-                            };
-                        };
-                        outputFormat: "json";
-                        status: import("hono/utils/http-status").StatusCode;
-                    };
-                }>;
-            };
-        };
     };
 } & {
     api: {
