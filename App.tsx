@@ -168,7 +168,7 @@ function Navigation() {
         <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
         <Stack.Screen name='Signup' component={Signup} options={GestureEnabled} />
         <Stack.Screen name='Verify' component={Verify} options={GestureEnabled} />
-        <Stack.Screen name='Home' component={Home} options={NO_ANIMATION} />
+        <Stack.Screen name='Home' component={Home} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
         <Stack.Screen name='AllUsers' component={AllUsers} options={GestureEnabled} />
         <Stack.Screen name='Logout' component={Logout} options={IOS_BOTTOM_STYLE} />
