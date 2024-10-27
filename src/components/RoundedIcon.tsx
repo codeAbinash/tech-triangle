@@ -25,3 +25,11 @@ export default function RoundedIcon({ Icon, style, iconProps, ...props }: Rounde
     </View>
   )
 }
+
+export function RoundedIconSkeleton() {
+  return (
+    <View style={[{ borderRadius: 10, padding: 7 }]} className='bg-zinc-200 dark:bg-zinc-800'>
+      <View style={{ height: 18, width: 18 }} />
+    </View>
+  )
+}

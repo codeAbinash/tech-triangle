@@ -2,6 +2,7 @@ import { ls } from '@utils/storage'
 import { Alert, Share } from 'react-native'
 import { SCREEN_TRANSITION } from './constants'
 import type { DistanceUnit, TemperatureUnit, TimeFormat } from '@/zustand/weatherStore'
+import { FadeIn } from 'react-native-reanimated'
 
 export async function shareText(message: string) {
   try {
@@ -226,4 +227,12 @@ export function getDay(dt: number) {
   return date.toLocaleDateString('en-US', {
     weekday: 'short',
   })
+}
+
+export function delayedFadeAnimationSearch(search: string, i: number) {
+  return FadeIn.duration(250).delay(search.trim().length === 0 ? Math.min((i + 1) * 25, 500) : 20)
+}
+
+export function delayedFadeAnimation(i: number) {
+  return FadeIn.duration(250).delay(Math.min((i + 1) * 25, 500))
 }

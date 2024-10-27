@@ -8,7 +8,7 @@ type AuthStore = {
 }
 
 const authStore = create<AuthStore>((set) => ({
-  token: S.get('token'),
+  token: secureLs.getString('token'),
   setToken: (token) => {
     set({ token })
     secureLs.set('token', token)

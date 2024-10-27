@@ -5,14 +5,15 @@ import { Gap12 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import Search from '@components/Search'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import SingleSkeleton from '@components/SingleSkeleton'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls, secureLs, type StorageKeys } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { screenDelay } from '@utils/utils'
+import { delayedFadeAnimationSearch, screenDelay } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { ActivityIndicator, View } from 'react-native'
-import Animated, { FadeIn } from 'react-native-reanimated'
+import { View } from 'react-native'
+import Animated from 'react-native-reanimated'
 
 export default function MMKVDataList({ navigation }: NavProp) {
   const state = useIsFocused()
@@ -21,7 +22,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
   const [searchResults, setSearchResults] = React.useState<string[]>([])
 
   useEffect(() => {
-    if (state) screenDelay(() => setInitStorage([...ls.getAllKeys(), ...secureLs.getAllKeys()]))
+    if (state) screenDelay(() => setInitStorage([...ls.getAllKeys(), ...secureLs.getAllKeys()]), 700)
     // setInitStorage([])
   }, [state])
 
@@ -61,7 +62,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
 
           <SettGroup title='Stored keys' className='pb-4'>
             {searchResults?.map((item, i) => (
-              <Animated.View key={item} entering={delayedFadeAnimation(search, i)}>
+              <Animated.View key={item} entering={delayedFadeAnimationSearch(search, i)}>
                 <SettOption
                   title={item}
                   arrow
@@ -81,9 +82,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
                 />
               </>
             )}
-            {initStorage === null && (
-              <ActivityIndicator size='large' color={Colors.accent} style={{ marginTop: 30, marginBottom: 30 }} />
-            )}
+            {initStorage === null && <SingleSkeleton n={18} />}
             {searchResults.length === 0 && (
               <SettText className='mt-2 pl-6'>No data found. Try searching with another keyword.</SettText>
             )}
@@ -103,8 +102,4 @@ export default function MMKVDataList({ navigation }: NavProp) {
       />
     </>
   )
-}
-
-function delayedFadeAnimation(search: string, i: number) {
-  return FadeIn.duration(250).delay(search.trim().length === 0 ? Math.min((i + 1) * 25, 500) : 20)
 }

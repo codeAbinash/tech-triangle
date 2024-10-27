@@ -1,15 +1,17 @@
 import { WavingHand02SolidIcon } from '@assets/icons/icons'
+import DoubleSkeleton from '@components/DoubleSkeleton'
 import { Gap12 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { client } from '@utils/client'
-import { Colors } from '@utils/colors'
 import { F, Medium } from '@utils/fonts'
 import { getRelativeTime } from '@utils/timeFormat'
 import type { NavProp, StackNav } from '@utils/types'
+import { delayedFadeAnimation } from '@utils/utils'
 import React, { useEffect, useMemo } from 'react'
-import { ActivityIndicator, Alert, ToastAndroid } from 'react-native'
+import { Alert, ToastAndroid } from 'react-native'
+import Animated from 'react-native-reanimated'
 import type { Device } from './types'
 import { getDeviceIcon } from './utils'
 
@@ -46,7 +48,7 @@ export default function Devices({ navigation }: NavProp) {
       <Gap12>
         <SettText className='mt-3'>You can remove unwanted devices from the list.</SettText>
         <SettGroup title='This Device'>
-          {isPending && <ActivityIndicator size='large' color={Colors.accent} className='mb-10 mt-5' />}
+          {isPending && <DoubleSkeleton n={1} />}
           {data && data.data && <Device navigation={navigation} device={data.data.currentDevice} isSelf={true} />}
         </SettGroup>
         {data && data.data && data.data.devices.length > 0 && (
@@ -61,13 +63,18 @@ export default function Devices({ navigation }: NavProp) {
           </SettGroup>
         )}
 
-        {data && data.data && data.data.devices.length > 0 && (
-          <SettGroup title='Other Devices'>
-            {data.data.devices.map((device, i) => (
-              <Device key={i} navigation={navigation} device={device} isSelf />
-            ))}
-          </SettGroup>
-        )}
+        <SettGroup title='Other Devices'>
+          {isPending && <DoubleSkeleton n={10} />}
+          {data && data.data && data.data.devices.length > 0 && (
+            <>
+              {data.data.devices.map((device, i) => (
+                <Animated.View key={device?.id} entering={delayedFadeAnimation(i)}>
+                  <Device key={i} navigation={navigation} device={device} isSelf />
+                </Animated.View>
+              ))}
+            </>
+          )}
+        </SettGroup>
         <SettText className='mt-2'>
           Click on a device to view more details. You can remove a device by clicking on the remove button.
         </SettText>

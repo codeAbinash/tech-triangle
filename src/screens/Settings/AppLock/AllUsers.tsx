@@ -1,16 +1,18 @@
 import { UserSolidIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
+import DoubleSkeleton from '@components/DoubleSkeleton'
 import { Gap12 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import Search from '@components/Search'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { useQuery } from '@tanstack/react-query'
 import { client } from '@utils/client'
-import { Colors } from '@utils/colors'
 import { F, Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
+import { delayedFadeAnimation } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { ActivityIndicator, ToastAndroid, View } from 'react-native'
+import { ToastAndroid, View } from 'react-native'
+import Animated from 'react-native-reanimated'
 
 export default function AllUsers({ navigation }: NavProp) {
   const [search, setSearch] = React.useState('')
@@ -46,13 +48,15 @@ export default function AllUsers({ navigation }: NavProp) {
       <Gap12>
         <SettText className='mt-3'>You can see all users here. Also you can add or remove users.</SettText>
         <SettGroup title='All users'>
-          {isPending && <ActivityIndicator color={Colors.accent} size='large' className='mb-10 mt-5' />}
-          {data?.data?.map((user) => (
-            <SettOption title={user.name} key={user.email} Icon={<RoundedIcon Icon={UserSolidIcon} />} arrow>
-              <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
-                {user.email}
-              </Medium>
-            </SettOption>
+          {isPending && <DoubleSkeleton n={12} />}
+          {data?.data?.map((user, i) => (
+            <Animated.View key={user.email} entering={delayedFadeAnimation(i)}>
+              <SettOption title={user.name} Icon={<RoundedIcon Icon={UserSolidIcon} />} arrow>
+                <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
+                  {user.email}
+                </Medium>
+              </SettOption>
+            </Animated.View>
           ))}
         </SettGroup>
       </Gap12>

@@ -10,7 +10,6 @@ import React, { useCallback, useEffect } from 'react'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
 import { getWeather } from '../api'
-import type { Weather } from '../types'
 import { Icons } from '../utils'
 
 const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
