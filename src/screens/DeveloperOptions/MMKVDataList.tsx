@@ -7,7 +7,7 @@ import Search from '@components/Search'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
-import { ls, type StorageKeys } from '@utils/storage'
+import { ls, secureLs, type StorageKeys } from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { screenDelay } from '@utils/utils'
 import React, { useEffect } from 'react'
@@ -21,7 +21,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
   const [searchResults, setSearchResults] = React.useState<string[]>([])
 
   useEffect(() => {
-    if (state) screenDelay(() => setInitStorage(ls.getAllKeys()))
+    if (state) screenDelay(() => setInitStorage([...ls.getAllKeys(), ...secureLs.getAllKeys()]))
     // setInitStorage([])
   }, [state])
 
