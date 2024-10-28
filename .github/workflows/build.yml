@@ -56,7 +56,9 @@ jobs:
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
-          message: ${{github.event.head_commit.message}}
+          message: |
+            ${{github.event.head_commit.message}}
+            See changelog [here](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
           document: android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
 
       - name: Upload Artifact
