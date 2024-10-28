@@ -1,5 +1,6 @@
 import { devOptStore } from '@/zustand/devOptStore'
 import profileStore from '@/zustand/profileStore'
+import versionStore from '@/zustand/versionStore'
 import {
   BrushSolidIcon,
   BubbleChatSolidIcon,
@@ -15,6 +16,7 @@ import {
   Logout02SolidIcon,
   PolicySolidIcon,
   ShieldUserSolidIcon,
+  SquareArrowUp02SolidIcon,
   SquareLock02SolidIcon,
   TelegramSolidIcon,
   UserSolidIcon,
@@ -22,13 +24,14 @@ import {
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
+import RoundNotification from '@components/RoundNotification'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { SettGroup, SettOption, SettText } from '@components/Settings'
-import { TxtAcc } from '@components/Text'
+import { Txt, TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
-import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/data'
+import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/constants'
 import { Bold } from '@utils/fonts'
 import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/storage'
 import type { NavProp } from '@utils/types'
@@ -36,6 +39,7 @@ import { screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import Animated, { FadeIn } from 'react-native-reanimated'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
 // }
@@ -92,6 +96,7 @@ export default function Settings({ navigation }: NavProp) {
               Hello {user?.name.split(' ')[0]}, Go to each section to customize your experience. All settings are saved
               automatically.
             </SettText>
+            <UpdateSettings navigation={navigation} />
             <SettGroup title='General'>
               {/* <SettOption
                 title='App Update'
@@ -281,6 +286,29 @@ function AdminSettings({ navigation }: NavProp) {
           onPress={() => navigation.navigate('AllUsers')}
         />
       </SettGroup>
+    </Gap12>
+  )
+}
+
+function UpdateSettings({ navigation }: NavProp) {
+  const version = versionStore((state) => state.version)
+  const isNew = version ? APP_VERSION_CODE < version.versionCode : false
+
+  if (!isNew) return null
+
+  return (
+    <Gap12>
+      <Animated.View entering={FadeIn}>
+        <SettGroup>
+          <SettOption
+            title={isNew ? 'Update available' : 'Check for updates'}
+            Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />}
+            arrow
+            onPress={() => version && navigation.navigate('Update', { shouldGoBack: true })}
+            Right={isNew ? <RoundNotification n={1} /> : <Txt>{`v${APP_VERSION}`}</Txt>}
+          />
+        </SettGroup>
+      </Animated.View>
     </Gap12>
   )
 }

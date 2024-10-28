@@ -10,21 +10,12 @@ import type { StackNav } from '@utils/types'
 import React, { useEffect, useMemo } from 'react'
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import CheckVersion from './CheckVersion'
 import styles, { hw as height_weight } from './style'
 
 const { width } = Dimensions.get('window')
 
 export default function HomeScreen({ navigation }: { navigation: StackNav }) {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     navigation.navigate('Update', {
-  //       version: '1.0.0',
-  //       size: '10MB',
-  //       whatsNew: ['New Features', 'Bug Fixes'],
-  //     })
-  //   }, 1000)
-  // }, [navigation])
-
   const setUser = profileStore((state) => state.setUser)
 
   const { mutate } = useMutation({
@@ -45,6 +36,7 @@ export default function HomeScreen({ navigation }: { navigation: StackNav }) {
     <>
       <View className='bg-zinc-50 px-5 pt-1 dark:bg-black'>
         <PaddingTop />
+        <CheckVersion navigation={navigation} />
       </View>
       <ScrollView className='flex-1 bg-zinc-50 dark:bg-black' showsVerticalScrollIndicator={false}>
         <View style={{ gap: 10 }} className='pb-10'>

@@ -31,7 +31,6 @@ import Test from '@screens/Test'
 import RandomColor from '@screens/Try/RandomColor'
 import RandomPassword from '@screens/Try/RandomPassword'
 import YourAge from '@screens/Try/YourAge'
-import ForceUpdate, { type ForceUpdateParamList } from '@screens/Update/ForceUpdate'
 import Update, { type UpdateParamList } from '@screens/Update/Update'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
@@ -135,7 +134,6 @@ export type RootStackParamList = {
   RandomPassword: undefined
   GlobalSearch: undefined
   Update: UpdateParamList
-  ForceUpdate: ForceUpdateParamList
   Splash: undefined
   Login: undefined
   Signup: undefined
@@ -224,7 +222,7 @@ function Navigation() {
         <Stack.Screen name='RandomPassword' component={RandomPassword} options={GestureEnabled} />
         <Stack.Screen name='GlobalSearch' component={GlobalSearch} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Update' component={Update} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='ForceUpdate' component={ForceUpdate} options={GestureEnabled} />
+        {/* <Stack.Screen name='ForceUpdate' component={Update} options={GestureEnabled} /> */}
         <Stack.Screen name='Devices' component={Devices} options={GestureEnabled} />
         <Stack.Screen name='Device' component={Device} options={GestureEnabled} />
       </Stack.Navigator>

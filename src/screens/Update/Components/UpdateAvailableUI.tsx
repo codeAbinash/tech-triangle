@@ -7,11 +7,11 @@ import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTim
 export default function UpdateAvailableUI({
   version,
   size,
-  whatsNew,
+  features,
 }: {
   version: string
   size: string
-  whatsNew: Array<string>
+  features: Array<string>
 }) {
   const rotate = useSharedValue(0)
 
@@ -45,7 +45,7 @@ export default function UpdateAvailableUI({
         latest.
       </Regular>
       <View className='mt-5' style={{ gap: 5 }}>
-        {whatsNew.map((item, index) => (
+        {features.map((item, index) => (
           <Regular key={index} className='text-white opacity-80' style={{ fontSize: 11 }}>
             • {'  '}
             {item}

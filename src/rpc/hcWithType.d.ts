@@ -11,6 +11,8 @@ declare const client: {
                         date: any;
                         forceUpdate: any;
                         features: any;
+                        versionCode: any;
+                        size: any;
                     };
                 };
                 outputFormat: "json";
