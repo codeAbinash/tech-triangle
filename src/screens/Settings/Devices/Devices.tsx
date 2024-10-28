@@ -69,7 +69,7 @@ export default function Devices({ navigation }: NavProp) {
             <>
               {data.data.devices.map((device, i) => (
                 <Animated.View key={device?.id} entering={delayedFadeAnimation(i)}>
-                  <Device key={i} navigation={navigation} device={device} isSelf />
+                  <Device key={i} navigation={navigation} device={device} isSelf={false} />
                 </Animated.View>
               ))}
             </>

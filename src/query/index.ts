@@ -1,7 +1,9 @@
+import { navigationStore } from '@/zustand/navigationStore'
 import NetInfo from '@react-native-community/netinfo'
 import { useFocusEffect } from '@react-navigation/native'
 import { onlineManager, QueryClient, type NotifyOnChangeProps } from '@tanstack/react-query'
 import React from 'react'
+import { Alert } from 'react-native'
 
 // Online Status Manager
 onlineManager.setEventListener((setOnline) => {
@@ -79,14 +81,41 @@ export function useQueryFocusAware() {
   return () => focusedRef.current
 }
 
+type ServerResponse = {
+  message: string
+  status: boolean
+}
+const navigation = navigationStore.getState().navigation
 export const queryClient = new QueryClient({
   defaultOptions: {
-    queries: {},
+    queries: {
+      select(data) {
+        console.log(data)
+        handleUnauthorized(data as ServerResponse)
+        return data
+      },
+    },
     mutations: {
       onSuccess: (data) => {
         console.log(data)
-        console.log('Mutation Success')
+        handleUnauthorized(data as ServerResponse)
       },
     },
   },
 })
+
+function handleUnauthorized(data: ServerResponse) {
+  if (data.message !== 'Unauthorized') return
+  navigation?.reset({
+    index: 0,
+    routes: [{ name: 'Login' }],
+  })
+  Alert.alert('Unauthorized', 'Please login again', [
+    {
+      text: 'OK',
+      onPress: () => {
+        navigation?.navigate('Login')
+      },
+    },
+  ])
+}
