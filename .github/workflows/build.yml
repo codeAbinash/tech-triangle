@@ -53,7 +53,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message_file: android/app/build/outputs/apk/release/Tech_Triangle-arm64-v8a.apk
+          message_file: "./android/app/build/outputs/apk/release/Tech_Triangle-arm64-v8a.apk"
           message: |
             ${{ github.actor }} created commit:
             Commit message: ${{ github.event.commits[0].message }}
