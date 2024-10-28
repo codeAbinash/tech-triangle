@@ -48,30 +48,19 @@ jobs:
       - name: Build Android Release
         run: cd android && ./gradlew assembleRelease
 
+      - name: Rename apk file
+        run: cd app/build/outputs/apk/release/ && mv Tech_Triangle-arm64-v8a.apk Tech_Triangle-latest-arm64-v8a.apk
+
+      - name: Send apk file
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.BOT_TOKEN }}
+          message: ${{github.event.head_commit.message}}
+          document: android/app/build/outputs/apk/release/Tech_Triangle-latest-arm64-v8a.apk
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: tech-triangle
           path: android/app/build/outputs/apk/release/Tech_Triangle-arm64-v8a.apk
-
-
-
-  send_to_telegram:
-    name: Send Apk to Asurraa telegram group
-    needs: build_apk
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: tech-triangle
-      - name: Display structure of downloaded files
-        run: ls -R
-      - uses: actions/checkout@master
-      - name: send apk file
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{github.event.head_commit.message}}
-          document: Tech_Triangle-arm64-v8a.apk
