@@ -48,6 +48,20 @@ jobs:
       - name: Build Android Release
         run: cd android && ./gradlew assembleRelease
 
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message_file: android/app/build/outputs/apk/release/Tech_Triangle-arm64-v8a.apk
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+
+            Repository: ${{ github.repository }}
+
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
