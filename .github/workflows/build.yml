@@ -65,10 +65,10 @@ jobs:
           name: tech-triangle
           path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
 
-      - name: Create Github Release
-        uses: softprops/action-gh-release@v1
-        with:
-          generate_release_notes: true
-          prerelease: true
-          files: |
-            android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+      # - name: Create Github Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     generate_release_notes: true
+      #     prerelease: true
+      #     files: |
+      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
