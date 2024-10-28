@@ -1,5 +1,12 @@
+import authStore from '@/zustand/authStore'
 import { devOptStore } from '@/zustand/devOptStore'
-import { CleanSolidIcon, CodeSolidIcon, ComputerSolidIcon, Timer02SolidIcon } from '@assets/icons/icons'
+import {
+  CleanSolidIcon,
+  CodeSolidIcon,
+  ComputerSolidIcon,
+  LockPasswordSolidIcon,
+  Timer02SolidIcon,
+} from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
@@ -20,6 +27,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   const clearDevOptions = devOptStore((state) => state.clearDevOptions)
   const isFabEnabled = devOptStore((state) => state.isFabEnabled)
   const setFabEnabled = devOptStore((state) => state.setFabEnabled)
+  const { token, setToken } = authStore((state) => ({ token: state.token, setToken: state.setToken }))
 
   const setAnim = useCallback((duration: string) => {
     let dur = parseInt(duration, 10)
@@ -109,6 +117,19 @@ export default function DeveloperOptions({ navigation }: NavProp) {
               >
                 Reset to default.
               </Text>
+            </SettText>
+            <SettGroup title='Auth Token'>
+              <Input
+                Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-gray-500' />}
+                placeholder='Enter auth token'
+                onChangeText={setToken}
+                defaultValue={token}
+                keyboardType='default'
+                multiline
+              />
+            </SettGroup>
+            <SettText>
+              This will set the auth token for the app. You may need to restart the app for the changes to take effect.
             </SettText>
           </Gap12>
         </>

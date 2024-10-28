@@ -22,7 +22,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
   const [searchResults, setSearchResults] = React.useState<string[]>([])
 
   useEffect(() => {
-    if (state) screenDelay(() => setInitStorage([...ls.getAllKeys(), ...secureLs.getAllKeys()]), 700)
+    if (state) screenDelay(() => setInitStorage(ls.getAllKeys()), 700)
     // setInitStorage([])
   }, [state])
 
