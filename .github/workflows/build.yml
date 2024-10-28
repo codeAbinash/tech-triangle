@@ -64,3 +64,9 @@ jobs:
         with:
           name: tech-triangle
           path: android/app/build/outputs/apk/release/Tech_Triangle-latest-arm64-v8a.apk
+
+      - name: Create a Release APK
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "android/app/build/outputs/apk/release/*.apk"
+          token: ${{ secrets.TOKEN }}
