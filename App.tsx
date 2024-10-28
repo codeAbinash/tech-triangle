@@ -221,7 +221,7 @@ function Navigation() {
         <Stack.Screen name='AppLock' component={AppLock} options={GestureEnabled} />
         <Stack.Screen name='RandomPassword' component={RandomPassword} options={GestureEnabled} />
         <Stack.Screen name='GlobalSearch' component={GlobalSearch} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='Update' component={Update} options={IOS_BOTTOM_STYLE} />
+        <Stack.Screen name='Update' component={Update} options={GestureEnabled} />
         {/* <Stack.Screen name='ForceUpdate' component={Update} options={GestureEnabled} /> */}
         <Stack.Screen name='Devices' component={Devices} options={GestureEnabled} />
         <Stack.Screen name='Device' component={Device} options={GestureEnabled} />
