@@ -129,3 +129,6 @@ export { default as WindowsOldSolidIcon } from '@icons/windows-old-solid-rounded
 export { default as AppleSolidIcon } from '@icons/apple-solid-rounded.svg'
 export { default as ChromeSolidIcon } from '@icons/chrome-solid-rounded.svg'
 export { default as SquareArrowUp02SolidIcon } from '@icons/square-arrow-up-02-solid-rounded.svg'
+export { default as StarsSolidIcon } from '@icons/stars-solid-rounded.svg'
+export { default as PlusSignSolidIcon } from '@icons/plus-sign-solid-rounded.svg'
+export { default as StarOffSolidIcon } from '@icons/star-off-solid-rounded.svg'

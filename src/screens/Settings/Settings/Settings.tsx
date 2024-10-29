@@ -40,6 +40,7 @@ import React, { useEffect } from 'react'
 import { useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
+import AdminSettings from './AdminSettings'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
 // }
@@ -268,25 +269,6 @@ export default function Settings({ navigation }: NavProp) {
         <PaddingBottom />
       </ScrollView>
     </View>
-  )
-}
-
-function AdminSettings({ navigation }: NavProp) {
-  const user = profileStore((state) => state.user)
-
-  if (!user?.isAdmin) return null
-
-  return (
-    <Gap12>
-      <SettGroup title='Admin Settings' className='pb-3.5'>
-        <SettOption
-          title='All users'
-          Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
-          arrow
-          onPress={() => navigation.navigate('AllUsers')}
-        />
-      </SettGroup>
-    </Gap12>
   )
 }
 

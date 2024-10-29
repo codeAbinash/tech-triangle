@@ -14,6 +14,7 @@ import Greeting from '@screens/Home/Greeting'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import GlobalSearch from '@screens/Search/GlobalSearch'
+import EditVersion from '@screens/Settings/Admin/EditVersion'
 import AllUsers from '@screens/Settings/AppLock/AllUsers'
 import AppLock from '@screens/Settings/AppLock/AppLock'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
@@ -24,7 +25,7 @@ import Devices from '@screens/Settings/Devices/Devices'
 import About from '@screens/Settings/Extra/About'
 import Logout from '@screens/Settings/Logout/Logout'
 import ManageStorage from '@screens/Settings/ManageStorage'
-import Settings from '@screens/Settings/Settings'
+import Settings from '@screens/Settings/Settings/Settings'
 import UiAndComponents from '@screens/Settings/UiAndComponents'
 import YourProfile from '@screens/Settings/YourProfile'
 import Test from '@screens/Test'
@@ -142,6 +143,7 @@ export type RootStackParamList = {
   Device: DeviceParamList
   AllUsers: undefined
   Logout: undefined
+  EditVersion: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -191,6 +193,7 @@ function Navigation() {
         {/* <Stack.Screen name='WeatherLocation' component={WeatherLocation} options={IOS_BOTTOM_STYLE} /> */}
         <Stack.Screen name='Greeting' component={Greeting} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Settings' component={Settings} options={GestureEnabled} />
+        <Stack.Screen name='EditVersion' component={EditVersion} options={GestureEnabled} />
         <Stack.Screen name='Explore' component={Explore} />
         <Stack.Screen name='RoutineWelcome' component={RoutineWelcome} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='NotesWelcome' component={NotesWelcome} options={IOS_BOTTOM_STYLE} />

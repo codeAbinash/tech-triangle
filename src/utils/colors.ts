@@ -341,3 +341,21 @@ export const WeatherColors: {
   '50d': { gradient: ['#6a7582', '#515b66'], content: 'light-content', color: { color: 'white' } }, // mist
   '50n': { gradient: ['#6a7582', '#515b66'], content: 'dark-content', color: { color: 'white' } }, // mist
 }
+
+export const ColorList = [
+  Colors.sky[500],
+  Colors.red[500],
+  Colors.green[500],
+  Colors.orange[500],
+  Colors.blue[500],
+  Colors.purple[500],
+  Colors.yellow[500],
+  Colors.slate[500],
+  Colors.teal[500],
+  Colors.fuchsia[500],
+  Colors.cyan[500],
+  Colors.rose[500],
+  Colors.emerald[500],
+  Colors.lime[500],
+  Colors.amber[500],
+]
