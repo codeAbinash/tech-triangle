@@ -1,3 +1,4 @@
+import versionValidator from '@/zod/version'
 import versionStore from '@/zustand/versionStore'
 import {
   FolderFileStorageSolidIcon,
@@ -14,27 +15,61 @@ import Press from '@components/Press'
 import RoundedIcon from '@components/RoundedIcon'
 import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import SingleSkeleton from '@components/SingleSkeleton'
+import { useMutation } from '@tanstack/react-query'
+import { client } from '@utils/client'
 import { ColorList } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
+import { print } from '@utils/utils'
 import React, { useState } from 'react'
-import { View } from 'react-native'
+import { ToastAndroid, View } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 
+type VersionData = {
+  version: string
+  versionCode: number
+  updateSize: string
+  features: string[]
+  forceUpdate: boolean
+}
 export default function EditVersion({ navigation }: NavProp) {
   const data = versionStore((state) => state.version)
-  // const data = undefined // versionStore((state) => state.version)
   const [version, setVersion] = useState(data?.version || '')
   const [versionCode, setVersionCode] = useState((data?.versionCode || '').toString())
   const [size, setSize] = useState(data?.size || '')
   const [features, setFeatures] = useState(data?.features || [])
   const [forceUpdate, setForceUpdate] = useState<boolean>(data?.forceUpdate || false)
 
+  const { mutate, isPending } = useMutation({
+    mutationKey: ['editVersion', version, versionCode, size, features, forceUpdate],
+    mutationFn: async (d: VersionData) => await (await client.api.admin.updateVersion.$post({ json: d })).json(),
+  })
+
+  function handelSubmit() {
+    // If there is a blank feature empty string then remove it
+
+    const newFeatures = features.filter((item) => item.trim() !== '')
+    setFeatures(newFeatures)
+
+    const { error, data: d } = versionValidator.safeParse({
+      version,
+      versionCode: parseInt(versionCode, 10),
+      forceUpdate,
+      features: newFeatures,
+      updateSize: size,
+    })
+
+    if (error) return ToastAndroid.show(error.errors[0]?.message || '', ToastAndroid.SHORT)
+    mutate({
+      ...d,
+    })
+  }
+
   return (
     <SettWrapper navigation={navigation} title='Edit Version'>
       <Gap12>
         <SettText className='mt-3'>Edit the details of the latest version of the app from here.</SettText>
-        <SettGroup title={`Version (${data?.version})`}>
+        <SettGroup title={`Version (${data?.version || '  '})`}>
           {!data ? (
             <SingleSkeleton n={1} />
           ) : (
@@ -43,11 +78,8 @@ export default function EditVersion({ navigation }: NavProp) {
                 <Press
                   activeScale={0.9}
                   onPress={() => {
-                    // Patch this
                     const split = version.split('.')
-                    const lastSegment = split[split.length - 2] ?? '0'
-                    const newVersion = parseInt(lastSegment, 10) + 1
-                    split[split.length - 2] = newVersion.toString()
+                    split[split.length - 2] = (parseInt(split[split.length - 2] || '0', 10) + 1).toString()
                     setVersion(split.join('.'))
                   }}
                 >
@@ -60,11 +92,8 @@ export default function EditVersion({ navigation }: NavProp) {
                 <Press
                   activeScale={0.9}
                   onPress={() => {
-                    // Patch this
                     const split = version.split('.')
-                    const lastSegment = split[split.length - 1] ?? '0'
-                    const newVersion = parseInt(lastSegment, 10) + 1
-                    split[split.length - 1] = newVersion.toString()
+                    split[split.length - 1] = (parseInt(split.pop() || '0', 10) + 1).toString()
                     setVersion(split.join('.'))
                   }}
                 >
@@ -74,7 +103,7 @@ export default function EditVersion({ navigation }: NavProp) {
             />
           )}
         </SettGroup>
-        <SettGroup title={`Version Code (${data?.versionCode})`}>
+        <SettGroup title={`Version Code (${data?.versionCode || '  '})`}>
           {!data ? (
             <SingleSkeleton n={1} />
           ) : (
@@ -95,7 +124,7 @@ export default function EditVersion({ navigation }: NavProp) {
           )}
         </SettGroup>
 
-        <SettGroup title={`Size (${data?.size})`}>
+        <SettGroup title={`Size (${data?.size || '  '})`}>
           {!data ? (
             <SingleSkeleton n={1} />
           ) : (
@@ -121,7 +150,7 @@ export default function EditVersion({ navigation }: NavProp) {
                         style={{
                           height: 28,
                           width: 28,
-                          borderRadius: 10,
+                          borderRadius: 9.5,
                           backgroundColor: ColorList[i % ColorList.length],
                         }}
                       >
@@ -147,17 +176,6 @@ export default function EditVersion({ navigation }: NavProp) {
               />
             </>
           )}
-
-          {/* <Input
-                Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
-                // value={features}
-                // onChangeText={setFeatures}
-              />
-              <Input
-                Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
-                // value={features}
-                // onChangeText={setFeatures}
-              /> */}
         </SettGroup>
 
         <SettGroup title={`Force Update (${data?.forceUpdate ? 'Yes' : 'No'})`}>
@@ -182,11 +200,7 @@ export default function EditVersion({ navigation }: NavProp) {
         </SettGroup>
       </Gap12>
       <View className='mt-2 px-5 pb-10'>
-        <Btn
-          title='Save Changes'
-          onPress={() => console.log('Save')}
-          disabled={!version || !versionCode || !size || !features.length}
-        />
+        <Btn title={isPending ? 'Updating...' : 'Update'} onPress={handelSubmit} disabled={isPending} />
       </View>
     </SettWrapper>
   )

@@ -19,7 +19,7 @@ function UserSkeleton() {
 
   return (
     <Skeleton>
-      <View className='flex-row items-center px-6' style={{ marginVertical: 3 }}>
+      <View className='flex-row items-center px-6' style={{ marginVertical: 1 }}>
         <RoundedIconSkeleton />
         <View className='ml-4 flex-1'>
           <View style={{ width: `${randomWidth1}%` }} className='h-4 rounded-md bg-zinc-200 dark:bg-zinc-800' />

@@ -13,6 +13,7 @@ declare const client: {
                         features: any;
                         versionCode: any;
                         size: any;
+                        id: any;
                     };
                 };
                 outputFormat: "json";
@@ -265,15 +266,6 @@ declare const client: {
                         output: {
                             message: string;
                             status: boolean;
-                            data: null;
-                        };
-                        outputFormat: "json";
-                        status: import("hono/utils/http-status").StatusCode;
-                    } | {
-                        input: {};
-                        output: {
-                            message: string;
-                            status: boolean;
                             data: {
                                 name: string;
                                 email: string;
@@ -284,6 +276,31 @@ declare const client: {
                     };
                 }>;
             };
+        };
+    };
+} & {
+    api: {
+        admin: {
+            updateVersion: import("hono/client").ClientRequest<{
+                $post: {
+                    input: {
+                        json: {
+                            version: string;
+                            features: string[];
+                            versionCode: number;
+                            updateSize: string;
+                            forceUpdate?: boolean | undefined;
+                        };
+                    };
+                    output: {
+                        message: string;
+                        status: boolean;
+                        data: null;
+                    };
+                    outputFormat: "json";
+                    status: import("hono/utils/http-status").StatusCode;
+                };
+            }>;
         };
     };
 } & {
