@@ -48,24 +48,55 @@ jobs:
       - name: Build Android Release
         run: cd android && ./gradlew assembleRelease
 
-      - name: Rename apk file
-        run: cd android/app/build/outputs/apk/release/ && mv Tech_Triangle-arm64-v8a.apk Tech_Triangle-nightly-arm64-v8a.apk
+      - name: Rename apk files
+        run: |
+          cd android/app/build/outputs/apk/release/
+          mv Tech_Triangle-arm64-v8a.apk Tech_Triangle-nightly-arm64-v8a.apk
+          mv Tech_Triangle-armeabi-v7a.apk Tech_Triangle-nightly-armeabi-v7a.apk
+          mv Tech_Triangle-x86.apk Tech_Triangle-nightly-x86.apk
+          mv Tech_Triangle-x86_64.apk Tech_Triangle-nightly-x86_64.apk
+          mv Tech_Triangle-universal.apk Tech_Triangle-nightly-universal.apk
 
-      - name: Send apk file
+      - name: Send apk files
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
           message: |
-            ${{github.event.head_commit.message}}  
+            ${{github.event.head_commit.message}}
           # See changelog [here](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
-          document: android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+          document: |
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
 
-      - name: Upload Artifact
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: tech-triangle
+          name: tech-triangle-arm64-v8a
           path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tech-triangle-armeabi-v7a
+          path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tech-triangle-x86
+          path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tech-triangle-x86_64
+          path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tech-triangle-universal
+          path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
 
       # - name: Create Github Release
       #   uses: softprops/action-gh-release@v1
@@ -74,3 +105,6 @@ jobs:
       #     prerelease: true
       #     files: |
       #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
+      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
+      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
