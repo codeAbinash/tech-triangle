@@ -51,11 +51,11 @@ jobs:
       - name: Rename apk files
         run: |
           cd android/app/build/outputs/apk/release/
-          mv Tech_Triangle-arm64-v8a.apk Tech_Triangle-nightly-arm64-v8a.apk
-          mv Tech_Triangle-armeabi-v7a.apk Tech_Triangle-nightly-armeabi-v7a.apk
-          mv Tech_Triangle-x86.apk Tech_Triangle-nightly-x86.apk
-          mv Tech_Triangle-x86_64.apk Tech_Triangle-nightly-x86_64.apk
-          mv Tech_Triangle-universal.apk Tech_Triangle-nightly-universal.apk
+          mv app-arm64-v8a-release.apk Tech_Triangle-nightly-arm64-v8a.apk
+          mv app-armeabi-v7a-release.apk Tech_Triangle-nightly-armeabi-v7a.apk
+          mv app-x86-release.apk Tech_Triangle-nightly-x86.apk
+          mv app-x86_64-release.apk Tech_Triangle-nightly-x86_64.apk
+          mv app-universal-release.apk Tech_Triangle-nightly-universal.apk
 
       - name: Send apk files
         uses: appleboy/telegram-action@master
@@ -64,7 +64,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           message: |
             ${{github.event.head_commit.message}}
-          # See changelog [here](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+          # See changelog [here](https://github.com/${{ github.repository }}/commit/${{ github.sha }}).
           document: |
             android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
             android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
