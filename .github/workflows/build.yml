@@ -64,12 +64,13 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           message: |
             ${{github.event.head_commit.message}}
-          document: |
-            android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
-            android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
-            android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
-            android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
-            android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
+      - name: Send APKs to Telegram
+        run: |
+          for file in android/app/build/outputs/apk/release/Tech_Triangle-nightly-*.apk; do
+            curl -s -X POST https://api.telegram.org/bot${{ secrets.BOT_TOKEN }}/sendDocument \
+              -F chat_id=${{ secrets.CHAT_ID }} \
+              -F document=@"$file"
+          done
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -114,9 +115,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           tag_name: nightly
-          name: 'Desktop App Nightly Release $$'
-          prerelease: true
-          body: 'TODO: Add nightly release notes'
+          name: 'Tech Triangle Nightly Release $$'
+          prerelease: false
+          body: |
+            ${{github.event.head_commit.message}}
           files: |
             android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
             android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
