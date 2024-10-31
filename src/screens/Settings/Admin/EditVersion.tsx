@@ -20,7 +20,6 @@ import { client } from '@utils/client'
 import { ColorList } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import { print } from '@utils/utils'
 import React, { useState } from 'react'
 import { ToastAndroid, View } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
@@ -43,6 +42,11 @@ export default function EditVersion({ navigation }: NavProp) {
   const { mutate, isPending } = useMutation({
     mutationKey: ['editVersion', version, versionCode, size, features, forceUpdate],
     mutationFn: async (d: VersionData) => await (await client.api.admin.updateVersion.$post({ json: d })).json(),
+    onSuccess: (d) => {
+      if (!d || !d.status) return ToastAndroid.show('Failed to update version', ToastAndroid.SHORT)
+      ToastAndroid.show('Version updated successfully', ToastAndroid.SHORT)
+      navigation.goBack()
+    },
   })
 
   function handelSubmit() {
