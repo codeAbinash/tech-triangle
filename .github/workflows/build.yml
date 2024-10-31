@@ -65,40 +65,17 @@ jobs:
           message: |
             ${{github.event.head_commit.message}}
 
-      - name: Send arm64-v8a apk file
+      - name: Send apk files
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
-          document: android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
-
-      - name: Send armeabi-v7a apk file
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
-          document: android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
-
-      - name: Send x86 apk file
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
-          document: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
-
-      - name: Send x86_64 apk file
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
-          document: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
-
-      - name: Send universal apk file
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
-          document: android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
+          document: |
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -136,3 +113,4 @@ jobs:
       #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
       #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
       #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
+      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
