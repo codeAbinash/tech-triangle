@@ -64,12 +64,6 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           message: |
             ${{github.event.head_commit.message}}
-
-      - name: Send apk files
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
           document: |
             android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
             android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
