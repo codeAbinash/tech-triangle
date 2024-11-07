@@ -14,8 +14,8 @@ jobs:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
           message: |
-            Commit ${{ github.sha }}
-            Message : ${{ github.event.head_commit.message }}
+            Build started for commit ${{ github.sha }}
+            Commit message: ${{ github.event.head_commit.message }}
 
       - uses: actions/checkout@v4
 
