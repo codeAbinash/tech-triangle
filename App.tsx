@@ -28,6 +28,7 @@ import ManageStorage from '@screens/Settings/ManageStorage'
 import Settings from '@screens/Settings/Settings/Settings'
 import UiAndComponents from '@screens/Settings/UiAndComponents'
 import YourProfile from '@screens/Settings/YourProfile'
+import Story from '@screens/Story/Story'
 import Test from '@screens/Test'
 import RandomColor from '@screens/Try/RandomColor'
 import RandomPassword from '@screens/Try/RandomPassword'
@@ -144,6 +145,7 @@ export type RootStackParamList = {
   AllUsers: undefined
   Logout: undefined
   EditVersion: undefined
+  Story: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -228,6 +230,16 @@ function Navigation() {
         {/* <Stack.Screen name='ForceUpdate' component={Update} options={GestureEnabled} /> */}
         <Stack.Screen name='Devices' component={Devices} options={GestureEnabled} />
         <Stack.Screen name='Device' component={Device} options={GestureEnabled} />
+        <Stack.Screen
+          name='Story'
+          component={Story}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+            gestureEnabled: true,
+            gestureDirection: 'vertical',
+            gestureResponseDistance: height,
+          }}
+        />
       </Stack.Navigator>
     </>
   )

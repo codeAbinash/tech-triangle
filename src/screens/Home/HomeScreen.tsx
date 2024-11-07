@@ -11,6 +11,7 @@ import React, { useEffect, useMemo } from 'react'
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import CheckVersion from './CheckVersion'
+import StoryArea from './StoryArea'
 import styles, { hw as height_weight } from './style'
 
 const { width } = Dimensions.get('window')
@@ -54,6 +55,7 @@ export default function HomeScreen({ navigation }: { navigation: StackNav }) {
               />
             </View>
           </View>
+          {/* <StoryArea navigation={navigation} /> */}
           <Elements />
           <Shortcuts navigation={navigation} />
           <Graph />
@@ -108,18 +110,26 @@ function Shortcuts({ navigation }: { navigation: StackNav }) {
       </Text>
       <View className='w-full flex-row flex-wrap' style={{ gap: 12, paddingHorizontal: 18 }}>
         <TouchableOpacity
-          onPressOut={() => navigation.navigate('About')}
+          onPress={() => navigation.navigate('About')}
           style={[hw, styles.shadow, styles.center]}
           className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
         >
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 1</Medium>
         </TouchableOpacity>
-        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Story')}
+          style={[hw, styles.shadow, styles.center]}
+          className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
+        >
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 2</Medium>
-        </View>
-        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ManageStorage')}
+          style={[hw, styles.shadow, styles.center]}
+          className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
+        >
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 3</Medium>
-        </View>
+        </TouchableOpacity>
         <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 4</Medium>
         </View>

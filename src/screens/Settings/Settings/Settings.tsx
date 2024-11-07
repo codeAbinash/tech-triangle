@@ -22,7 +22,7 @@ import {
   UserSolidIcon,
   Wallet02SolidIcon,
 } from '@assets/icons/icons'
-import { Gap12, Gap20 } from '@components/Gap'
+import { Gap, Gap12, Gap20 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import RoundNotification from '@components/RoundNotification'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
@@ -46,13 +46,22 @@ import AdminSettings from './AdminSettings'
 // }
 
 function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactNode }) {
+  const [search, setSearch] = React.useState('')
+  const version = versionStore((state) => state.version)
+  const isNew = version ? APP_VERSION_CODE < version.versionCode : false
+  const isAhead = version ? APP_VERSION_CODE > version.versionCode : false
+
+  if (!isNew && !isAhead) return null
+
+  console.log('isNew', isNew)
+  console.log('isAhead', isAhead)
   return (
     <View style={{ gap: 5 }} className='bg-white px-5 pb-3 dark:bg-zinc-950'>
       {Title}
       <Bold style={{ fontSize: 24 }} className='mt-3 text-zinc-800 dark:text-zinc-200'>
         {title}
       </Bold>
-      <Search placeholder='Search settings' />
+      <Search placeholder='Search settings' value={search} onChangeText={setSearch} />
     </View>
   )
 }
@@ -275,13 +284,30 @@ export default function Settings({ navigation }: NavProp) {
 function UpdateSettings({ navigation }: NavProp) {
   const version = versionStore((state) => state.version)
   const isNew = version ? APP_VERSION_CODE < version.versionCode : false
+  const isAhead = version ? APP_VERSION_CODE > version.versionCode : false
 
-  if (!isNew) return null
+  if (!isNew && !isAhead) return null
+
+  if (isAhead) {
+    return (
+      <Animated.View entering={FadeIn}>
+        <Gap gap={10}>
+          <SettGroup>
+            <SettOption title='Version Ahead warning!' Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />} />
+          </SettGroup>
+          <SettText>
+            If you installed the nightly build, you may see this message. Please ignore this message and continue
+            using the app.
+          </SettText>
+        </Gap>
+      </Animated.View>
+    )
+  }
 
   return (
     <Gap12>
       <Animated.View entering={FadeIn}>
-        <SettGroup>
+        <SettGroup title='Update'>
           <SettOption
             title={isNew ? 'Update available' : 'Check for updates'}
             Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />}
