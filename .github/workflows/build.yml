@@ -8,6 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Send start message to Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.BOT_TOKEN }}
+          message: 'Build started for commit ${{ github.sha }}'
+
       - uses: actions/checkout@v4
 
       - name: set up JDK 19
@@ -64,6 +71,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           message: |
             ${{github.event.head_commit.message}}
+
       - name: Send APKs to Telegram
         run: |
           for file in android/app/build/outputs/apk/release/Tech_Triangle-nightly-*.apk; do
@@ -98,17 +106,6 @@ jobs:
           name: tech-triangle-universal
           path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
 
-      # - name: Create Github Release
-      #   uses: softprops/action-gh-release@v1
-      #   with:
-      #     generate_release_notes: true
-      #     prerelease: true
-      #     files: |
-      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
-      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
-      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
-      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
-      #       android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
       - name: Update Nightly Release
         uses: andelf/nightly-release@main
         env:
