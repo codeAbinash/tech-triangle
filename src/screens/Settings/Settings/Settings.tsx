@@ -47,14 +47,6 @@ import AdminSettings from './AdminSettings'
 
 function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactNode }) {
   const [search, setSearch] = React.useState('')
-  const version = versionStore((state) => state.version)
-  const isNew = version ? APP_VERSION_CODE < version.versionCode : false
-  const isAhead = version ? APP_VERSION_CODE > version.versionCode : false
-
-  if (!isNew && !isAhead) return null
-
-  console.log('isNew', isNew)
-  console.log('isAhead', isAhead)
   return (
     <View style={{ gap: 5 }} className='bg-white px-5 pb-3 dark:bg-zinc-950'>
       {Title}
@@ -285,6 +277,7 @@ function UpdateSettings({ navigation }: NavProp) {
   const version = versionStore((state) => state.version)
   const isNew = version ? APP_VERSION_CODE < version.versionCode : false
   const isAhead = version ? APP_VERSION_CODE > version.versionCode : false
+  const profile = profileStore((state) => state.user)
 
   if (!isNew && !isAhead) return null
 
@@ -293,11 +286,19 @@ function UpdateSettings({ navigation }: NavProp) {
       <Animated.View entering={FadeIn}>
         <Gap gap={10}>
           <SettGroup>
-            <SettOption title='Version Ahead warning!' Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />} />
+            <SettOption
+              title='Version Ahead warning!'
+              Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />}
+              onPress={() => {
+                if (profile?.isAdmin) {
+                  navigation.navigate('EditVersion')
+                }
+              }}
+            />
           </SettGroup>
           <SettText>
-            If you installed the nightly build, you may see this message. Please ignore this message and continue
-            using the app.
+            If you installed the nightly build, you may see this message. Please ignore this message and continue using
+            the app.
           </SettText>
         </Gap>
       </Animated.View>

@@ -18,10 +18,11 @@ import SingleSkeleton from '@components/SingleSkeleton'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { ColorList } from '@utils/colors'
+import { APP_VERSION, APP_VERSION_CODE } from '@utils/constants'
 import { SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useState } from 'react'
-import { ToastAndroid, View } from 'react-native'
+import { Text, ToastAndroid, View } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 
 type VersionData = {
@@ -72,7 +73,12 @@ export default function EditVersion({ navigation }: NavProp) {
   return (
     <SettWrapper navigation={navigation} title='Edit Version'>
       <Gap12>
-        <SettText className='mt-3'>Edit the details of the latest version of the app from here.</SettText>
+        <View>
+          <SettText className='mt-3'>
+            Current APK version is <Text className='text-blue-500'>{APP_VERSION}</Text> and code is{' '}
+            <Text className='text-blue-500'>{APP_VERSION_CODE}</Text>. You can update the version and code below.
+          </SettText>
+        </View>
         <SettGroup title={`Version (${data?.version || '  '})`}>
           {!data ? (
             <SingleSkeleton n={1} />
