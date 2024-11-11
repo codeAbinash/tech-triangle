@@ -11,7 +11,6 @@ import React, { useEffect, useMemo } from 'react'
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import CheckVersion from './CheckVersion'
-import StoryArea from './StoryArea'
 import styles, { hw as height_weight } from './style'
 
 const { width } = Dimensions.get('window')

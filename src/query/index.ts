@@ -110,5 +110,15 @@ function handleUnauthorized(data: ServerResponse) {
     index: 0,
     routes: [{ name: 'Login' }],
   })
-  Alert.alert('Unauthorized', 'Please login again', [{ text: 'OK' }])
+  Alert.alert('Unauthorized', 'Please login again', [
+    {
+      text: 'OK',
+      onPress: () => {
+        navigation?.reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        })
+      },
+    },
+  ])
 }

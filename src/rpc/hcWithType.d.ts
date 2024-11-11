@@ -293,6 +293,28 @@ declare const client: {
 } & {
     api: {
         admin: {
+            users: {
+                delete: import("hono/client").ClientRequest<{
+                    $post: {
+                        input: {
+                            form: {
+                                id: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            };
+                        };
+                        output: {
+                            message: string;
+                            status: boolean;
+                        };
+                        outputFormat: "json";
+                        status: import("hono/utils/http-status").StatusCode;
+                    };
+                }>;
+            };
+        };
+    };
+} & {
+    api: {
+        admin: {
             updateVersion: import("hono/client").ClientRequest<{
                 $post: {
                     input: {

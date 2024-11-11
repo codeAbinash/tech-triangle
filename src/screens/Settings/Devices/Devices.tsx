@@ -63,18 +63,16 @@ export default function Devices({ navigation }: NavProp) {
           </SettGroup>
         )}
 
-        <SettGroup title='Other Devices'>
-          {isPending && <DoubleSkeleton n={10} />}
-          {data && data.data && data.data.devices.length > 0 && (
-            <>
-              {data.data.devices.map((device, i) => (
-                <Animated.View key={device?.id} entering={delayedFadeAnimation(i)}>
-                  <Device key={i} navigation={navigation} device={device} isSelf={false} />
-                </Animated.View>
-              ))}
-            </>
-          )}
-        </SettGroup>
+        {data && data.data && data.data.devices.length > 0 && (
+          <SettGroup title='Other Devices'>
+            {isPending && <DoubleSkeleton n={10} />}
+            {data.data.devices.map((device, i) => (
+              <Animated.View key={device?.id} entering={delayedFadeAnimation(i)}>
+                <Device key={i} navigation={navigation} device={device} isSelf={false} />
+              </Animated.View>
+            ))}
+          </SettGroup>
+        )}
         <SettText className='mt-2'>
           Click on a device to view more details. You can remove a device by clicking on the remove button.
         </SettText>

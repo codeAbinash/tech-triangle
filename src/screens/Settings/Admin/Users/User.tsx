@@ -8,14 +8,17 @@ import {
   StarsSolidIcon,
   UserSolidIcon,
 } from '@assets/icons/icons'
+import Btn from '@components/Button'
 import { Gap } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import type { RouteProp } from '@react-navigation/native'
 import { getDate } from '@screens/Settings/Devices/utils'
-import type { client } from '@utils/client'
+import { useMutation } from '@tanstack/react-query'
+import { client } from '@utils/client'
 import type { StackNav } from '@utils/types'
 import React from 'react'
+import { Alert, ToastAndroid, View } from 'react-native'
 
 export type UserT = Awaited<ReturnType<Awaited<ReturnType<typeof client.api.admin.users.all.$post>>['json']>>['data'][0]
 
@@ -29,7 +32,24 @@ export type UserParamList = {
 
 export default function User({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'User'> }) {
   const user = route.params.user
-  const { name, username, email, isAdmin, otp, lastOtpSent, isVerified, isBanned } = user
+  const { _id, name, username, email, isAdmin, otp, lastOtpSent, isVerified, isBanned } = user
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ['removeUser', _id],
+    mutationFn: async () => await (await client.api.admin.users.delete.$post({ form: { id: _id || '' } })).json(),
+    onSuccess: (d) => {
+      if (!d.status) return Alert.alert('Error', d.message)
+      ToastAndroid.show('User removed successfully', ToastAndroid.SHORT)
+      navigation.goBack()
+    },
+  })
+
+  function handelRemove() {
+    Alert.alert('Delete this user?', 'Are you sure you want to delete this user? This action cannot be undone.', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Delete', onPress: () => mutate(), style: 'destructive' },
+    ])
+  }
 
   return (
     <SettWrapper navigation={navigation} title={username}>
@@ -83,9 +103,18 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
             }
           />
         </SettGroup>
-
-        <SettText>Sample text</SettText>
       </Gap>
+      <SettText>
+        Deleting the user will remove all the data associated with the user. This action cannot be undone.
+      </SettText>
+      <View className='px-6'>
+        <Btn
+          title={isPending ? 'Deleting User...' : 'Delete User'}
+          onPress={handelRemove}
+          className='bg-red-500'
+          disabled={isPending}
+        />
+      </View>
     </SettWrapper>
   )
 }
