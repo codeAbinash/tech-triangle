@@ -15,7 +15,8 @@ import NotesWelcome from '@screens/Notes/NotesWelcome'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import GlobalSearch from '@screens/Search/GlobalSearch'
 import EditVersion from '@screens/Settings/Admin/EditVersion'
-import AllUsers from '@screens/Settings/AppLock/AllUsers'
+import AllUsers from '@screens/Settings/Admin/Users/AllUsers'
+import User, { type UserParamList } from '@screens/Settings/Admin/Users/User'
 import AppLock from '@screens/Settings/AppLock/AppLock'
 import BackupAndRestore from '@screens/Settings/BackupAndRestore'
 import BlankSettings from '@screens/Settings/BlankSettings'
@@ -146,6 +147,7 @@ export type RootStackParamList = {
   Logout: undefined
   EditVersion: undefined
   Story: undefined
+  User: UserParamList
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -240,6 +242,7 @@ function Navigation() {
             gestureResponseDistance: height,
           }}
         />
+        <Stack.Screen name='User' component={User} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )

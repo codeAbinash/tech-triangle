@@ -132,3 +132,6 @@ export { default as SquareArrowUp02SolidIcon } from '@icons/square-arrow-up-02-s
 export { default as StarsSolidIcon } from '@icons/stars-solid-rounded.svg'
 export { default as PlusSignSolidIcon } from '@icons/plus-sign-solid-rounded.svg'
 export { default as StarOffSolidIcon } from '@icons/star-off-solid-rounded.svg'
+export { default as NewReleasesSolidIcon } from '@icons/new-releases-solid-rounded.svg'
+export { default as AngrySolidIcon } from '@icons/angry-solid-rounded.svg'
+export { default as SmileSolidIcon } from '@icons/smile-solid-rounded.svg'

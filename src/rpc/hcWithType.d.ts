@@ -267,8 +267,20 @@ declare const client: {
                             message: string;
                             status: boolean;
                             data: {
+                                _id: string;
                                 name: string;
+                                username: string;
                                 email: string;
+                                password: string;
+                                isAdmin: boolean;
+                                otp: string;
+                                lastOtpSent: string;
+                                otpAttempts: number;
+                                resendOtpCount: number;
+                                lastResendOtp: null;
+                                isVerified: boolean;
+                                isBanned: boolean;
+                                __v: number;
                             }[];
                         };
                         outputFormat: "json";
