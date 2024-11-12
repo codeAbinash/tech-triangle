@@ -15,6 +15,7 @@ import Press from '@components/Press'
 import RoundedIcon from '@components/RoundedIcon'
 import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
 import SingleSkeleton from '@components/SingleSkeleton'
+import { queryClient } from '@query/index'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { ColorList } from '@utils/colors'
@@ -45,6 +46,7 @@ export default function EditVersion({ navigation }: NavProp) {
     mutationFn: async (d: VersionData) => await (await client.api.admin.updateVersion.$post({ json: d })).json(),
     onSuccess: (d) => {
       if (!d || !d.status) return ToastAndroid.show('Failed to update version', ToastAndroid.SHORT)
+      queryClient.invalidateQueries({ queryKey: ['checkVersion'] })
       ToastAndroid.show('Version updated successfully', ToastAndroid.SHORT)
       navigation.goBack()
     },

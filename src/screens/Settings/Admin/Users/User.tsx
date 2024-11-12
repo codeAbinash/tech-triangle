@@ -12,6 +12,7 @@ import Btn from '@components/Button'
 import { Gap } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import { queryClient } from '@query/index'
 import type { RouteProp } from '@react-navigation/native'
 import { getDate } from '@screens/Settings/Devices/utils'
 import { useMutation } from '@tanstack/react-query'
@@ -39,6 +40,7 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
     mutationFn: async () => await (await client.api.admin.users.delete.$post({ form: { id: _id || '' } })).json(),
     onSuccess: (d) => {
       if (!d.status) return Alert.alert('Error', d.message)
+      queryClient.invalidateQueries({ queryKey: ['allUsers'] })
       ToastAndroid.show('User removed successfully', ToastAndroid.SHORT)
       navigation.goBack()
     },

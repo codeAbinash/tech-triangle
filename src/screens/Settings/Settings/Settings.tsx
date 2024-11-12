@@ -308,7 +308,7 @@ function UpdateSettings({ navigation }: NavProp) {
   return (
     <Gap12>
       <Animated.View entering={FadeIn}>
-        <SettGroup title='Update'>
+        <SettGroup>
           <SettOption
             title={isNew ? 'Update available' : 'Check for updates'}
             Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />}
