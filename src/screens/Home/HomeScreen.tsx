@@ -129,9 +129,13 @@ function Shortcuts({ navigation }: { navigation: StackNav }) {
         >
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 3</Medium>
         </TouchableOpacity>
-        <View style={[hw, styles.shadow, styles.center]} className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'>
-          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 4</Medium>
-        </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('FCFS')}
+          style={[hw, styles.shadow, styles.center]}
+          className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
+        >
+          <Medium className='text-xs text-gray-700 dark:text-gray-300'>FCFS Process</Medium>
+        </TouchableOpacity>
       </View>
     </View>
   )
