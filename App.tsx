@@ -15,6 +15,7 @@ import NotesWelcome from '@screens/Notes/NotesWelcome'
 import type { ChartParamList } from '@screens/OS/Chart'
 import Chart from '@screens/OS/Chart'
 import FCFS from '@screens/OS/FCFS'
+import SJF from '@screens/OS/SJF'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import GlobalSearch from '@screens/Search/GlobalSearch'
 import EditVersion from '@screens/Settings/Admin/EditVersion'
@@ -152,6 +153,7 @@ export type RootStackParamList = {
   Story: undefined
   User: UserParamList
   FCFS: undefined
+  SJF : undefined
   Chart: ChartParamList
 }
 
@@ -249,6 +251,7 @@ function Navigation() {
         />
         <Stack.Screen name='User' component={User} options={GestureEnabled} />
         <Stack.Screen name='FCFS' component={FCFS} options={GestureEnabled} />
+        <Stack.Screen name='SJF' component={SJF} options={GestureEnabled} />
         <Stack.Screen name='Chart' component={Chart} options={IOS_BOTTOM_STYLE} />
       </Stack.Navigator>
     </>

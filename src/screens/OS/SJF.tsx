@@ -1,5 +1,5 @@
-import firstComeFirstServe from '@/lib/fcfs'
 import type { Process } from '@/lib/lib'
+import shortestJobFirst from '@/lib/sjf'
 import { Gap12 } from '@components/Gap'
 import { SettText, SettWrapper } from '@components/Settings'
 import { Medium } from '@utils/fonts'
@@ -25,7 +25,7 @@ const sampleProcesses = [
   { arrivalTime: '', burstTime: '', name: 'P6' },
 ]
 
-export default function FCFS({ navigation }: NavProp) {
+export default function SJF({ navigation }: NavProp) {
   const [processes, setProcesses] = React.useState(defaultProcesses)
 
   function onPlay() {
@@ -38,8 +38,8 @@ export default function FCFS({ navigation }: NavProp) {
       name: p.name,
     }))
 
-    const chart = firstComeFirstServe(all)
-    navigation.navigate('Chart', { title: 'FCFS Gantt Chart', chart: chart.chart, maxTime: chart.maxTime })
+    const chart = shortestJobFirst(all)
+    navigation.navigate('Chart', { title: 'SJF Gantt Chart', chart: chart.chart, maxTime: chart.maxTime })
   }
 
   useEffect(() => {
@@ -54,11 +54,10 @@ export default function FCFS({ navigation }: NavProp) {
 
   return (
     <>
-      <SettWrapper navigation={navigation} title='FCFS Process Scheduling'>
+      <SettWrapper navigation={navigation} title='SJF Process Scheduling'>
         <Gap12 className='pb-8'>
           <SettText className='mt-3'>
-            FCFS (First Come First Serve) is a scheduling algorithm that schedules according to the arrival time of the
-            processes.
+            SJF (Shortest Job First) is a scheduling algorithm that selects the process with the smallest burst time.
           </SettText>
           <ProcessForm processes={processes} setProcesses={setProcesses} />
           <SettText>
