@@ -34,10 +34,12 @@ export default function Chart({ navigation, route }: { navigation: StackNav; rou
         <View className='flex-row justify-between'>
           <View className='items-center justify-center gap-y-2 pl-2'>
             <Medium className='text-xs'>
-              Avg. Waiting Time: {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
+              Avg. Waiting Time:{' '}
+              {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
             </Medium>
             <Medium className='text-xs'>
-              Avg. Turnaround Time: {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
+              Avg. Turnaround Time:{' '}
+              {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
             </Medium>
             <Medium className='text-xs'>Throughput: {(chart.length / maxTime).toFixed(2)} / unit time</Medium>
           </View>
@@ -52,11 +54,11 @@ export default function Chart({ navigation, route }: { navigation: StackNav; rou
                   height: ((item.endTime - item.startTime) / maxTime) * height,
                 }}
               >
-                <Medium style={{ fontSize: 11, marginTop: -10 }}>{item.startTime}</Medium>
+                <Medium style={{ fontSize: 11, marginTop: -12 }}>{item.startTime}</Medium>
               </View>
             ))}
             <View className='w-full items-center'>
-              <Medium style={{ fontSize: 11, marginTop: -10 }}>{maxTime}</Medium>
+              <Medium style={{ fontSize: 11, marginTop: -12 }}>{maxTime}</Medium>
             </View>
           </View>
           <View className='gap-y-2'>
@@ -70,7 +72,7 @@ export default function Chart({ navigation, route }: { navigation: StackNav; rou
                   backgroundColor: item.isBlank ? Colors.gray[500] : ColorList[index % ColorList.length],
                 }}
               >
-                <Medium className='text-xs text-white' style={{ transform: [{ rotate: '-90deg' }] }}>
+                <Medium className='text-xs text-white' style={{ transform: [{ rotate: '90deg' }] }}>
                   {item.name}
                 </Medium>
               </View>
