@@ -7,8 +7,8 @@ import hcWithType from '../rpc/hcWithType'
 import { hc } from 'hono/dist/client/client'
 import { WEB } from './constants'
 
-// const address = WEB
-const address = __DEV__ ? 'http://192.168.29.220:3000/' : WEB
+const address = WEB
+// const address = __DEV__ ? 'http://192.168.29.220:3000/' : WEB
 
 console.log(process.env.LOCAL)
 
