@@ -24,24 +24,31 @@ export default function Chart({ navigation, route }: { navigation: StackNav; rou
   const height = useMemo(() => (chart.length >= 8 ? H * 1.5 - 200 : H - 200), [chart.length])
   return (
     <ScrollView
-      className='h-screen gap-5 px-5 pt-5 dark:bg-zinc-950'
+      className='h-screen gap-5 px-5 pt-4 dark:bg-zinc-950'
       contentContainerStyle={{ flexGrow: 1, paddingBottom: 40 }}
     >
       <StatusBar barStyle='default' />
-      <Medium className='text-center text-sm text-black dark:text-white'>{title}</Medium>
+      <View>
+        <View className='items-center'>
+          <View className='w-20 rounded-full bg-zinc-200 opacity-70 dark:bg-zinc-800' style={{ height: 5 }} />
+        </View>
+        <Medium className='mt-2.5 text-center text-sm text-black dark:text-white'>{title}</Medium>
+      </View>
       <View className='flex-row justify-between'>
         <View />
         <View className='flex-row justify-between'>
           <View className='items-center justify-center gap-y-2 pl-2'>
-            <Medium className='text-xs'>
+            <Medium className='text-xs text-gray-900 dark:text-gray-100'>
               Avg. Waiting Time:{' '}
               {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
             </Medium>
-            <Medium className='text-xs'>
+            <Medium className='text-xs text-gray-900 dark:text-gray-100'>
               Avg. Turnaround Time:{' '}
               {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
             </Medium>
-            <Medium className='text-xs'>Throughput: {(chart.length / maxTime).toFixed(2)} / unit time</Medium>
+            <Medium className='text-xs text-gray-900 dark:text-gray-100'>
+              Throughput: {(chart.length / maxTime).toFixed(2)} / unit time
+            </Medium>
           </View>
         </View>
         <View className='flex-row'>
@@ -54,11 +61,15 @@ export default function Chart({ navigation, route }: { navigation: StackNav; rou
                   height: ((item.endTime - item.startTime) / maxTime) * height,
                 }}
               >
-                <Medium style={{ fontSize: 11, marginTop: -12 }}>{item.startTime}</Medium>
+                <Medium style={{ fontSize: 11, marginTop: -12 }} className='text-gray-900 dark:text-gray-100'>
+                  {item.startTime}
+                </Medium>
               </View>
             ))}
             <View className='w-full items-center'>
-              <Medium style={{ fontSize: 11, marginTop: -12 }}>{maxTime}</Medium>
+              <Medium style={{ fontSize: 11, marginTop: -12 }} className='text-gray-900 dark:text-gray-100'>
+                {maxTime}
+              </Medium>
             </View>
           </View>
           <View className='gap-y-2'>
