@@ -1,8 +1,8 @@
 module.exports = {
   presets: ['module:@react-native/babel-preset'],
   plugins: [
-    'nativewind/babel',
     'react-native-reanimated/plugin',
+    'nativewind/babel',
     [
       'module-resolver',
       {
@@ -21,7 +21,7 @@ module.exports = {
   ],
   env: {
     production: {
-      plugins: ['nativewind/babel', 'react-native-reanimated/plugin'],
+      plugins: ['react-native-reanimated/plugin'],
     },
   },
 }

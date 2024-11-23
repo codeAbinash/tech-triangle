@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Abinash.app"
-               BlueprintName = "Abinash"
-               ReferencedContainer = "container:Abinash.xcodeproj">
+               BuildableName = "TechTriangle.app"
+               BlueprintName = "TechTriangle"
+               ReferencedContainer = "container:TechTriangle.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "AbinashTests.xctest"
-               BlueprintName = "AbinashTests"
-               ReferencedContainer = "container:Abinash.xcodeproj">
+               BuildableName = "TechTriangleTests.xctest"
+               BlueprintName = "TechTriangleTests"
+               ReferencedContainer = "container:TechTriangle.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Abinash.app"
-            BlueprintName = "Abinash"
-            ReferencedContainer = "container:Abinash.xcodeproj">
+            BuildableName = "TechTriangle.app"
+            BlueprintName = "TechTriangle"
+            ReferencedContainer = "container:TechTriangle.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Abinash.app"
-            BlueprintName = "Abinash"
-            ReferencedContainer = "container:Abinash.xcodeproj">
+            BuildableName = "TechTriangle.app"
+            BlueprintName = "TechTriangle"
+            ReferencedContainer = "container:TechTriangle.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
