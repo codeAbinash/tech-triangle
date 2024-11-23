@@ -144,7 +144,7 @@ type MemoRangeTypes = {
   min: number
   Left?: React.ReactNode
   Right?: React.ReactNode
-  Bottom?: ({ val }: { val: number }) => React.ReactNode
+  Bottom?: ({ val }: { val: number }) => JSX.Element | null
 }
 
 const MemoRange = memo(({ setVal, initial, max, min, Left, Right, Bottom }: MemoRangeTypes) => {
@@ -165,7 +165,7 @@ const MemoRange = memo(({ setVal, initial, max, min, Left, Right, Bottom }: Memo
         Left={Left === undefined ? <Txt>{min}</Txt> : Left}
         Right={Right === undefined ? <Txt>{max}</Txt> : Right}
       />
-      {Bottom && <Bottom val={getCurrVal(len)} />}
+      {Bottom ? <Bottom val={getCurrVal(len)} /> : null}
     </>
   )
 })

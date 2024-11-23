@@ -17,7 +17,7 @@ function locationUrl(lat: number, lon: number, apiKey: string) {
 }
 
 function weatherUrl(lat: number, lon: number, apiKey: string) {
-  const url =  `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}&include=aqi`
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}&include=aqi`
   console.log(url)
   return url
 }

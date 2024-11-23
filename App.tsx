@@ -153,7 +153,7 @@ export type RootStackParamList = {
   Story: undefined
   User: UserParamList
   FCFS: undefined
-  SJF : undefined
+  SJF: undefined
   Chart: ChartParamList
 }
 

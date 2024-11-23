@@ -9,7 +9,7 @@ import {
   TextFontSolidIcon,
   Typescript01SolidIcon,
   VolumeHighIcon,
-  VolumeLowIcon
+  VolumeLowIcon,
 } from '@assets/icons/icons'
 import Button from '@components/Button'
 import { Gap12 } from '@components/Gap'

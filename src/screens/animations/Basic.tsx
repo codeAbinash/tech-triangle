@@ -1,11 +1,10 @@
-import Images from '@assets/images/images'
 import Btn from '@components/Button'
 import COL, { Colors } from '@utils/colors'
 import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { useAnimatedProps, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
-import Svg, { Circle } from 'react-native-svg'
+import Svg, { Circle, NumberProp } from 'react-native-svg'
 
 const { width } = Dimensions.get('window')
 
@@ -98,7 +97,13 @@ function Example3() {
       <Text className='mb-5 w-full text-center text-lg'>Example 2</Text>
       <View className='w-full items-center justify-center px-4'>
         <Svg width={width} height={200}>
-          <AnimatedCircle cx={width / 2} cy='100' r={r} fill={COL.g2} animatedProps={animatedProps} />
+          <AnimatedCircle
+            cx={width / 2}
+            cy='100'
+            r={r as unknown as NumberProp}
+            fill={COL.g2}
+            animatedProps={animatedProps}
+          />
         </Svg>
       </View>
       <View className='flex flex-row items-center justify-center'>

@@ -144,7 +144,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
                   className='flex-row items-center overflow-auto rounded-full'
                   style={{ width: `${width}%`, height: 6 }}
                 >
-                  {dotPosition && <DotPosition dotPosition={dotPosition} theme={theme} />}
+                  {dotPosition !== null && <DotPosition dotPosition={dotPosition} theme={theme} />}
                 </Gradient>
               </View>
             </View>
@@ -161,7 +161,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
   )
 }
 
-function DotPosition({ dotPosition, theme }: { dotPosition: number; theme: Theme }): React.ReactNode {
+function DotPosition({ dotPosition, theme }: { dotPosition: number; theme: Theme }): JSX.Element {
   return (
     <>
       <View style={{ width: `${dotPosition}%` }}></View>

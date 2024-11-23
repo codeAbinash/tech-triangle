@@ -71,7 +71,6 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               accessibilityRole='button'
               accessibilityState={isFocused ? { selected: true } : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
               onPress={onPress}
               onLongPress={onLongPress}
               className='flex items-center justify-center p-1'

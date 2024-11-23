@@ -17,7 +17,8 @@ export default function ProcessForm({
 }) {
   function set(index: number, fn: (value: ProcessUI) => void) {
     const newProcesses = [...processes]
-    if (newProcesses[index]) fn(newProcesses[index])
+    const process = newProcesses[index]
+    if (process) fn(process)
     setProcesses(newProcesses)
   }
 
