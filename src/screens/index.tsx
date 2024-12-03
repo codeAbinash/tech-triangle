@@ -102,7 +102,7 @@ export function getGrayColor(theme: ColorSchemeName) {
 const Home = () => {
   return (
     <>
-      <Tab.Navigator tabBar={BottomTabBar}>
+      <Tab.Navigator tabBar={BottomTabBar} screenOptions={{ animation: 'shift' }}>
         <Tab.Screen
           name='HomeScreen'
           component={HomeScreen}
