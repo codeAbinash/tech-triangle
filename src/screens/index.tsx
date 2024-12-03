@@ -1,9 +1,3 @@
-import { PaddingBottom } from '@components/SafePadding'
-import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigation/bottom-tabs'
-import COL, { Colors } from '@utils/colors'
-import type { ReactNode } from 'react'
-import React from 'react'
-import { Text, TouchableOpacity, useColorScheme, View, type ColorSchemeName } from 'react-native'
 import {
   Home01Icon,
   Home01SolidIcon,
@@ -14,10 +8,18 @@ import {
   Wallet02Icon,
   Wallet02SolidIcon,
 } from '@assets/icons/icons'
-import HomeScreen from './Home/HomeScreen'
-import ComingSoon from './UnderConstruction'
-import TyrItOut from './Try/TyrItOut'
+import { PaddingBottom } from '@components/SafePadding'
+import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
+import { useColorScheme } from 'nativewind'
+import React, { type ReactNode } from 'react'
+import { TouchableOpacity, View, type ColorSchemeName } from 'react-native'
+import colors from 'tailwindcss/colors'
+import HomeScreen from './Home/HomeScreen'
+import TyrItOut from './Try/TyrItOut'
+import ComingSoon from './UnderConstruction'
+
 const Tab = createBottomTabNavigator()
 
 function BottomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
@@ -32,7 +34,7 @@ function BottomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 }
 
 function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
-  const theme = useColorScheme()
+  const { colorScheme } = useColorScheme()
   return (
     <View className='bg-white dark:bg-zinc-950'>
       <View style={{ flexDirection: 'row', paddingHorizontal: 10 }}>
@@ -64,6 +66,8 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             })
           }
 
+          const color = isFocused ? getFocusedColor(colorScheme) : getColor(colorScheme)
+
           return (
             <TouchableOpacity
               key={route.key}
@@ -76,16 +80,8 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               className='flex items-center justify-center p-1'
               style={{ flex: 1, paddingTop: 13.5, paddingBottom: 8 }}
             >
-              {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color: getGrayColor(theme), size: 23 })}
-              <SemiBold
-                style={{
-                  color: isFocused ? Colors.accent : getGrayColor(theme),
-                  marginTop: 3.5,
-                  fontSize: 8.5,
-                }}
-              >
-                {label as ReactNode}
-              </SemiBold>
+              {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color, size: 23 })}
+              <SemiBold style={{ color, marginTop: 3.5, fontSize: 8.5 }}>{label as ReactNode}</SemiBold>
             </TouchableOpacity>
           )
         })}
@@ -95,84 +91,70 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   )
 }
 
-export function getGrayColor(theme: ColorSchemeName) {
-  return theme === 'dark' ? COL.gray600 : COL.gray400
+export function getFocusedColor(theme: ColorSchemeName) {
+  // return theme === 'dark' ? colors.zinc[200] : colors.zinc[800]
+  return Colors.accent
 }
+
+export function getColor(theme: ColorSchemeName) {
+  return theme === 'dark' ? colors.zinc[400] : colors.zinc[600]
+}
+
+const screens = [
+  { name: 'HomeScreen', label: 'Home', focusedIcon: Home01SolidIcon, defaultIcon: Home01Icon, component: HomeScreen },
+  {
+    name: 'TryItOut',
+    label: 'Try it out',
+    focusedIcon: TestTube01SolidIcon,
+    defaultIcon: TestTube01Icon,
+    component: TyrItOut,
+  },
+  {
+    name: 'Explore',
+    label: 'Explore',
+    focusedIcon: Saturn01SolidIcon,
+    defaultIcon: Saturn01Icon,
+    component: ComingSoon,
+  },
+  { name: 'Wallet', label: 'Wallet', focusedIcon: Wallet02SolidIcon, defaultIcon: Wallet02Icon, component: ComingSoon },
+]
 
 const Home = () => {
   return (
     <>
       <Tab.Navigator tabBar={BottomTabBar} screenOptions={{ animation: 'shift' }}>
-        <Tab.Screen
-          name='HomeScreen'
-          component={HomeScreen}
-          options={{
-            tabBarLabel: 'Home',
-            headerShown: false,
-            tabBarIcon: HomeIcon,
-          }}
-        />
-        <Tab.Screen
-          name='TryItOut'
-          component={TyrItOut}
-          options={{
-            tabBarLabel: 'Try it out',
-            headerShown: false,
-            tabBarIcon: Try,
-          }}
-        />
-        <Tab.Screen
-          name='Explore'
-          component={ComingSoon}
-          options={{
-            tabBarLabel: 'Explore',
-            headerShown: false,
-            tabBarIcon: ExploreIcon,
-          }}
-        />
-        <Tab.Screen
-          name='Wallet'
-          component={ComingSoon}
-          options={{
-            tabBarLabel: 'Wallet',
-            headerShown: false,
-            tabBarIcon: WalletIcon,
-          }}
-        />
+        {screens.map((screen) => (
+          <Tab.Screen
+            key={screen.name}
+            name={screen.name}
+            component={screen.component}
+            options={{
+              tabBarLabel: screen.label,
+              headerShown: false,
+              tabBarIcon: (props) => (
+                <TabIcon {...props} focusedIcon={screen.focusedIcon} defaultIcon={screen.defaultIcon} />
+              ),
+            }}
+          />
+        ))}
       </Tab.Navigator>
     </>
   )
 }
 
-function HomeIcon(props: { focused: boolean; color: string; size: number }) {
-  return props.focused ? (
-    <Home01SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
-  ) : (
-    <Home01Icon {...props} height={props.size} width={props.size} />
-  )
+type TabIconT = {
+  focused: boolean
+  color: string
+  size: number
+  focusedIcon: React.ComponentType<any>
+  defaultIcon: React.ComponentType<any>
 }
 
-function WalletIcon(props: { focused: boolean; color: string; size: number }) {
-  return props.focused ? (
-    <Wallet02SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
+function TabIcon({ focused, color, size, focusedIcon: FocusedIcon, defaultIcon: DefaultIcon }: TabIconT) {
+  return focused ? (
+    <FocusedIcon height={size} width={size} color={color} />
   ) : (
-    <Wallet02Icon {...props} height={props.size} width={props.size} />
-  )
-}
-
-function Try(props: { focused: boolean; color: string; size: number }) {
-  return props.focused ? (
-    <TestTube01SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
-  ) : (
-    <TestTube01Icon {...props} height={props.size} width={props.size} />
-  )
-}
-
-function ExploreIcon(props: { focused: boolean; color: string; size: number }) {
-  return props.focused ? (
-    <Saturn01SolidIcon {...props} height={props.size} width={props.size} color={Colors.accent} />
-  ) : (
-    <Saturn01Icon {...props} height={props.size} width={props.size} />
+    <DefaultIcon height={size} width={size} color={color} />
   )
 }
 
