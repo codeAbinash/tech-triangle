@@ -1,5 +1,5 @@
 $user = "codeAbinash"
-$repo="computer-science"
+$repo="tech-triangle"
 
 (gh api repos/$user/$repo/actions/runs | ConvertFrom-Json).workflow_runs |
  %{ $_.id } |
