@@ -2,7 +2,7 @@ import { CancelCircleSolidIcon, Search01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
 import { PoppinsMedium } from '@utils/fonts'
 import React, { useCallback } from 'react'
-import { TextInput, type TextInputProps, useColorScheme, View } from 'react-native'
+import { TextInput, View, type TextInputProps, useColorScheme } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
 
@@ -30,7 +30,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       <Search01Icon width={17} height={17} color={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]} />
       <TextInput
         ref={ref}
-        className='flex-1 p-2 px-3 text-zinc-800 dark:text-zinc-200'
+        className='flex-1 p-3 text-zinc-800 dark:text-zinc-200'
         style={[PoppinsMedium, { fontSize: 12.2, marginTop: 0.8 }]}
         placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
         cursorColor={Colors.accent}

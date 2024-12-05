@@ -27,8 +27,8 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   const clearDevOptions = devOptStore((state) => state.clearDevOptions)
   const isFabEnabled = devOptStore((state) => state.isFabEnabled)
   const setFabEnabled = devOptStore((state) => state.setFabEnabled)
-  const { token, setToken } = authStore((state) => ({ token: state.token, setToken: state.setToken }))
-
+  // const { token, setToken } = authStore((state) => ({ token: state.token, setToken: state.setToken }))
+  const token = authStore((state) => state.token)
   const setAnim = useCallback((duration: string) => {
     let dur = parseInt(duration, 10)
     if (isNaN(dur)) return setAnimError('Please enter a valid number')
@@ -56,6 +56,10 @@ export default function DeveloperOptions({ navigation }: NavProp) {
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  function handelAuthInput(text: string) {
+    console.log(text)
+  }
 
   return (
     <SettWrapper title='Developer Options' navigation={navigation}>
@@ -122,7 +126,10 @@ export default function DeveloperOptions({ navigation }: NavProp) {
               <Input
                 Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-gray-500' />}
                 placeholder='Enter auth token'
-                onChangeText={setToken}
+                // onChangeText={setToken}
+                onChangeText={(text) => {
+                  console.log(text)
+                }}
                 defaultValue={token}
                 keyboardType='default'
                 multiline

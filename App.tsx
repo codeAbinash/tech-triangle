@@ -1,5 +1,7 @@
+import './global.css'
 import { devOptStore } from '@/zustand/devOptStore'
 import { CodeSolidIcon } from '@assets/icons/icons'
+import Press from '@components/Press'
 import { AutoStatusBar } from '@components/StatusBar'
 import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
@@ -62,7 +64,7 @@ function App(): React.JSX.Element {
       <GestureHandlerRootView style={{ flex: 1 }}>
         <SafeAreaView className='flex-1' style={{ height: height }}>
           <AutoStatusBar scheme={scheme} />
-          <NavigationContainer theme={useColorScheme() === 'dark' ? DarkTheme : DefaultTheme}>
+          <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Navigation />
           </NavigationContainer>
         </SafeAreaView>
@@ -266,7 +268,7 @@ const FabButton = () => {
       exiting={ZoomOut.duration(200)}
       className='absolute bottom-7 right-5 z-10'
     >
-      <TouchableOpacity
+      <Press
         style={{
           shadowColor: '#000',
           shadowOffset: {
@@ -275,13 +277,16 @@ const FabButton = () => {
           },
           elevation: 6,
           shadowOpacity: 0.5,
+          height: 60,
+          width: 60,
         }}
-        activeOpacity={0.7}
-        className='h-14 w-14 items-center justify-center rounded-full bg-accent'
         onPress={() => navigation.navigate('DeveloperOptions')}
+        activeOpacity={0.9}
+        activeScale={0.95}
+        className='items-center justify-center rounded-full bg-accent'
       >
-        <CodeSolidIcon className='text-white' height={25} width={25} />
-      </TouchableOpacity>
+        <CodeSolidIcon color={'white'} height={25} width={25} />
+      </Press>
     </Animated.View>
   )
 }

@@ -27,7 +27,7 @@ export default function RunButton({ onPlay }: { onPlay: () => void }) {
         className='items-center justify-center rounded-full bg-accent'
         onPress={onPlay}
       >
-        <PlaySolidIcon className='text-white' height={25} width={25} />
+        <PlaySolidIcon color={'white'} height={25} width={25} />
       </Press>
     </Animated.View>
   )

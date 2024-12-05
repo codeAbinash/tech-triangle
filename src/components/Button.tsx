@@ -1,16 +1,17 @@
 import { Medium } from '@utils/fonts'
+import { cn } from '@utils/utils'
 import React from 'react'
-import { TouchableOpacity, type TouchableOpacityProps } from 'react-native-gesture-handler'
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
-type ButtonProps = TouchableOpacityProps & { title?: string; Content?: React.ReactNode }
+type ButtonProps = TouchableOpacityProps & { title?: string }
 
-const Btn = React.memo(({ title, onPress, disabled, children, style, ...rest }: ButtonProps) => {
+const Btn = React.memo(({ title, onPress, disabled, children, className, ...rest }: ButtonProps) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={onPress}
-      className='w-full bg-accent'
-      style={[{ borderRadius: 14.5, paddingVertical: 13, paddingHorizontal: 13, opacity: disabled ? 0.8 : 1 }, style]}
+      className={cn('w-full bg-accent', className)}
+      style={[{ borderRadius: 14.5, paddingVertical: 13, paddingHorizontal: 13, opacity: disabled ? 0.8 : 1 }]}
       disabled={disabled}
       {...rest}
     >

@@ -3,7 +3,7 @@ import { Colors } from '@utils/colors'
 import { Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { TouchableOpacity, useColorScheme, View, type ViewProps } from 'react-native'
+import { TouchableOpacity, View, useColorScheme, type ViewProps } from 'react-native'
 import { PaddingTop } from './SafePadding'
 
 type BackHeaderProps = ViewProps & {

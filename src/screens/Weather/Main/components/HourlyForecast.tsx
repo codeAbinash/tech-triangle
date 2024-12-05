@@ -1,6 +1,6 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import { Clock01SolidIcon } from '@assets/icons/icons'
-import type { Current, Weather } from '@screens/Weather/types'
+import type { Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
 import { getAp, getHour, tempConverter } from '@utils/utils'

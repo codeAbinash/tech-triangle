@@ -154,31 +154,32 @@ export default function EditVersion({ navigation }: NavProp) {
           ) : (
             <>
               {features.map((item, i) => (
-                <Animated.View key={i} entering={FadeIn}>
-                  <Input
-                    Icon={
-                      <View
-                        className='flex items-center justify-center'
-                        style={{
-                          height: 28,
-                          width: 28,
-                          borderRadius: 9.5,
-                          backgroundColor: ColorList[i % ColorList.length],
-                        }}
-                      >
-                        <SemiBold className='justify-center pt-0.5 text-center text-xs text-white'>{i + 1}</SemiBold>
-                      </View>
-                    }
-                    value={item}
-                    multiline
-                    placeholder={`Feature description ${i + 1}`}
-                    onChangeText={(text) => {
-                      const newFeatures = [...features]
-                      newFeatures[i] = text
-                      setFeatures(newFeatures)
-                    }}
-                  />
-                </Animated.View>
+                // <Animated.View key={i} entering={FadeIn}>
+                <Input
+                  key={i}
+                  Icon={
+                    <View
+                      className='flex items-center justify-center'
+                      style={{
+                        height: 28,
+                        width: 28,
+                        borderRadius: 9.5,
+                        backgroundColor: ColorList[i % ColorList.length],
+                      }}
+                    >
+                      <SemiBold className='justify-center pt-0.5 text-center text-xs text-white'>{i + 1}</SemiBold>
+                    </View>
+                  }
+                  value={item}
+                  multiline
+                  placeholder={`Feature description ${i + 1}`}
+                  onChangeText={(text) => {
+                    const newFeatures = [...features]
+                    newFeatures[i] = text
+                    setFeatures(newFeatures)
+                  }}
+                />
+                // </Animated.View>
               ))}
               <SettOption
                 title='Add more features'

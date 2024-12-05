@@ -1,8 +1,10 @@
+import type { DistanceUnit, TemperatureUnit, TimeFormat } from '@/zustand/weatherStore'
 import { ls } from '@utils/storage'
 import { Alert, Share } from 'react-native'
-import { SCREEN_TRANSITION } from './constants'
-import type { DistanceUnit, TemperatureUnit, TimeFormat } from '@/zustand/weatherStore'
 import { FadeIn } from 'react-native-reanimated'
+import { SCREEN_TRANSITION } from './constants'
+import { clsx, type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export async function shareText(message: string) {
   try {
@@ -235,4 +237,8 @@ export function delayedFadeAnimationSearch(search: string, i: number) {
 
 export function delayedFadeAnimation(i: number) {
   return FadeIn.duration(250).delay(Math.min((i + 1) * 25, 500))
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }

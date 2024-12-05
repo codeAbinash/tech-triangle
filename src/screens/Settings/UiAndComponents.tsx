@@ -24,6 +24,7 @@ import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
+import colors from 'tailwindcss/colors'
 
 export default function UiAndComponents({ navigation }: NavProp) {
   const [toggle1, setToggle1] = useState(true)
@@ -136,19 +137,19 @@ export default function UiAndComponents({ navigation }: NavProp) {
           <SettGroup title='Your favorite Programming Language'>
             <SettOption
               title='TypeScript'
-              Icon={<Typescript01SolidIcon className='text-blue-500' height={35} width={35} />}
+              Icon={<Typescript01SolidIcon color={colors.blue[500]} height={35} width={35} />}
               onPress={() => setOption1('TypeScript')}
               Right={<Check checked={option1 === 'TypeScript'} />}
             />
             <SettOption
               title='JavaScript'
-              Icon={<JavaScriptSolidIcon className='text-yellow-500' height={35} width={35} />}
+              Icon={<JavaScriptSolidIcon color={colors.yellow[500]} height={35} width={35} />}
               onPress={() => setOption1('JavaScript')}
               Right={<Check className='text-amber-500' checked={option1 === 'JavaScript'} />}
             />
             <SettOption
               title='C++'
-              Icon={<CSolidIcon className='text-blue-500' height={35} width={35} />}
+              Icon={<CSolidIcon color={colors.blue[500]} height={35} width={35} />}
               onPress={() => setOption1('C++')}
               Right={<Check className='text-blue-500' checked={option1 === 'C++'} />}
             />
@@ -193,8 +194,8 @@ const RangeSliderMemo = () => {
         <Range
           value={value}
           setValue={setValue}
-          Left={<VolumeLowIcon className='text-accent' height={24} width={24} />}
-          Right={<VolumeHighIcon className='text-accent' height={24} width={24} />}
+          Left={<VolumeLowIcon color={Colors.accent} height={24} width={24} />}
+          Right={<VolumeHighIcon color={Colors.accent} height={24} width={24} />}
         />
       </View>
       <SettText>

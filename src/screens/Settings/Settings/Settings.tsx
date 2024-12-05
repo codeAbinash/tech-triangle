@@ -37,10 +37,10 @@ import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/s
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { useColorScheme, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import AdminSettings from './AdminSettings'
+import { View, useColorScheme } from 'react-native'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
 // }

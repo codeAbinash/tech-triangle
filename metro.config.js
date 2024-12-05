@@ -1,4 +1,5 @@
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config')
+const { withNativeWind } = require('nativewind/metro')
 // const path = require('path')
 const defaultConfig = getDefaultConfig(__dirname)
 const { assetExts, sourceExts } = defaultConfig.resolver
@@ -9,18 +10,14 @@ const { assetExts, sourceExts } = defaultConfig.resolver
  *
  * @type {import('metro-config').MetroConfig}
  */
-const config = {
+const config = mergeConfig(defaultConfig, {
   transformer: {
     babelTransformerPath: require.resolve('react-native-svg-transformer'),
   },
   resolver: {
-    assetExts: [...assetExts.filter((ext) => ext !== 'svg'), 'lottie', 'css'],
+    assetExts: [...assetExts.filter((ext) => ext !== 'svg'), 'lottie'],
     sourceExts: [...sourceExts, 'svg'],
   },
-  // watchFolders: [
-  //   path.resolve(__dirname, '../tech-triangle-web/zod/'),
-  //   path.resolve(__dirname, '../tech-triangle-web/node_modules/'),
-  // ],
-}
+})
 
-module.exports = mergeConfig(defaultConfig, config)
+module.exports = withNativeWind(config, { input: './global.css' })

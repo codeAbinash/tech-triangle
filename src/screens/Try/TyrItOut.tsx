@@ -13,10 +13,8 @@ import {
   NeuralNetworkSolidIcon,
   PaintBoardSolidIcon,
   Setting07SolidIcon,
-  Settings01Icon,
   SoftwareLicenseSolidIcon,
   TestTube01SolidIcon,
-  Timer02SolidIcon,
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
@@ -30,9 +28,9 @@ import { Bold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import type { RootStackParamList } from 'App'
 import React, { useMemo } from 'react'
-import { useColorScheme, View } from 'react-native'
+import { View, useColorScheme } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import Animated, { FadeIn } from 'react-native-reanimated'
+import { FadeIn } from 'react-native-reanimated'
 import type { SvgProps } from 'react-native-svg'
 
 type Tool = {
@@ -107,8 +105,8 @@ export default function TyrItOut({ navigation }: NavProp) {
     <>
       <PaddingTop />
       <View className='px-5 pb-3'>
-        <View className='flex-row items-center justify-between'>
-          <Bold className='text-xl text-gray-800 dark:text-gray-200'>Try it out</Bold>
+        <View className='my-1 flex-row items-center justify-between'>
+          <Bold className='mb-1 mt-2 text-xl text-gray-800 dark:text-gray-200'>Try it out</Bold>
           <TouchableOpacity
             activeOpacity={0.6}
             className='p-2.5 pb-3.5 pr-0.5 pt-2'
@@ -133,16 +131,16 @@ export default function TyrItOut({ navigation }: NavProp) {
               {group.startText && <SettText>{group.startText}</SettText>}
               <SettGroup title={group.title}>
                 {group.tools.map((tool, i) => (
-                  <Animated.View key={i} entering={delayedFadeAnimation(search, i)}>
-                    <SettOption
-                      key={i}
-                      title={tool.title}
-                      Icon={<RoundedIcon Icon={tool.Icon} className={tool.className} />}
-                      arrow={tool.arrow ?? true}
-                      // Update onPress handlers to correctly navigate using the 'to' property
-                      onPress={() => tool.to && navigation.navigate(tool.to as any)}
-                    />
-                  </Animated.View>
+                  // <Animated.View key={i} entering={delayedFadeAnimation(search, i)}>
+                  <SettOption
+                    key={i}
+                    title={tool.title}
+                    Icon={<RoundedIcon Icon={tool.Icon} className={tool.className} />}
+                    arrow={tool.arrow ?? true}
+                    // Update onPress handlers to correctly navigate using the 'to' property
+                    onPress={() => tool.to && navigation.navigate(tool.to as any)}
+                  />
+                  // </Animated.View>
                 ))}
               </SettGroup>
               {group.endText && <SettText>{group.endText}</SettText>}

@@ -50,18 +50,19 @@ export default function AllUsers({ navigation }: NavProp) {
         <SettGroup title='All users'>
           {isPending && <DoubleSkeleton n={12} />}
           {data?.data?.map((user, i) => (
-            <Animated.View key={user.email} entering={delayedFadeAnimation(i)}>
-              <SettOption
-                title={user.name}
-                Icon={<RoundedIcon Icon={UserSolidIcon} />}
-                arrow
-                onPress={() => navigation.navigate('User', { user })}
-              >
-                <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
-                  {user.email}
-                </Medium>
-              </SettOption>
-            </Animated.View>
+            // <Animated.View key={user.email} entering={delayedFadeAnimation(i)}>
+            <SettOption
+              key={user.email}
+              title={user.name}
+              Icon={<RoundedIcon Icon={UserSolidIcon} />}
+              arrow
+              onPress={() => navigation.navigate('User', { user })}
+            >
+              <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
+                {user.email}
+              </Medium>
+            </SettOption>
+            // </Animated.View>
           ))}
         </SettGroup>
       </Gap12>

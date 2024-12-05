@@ -2,15 +2,16 @@ import { ArrowRight01Icon, Tick01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
 import { F, Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
+import { cn } from '@utils/utils'
 import React from 'react'
 import {
   TouchableOpacity,
-  useColorScheme,
   View,
   type ScrollViewProps,
   type TextProps,
   type TouchableOpacityProps,
   type ViewProps,
+  useColorScheme,
 } from 'react-native'
 import type { SvgProps } from 'react-native-svg'
 import BackHeader from './BackHeader'
@@ -32,14 +33,14 @@ export function SettOption({
   onPress,
   Icon,
   Right,
-  style,
+  className,
   arrow,
   numberOfLines,
   ...rest
 }: SettOptionProps) {
   return (
     <TouchableOpacity
-      className='flex-row items-center justify-between px-6'
+      className={cn('flex-row items-center justify-between px-6', className)}
       onPress={onPress}
       activeOpacity={0.7}
       style={[{ gap: 10 }]}
@@ -50,7 +51,7 @@ export function SettOption({
         <View className='p-2.5 px-0'>
           <Medium
             className='text-left text-zinc-800 dark:text-zinc-200'
-            style={[{ fontSize: 12, flexShrink: 1 }, style]}
+            style={[{ fontSize: 12, flexShrink: 1 }]}
             numberOfLines={numberOfLines || 0}
           >
             {title}
@@ -70,9 +71,9 @@ type SettGroupProps = ViewProps & {
   title?: string
   accent?: string
 }
-export function SettGroup({ children, title, accent = Colors.accent, ...rest }: SettGroupProps) {
+export function SettGroup({ children, title, className, accent = Colors.accent, ...rest }: SettGroupProps) {
   return (
-    <View className={'bg-white py-2.5 dark:bg-zinc-950'} {...rest}>
+    <View className={cn('bg-white py-3 dark:bg-zinc-950', className)} {...rest}>
       {title && (
         <Medium
           className={'px-6 py-1.5 text-accent'}
@@ -90,9 +91,10 @@ export function RightArrow() {
   return <ArrowRight01Icon width={22} height={22} color={Colors.zinc[500]} />
 }
 
-export function SettText({ children, style, ...rest }: TextProps) {
+export function SettText({ children, className, ...rest }: TextProps) {
+  const newLocal = cn('px-5 text-zinc-500 dark:text-zinc-500', className)
   return (
-    <Medium className='px-5 text-zinc-500 dark:text-zinc-500' {...rest} style={[F.F9, style]}>
+    <Medium className={newLocal} {...rest} style={[F.F9]}>
       {children}
     </Medium>
   )
@@ -104,9 +106,9 @@ export type CheckIconProps = {
 } & SvgProps
 export function Check({ checked, ...rest }: CheckIconProps) {
   return checked ? (
-    <Tick01Icon {...ic} className='text-accent' {...rest} />
+    <Tick01Icon {...ic} color={Colors.accent} {...rest} />
   ) : (
-    <Tick01Icon {...ic} className='opacity-0' />
+    <Tick01Icon {...ic} style={{ opacity: 0 }} />
   )
 }
 
