@@ -2,8 +2,7 @@ import { CancelCircleSolidIcon, Search01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
 import { PoppinsMedium } from '@utils/fonts'
 import React, { useCallback } from 'react'
-import { TextInput, View, type TextInputProps, useColorScheme } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TextInput, TouchableOpacity, View, useColorScheme, type TextInputProps } from 'react-native'
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
 
 export default function Search({ onChangeText, value, ...all }: TextInputProps) {

@@ -8,7 +8,12 @@ export default function KeyboardAvoidingContainer(props: KeyboardAvoidingContain
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} {...props}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          keyboardShouldPersistTaps='always'
+          {...props}
+        >
           {props.children}
         </ScrollView>
       </KeyboardAvoidingView>

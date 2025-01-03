@@ -23,8 +23,8 @@ import {
   Wallet02SolidIcon,
 } from '@assets/icons/icons'
 import { Gap, Gap12, Gap20 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
 import RoundNotification from '@components/RoundNotification'
+import RoundedIcon from '@components/RoundedIcon'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import { SettGroup, SettOption, SettText } from '@components/Settings'
@@ -37,10 +37,10 @@ import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/s
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
+import { View, useColorScheme } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import AdminSettings from './AdminSettings'
-import { View, useColorScheme } from 'react-native'
 // function getTransparentCardStyle(scheme: ColorSchemeName) {
 //   return scheme === 'dark' ? 'aa' : '77'
 // }
@@ -88,6 +88,7 @@ export default function Settings({ navigation }: NavProp) {
         contentContainerStyle={{ paddingBottom: 30, backgroundColor: scheme === 'dark' ? 'black' : Colors.zinc[100] }}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps='always'
       >
         <SettingsHeader title='Settings' />
         {/* <SettingsHeader navigation={navigation} title='Settings' back={false}/> */}
