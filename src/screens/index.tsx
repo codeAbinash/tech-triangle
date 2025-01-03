@@ -13,12 +13,11 @@ import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigat
 import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import React, { type ReactNode } from 'react'
-import { TouchableOpacity, View, type ColorSchemeName, useColorScheme } from 'react-native'
+import { TouchableOpacity, View, useColorScheme, type ColorSchemeName } from 'react-native'
 import colors from 'tailwindcss/colors'
 import HomeScreen from './Home/HomeScreen'
 import TyrItOut from './Try/TyrItOut'
 import ComingSoon from './UnderConstruction'
-import { colorScheme } from 'nativewind'
 
 const Tab = createBottomTabNavigator()
 
@@ -78,10 +77,10 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               onPress={onPress}
               onLongPress={onLongPress}
               className='flex items-center justify-center p-1'
-              style={{ flex: 1, paddingTop: 13.5, paddingBottom: 8 }}
+              style={{ flex: 1, paddingTop: 13, paddingBottom: 5 }}
             >
-              {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color, size: 23 })}
-              <SemiBold style={{ color, marginTop: 3.5, fontSize: 8.5 }}>{label as ReactNode}</SemiBold>
+              {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color, size: 22 })}
+              <SemiBold style={{ color, marginTop: 3, fontSize: 8 }}>{label as ReactNode}</SemiBold>
             </TouchableOpacity>
           )
         })}
