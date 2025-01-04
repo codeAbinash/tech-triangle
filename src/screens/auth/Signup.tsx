@@ -23,6 +23,7 @@ import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Alert, ToastAndroid, View } from 'react-native'
 import { PasswordEye } from './components/PasswordEye'
+import popupStore from '@/zustand/popupStore'
 
 type SignupParams = {
   name: string
@@ -44,18 +45,19 @@ export default function Signup({ navigation }: NavProp) {
   const [name, setName] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const [status, setStatus] = useState<NameStatus>(NameStatus.Initial)
+  const alert = popupStore((store) => store.alert)
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
     mutationFn: async (data: SignupParams) => await (await client.api.auth.signup.$post({ form: { ...data } })).json(),
     onSuccess: (data) => {
       console.log(data)
-      if (!data.status) return Alert.alert('Error', data.message)
+      if (!data.status) return alert('Error', data.message)
       navigation.replace('Verify', { username })
     },
     onError: (error) => {
       console.log(error)
-      Alert.alert('Error', 'An error occurred')
+      alert('Error', 'An error occurred')
     },
   })
 
@@ -92,7 +94,7 @@ export default function Signup({ navigation }: NavProp) {
     const { error, data } = signupZodValidator.safeParse({ username, password, email, name })
     console.log(error)
     if (error) {
-      Alert.alert('Error', error.errors[0]?.message || '')
+      alert('Error', error.errors[0]?.message || '')
       return
     }
     mutate(data)

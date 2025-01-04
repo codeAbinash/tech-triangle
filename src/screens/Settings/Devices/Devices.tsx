@@ -14,8 +14,11 @@ import { Alert, ToastAndroid } from 'react-native'
 import Animated from 'react-native-reanimated'
 import type { Device } from './types'
 import { getDeviceIcon } from './utils'
+import popupStore from '@/zustand/popupStore'
 
 export default function Devices({ navigation }: NavProp) {
+  const alert = popupStore((store) => store.alert)
+
   const { data, isPending } = useQuery({
     queryKey: ['devices'],
     queryFn: async () => await (await client.api.devices.$get()).json(),
@@ -37,9 +40,9 @@ export default function Devices({ navigation }: NavProp) {
   })
 
   function handelRemove() {
-    Alert.alert('Remove Device', 'Are you sure you want to remove all other devices?', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Remove', onPress: () => mutate(), style: 'destructive' },
+    alert('Remove Device', 'Are you sure you want to remove all other devices?', [
+      { text: 'Cancel' },
+      { text: 'Remove', onPress: () => mutate() },
     ])
   }
 

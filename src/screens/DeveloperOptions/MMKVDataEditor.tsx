@@ -1,3 +1,4 @@
+import popupStore from '@/zustand/popupStore'
 import { Delete02SolidIcon, FloppyDiskIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import FabIcon from '@components/FabIcon'
@@ -12,7 +13,7 @@ import S, { ls, type StorageKeys } from '@utils/storage'
 import type { StackNav } from '@utils/types'
 import { toReadableSize } from '@utils/utils'
 import React, { useEffect, useState } from 'react'
-import { Alert, Text, ToastAndroid, View } from 'react-native'
+import { Text, ToastAndroid, View } from 'react-native'
 
 type ParamList = {
   MMKVDataEditor: MMKVDataEditorParamList
@@ -33,6 +34,7 @@ export default function MMKVDataEditor({
   const isNew = route.params.new === true
   const [key, setKey] = useState(route.params.key || '')
   const [value, setValue] = useState('')
+  const alert = popupStore((store) => store.alert)
 
   useEffect(() => {
     if (!isNew) {
@@ -52,11 +54,10 @@ export default function MMKVDataEditor({
   }
 
   function deleteData() {
-    Alert.alert('Delete data', 'Are you sure you want to delete this data?', [
-      { text: 'Cancel', style: 'cancel' },
+    alert('Delete data', 'Are you sure you want to delete this data?', [
+      { text: 'Cancel' },
       {
         text: 'Delete',
-        style: 'destructive',
         onPress: () => {
           ls.delete(key as StorageKeys)
           navigation.goBack()

@@ -1,3 +1,4 @@
+import popupStore from '@/zustand/popupStore'
 import Btn from '@components/Button'
 import { Gap } from '@components/Gap'
 import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
@@ -5,13 +6,13 @@ import { queryClient } from '@query/index'
 import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
+import { F, Medium } from '@utils/fonts'
+import { getRelativeTime } from '@utils/timeFormat'
 import type { StackNav } from '@utils/types'
 import React, { useEffect, useMemo } from 'react'
-import { Alert, ToastAndroid, View } from 'react-native'
+import { ToastAndroid, View } from 'react-native'
 import type { Device } from './types'
 import { getDate, getDeviceIcon, getOSIcon } from './utils'
-import { getRelativeTime } from '@utils/timeFormat'
-import { Medium, F } from '@utils/fonts'
 
 type ParamList = {
   Device: DeviceParamList
@@ -23,6 +24,7 @@ export type DeviceParamList = {
 
 export default function Device({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'Device'> }) {
   const device = route.params.device
+  const alert = popupStore((store) => store.alert)
 
   useEffect(() => {
     console.log(route.params.device?.isSelf)
@@ -46,7 +48,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
         ToastAndroid.show('Device removed successfully', ToastAndroid.SHORT)
         navigation.goBack()
       } else {
-        Alert.alert('Error', data.message)
+        alert('Error', data.message)
       }
     }
   }
@@ -56,11 +58,11 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
-  function handelRemove() {
+  function handleRemove() {
     if (route.params.device?.isSelf) return navigation.navigate('Logout')
-    Alert.alert('Remove Device', 'Are you sure you want to remove this device?', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Remove', onPress: () => mutate(), style: 'destructive' },
+    alert('Remove Device', 'Are you sure you want to remove this device?', [
+      { text: 'Cancel' },
+      { text: 'Remove', onPress: () => mutate() },
     ])
   }
 
@@ -97,7 +99,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
           <View className='px-6'>
             <Btn
               title={isPending ? 'Removing Device...' : 'Remove Device'}
-              onPress={handelRemove}
+              onPress={handleRemove}
               className='bg-red-500'
               disabled={isPending}
             />

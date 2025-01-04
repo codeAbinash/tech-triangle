@@ -8,6 +8,7 @@ import React, { useEffect } from 'react'
 import { Alert } from 'react-native'
 import ProcessForm from './components/ProcessForm'
 import RunButton from './components/RunButton'
+import popupStore from '@/zustand/popupStore'
 
 const defaultProcesses = [
   { arrivalTime: '', burstTime: '', name: 'P1' },
@@ -27,10 +28,11 @@ const sampleProcesses = [
 
 export default function SJF({ navigation }: NavProp) {
   const [processes, setProcesses] = React.useState(defaultProcesses)
+  const alert = popupStore((store) => store.alert)
 
   function onPlay() {
     const validProcesses = processes.filter((p) => p.arrivalTime && p.burstTime)
-    if (validProcesses.length === 0) return Alert.alert('Error', 'At least one process is required')
+    if (validProcesses.length === 0) return alert('Error', 'At least one process is required')
 
     const all: Process[] = validProcesses.map((p) => ({
       arrivalTime: parseInt(p.arrivalTime, 10),

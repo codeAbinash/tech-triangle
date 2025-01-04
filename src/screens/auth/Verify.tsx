@@ -1,4 +1,5 @@
 import { verifyEmailZodValidator } from '@/zod/auth'
+import popupStore from '@/zustand/popupStore'
 import { BubbleChatLockSolidIcon, Login03SolidIcon, MailSend02SolidIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
@@ -24,6 +25,7 @@ export type VerifyParamList = {
 
 export default function Verify({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'Verify'> }) {
   const [otp, setOtp] = useState('')
+  const alert = popupStore((store) => store.alert)
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
@@ -31,8 +33,8 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
       await (await client.api.auth.verify.$post({ form: { otp, username: route.params.username } })).json(),
     onSuccess: (data) => {
       console.log(data)
-      if (!data.status) return Alert.alert('Error', data.message)
-      Alert.alert('Success', 'Account verified successfully, you can now login.')
+      if (!data.status) return alert('Error', data.message)
+      alert('Success', 'Account verified successfully, you can now login.')
       navigation.replace('Login')
     },
   })
@@ -40,7 +42,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
   function handelSubmit() {
     const { error } = verifyEmailZodValidator.safeParse({ otp, username: route.params.username })
     if (error) {
-      Alert.alert('Error', error.errors[0]?.message || '')
+      alert('Error', error.errors[0]?.message || '')
       return
     }
     mutate()

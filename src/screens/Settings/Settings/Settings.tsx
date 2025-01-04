@@ -1,4 +1,5 @@
 import { devOptStore } from '@/zustand/devOptStore'
+import popupStore from '@/zustand/popupStore'
 import profileStore from '@/zustand/profileStore'
 import versionStore from '@/zustand/versionStore'
 import {
@@ -64,6 +65,7 @@ export default function Settings({ navigation }: NavProp) {
   const [totalCache, setTotalCache] = React.useState(0)
   const dev = devOptStore((state) => state.isEnabled)
   const user = profileStore((state) => state.user)
+  const alert = popupStore((store) => store.alert)
 
   const focused = useIsFocused()
 

@@ -13,8 +13,9 @@ import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useMemo, useState } from 'react'
 import { Alert, Platform, ToastAndroid, View } from 'react-native'
-import DeviceInfo from 'react-native-device-info'
+import DeviceInfo, { usePowerState } from 'react-native-device-info'
 import { PasswordEye } from './components/PasswordEye'
+import popupStore from '@/zustand/popupStore'
 
 function getOs() {
   const os = Platform.OS.split('')
@@ -40,13 +41,14 @@ export default function Login({ navigation }: NavProp) {
   const [isVisible, setIsVisible] = useState(false)
   const deviceOs = useMemo(() => getOs(), [])
   const deviceName = useMemo(() => DeviceInfo.getModel(), [])
+  const alert = popupStore((store) => store.alert)
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['login'],
     mutationFn: async (data: LoginParams) => await (await client.api.auth.login.$post({ form: { ...data } })).json(),
     onSuccess: (data) => {
       if (data.verificationRequired) return navigation.replace('Verify', { username })
-      if (!data.status) return Alert.alert('Error', data.message)
+      if (!data.status) return alert('Error', data.message)
       if (data.data?.token) {
         // Navigate to home screen
         setToken(data.data.token)
@@ -57,14 +59,14 @@ export default function Login({ navigation }: NavProp) {
     },
     onError: (error) => {
       console.log(error)
-      Alert.alert('Error', 'An error occurred')
+      alert('Error', 'An error occurred')
     },
   })
 
   function handelSubmit() {
     const { error, data } = loginZodValidator.safeParse({ username, password, deviceName, deviceOs })
     if (error) {
-      Alert.alert('Error', error.errors[0]?.message || '')
+      alert('Error', error.errors[0]?.message || '')
       return
     }
     mutate(data)

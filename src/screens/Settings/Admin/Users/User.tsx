@@ -1,3 +1,4 @@
+import popupStore from '@/zustand/popupStore'
 import {
   AngrySolidIcon,
   Calendar03SolidIcon,
@@ -19,7 +20,7 @@ import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { Alert, ToastAndroid, View } from 'react-native'
+import { ToastAndroid, View } from 'react-native'
 
 export type UserT = Awaited<ReturnType<Awaited<ReturnType<typeof client.api.admin.users.all.$post>>['json']>>['data'][0]
 
@@ -34,22 +35,23 @@ export type UserParamList = {
 export default function User({ navigation, route }: { navigation: StackNav; route: RouteProp<ParamList, 'User'> }) {
   const user = route.params.user
   const { _id, name, username, email, isAdmin, otp, lastOtpSent, isVerified, isBanned } = user
+  const alert = popupStore((store) => store.alert)
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['removeUser', _id],
     mutationFn: async () => await (await client.api.admin.users.delete.$post({ form: { id: _id || '' } })).json(),
     onSuccess: (d) => {
-      if (!d.status) return Alert.alert('Error', d.message)
+      if (!d.status) return alert('Error', d.message)
       queryClient.invalidateQueries({ queryKey: ['allUsers'] })
       ToastAndroid.show('User removed successfully', ToastAndroid.SHORT)
       navigation.goBack()
     },
   })
 
-  function handelRemove() {
-    Alert.alert('Delete this user?', 'Are you sure you want to delete this user? This action cannot be undone.', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', onPress: () => mutate(), style: 'destructive' },
+  function handleRemove() {
+    alert('Delete this user?', 'Are you sure you want to delete this user? This action cannot be undone.', [
+      { text: 'Cancel' },
+      { text: 'Delete', onPress: () => mutate() },
     ])
   }
 
@@ -112,7 +114,7 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
       <View className='px-6'>
         <Btn
           title={isPending ? 'Deleting User...' : 'Delete User'}
-          onPress={handelRemove}
+          onPress={handleRemove}
           className='bg-red-500'
           disabled={isPending}
         />

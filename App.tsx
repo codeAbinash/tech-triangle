@@ -1,6 +1,6 @@
-import './global.css'
 import { devOptStore } from '@/zustand/devOptStore'
 import { CodeSolidIcon } from '@assets/icons/icons'
+import { Popups } from '@components/Popup'
 import Press from '@components/Press'
 import { AutoStatusBar } from '@components/StatusBar'
 import { queryClient } from '@query/index'
@@ -53,9 +53,10 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { Dimensions, SafeAreaView, TouchableOpacity, useColorScheme } from 'react-native'
+import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
+import './global.css'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -65,6 +66,7 @@ function App(): React.JSX.Element {
         <SafeAreaView className='flex-1' style={{ height: height }}>
           <AutoStatusBar scheme={scheme} />
           <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <Popups />
             <Navigation />
           </NavigationContainer>
         </SafeAreaView>

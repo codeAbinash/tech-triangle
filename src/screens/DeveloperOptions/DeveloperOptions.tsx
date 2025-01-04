@@ -1,5 +1,6 @@
 import authStore from '@/zustand/authStore'
 import { devOptStore } from '@/zustand/devOptStore'
+import popupStore from '@/zustand/popupStore'
 import {
   CleanSolidIcon,
   CodeSolidIcon,
@@ -16,9 +17,10 @@ import { ANIM_DUR } from '@utils/constants'
 import { Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useCallback } from 'react'
-import { Alert, Text } from 'react-native'
+import { Text } from 'react-native'
 
 export default function DeveloperOptions({ navigation }: NavProp) {
+  const alert = popupStore((store) => store.alert)
   const isEnabled = devOptStore((state) => state.isEnabled)
   const setEnabled = devOptStore((state) => state.setEnabled)
   const animationDuration = devOptStore((state) => state.animationDuration)
@@ -38,12 +40,13 @@ export default function DeveloperOptions({ navigation }: NavProp) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+
   const resetDevOptions = useCallback(() => {
-    Alert.alert(
+    alert(
       'Reset Developer Options',
       'This will reset all developer options to default. This action cannot be undone.',
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: 'Cancel' },
         {
           text: 'Reset',
           onPress: () => {
