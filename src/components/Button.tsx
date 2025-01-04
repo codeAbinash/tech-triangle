@@ -1,4 +1,4 @@
-import { Medium } from '@utils/fonts'
+import { Medium, SemiBold } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
@@ -15,9 +15,9 @@ const Btn = React.memo(({ title, onPress, disabled, children, className, ...rest
       disabled={disabled}
       {...rest}
     >
-      <Medium style={{ fontSize: 12.2 }} className='text-center text-white'>
+      <SemiBold style={{ fontSize: 12.2 }} className='text-center text-white'>
         {title || children}
-      </Medium>
+      </SemiBold>
     </TouchableOpacity>
   )
 })
@@ -32,9 +32,9 @@ export const BtnTransparent = React.memo(({ title, onPress, children, style }: B
       className='w-full'
       style={[{ borderRadius: 14.5, paddingVertical: 13 }]}
     >
-      <Medium style={[{ fontSize: 12.2 }, style]} className='text-center text-accent'>
+      <SemiBold style={[{ fontSize: 12.2 }, style]} className='text-center text-accent'>
         {title || children}
-      </Medium>
+      </SemiBold>
     </TouchableOpacity>
   )
 })

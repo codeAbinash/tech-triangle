@@ -1,5 +1,5 @@
 import { Colors } from '@utils/colors'
-import { Medium, PoppinsMedium } from '@utils/fonts'
+import { Medium, MEDIUM } from '@utils/fonts'
 import React from 'react'
 import { StyleSheet, type TextInputProps } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
@@ -35,5 +35,5 @@ export function BoxInput({ value, onChangeText, placeholder, ...rest }: TextInpu
 
 export const styles = StyleSheet.create({
   row: { marginTop: `${(100 - 32 * 3) / 3}%` },
-  box: { width: '32.3%', ...PoppinsMedium },
+  box: { width: '32.3%', ...MEDIUM },
 })

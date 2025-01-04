@@ -1,17 +1,17 @@
 import { ArrowRight01Icon, Tick01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
-import { F, Medium } from '@utils/fonts'
+import { F, Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { cn } from '@utils/utils'
 import React from 'react'
 import {
   TouchableOpacity,
   View,
+  useColorScheme,
   type ScrollViewProps,
   type TextProps,
   type TouchableOpacityProps,
   type ViewProps,
-  useColorScheme,
 } from 'react-native'
 import type { SvgProps } from 'react-native-svg'
 import BackHeader from './BackHeader'
@@ -49,13 +49,13 @@ export function SettOption({
       <View className='flex-row items-center justify-center' style={{ gap: 22, flexShrink: 1 }}>
         {Icon}
         <View className='p-2.5 px-0'>
-          <Medium
+          <SemiBold
             className='text-left text-zinc-800 dark:text-zinc-200'
             style={[{ fontSize: 12, flexShrink: 1 }]}
             numberOfLines={numberOfLines || 0}
           >
             {title}
-          </Medium>
+          </SemiBold>
           {children}
         </View>
       </View>
@@ -75,12 +75,12 @@ export function SettGroup({ children, title, className, accent = Colors.accent, 
   return (
     <View className={cn('bg-white py-3 dark:bg-zinc-950', className)} {...rest}>
       {title && (
-        <Medium
+        <SemiBold
           className={'px-6 py-1.5 text-accent'}
-          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: accent }}
+          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: accent, marginBottom: 8 }}
         >
           {title}
-        </Medium>
+        </SemiBold>
       )}
       <View style={{ gap: 8 }}>{children}</View>
     </View>

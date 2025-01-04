@@ -5,10 +5,10 @@ import TopArea from '@components/TopArea'
 import { useNavigation } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
-import { Medium, PoppinsSemiBold } from '@utils/fonts'
+import { Bold, Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React, { useEffect, useMemo } from 'react'
-import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import CheckVersion from './CheckVersion'
 import styles, { hw as height_weight } from './style'
@@ -104,9 +104,7 @@ function Shortcuts({ navigation }: { navigation: StackNav }) {
   }, [width])
   return (
     <View>
-      <Text className='my-2 px-5 text-base text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
-        Shortcuts
-      </Text>
+      <Bold className='my-2 px-5 text-base text-gray-800 dark:text-gray-300'>Shortcuts</Bold>
       <View className='w-full flex-row flex-wrap' style={{ gap: 12, paddingHorizontal: 18 }}>
         <TouchableOpacity
           onPress={() => navigation.navigate('About')}
@@ -144,9 +142,7 @@ function Shortcuts({ navigation }: { navigation: StackNav }) {
 function Graph() {
   return (
     <View className='px-5'>
-      <Text className='my-2 text-base text-gray-800 dark:text-gray-300' style={PoppinsSemiBold}>
-        Weekly Progress
-      </Text>
+      <Bold className='my-2 text-base text-gray-800 dark:text-gray-300'>Weekly Progress</Bold>
       <View
         style={{
           shadowColor: '#00000022',

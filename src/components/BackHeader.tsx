@@ -1,6 +1,6 @@
 import { ArrowLeft01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
-import { Medium } from '@utils/fonts'
+import { Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
 import { TouchableOpacity, View, useColorScheme, type ViewProps } from 'react-native'
@@ -29,13 +29,13 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
             >
               <ArrowLeft01Icon width={26} height={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
             </TouchableOpacity>
-            <Medium
+            <SemiBold
               style={{ fontSize: 14.3, flex: 1 }}
               className='mt-0.5 text-zinc-800 dark:text-zinc-200'
               numberOfLines={1}
             >
               {title}
-            </Medium>
+            </SemiBold>
             {Right}
           </View>
         )}

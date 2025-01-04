@@ -1,8 +1,8 @@
 import { Colors } from '@utils/colors'
-import { PoppinsMedium } from '@utils/fonts'
+import { SEMIBOLD } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
-import { TextInput, type TextInputProps, View, useColorScheme } from 'react-native'
+import { TextInput, View, useColorScheme, type TextInputProps } from 'react-native'
 
 type InputProps = TextInputProps & {
   accent?: string
@@ -17,7 +17,7 @@ export function Input({ Icon, Right, accent = Colors.accent, multiline, classNam
         {Icon}
         <TextInput
           className={cn('flex-1 px-0 py-3 text-zinc-800 dark:text-zinc-200', className)}
-          style={[{ fontSize: 12, paddingVertical: 0, flex: 1 }, PoppinsMedium]}
+          style={[{ fontSize: 12.5, marginBottom: 1, paddingVertical: 0, flex: 1 }, SEMIBOLD]}
           placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
           cursorColor={accent}
           selectionColor={accent + '55'}
