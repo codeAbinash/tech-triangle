@@ -1,6 +1,6 @@
 import { CancelCircleSolidIcon, Search01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
-import { MEDIUM } from '@utils/fonts'
+import { SEMIBOLD } from '@utils/fonts'
 import React, { useCallback } from 'react'
 import { TextInput, TouchableOpacity, View, useColorScheme, type TextInputProps } from 'react-native'
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
@@ -30,7 +30,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       <TextInput
         ref={ref}
         className='flex-1 p-3 text-zinc-800 dark:text-zinc-200'
-        style={[MEDIUM, { fontSize: 13, marginBottom: 1 }]}
+        style={[SEMIBOLD, { fontSize: 13, marginBottom: 1 }]}
         placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
         cursorColor={Colors.accent}
         selectionColor={Colors.accent + '55'}

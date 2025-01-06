@@ -51,7 +51,7 @@ export function SettOption({
         <View className='p-2.5 px-0'>
           <SemiBold
             className='text-left text-zinc-800 dark:text-zinc-200'
-            style={[{ fontSize: 12, flexShrink: 1 }]}
+            style={[{ fontSize: 12, flexShrink: 1, paddingBottom: 2 }]}
             numberOfLines={numberOfLines || 0}
           >
             {title}
@@ -77,7 +77,7 @@ export function SettGroup({ children, title, className, accent = Colors.accent, 
       {title && (
         <SemiBold
           className={'px-6 py-1.5 text-accent'}
-          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: accent, marginBottom: 8 }}
+          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: accent, marginBottom: 5 }}
         >
           {title}
         </SemiBold>

@@ -7,7 +7,7 @@ import { TextInput } from 'react-native-gesture-handler'
 export function Box({ text }: { text: string }) {
   return (
     <Medium
-      className='rounded-lg bg-white py-4 text-center text-xs text-black dark:bg-zinc-900 dark:text-white'
+      className='rounded-lg bg-white py-3.5 text-center text-sm text-black dark:bg-zinc-900 dark:text-white'
       style={styles.box}
     >
       {text}
@@ -21,7 +21,7 @@ export function BoxInput({ value, onChangeText, placeholder, ...rest }: TextInpu
       cursorColor={Colors.accent}
       value={value}
       placeholderTextColor={Colors.zinc[400]}
-      className='rounded-lg bg-white px-2 text-center text-xs dark:bg-zinc-900 dark:text-white'
+      className='rounded-lg bg-white px-2 py-3 text-center text-sm dark:bg-zinc-900 dark:text-white'
       style={styles.box}
       onChangeText={onChangeText}
       placeholder={placeholder}

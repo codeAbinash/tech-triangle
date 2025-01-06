@@ -59,7 +59,7 @@ export default Popup
 const PopupButton = React.memo<{ text: string; onPress?: () => void }>(({ text, onPress }) => {
   return (
     <TouchableOpacity
-      className='min-w-20 items-center justify-center rounded-md px-5 py-3 active:bg-black/5 dark:active:bg-white/10'
+      className='min-w-20 items-center justify-center rounded-lg px-5 py-3 active:bg-black/5 dark:active:bg-white/10'
       onPress={onPress}
       activeOpacity={1}
     >

@@ -1,4 +1,4 @@
-import { Medium, SemiBold } from '@utils/fonts'
+import { SemiBold } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
@@ -15,7 +15,7 @@ const Btn = React.memo(({ title, onPress, disabled, children, className, ...rest
       disabled={disabled}
       {...rest}
     >
-      <SemiBold style={{ fontSize: 12.2 }} className='text-center text-white'>
+      <SemiBold style={{ fontSize: 12.2, paddingBottom: 2 }} className='text-center text-white'>
         {title || children}
       </SemiBold>
     </TouchableOpacity>

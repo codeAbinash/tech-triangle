@@ -3,7 +3,7 @@ import { PaddingBottom } from '@components/SafePadding'
 import type { RouteProp } from '@react-navigation/native'
 import { ColorList, Colors } from '@utils/colors'
 import { H } from '@utils/dimensions'
-import { Medium } from '@utils/fonts'
+import { Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React, { useMemo } from 'react'
 import { StatusBar, View } from 'react-native'
@@ -32,21 +32,21 @@ export default function Chart({ navigation, route }: { navigation: StackNav; rou
         <View className='items-center'>
           <View className='w-20 rounded-full bg-zinc-200 opacity-70 dark:bg-zinc-800' style={{ height: 5 }} />
         </View>
-        <Medium className='mt-2.5 text-center text-sm text-black dark:text-white'>{title}</Medium>
+        <SemiBold className='mt-2.5 text-center text-sm text-black dark:text-white'>{title}</SemiBold>
       </View>
       <View className='flex-row justify-between'>
         <View />
         <View className='flex-row justify-between'>
           <View className='items-center justify-center gap-y-2 pl-2'>
-            <Medium className='text-xs text-gray-900 dark:text-gray-100'>
+            <Medium className='text-sm text-gray-900 dark:text-gray-100'>
               Avg. Waiting Time:{' '}
               {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
             </Medium>
-            <Medium className='text-xs text-gray-900 dark:text-gray-100'>
+            <Medium className='text-sm text-gray-900 dark:text-gray-100'>
               Avg. Turnaround Time:{' '}
               {(chart.reduce((acc, item) => acc + (item.endTime - item.startTime), 0) / chart.length).toFixed(2)}
             </Medium>
-            <Medium className='text-xs text-gray-900 dark:text-gray-100'>
+            <Medium className='text-sm text-gray-900 dark:text-gray-100'>
               Throughput: {(chart.length / maxTime).toFixed(2)} / unit time
             </Medium>
           </View>

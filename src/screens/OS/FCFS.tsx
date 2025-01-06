@@ -64,11 +64,10 @@ export default function FCFS({ navigation }: NavProp) {
           </SettText>
           <ProcessForm processes={processes} setProcesses={setProcesses} />
           <SettText>
-            Any empty entry will be ignored. Press play to view the Gantt chart. Click{' '}
-            <Medium className='text-accent underline' onPress={() => setProcesses(sampleProcesses)}>
-              Load sample
-            </Medium>{' '}
-            to see how it works.
+            Any empty entry will be ignored. Press play to view the Gantt chart. Click to see how it works.
+          </SettText>
+          <SettText className='text-accent underline' onPress={() => setProcesses(sampleProcesses)}>
+            Load sample data?
           </SettText>
         </Gap12>
       </SettWrapper>
