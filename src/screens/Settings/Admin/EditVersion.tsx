@@ -22,9 +22,8 @@ import { ColorList } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE } from '@utils/constants'
 import { SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Text, ToastAndroid, View } from 'react-native'
-import Animated, { FadeIn } from 'react-native-reanimated'
 
 type VersionData = {
   version: string
@@ -52,7 +51,7 @@ export default function EditVersion({ navigation }: NavProp) {
     },
   })
 
-  function handelSubmit() {
+  function handleSubmit() {
     // If there is a blank feature empty string then remove it
 
     const newFeatures = features.filter((item) => item.trim() !== '')
@@ -72,6 +71,19 @@ export default function EditVersion({ navigation }: NavProp) {
     })
   }
 
+  const incrementMajorVersion = useCallback(() => {
+    const split = version.split('.')
+    split[split.length - 2] = (parseInt(split[split.length - 2] || '0', 10) + 1).toString()
+    split[split.length - 1] = '0'
+    setVersion(split.join('.'))
+  }, [version])
+
+  const incrementMinorVersion = useCallback(() => {
+    const split = version.split('.')
+    split[split.length - 1] = (parseInt(split.pop() || '0', 10) + 1).toString()
+    setVersion(split.join('.'))
+  }, [version])
+
   return (
     <SettWrapper navigation={navigation} title='Edit Version'>
       <Gap12>
@@ -87,28 +99,14 @@ export default function EditVersion({ navigation }: NavProp) {
           ) : (
             <Input
               Icon={
-                <Press
-                  activeScale={0.9}
-                  onPress={() => {
-                    const split = version.split('.')
-                    split[split.length - 2] = (parseInt(split[split.length - 2] || '0', 10) + 1).toString()
-                    setVersion(split.join('.'))
-                  }}
-                >
+                <Press activeScale={0.9} onPress={incrementMajorVersion}>
                   <RoundedIcon Icon={StarSolidIcon} />
                 </Press>
               }
               value={version}
               onChangeText={setVersion}
               Right={
-                <Press
-                  activeScale={0.9}
-                  onPress={() => {
-                    const split = version.split('.')
-                    split[split.length - 1] = (parseInt(split.pop() || '0', 10) + 1).toString()
-                    setVersion(split.join('.'))
-                  }}
-                >
+                <Press activeScale={0.9} onPress={incrementMinorVersion}>
                   <RoundedIcon Icon={PlusSignSolidIcon} />
                 </Press>
               }
@@ -213,7 +211,7 @@ export default function EditVersion({ navigation }: NavProp) {
         </SettGroup>
       </Gap12>
       <View className='mt-2 px-5 pb-10'>
-        <Btn title={isPending ? 'Updating...' : 'Update'} onPress={handelSubmit} disabled={isPending} />
+        <Btn title={isPending ? 'Updating...' : 'Update'} onPress={handleSubmit} disabled={isPending} />
       </View>
     </SettWrapper>
   )
