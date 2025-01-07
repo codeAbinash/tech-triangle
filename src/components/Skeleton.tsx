@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
-import type { ViewProps } from 'react-native'
-import { useSharedValue, withRepeat, withTiming, useAnimatedStyle } from 'react-native-reanimated'
-import Animated, { Easing } from 'react-native-reanimated'
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated'
 
 export function Skeleton({ children }: { children: React.ReactNode }) {
   const opacity = useSharedValue(1)

@@ -11,7 +11,10 @@ import {
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
-import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import SettGroup from '@components/Settings/SettGroup'
+import { SettOption } from '@components/Settings/SettOption'
+import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import { Toggle } from '@components/Toggle'
 import { ANIM_DUR } from '@utils/constants'
 import { Medium } from '@utils/fonts'
@@ -39,7 +42,6 @@ export default function DeveloperOptions({ navigation }: NavProp) {
     setAnimError('')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
 
   const resetDevOptions = useCallback(() => {
     alert(

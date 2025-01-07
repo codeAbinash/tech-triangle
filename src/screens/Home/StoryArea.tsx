@@ -1,4 +1,3 @@
-import Press from '@components/Press'
 import { useNavigation } from '@react-navigation/native'
 import { Medium } from '@utils/fonts'
 import { StackNav, type NavProp } from '@utils/types'

@@ -1,14 +1,13 @@
 import type { Process } from '@/lib/lib'
 import shortestJobFirst from '@/lib/sjf'
+import popupStore from '@/zustand/popupStore'
 import { Gap12 } from '@components/Gap'
-import { SettText, SettWrapper } from '@components/Settings'
-import { Medium } from '@utils/fonts'
+import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import type { NavProp } from '@utils/types'
 import React, { useEffect } from 'react'
-import { Alert } from 'react-native'
 import ProcessForm from './components/ProcessForm'
 import RunButton from './components/RunButton'
-import popupStore from '@/zustand/popupStore'
 
 const defaultProcesses = [
   { arrivalTime: '', burstTime: '', name: 'P1' },

@@ -7,7 +7,6 @@ import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
-import CoordinatesNotes from '@screens/CoordinateNotes/CoordinatesNotes'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
 import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
@@ -224,7 +223,6 @@ function Navigation() {
         <Stack.Screen name='BlankSettings' component={BlankSettings} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataList' component={MMKVDataList} options={GestureEnabled} />
         <Stack.Screen name='MMKVDataEditor' component={MMKVDataEditor} options={GestureEnabled} />
-        <Stack.Screen name='CoordinateNotes' component={CoordinatesNotes} options={GestureEnabled} />
         {/* <Stack.Screen name='TempUnit' component={TempUnit} options={GestureEnabled} /> */}
         {/* <Stack.Screen name='DistanceUnit' component={DistanceUnit} options={GestureEnabled} /> */}
         {/* <Stack.Screen name='WindSpeedUnit' component={WindSpeedUnit} options={GestureEnabled} /> */}

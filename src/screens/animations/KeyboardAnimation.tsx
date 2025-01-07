@@ -1,7 +1,6 @@
-import type { StackNav } from '@utils/types'
 import React from 'react'
 import { Dimensions, ScrollView, Text, TextInput, View } from 'react-native'
-import Animated, { runOnJS, useAnimatedKeyboard, useAnimatedStyle, useDerivedValue } from 'react-native-reanimated'
+import Animated, { useAnimatedKeyboard, useAnimatedStyle } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const { height } = Dimensions.get('window')

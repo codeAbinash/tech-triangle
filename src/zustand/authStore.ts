@@ -1,4 +1,4 @@
-import S, { secureLs } from '@utils/storage'
+import { secureLs } from '@utils/storage'
 import { create } from 'zustand'
 
 type AuthStore = {

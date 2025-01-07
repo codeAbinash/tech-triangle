@@ -1,7 +1,7 @@
 import BackHeader from '@components/BackHeader'
 import { Gap12, Gap20 } from '@components/Gap'
 import { PaddingBottom } from '@components/SafePadding'
-import { SettText } from '@components/Settings'
+import SettText from '@components/Settings/SettText'
 import type { NavProp } from '@utils/types'
 import React from 'react'
 import { View } from 'react-native'

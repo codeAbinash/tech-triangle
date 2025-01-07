@@ -1,6 +1,10 @@
 import { weatherStore } from '@/zustand/weatherStore'
+import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
-import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import SettGroup from '@components/Settings/SettGroup'
+import { SettOption } from '@components/Settings/SettOption'
+import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import type { NavProp } from '@utils/types'
 import React from 'react'
 

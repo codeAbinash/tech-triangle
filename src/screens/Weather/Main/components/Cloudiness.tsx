@@ -1,10 +1,10 @@
 import { CloudSolidIcon } from '@assets/icons/icons'
 import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
+import type { Theme } from '@utils/types'
 import React from 'react'
 import { View } from 'react-native'
 import WeatherLabel from './WeatherLabel'
-import type { Theme } from '@utils/types'
 
 export default function Cloudiness({ theme, clouds }: { theme: Theme; clouds: number }) {
   return (

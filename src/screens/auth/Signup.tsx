@@ -1,4 +1,5 @@
 import { signupZodValidator, usernameStatusZodValidator } from '@/zod/auth'
+import popupStore from '@/zustand/popupStore'
 import {
   Cancel01SolidIcon,
   HelpCircleSolidIcon,
@@ -14,16 +15,18 @@ import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
-import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import SettGroup from '@components/Settings/SettGroup'
+import { SettOption } from '@components/Settings/SettOption'
+import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { Colors } from '@utils/colors'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, Alert, ToastAndroid, View } from 'react-native'
+import { ActivityIndicator, ToastAndroid, View } from 'react-native'
 import { PasswordEye } from './components/PasswordEye'
-import popupStore from '@/zustand/popupStore'
 
 type SignupParams = {
   name: string

@@ -1,7 +1,10 @@
 import { Setting07SolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import RoundedIcon from '@components/RoundedIcon'
-import { SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import SettGroup from '@components/Settings/SettGroup'
+import { SettOption } from '@components/Settings/SettOption'
+import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import type { NavProp } from '@utils/types'
 import React from 'react'
 

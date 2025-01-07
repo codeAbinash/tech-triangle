@@ -9,10 +9,14 @@ import {
   TextSolidIcon,
   WeightScale01SolidIcon,
 } from '@assets/icons/icons'
+import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
-import { Check, SettGroup, SettOption, SettText, SettWrapper } from '@components/Settings'
+import SettGroup from '@components/Settings/SettGroup'
+import { SettOption } from '@components/Settings/SettOption'
+import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
 import type { NavProp } from '@utils/types'
 import React from 'react'

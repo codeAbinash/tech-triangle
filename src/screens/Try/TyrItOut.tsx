@@ -21,7 +21,9 @@ import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
 import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
-import { SettGroup, SettOption, SettText } from '@components/Settings'
+import SettGroup from '@components/Settings/SettGroup'
+import { SettOption } from '@components/Settings/SettOption'
+import SettText from '@components/Settings/SettText'
 import { Group } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
@@ -57,7 +59,7 @@ const tools: Group[] = [
       { title: 'Random Color', Icon: PaintBoardSolidIcon, to: 'RandomColor', className: 'bg-orange-500' },
       { title: 'Gradient Colors', Icon: ColorsSolidIcon, className: 'bg-green-500' },
       { title: 'Location Speed Meter', Icon: DashboardSpeed01SolidIcon, className: 'bg-blue-500' },
-      { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, to: 'CoordinateNotes', className: 'bg-yellow-500' },
+      { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, className: 'bg-yellow-500' },
       { title: 'Random Password', Icon: LockPasswordSolidIcon, className: 'bg-slate-500', to: 'RandomPassword' },
     ],
   },

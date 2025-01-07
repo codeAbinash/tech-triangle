@@ -1,10 +1,10 @@
 import type { DistanceUnit, TemperatureUnit, TimeFormat } from '@/zustand/weatherStore'
 import { ls } from '@utils/storage'
+import { clsx, type ClassValue } from 'clsx'
 import { Alert, Share } from 'react-native'
 import { FadeIn } from 'react-native-reanimated'
-import { SCREEN_TRANSITION } from './constants'
-import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { SCREEN_TRANSITION } from './constants'
 
 export async function shareText(message: string) {
   try {

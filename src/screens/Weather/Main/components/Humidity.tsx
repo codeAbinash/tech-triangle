@@ -1,12 +1,12 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import { HumiditySolidIcon } from '@assets/icons/icons'
+import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React from 'react'
 import { View } from 'react-native'
 import WeatherLabel from './WeatherLabel'
-import { boxSize } from '@screens/Weather/utils'
 
 type HumidityProps = {
   humidity: number

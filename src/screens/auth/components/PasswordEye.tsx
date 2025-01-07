@@ -1,5 +1,5 @@
 import { ViewIcon, ViewOffSlashIcon } from '@assets/icons/icons'
-import { ic } from '@components/Settings'
+import { ic } from '@components/Settings/Settings'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 

@@ -1,4 +1,4 @@
-import { Theme, DefaultTheme as Default } from '@react-navigation/native'
+import { DefaultTheme as Default, Theme } from '@react-navigation/native'
 
 export const DarkTheme: Theme = {
   dark: true,

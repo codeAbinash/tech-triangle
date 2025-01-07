@@ -1,7 +1,7 @@
 import authStore from '@/zustand/authStore'
 import Btn from '@components/Button'
 import { PaddingBottom } from '@components/SafePadding'
-import { SettText } from '@components/Settings'
+import SettText from '@components/Settings/SettText'
 import StackHeader from '@components/StackHeader'
 import LogoutIcon from '@images/logout.svg'
 import { useMutation } from '@tanstack/react-query'
