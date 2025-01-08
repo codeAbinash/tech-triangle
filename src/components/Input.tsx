@@ -20,7 +20,7 @@ export function Input({ Icon, Right, accent = Colors.accent, multiline, classNam
           style={[{ fontSize: 12.5, marginBottom: 1, paddingVertical: 0, flex: 1 }, SEMIBOLD]}
           placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
           cursorColor={accent}
-          selectionColor={accent + '55'}
+          selectionColor={accent + '77'}
           selectionHandleColor={accent}
           placeholder='Default placeholder'
           textAlignVertical={multiline ? 'top' : 'center'}

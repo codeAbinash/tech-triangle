@@ -13,9 +13,10 @@ import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls, type StorageKeys } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { screenDelay } from '@utils/utils'
+import { delayedFadeAnimationSearch, screenDelay } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
+import Animated from 'react-native-reanimated'
 
 export default function MMKVDataList({ navigation }: NavProp) {
   const state = useIsFocused()
@@ -64,16 +65,16 @@ export default function MMKVDataList({ navigation }: NavProp) {
 
           <SettGroup title='Stored keys' className='pb-4'>
             {searchResults?.map((item, i) => (
-              // <Animated.View key={item} entering={delayedFadeAnimationSearch(search, i)}>
-              <SettOption
-                title={item}
-                arrow
-                key={item}
-                numberOfLines={1}
-                Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
-                onPress={() => navigation.navigate('MMKVDataEditor', { key: item as StorageKeys })}
-              />
-              // </Animated.View>
+              <Animated.View key={item} entering={delayedFadeAnimationSearch(search, i)}>
+                <SettOption
+                  title={item}
+                  arrow
+                  key={item}
+                  numberOfLines={1}
+                  Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
+                  onPress={() => navigation.navigate('MMKVDataEditor', { key: item as StorageKeys })}
+                />
+              </Animated.View>
             ))}
             {initStorage?.length === 0 && (
               <>

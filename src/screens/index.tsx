@@ -77,7 +77,7 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               onPress={onPress}
               onLongPress={onLongPress}
               className='flex items-center justify-center p-1'
-              style={{ flex: 1, paddingTop: 13, paddingBottom: 5 }}
+              style={{ flex: 1, paddingTop: 13, paddingBottom: 8 }}
             >
               {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color, size: 22 })}
               <SemiBold style={{ color, marginTop: 4, fontSize: 8.5 }}>{label as ReactNode}</SemiBold>

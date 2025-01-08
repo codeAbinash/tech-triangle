@@ -115,7 +115,7 @@ export default function MMKVDataEditor({
             </SettGroup>
           )}
           <SettText>
-            Be careful when {!isNew ? 'editing' : ' adding'} MMKV data. Wrong data can cause the app to crash. And make
+            Be careful when {!isNew ? 'editing' : ' adding'} MMKV data. Wrong data can cause the app to crash and make
             all data unreadable.
           </SettText>
           <SettGroup title='Value'>
@@ -124,7 +124,7 @@ export default function MMKVDataEditor({
               value={value}
               onChangeText={setValue}
               multiline
-              style={{ fontFamily: 'monospace', fontWeight: 'bold', lineHeight: 24 }}
+              style={{ fontFamily: 'monospace', fontWeight: 'bold', lineHeight: 18, fontSize: 12 }}
               autoCorrect={false}
             />
           </SettGroup>
