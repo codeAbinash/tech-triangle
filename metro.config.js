@@ -16,7 +16,7 @@ const config = mergeConfig(defaultConfig, {
   },
   resolver: {
     assetExts: [...assetExts.filter((ext) => ext !== 'svg'), 'lottie'],
-    sourceExts: [...sourceExts, 'svg', 'sql'],
+    sourceExts: [...sourceExts, 'svg'],
   },
 })
 
