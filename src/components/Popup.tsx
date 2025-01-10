@@ -32,7 +32,9 @@ const Popup = React.memo<PopupT>(({ text, title, buttons, index }) => {
             <View className='px-6 pt-5'>
               <SemiBold className='text-base text-black dark:text-white'>{title}</SemiBold>
               <ScrollView style={{ maxHeight: H * 0.65, marginTop: 10 }}>
-                <Medium className='text-sm leading-4 text-black dark:text-white'>{text}</Medium>
+                <Medium className='text-sm text-black dark:text-white' style={{ fontSize: 12 }}>
+                  {text}
+                </Medium>
               </ScrollView>
             </View>
             <View className='mt-5 flex-row flex-wrap items-center justify-end px-4 pb-5'>
@@ -63,7 +65,7 @@ const PopupButton = React.memo<{ text: string; onPress?: () => void }>(({ text, 
       onPress={onPress}
       activeOpacity={1}
     >
-      <SemiBold className='text-black dark:text-white' style={{ fontSize: 11 }}>
+      <SemiBold className='text-black dark:text-white' style={{ fontSize: 12 }}>
         {text}
       </SemiBold>
     </TouchableOpacity>

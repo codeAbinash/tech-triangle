@@ -13,27 +13,25 @@ export default function CheckVersion({ navigation }: NavProp) {
 
   const setVersion = versionStore((state) => state.setVersion)
 
+
   useEffect(() => {
     if (data && data.status) {
-      const isNew = APP_VERSION_CODE < data.data?.versionCode
+      const isForceUpdate = APP_VERSION_CODE < data.data?.criticalVersionCode
+
+      // Update the local version store
       setVersion({
         features: data.data?.features,
-        forceUpdate: data.data?.forceUpdate,
         size: data.data?.size,
         version: data.data?.version,
         versionCode: data.data?.versionCode,
+        criticalVersionCode: data.data?.criticalVersionCode,
       })
-      if (isNew) {
-        console.log('New Version Available')
-        if (data.data?.forceUpdate) {
-          console.log('Force Update')
-          navigation.reset({
-            index: 0,
-            routes: [{ name: 'Update', params: data.data }],
-          })
-        } else {
-          console.log('Update Available')
-        }
+
+      if (isForceUpdate) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Update', params: data.data ?? {} }],
+        })
       }
     }
   }, [data, navigation, setVersion])

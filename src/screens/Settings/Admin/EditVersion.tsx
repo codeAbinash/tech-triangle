@@ -1,15 +1,14 @@
 import versionValidator from '@/zod/version'
+import popupStore from '@/zustand/popupStore'
 import versionStore from '@/zustand/versionStore'
 import {
   FolderFileStorageSolidIcon,
   PlusSignSolidIcon,
   Setting07SolidIcon,
-  StarOffSolidIcon,
   StarSolidIcon,
   StarsSolidIcon,
 } from '@assets/icons/icons'
 import Btn from '@components/Button'
-import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import Press from '@components/Press'
@@ -34,18 +33,20 @@ type VersionData = {
   versionCode: number
   updateSize: string
   features: string[]
-  forceUpdate: boolean
+  criticalVersionCode: number
 }
+
 export default function EditVersion({ navigation }: NavProp) {
+  const alert = popupStore((state) => state.alert)
   const data = versionStore((state) => state.version)
   const [version, setVersion] = useState(data?.version || '')
   const [versionCode, setVersionCode] = useState((data?.versionCode || '').toString())
   const [size, setSize] = useState(data?.size || '')
   const [features, setFeatures] = useState(data?.features || [])
-  const [forceUpdate, setForceUpdate] = useState<boolean>(data?.forceUpdate || false)
+  const [criticalVersionCode, setCriticalVersionCode] = useState((data?.criticalVersionCode || '').toString())
 
   const { mutate, isPending } = useMutation({
-    mutationKey: ['editVersion', version, versionCode, size, features, forceUpdate],
+    mutationKey: ['editVersion', version, versionCode, size, features],
     mutationFn: async (d: VersionData) => await (await client.api.admin.updateVersion.$post({ json: d })).json(),
     onSuccess: (d) => {
       if (!d || !d.status) return ToastAndroid.show('Failed to update version', ToastAndroid.SHORT)
@@ -56,17 +57,33 @@ export default function EditVersion({ navigation }: NavProp) {
   })
 
   function handleSubmit() {
-    // If there is a blank feature empty string then remove it
+    alert('Update version?', generateVersionUpdateMessage(version, versionCode, data, criticalVersionCode, size), [
+      { text: 'No, cancel' },
+      { text: 'Yes, update', onPress: promptUpdate },
+    ])
+  }
 
+  function promptUpdate() {
+    const isGreater = parseInt(criticalVersionCode, 10) > APP_VERSION_CODE
+    if (!isGreater) return update()
+
+    alert(
+      'Warning!',
+      `You are about to set the critical version code to ${criticalVersionCode} which is greater than the current version code ${APP_VERSION_CODE}. This will force the users to update the app. Also this application cannot be opened until the update is done. Are you sure you have uploaded the new APK? Are you sure you want to force update?`,
+      [{ text: 'No, cancel' }, { text: 'Yes, force update', onPress: update }],
+    )
+  }
+
+  function update() {
     const newFeatures = features.filter((item) => item.trim() !== '')
     setFeatures(newFeatures)
 
     const { error, data: d } = versionValidator.safeParse({
       version,
       versionCode: parseInt(versionCode, 10),
-      forceUpdate,
       features: newFeatures,
       updateSize: size,
+      criticalVersionCode: parseInt(criticalVersionCode, 10),
     })
 
     if (error) return ToastAndroid.show(error.errors[0]?.message || '', ToastAndroid.SHORT)
@@ -104,14 +121,15 @@ export default function EditVersion({ navigation }: NavProp) {
             <Input
               Icon={
                 <Press activeScale={0.9} onPress={incrementMajorVersion}>
-                  <RoundedIcon Icon={StarSolidIcon} />
+                  <RoundedIcon Icon={Setting07SolidIcon} className='bg-gray-500' />
                 </Press>
               }
+              placeholder='e.g. 2.6.8'
               value={version}
               onChangeText={setVersion}
               Right={
                 <Press activeScale={0.9} onPress={incrementMinorVersion}>
-                  <RoundedIcon Icon={PlusSignSolidIcon} />
+                  <RoundedIcon Icon={PlusSignSolidIcon} className='bg-gray-500' />
                 </Press>
               }
             />
@@ -124,14 +142,42 @@ export default function EditVersion({ navigation }: NavProp) {
             <Input
               Icon={
                 <Press activeScale={0.9} onPress={() => setVersionCode((parseInt(versionCode, 10) - 1).toString())}>
-                  <RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />
+                  <RoundedIcon Icon={StarSolidIcon} />
                 </Press>
               }
+              placeholder='e.g. 268'
               value={versionCode}
               onChangeText={setVersionCode}
               Right={
                 <Press activeScale={0.9} onPress={() => setVersionCode((parseInt(versionCode, 10) + 1).toString())}>
-                  <RoundedIcon Icon={PlusSignSolidIcon} className='bg-gray-500' />
+                  <RoundedIcon Icon={PlusSignSolidIcon} />
+                </Press>
+              }
+            />
+          )}
+        </SettGroup>
+        <SettGroup title={`Critical Version Code (${data?.criticalVersionCode || '  '})`}>
+          {!data ? (
+            <SingleSkeleton n={1} />
+          ) : (
+            <Input
+              Icon={
+                <Press
+                  activeScale={0.9}
+                  onPress={() => setCriticalVersionCode((parseInt(criticalVersionCode, 10) - 1).toString())}
+                >
+                  <RoundedIcon Icon={StarSolidIcon} className='bg-red-500' />
+                </Press>
+              }
+              placeholder='e.g. 268'
+              value={criticalVersionCode}
+              onChangeText={setCriticalVersionCode}
+              Right={
+                <Press
+                  activeScale={0.9}
+                  onPress={() => setCriticalVersionCode((parseInt(criticalVersionCode, 10) + 1).toString())}
+                >
+                  <RoundedIcon Icon={PlusSignSolidIcon} className='bg-red-500' />
                 </Press>
               }
             />
@@ -143,6 +189,7 @@ export default function EditVersion({ navigation }: NavProp) {
             <SingleSkeleton n={1} />
           ) : (
             <Input
+              placeholder='e.g. 12 MB'
               Icon={<RoundedIcon Icon={FolderFileStorageSolidIcon} className='bg-yellow-500' />}
               value={size}
               onChangeText={setSize}
@@ -192,27 +239,6 @@ export default function EditVersion({ navigation }: NavProp) {
             </>
           )}
         </SettGroup>
-
-        <SettGroup title={`Force Update (${data?.forceUpdate ? 'Yes' : 'No'})`}>
-          {!data ? (
-            <SingleSkeleton n={2} />
-          ) : (
-            <>
-              <SettOption
-                title='Yes'
-                Icon={<RoundedIcon Icon={StarSolidIcon} />}
-                onPress={() => setForceUpdate(true)}
-                Right={<Check checked={forceUpdate} />}
-              />
-              <SettOption
-                title='No'
-                Icon={<RoundedIcon Icon={StarOffSolidIcon} className='bg-red-500' />}
-                onPress={() => setForceUpdate(false)}
-                Right={<Check checked={!forceUpdate} />}
-              />
-            </>
-          )}
-        </SettGroup>
       </Gap12>
       <View className='mt-2 px-5 pb-10'>
         <Btn title={isPending ? 'Updating...' : 'Update'} onPress={handleSubmit} disabled={isPending} />
@@ -220,3 +246,39 @@ export default function EditVersion({ navigation }: NavProp) {
     </SettWrapper>
   )
 }
+
+function generateVersionUpdateMessage(
+  version: string,
+  versionCode: string,
+  data: {
+    versionCode: number
+    criticalVersionCode: number
+    version: string
+    features: Array<string>
+    size: string
+  } | null,
+  criticalVersionCode: string,
+  size: string,
+): string {
+  return `version: ${APP_VERSION} --> ${version}${APP_VERSION === version ? '' : ' (changed)'}\nversionCode: ${APP_VERSION_CODE} --> ${versionCode}${APP_VERSION_CODE.toString() === versionCode ? '' : ' (changed)'}\ncriticalVCode: ${data?.criticalVersionCode} --> ${criticalVersionCode}${data?.criticalVersionCode.toString() === criticalVersionCode ? '' : ' (changed)'}\nSize: ${data?.size} --> ${size}${data?.size === size ? '' : ' (changed)'}`
+}
+// <SettGroup title={`Force Update (${data?.forceUpdate ? 'Yes' : 'No'})`}>
+//   {!data ? (
+//     <SingleSkeleton n={2} />
+//   ) : (
+//     <>
+//       <SettOption
+//         title='Yes'
+//         Icon={<RoundedIcon Icon={StarSolidIcon} />}
+//         onPress={() => setForceUpdate(true)}
+//         Right={<Check checked={forceUpdate} />}
+//       />
+//       <SettOption
+//         title='No'
+//         Icon={<RoundedIcon Icon={StarOffSolidIcon} className='bg-red-500' />}
+//         onPress={() => setForceUpdate(false)}
+//         Right={<Check checked={!forceUpdate} />}
+//       />
+//     </>
+//   )}
+// </SettGroup>

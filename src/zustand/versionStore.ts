@@ -2,8 +2,8 @@ import { create } from 'zustand'
 
 type Version = {
   versionCode: number
+  criticalVersionCode: number
   version: string
-  forceUpdate: boolean
   features: Array<string>
   size: string
 }

@@ -28,7 +28,7 @@
     "@shopify/react-native-skia": "^1.5.8",
     "@tanstack/react-query": "^5.62.12",
     "clsx": "^2.1.1",
-    "hono": "^4.6.11",
+    "hono": "^4.6.16",
     "lottie-react-native": "^7.1.0",
     "nativewind": "^4.1.23",
     "react": "18.3.1",

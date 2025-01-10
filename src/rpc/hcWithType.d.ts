@@ -1,3 +1,4 @@
+import { hc } from 'hono/client';
 declare const client: {
     api: {
         version: import("hono/client").ClientRequest<{
@@ -9,15 +10,15 @@ declare const client: {
                     data: {
                         version: any;
                         date: any;
-                        forceUpdate: any;
                         features: any;
                         versionCode: any;
+                        criticalVersionCode: any;
                         size: any;
                         id: any;
                     };
                 };
                 outputFormat: "json";
-                status: import("hono/utils/http-status").StatusCode;
+                status: import("hono/utils/http-status").ContentfulStatusCode;
             } | {
                 input: {};
                 output: {
@@ -26,7 +27,7 @@ declare const client: {
                     data: null;
                 };
                 outputFormat: "json";
-                status: import("hono/utils/http-status").StatusCode;
+                status: import("hono/utils/http-status").ContentfulStatusCode;
             };
         }>;
     };
@@ -37,10 +38,10 @@ declare const client: {
                 $post: {
                     input: {
                         form: {
-                            password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            deviceName: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            deviceOs: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            password: string;
+                            username: string;
+                            deviceName: string;
+                            deviceOs: string;
                         };
                     };
                     output: {
@@ -50,14 +51,14 @@ declare const client: {
                         data: null;
                     };
                     outputFormat: "json";
-                    status: import("hono/utils/http-status").StatusCode;
+                    status: import("hono/utils/http-status").ContentfulStatusCode;
                 } | {
                     input: {
                         form: {
-                            password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            deviceName: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            deviceOs: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            password: string;
+                            username: string;
+                            deviceName: string;
+                            deviceOs: string;
                         };
                     };
                     output: {
@@ -69,7 +70,7 @@ declare const client: {
                         verificationRequired: boolean;
                     };
                     outputFormat: "json";
-                    status: import("hono/utils/http-status").StatusCode;
+                    status: import("hono/utils/http-status").ContentfulStatusCode;
                 };
             }>;
         };
@@ -81,10 +82,10 @@ declare const client: {
                 $post: {
                     input: {
                         form: {
-                            password: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            name: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            email: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            password: string;
+                            name: string;
+                            username: string;
+                            email: string;
                         };
                     };
                     output: {
@@ -92,7 +93,7 @@ declare const client: {
                         status: boolean;
                     };
                     outputFormat: "json";
-                    status: import("hono/utils/http-status").StatusCode;
+                    status: import("hono/utils/http-status").ContentfulStatusCode;
                 };
             }>;
         };
@@ -104,8 +105,8 @@ declare const client: {
                 $post: {
                     input: {
                         form: {
-                            username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
-                            otp: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            username: string;
+                            otp: string;
                         };
                     };
                     output: {
@@ -113,7 +114,7 @@ declare const client: {
                         status: boolean;
                     };
                     outputFormat: "json";
-                    status: import("hono/utils/http-status").StatusCode;
+                    status: import("hono/utils/http-status").ContentfulStatusCode;
                 };
             }>;
         };
@@ -126,7 +127,7 @@ declare const client: {
                     $post: {
                         input: {
                             form: {
-                                username: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                                username: string;
                             };
                         };
                         output: {
@@ -135,7 +136,7 @@ declare const client: {
                             username: string;
                         };
                         outputFormat: "json";
-                        status: import("hono/utils/http-status").StatusCode;
+                        status: import("hono/utils/http-status").ContentfulStatusCode;
                     };
                 }>;
             };
@@ -151,7 +152,7 @@ declare const client: {
                     status: boolean;
                 };
                 outputFormat: "json";
-                status: import("hono/utils/http-status").StatusCode;
+                status: import("hono/utils/http-status").ContentfulStatusCode;
             };
         }>;
     };
@@ -169,7 +170,7 @@ declare const client: {
                     };
                 };
                 outputFormat: "json";
-                status: import("hono/utils/http-status").StatusCode;
+                status: import("hono/utils/http-status").ContentfulStatusCode;
             };
         }>;
     };
@@ -196,7 +197,7 @@ declare const client: {
                     };
                 };
                 outputFormat: "json";
-                status: import("hono/utils/http-status").StatusCode;
+                status: import("hono/utils/http-status").ContentfulStatusCode;
             };
         }>;
     };
@@ -207,7 +208,7 @@ declare const client: {
                 $post: {
                     input: {
                         form: {
-                            device: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                            device: string;
                         };
                     };
                     output: {
@@ -215,7 +216,7 @@ declare const client: {
                         message: string;
                     };
                     outputFormat: "json";
-                    status: import("hono/utils/http-status").StatusCode;
+                    status: import("hono/utils/http-status").ContentfulStatusCode;
                 };
             }>;
         };
@@ -232,7 +233,7 @@ declare const client: {
                             message: string;
                         };
                         outputFormat: "json";
-                        status: import("hono/utils/http-status").StatusCode;
+                        status: import("hono/utils/http-status").ContentfulStatusCode;
                     };
                 }>;
             };
@@ -250,7 +251,7 @@ declare const client: {
                             message: string;
                         };
                         outputFormat: "json";
-                        status: import("hono/utils/http-status").StatusCode;
+                        status: import("hono/utils/http-status").ContentfulStatusCode;
                     };
                 }>;
             };
@@ -284,7 +285,7 @@ declare const client: {
                             }[];
                         };
                         outputFormat: "json";
-                        status: import("hono/utils/http-status").StatusCode;
+                        status: import("hono/utils/http-status").ContentfulStatusCode;
                     };
                 }>;
             };
@@ -298,7 +299,7 @@ declare const client: {
                     $post: {
                         input: {
                             form: {
-                                id: import("hono/types").ParsedFormValue | import("hono/types").ParsedFormValue[];
+                                id: string;
                             };
                         };
                         output: {
@@ -306,7 +307,7 @@ declare const client: {
                             status: boolean;
                         };
                         outputFormat: "json";
-                        status: import("hono/utils/http-status").StatusCode;
+                        status: import("hono/utils/http-status").ContentfulStatusCode;
                     };
                 }>;
             };
@@ -320,19 +321,19 @@ declare const client: {
                     input: {
                         json: {
                             version: string;
-                            features: string[];
                             versionCode: number;
+                            features: string[];
+                            criticalVersionCode: number;
                             updateSize: string;
-                            forceUpdate?: boolean | undefined;
                         };
                     };
                     output: {
                         message: string;
                         status: boolean;
-                        data: null;
+                        data: any;
                     };
                     outputFormat: "json";
-                    status: import("hono/utils/http-status").StatusCode;
+                    status: import("hono/utils/http-status").ContentfulStatusCode;
                 };
             }>;
         };
@@ -347,7 +348,7 @@ declare const client: {
                     status: boolean;
                 };
                 outputFormat: "json";
-                status: import("hono/utils/http-status").StatusCode;
+                status: import("hono/utils/http-status").ContentfulStatusCode;
             };
         }>;
     };
@@ -360,7 +361,7 @@ declare const client: {
                 status: boolean;
             };
             outputFormat: "json";
-            status: import("hono/utils/http-status").StatusCode;
+            status: import("hono/utils/http-status").ContentfulStatusCode;
         };
     }>;
 };
