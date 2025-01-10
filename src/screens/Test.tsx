@@ -6,9 +6,21 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import type { NavProp } from '@utils/types'
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { open } from '@op-engineering/op-sqlite'
+import { drizzle } from 'drizzle-orm/op-sqlite'
+
+const opsqlite = open({
+  name: 'myDB',
+})
+const db = drizzle(opsqlite)
 
 export default function Test({ navigation }: NavProp) {
+  useEffect(() => {
+    console.log('db', db)
+  }, [db])
+
   return (
     <>
       <SettWrapper navigation={navigation} title='Test Screen'>
