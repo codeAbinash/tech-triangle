@@ -13,7 +13,7 @@ export function logout() {
 
 export function handleLogout(logoutMutation: () => void) {
   const alert = popupStore.getState().alert
-  alert('Log out', 'This is the device you are currently using. Are you sure you want to log out?', [
+  alert('Log out', 'Are you sure you want to log out from this device?', [
     {
       text: 'Log out',
       onPress() {

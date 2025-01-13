@@ -1,9 +1,10 @@
 import { navigationStore } from '@/zustand/navigationStore'
+import popupStore from '@/zustand/popupStore'
 import NetInfo from '@react-native-community/netinfo'
 import { useFocusEffect } from '@react-navigation/native'
+import { logout } from '@screens/auth/utils'
 import { onlineManager, QueryClient, type NotifyOnChangeProps } from '@tanstack/react-query'
 import React from 'react'
-import { Alert } from 'react-native'
 
 // Online Status Manager
 onlineManager.setEventListener((setOnline) => {
@@ -104,19 +105,6 @@ export const queryClient = new QueryClient({
 
 function handleUnauthorized(data: ServerResponse) {
   if (data.message !== 'Unauthorized') return
-  navigation?.reset({
-    index: 0,
-    routes: [{ name: 'Login' }],
-  })
-  Alert.alert('Unauthorized', 'Please login again', [
-    {
-      text: 'OK',
-      onPress: () => {
-        navigation?.reset({
-          index: 0,
-          routes: [{ name: 'Login' }],
-        })
-      },
-    },
-  ])
+  const alert = popupStore.getState().alert
+  alert('Unauthorized', 'Your session has expired. Please login again.', [{ text: 'OK', onPress: logout }])
 }
