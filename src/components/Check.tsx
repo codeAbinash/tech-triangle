@@ -1,6 +1,5 @@
 import { Tick01Icon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
-import React from 'react'
 import { SvgProps } from 'react-native-svg'
 import { ic } from './Settings/Settings'
 

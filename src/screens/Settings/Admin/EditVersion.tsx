@@ -25,7 +25,7 @@ import { ColorList } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE } from '@utils/constants'
 import { SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Text, ToastAndroid, View } from 'react-native'
 
 type VersionData = {

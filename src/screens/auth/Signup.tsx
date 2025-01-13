@@ -80,7 +80,7 @@ export default function Signup({ navigation }: NavProp) {
   })
 
   useEffect(() => {
-    if(!username) return setStatus(NameStatus.Initial)
+    if (!username) return setStatus(NameStatus.Initial)
     setStatus(NameStatus.Checking)
     const timer = setTimeout(() => {
       const { error, data } = usernameStatusZodValidator.safeParse({ username })

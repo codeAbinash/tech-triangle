@@ -1,5 +1,4 @@
 import { Medium } from '@utils/fonts'
-import React from 'react'
 import type { TextProps } from 'react-native'
 
 export function TxtAcc({ children, size, style, ...rest }: TextProps & { size?: number }) {

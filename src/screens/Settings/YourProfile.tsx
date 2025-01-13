@@ -19,7 +19,6 @@ import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 
 export default function YourProfile({ navigation }: NavProp) {
   const firstName = profileStore((s) => s.firstName)

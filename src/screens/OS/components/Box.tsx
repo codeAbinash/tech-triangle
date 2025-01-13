@@ -1,6 +1,5 @@
 import { Colors } from '@utils/colors'
 import { Medium, MEDIUM } from '@utils/fonts'
-import React from 'react'
 import { StyleSheet, type TextInputProps } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 

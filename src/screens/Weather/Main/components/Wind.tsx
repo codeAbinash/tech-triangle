@@ -4,7 +4,6 @@ import { boxSize } from '@screens/Weather/utils'
 import { W } from '@utils/dimensions'
 import { Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
-import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import WeatherLabel from './WeatherLabel'
 

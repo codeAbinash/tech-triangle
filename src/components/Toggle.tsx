@@ -1,6 +1,5 @@
 import { devOptStore } from '@/zustand/devOptStore'
 import { Colors } from '@utils/colors'
-import React from 'react'
 import { StyleSheet, useColorScheme } from 'react-native'
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated'
 const TC_W = 50 // Toggle Container Width

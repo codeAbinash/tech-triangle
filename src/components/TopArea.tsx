@@ -6,7 +6,6 @@ import { APP_VERSION_CODE } from '@utils/constants'
 import { Bold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLocalDate } from '@utils/utils'
-import React from 'react'
 import { TouchableOpacity, View, useColorScheme } from 'react-native'
 
 function UpdateRedDot() {

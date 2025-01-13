@@ -22,7 +22,6 @@ import { getDate } from '@screens/Settings/Devices/utils'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import type { StackNav } from '@utils/types'
-import React from 'react'
 import { ToastAndroid, View } from 'react-native'
 
 export type UserT = Awaited<ReturnType<Awaited<ReturnType<typeof client.api.admin.users.all.$post>>['json']>>['data'][0]

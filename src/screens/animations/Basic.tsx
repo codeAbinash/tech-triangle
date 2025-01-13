@@ -1,6 +1,5 @@
 import Btn from '@components/Button'
 import COL, { Colors } from '@utils/colors'
-import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { useAnimatedProps, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'

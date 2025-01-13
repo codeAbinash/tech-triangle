@@ -1,6 +1,5 @@
 import { PaddingBottom } from '@components/SafePadding'
 import { default as COL, default as colors, Colors } from '@utils/colors'
-import React from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { SensorType, useAnimatedSensor, useAnimatedStyle, withSpring } from 'react-native-reanimated'

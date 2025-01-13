@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { APP_VERSION } from '@utils/constants'
 import { SemiBold } from '@utils/fonts'
-import React from 'react'
 import { View } from 'react-native'
 
 export default function About() {

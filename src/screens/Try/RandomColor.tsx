@@ -1,6 +1,6 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 import { Medium } from '@utils/fonts'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ToastAndroid, TouchableOpacity, View } from 'react-native'
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 

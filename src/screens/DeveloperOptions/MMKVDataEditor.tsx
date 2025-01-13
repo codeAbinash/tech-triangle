@@ -15,7 +15,7 @@ import { Colors } from '@utils/colors'
 import S, { ls, type StorageKeys } from '@utils/storage'
 import type { StackNav } from '@utils/types'
 import { toReadableSize } from '@utils/utils'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Text, ToastAndroid, View } from 'react-native'
 
 type ParamList = {

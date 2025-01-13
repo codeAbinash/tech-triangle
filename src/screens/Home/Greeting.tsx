@@ -7,7 +7,6 @@ import { APP_VERSION } from '@utils/constants'
 import { Bold, Medium, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import { getLocalDate, greetingByTime } from '@utils/utils'
-import React from 'react'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 

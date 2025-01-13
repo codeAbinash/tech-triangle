@@ -1,4 +1,3 @@
-import { hc } from 'hono/client';
 declare const client: {
     api: {
         version: import("hono/client").ClientRequest<{

@@ -1,6 +1,5 @@
 import { PlaySolidIcon } from '@assets/icons/icons'
 import Press from '@components/Press'
-import React from 'react'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 
 export default function RunButton({ onPlay }: { onPlay: () => void }) {

@@ -1,6 +1,5 @@
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { Medium } from '@utils/fonts'
-import React from 'react'
 import { StatusBar, View } from 'react-native'
 
 export default function Story() {

@@ -1,7 +1,6 @@
 import Search from '@components/Search'
 import StackHeader from '@components/StackHeader'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 import { StatusBar, View } from 'react-native'
 
 export default function GlobalSearch({ navigation }: NavProp) {

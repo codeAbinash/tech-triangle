@@ -1,4 +1,3 @@
-import React from 'react'
 import { StatusBar, type ColorSchemeName } from 'react-native'
 
 export function DefaultTransparent() {

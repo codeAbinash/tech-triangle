@@ -9,7 +9,6 @@ import Feature from '@components/Feature'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 

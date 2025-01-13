@@ -3,7 +3,6 @@ import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 import { View } from 'react-native'
 
 const colors = [

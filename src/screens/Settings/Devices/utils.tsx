@@ -12,7 +12,6 @@ import {
 } from '@assets/icons/icons'
 import RoundedIcon from '@components/RoundedIcon'
 import type { NU } from '@utils/types'
-import React from 'react'
 export function getDate(n: number | undefined) {
   if (!n) return 'Unknown'
   return 'On ' + new Date(n).toLocaleString()

@@ -13,7 +13,6 @@ export default function CheckVersion({ navigation }: NavProp) {
 
   const setVersion = versionStore((state) => state.setVersion)
 
-
   useEffect(() => {
     if (data && data.status) {
       const isForceUpdate = APP_VERSION_CODE < data.data?.criticalVersionCode

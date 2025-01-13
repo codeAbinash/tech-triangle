@@ -3,13 +3,12 @@ import { Gap12, Gap20 } from '@components/Gap'
 import { PaddingBottom } from '@components/SafePadding'
 import SettText from '@components/Settings/SettText'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 import { View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 export default function ComputerScienceSettings({ navigation }: NavProp) {
   return (
-    <View className='flex-1 bg'>
+    <View className='bg flex-1'>
       <BackHeader title='Computer Science' navigation={navigation} />
       <ScrollView
         contentContainerStyle={{ paddingBottom: 30 }}

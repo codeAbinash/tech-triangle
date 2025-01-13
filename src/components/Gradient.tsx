@@ -1,5 +1,4 @@
 import COL from '@utils/colors'
-import React from 'react'
 import LinearGradient, { type LinearGradientProps } from 'react-native-linear-gradient'
 
 type CustomLinearGradientProps = Omit<LinearGradientProps, 'colors'> & {

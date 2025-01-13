@@ -1,5 +1,5 @@
 import { PaddingBottom } from '@components/SafePadding'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, {

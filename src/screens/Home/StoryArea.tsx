@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { Medium } from '@utils/fonts'
 import { StackNav, type NavProp } from '@utils/types'
-import React from 'react'
 import { ScrollView, TouchableOpacity, View } from 'react-native'
 
 interface StoryProps {

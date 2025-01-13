@@ -1,6 +1,6 @@
 import { AppIconRound } from '@assets/icons/icons'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { View } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated'
 

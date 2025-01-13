@@ -1,5 +1,4 @@
 import { default as COL, default as colors } from '@utils/colors'
-import React from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import { Gesture, GestureDetector, GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler'
 import Animated, { useAnimatedStyle, useSharedValue, withDecay, withSpring, withTiming } from 'react-native-reanimated'

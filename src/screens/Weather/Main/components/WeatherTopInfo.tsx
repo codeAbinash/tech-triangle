@@ -3,7 +3,6 @@ import { PaddingBottom } from '@components/SafePadding'
 import type { Weather } from '@screens/Weather/types'
 import { Light, Medium, Regular } from '@utils/fonts'
 import { tempConverter } from '@utils/utils'
-import React from 'react'
 import { View } from 'react-native'
 
 type WeatherTopInfoProps = {

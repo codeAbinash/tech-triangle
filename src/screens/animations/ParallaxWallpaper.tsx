@@ -1,4 +1,3 @@
-import React from 'react'
 import { Dimensions, StatusBar, Text, View } from 'react-native'
 import Animated, {
   SensorType,

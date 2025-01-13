@@ -1,7 +1,7 @@
 import { Canvas, Circle, Group, Path, Skia, SweepGradient, vec } from '@shopify/react-native-skia'
 import { W } from '@utils/dimensions'
 import type { Theme } from '@utils/types'
-import React, { useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { View } from 'react-native'
 const scale = W / 1000
 // Define control points for the cubic Bezier curves

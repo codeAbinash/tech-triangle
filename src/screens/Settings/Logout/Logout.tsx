@@ -8,7 +8,6 @@ import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { W } from '@utils/dimensions'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 import { StatusBar, ToastAndroid, View } from 'react-native'
 
 export default function Logout({ navigation }: NavProp) {

@@ -12,7 +12,7 @@ import type { RouteProp } from '@react-navigation/native'
 import { APP_VERSION_CODE, GITHUB_REPO, join_telegram_channel } from '@utils/constants'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
-import React, { useCallback, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { BackHandler, Linking, ToastAndroid, View } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated'
 

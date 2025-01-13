@@ -1,7 +1,6 @@
 import { PlusSignIcon, Setting07Icon } from '@assets/icons/icons'
 import { F, Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
-import React from 'react'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 
 export default function Header({

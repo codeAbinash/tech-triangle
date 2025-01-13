@@ -14,7 +14,6 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 
 export default function WindSpeedUnit({ navigation }: NavProp) {
   const windSpeedUnit = weatherStore((state) => state.windSpeedUnit)

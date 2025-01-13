@@ -8,7 +8,6 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 
 export default function DistanceUnit({ navigation }: NavProp) {
   const distanceUnit = weatherStore((state) => state.distanceUnit)

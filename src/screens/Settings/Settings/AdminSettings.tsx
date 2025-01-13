@@ -5,7 +5,6 @@ import RoundedIcon from '@components/RoundedIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import type { NavProp } from '@utils/types'
-import React from 'react'
 
 export default function AdminSettings({ navigation }: NavProp) {
   const user = profileStore((state) => state.user)

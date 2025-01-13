@@ -1,5 +1,5 @@
 import { PaddingBottom } from '@components/SafePadding'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import Animated, {
   SensorType,

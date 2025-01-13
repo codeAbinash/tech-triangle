@@ -1,7 +1,7 @@
 import authStore from '@/zustand/authStore'
 import { navigationStore } from '@/zustand/navigationStore'
 import type { NavProp } from '@utils/types'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Text, View } from 'react-native'
 
 export default function Splash({ navigation }: NavProp) {

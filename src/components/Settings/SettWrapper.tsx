@@ -15,7 +15,7 @@ type SettWrapperProps = ScrollViewProps & {
 export default function SettWrapper({ Header, title, navigation, children, ...rest }: SettWrapperProps) {
   const scheme = useColorScheme()
   return (
-    <View className='flex-1 bg'>
+    <View className='bg flex-1'>
       <AutoStatusBar scheme={scheme} />
       {Header ? Header : <BackHeader title={title || 'Test Title'} navigation={navigation} />}
       <KeyboardAvoid

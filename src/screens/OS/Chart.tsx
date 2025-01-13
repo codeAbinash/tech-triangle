@@ -5,7 +5,7 @@ import { ColorList, Colors } from '@utils/colors'
 import { H } from '@utils/dimensions'
 import { Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
