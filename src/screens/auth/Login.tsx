@@ -15,6 +15,7 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import { useMutation } from '@tanstack/react-query'
 import { client, updateClientHeader } from '@utils/client'
+import { W } from '@utils/dimensions'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import { useMemo, useState } from 'react'
@@ -68,7 +69,7 @@ export default function Login({ navigation }: NavProp) {
     },
   })
 
-  function handelSubmit() {
+  function handleSubmit() {
     const { error, data } = loginZodValidator.safeParse({ username, password, deviceName, deviceOs })
     if (error) {
       alert('Error', error.errors[0]?.message || '')
@@ -81,9 +82,9 @@ export default function Login({ navigation }: NavProp) {
     <KeyboardAvoid className='bg flex-1' contentContainerStyle={{ paddingBottom: 20 }}>
       <View className='pb-5'>
         <PaddingTop />
-        <View className='px-5 py-5 pb-10'>
-          <Bold className='text-3xl text-black dark:text-white'>Welcome to Tech Triangle</Bold>
-          <Lottie source={Animations['welcome']} />
+        <View className='px-5 py-5 pb-8'>
+          <Bold className='pb-3 text-3xl text-black dark:text-white'>Welcome to Tech Triangle</Bold>
+          <Lottie source={Animations['welcome']} style={{ width: W * 0.6, height: W * 0.6 }} />
         </View>
         <Gap12>
           <SettGroup title='Email or Username'>
@@ -121,7 +122,7 @@ export default function Login({ navigation }: NavProp) {
             title={isPending ? 'Logging in...' : 'Login'}
             className='w-full'
             disabled={isPending}
-            onPress={handelSubmit}
+            onPress={handleSubmit}
           />
         </View>
         <SettGroup title='More Options' className='mt-5'>

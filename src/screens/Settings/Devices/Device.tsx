@@ -7,6 +7,7 @@ import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { queryClient } from '@query/index'
 import type { RouteProp } from '@react-navigation/native'
+import { handleLogout, logout } from '@screens/auth/utils'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { F, Medium } from '@utils/fonts'
@@ -39,6 +40,16 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
     mutationFn: async () =>
       await (await client.api.devices.delete.$post({ form: { device: device?.id || '' } })).json(),
   })
+
+  const { mutate: logoutMutation } = useMutation({
+    mutationKey: ['logout'],
+    mutationFn: async () => await (await client.api.logout.$post()).json(),
+    onSuccess: (d) => {
+      if (!d.status) ToastAndroid.show('Error logging out!', ToastAndroid.SHORT)
+      logout()
+    },
+  })
+
   const relativeTime = useMemo(() => getRelativeTime(device?.time), [device?.time])
 
   const DeviceIcon = useMemo(() => getDeviceIcon(device?.os, device?.name), [device?.os, device?.name])
@@ -62,7 +73,10 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
   }, [data])
 
   function handleRemove() {
-    if (route.params.device?.isSelf) return navigation.navigate('Logout')
+    if (route.params.device?.isSelf) {
+      handleLogout(logoutMutation)
+      return
+    }
     alert('Remove Device', 'Are you sure you want to remove this device?', [
       { text: 'Cancel' },
       { text: 'Remove', onPress: () => mutate() },

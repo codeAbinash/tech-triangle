@@ -12,9 +12,10 @@ type PopupT = {
     text: string
     onPress?: () => void
   }[]
+  noClose?: boolean
 }
 
-const Popup = React.memo<PopupT>(({ text, title, buttons, index }) => {
+const Popup = React.memo<PopupT>(({ text, title, buttons, index, noClose }) => {
   const removePopup = popupStore((store) => store.removePopup)
 
   return (
@@ -25,7 +26,9 @@ const Popup = React.memo<PopupT>(({ text, title, buttons, index }) => {
         visible={true}
         hardwareAccelerated
         statusBarTranslucent
-        onRequestClose={() => removePopup(index)}
+        onRequestClose={() => {
+          if (!noClose) removePopup(index)
+        }}
       >
         <View className='flex-1 items-center justify-center bg-black/40 dark:bg-black/50'>
           <View className='w-[85%] rounded-xl bg-white dark:bg-zinc-900'>
@@ -61,7 +64,7 @@ export default Popup
 const PopupButton = React.memo<{ text: string; onPress?: () => void }>(({ text, onPress }) => {
   return (
     <TouchableOpacity
-      className='min-w-20 items-center justify-center rounded-lg px-5 py-3 active:bg-black/5 dark:active:bg-white/10'
+      className='min-w-20 items-center justify-center rounded-lg px-3 py-3 active:bg-black/5 dark:active:bg-white/10'
       onPress={onPress}
       activeOpacity={1}
     >
@@ -82,6 +85,7 @@ export const Popups = React.memo((props) => {
           index={index}
           text={popup.text}
           title={popup.title}
+          noClose={popup.noClose}
           buttons={popup.buttons || [{ text: 'OK' }]}
         />
       ))}

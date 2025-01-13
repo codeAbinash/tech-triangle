@@ -29,7 +29,6 @@ import type { DeviceParamList } from '@screens/Settings/Devices/Device'
 import Device from '@screens/Settings/Devices/Device'
 import Devices from '@screens/Settings/Devices/Devices'
 import About from '@screens/Settings/Extra/About'
-import Logout from '@screens/Settings/Logout/Logout'
 import ManageStorage from '@screens/Settings/ManageStorage'
 import Settings from '@screens/Settings/Settings/Settings'
 import UiAndComponents from '@screens/Settings/UiAndComponents'
@@ -151,7 +150,6 @@ export type RootStackParamList = {
   Devices: undefined
   Device: DeviceParamList
   AllUsers: undefined
-  Logout: undefined
   EditVersion: undefined
   Story: undefined
   User: UserParamList
@@ -185,7 +183,6 @@ function Navigation() {
         <Stack.Screen name='Home' component={Home} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
         <Stack.Screen name='AllUsers' component={AllUsers} options={GestureEnabled} />
-        <Stack.Screen name='Logout' component={Logout} options={IOS_BOTTOM_STYLE} />
         {/* <Stack.Screen name='Location' component={Location} /> */}
         {/* <Stack.Screen name='CompassAnimation' component={CompassAnimation} /> */}
         {/* <Stack.Screen name='ParallaxWallpaper' component={ParallaxWallpaper} /> */}

@@ -33,6 +33,9 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import { Txt, TxtAcc } from '@components/Text'
 import { useIsFocused } from '@react-navigation/native'
+import { handleLogout, logout } from '@screens/auth/utils'
+import { useMutation } from '@tanstack/react-query'
+import { client } from '@utils/client'
 import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/constants'
 import { Bold } from '@utils/fonts'
@@ -40,13 +43,10 @@ import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/s
 import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { View, useColorScheme } from 'react-native'
+import { ToastAndroid, View, useColorScheme } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import AdminSettings from './AdminSettings'
-// function getTransparentCardStyle(scheme: ColorSchemeName) {
-//   return scheme === 'dark' ? 'aa' : '77'
-// }
 
 function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactNode }) {
   const [search, setSearch] = React.useState('')
@@ -71,19 +71,28 @@ export default function Settings({ navigation }: NavProp) {
 
   const focused = useIsFocused()
 
+  const { mutate: logoutMutation } = useMutation({
+    mutationKey: ['logout'],
+    mutationFn: async () => await (await client.api.logout.$post()).json(),
+    onSuccess: (d) => {
+      if (!d.status) ToastAndroid.show('Error logging out!', ToastAndroid.SHORT)
+      logout()
+    },
+  })
+
   useEffect(() => {
     focused &&
       screenDelay(() => {
         setTotalSize(getStartWithSize(''))
         setTotalCache(getStorageSize(Caches))
       })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function clearCache() {
     clearStorage(Caches)
     setTotalCache(0)
   }
+
 
   return (
     <View className='flex-1 bg-white dark:bg-zinc-950'>
@@ -95,8 +104,6 @@ export default function Settings({ navigation }: NavProp) {
         keyboardShouldPersistTaps='always'
       >
         <SettingsHeader title='Settings' />
-        {/* <SettingsHeader navigation={navigation} title='Settings' back={false}/> */}
-        {/* <SettingBackHeader title='Computer Science' navigation={navigation} /> */}
         <Gap20>
           <Gap12>
             <SettText className='mt-3'>
@@ -105,34 +112,6 @@ export default function Settings({ navigation }: NavProp) {
             </SettText>
             <UpdateSettings navigation={navigation} />
             <SettGroup title='General'>
-              {/* <SettOption
-                title='App Update'
-                Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
-                arrow
-                Right={<RoundNotification n={4} />}
-                onPress={() =>
-                  navigation.navigate('Update', {
-                    version: '2.7.3',
-                    size: '10MB',
-                    whatsNew: ['New features', 'Bug fixes', 'Performance improvements'],
-                  })
-                }
-              /> */}
-              {/* <SettOption
-                title='App Update'
-                Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
-                arrow
-                Right={<RoundNotification n={1} />}
-                onPress={() =>
-                  navigation.navigate('ForceUpdate', {
-                    shouldGoBack: true,
-                    version: '2.7.3',
-                    size: '10MB',
-                    whatsNew: ['New features', 'Bug fixes', 'Performance improvements'],
-                  })
-                }
-              /> */}
-
               <SettOption
                 title='Your Profile'
                 Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
@@ -172,7 +151,7 @@ export default function Settings({ navigation }: NavProp) {
                 arrow
                 title='Log Out'
                 Icon={<RoundedIcon Icon={Logout02SolidIcon} className='bg-red-500' />}
-                onPress={() => navigation.navigate('Logout')}
+                onPress={() => handleLogout(logoutMutation)}
               />
             </SettGroup>
           </Gap12>
