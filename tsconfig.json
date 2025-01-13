@@ -2,7 +2,7 @@
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
