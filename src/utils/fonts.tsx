@@ -1,4 +1,3 @@
-import React from 'react'
 import { StyleSheet, Text, type TextProps } from 'react-native'
 
 export const REGULAR = {
@@ -60,9 +59,11 @@ export function Light({ children, style, ...props }: TextProps) {
 export const F = StyleSheet.create({
   F9: {
     fontSize: 9,
+    lineHeight: 12,
   },
   F9_5: {
     fontSize: 9.5,
+    lineHeight: 12,
   },
   F10: {
     fontSize: 10,

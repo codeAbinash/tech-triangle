@@ -1,6 +1,8 @@
 import { weatherStore } from '@/zustand/weatherStore'
+import Animations from '@assets/animations/animations'
 import { LocationOffline01Icon } from '@assets/icons/icons'
 import Button from '@components/Button'
+import { Lottie } from '@components/Lottie'
 import { PaddingBottom } from '@components/SafePadding'
 import StackHeader from '@components/StackHeader'
 import { type RouteProp } from '@react-navigation/native'
@@ -10,8 +12,7 @@ import { W } from '@utils/dimensions'
 import { F, Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { screenDelay } from '@utils/utils'
-import LottieView from 'lottie-react-native'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ActivityIndicator, Linking, PermissionsAndroid, StatusBar, ToastAndroid, View } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 import { getLocation as getLoc } from './api'
@@ -147,15 +148,7 @@ function CityResult({
       {/* <PMedium className='text-center text-zinc-700 dark:text-gray-300'>
         {getLatitude(data?.coord.lat || 0)} , {getLongitude(data?.coord.lon || 0)}
       </PMedium> */}
-      <LottieView
-        source={require('../../assets/animations/weather/broken-clouds.lottie')}
-        style={{ height: W * 0.7, width: W * 0.7 }}
-        speed={0.5}
-        autoPlay
-        loop
-        hardwareAccelerationAndroid
-        cacheComposition
-      />
+      <Lottie source={Animations['broken-clouds']} style={{ height: W * 0.7, width: W * 0.7 }} speed={0.5} />
       <View className='w-full flex-row items-center justify-between px-5'>
         <View className='flex-row items-center' style={{ gap: 5 }}>
           <View className=''>

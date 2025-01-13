@@ -90,14 +90,12 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       select(data) {
-        console.log(data)
         handleUnauthorized(data as ServerResponse)
         return data
       },
     },
     mutations: {
       onSuccess: (data) => {
-        console.log(data)
         handleUnauthorized(data as ServerResponse)
       },
     },

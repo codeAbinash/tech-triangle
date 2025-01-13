@@ -5,7 +5,6 @@ import type { RouteProp } from '@react-navigation/native'
 import { F, Medium, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
-import React from 'react'
 import { StatusBar, ToastAndroid, View } from 'react-native'
 type ParamList = {
   ConfirmCity: ConfirmCityParamList
@@ -52,14 +51,6 @@ export default function ConfirmCity({
             {altitude} m
           </Medium>
         </View>
-        {/* <LottieView
-          source={require('@assets/animations/earth.lottie')}
-          autoPlay
-          loop={false}
-          hardwareAccelerationAndroid
-          cacheComposition
-          style={{ width: W * 1.1, height: W * 1.1 }}
-        /> */}
         <View className='w-full pb-3 pt-2' style={{ gap: 10 }}>
           <Medium style={F.F9_5} className='mb-3 text-center text-zinc-500 dark:text-zinc-500'>
             By setting this location, you will be able to view the weather of this location in the home screen and the

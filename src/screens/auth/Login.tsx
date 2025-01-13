@@ -1,21 +1,23 @@
 import { loginZodValidator } from '@/zod/auth'
 import authStore from '@/zustand/authStore'
 import popupStore from '@/zustand/popupStore'
+import Animations from '@assets/animations/animations'
 import { HelpCircleSolidIcon, LockPasswordSolidIcon, Mail02SolidIcon, UserAdd02SolidIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
+import KeyboardAvoid from '@components/KeyboardAvoid'
+import { Lottie } from '@components/Lottie'
 import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
-import SettWrapper from '@components/Settings/SettWrapper'
 import { useMutation } from '@tanstack/react-query'
 import { client, updateClientHeader } from '@utils/client'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Platform, ToastAndroid, View } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 import { PasswordEye } from './components/PasswordEye'
@@ -76,11 +78,12 @@ export default function Login({ navigation }: NavProp) {
   }
 
   return (
-    <SettWrapper className='flex-1 bg-zinc-100 dark:bg-black' Header={<></>}>
-      <View className='py-5'>
+    <KeyboardAvoid className='bg flex-1' contentContainerStyle={{ paddingBottom: 20 }}>
+      <View className='pb-5'>
         <PaddingTop />
         <View className='px-5 py-5 pb-10'>
           <Bold className='text-3xl text-black dark:text-white'>Welcome to Tech Triangle</Bold>
+          <Lottie source={Animations['welcome']} />
         </View>
         <Gap12>
           <SettGroup title='Email or Username'>
@@ -140,6 +143,6 @@ export default function Login({ navigation }: NavProp) {
           <SemiBold>Privacy Policy</SemiBold>.
         </SettText>
       </View>
-    </SettWrapper>
+    </KeyboardAvoid>
   )
 }

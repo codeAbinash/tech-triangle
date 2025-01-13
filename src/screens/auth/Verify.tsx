@@ -15,7 +15,7 @@ import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { View } from 'react-native'
 
 type ParamList = {
@@ -52,7 +52,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
   }
 
   return (
-    <SettWrapper className='flex-1 bg-zinc-100 dark:bg-black' Header={<></>}>
+    <SettWrapper Header={<></>}>
       <View className='py-5'>
         <PaddingTop />
         <View className='px-5 py-5 pb-10'>

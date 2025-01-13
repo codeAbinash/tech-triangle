@@ -9,3 +9,7 @@
 .text {
   @apply text-zinc-800 dark:text-zinc-200;
 }
+
+.bg {
+  @apply bg-zinc-100 dark:bg-black;
+}

@@ -17,7 +17,7 @@ import {
   TestTube01SolidIcon,
 } from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
-import KeyboardAvoidingContainer from '@components/KeyboardAvoidingContainer'
+import KeyboardAvoid from '@components/KeyboardAvoid'
 import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
@@ -123,10 +123,7 @@ export default function TyrItOut({ navigation }: NavProp) {
         </View>
         <Search placeholder='Search tools' value={search} onChangeText={setSearch} />
       </View>
-      <KeyboardAvoidingContainer
-        className='flex-1 bg-zinc-100 pt-4 dark:bg-black'
-        contentContainerStyle={{ paddingBottom: 50 }}
-      >
+      <KeyboardAvoid className='flex-1 bg-zinc-100 pt-4 dark:bg-black' contentContainerStyle={{ paddingBottom: 50 }}>
         <Gap20>
           {searchedTools.map((group, index) => (
             <Gap12 key={index}>
@@ -152,7 +149,7 @@ export default function TyrItOut({ navigation }: NavProp) {
             <SettText className='text-center'>No tools found. Try searching for something else.</SettText>
           )}
         </Gap20>
-      </KeyboardAvoidingContainer>
+      </KeyboardAvoid>
     </>
   )
 }

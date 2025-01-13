@@ -9,7 +9,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 export default function ComputerScienceSettings({ navigation }: NavProp) {
   return (
-    <View className='flex-1 bg-zinc-100 dark:bg-black'>
+    <View className='flex-1 bg'>
       <BackHeader title='Computer Science' navigation={navigation} />
       <ScrollView
         contentContainerStyle={{ paddingBottom: 30 }}

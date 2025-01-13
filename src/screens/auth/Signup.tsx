@@ -13,18 +13,18 @@ import {
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
+import KeyboardAvoid from '@components/KeyboardAvoid'
 import RoundedIcon from '@components/RoundedIcon'
 import { PaddingTop } from '@components/SafePadding'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
-import SettWrapper from '@components/Settings/SettWrapper'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { Colors } from '@utils/colors'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ActivityIndicator, ToastAndroid, View } from 'react-native'
 import { PasswordEye } from './components/PasswordEye'
 
@@ -104,8 +104,8 @@ export default function Signup({ navigation }: NavProp) {
   }
 
   return (
-    <SettWrapper className='flex-1 bg-zinc-100 dark:bg-black' Header={<></>}>
-      <View className='py-5'>
+    <KeyboardAvoid className='bg flex-1' contentContainerStyle={{ paddingBottom: 20 }}>
+      <View className='pb-5'>
         <PaddingTop />
         <View className='px-5 py-5 pb-10'>
           <Bold className='text-3xl text-black dark:text-white'>Create an Account to Get Started</Bold>
@@ -182,7 +182,7 @@ export default function Signup({ navigation }: NavProp) {
           <SemiBold>Privacy Policy</SemiBold>.
         </SettText>
       </View>
-    </SettWrapper>
+    </KeyboardAvoid>
   )
 }
 function UsernameStatus({ isAvail }: { isAvail: NameStatus }) {
