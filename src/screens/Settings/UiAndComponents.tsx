@@ -115,7 +115,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
           <SettGroup title='Text area'>
             <Input
               placeholder='This is a input field with multiple lines. You can type as much as you want.'
-              numberOfLines={5}
+              numberOfLines={8}
               multiline
             />
           </SettGroup>

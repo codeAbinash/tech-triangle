@@ -89,6 +89,7 @@ export default function Login({ navigation }: NavProp) {
           <SettGroup title='Email or Username'>
             <Input
               Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
+              autoComplete='email'
               placeholder='Email or Username'
               value={username}
               onChangeText={setUsername}
@@ -101,6 +102,7 @@ export default function Login({ navigation }: NavProp) {
           <SettGroup title='Password'>
             <Input
               value={password}
+              autoComplete='password'
               onChangeText={setPassword}
               placeholder='Password'
               secureTextEntry={!isVisible}

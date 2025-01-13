@@ -82,6 +82,7 @@ export const F = StyleSheet.create({
   },
   F12_5: {
     fontSize: 12.5,
+    lineHeight: 18,
   },
   F13: {
     fontSize: 13,

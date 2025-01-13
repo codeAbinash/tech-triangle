@@ -80,6 +80,7 @@ export default function Signup({ navigation }: NavProp) {
   })
 
   useEffect(() => {
+    if(!username) return setStatus(NameStatus.Initial)
     setStatus(NameStatus.Checking)
     const timer = setTimeout(() => {
       const { error, data } = usernameStatusZodValidator.safeParse({ username })
@@ -93,7 +94,7 @@ export default function Signup({ navigation }: NavProp) {
     return () => clearTimeout(timer)
   }, [checkUsername, username])
 
-  function handelSubmit() {
+  function handleSubmit() {
     const { error, data } = signupZodValidator.safeParse({ username, password, email, name })
     console.log(error)
     if (error) {
@@ -114,7 +115,8 @@ export default function Signup({ navigation }: NavProp) {
           <SettGroup title='Full Name'>
             <Input
               Icon={<RoundedIcon Icon={TextFontSolidIcon} className='bg-blue-500' />}
-              placeholder='Full Name'
+              placeholder='Your Full Name'
+              autoComplete='name'
               value={name}
               onChangeText={setName}
             />
@@ -122,7 +124,8 @@ export default function Signup({ navigation }: NavProp) {
           <SettGroup title='Email'>
             <Input
               Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
-              placeholder='Email'
+              placeholder='Your Email'
+              autoComplete='email'
               value={email}
               keyboardType='email-address'
               onChangeText={setEmail}
@@ -131,7 +134,8 @@ export default function Signup({ navigation }: NavProp) {
           <SettGroup title='Username'>
             <Input
               Icon={<RoundedIcon Icon={StarSolidIcon} className='bg-amber-500' />}
-              placeholder='Username'
+              placeholder='Select a Username'
+              autoComplete='username'
               value={username}
               onChangeText={setUsername}
               Right={<UsernameStatus isAvail={status} />}
@@ -142,7 +146,8 @@ export default function Signup({ navigation }: NavProp) {
             <Input
               value={password}
               onChangeText={setPassword}
-              placeholder='Password'
+              placeholder='Enter Password'
+              autoComplete='password'
               secureTextEntry={!isVisible}
               Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
               Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
@@ -158,7 +163,7 @@ export default function Signup({ navigation }: NavProp) {
             title={isPending ? 'Signing up...' : 'Signup'}
             className='w-full'
             disabled={isPending}
-            onPress={handelSubmit}
+            onPress={handleSubmit}
           />
         </View>
         <SettGroup title='More Options' className='mt-5'>
@@ -189,8 +194,8 @@ function UsernameStatus({ isAvail }: { isAvail: NameStatus }) {
   return (
     <>
       {isAvail === NameStatus.Checking && <ActivityIndicator size={23} color={Colors.accent} />}
-      {isAvail === NameStatus.Available && <Tick01Icon className='text-green-500' height={22} width={22} />}
-      {isAvail === NameStatus.Unavailable && <Cancel01SolidIcon className='text-red-500' width={20} height={20} />}
+      {isAvail === NameStatus.Available && <Tick01Icon height={22} width={22} color={Colors.green[500]} />}
+      {isAvail === NameStatus.Unavailable && <Cancel01SolidIcon width={20} height={20} color={Colors.red[500]} />}
     </>
   )
 }
