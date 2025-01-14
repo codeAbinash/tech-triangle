@@ -260,7 +260,7 @@ function generateVersionUpdateMessage(
   criticalVersionCode: string,
   size: string,
 ): string {
-  return `version: ${APP_VERSION} --> ${version}${APP_VERSION === version ? '' : ' (changed)'}\nversionCode: ${APP_VERSION_CODE} --> ${versionCode}${APP_VERSION_CODE.toString() === versionCode ? '' : ' (changed)'}\ncriticalVCode: ${data?.criticalVersionCode} --> ${criticalVersionCode}${data?.criticalVersionCode.toString() === criticalVersionCode ? '' : ' (changed)'}\nSize: ${data?.size} --> ${size}${data?.size === size ? '' : ' (changed)'}`
+  return `version: ${data?.version} --> ${version}${data?.version === version ? '' : ' (changed)'}\nversionCode: ${data?.versionCode} --> ${versionCode}${data?.versionCode.toString() === versionCode ? '' : ' (changed)'}\ncriticalVCode: ${data?.criticalVersionCode} --> ${criticalVersionCode}${data?.criticalVersionCode.toString() === criticalVersionCode ? '' : ' (changed)'}\nSize: ${data?.size} --> ${size}${data?.size === size ? '' : ' (changed)'}`
 }
 // <SettGroup title={`Force Update (${data?.forceUpdate ? 'Yes' : 'No'})`}>
 //   {!data ? (

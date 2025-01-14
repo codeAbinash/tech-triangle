@@ -1,6 +1,8 @@
+import Animations from '@assets/animations/animations'
 import Btn from '@components/Button'
 import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
+import { Lottie } from '@components/Lottie'
 import Range from '@components/Range'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
@@ -8,6 +10,7 @@ import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
 import Clipboard from '@react-native-clipboard/clipboard'
+import { W } from '@utils/dimensions'
 import { Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { memo, useCallback, useEffect, useState } from 'react'
@@ -54,7 +57,8 @@ export default function RandomPassword({ navigation }: NavProp) {
   return (
     <SettWrapper navigation={navigation} title='Random Password'>
       <Gap12>
-        <SettText className='mt-3'>Here you will set some options to generate a random password</SettText>
+        <Lottie source={Animations['lock']} style={{ marginTop: 20, width: W * 0.5, height: W * 0.5 }} />
+        <SettText>Here you will set some options to generate a random password</SettText>
         <SettGroup title='Password Length'>
           <MemoRange setVal={setLen} initial={INITIAL} max={MAX} min={MIN} Bottom={BottomPart} />
         </SettGroup>

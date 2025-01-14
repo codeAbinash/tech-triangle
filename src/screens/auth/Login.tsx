@@ -87,7 +87,7 @@ export default function Login({ navigation }: NavProp) {
           <Lottie source={Animations['welcome']} style={{ width: W * 0.6, height: W * 0.6 }} />
         </View>
         <Gap12>
-          <SettGroup title='Email or Username'>
+          <SettGroup title='Enter your credentials'>
             <Input
               Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
               autoComplete='email'
@@ -95,12 +95,6 @@ export default function Login({ navigation }: NavProp) {
               value={username}
               onChangeText={setUsername}
             />
-          </SettGroup>
-          <SettText>
-            Enter your email or username to login to your account. If you don't have an account, you can create one by
-            clicking the button below.
-          </SettText>
-          <SettGroup title='Password'>
             <Input
               value={password}
               autoComplete='password'
@@ -111,6 +105,11 @@ export default function Login({ navigation }: NavProp) {
               Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
             />
           </SettGroup>
+          <SettText>
+            Enter your email or username to login to your account. If you don't have an account, you can create one by
+            clicking the button below.
+          </SettText>
+
           <SettText>
             Enter your password to login to your account. If you forgot your password, you can reset it by clicking the
             button below.
@@ -142,7 +141,7 @@ export default function Login({ navigation }: NavProp) {
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>
-          By continuing up, you agree to our <SemiBold>Terms of Service</SemiBold> and
+          By continuing up, you agree to our <SemiBold>Terms of Service</SemiBold> and{' '}
           <SemiBold>Privacy Policy</SemiBold>.
         </SettText>
       </View>

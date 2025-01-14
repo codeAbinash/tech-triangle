@@ -135,8 +135,8 @@ export default function Signup({ navigation }: NavProp) {
             <Input
               Icon={<RoundedIcon Icon={StarSolidIcon} className='bg-amber-500' />}
               placeholder='Select a Username'
-              autoComplete='username'
               value={username}
+              autoComplete='off'
               onChangeText={setUsername}
               Right={<UsernameStatus isAvail={status} />}
             />
@@ -183,7 +183,7 @@ export default function Signup({ navigation }: NavProp) {
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>
-          By continuing up, you agree to our <SemiBold>Terms of Service</SemiBold> and
+          By continuing up, you agree to our <SemiBold>Terms of Service</SemiBold> and{' '}
           <SemiBold>Privacy Policy</SemiBold>.
         </SettText>
       </View>
