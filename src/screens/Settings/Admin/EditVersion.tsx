@@ -64,7 +64,11 @@ export default function EditVersion({ navigation }: NavProp) {
   }
 
   function promptUpdate() {
-    const isGreater = parseInt(criticalVersionCode, 10) > APP_VERSION_CODE
+    const criticalVersionCodeNumber = parseInt(criticalVersionCode, 10)
+    if (isNaN(criticalVersionCodeNumber)) {
+      return ToastAndroid.show('Critical version code is not a valid number', ToastAndroid.SHORT)
+    }
+    const isGreater = criticalVersionCodeNumber > APP_VERSION_CODE
     if (!isGreater) return update()
 
     alert(
@@ -206,19 +210,7 @@ export default function EditVersion({ navigation }: NavProp) {
                 // <Animated.View key={i} entering={FadeIn}>
                 <Input
                   key={i}
-                  Icon={
-                    <View
-                      className='flex items-center justify-center'
-                      style={{
-                        height: 28,
-                        width: 28,
-                        borderRadius: 9.5,
-                        backgroundColor: ColorList[i % ColorList.length],
-                      }}
-                    >
-                      <SemiBold className='justify-center pt-0.5 text-center text-xs text-white'>{i + 1}</SemiBold>
-                    </View>
-                  }
+                  Icon={<FeatureLeftIcon i={i} />}
                   value={item}
                   multiline
                   placeholder={`Feature description ${i + 1}`}
@@ -244,6 +236,22 @@ export default function EditVersion({ navigation }: NavProp) {
         <Btn title={isPending ? 'Updating...' : 'Update'} onPress={handleSubmit} disabled={isPending} />
       </View>
     </SettWrapper>
+  )
+}
+
+function FeatureLeftIcon({ i }: { i: number }) {
+  return (
+    <View
+      className='flex items-center justify-center'
+      style={{
+        height: 31,
+        width: 31,
+        borderRadius: 10,
+        backgroundColor: ColorList[i % ColorList.length],
+      }}
+    >
+      <SemiBold className='justify-center pb-0.5 text-center text-sm text-white'>{i + 1}</SemiBold>
+    </View>
   )
 }
 

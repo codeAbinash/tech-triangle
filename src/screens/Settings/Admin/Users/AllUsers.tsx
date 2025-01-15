@@ -12,9 +12,10 @@ import { useQuery } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { F, Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import { print } from '@utils/utils'
+import { delayedFadeAnimation, print } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { ToastAndroid, View } from 'react-native'
+import Animated from 'react-native-reanimated'
 
 export default function AllUsers({ navigation }: NavProp) {
   const [search, setSearch] = React.useState('')
@@ -52,19 +53,19 @@ export default function AllUsers({ navigation }: NavProp) {
         <SettGroup title='All users'>
           {isPending && <DoubleSkeleton n={12} />}
           {data?.data?.map((user, i) => (
-            // <Animated.View key={user.email} entering={delayedFadeAnimation(i)}>
-            <SettOption
-              key={user.email}
-              title={user.name}
-              Icon={<RoundedIcon Icon={UserSolidIcon} />}
-              arrow
-              onPress={() => navigation.navigate('User', { user })}
-            >
-              <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
-                {user.email}
-              </Medium>
-            </SettOption>
-            // </Animated.View>
+            <Animated.View key={user.email} entering={delayedFadeAnimation(i)}>
+              <SettOption
+                key={user.email}
+                title={user.name}
+                Icon={<RoundedIcon Icon={UserSolidIcon} />}
+                arrow
+                onPress={() => navigation.navigate('User', { user })}
+              >
+                <Medium className='text-zinc-600 dark:text-zinc-400' style={F.F10_5} numberOfLines={1}>
+                  {user.email}
+                </Medium>
+              </SettOption>
+            </Animated.View>
           ))}
         </SettGroup>
       </Gap12>

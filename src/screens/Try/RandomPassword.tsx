@@ -1,5 +1,5 @@
 import Animations from '@assets/animations/animations'
-import Btn from '@components/Button'
+import { ReloadIcon } from '@assets/icons/icons'
 import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
 import { Lottie } from '@components/Lottie'
@@ -10,11 +10,12 @@ import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
 import Clipboard from '@react-native-clipboard/clipboard'
+import { Colors } from '@utils/colors'
 import { W } from '@utils/dimensions'
-import { Medium } from '@utils/fonts'
+import { Medium, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import React, { memo, useCallback, useEffect, useState } from 'react'
-import { ToastAndroid, TouchableOpacity } from 'react-native'
+import { ToastAndroid, TouchableOpacity, View } from 'react-native'
 
 const MAX = 50
 const MIN = 4
@@ -83,26 +84,27 @@ export default function RandomPassword({ navigation }: NavProp) {
         </SettGroup>
         <SettGroup>
           {generatedPassword ? (
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => {
-                Clipboard.setString(generatedPassword)
-                ToastAndroid.show('Password Copied', ToastAndroid.SHORT)
-              }}
-            >
-              <Medium className='px-5 py-3 text-xs text-accent' numberOfLines={1}>
-                {generatedPassword}
-              </Medium>
-            </TouchableOpacity>
+            <View className='flex-row justify-between px-5 py-3'>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => {
+                  Clipboard.setString(generatedPassword)
+                  ToastAndroid.show('Password Copied', ToastAndroid.SHORT)
+                }}
+              >
+                <SemiBold className='text-xs text-accent' numberOfLines={1}>
+                  {generatedPassword}
+                </SemiBold>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={generatePassword}>
+                <ReloadIcon height={22} width={22} color={Colors.accent} />
+              </TouchableOpacity>
+            </View>
           ) : (
-            <Medium className='px-5 py-3 text-xs text-red-500'>Please select at least one of the above options.</Medium>
+            <Medium className='px-5 py-3 text-xs text-red-500'>Please select at least one of the options above.</Medium>
           )}
         </SettGroup>
         <SettText className='text-center'>Tap to copy the password</SettText>
-
-        <SettGroup className='px-5 py-5'>
-          <Btn title='Generate Password' onPress={generatePassword} />
-        </SettGroup>
       </Gap12>
     </SettWrapper>
   )

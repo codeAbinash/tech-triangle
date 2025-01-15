@@ -17,6 +17,7 @@ import type { ChartParamList } from '@screens/OS/Chart'
 import Chart from '@screens/OS/Chart'
 import FCFS from '@screens/OS/FCFS'
 import SJF from '@screens/OS/SJF'
+import Onboarding from '@screens/Onboarding'
 import RoutineWelcome from '@screens/Routine/RoutineWelcome'
 import GlobalSearch from '@screens/Search/GlobalSearch'
 import EditVersion from '@screens/Settings/Admin/EditVersion'
@@ -55,7 +56,6 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
-import Onboarding from '@screens/Onboarding'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -254,7 +254,7 @@ function Navigation() {
         <Stack.Screen name='FCFS' component={FCFS} options={GestureEnabled} />
         <Stack.Screen name='SJF' component={SJF} options={GestureEnabled} />
         <Stack.Screen name='Chart' component={Chart} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='Onboarding' component={Onboarding} options={NO_ANIMATION}/>
+        <Stack.Screen name='Onboarding' component={Onboarding} options={NO_ANIMATION} />
       </Stack.Navigator>
     </>
   )

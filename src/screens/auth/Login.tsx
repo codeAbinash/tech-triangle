@@ -17,6 +17,7 @@ import { useMutation } from '@tanstack/react-query'
 import { client, updateClientHeader } from '@utils/client'
 import { W } from '@utils/dimensions'
 import { Bold, SemiBold } from '@utils/fonts'
+import S from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { useMemo, useState } from 'react'
 import { Platform, ToastAndroid, View } from 'react-native'
@@ -58,6 +59,7 @@ export default function Login({ navigation }: NavProp) {
       if (data.data?.token) {
         // Navigate to home screen
         setToken(data.data.token)
+        S.set('isOpenedApp', 'true')
         updateClientHeader(data.data.token)
         navigation.reset({ index: 0, routes: [{ name: 'Home' }] })
         return

@@ -13,7 +13,7 @@ import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls, type StorageKeys } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { delayedFadeAnimationSearch, screenDelay } from '@utils/utils'
+import { delayedFadeAnimationSearch } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
@@ -25,8 +25,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
   const [searchResults, setSearchResults] = React.useState<string[]>([])
 
   useEffect(() => {
-    if (state) screenDelay(() => setInitStorage(ls.getAllKeys()), 700)
-    // setInitStorage([])
+    if (state) setInitStorage(ls.getAllKeys())
   }, [state])
 
   useEffect(() => {

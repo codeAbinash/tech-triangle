@@ -89,10 +89,17 @@ export default function Settings({ navigation }: NavProp) {
   }, [])
 
   function clearCache() {
-    clearStorage(Caches)
-    setTotalCache(0)
+    alert('Are you sure?', 'Do you want to clear all cache?', [
+      {
+        text: 'Yes',
+        onPress() {
+          clearStorage(Caches)
+          setTotalCache(0)
+        },
+      },
+      { text: 'No' },
+    ])
   }
-
 
   return (
     <View className='flex-1 bg-white dark:bg-zinc-950'>

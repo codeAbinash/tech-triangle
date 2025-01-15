@@ -4,13 +4,11 @@ import { Lottie } from '@components/Lottie'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { W } from '@utils/dimensions'
 import { Bold, F, SemiBold } from '@utils/fonts'
-import S from '@utils/storage'
 import { NavProp } from '@utils/types'
 import { View } from 'react-native'
 
 export default function Onboarding({ navigation }: NavProp) {
   function handlePress() {
-    S.set('isOpenedApp', 'true')
     navigation.reset({ index: 0, routes: [{ name: 'Login' }] })
   }
   return (

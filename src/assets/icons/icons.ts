@@ -137,3 +137,4 @@ export { default as NewReleasesSolidIcon } from '@icons/new-releases-solid-round
 export { default as AngrySolidIcon } from '@icons/angry-solid-rounded.svg'
 export { default as SmileSolidIcon } from '@icons/smile-solid-rounded.svg'
 export { default as PlaySolidIcon } from '@icons/play-solid-rounded.svg'
+export { default as ReloadIcon } from '@icons/reload-solid-rounded.svg'
