@@ -22,7 +22,7 @@ export default function KeyboardAvoid(props: KeyboardAvoidingContainerProps) {
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      // keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 10}
       enabled={isKeyboardVisible}
     >
       <ScrollView

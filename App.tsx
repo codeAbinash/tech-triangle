@@ -109,7 +109,7 @@ export type RootStackParamList = {
   CustomizingAnimations: undefined
   Basic: undefined
   KeyboardAnimation: undefined
-  Animations: undefined
+  // Animations: undefined
   DragAnimation: undefined
   Weather: undefined
   WeatherWelcome: undefined

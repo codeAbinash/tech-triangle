@@ -1,34 +1,28 @@
-import { Setting07SolidIcon } from '@assets/icons/icons'
-import { Gap12 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
-import SettGroup from '@components/Settings/SettGroup'
-import { SettOption } from '@components/Settings/SettOption'
-import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import { MarkdownTextInput, parseExpensiMark } from '@expensify/react-native-live-markdown'
+import { Colors } from '@utils/colors'
+import { H } from '@utils/dimensions'
+import { MEDIUM } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
+import { useState } from 'react'
 
 export default function Test({ navigation }: NavProp) {
+  const [text, setText] = useState('')
   return (
     <>
-      <SettWrapper navigation={navigation} title='Test Screen'>
-        <Gap12>
-          <SettText className='mt-3'>This is a test screen.</SettText>
-          <SettGroup title='Sample title'>
-            <SettOption
-              title='A blank setting'
-              Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
-              arrow
-            />
-            <SettOption
-              title='Animations'
-              Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
-              arrow
-              onPressOut={() => navigation.navigate('Animations')}
-            />
-          </SettGroup>
-          <SettText>Sample text</SettText>
-        </Gap12>
-        <SettText>End Text</SettText>
+      <SettWrapper navigation={navigation} title='Test Markdown' className='px-2'>
+        <MarkdownTextInput
+          value={text}
+          onChangeText={setText}
+          keyboardType='twitter'
+          className='text'
+          parser={parseExpensiMark}
+          numberOfLines={100}
+          style={{ ...MEDIUM, flex: 1, textAlignVertical: 'top', height: H - 100 }}
+          selectionColor={Colors.accent + '77'}
+          cursorColor={Colors.accent}
+          multiline
+        />
       </SettWrapper>
     </>
   )
