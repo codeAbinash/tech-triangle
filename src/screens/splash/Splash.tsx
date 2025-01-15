@@ -1,8 +1,9 @@
 import authStore from '@/zustand/authStore'
 import { navigationStore } from '@/zustand/navigationStore'
+import S from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { useEffect } from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 export default function Splash({ navigation }: NavProp) {
   const { token } = authStore()
@@ -13,13 +14,14 @@ export default function Splash({ navigation }: NavProp) {
   }, [navigation, setNavigation])
 
   useEffect(() => {
+    const isOpenedApp = S.getBoolean('isOpenedApp')
+    if (!isOpenedApp) {
+      navigation.replace('Onboarding')
+      return
+    }
     if (!token) navigation.replace('Login')
     else navigation.replace('Home')
   }, [navigation, token])
 
-  return (
-    <View className='flex-1 items-center justify-center'>
-      <Text className='text-center'>Splash</Text>
-    </View>
-  )
+  return <View className='flex-1 items-center justify-center'></View>
 }

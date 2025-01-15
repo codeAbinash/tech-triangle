@@ -65,7 +65,7 @@ export default function Login({ navigation }: NavProp) {
     },
     onError: (error) => {
       console.log(error)
-      alert('Error', 'An error occurred')
+      alert('Error', error.message || 'An unexpected error occurred')
     },
   })
 
@@ -83,7 +83,7 @@ export default function Login({ navigation }: NavProp) {
       <View className='pb-5'>
         <PaddingTop />
         <View className='px-5 py-5 pb-8'>
-          <Bold className='pb-3 text-3xl text-black dark:text-white'>Welcome to Tech Triangle</Bold>
+          <Bold className='pb-3 text-3xl text-black dark:text-white'>Login to Tech Triangle</Bold>
           <Lottie source={Animations['welcome']} style={{ width: W * 0.6, height: W * 0.6 }} />
         </View>
         <Gap12>
@@ -95,6 +95,8 @@ export default function Login({ navigation }: NavProp) {
               value={username}
               onChangeText={setUsername}
             />
+          </SettGroup>
+          <SettGroup title='Enter your password'>
             <Input
               value={password}
               autoComplete='password'
@@ -106,13 +108,8 @@ export default function Login({ navigation }: NavProp) {
             />
           </SettGroup>
           <SettText>
-            Enter your email or username to login to your account. If you don't have an account, you can create one by
-            clicking the button below.
-          </SettText>
-
-          <SettText>
-            Enter your password to login to your account. If you forgot your password, you can reset it by clicking the
-            button below.
+            Enter your email or username to login to your account. If you don't have an account, you can create one. Or
+            if you forgot your password, you can reset it.
           </SettText>
         </Gap12>
 

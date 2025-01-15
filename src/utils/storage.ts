@@ -146,7 +146,7 @@ type CoordinateNotesStorage = Store<typeof CoordinateNotesStorage>
 type UserProfileStorage = Store<typeof UserProfileStorage>
 type AppLockStorage = Store<typeof AppLockStorage>
 type UserStorage = Store<typeof UserStorage>
-type misc = 'misc'
+type misc = 'misc' | 'isOpenedApp'
 export type StorageKeys =
   | WeatherStorage
   | DeveloperStorage
@@ -178,6 +178,10 @@ function getParsed<T>(key: StorageKeys) {
   return JSON.parse(ls.getString(key) || 'null') as T
 }
 
+function getBoolean(key: StorageKeys) {
+  return ls.getBoolean(key)
+}
+
 function set(key: StorageKeys, value: string) {
   ls.set(key, value)
 }
@@ -190,6 +194,7 @@ const S = {
   getParsed,
   getMemoParsed: useMemoParsed,
   get,
+  getBoolean,
   set,
   remove,
   ls,
