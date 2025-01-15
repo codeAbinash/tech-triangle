@@ -84,7 +84,7 @@ export default function RandomPassword({ navigation }: NavProp) {
         </SettGroup>
         <SettGroup>
           {generatedPassword ? (
-            <View className='flex-row justify-between px-5 py-3'>
+            <View className='flex-row items-center justify-between py-2 px-5'>
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => {
@@ -97,7 +97,7 @@ export default function RandomPassword({ navigation }: NavProp) {
                 </SemiBold>
               </TouchableOpacity>
               <TouchableOpacity onPress={generatePassword}>
-                <ReloadIcon height={22} width={22} color={Colors.accent} />
+                <ReloadIcon height={23} width={23} color={Colors.accent} />
               </TouchableOpacity>
             </View>
           ) : (

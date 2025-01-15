@@ -1,5 +1,5 @@
 {
-  "name": "TechTriangle",
+  "name": "tech-triangle",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,32 +19,32 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
-    "@react-native-clipboard/clipboard": "^1.15.0",
+    "@react-native-clipboard/clipboard": "^1.16.1",
     "@react-native-community/netinfo": "^11.4.1",
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
-    "@shopify/react-native-skia": "^1.5.8",
-    "@tanstack/react-query": "^5.62.12",
+    "@shopify/react-native-skia": "^1.10.2",
+    "@tanstack/react-query": "^5.64.1",
     "clsx": "^2.1.1",
     "hono": "^4.6.16",
-    "lottie-react-native": "^7.1.0",
+    "lottie-react-native": "^7.2.1",
     "nativewind": "^4.1.23",
     "react": "18.3.1",
     "react-native": "0.76.3",
     "react-native-device-info": "^14.0.2",
     "react-native-geolocation-service": "^5.3.1",
-    "react-native-gesture-handler": "^2.21.2",
+    "react-native-gesture-handler": "^2.22.0",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-mmkv": "^3.2.0",
     "react-native-reanimated": "3.16.3",
-    "react-native-safe-area-context": "^5.0.0",
-    "react-native-screens": "^4.4.0",
-    "react-native-svg": "^15.9.0",
+    "react-native-safe-area-context": "^5.1.0",
+    "react-native-screens": "^4.5.0",
+    "react-native-svg": "^15.11.1",
     "tailwind-merge": "^2.6.0",
     "zod": "^3.24.1",
-    "zustand": "^5.0.2"
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
