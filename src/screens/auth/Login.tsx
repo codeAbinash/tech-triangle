@@ -89,7 +89,7 @@ export default function Login({ navigation }: NavProp) {
           <Lottie source={Animations['welcome']} style={{ width: W * 0.6, height: W * 0.6 }} />
         </View>
         <Gap12>
-          <SettGroup title='Enter your credentials'>
+          <SettGroup title='Email or Username'>
             <Input
               Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
               autoComplete='email'
@@ -98,7 +98,7 @@ export default function Login({ navigation }: NavProp) {
               onChangeText={setUsername}
             />
           </SettGroup>
-          <SettGroup title='Enter your password'>
+          <SettGroup title='Your password'>
             <Input
               value={password}
               autoComplete='password'

@@ -19,7 +19,6 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
-    "@expensify/react-native-live-markdown": "^0.1.219",
     "@react-native-clipboard/clipboard": "^1.16.1",
     "@react-native-community/netinfo": "^11.4.1",
     "@react-native-masked-view/masked-view": "^0.3.2",
@@ -29,9 +28,7 @@
     "@shopify/react-native-skia": "^1.10.2",
     "@tanstack/react-query": "^5.64.1",
     "clsx": "^2.1.1",
-    "expensify-common": "^2.0.114",
     "hono": "^4.6.16",
-    "html-entities": "^2.5.2",
     "lottie-react-native": "^7.2.1",
     "nativewind": "^4.1.23",
     "react": "18.3.1",

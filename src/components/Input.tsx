@@ -1,5 +1,5 @@
 import { Colors } from '@utils/colors'
-import { F, SEMIBOLD } from '@utils/fonts'
+import { SEMIBOLD } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
 import { TextInput, View, useColorScheme, type TextInputProps } from 'react-native'
@@ -16,8 +16,8 @@ export function Input({ Icon, Right, accent = Colors.accent, multiline, classNam
       <View className='flex-1 flex-row items-center' style={{ gap: 22 }}>
         {Icon}
         <TextInput
-          className={cn('flex-1 px-0 py-3 text-zinc-800 dark:text-zinc-200', className)}
-          style={[{ marginBottom: 1, paddingVertical: 0, flex: 1 }, F.F12_5, SEMIBOLD]}
+          className={cn('flex-1 text-zinc-800 dark:text-zinc-200', className)}
+          style={[{ marginBottom: 1, flex: 1, height: multiline ? undefined : 40, fontSize: 12.5 }, SEMIBOLD]}
           placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
           cursorColor={accent}
           selectionColor={accent + '77'}
