@@ -9,7 +9,7 @@ const { assetExts, sourceExts } = defaultConfig.resolver
  * Metro configuration
  * https://facebook.github.io/metro/docs/configuration
  *
- * @type {import('metro-config').MetroConfig}
+ * @type {import('@react-native/metro-config').MetroConfig}
  */
 const config = mergeConfig(defaultConfig, {
   transformer: {
