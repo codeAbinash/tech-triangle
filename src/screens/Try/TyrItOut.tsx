@@ -28,11 +28,12 @@ import { Group } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
+import { delayedFadeAnimationSearch, exiting, layout } from '@utils/utils'
 import type { RootStackParamList } from 'App'
 import React, { useMemo } from 'react'
 import { View, useColorScheme } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { FadeIn } from 'react-native-reanimated'
+import Animated, { FadeIn } from 'react-native-reanimated'
 import type { SvgProps } from 'react-native-svg'
 
 type Tool = {
@@ -130,16 +131,20 @@ export default function TyrItOut({ navigation }: NavProp) {
               {group.startText && <SettText>{group.startText}</SettText>}
               <SettGroup title={group.title}>
                 {group.tools.map((tool, i) => (
-                  // <Animated.View key={i} entering={delayedFadeAnimation(search, i)}>
-                  <SettOption
+                  <Animated.View
                     key={i}
-                    title={tool.title}
-                    Icon={<RoundedIcon Icon={tool.Icon} className={tool.className} />}
-                    arrow={tool.arrow ?? true}
-                    // Update onPress handlers to correctly navigate using the 'to' property
-                    onPress={() => tool.to && navigation.navigate(tool.to as any)}
-                  />
-                  // </Animated.View>
+                    entering={delayedFadeAnimationSearch(search, i)}
+                    exiting={exiting}
+                    layout={layout}
+                  >
+                    <SettOption
+                      title={tool.title}
+                      Icon={<RoundedIcon Icon={tool.Icon} className={tool.className} />}
+                      arrow={tool.arrow ?? true}
+                      // Update onPress handlers to correctly navigate using the 'to' property
+                      onPress={() => tool.to && navigation.navigate(tool.to as any)}
+                    />
+                  </Animated.View>
                 ))}
               </SettGroup>
               {group.endText && <SettText>{group.endText}</SettText>}

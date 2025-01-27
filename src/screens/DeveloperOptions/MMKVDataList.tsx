@@ -13,7 +13,7 @@ import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls, type StorageKeys } from '@utils/storage'
 import type { NavProp } from '@utils/types'
-import { delayedFadeAnimationSearch } from '@utils/utils'
+import { delayedFadeAnimationSearch, exiting, layout } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import Animated from 'react-native-reanimated'
@@ -64,7 +64,12 @@ export default function MMKVDataList({ navigation }: NavProp) {
 
           <SettGroup title='Stored keys' className='pb-4'>
             {searchResults?.map((item, i) => (
-              <Animated.View key={item} entering={delayedFadeAnimationSearch(search, i)}>
+              <Animated.View
+                key={item}
+                entering={delayedFadeAnimationSearch(search, i)}
+                exiting={exiting}
+                layout={layout}
+              >
                 <SettOption
                   title={item}
                   arrow

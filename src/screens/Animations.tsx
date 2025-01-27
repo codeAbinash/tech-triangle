@@ -33,7 +33,7 @@ export default function Home({ navigation }: { navigation: StackNav }) {
         className='items-center justify-center'
         activeOpacity={0.9}
         onPress={() => {
-          navigation.navigate('Animations')
+          // navigation.navigate('Animations')
         }}
       >
         {/* <Animated.Image source={Images.app_icon} style={[styles.icon, animatedStyle]} /> */}

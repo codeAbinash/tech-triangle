@@ -2,7 +2,7 @@ import type { DistanceUnit, TemperatureUnit, TimeFormat } from '@/zustand/weathe
 import { ls } from '@utils/storage'
 import { clsx, type ClassValue } from 'clsx'
 import { Alert, Share } from 'react-native'
-import { FadeIn } from 'react-native-reanimated'
+import { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated'
 import { twMerge } from 'tailwind-merge'
 import { SCREEN_TRANSITION } from './constants'
 
@@ -242,3 +242,6 @@ export function delayedFadeAnimation(i: number) {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const exiting = FadeOut.duration(250)
+export const layout = LinearTransition.duration(250)

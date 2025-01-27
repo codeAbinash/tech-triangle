@@ -1,4 +1,6 @@
 import { StyleSheet, Text, type TextProps } from 'react-native'
+import Animated from 'react-native-reanimated'
+import { layout } from './utils'
 
 export const REGULAR = {
   fontFamily: 'JosefinSans-Regular',
@@ -18,9 +20,9 @@ export const LIGHT = {
 
 export function Medium({ children, style, ...props }: TextProps) {
   return (
-    <Text style={[MEDIUM, style]} {...props}>
+    <Animated.Text style={[MEDIUM, style]} {...props} layout={layout}>
       {children}
-    </Text>
+    </Animated.Text>
   )
 }
 
