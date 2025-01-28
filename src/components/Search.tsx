@@ -30,7 +30,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       <TextInput
         ref={ref}
         className='flex-1 p-3 text-zinc-800 dark:text-zinc-200'
-        style={[SEMIBOLD, { fontSize: 13, marginBottom: 1 }]}
+        style={[SEMIBOLD, { fontSize: 13, marginBottom: 1, height: 40 }]}
         placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
         cursorColor={Colors.accent}
         selectionColor={Colors.accent + '55'}
