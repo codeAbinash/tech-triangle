@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   shadow: {
-    shadowColor: '#00000044',
+    shadowColor: '#00000022',
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 5,
