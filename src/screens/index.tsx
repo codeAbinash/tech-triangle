@@ -130,6 +130,7 @@ const Home = () => {
             options={{
               tabBarLabel: screen.label,
               headerShown: false,
+              // eslint-disable-next-line react/no-unstable-nested-components
               tabBarIcon: (props) => (
                 <TabIcon {...props} focusedIcon={screen.focusedIcon} defaultIcon={screen.defaultIcon} />
               ),

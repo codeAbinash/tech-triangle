@@ -60,7 +60,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
         <PaddingTop />
         <View className='px-5 py-5 pb-5'>
           <Bold className='pb-8 text-3xl text-black dark:text-white'>Please Verify your account</Bold>
-          <Lottie source={Animations['lock']} />
+          <Lottie source={Animations.lock} />
         </View>
         <Gap12>
           <SettText className='text-blue-500'>Please check also your spam folder for the OTP.</SettText>

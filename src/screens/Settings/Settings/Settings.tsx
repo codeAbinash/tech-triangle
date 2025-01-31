@@ -86,6 +86,7 @@ export default function Settings({ navigation }: NavProp) {
         setTotalSize(getStartWithSize(''))
         setTotalCache(getStorageSize(Caches))
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function clearCache() {

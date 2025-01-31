@@ -86,7 +86,7 @@ export default function Login({ navigation }: NavProp) {
         <PaddingTop />
         <View className='px-5 py-5 pb-8'>
           <Bold className='pb-3 text-3xl text-black dark:text-white'>Login to Tech Triangle</Bold>
-          <Lottie source={Animations['welcome']} style={{ width: W * 0.6, height: W * 0.6 }} />
+          <Lottie source={Animations.welcome} style={{ width: W * 0.6, height: W * 0.6 }} />
         </View>
         <Gap12>
           <SettGroup title='Email or Username'>

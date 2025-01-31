@@ -58,7 +58,7 @@ export default function RandomPassword({ navigation }: NavProp) {
   return (
     <SettWrapper navigation={navigation} title='Random Password'>
       <Gap12>
-        <Lottie source={Animations['lock']} style={{ marginTop: 20, width: W * 0.5, height: W * 0.5 }} />
+        <Lottie source={Animations.lock} style={{ marginTop: 20, width: W * 0.5, height: W * 0.5 }} />
         <SettText>Here you will set some options to generate a random password</SettText>
         <SettGroup title='Password Length'>
           <MemoRange setVal={setLen} initial={INITIAL} max={MAX} min={MIN} Bottom={BottomPart} />
@@ -84,7 +84,7 @@ export default function RandomPassword({ navigation }: NavProp) {
         </SettGroup>
         <SettGroup>
           {generatedPassword ? (
-            <View className='flex-row items-center justify-between py-2 px-5'>
+            <View className='flex-row items-center justify-between px-5 py-2'>
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => {

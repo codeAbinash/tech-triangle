@@ -14,7 +14,7 @@ export default function Onboarding({ navigation }: NavProp) {
   return (
     <View className='gap-5-center flex-1 items-center justify-between'>
       <PaddingTop />
-      <View className='flex-1 items-center justify-between px-8'>
+      <View className='w-full flex-1 items-center justify-between px-8'>
         <View />
         <View>
           <Lottie source={Animations.welcome} style={{ width: W * 0.65, height: W * 0.65, marginTop: -50 }} />
@@ -26,7 +26,9 @@ export default function Onboarding({ navigation }: NavProp) {
             </SemiBold>
           </View>
         </View>
-        <Btn title='Get Started' onPress={handlePress} />
+        <View className='w-full'>
+          <Btn title='Get Started' onPress={handlePress} />
+        </View>
       </View>
       <View className='h-5'></View>
       <PaddingBottom />
