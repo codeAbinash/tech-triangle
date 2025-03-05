@@ -14,6 +14,7 @@ export function logout() {
 export function handleLogout(logoutMutation: () => void) {
   const alert = popupStore.getState().alert
   alert('Log out', 'Are you sure you want to log out from this device?', [
+    { text: 'Cancel' },
     {
       text: 'Log out',
       onPress() {
@@ -21,6 +22,5 @@ export function handleLogout(logoutMutation: () => void) {
         alert('Please wait', 'Please wait while we log you out', [], true)
       },
     },
-    { text: 'Cancel' },
   ])
 }
