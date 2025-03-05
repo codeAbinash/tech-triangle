@@ -9,7 +9,6 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
-import Clipboard from '@react-native-clipboard/clipboard'
 import { Colors } from '@utils/colors'
 import { W } from '@utils/dimensions'
 import { Medium, SemiBold } from '@utils/fonts'
@@ -88,7 +87,8 @@ export default function RandomPassword({ navigation }: NavProp) {
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => {
-                  Clipboard.setString(generatedPassword)
+                  // TODO: Fix clipboard
+                  // Clipboard.setString(generatedPassword)
                   ToastAndroid.show('Password Copied', ToastAndroid.SHORT)
                 }}
               >

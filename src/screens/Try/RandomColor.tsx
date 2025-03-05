@@ -1,4 +1,3 @@
-import Clipboard from '@react-native-clipboard/clipboard'
 import { Medium } from '@utils/fonts'
 import { useState } from 'react'
 import { ToastAndroid, TouchableOpacity, View } from 'react-native'
@@ -94,6 +93,7 @@ export default function RandomColor() {
 }
 
 function copyAndShowToast(text: string) {
-  Clipboard.setString(text)
+  // TODO: Fix clipboard
+  // Clipboard.setString(text)
   ToastAndroid.show('Copied to clipboard', ToastAndroid.SHORT)
 }
