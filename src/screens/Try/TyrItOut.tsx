@@ -12,6 +12,7 @@ import {
   MathSolidIcon,
   NeuralNetworkSolidIcon,
   PaintBoardSolidIcon,
+  ReactIcon,
   Setting07SolidIcon,
   SoftwareLicenseSolidIcon,
   TestTube01SolidIcon,
@@ -56,6 +57,7 @@ const tools: Group[] = [
     startText: 'Here are some tools related to computer science. You can try them out and see how they work.',
     title: 'Tools',
     tools: [
+      { title: 'RN Skia', Icon: ReactIcon, to: 'Skia', className: 'bg-blue-500' },
       { title: 'Your Age', Icon: Calendar03SolidIcon, to: 'YourAge', className: 'bg-rose-500' },
       { title: 'Random Color', Icon: PaintBoardSolidIcon, to: 'RandomColor', className: 'bg-orange-500' },
       { title: 'Gradient Colors', Icon: ColorsSolidIcon, className: 'bg-green-500' },

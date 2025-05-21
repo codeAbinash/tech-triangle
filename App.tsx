@@ -56,6 +56,7 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
+import Skia from '@screens/Example/Skia'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -158,6 +159,7 @@ export type RootStackParamList = {
   SJF: undefined
   Chart: ChartParamList
   Onboarding: undefined
+  Skia: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -185,6 +187,7 @@ function Navigation() {
         <Stack.Screen name='Home' component={Home} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
         <Stack.Screen name='AllUsers' component={AllUsers} options={GestureEnabled} />
+        <Stack.Screen name='Skia' component={Skia} options={GestureEnabled} />
         {/* <Stack.Screen name='Location' component={Location} /> */}
         {/* <Stack.Screen name='CompassAnimation' component={CompassAnimation} /> */}
         {/* <Stack.Screen name='ParallaxWallpaper' component={ParallaxWallpaper} /> */}
