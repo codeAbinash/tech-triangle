@@ -10,7 +10,7 @@
         "@react-navigation/native": "^7.1.9",
         "@react-navigation/stack": "^7.3.2",
         "@shopify/react-native-skia": "^2.0.1",
-        "@tanstack/react-query": "^5.76.1",
+        "@tanstack/react-query": "^5.79.0",
         "clsx": "^2.1.1",
         "hono": "^4.7.10",
         "lottie-react-native": "^7.2.2",
@@ -22,12 +22,12 @@
         "react-native-gesture-handler": "^2.25.0",
         "react-native-linear-gradient": "^2.8.3",
         "react-native-mmkv": "^3.2.0",
-        "react-native-reanimated": "^3.17.5",
-        "react-native-safe-area-context": "^5.4.0",
-        "react-native-screens": "^4.10.0",
+        "react-native-reanimated": "^3.18.0",
+        "react-native-safe-area-context": "^5.4.1",
+        "react-native-screens": "^4.11.1",
         "react-native-svg": "^15.12.0",
         "tailwind-merge": "^3.3.0",
-        "zod": "^3.25.17",
+        "zod": "^3.25.41",
         "zustand": "^5.0.5",
       },
       "devDependencies": {
@@ -42,7 +42,7 @@
         "@react-native/eslint-config": "0.79.2",
         "@react-native/metro-config": "0.79.2",
         "@react-native/typescript-config": "0.79.2",
-        "@tanstack/eslint-plugin-query": "^5.74.7",
+        "@tanstack/eslint-plugin-query": "^5.78.0",
         "@types/jest": "^29.5.14",
         "@types/react": "19.0.0",
         "@types/react-test-renderer": "19.0.0",
@@ -512,11 +512,11 @@
 
     "@svgr/plugin-svgo": ["@svgr/plugin-svgo@8.1.0", "", { "dependencies": { "cosmiconfig": "^8.1.3", "deepmerge": "^4.3.1", "svgo": "^3.0.2" }, "peerDependencies": { "@svgr/core": "*" } }, "sha512-Ywtl837OGO9pTLIN/onoWLmDQ4zFUycI1g76vuKGEz6evR/ZTJlJuz3G/fIkb6OVBJ2g0o6CGJzaEjfmEo3AHA=="],
 
-    "@tanstack/eslint-plugin-query": ["@tanstack/eslint-plugin-query@5.74.7", "", { "dependencies": { "@typescript-eslint/utils": "^8.18.1" }, "peerDependencies": { "eslint": "^8.57.0 || ^9.0.0" } }, "sha512-EeHuaaYiCOD+XOGyB7LMNEx9OEByAa5lkgP+S3ZggjKJpmIO6iRWeoIYYDKo2F8uc3qXcVhTfC7pn7NddQiNtA=="],
+    "@tanstack/eslint-plugin-query": ["@tanstack/eslint-plugin-query@5.78.0", "", { "dependencies": { "@typescript-eslint/utils": "^8.18.1" }, "peerDependencies": { "eslint": "^8.57.0 || ^9.0.0" } }, "sha512-hYkhWr3UP0CkAsn/phBVR98UQawbw8CmTSgWtdgEBUjI60/GBaEIkpgi/Bp/2I8eIDK4+vdY7ac6jZx+GR+hEQ=="],
 
-    "@tanstack/query-core": ["@tanstack/query-core@5.76.0", "", {}, "sha512-FN375hb8ctzfNAlex5gHI6+WDXTNpe0nbxp/d2YJtnP+IBM6OUm7zcaoCW6T63BawGOYZBbKC0iPvr41TteNVg=="],
+    "@tanstack/query-core": ["@tanstack/query-core@5.79.0", "", {}, "sha512-s+epTqqLM0/TbJzMAK7OEhZIzh63P9sWz5HEFc5XHL4FvKQXQkcjI8F3nee+H/xVVn7mrP610nVXwOytTSYd0w=="],
 
-    "@tanstack/react-query": ["@tanstack/react-query@5.76.1", "", { "dependencies": { "@tanstack/query-core": "5.76.0" }, "peerDependencies": { "react": "^18 || ^19" } }, "sha512-YxdLZVGN4QkT5YT1HKZQWiIlcgauIXEIsMOTSjvyD5wLYK8YVvKZUPAysMqossFJJfDpJW3pFn7WNZuPOqq+fw=="],
+    "@tanstack/react-query": ["@tanstack/react-query@5.79.0", "", { "dependencies": { "@tanstack/query-core": "5.79.0" }, "peerDependencies": { "react": "^18 || ^19" } }, "sha512-DjC4JIYZnYzxaTzbg3osOU63VNLP67dOrWet2cZvXgmgwAXNxfS52AMq86M5++ILuzW+BqTUEVMTjhrZ7/XBuA=="],
 
     "@trysound/sax": ["@trysound/sax@0.2.0", "", {}, "sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA=="],
 
@@ -1530,11 +1530,11 @@
 
     "react-native-mmkv": ["react-native-mmkv@3.2.0", "", { "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-9y7K//1MaU46TFrXkyU0wT5VGk9Y2FDLFV6NPl+z3jTbm2G7SC1UIxneF6CfhSmBX5CfKze9SO7kwDuRx7flpQ=="],
 
-    "react-native-reanimated": ["react-native-reanimated@3.17.5", "", { "dependencies": { "@babel/plugin-transform-arrow-functions": "^7.0.0-0", "@babel/plugin-transform-class-properties": "^7.0.0-0", "@babel/plugin-transform-classes": "^7.0.0-0", "@babel/plugin-transform-nullish-coalescing-operator": "^7.0.0-0", "@babel/plugin-transform-optional-chaining": "^7.0.0-0", "@babel/plugin-transform-shorthand-properties": "^7.0.0-0", "@babel/plugin-transform-template-literals": "^7.0.0-0", "@babel/plugin-transform-unicode-regex": "^7.0.0-0", "@babel/preset-typescript": "^7.16.7", "convert-source-map": "^2.0.0", "invariant": "^2.2.4", "react-native-is-edge-to-edge": "1.1.7" }, "peerDependencies": { "@babel/core": "^7.0.0-0", "react": "*", "react-native": "*" } }, "sha512-SxBK7wQfJ4UoWoJqQnmIC7ZjuNgVb9rcY5Xc67upXAFKftWg0rnkknTw6vgwnjRcvYThrjzUVti66XoZdDJGtw=="],
+    "react-native-reanimated": ["react-native-reanimated@3.18.0", "", { "dependencies": { "@babel/plugin-transform-arrow-functions": "^7.0.0-0", "@babel/plugin-transform-class-properties": "^7.0.0-0", "@babel/plugin-transform-classes": "^7.0.0-0", "@babel/plugin-transform-nullish-coalescing-operator": "^7.0.0-0", "@babel/plugin-transform-optional-chaining": "^7.0.0-0", "@babel/plugin-transform-shorthand-properties": "^7.0.0-0", "@babel/plugin-transform-template-literals": "^7.0.0-0", "@babel/plugin-transform-unicode-regex": "^7.0.0-0", "@babel/preset-typescript": "^7.16.7", "convert-source-map": "^2.0.0", "invariant": "^2.2.4", "react-native-is-edge-to-edge": "1.1.7" }, "peerDependencies": { "@babel/core": "^7.0.0-0", "react": "*", "react-native": "*" } }, "sha512-eVcNcqeOkMW+BUWAHdtvN3FKgC8J8wiEJkX6bNGGQaLS7m7e4amTfjIcqf/Ta+lerZLurmDaQ0lICI1CKPrb1Q=="],
 
-    "react-native-safe-area-context": ["react-native-safe-area-context@5.4.0", "", { "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-JaEThVyJcLhA+vU0NU8bZ0a1ih6GiF4faZ+ArZLqpYbL6j7R3caRqj+mE3lEtKCuHgwjLg3bCxLL1GPUJZVqUA=="],
+    "react-native-safe-area-context": ["react-native-safe-area-context@5.4.1", "", { "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-x+g3NblZ9jof8y+XkVvaGlpMrSlixhrJJ33BRzhTAKUKctQVecO1heSXmzxc5UdjvGYBKS6kPZVUw2b8NxHcPg=="],
 
-    "react-native-screens": ["react-native-screens@4.10.0", "", { "dependencies": { "react-freeze": "^1.0.0", "warn-once": "^0.1.0" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-Tw21NGuXm3PbiUGtZd0AnXirUixaAbPXDjNR0baBH7/WJDaDTTELLcQ7QRXuqAWbmr/EVCrKj1348ei1KFIr8A=="],
+    "react-native-screens": ["react-native-screens@4.11.1", "", { "dependencies": { "react-freeze": "^1.0.0", "react-native-is-edge-to-edge": "^1.1.7", "warn-once": "^0.1.0" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-F0zOzRVa3ptZfLpD0J8ROdo+y1fEPw+VBFq1MTY/iyDu08al7qFUO5hLMd+EYMda5VXGaTFCa8q7bOppUszhJw=="],
 
     "react-native-svg": ["react-native-svg@15.12.0", "", { "dependencies": { "css-select": "^5.1.0", "css-tree": "^1.1.3", "warn-once": "0.1.1" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-iE25PxIJ6V0C6krReLquVw6R0QTsRTmEQc4K2Co3P6zsimU/jltcDBKYDy1h/5j9S/fqmMeXnpM+9LEWKJKI6A=="],
 
@@ -1838,7 +1838,7 @@
 
     "yocto-queue": ["yocto-queue@0.1.0", "", {}, "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q=="],
 
-    "zod": ["zod@3.25.17", "", {}, "sha512-8hQzQ/kMOIFbwOgPrm9Sf9rtFHpFUMy4HvN0yEB0spw14aYi0uT5xG5CE2DB9cd51GWNsz+DNO7se1kztHMKnw=="],
+    "zod": ["zod@3.25.41", "", {}, "sha512-8+sDJTGtCYIDBhdqDygp0ffj8kzziRKqAJPhpYObbElJ+3TRe/mnlnwH+/OMa3kKhueS4Drm5UMW00/u1p07zA=="],
 
     "zustand": ["zustand@5.0.5", "", { "peerDependencies": { "@types/react": ">=18.0.0", "immer": ">=9.0.6", "react": ">=18.0.0", "use-sync-external-store": ">=1.2.0" }, "optionalPeers": ["@types/react", "immer", "react", "use-sync-external-store"] }, "sha512-mILtRfKW9xM47hqxGIxCv12gXusoY/xTSHBYApXozR0HmQv299whhBeeAcRy+KrPPybzosvJBCOmVjq6x12fCg=="],
 
@@ -2285,22 +2285,6 @@
     "react-native-css-interop/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
 
     "react-native-css-interop/semver": ["semver@7.7.1", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-arrow-functions": ["@babel/plugin-transform-arrow-functions@7.25.9", "", { "dependencies": { "@babel/helper-plugin-utils": "^7.25.9" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-6jmooXYIwn9ca5/RylZADJ+EnSxVUS5sjeJ9UPk6RWRzXCmOJCy6dqItPJFpw2cuCangPK4OYr5uhGKcmrm5Qg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties": ["@babel/plugin-transform-class-properties@7.25.9", "", { "dependencies": { "@babel/helper-create-class-features-plugin": "^7.25.9", "@babel/helper-plugin-utils": "^7.25.9" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-bbMAII8GRSkcd0h0b4X+36GksxuheLFjP65ul9w6C3KgAamI3JqErNgSrosX6ZPj+Mpim5VvEbawXxJCyEUV3Q=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes": ["@babel/plugin-transform-classes@7.25.9", "", { "dependencies": { "@babel/helper-annotate-as-pure": "^7.25.9", "@babel/helper-compilation-targets": "^7.25.9", "@babel/helper-plugin-utils": "^7.25.9", "@babel/helper-replace-supers": "^7.25.9", "@babel/traverse": "^7.25.9", "globals": "^11.1.0" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-mD8APIXmseE7oZvZgGABDyM34GUmK45Um2TXiBUt7PnuAxrgoSVf123qUzPxEr/+/BHrRn5NMZCdE2m/1F8DGg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-nullish-coalescing-operator": ["@babel/plugin-transform-nullish-coalescing-operator@7.26.6", "", { "dependencies": { "@babel/helper-plugin-utils": "^7.26.5" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-CKW8Vu+uUZneQCPtXmSBUC6NCAUdya26hWCElAWh5mVSlSRsmiCPUUDKb3Z0szng1hiAJa098Hkhg9o4SE35Qw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining": ["@babel/plugin-transform-optional-chaining@7.25.9", "", { "dependencies": { "@babel/helper-plugin-utils": "^7.25.9", "@babel/helper-skip-transparent-expression-wrappers": "^7.25.9" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-6AvV0FsLULbpnXeBjrY4dmWF8F7gf8QnvTEoO/wX/5xm/xE1Xo8oPuD3MPS+KS9f9XBEAWN7X1aWr4z9HdOr7A=="],
-
-    "react-native-reanimated/@babel/plugin-transform-shorthand-properties": ["@babel/plugin-transform-shorthand-properties@7.25.9", "", { "dependencies": { "@babel/helper-plugin-utils": "^7.25.9" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-MUv6t0FhO5qHnS/W8XCbHmiRWOphNufpE1IVxhK5kuN3Td9FT1x4rx4K42s3RYdMXCXpfWkGSbCSd0Z64xA7Ng=="],
-
-    "react-native-reanimated/@babel/plugin-transform-template-literals": ["@babel/plugin-transform-template-literals@7.26.8", "", { "dependencies": { "@babel/helper-plugin-utils": "^7.26.5" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-OmGDL5/J0CJPJZTHZbi2XpO0tyT2Ia7fzpW5GURwdtp2X3fMmN8au/ej6peC/T33/+CRiIpA8Krse8hFGVmT5Q=="],
-
-    "react-native-reanimated/@babel/plugin-transform-unicode-regex": ["@babel/plugin-transform-unicode-regex@7.25.9", "", { "dependencies": { "@babel/helper-create-regexp-features-plugin": "^7.25.9", "@babel/helper-plugin-utils": "^7.25.9" }, "peerDependencies": { "@babel/core": "^7.0.0-0" } }, "sha512-yoxstj7Rg9dlNn9UQxzk4fcNivwv4nUYz7fYXBaKxvw/lnmPuOm/ikoELygbYq68Bls3D/D+NBPHiLwZdZZ4HA=="],
 
     "react-reconciler/scheduler": ["scheduler@0.25.0", "", {}, "sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA=="],
 
@@ -2898,36 +2882,6 @@
 
     "react-native-css-interop/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
 
-    "react-native-reanimated/@babel/plugin-transform-arrow-functions/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin": ["@babel/helper-create-class-features-plugin@7.26.9", "", { "dependencies": { "@babel/helper-annotate-as-pure": "^7.25.9", "@babel/helper-member-expression-to-functions": "^7.25.9", "@babel/helper-optimise-call-expression": "^7.25.9", "@babel/helper-replace-supers": "^7.26.5", "@babel/helper-skip-transparent-expression-wrappers": "^7.25.9", "@babel/traverse": "^7.26.9", "semver": "^6.3.1" }, "peerDependencies": { "@babel/core": "^7.0.0" } }, "sha512-ubbUqCofvxPRurw5L8WTsCLSkQiVpov4Qx0WMA+jUN+nXBK8ADPlJO1grkFw5CWKC5+sZSOfuGMdX1aI1iT9Sg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-annotate-as-pure": ["@babel/helper-annotate-as-pure@7.25.9", "", { "dependencies": { "@babel/types": "^7.25.9" } }, "sha512-gv7320KBUFJz1RnylIg5WWYPRXKZ884AGkYpgpWW02TH66Dl+HaC1t1CKd0z3R4b6hdYEcmrNZHUmfCP+1u3/g=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-compilation-targets": ["@babel/helper-compilation-targets@7.26.5", "", { "dependencies": { "@babel/compat-data": "^7.26.5", "@babel/helper-validator-option": "^7.25.9", "browserslist": "^4.24.0", "lru-cache": "^5.1.1", "semver": "^6.3.1" } }, "sha512-IXuyn5EkouFJscIDuFF5EsiSolseme1s0CZB+QxVugqJLYmKdxI1VfIBOst0SUu4rnk2Z7kqTwmoO1lp3HIfnA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers": ["@babel/helper-replace-supers@7.26.5", "", { "dependencies": { "@babel/helper-member-expression-to-functions": "^7.25.9", "@babel/helper-optimise-call-expression": "^7.25.9", "@babel/traverse": "^7.26.5" }, "peerDependencies": { "@babel/core": "^7.0.0" } }, "sha512-bJ6iIVdYX1YooY2X7w1q6VITt+LnUILtNk7zT78ykuwStx8BauCzxvFqFaHjOpW1bVnSUM1PN1f0p5P21wHxvg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse": ["@babel/traverse@7.26.9", "", { "dependencies": { "@babel/code-frame": "^7.26.2", "@babel/generator": "^7.26.9", "@babel/parser": "^7.26.9", "@babel/template": "^7.26.9", "@babel/types": "^7.26.9", "debug": "^4.3.1", "globals": "^11.1.0" } }, "sha512-ZYW7L+pL8ahU5fXmNbPF+iZFHCv5scFak7MZ9bwaRPLUhHh7QQEMjZUg0HevihoqCM5iSYHN61EyCoZvqC+bxg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/globals": ["globals@11.12.0", "", {}, "sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-nullish-coalescing-operator/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers": ["@babel/helper-skip-transparent-expression-wrappers@7.25.9", "", { "dependencies": { "@babel/traverse": "^7.25.9", "@babel/types": "^7.25.9" } }, "sha512-K4Du3BFa3gvyhzgPcntrkDgZzQaq6uozzcpGbOO1OEJaI+EJdqWIMTLgFgQf6lrfiDFo5FU+BxKepI9RmZqahA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-shorthand-properties/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-template-literals/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-unicode-regex/@babel/helper-plugin-utils": ["@babel/helper-plugin-utils@7.26.5", "", {}, "sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg=="],
-
     "regenerator-transform/@babel/runtime/regenerator-runtime": ["regenerator-runtime@0.14.1", "", {}, "sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw=="],
 
     "send/debug/ms": ["ms@2.0.0", "", {}, "sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A=="],
@@ -3482,42 +3436,6 @@
 
     "react-native-css-interop/@babel/traverse/@babel/code-frame/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
 
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-annotate-as-pure": ["@babel/helper-annotate-as-pure@7.25.9", "", { "dependencies": { "@babel/types": "^7.25.9" } }, "sha512-gv7320KBUFJz1RnylIg5WWYPRXKZ884AGkYpgpWW02TH66Dl+HaC1t1CKd0z3R4b6hdYEcmrNZHUmfCP+1u3/g=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-member-expression-to-functions": ["@babel/helper-member-expression-to-functions@7.25.9", "", { "dependencies": { "@babel/traverse": "^7.25.9", "@babel/types": "^7.25.9" } }, "sha512-wbfdZ9w5vk0C0oyHqAJbc62+vet5prjj01jjJ8sKn3j9h3MQQlflEdXYvuqRWjHnM12coDEqiC1IRCi0U/EKwQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-optimise-call-expression": ["@babel/helper-optimise-call-expression@7.25.9", "", { "dependencies": { "@babel/types": "^7.25.9" } }, "sha512-FIpuNaz5ow8VyrYcnXQTDRGvV6tTjkNtCK/RYNDXGSLlUD6cBuQTSw43CShGxjvfBTfcUA/r6UhUCbtYqkhcuQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-replace-supers": ["@babel/helper-replace-supers@7.26.5", "", { "dependencies": { "@babel/helper-member-expression-to-functions": "^7.25.9", "@babel/helper-optimise-call-expression": "^7.25.9", "@babel/traverse": "^7.26.5" }, "peerDependencies": { "@babel/core": "^7.0.0" } }, "sha512-bJ6iIVdYX1YooY2X7w1q6VITt+LnUILtNk7zT78ykuwStx8BauCzxvFqFaHjOpW1bVnSUM1PN1f0p5P21wHxvg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-skip-transparent-expression-wrappers": ["@babel/helper-skip-transparent-expression-wrappers@7.25.9", "", { "dependencies": { "@babel/traverse": "^7.25.9", "@babel/types": "^7.25.9" } }, "sha512-K4Du3BFa3gvyhzgPcntrkDgZzQaq6uozzcpGbOO1OEJaI+EJdqWIMTLgFgQf6lrfiDFo5FU+BxKepI9RmZqahA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse": ["@babel/traverse@7.26.9", "", { "dependencies": { "@babel/code-frame": "^7.26.2", "@babel/generator": "^7.26.9", "@babel/parser": "^7.26.9", "@babel/template": "^7.26.9", "@babel/types": "^7.26.9", "debug": "^4.3.1", "globals": "^11.1.0" } }, "sha512-ZYW7L+pL8ahU5fXmNbPF+iZFHCv5scFak7MZ9bwaRPLUhHh7QQEMjZUg0HevihoqCM5iSYHN61EyCoZvqC+bxg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-annotate-as-pure/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-compilation-targets/@babel/compat-data": ["@babel/compat-data@7.26.8", "", {}, "sha512-oH5UPLMWR3L2wEFLnFJ1TZXqHufiTKAiLfqw5zkhS4dKXLJ10yVztfil/twG8EDTA4F/tvVNw9nOl4ZMslB8rQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-compilation-targets/@babel/helper-validator-option": ["@babel/helper-validator-option@7.25.9", "", {}, "sha512-e/zv1co8pp55dNdEcCynfj9X7nyUKUXoUEwfXqaZt0omVOmDe9oOTdKStH4GmAw6zxMFs50ZayuMfHDKlO7Tfw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-member-expression-to-functions": ["@babel/helper-member-expression-to-functions@7.25.9", "", { "dependencies": { "@babel/traverse": "^7.25.9", "@babel/types": "^7.25.9" } }, "sha512-wbfdZ9w5vk0C0oyHqAJbc62+vet5prjj01jjJ8sKn3j9h3MQQlflEdXYvuqRWjHnM12coDEqiC1IRCi0U/EKwQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-optimise-call-expression": ["@babel/helper-optimise-call-expression@7.25.9", "", { "dependencies": { "@babel/types": "^7.25.9" } }, "sha512-FIpuNaz5ow8VyrYcnXQTDRGvV6tTjkNtCK/RYNDXGSLlUD6cBuQTSw43CShGxjvfBTfcUA/r6UhUCbtYqkhcuQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/code-frame": ["@babel/code-frame@7.26.2", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.25.9", "js-tokens": "^4.0.0", "picocolors": "^1.0.0" } }, "sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/generator": ["@babel/generator@7.26.9", "", { "dependencies": { "@babel/parser": "^7.26.9", "@babel/types": "^7.26.9", "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.25", "jsesc": "^3.0.2" } }, "sha512-kEWdzjOAUMW4hAyrzJ0ZaTOu9OmpyDIQicIh0zg0EEcEkYXZb2TjtBhnHi2ViX7PKwZqF4xwqfAm299/QMP3lg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/parser": ["@babel/parser@7.26.9", "", { "dependencies": { "@babel/types": "^7.26.9" }, "bin": "./bin/babel-parser.js" }, "sha512-81NWa1njQblgZbQHxWHpxxCzNsa3ZwvFqpUg7P+NNUU6f3UU2jBEg4OlF/J6rl8+PQGh1q6/zWScd001YwcA5A=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/template": ["@babel/template@7.26.9", "", { "dependencies": { "@babel/code-frame": "^7.26.2", "@babel/parser": "^7.26.9", "@babel/types": "^7.26.9" } }, "sha512-qyRplbeIpNZhmzOysF/wFMuP9sctmh2cFzRAZOn1YapxBsE1i9bJIY586R/WBLfLcmcBlM8ROBiQURnnNy+zfA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/traverse": ["@babel/traverse@7.26.9", "", { "dependencies": { "@babel/code-frame": "^7.26.2", "@babel/generator": "^7.26.9", "@babel/parser": "^7.26.9", "@babel/template": "^7.26.9", "@babel/types": "^7.26.9", "debug": "^4.3.1", "globals": "^11.1.0" } }, "sha512-ZYW7L+pL8ahU5fXmNbPF+iZFHCv5scFak7MZ9bwaRPLUhHh7QQEMjZUg0HevihoqCM5iSYHN61EyCoZvqC+bxg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
     "slice-ansi/ansi-styles/color-convert/color-name": ["color-name@1.1.3", "", {}, "sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw=="],
 
     "sucrase/glob/minimatch/brace-expansion": ["brace-expansion@2.0.1", "", { "dependencies": { "balanced-match": "^1.0.0" } }, "sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA=="],
@@ -3870,54 +3788,6 @@
 
     "pkg-up/find-up/locate-path/p-locate/p-limit": ["p-limit@2.3.0", "", { "dependencies": { "p-try": "^2.0.0" } }, "sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w=="],
 
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-annotate-as-pure/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-member-expression-to-functions/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-optimise-call-expression/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-skip-transparent-expression-wrappers/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/code-frame": ["@babel/code-frame@7.26.2", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.25.9", "js-tokens": "^4.0.0", "picocolors": "^1.0.0" } }, "sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/generator": ["@babel/generator@7.26.9", "", { "dependencies": { "@babel/parser": "^7.26.9", "@babel/types": "^7.26.9", "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.25", "jsesc": "^3.0.2" } }, "sha512-kEWdzjOAUMW4hAyrzJ0ZaTOu9OmpyDIQicIh0zg0EEcEkYXZb2TjtBhnHi2ViX7PKwZqF4xwqfAm299/QMP3lg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/parser": ["@babel/parser@7.26.9", "", { "dependencies": { "@babel/types": "^7.26.9" }, "bin": "./bin/babel-parser.js" }, "sha512-81NWa1njQblgZbQHxWHpxxCzNsa3ZwvFqpUg7P+NNUU6f3UU2jBEg4OlF/J6rl8+PQGh1q6/zWScd001YwcA5A=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/template": ["@babel/template@7.26.9", "", { "dependencies": { "@babel/code-frame": "^7.26.2", "@babel/parser": "^7.26.9", "@babel/types": "^7.26.9" } }, "sha512-qyRplbeIpNZhmzOysF/wFMuP9sctmh2cFzRAZOn1YapxBsE1i9bJIY586R/WBLfLcmcBlM8ROBiQURnnNy+zfA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/globals": ["globals@11.12.0", "", {}, "sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-annotate-as-pure/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-annotate-as-pure/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-member-expression-to-functions/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-optimise-call-expression/@babel/types": ["@babel/types@7.26.9", "", { "dependencies": { "@babel/helper-string-parser": "^7.25.9", "@babel/helper-validator-identifier": "^7.25.9" } }, "sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/code-frame/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/traverse/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/traverse/@babel/code-frame": ["@babel/code-frame@7.26.2", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.25.9", "js-tokens": "^4.0.0", "picocolors": "^1.0.0" } }, "sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/traverse/@babel/generator": ["@babel/generator@7.26.9", "", { "dependencies": { "@babel/parser": "^7.26.9", "@babel/types": "^7.26.9", "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.25", "jsesc": "^3.0.2" } }, "sha512-kEWdzjOAUMW4hAyrzJ0ZaTOu9OmpyDIQicIh0zg0EEcEkYXZb2TjtBhnHi2ViX7PKwZqF4xwqfAm299/QMP3lg=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/traverse/@babel/parser": ["@babel/parser@7.26.9", "", { "dependencies": { "@babel/types": "^7.26.9" }, "bin": "./bin/babel-parser.js" }, "sha512-81NWa1njQblgZbQHxWHpxxCzNsa3ZwvFqpUg7P+NNUU6f3UU2jBEg4OlF/J6rl8+PQGh1q6/zWScd001YwcA5A=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/traverse/@babel/template": ["@babel/template@7.26.9", "", { "dependencies": { "@babel/code-frame": "^7.26.2", "@babel/parser": "^7.26.9", "@babel/types": "^7.26.9" } }, "sha512-qyRplbeIpNZhmzOysF/wFMuP9sctmh2cFzRAZOn1YapxBsE1i9bJIY586R/WBLfLcmcBlM8ROBiQURnnNy+zfA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/traverse/globals": ["globals@11.12.0", "", {}, "sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
     "@babel/preset-typescript/@babel/plugin-transform-modules-commonjs/@babel/helper-module-transforms/@babel/helper-module-imports/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
 
     "@babel/preset-typescript/@babel/plugin-transform-modules-commonjs/@babel/helper-module-transforms/@babel/traverse/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
@@ -4063,38 +3933,6 @@
     "metro/@babel/core/@babel/helper-module-transforms/@babel/helper-module-imports/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
 
     "metro/@babel/core/@babel/helper-module-transforms/@babel/traverse/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-annotate-as-pure/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-annotate-as-pure/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-member-expression-to-functions/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-member-expression-to-functions/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-optimise-call-expression/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-optimise-call-expression/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-skip-transparent-expression-wrappers/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/helper-skip-transparent-expression-wrappers/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/code-frame/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-class-properties/@babel/helper-create-class-features-plugin/@babel/traverse/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-member-expression-to-functions/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-member-expression-to-functions/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-optimise-call-expression/@babel/types/@babel/helper-string-parser": ["@babel/helper-string-parser@7.25.9", "", {}, "sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA=="],
-
-    "react-native-reanimated/@babel/plugin-transform-classes/@babel/helper-replace-supers/@babel/helper-optimise-call-expression/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
-
-    "react-native-reanimated/@babel/plugin-transform-optional-chaining/@babel/helper-skip-transparent-expression-wrappers/@babel/traverse/@babel/code-frame/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
 
     "@react-native/babel-preset/@babel/plugin-transform-async-generator-functions/@babel/helper-remap-async-to-generator/@babel/helper-wrap-function/@babel/template/@babel/code-frame/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.25.9", "", {}, "sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ=="],
 
