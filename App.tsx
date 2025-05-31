@@ -272,17 +272,7 @@ const FabButton = () => {
       className='absolute bottom-7 right-5 z-10'
     >
       <Press
-        style={{
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 2,
-            height: 2,
-          },
-          elevation: 6,
-          shadowOpacity: 0.5,
-          height: 60,
-          width: 60,
-        }}
+        style={fabStyles.fabShadow}
         onPress={() => navigation.navigate('DeveloperOptions')}
         activeOpacity={0.9}
         activeScale={0.95}

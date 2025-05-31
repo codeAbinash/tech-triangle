@@ -1,5 +1,6 @@
 import { PlaySolidIcon } from '@assets/icons/icons'
 import Press from '@components/Press'
+import fabStyles from '@screens/Home/styles/fabStyles'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 
 export default function RunButton({ onPlay }: { onPlay: () => void }) {
@@ -10,17 +11,7 @@ export default function RunButton({ onPlay }: { onPlay: () => void }) {
       className='absolute bottom-7 right-5 z-10'
     >
       <Press
-        style={{
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 2,
-            height: 2,
-          },
-          elevation: 6,
-          shadowOpacity: 0.5,
-          height: 60,
-          width: 60,
-        }}
+        style={fabStyles.fabShadow}
         activeOpacity={0.9}
         activeScale={0.95}
         className='items-center justify-center rounded-full bg-accent'
