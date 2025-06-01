@@ -8,6 +8,8 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
 import CoordinateNotes from '@screens/CoordinateNotes/CoordinateNotes'
+import NewCoordinateNotes from '@screens/CoordinateNotes/NewCoordinateNotes'
+import Tags from '@screens/CoordinateNotes/Tags'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
 import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
@@ -59,7 +61,6 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
-import NewCoordinateNotes from '@screens/CoordinateNotes/NewCoordinateNotes'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -96,74 +97,6 @@ const SMOOTH_ANIMATION: StackNavigationOptions = {
   gestureEnabled: true,
   gestureDirection: 'horizontal',
   gestureResponseDistance: height,
-}
-
-export type RootStackParamList = {
-  Home: undefined
-  Location: undefined
-  Test: undefined
-  CompassAnimation: undefined
-  ParallaxWallpaper: undefined
-  LevelAnimation: undefined
-  StableWallpaper: undefined
-  StableBox: undefined
-  HandlingGesture: undefined
-  SensorAnimation: undefined
-  ApplyingModifiers: undefined
-  CustomizingAnimations: undefined
-  Basic: undefined
-  KeyboardAnimation: undefined
-  // Animations: undefined
-  DragAnimation: undefined
-  Weather: undefined
-  WeatherWelcome: undefined
-  WeatherSearchCity: SearchCityParamList
-  WeatherLocation: WeatherLocationParamList
-  Greeting: undefined
-  Settings: undefined
-  Explore: undefined
-  RoutineWelcome: undefined
-  NotesWelcome: undefined
-  ConfirmCity: ConfirmCityParamList
-  ComputerScienceSettings: undefined
-  WeatherSettings: undefined
-  DeveloperOptions: undefined
-  MMKVDataEditor: MMKVDataEditorParamList
-  MMKVDataList: undefined
-  UiAndComponents: undefined
-  BlankSettings: undefined
-  TempUnit: undefined
-  DistanceUnit: undefined
-  WindSpeedUnit: undefined
-  AtmPressureUnit: undefined
-  TimeFormatUnit: undefined
-  ManageStorage: undefined
-  BackupAndRestore: undefined
-  About: undefined
-  YourProfile: undefined
-  YourAge: undefined
-  RandomColor: undefined
-  AppLock: undefined
-  RandomPassword: undefined
-  GlobalSearch: undefined
-  Update: UpdateParamList
-  Splash: undefined
-  Login: undefined
-  Signup: undefined
-  Verify: VerifyParamList
-  Devices: undefined
-  Device: DeviceParamList
-  AllUsers: undefined
-  EditVersion: undefined
-  Story: undefined
-  User: UserParamList
-  FCFS: undefined
-  SJF: undefined
-  Chart: ChartParamList
-  Onboarding: undefined
-  Skia: undefined
-  CoordinateNotes: undefined
-  NewCoordinateNotes: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -263,10 +196,80 @@ function Navigation() {
         <Stack.Screen name='Chart' component={Chart} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Onboarding' component={Onboarding} options={NO_ANIMATION} />
         <Stack.Screen name='CoordinateNotes' component={CoordinateNotes} options={GestureEnabled} />
-        <Stack.Screen name='NewCoordinateNotes' component={NewCoordinateNotes} options={IOS_BOTTOM_STYLE} />
+        <Stack.Screen name='NewCoordinateNotes' component={NewCoordinateNotes} options={GestureEnabled} />
+        <Stack.Screen name='Tags' component={Tags} options={IOS_BOTTOM_STYLE} />
       </Stack.Navigator>
     </>
   )
+}
+
+export type RootStackParamList = {
+  Tags: undefined
+  Home: undefined
+  Location: undefined
+  Test: undefined
+  CompassAnimation: undefined
+  ParallaxWallpaper: undefined
+  LevelAnimation: undefined
+  StableWallpaper: undefined
+  StableBox: undefined
+  HandlingGesture: undefined
+  SensorAnimation: undefined
+  ApplyingModifiers: undefined
+  CustomizingAnimations: undefined
+  Basic: undefined
+  KeyboardAnimation: undefined
+  // Animations: undefined
+  DragAnimation: undefined
+  Weather: undefined
+  WeatherWelcome: undefined
+  WeatherSearchCity: SearchCityParamList
+  WeatherLocation: WeatherLocationParamList
+  Greeting: undefined
+  Settings: undefined
+  Explore: undefined
+  RoutineWelcome: undefined
+  NotesWelcome: undefined
+  ConfirmCity: ConfirmCityParamList
+  ComputerScienceSettings: undefined
+  WeatherSettings: undefined
+  DeveloperOptions: undefined
+  MMKVDataEditor: MMKVDataEditorParamList
+  MMKVDataList: undefined
+  UiAndComponents: undefined
+  BlankSettings: undefined
+  TempUnit: undefined
+  DistanceUnit: undefined
+  WindSpeedUnit: undefined
+  AtmPressureUnit: undefined
+  TimeFormatUnit: undefined
+  ManageStorage: undefined
+  BackupAndRestore: undefined
+  About: undefined
+  YourProfile: undefined
+  YourAge: undefined
+  RandomColor: undefined
+  AppLock: undefined
+  RandomPassword: undefined
+  GlobalSearch: undefined
+  Update: UpdateParamList
+  Splash: undefined
+  Login: undefined
+  Signup: undefined
+  Verify: VerifyParamList
+  Devices: undefined
+  Device: DeviceParamList
+  AllUsers: undefined
+  EditVersion: undefined
+  Story: undefined
+  User: UserParamList
+  FCFS: undefined
+  SJF: undefined
+  Chart: ChartParamList
+  Onboarding: undefined
+  Skia: undefined
+  CoordinateNotes: undefined
+  NewCoordinateNotes: undefined
 }
 
 const FabButton = () => {

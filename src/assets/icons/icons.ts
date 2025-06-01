@@ -145,3 +145,5 @@ export { default as DashboardSpeed02Icon } from '@icons/dashboard-speed-02-solid
 export { default as Rocket01Icon } from '@icons/rocket-01-solid-rounded.svg'
 export { default as EarthIcon } from '@icons/earth-solid-rounded.svg'
 export { default as Timer02Icon } from '@icons/timer-02-solid-rounded.svg'
+export { default as ArrowDown01StrokeRoundedIcon } from '@icons/arrow-down-01-stroke-rounded.svg'
+export { default as ArrowRight01StrokeRoundedIcon } from '@icons/arrow-right-01-stroke-rounded.svg'

@@ -1,6 +1,7 @@
 import {
   DashboardSpeed02Icon,
   EarthIcon,
+  Home01SolidIcon,
   LatitudeIcon,
   LongitudeIcon,
   MapsLocation02SolidIcon,
@@ -14,57 +15,72 @@ import RoundedIcon from '@components/RoundedIcon'
 import { PaddingBottom } from '@components/SafePadding'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
+import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
-import { AppBar } from '@components/TopBar'
 import { fetchLocation } from '@screens/CoordinateNotes/lib'
 import { useQuery } from '@tanstack/react-query'
-import { Bold } from '@utils/fonts'
 import { NavProp } from '@utils/types'
 import { getLatitude, getLongitude } from '@utils/utils'
-import { useEffect } from 'react'
-import { StatusBar, View } from 'react-native'
+import { View } from 'react-native'
 import { GeoPosition } from 'react-native-geolocation-service'
-import { ScrollView } from 'react-native-gesture-handler'
 
-export default function NewCoordinateNotes({navigation} : NavProp) {
+export default function NewCoordinateNotes({ navigation }: NavProp) {
   const { data, isFetching, refetch } = useQuery({
     queryFn: fetchLocation,
     queryKey: ['currentLocation'],
   })
 
   return (
-    <View className='flex-1 bg-zinc-50 dark:bg-zinc-950'>
-      <StatusBar barStyle='default' />
-      <AppBar />
-      <Bold className='px-5 pb-4 text-2xl dark:text-white'>Current Location</Bold>
-      <ScrollView contentContainerClassName='justify-between flex-1'>
-        <Gap12>
-          <SettGroup title='Location Name'>
-            <Input
-              Icon={<RoundedIcon Icon={MapsLocation02SolidIcon} className='bg-blue-500' />}
-              placeholder='Enter a name for this location'
-            />
-          </SettGroup>
-          <SettGroup title='Description'>
-            <Input
-              placeholder='This is a input field with multiple lines. You can type as much as you want.'
-              multiline
-              numberOfLines={10}
-            />
-          </SettGroup>
-          <LocationDetails data={data} />
-          <BtnTransparent
-            title={isFetching ? 'Fetching...' : 'Refetch Location'}
-            onPress={() => refetch()}
-            disabled={isFetching}
+    <SettWrapper
+      className='flex-1'
+      // Header={
+      //   <BackHeader
+      //     title={'New Location Note'}
+      //     navigation={navigation}
+      //     Right={
+      //       <Press>
+      //         <SemiBold className='text-sm text-accent'>Save</SemiBold>
+      //       </Press>
+      //     }
+      //   />
+      // }
+      title={'New Location Note'}
+    >
+      <Gap12 className='mt-3'>
+        <SettGroup title='Location Name'>
+          <Input
+            Icon={<RoundedIcon Icon={MapsLocation02SolidIcon} className='bg-blue-500' />}
+            placeholder='Enter a name for this location'
           />
-        </Gap12>
-        <View className='px-5 py-3'>
-          <Btn title={'Add Location Note'} onPress={() => navigation.goBack()} />
+        </SettGroup>
+        <SettGroup title='Description'>
+          <Input
+            placeholder='This is a input field with multiple lines. You can type as much as you want.'
+            multiline
+            numberOfLines={10}
+          />
+        </SettGroup>
+        <SettGroup title='Tag'>
+          <SettOption
+            title=''
+            placeholder='Add a tag'
+            Icon={<RoundedIcon Icon={Home01SolidIcon} className='bg-blue-500' />}
+            onPress={() => navigation.navigate('Tags')}
+            arrow
+          />
+        </SettGroup>
+        <LocationDetails data={data} />
+        <BtnTransparent
+          title={isFetching ? 'Fetching...' : 'Refetch Location'}
+          onPress={() => refetch()}
+          disabled={isFetching}
+        />
+        <View className='px-5'>
+          <Btn title={'Save Location Note'} onPress={() => navigation.goBack()} />
           <PaddingBottom />
         </View>
-      </ScrollView>
-    </View>
+      </Gap12>
+    </SettWrapper>
   )
 }
 
