@@ -37,7 +37,7 @@ export default function CoordinateNote({ navigation, route }: CoordinateNoteProp
   const deleteNote = coordinateNotesStore((state) => state.deleteNote)
 
   const handleSave = useCallback(() => {
-    if (!name || name.trim().length === 0) return
+    if (!name || name.trim().length === 0 || !data) return
     updateNote({
       title: name.trim(),
       description: description.trim(),

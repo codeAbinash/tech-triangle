@@ -26,7 +26,7 @@ export default function NewCoordinateNotes({ navigation }: NavProp) {
   })
 
   const handleSave = useCallback(() => {
-    if (!name || name.trim().length === 0) return
+    if (!name || name.trim().length === 0 || !data) return
     updateNote({
       title: name.trim(),
       description: description.trim(),
