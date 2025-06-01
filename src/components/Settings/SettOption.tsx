@@ -10,6 +10,7 @@ type SettOptionProps = TouchableOpacityProps & {
   Right?: React.ReactNode
   arrow?: boolean
   numberOfLines?: number
+  placeholder?: string
 }
 
 export function SettOption({
@@ -21,6 +22,7 @@ export function SettOption({
   className,
   arrow,
   numberOfLines,
+  placeholder,
   ...rest
 }: SettOptionProps) {
   return (
@@ -36,10 +38,10 @@ export function SettOption({
         <View className='p-2.5 px-0'>
           <SemiBold
             className='text-left text-zinc-800 dark:text-zinc-200'
-            style={[{ fontSize: 12, flexShrink: 1, paddingBottom: 2 }]}
+            style={[{ fontSize: 12, flexShrink: 1, paddingBottom: 2 }, !title ? { opacity: 0.5 } : {}]}
             numberOfLines={numberOfLines || 0}
           >
-            {title}
+            {title || placeholder}
           </SemiBold>
           {children}
         </View>
