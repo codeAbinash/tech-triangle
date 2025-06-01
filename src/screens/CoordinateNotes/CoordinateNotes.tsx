@@ -7,7 +7,7 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { useNavigation } from '@react-navigation/native'
-import { coordinateNotesStore } from '@screens/CoordinateNotes/coordinateNotesStore'
+import { coordinateNotesStore, LocationNote } from '@screens/CoordinateNotes/coordinateNotesStore'
 import fabStyles from '@screens/Home/styles/fabStyles'
 import type { NavProp, StackNav } from '@utils/types'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
@@ -20,27 +20,35 @@ export default function CoordinateNotes({ navigation }: NavProp) {
     <>
       <SettWrapper navigation={navigation} title='Coordinate Notes'>
         <NoNotes notes={notes} />
-        <Gap12>
-          <SettText className='mt-3.5'>
-            {notes.length === 0
-              ? ''
-              : `Found ${notes.length} note${notes.length > 1 ? 's' : ''}. Tap on a note to view details.`}
-          </SettText>
-          <SettGroup title='Notes'>
-            {notes.map((item) => (
-              <SettOption
-                key={item.location.timestamp}
-                title={item.title}
-                Icon={<RoundedIcon Icon={Location01Icon} />}
-                arrow
-                onPress={() => navigation.navigate('CoordinateNote', { data: item })}
-              />
-            ))}
-          </SettGroup>
-        </Gap12>
+        <NotesList notes={notes} />
       </SettWrapper>
       <FabButton />
     </>
+  )
+}
+
+function NotesList({ notes }: { notes: LocationNote[] }) {
+  const navigation = useNavigation<StackNav>()
+  if (!notes || notes.length === 0) return null
+  return (
+    <Gap12>
+      <SettText className='mt-3.5'>
+        {notes.length === 0
+          ? ''
+          : `Found ${notes.length} note${notes.length > 1 ? 's' : ''}. Tap on a note to view details.`}
+      </SettText>
+      <SettGroup title='Notes'>
+        {notes.map((item) => (
+          <SettOption
+            key={item.location.timestamp}
+            title={item.title}
+            Icon={<RoundedIcon Icon={Location01Icon} />}
+            arrow
+            onPress={() => navigation.navigate('CoordinateNote', { data: item })}
+          />
+        ))}
+      </SettGroup>
+    </Gap12>
   )
 }
 

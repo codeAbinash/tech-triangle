@@ -3,6 +3,7 @@ import {
   EarthIcon,
   LatitudeIcon,
   LongitudeIcon,
+  MapsLocation02SolidIcon,
   Rocket01Icon,
   Timer02Icon,
 } from '@assets/icons/icons'
@@ -12,6 +13,7 @@ import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import { Txt } from '@components/Text'
 import { getLatitude, getLongitude } from '@utils/utils'
+import { Linking } from 'react-native'
 import { GeoPosition } from 'react-native-geolocation-service'
 
 export default function LocationDetails({ data }: { data: GeoPosition | undefined }) {
@@ -56,6 +58,18 @@ export default function LocationDetails({ data }: { data: GeoPosition | undefine
             Right={<Txt skeleton={timestamp === undefined}>{new Date(timestamp || 0).toLocaleString()}</Txt>}
           />
         </SettGroup>
+        {latitude && longitude && (
+          <SettGroup title='View on Map'>
+            <SettOption
+              title='View on Map'
+              Icon={<RoundedIcon Icon={MapsLocation02SolidIcon} className='bg-green-500' />}
+              onPress={() =>
+                Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`)
+              }
+              arrow
+            />
+          </SettGroup>
+        )}
       </Gap12>
     </>
   )
