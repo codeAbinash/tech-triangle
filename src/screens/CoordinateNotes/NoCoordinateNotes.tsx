@@ -3,8 +3,10 @@ import { Lottie } from '@components/Lottie'
 import { W } from '@utils/dimensions'
 import { Regular } from '@utils/fonts'
 import { View } from 'react-native'
+import { LocationNote } from './coordinateNotesStore'
 
-export default function CoordinateNotes() {
+export default function CoordinateNotes({ notes }: { notes: LocationNote[] }) {
+  if (notes.length > 0) return null
   return (
     <View>
       <Lottie source={Animations.location} size={W} />

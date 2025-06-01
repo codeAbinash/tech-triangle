@@ -69,7 +69,7 @@ export default function NewCoordinateNotes({ navigation }: NavProp) {
             title=''
             placeholder='Add a tag'
             Icon={<RoundedIcon Icon={Home01SolidIcon} className='bg-rose-500' />}
-            onPress={() => navigation.navigate('Tags')}
+            onPress={() => navigation.navigate('LocationTags')}
             arrow
           />
         </SettGroup>

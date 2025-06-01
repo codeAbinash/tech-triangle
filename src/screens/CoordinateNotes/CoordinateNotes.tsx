@@ -1,10 +1,14 @@
-import { coordinateNotesStore } from '@screens/CoordinateNotes/coordinateNotesStore'
-import { PlusSignSolidIcon } from '@assets/icons/icons'
+import { Location01Icon, PlusSignSolidIcon } from '@assets/icons/icons'
+import { Gap12 } from '@components/Gap'
 import Press from '@components/Press'
+import RoundedIcon from '@components/RoundedIcon'
+import SettGroup from '@components/Settings/SettGroup'
+import { SettOption } from '@components/Settings/SettOption'
+import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { useNavigation } from '@react-navigation/native'
+import { coordinateNotesStore } from '@screens/CoordinateNotes/coordinateNotesStore'
 import fabStyles from '@screens/Home/styles/fabStyles'
-import { Medium } from '@utils/fonts'
 import type { NavProp, StackNav } from '@utils/types'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -15,8 +19,25 @@ export default function CoordinateNotes({ navigation }: NavProp) {
   return (
     <>
       <SettWrapper navigation={navigation} title='Coordinate Notes'>
-        <NoNotes />
-        <Medium>{JSON.stringify(notes, null, 2)}</Medium>
+        <NoNotes notes={notes} />
+        <Gap12>
+          <SettText className='mt-3.5'>
+            {notes.length === 0
+              ? ''
+              : `Found ${notes.length} note${notes.length > 1 ? 's' : ''}. Tap on a note to view details.`}
+          </SettText>
+          <SettGroup title='Notes'>
+            {notes.map((item) => (
+              <SettOption
+                key={item.location.timestamp}
+                title={item.title}
+                Icon={<RoundedIcon Icon={Location01Icon} />}
+                arrow
+                onPress={() => navigation.navigate('CoordinateNote', { data: item })}
+              />
+            ))}
+          </SettGroup>
+        </Gap12>
       </SettWrapper>
       <FabButton />
     </>

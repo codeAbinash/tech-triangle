@@ -2,22 +2,22 @@ import S from '@utils/storage'
 import { GeoPosition } from 'react-native-geolocation-service'
 import { create } from 'zustand'
 
-type Note = {
+export type LocationNote = {
   title: string
   description: string
   location: GeoPosition
 }
 
 type CoordinateNotesStore = {
-  notes: Note[]
-  setNotes: (notes: Note[]) => void
-  newNote: (note: Note) => void
+  notes: LocationNote[]
+  setNotes: (notes: LocationNote[]) => void
+  newNote: (note: LocationNote) => void
 }
 
 export const coordinateNotesStore = create<CoordinateNotesStore>((set) => ({
   notes: getNotes(),
-  setNotes: (notes: Note[]) => setNotes(notes, set),
-  newNote : (note: Note) => newNote(note, set),
+  setNotes: (notes: LocationNote[]) => setNotes(notes, set),
+  newNote: (note: LocationNote) => newNote(note, set),
 }))
 
 type Set = (fn: (state: CoordinateNotesStore) => CoordinateNotesStore) => void
@@ -26,13 +26,13 @@ function getNotes() {
   return JSON.parse(S.get('CoordinateNotes') || '[]')
 }
 
-function newNote(note: Note, set: Set) {
+function newNote(note: LocationNote, set: Set) {
   const notes = getNotes()
   notes.push(note)
   setNotes(notes, set)
 }
 
-function setNotes(notes: Note[], set: Set) {
+function setNotes(notes: LocationNote[], set: Set) {
   S.set('CoordinateNotes', JSON.stringify(notes))
   set((state) => ({ ...state, notes }))
 }

@@ -4,7 +4,7 @@ import { Bold, Medium } from '@utils/fonts'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
-export default function Tags() {
+export default function LocationTags() {
   return (
     <View className='flex-1 bg-zinc-50 dark:bg-zinc-950'>
       <StatusBar barStyle='default' />

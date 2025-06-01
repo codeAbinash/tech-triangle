@@ -9,7 +9,7 @@ import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptio
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
 import CoordinateNotes from '@screens/CoordinateNotes/CoordinateNotes'
 import NewCoordinateNotes from '@screens/CoordinateNotes/NewCoordinateNotes'
-import Tags from '@screens/CoordinateNotes/Tags'
+import LocationTags from '@screens/CoordinateNotes/LocationTags'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
 import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
@@ -61,6 +61,7 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
+import CoordinateNote, { CoordinateNoteParamList } from '@screens/CoordinateNotes/CoordinateNote'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -197,14 +198,16 @@ function Navigation() {
         <Stack.Screen name='Onboarding' component={Onboarding} options={NO_ANIMATION} />
         <Stack.Screen name='CoordinateNotes' component={CoordinateNotes} options={GestureEnabled} />
         <Stack.Screen name='NewCoordinateNotes' component={NewCoordinateNotes} options={GestureEnabled} />
-        <Stack.Screen name='Tags' component={Tags} options={IOS_BOTTOM_STYLE} />
+        <Stack.Screen name='LocationTags' component={LocationTags} options={IOS_BOTTOM_STYLE} />
+        <Stack.Screen name='CoordinateNote' component={CoordinateNote} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )
 }
 
 export type RootStackParamList = {
-  Tags: undefined
+  CoordinateNote: CoordinateNoteParamList
+  LocationTags: undefined
   Home: undefined
   Location: undefined
   Test: undefined
