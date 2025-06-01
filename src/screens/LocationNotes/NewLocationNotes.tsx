@@ -1,4 +1,4 @@
-import { Home01SolidIcon, Location01Icon, MapsLocation02SolidIcon } from '@assets/icons/icons'
+import { Home01SolidIcon, InformationCircleSolidIcon, Location01Icon } from '@assets/icons/icons'
 import { BtnTransparent } from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
@@ -6,23 +6,28 @@ import RoundedIcon from '@components/RoundedIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettWrapper from '@components/Settings/SettWrapper'
-import { coordinateNotesStore } from '@screens/CoordinateNotes/locationNotesStore'
-import { fetchLocation } from '@screens/CoordinateNotes/lib'
+import { fetchLocation } from '@screens/LocationNotes/lib'
+import { locationNotesStore } from '@screens/LocationNotes/locationNotesStore'
 import { useQuery } from '@tanstack/react-query'
-import { NavProp } from '@utils/types'
 import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, View } from 'react-native'
 import { GeoPosition } from 'react-native-geolocation-service'
 import LocationDetails from './LocationDetails'
 
-export default function NewLocationNote({ navigation }: NavProp) {
+export default function NewLocationNote() {
   const [name, setName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
-  const updateNote = coordinateNotesStore((state) => state.updateNote)
+  const updateNote = locationNotesStore((state) => state.updateNote)
 
   const { data, isFetching, refetch } = useQuery({
     queryFn: fetchLocation,
     queryKey: ['currentLocation'],
+    // Disable caching for this query
+    staleTime: 0,
+    gcTime: 0,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+    refetchInterval: false,
   })
 
   const handleSave = useCallback(() => {
@@ -68,7 +73,7 @@ export default function NewLocationNote({ navigation }: NavProp) {
             numberOfLines={10}
             value={description}
             onChangeText={setDescription}
-            Icon={<RoundedIcon Icon={MapsLocation02SolidIcon} className='bg-slate-500' />}
+            Icon={<RoundedIcon Icon={InformationCircleSolidIcon} className='bg-slate-500' />}
           />
         </SettGroup>
         <SettGroup title='Tag'>
@@ -76,7 +81,6 @@ export default function NewLocationNote({ navigation }: NavProp) {
             title=''
             placeholder='Add a tag'
             Icon={<RoundedIcon Icon={Home01SolidIcon} className='bg-rose-500' />}
-            onPress={() => navigation.navigate('LocationTags')}
             arrow
           />
         </SettGroup>

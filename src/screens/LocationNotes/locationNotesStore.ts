@@ -8,7 +8,7 @@ export type LocationNote = {
   location: GeoPosition
 }
 
-type CoordinateNotesStore = {
+type LocationNotesStore = {
   notes: LocationNote[]
   setNotes: (notes: LocationNote[]) => void
   newNote: (note: LocationNote) => void
@@ -16,7 +16,7 @@ type CoordinateNotesStore = {
   deleteNote: (timestamp: number) => void
 }
 
-export const coordinateNotesStore = create<CoordinateNotesStore>((set) => ({
+export const locationNotesStore = create<LocationNotesStore>((set) => ({
   notes: getNotes(),
   setNotes: (notes: LocationNote[]) => setNotes(notes, set),
   newNote: (note: LocationNote) => newNote(note, set),
@@ -24,10 +24,10 @@ export const coordinateNotesStore = create<CoordinateNotesStore>((set) => ({
   deleteNote: (timestamp: number) => deleteNote(timestamp, set),
 }))
 
-type Set = (fn: (state: CoordinateNotesStore) => CoordinateNotesStore) => void
+type Set = (fn: (state: LocationNotesStore) => LocationNotesStore) => void
 
 function getNotes() {
-  return JSON.parse(S.get('CoordinateNotes') || '[]')
+  return JSON.parse(S.get('LocationNotes') || '[]')
 }
 
 function newNote(note: LocationNote, set: Set) {
@@ -50,6 +50,6 @@ function deleteNote(timestamp: number, set: Set) {
 }
 
 function setNotes(notes: LocationNote[], set: Set) {
-  S.set('CoordinateNotes', JSON.stringify(notes))
+  S.set('LocationNotes', JSON.stringify(notes))
   set((state) => ({ ...state, notes }))
 }

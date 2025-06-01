@@ -30,7 +30,7 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
               <ArrowLeft01Icon width={26} height={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
             </TouchableOpacity>
             <SemiBold
-              style={{ fontSize: 14.3, flex: 1, paddingBottom: 2 }}
+              style={{ fontSize: 14.3, flex: 1, paddingBottom: 5 }}
               className='mt-0.5 text-zinc-800 dark:text-zinc-200'
               numberOfLines={1}
             >

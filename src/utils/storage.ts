@@ -97,10 +97,10 @@ export const Caches = {
   },
   keys: {},
 }
-export const CoordinateNotesStorage = {
+export const LocationNotesStorage = {
   startWith: {},
   keys: {
-    CoordinateNotes: 'CoordinateNotes',
+    LocationNotes: 'LocationNotes',
   },
 }
 
@@ -142,7 +142,7 @@ type Store<T extends StorageType> = keyof T['keys'] | `${Extract<keyof T['startW
 
 type WeatherStorage = Store<typeof WeatherStorage>
 type DeveloperStorage = Store<typeof DeveloperStorage>
-type CoordinateNotesStorage = Store<typeof CoordinateNotesStorage>
+type LocationNotesStorage = Store<typeof LocationNotesStorage>
 type UserProfileStorage = Store<typeof UserProfileStorage>
 type AppLockStorage = Store<typeof AppLockStorage>
 type UserStorage = Store<typeof UserStorage>
@@ -150,7 +150,7 @@ type misc = 'misc' | 'isOpenedApp'
 export type StorageKeys =
   | WeatherStorage
   | DeveloperStorage
-  | CoordinateNotesStorage
+  | LocationNotesStorage
   | UserProfileStorage
   | AppLockStorage
   | UserStorage
