@@ -3,6 +3,7 @@ const Animations = {
   'coming-soon': require('./lottie/coming-soon.lottie'),
   welcome: require('./lottie/welcome.lottie'),
   lock: require('./lottie/lock.lottie'),
+  location: require('./lottie/location.lottie'),
 }
 
 export default Animations

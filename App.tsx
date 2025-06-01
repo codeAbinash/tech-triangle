@@ -7,11 +7,14 @@ import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
+import CoordinateNotes from '@screens/CoordinateNotes/CoordinateNotes'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
 import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
+import Skia from '@screens/Example/Skia'
 import Explore from '@screens/Explore/Explore'
 import Greeting from '@screens/Home/Greeting'
+import fabStyles from '@screens/Home/styles/fabStyles'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import type { ChartParamList } from '@screens/OS/Chart'
 import Chart from '@screens/OS/Chart'
@@ -56,7 +59,7 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
-import Skia from '@screens/Example/Skia'
+import NewCoordinateNotes from '@screens/CoordinateNotes/NewCoordinateNotes'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -129,7 +132,6 @@ export type RootStackParamList = {
   MMKVDataList: undefined
   UiAndComponents: undefined
   BlankSettings: undefined
-  CoordinateNotes: undefined
   TempUnit: undefined
   DistanceUnit: undefined
   WindSpeedUnit: undefined
@@ -160,6 +162,8 @@ export type RootStackParamList = {
   Chart: ChartParamList
   Onboarding: undefined
   Skia: undefined
+  CoordinateNotes: undefined
+  NewCoordinateNotes: undefined
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -258,6 +262,8 @@ function Navigation() {
         <Stack.Screen name='SJF' component={SJF} options={GestureEnabled} />
         <Stack.Screen name='Chart' component={Chart} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Onboarding' component={Onboarding} options={NO_ANIMATION} />
+        <Stack.Screen name='CoordinateNotes' component={CoordinateNotes} options={GestureEnabled} />
+        <Stack.Screen name='NewCoordinateNotes' component={NewCoordinateNotes} options={IOS_BOTTOM_STYLE} />
       </Stack.Navigator>
     </>
   )

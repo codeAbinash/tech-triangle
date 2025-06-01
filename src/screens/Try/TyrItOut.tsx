@@ -32,8 +32,7 @@ import type { NavProp } from '@utils/types'
 import { delayedFadeAnimationSearch, exiting, layout } from '@utils/utils'
 import type { RootStackParamList } from 'App'
 import React, { useMemo } from 'react'
-import { View, useColorScheme } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity, View, useColorScheme } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import type { SvgProps } from 'react-native-svg'
 
@@ -61,8 +60,8 @@ const tools: Group[] = [
       { title: 'Your Age', Icon: Calendar03SolidIcon, to: 'YourAge', className: 'bg-rose-500' },
       { title: 'Random Color', Icon: PaintBoardSolidIcon, to: 'RandomColor', className: 'bg-orange-500' },
       { title: 'Gradient Colors', Icon: ColorsSolidIcon, className: 'bg-green-500' },
-      { title: 'Location Speed Meter', Icon: DashboardSpeed01SolidIcon, className: 'bg-blue-500' },
-      { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, className: 'bg-yellow-500' },
+      { title: 'Location Speed Meter', Icon: DashboardSpeed01SolidIcon, className: 'bg-yellow-500' },
+      { title: 'Coordinate Notes', Icon: MapsLocation02SolidIcon, className: 'bg-blue-500', to: 'CoordinateNotes' },
       { title: 'Random Password', Icon: LockPasswordSolidIcon, className: 'bg-slate-500', to: 'RandomPassword' },
     ],
   },
