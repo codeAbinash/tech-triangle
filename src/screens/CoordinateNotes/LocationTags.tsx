@@ -10,8 +10,10 @@ export default function LocationTags() {
       <StatusBar barStyle='default' />
       <AppBar />
       <ScrollView contentContainerClassName='p-5 flex-1 justify-center items-center'>
-        <Bold className='text-3xl text text-center'>Coming Soon!</Bold>
-        <Medium className='text opacity-80 text-base mt-3 text-center'>This feature is currently under development. Stay tuned for updates!</Medium>
+        <Bold className='text text-center text-3xl'>Coming Soon!</Bold>
+        <Medium className='text mt-3 text-center text-base opacity-80'>
+          This feature is currently under development. Stay tuned for updates!
+        </Medium>
         <PaddingBottom />
       </ScrollView>
     </View>

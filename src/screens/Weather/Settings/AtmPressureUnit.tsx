@@ -11,7 +11,7 @@ export default function AtmPressureUnit({ navigation }: NavProp) {
   const atmPressureUnit = weatherStore((state) => state.atmPressureUnit)
   const setAtmPressureUnit = weatherStore((state) => state.setAtmPressureUnit)
   return (
-    <SettWrapper navigation={navigation} title='Atmospheric Pressure Unit'>
+    <SettWrapper title='Atmospheric Pressure Unit'>
       <Gap12>
         <SettText className='mt-3'>Select the unit of atmospheric pressure you want to use.</SettText>
         <SettGroup>

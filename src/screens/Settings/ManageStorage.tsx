@@ -23,7 +23,7 @@ const colors = [
 
 export default function ManageStorage({ navigation }: NavProp) {
   return (
-    <SettWrapper navigation={navigation} title='Manage Storage'>
+    <SettWrapper title='Manage Storage'>
       <Gap12>
         <SettText className='mt-3'>
           Manage different types of storage in the app. This screen is under development.

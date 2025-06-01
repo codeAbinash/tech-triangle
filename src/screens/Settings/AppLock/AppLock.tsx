@@ -35,7 +35,7 @@ export default function AppLock({ navigation }: NavProp) {
   }, [isAppLockEnabled])
 
   return (
-    <SettWrapper navigation={navigation} title='App Lock'>
+    <SettWrapper title='App Lock'>
       <Gap12>
         <SettText className='mt-3 text-blue-500'>This feature will be available in the next release. CodeAntu</SettText>
         <SettGroup title='App Lock Settings'>

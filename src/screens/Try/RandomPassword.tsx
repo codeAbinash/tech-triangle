@@ -13,7 +13,7 @@ import { Colors } from '@utils/colors'
 import { W } from '@utils/dimensions'
 import { Medium, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { memo, useCallback, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState, JSX } from 'react'
 import { ToastAndroid, TouchableOpacity, View } from 'react-native'
 
 const MAX = 50
@@ -55,7 +55,7 @@ export default function RandomPassword({ navigation }: NavProp) {
     )
   }, [len, lowercase, numerical, special, uppercase])
   return (
-    <SettWrapper navigation={navigation} title='Random Password'>
+    <SettWrapper title='Random Password'>
       <Gap12>
         <Lottie source={Animations.lock} style={{ marginTop: 20, width: W * 0.5, height: W * 0.5 }} />
         <SettText>Here you will set some options to generate a random password</SettText>

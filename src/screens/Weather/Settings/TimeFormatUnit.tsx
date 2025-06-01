@@ -13,7 +13,7 @@ export default function TimeFormatUnit({ navigation }: NavProp) {
   const timeFormatUnit = weatherStore((state) => state.weatherTimeFormat)
   const setWeatherTimeFormat = weatherStore((state) => state.setWeatherTimeFormat)
   return (
-    <SettWrapper navigation={navigation} title='Time Format Unit'>
+    <SettWrapper title='Time Format Unit'>
       <Gap12>
         <SettText className='mt-3'>Choose between 12 hour and 24 hour time format</SettText>
         <SettGroup>

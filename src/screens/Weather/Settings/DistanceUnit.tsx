@@ -13,7 +13,7 @@ export default function DistanceUnit({ navigation }: NavProp) {
   const distanceUnit = weatherStore((state) => state.distanceUnit)
   const setDistUnit = weatherStore((state) => state.setDistanceUnit)
   return (
-    <SettWrapper navigation={navigation} title='Distance Unit'>
+    <SettWrapper title='Distance Unit'>
       <Gap12>
         <SettText className='mt-3'>Select the unit of distance you want to use.</SettText>
         <SettGroup>

@@ -13,7 +13,7 @@ export default function TempUnit({ navigation }: NavProp) {
   const temperatureUnit = weatherStore((state) => state.temperatureUnit)
   const setTmpUnit = weatherStore((state) => state.setTemperatureUnit)
   return (
-    <SettWrapper navigation={navigation} title='Temperature Unit'>
+    <SettWrapper title='Temperature Unit'>
       <Gap12>
         <SettText className='mt-3'>Select the unit of temperature you want to use.</SettText>
         <SettGroup>

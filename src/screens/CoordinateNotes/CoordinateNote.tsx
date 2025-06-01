@@ -77,7 +77,7 @@ export default function CoordinateNote({ navigation, route }: CoordinateNoteProp
 
   return (
     <>
-      <SettWrapper navigation={navigation} title={name || 'Location Note'}>
+      <SettWrapper title={name || 'Location Note'}>
         <Gap12 className='mt-3'>
           <SettGroup title='Location Name'>
             <Input

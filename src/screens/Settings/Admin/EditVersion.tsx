@@ -110,7 +110,7 @@ export default function EditVersion({ navigation }: NavProp) {
   }, [version])
 
   return (
-    <SettWrapper navigation={navigation} title='Edit Version'>
+    <SettWrapper title='Edit Version'>
       <Gap12>
         <View>
           <SettText className='mt-3'>

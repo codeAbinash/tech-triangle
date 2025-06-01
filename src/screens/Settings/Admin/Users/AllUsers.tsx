@@ -38,7 +38,6 @@ export default function AllUsers({ navigation }: NavProp) {
 
   return (
     <SettWrapper
-      navigation={navigation}
       Header={
         <>
           <BackHeader title='All users' navigation={navigation} />

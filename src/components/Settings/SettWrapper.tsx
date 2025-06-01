@@ -3,6 +3,7 @@ import { Gap20 } from '@components/Gap'
 import KeyboardAvoid from '@components/KeyboardAvoid'
 import { PaddingBottom } from '@components/SafePadding'
 import { AutoStatusBar } from '@components/StatusBar'
+import { useNavigation } from '@react-navigation/native'
 import { StackNav } from '@utils/types'
 import React from 'react'
 import { ScrollViewProps, useColorScheme, View } from 'react-native'
@@ -10,9 +11,9 @@ import { ScrollViewProps, useColorScheme, View } from 'react-native'
 type SettWrapperProps = ScrollViewProps & {
   Header?: React.ReactNode
   title?: string
-  navigation?: StackNav
 }
-export default function SettWrapper({ Header, title, navigation, children, ...rest }: SettWrapperProps) {
+export default function SettWrapper({ Header, title, children, ...rest }: SettWrapperProps) {
+  const navigation = useNavigation<StackNav>()
   const scheme = useColorScheme()
   return (
     <View className='bg flex-1'>

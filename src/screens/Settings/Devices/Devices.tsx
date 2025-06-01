@@ -50,7 +50,7 @@ export default function Devices({ navigation }: NavProp) {
   }
 
   return (
-    <SettWrapper title='Devices' navigation={navigation}>
+    <SettWrapper title='Devices'>
       <Gap12>
         <SettText className='mt-3'>You can remove unwanted devices from the list.</SettText>
         <SettGroup title='This Device'>

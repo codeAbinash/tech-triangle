@@ -49,7 +49,6 @@ export default function MMKVDataList({ navigation }: NavProp) {
   return (
     <>
       <SettWrapper
-        navigation={navigation}
         Header={
           <>
             <BackHeader title='MMKV data editor' navigation={navigation} />

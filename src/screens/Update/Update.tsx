@@ -43,7 +43,6 @@ export default function Update({ navigation, route }: { navigation: StackNav; ro
 
   return (
     <SettWrapper
-      navigation={navigation}
       title='App Update'
       Header={<BackHeader title='App Update' navigation={navigation} onBackPress={cannotSkipBack} />}
     >

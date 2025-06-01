@@ -90,7 +90,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
           <Medium className='mt-10 text-center text-2xl text-white'>Device</Medium>
         </View>
       </View> */}
-      <SettWrapper title={device?.name || 'Unknown Device'} navigation={navigation}>
+      <SettWrapper title={device?.name || 'Unknown Device'}>
         <Gap gap={15}>
           <SettText className='mt-3'>If you cannot identify this device, you can remove it from the list.</SettText>
           <SettGroup title='Device' className='pb-4'>

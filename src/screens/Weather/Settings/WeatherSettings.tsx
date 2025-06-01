@@ -75,7 +75,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   }, [focused])
 
   return (
-    <SettWrapper navigation={navigation} title='Weather Settings'>
+    <SettWrapper title='Weather Settings'>
       <Gap12>
         <SettText className='mt-3'>Customize the weather settings to your preference.</SettText>
         <SettGroup title='General Settings'>

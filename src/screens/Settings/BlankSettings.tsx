@@ -9,7 +9,7 @@ import type { NavProp } from '@utils/types'
 
 export default function BlankSettings({ navigation }: NavProp) {
   return (
-    <SettWrapper navigation={navigation} title='Blank Settings'>
+    <SettWrapper title='Blank Settings'>
       <Gap12>
         <SettText className='mt-3'>Beginning Text</SettText>
         <SettGroup title='Sample title'>

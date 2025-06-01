@@ -37,7 +37,7 @@ export default function YourProfile({ navigation }: NavProp) {
   const setGender = profileStore((s) => s.setGender)
 
   return (
-    <SettWrapper navigation={navigation} title='Your Profile'>
+    <SettWrapper title='Your Profile'>
       <Gap12>
         <SettText className='mt-3'>Enter your details below to get the best experience from the app.</SettText>
         <SettGroup title='First and Last Name'>

@@ -18,7 +18,7 @@ export default function CoordinateNotes({ navigation }: NavProp) {
   const notes = coordinateNotesStore((state) => state.notes)
   return (
     <>
-      <SettWrapper navigation={navigation} title='Coordinate Notes'>
+      <SettWrapper title='Coordinate Notes'>
         <NoNotes notes={notes} />
         <NotesList notes={notes} />
       </SettWrapper>

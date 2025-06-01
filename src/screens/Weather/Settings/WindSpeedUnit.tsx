@@ -19,7 +19,7 @@ export default function WindSpeedUnit({ navigation }: NavProp) {
   const windSpeedUnit = weatherStore((state) => state.windSpeedUnit)
   const setWindSpeedUnit = weatherStore((state) => state.setWindSpeedUnit)
   return (
-    <SettWrapper navigation={navigation} title='Wind Speed Unit'>
+    <SettWrapper title='Wind Speed Unit'>
       <Gap12>
         <SettText className='mt-3'>Select the unit of wind speed you want to use.</SettText>
         <SettGroup>

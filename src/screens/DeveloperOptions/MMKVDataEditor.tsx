@@ -72,7 +72,6 @@ export default function MMKVDataEditor({
   return (
     <>
       <SettWrapper
-        navigation={navigation}
         title={isNew ? (key ? key : 'New MMKV data') : key}
         Header={
           <BackHeader

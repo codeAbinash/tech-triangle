@@ -67,7 +67,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   }
 
   return (
-    <SettWrapper title='Developer Options' navigation={navigation}>
+    <SettWrapper title='Developer Options'>
       <Gap12>
         <SettGroup>
           <SettOption
