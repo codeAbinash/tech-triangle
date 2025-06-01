@@ -11,6 +11,9 @@
     "Withs"
   ],
   "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/assets/icons/src/*": true
+  },
   "typescript.tsdk": "node_modules\\typescript\\lib"
   // "editor.codeActionsOnSave": {
   //   "source.organizeImports": "always"
