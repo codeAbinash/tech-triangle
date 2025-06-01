@@ -35,10 +35,10 @@ export function SettOption({
     >
       <View className='flex-row items-center justify-center' style={{ gap: 22, flexShrink: 1 }}>
         {Icon}
-        <View className='p-2.5 px-0'>
+        <View className='p-2.5 px-0' style={{ flexShrink: 1 }}>
           <SemiBold
             className='text-left text-zinc-800 dark:text-zinc-200'
-            style={[{ fontSize: 12, flexShrink: 1, paddingBottom: 2 }, !title ? { opacity: 0.5 } : {}]}
+            style={[{ fontSize: 12, paddingBottom: 2 }, !title ? { opacity: 0.5 } : {}]}
             numberOfLines={numberOfLines || 0}
           >
             {title || placeholder}
