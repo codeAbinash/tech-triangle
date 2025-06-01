@@ -1,18 +1,22 @@
+import { coordinateNotesStore } from '@screens/CoordinateNotes/coordinateNotesStore'
 import { PlusSignSolidIcon } from '@assets/icons/icons'
 import Press from '@components/Press'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { useNavigation } from '@react-navigation/native'
 import fabStyles from '@screens/Home/styles/fabStyles'
+import { Medium } from '@utils/fonts'
 import type { NavProp, StackNav } from '@utils/types'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import NoNotes from './NoCoordinateNotes'
 
 export default function CoordinateNotes({ navigation }: NavProp) {
+  const notes = coordinateNotesStore((state) => state.notes)
   return (
     <>
       <SettWrapper navigation={navigation} title='Coordinate Notes'>
         <NoNotes />
+        <Medium>{JSON.stringify(notes, null, 2)}</Medium>
       </SettWrapper>
       <FabButton />
     </>
