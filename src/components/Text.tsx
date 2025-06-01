@@ -15,8 +15,8 @@ type TxtProps = TextProps & {
   skeleton?: boolean | string | number | object | undefined | null
 }
 
-export function Txt({ children, size, style, skeleton = true, ...rest }: TxtProps) {
-  if (skeleton === undefined) return <TxtSkeleton />
+export function Txt({ children, size, style, skeleton, ...rest }: TxtProps) {
+  if (skeleton) return <TxtSkeleton />
   return (
     <Medium className='text-zinc-500' style={[{ fontSize: size || 11.5 }, style]} {...rest}>
       {children}

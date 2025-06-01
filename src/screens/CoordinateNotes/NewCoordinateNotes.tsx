@@ -87,6 +87,9 @@ export default function NewCoordinateNotes({ navigation }: NavProp) {
 function LocationDetails({ data }: { data: GeoPosition | undefined }) {
   console.log(data?.coords.latitude)
   const { coords: { latitude, longitude, accuracy, altitude, altitudeAccuracy, speed } = {}, timestamp } = data || {}
+
+  console.log(latitude, longitude, accuracy, altitude, altitudeAccuracy, speed, timestamp)
+
   return (
     <>
       <Gap12>
@@ -94,23 +97,23 @@ function LocationDetails({ data }: { data: GeoPosition | undefined }) {
           <SettOption
             title='Latitude'
             Icon={<RoundedIcon Icon={LongitudeIcon} className='bg-blue-500' />}
-            Right={<Txt skeleton={latitude}>{getLatitude(latitude || 0)}</Txt>}
+            Right={<Txt skeleton={latitude === undefined}>{getLatitude(latitude || 0)}</Txt>}
           />
           <SettOption
             title='Longitude'
             Icon={<RoundedIcon Icon={LatitudeIcon} className='bg-green-500' />}
-            Right={<Txt skeleton={longitude}>{getLongitude(longitude || 0)}</Txt>}
+            Right={<Txt skeleton={longitude === undefined}>{getLongitude(longitude || 0)}</Txt>}
           />
           <SettOption
             title='Accuracy'
             Icon={<RoundedIcon Icon={DashboardSpeed02Icon} className='bg-rose-500' />}
-            Right={<Txt skeleton={accuracy}>{accuracy?.toFixed(0)} m</Txt>}
+            Right={<Txt skeleton={accuracy === undefined}>{accuracy?.toFixed(0)} m</Txt>}
           />
           <SettOption
             title='Altitude'
             Icon={<RoundedIcon Icon={EarthIcon} className='bg-blue-500' />}
             Right={
-              <Txt skeleton={altitude}>
+              <Txt skeleton={altitude === undefined}>
                 {altitude?.toFixed(0)} m ± {altitudeAccuracy?.toFixed(0)} m
               </Txt>
             }
@@ -118,12 +121,12 @@ function LocationDetails({ data }: { data: GeoPosition | undefined }) {
           <SettOption
             title='Speed'
             Icon={<RoundedIcon Icon={Rocket01Icon} className='bg-orange-500' />}
-            Right={<Txt skeleton={speed}>{speed?.toFixed(0)} m/s</Txt>}
+            Right={<Txt skeleton={speed === undefined}>{speed?.toFixed(0)} m/s</Txt>}
           />
           <SettOption
             title='Timestamp'
             Icon={<RoundedIcon Icon={Timer02Icon} className='bg-accent' />}
-            Right={<Txt skeleton={timestamp}>{new Date(timestamp || 0).toLocaleString()}</Txt>}
+            Right={<Txt skeleton={timestamp === undefined}>{new Date(timestamp || 0).toLocaleString()}</Txt>}
           />
         </SettGroup>
       </Gap12>
