@@ -9,26 +9,26 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { RouteProp } from '@react-navigation/native'
-import { coordinateNotesStore, LocationNote } from '@screens/CoordinateNotes/coordinateNotesStore'
+import { coordinateNotesStore, type LocationNote } from '@screens/CoordinateNotes/locationNotesStore'
 import type { StackNav } from '@utils/types'
 import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, View } from 'react-native'
 import LocationDetails from './LocationDetails'
 
 type ParamList = {
-  CoordinateNote: CoordinateNoteParamList
+  LocationNote: LocationNoteParamList
 }
 
-export type CoordinateNoteParamList = {
+export type LocationNoteParamList = {
   data: LocationNote
 }
 
-type CoordinateNoteProps = {
-  route: RouteProp<ParamList, 'CoordinateNote'>
+type LocationNoteProps = {
+  route: RouteProp<ParamList, 'LocationNote'>
   navigation: StackNav
 }
 
-export default function CoordinateNote({ navigation, route }: CoordinateNoteProps) {
+export default function LocationNote({ navigation, route }: LocationNoteProps) {
   const alert = popupStore((store) => store.alert)
   const data = route.params.data
   const [name, setName] = useState<string>(data.title || '')
@@ -108,7 +108,7 @@ export default function CoordinateNote({ navigation, route }: CoordinateNoteProp
           </SettGroup>
           <LocationDetails data={data.location} />
           <SettText>
-            Deleting this note will remove it from the list of coordinate notes. This action cannot be undone.
+            Deleting this note will remove it from the list of location notes.
           </SettText>
           <View className='mt-5 px-5'>
             <Btn title={'Delete Note'} className='bg-red-500' onPress={handleRemove} />

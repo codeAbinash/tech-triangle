@@ -107,11 +107,11 @@ function Shortcuts({ navigation }: { navigation: StackNav }) {
       <Bold className='my-2 px-5 text-base text-gray-800 dark:text-gray-300'>Shortcuts</Bold>
       <View className='w-full flex-row flex-wrap' style={{ gap: 12, paddingHorizontal: 18 }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('CoordinateNotes')}
+          onPress={() => navigation.navigate('LocationNotes')}
           style={[hw, styles.shadow, styles.center]}
           className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
         >
-          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 1</Medium>
+          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Location Notes</Medium>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('Test')}

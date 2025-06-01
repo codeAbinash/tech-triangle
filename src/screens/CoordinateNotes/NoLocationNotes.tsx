@@ -3,7 +3,7 @@ import { Lottie } from '@components/Lottie'
 import { W } from '@utils/dimensions'
 import { Regular } from '@utils/fonts'
 import { View } from 'react-native'
-import { LocationNote } from './coordinateNotesStore'
+import { LocationNote } from './locationNotesStore'
 
 export default function CoordinateNotes({ notes }: { notes: LocationNote[] }) {
   if (notes.length > 0) return null

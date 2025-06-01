@@ -6,7 +6,7 @@ import RoundedIcon from '@components/RoundedIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettWrapper from '@components/Settings/SettWrapper'
-import { coordinateNotesStore } from '@screens/CoordinateNotes/coordinateNotesStore'
+import { coordinateNotesStore } from '@screens/CoordinateNotes/locationNotesStore'
 import { fetchLocation } from '@screens/CoordinateNotes/lib'
 import { useQuery } from '@tanstack/react-query'
 import { NavProp } from '@utils/types'
@@ -15,7 +15,7 @@ import { BackHandler, View } from 'react-native'
 import { GeoPosition } from 'react-native-geolocation-service'
 import LocationDetails from './LocationDetails'
 
-export default function NewCoordinateNotes({ navigation }: NavProp) {
+export default function NewLocationNote({ navigation }: NavProp) {
   const [name, setName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const updateNote = coordinateNotesStore((state) => state.updateNote)

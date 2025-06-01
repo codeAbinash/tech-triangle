@@ -7,8 +7,9 @@ import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
-import CoordinateNotes from '@screens/CoordinateNotes/CoordinateNotes'
-import NewCoordinateNotes from '@screens/CoordinateNotes/NewCoordinateNotes'
+import { LocationNoteParamList } from '@screens/CoordinateNotes/LocationNote'
+import LocationNotes from '@screens/CoordinateNotes/LocationNotes'
+import LocationNote from '@screens/CoordinateNotes/LocationNote'
 import LocationTags from '@screens/CoordinateNotes/LocationTags'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
@@ -61,7 +62,7 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
-import CoordinateNote, { CoordinateNoteParamList } from '@screens/CoordinateNotes/CoordinateNote'
+import NewLocationNote from '@screens/CoordinateNotes/NewLocationNotes'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -196,17 +197,19 @@ function Navigation() {
         <Stack.Screen name='SJF' component={SJF} options={GestureEnabled} />
         <Stack.Screen name='Chart' component={Chart} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='Onboarding' component={Onboarding} options={NO_ANIMATION} />
-        <Stack.Screen name='CoordinateNotes' component={CoordinateNotes} options={GestureEnabled} />
-        <Stack.Screen name='NewCoordinateNotes' component={NewCoordinateNotes} options={GestureEnabled} />
+        <Stack.Screen name='LocationNotes' component={LocationNotes} options={GestureEnabled} />
+        <Stack.Screen name='NewLocationNote' component={NewLocationNote} options={GestureEnabled} />
         <Stack.Screen name='LocationTags' component={LocationTags} options={IOS_BOTTOM_STYLE} />
-        <Stack.Screen name='CoordinateNote' component={CoordinateNote} options={GestureEnabled} />
+        <Stack.Screen name='LocationNote' component={LocationNote} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )
 }
 
 export type RootStackParamList = {
-  CoordinateNote: CoordinateNoteParamList
+  NewLocationNote: undefined
+  LocationNote: LocationNoteParamList
+  LocationNotes: undefined
   LocationTags: undefined
   Home: undefined
   Location: undefined
@@ -271,8 +274,6 @@ export type RootStackParamList = {
   Chart: ChartParamList
   Onboarding: undefined
   Skia: undefined
-  CoordinateNotes: undefined
-  NewCoordinateNotes: undefined
 }
 
 const FabButton = () => {
