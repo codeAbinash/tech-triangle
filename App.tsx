@@ -62,7 +62,7 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
-import NewLocationNote from '@screens/LocationNotes/NewLocationNotes'
+import NewLocationNote from '@screens/LocationNotes/NewLocationNote'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
