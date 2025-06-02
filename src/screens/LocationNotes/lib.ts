@@ -1,3 +1,4 @@
+import { getLatitude, getLongitude } from '@utils/utils'
 import { PermissionsAndroid, Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
@@ -22,6 +23,19 @@ export const fetchLocation = async (): Promise<Geolocation.GeoPosition> => {
   })
 }
 
+export const watchLocation = async (
+  onSuccess: (position: Geolocation.GeoPosition) => void,
+  onError: (error: LocationError) => void,
+  options: Geolocation.GeoWatchOptions = {},
+): Promise<number> => {
+  const hasPermission = await requestPermissions()
+  if (!hasPermission) {
+    onError({ code: 1, message: 'Location permission not granted' })
+    return -1
+  }
+  return Geolocation.watchPosition(onSuccess, onError, options)
+}
+
 export const requestPermissions = async (): Promise<boolean> => {
   try {
     if (Platform.OS === 'ios') {
@@ -43,4 +57,10 @@ export const requestPermissions = async (): Promise<boolean> => {
     console.error(err)
     return false
   }
+}
+
+export function shareMessage(latitude: number, longitude: number, timestamp?: number) {
+  const coords = `${getLatitude(latitude)}, ${getLongitude(longitude)}`
+
+  return `📍 I've marked this location ${coords} and want to share it with you!\n\nView on Google Maps: https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
 }

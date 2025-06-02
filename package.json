@@ -6,6 +6,7 @@
     "android": "react-native run-android  --active-arch-only",
     "ios": "react-native run-ios",
     "lint": "biome lint",
+    "eslint": "eslint . --fix",
     "format": "biome format --write",
     "dev": "react-native start",
     "test": "jest",

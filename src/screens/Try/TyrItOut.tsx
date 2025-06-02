@@ -60,7 +60,7 @@ const tools: Group[] = [
       { title: 'Your Age', Icon: Calendar03SolidIcon, to: 'YourAge', className: 'bg-rose-500' },
       { title: 'Random Color', Icon: PaintBoardSolidIcon, to: 'RandomColor', className: 'bg-orange-500' },
       { title: 'Gradient Colors', Icon: ColorsSolidIcon, className: 'bg-green-500' },
-      { title: 'Location Speed Meter', Icon: Rocket01Icon, className: 'bg-yellow-500' },
+      { title: 'Location Speed Meter', Icon: Rocket01Icon, className: 'bg-yellow-500', to: 'LocationSpeed' },
       { title: 'Location Notes', Icon: MapsLocation02SolidIcon, className: 'bg-accent', to: 'LocationNotes' },
       { title: 'Random Password', Icon: LockPasswordSolidIcon, className: 'bg-slate-500', to: 'RandomPassword' },
     ],

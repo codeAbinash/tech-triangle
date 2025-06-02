@@ -63,6 +63,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
 import NewLocationNote from '@screens/LocationNotes/NewLocationNote'
+import LocationSpeed from '@screens/LocationSpeed/LocationSpeed'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -201,12 +202,14 @@ function Navigation() {
         <Stack.Screen name='NewLocationNote' component={NewLocationNote} options={GestureEnabled} />
         <Stack.Screen name='LocationTags' component={LocationTags} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='LocationNote' component={LocationNote} options={GestureEnabled} />
+        <Stack.Screen name='LocationSpeed' component={LocationSpeed} options={GestureEnabled} />
       </Stack.Navigator>
     </>
   )
 }
 
 export type RootStackParamList = {
+  LocationSpeed: undefined
   NewLocationNote: undefined
   LocationNote: LocationNoteParamList
   LocationNotes: undefined
