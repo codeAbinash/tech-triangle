@@ -1,5 +1,5 @@
 import { Home01SolidIcon, InformationCircleSolidIcon, Location01Icon } from '@assets/icons/icons'
-import { BtnTransparent } from '@components/Button'
+import Btn, { BtnTransparent } from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundedIcon from '@components/RoundedIcon'
@@ -9,12 +9,13 @@ import SettWrapper from '@components/Settings/SettWrapper'
 import { fetchLocation } from '@screens/LocationNotes/lib'
 import { locationNotesStore } from '@screens/LocationNotes/locationNotesStore'
 import { useQuery } from '@tanstack/react-query'
+import { NavProp } from '@utils/types'
 import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, View } from 'react-native'
 import { GeoPosition } from 'react-native-geolocation-service'
 import LocationDetails from './LocationDetails'
 
-export default function NewLocationNote() {
+export default function NewLocationNote({ navigation }: NavProp) {
   const [name, setName] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const updateNote = locationNotesStore((state) => state.updateNote)
@@ -45,6 +46,11 @@ export default function NewLocationNote() {
     return false
   }, [handleSave])
 
+  function saveAndGoBack() {
+    handleSave()
+    navigation.goBack()
+  }
+
   useEffect(() => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', onBackPress)
     return () => backHandler.remove()
@@ -55,8 +61,10 @@ export default function NewLocationNote() {
     return () => clearTimeout(timer)
   }, [handleSave])
 
+  const isDisabled = !name || name.trim().length === 0 || !data
+
   return (
-    <SettWrapper className='flex-1' title={name || 'New Location Note'}>
+    <SettWrapper className='flex-1' title={name || 'New Location Note'} onBackPress={saveAndGoBack}>
       <Gap12 className='mt-3'>
         <SettGroup title='Location Name'>
           <Input
@@ -68,7 +76,7 @@ export default function NewLocationNote() {
         </SettGroup>
         <SettGroup title='Description'>
           <Input
-            placeholder='This is a input field with multiple lines. You can type as much as you want.'
+            placeholder='Describe this location...'
             multiline
             numberOfLines={10}
             value={description}
@@ -85,12 +93,13 @@ export default function NewLocationNote() {
           />
         </SettGroup>
         <LocationDetails data={data} />
-        <View className='px-5'>
+        <View className='gap-8 px-5'>
           <BtnTransparent
             title={isFetching ? 'Fetching...' : 'Refetch Location'}
             onPress={() => refetch()}
             disabled={isFetching}
           />
+          <Btn title='Save This Location' onPress={saveAndGoBack} disabled={isDisabled} />
         </View>
       </Gap12>
     </SettWrapper>

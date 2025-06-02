@@ -42,7 +42,7 @@ export default function LocationSpeed() {
   let s = speed < 10 ? speed.toFixed(1) : speed.toFixed(0)
 
   return (
-    <SettWrapper title='Location Speed'>
+    <SettWrapper title='Location Speed Meter'>
       <View className='py-20 pb-16'>
         <Bold className='text pl-12 text-center' style={{ fontSize: 100, lineHeight: 100 }}>
           {s}

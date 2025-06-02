@@ -88,7 +88,7 @@ export default function LocationNote({ navigation, route }: LocationNoteProps) {
           </SettGroup>
           <SettGroup title='Description'>
             <Input
-              placeholder='This is a input field with multiple lines. You can type as much as you want.'
+              placeholder='Describe this location...'
               multiline
               numberOfLines={10}
               value={description}

@@ -11,14 +11,15 @@ import { ScrollViewProps, useColorScheme, View } from 'react-native'
 type SettWrapperProps = ScrollViewProps & {
   Header?: React.ReactNode
   title?: string
+  onBackPress?: () => void
 }
-export default function SettWrapper({ Header, title, children, ...rest }: SettWrapperProps) {
+export default function SettWrapper({ Header, title, children, onBackPress, ...rest }: SettWrapperProps) {
   const navigation = useNavigation<StackNav>()
   const scheme = useColorScheme()
   return (
     <View className='bg flex-1'>
       <AutoStatusBar scheme={scheme} />
-      {Header ? Header : <BackHeader title={title || 'Test Title'} navigation={navigation} />}
+      {Header ? Header : <BackHeader title={title || 'Test Title'} navigation={navigation} onBackPress={onBackPress} />}
       <KeyboardAvoid
         contentContainerStyle={{ paddingBottom: 20 }}
         showsHorizontalScrollIndicator={false}
