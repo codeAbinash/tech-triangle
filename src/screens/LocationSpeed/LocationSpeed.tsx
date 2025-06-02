@@ -1,12 +1,10 @@
 import SettWrapper from '@components/Settings/SettWrapper'
 import { watchLocation } from '@screens/LocationNotes/lib'
 import LocationDetails from '@screens/LocationNotes/LocationDetails'
-import { Bold, MEDIUM, SemiBold } from '@utils/fonts'
-import { layout } from '@utils/utils'
+import { Bold, Medium, SemiBold } from '@utils/fonts'
 import { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
-import Animated from 'react-native-reanimated'
 
 export default function LocationSpeed() {
   const [pos, setPos] = useState<Geolocation.GeoPosition | null>(null)
@@ -44,14 +42,10 @@ export default function LocationSpeed() {
   return (
     <SettWrapper title='Location Speed Meter'>
       <View className='py-20 pb-16'>
-        <Animated.Text
-          className='text pl-14 text-center'
-          style={[{ fontSize: 130, lineHeight: 130 }, MEDIUM]}
-          layout={layout}
-        >
+        <Medium className='text pl-12 text-center' style={[{ fontSize: 130, lineHeight: 130 }]}>
           {s}
           <Bold style={{ fontSize: 25 }}>km/h</Bold>
-        </Animated.Text>
+        </Medium>
         <SemiBold className='text text-center text-xl'>Your Speed</SemiBold>
       </View>
       <LocationDetails data={pos} />
