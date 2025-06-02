@@ -3,8 +3,8 @@ export const ANIM_DUR = 150
 export const SCREEN_TRANSITION = 300
 export const WEATHER_CACHE_TIME = 1000 * 60 * 10 // 10 minutes
 
-export const APP_VERSION = '1.5.0'
-export const APP_VERSION_CODE = 14
+export const APP_VERSION = '1.5.1'
+export const APP_VERSION_CODE = 15
 export const ASK_QN_URL = 'https://t.me/+u6qGi8wPRmAxOGZl'
 export const APP_TG_CHANNEL = 'tg://resolve?domain=tech_triangle'
 export function ask_a_question() {
