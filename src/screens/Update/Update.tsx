@@ -109,12 +109,14 @@ export function UpdateAvailableUI() {
       <Regular className='mt-5 text-white opacity-80' style={{ fontSize: 11 }}>
         Download size may vary. Usually around 15MB.
       </Regular>
-      <View className='mt-5' style={{ gap: 5 }}>
+      <View className='mt-5' style={{ gap: 10 }}>
         {features.map((item, index) => (
-          <Regular key={index} className='text-white opacity-80' style={{ fontSize: 11 }}>
-            • {'  '}
-            {item}
-          </Regular>
+          <View key={index} className='flex-row items-center gap-4'>
+            <View className='size-1.5 rounded-full bg-white opacity-70' />
+            <Regular className='pr-3 text-white opacity-80' style={{ fontSize: 11, lineHeight: 15 }}>
+              {item}
+            </Regular>
+          </View>
         ))}
       </View>
     </View>
