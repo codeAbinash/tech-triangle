@@ -26,14 +26,22 @@ export const fetchLocation = async (): Promise<Geolocation.GeoPosition> => {
 export const watchLocation = async (
   onSuccess: (position: Geolocation.GeoPosition) => void,
   onError: (error: LocationError) => void,
-  options: Geolocation.GeoWatchOptions = {},
 ): Promise<number> => {
   const hasPermission = await requestPermissions()
   if (!hasPermission) {
     onError({ code: 1, message: 'Location permission not granted' })
     return -1
   }
-  return Geolocation.watchPosition(onSuccess, onError, options)
+  return Geolocation.watchPosition(onSuccess, onError, {
+    accuracy: {
+      android: 'high',
+      ios: 'best',
+    },
+    enableHighAccuracy: true,
+    distanceFilter: 0, // Update on every change
+    interval: 1000,
+    fastestInterval: 1000,
+  })
 }
 
 export const requestPermissions = async (): Promise<boolean> => {
