@@ -1,3 +1,4 @@
+import { hc } from 'hono/client';
 declare const client: {
     api: {
         version: import("hono/client").ClientRequest<{
@@ -365,5 +366,5 @@ declare const client: {
     }>;
 };
 export type Client = typeof client;
-export declare const hcWithType: (baseUrl: string, options?: import("hono").ClientRequestOptions | undefined) => Client;
+export declare const hcWithType: (...args: Parameters<typeof hc>) => Client;
 export default hcWithType;
