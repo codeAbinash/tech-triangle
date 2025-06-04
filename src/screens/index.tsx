@@ -1,4 +1,5 @@
 import { PaddingBottom } from '@components/SafePadding'
+import { HugeIconProps } from '@hugeicons/constants'
 import Home01Icon from '@hugeicons/Home01Icon'
 import Saturn01Icon from '@hugeicons/Saturn01Icon'
 import TestTube01Icon from '@hugeicons/TestTube01Icon'
@@ -140,15 +141,15 @@ type TabIconT = {
   focused: boolean
   color: string
   size: number
-  focusedIcon: React.ComponentType<any>
-  defaultIcon: React.ComponentType<any>
+  focusedIcon: React.ComponentType<HugeIconProps>
+  defaultIcon: React.ComponentType<HugeIconProps>
 }
 
 function TabIcon({ focused, color, size, focusedIcon: FocusedIcon, defaultIcon: DefaultIcon }: TabIconT) {
   return focused ? (
-    <FocusedIcon height={size} width={size} color={color} />
+    <FocusedIcon size={size} color={color} variant='solid-rounded' />
   ) : (
-    <DefaultIcon height={size} width={size} color={color} />
+    <DefaultIcon size={size} color={color} strokeWidth={1.7} />
   )
 }
 
