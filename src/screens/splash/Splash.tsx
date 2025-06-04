@@ -1,5 +1,7 @@
 import authStore from '@/zustand/authStore'
 import { navigationStore } from '@/zustand/navigationStore'
+import { AppIconRound } from '@assets/icons/icons'
+import { AutoStatusBar } from '@components/StatusBar'
 import S from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { useEffect } from 'react'
@@ -23,5 +25,10 @@ export default function Splash({ navigation }: NavProp) {
     else navigation.replace('Home')
   }, [navigation, token])
 
-  return <View className='flex-1 items-center justify-center'></View>
+  return (
+    <View className='bg flex-1 items-center justify-center'>
+      <AutoStatusBar scheme='dark' />
+      <AppIconRound height={150} width={150} />
+    </View>
+  )
 }
