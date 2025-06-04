@@ -1,13 +1,15 @@
-import { MapsLocation02SolidIcon, PlusSignSolidIcon } from '@assets/icons/icons'
+import { PlusSignSolidIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import { Gap12 } from '@components/Gap'
 import Press from '@components/Press'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import Search from '@components/Search'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+// import MapsLocation02Icon from '@assets/icons/hugeicons/MapsLocation02Icon'
+import MapsLocation02Icon from '@hugeicons/MapsLocation02Icon'
 import { useNavigation } from '@react-navigation/native'
 import fabStyles from '@screens/Home/styles/fabStyles'
 import { LocationNote, locationNotesStore } from '@screens/LocationNotes/locationNotesStore'
@@ -89,7 +91,7 @@ function NotesList({ notes, search }: { notes: LocationNote[]; search?: string }
             >
               <SettOption
                 title={item.title}
-                Icon={<RoundedIcon Icon={MapsLocation02SolidIcon} />}
+                Icon={<RoundIcon Icon={MapsLocation02Icon} />}
                 onPress={() => navigation.navigate('LocationNote', { data: item })}
                 numberOfLines={1}
                 arrow

@@ -1,12 +1,13 @@
 import popupStore from '@/zustand/popupStore'
-import { InformationCircleSolidIcon, MapsLocation02SolidIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import InformationCircleIcon from '@hugeicons/InformationCircleIcon'
+import MapsLocation02Icon from '@hugeicons/MapsLocation02Icon'
 import { RouteProp } from '@react-navigation/native'
 import { locationNotesStore, type LocationNote } from '@screens/LocationNotes/locationNotesStore'
 import type { StackNav } from '@utils/types'
@@ -80,7 +81,7 @@ export default function LocationNote({ navigation, route }: LocationNoteProps) {
         <Gap12 className='mt-3'>
           <SettGroup title='Location Name'>
             <Input
-              Icon={<RoundedIcon Icon={MapsLocation02SolidIcon} />}
+              Icon={<RoundIcon Icon={MapsLocation02Icon} />}
               placeholder='Enter a name for this location'
               value={name}
               onChangeText={setName}
@@ -93,14 +94,14 @@ export default function LocationNote({ navigation, route }: LocationNoteProps) {
               numberOfLines={10}
               value={description}
               onChangeText={setDescription}
-              Icon={<RoundedIcon Icon={InformationCircleSolidIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={InformationCircleIcon} className='bg-slate-500' />}
             />
           </SettGroup>
           {/* <SettGroup title='Tag'>
             <SettOption
               title=''
               placeholder='Add a tag'
-              Icon={<RoundedIcon Icon={Home01SolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={Home01SolidIcon} className='bg-rose-500' />}
               onPress={() => navigation.navigate('LocationTags')}
               arrow
             />

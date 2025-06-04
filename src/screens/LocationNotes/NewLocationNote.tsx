@@ -1,11 +1,13 @@
-import { Home01SolidIcon, InformationCircleSolidIcon, Location01Icon } from '@assets/icons/icons'
 import Btn, { BtnTransparent } from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettWrapper from '@components/Settings/SettWrapper'
+import Home01Icon from '@hugeicons/Home01Icon'
+import InformationCircleIcon from '@hugeicons/InformationCircleIcon'
+import Location01Icon from '@hugeicons/Location01Icon'
 import { fetchLocation } from '@screens/LocationNotes/lib'
 import { locationNotesStore } from '@screens/LocationNotes/locationNotesStore'
 import { useQuery } from '@tanstack/react-query'
@@ -68,7 +70,7 @@ export default function NewLocationNote({ navigation }: NavProp) {
       <Gap12 className='mt-3'>
         <SettGroup title='Location Name'>
           <Input
-            Icon={<RoundedIcon Icon={Location01Icon} />}
+            Icon={<RoundIcon Icon={Location01Icon} />}
             placeholder='Enter a name for this location'
             value={name}
             onChangeText={setName}
@@ -81,14 +83,14 @@ export default function NewLocationNote({ navigation }: NavProp) {
             numberOfLines={10}
             value={description}
             onChangeText={setDescription}
-            Icon={<RoundedIcon Icon={InformationCircleSolidIcon} className='bg-slate-500' />}
+            Icon={<RoundIcon Icon={InformationCircleIcon} className='bg-slate-500' />}
           />
         </SettGroup>
         <SettGroup title='Tag'>
           <SettOption
             title=''
             placeholder='Add a tag'
-            Icon={<RoundedIcon Icon={Home01SolidIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={Home01Icon} className='bg-rose-500' />}
             arrow
           />
         </SettGroup>

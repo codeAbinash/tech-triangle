@@ -1,3 +1,5 @@
+import { StyleProp, ViewStyle } from 'react-native'
+
 export const variants = [
   'stroke-rounded' as const,
   'stroke-standard' as const,
@@ -18,7 +20,7 @@ export type IconProps = {
   color?: string
   strokeWidth?: number
   className?: string
-  fill?: string
+  style?: StyleProp<ViewStyle>
 }
 
 export const defaultStrokeWidth = 1.5
