@@ -1,4 +1,4 @@
-import { FastWindSolidIcon } from '@assets/icons/icons'
+import FastWindIcon from '@hugeicons/FastWindIcon'
 import type { Weather } from '@screens/Weather/types'
 import { boxSize } from '@screens/Weather/utils'
 import { W } from '@utils/dimensions'
@@ -10,7 +10,7 @@ import WeatherLabel from './WeatherLabel'
 export default function Wind({ theme, w }: { theme: Theme; w: Weather }) {
   return (
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
-      <WeatherLabel Icon={FastWindSolidIcon} color={theme.color} label='Wind' />
+      <WeatherLabel Icon={FastWindIcon} color={theme.color} label='Wind' />
       <View className='flex-1 items-center justify-center px-5 pb-4 pt-0'>
         <View className='items-center justify-center' style={StyleSheet.absoluteFill}>
           <View

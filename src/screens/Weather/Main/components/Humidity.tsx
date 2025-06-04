@@ -1,5 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { HumiditySolidIcon } from '@assets/icons/icons'
+import HumidityIcon from '@hugeicons/HumidityIcon'
 import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
@@ -17,7 +17,7 @@ export default function Humidity({ humidity, theme, dew_point }: HumidityProps) 
   const unit = weatherStore((state) => state.temperatureUnit)
   return (
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
-      <WeatherLabel Icon={HumiditySolidIcon} color={theme.color} label='Humidity' />
+      <WeatherLabel Icon={HumidityIcon} color={theme.color} label='Humidity' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <Medium style={[{ fontSize: 35 }, theme.color]}>{humidity}%</Medium>
         <View className='w-full rounded-full bg-white/10'>

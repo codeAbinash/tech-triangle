@@ -2,36 +2,35 @@ import { devOptStore } from '@/zustand/devOptStore'
 import popupStore from '@/zustand/popupStore'
 import profileStore from '@/zustand/profileStore'
 import versionStore from '@/zustand/versionStore'
-import {
-  BrushSolidIcon,
-  BubbleChatSolidIcon,
-  Calendar03SolidIcon,
-  CleanSolidIcon,
-  CodeSolidIcon,
-  ComputerSolidIcon,
-  Database02SolidIcon,
-  DeviceAccessSolidIcon,
-  EditTableSolidIcon,
-  FolderFileStorageSolidIcon,
-  InformationCircleSolidIcon,
-  Logout02SolidIcon,
-  PolicySolidIcon,
-  ShieldUserSolidIcon,
-  SquareArrowUp02SolidIcon,
-  SquareLock02SolidIcon,
-  TelegramSolidIcon,
-  UserSolidIcon,
-  Wallet02SolidIcon,
-} from '@assets/icons/icons'
+
 import { Gap, Gap12, Gap20 } from '@components/Gap'
+import RoundIcon from '@components/RoundIcon'
 import RoundNotification from '@components/RoundNotification'
-import RoundedIcon from '@components/RoundedIcon'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import { Txt, TxtAcc } from '@components/Text'
+import BrushIcon from '@hugeicons/BrushIcon'
+import BubbleChatIcon from '@hugeicons/BubbleChatIcon'
+import Calendar03Icon from '@hugeicons/Calendar03Icon'
+import CleanIcon from '@hugeicons/CleanIcon'
+import CodeIcon from '@hugeicons/CodeIcon'
+import ComputerIcon from '@hugeicons/ComputerIcon'
+import Database02Icon from '@hugeicons/Database02Icon'
+import DeviceAccessIcon from '@hugeicons/DeviceAccessIcon'
+import EditTableIcon from '@hugeicons/EditTableIcon'
+import FolderFileStorageIcon from '@hugeicons/FolderFileStorageIcon'
+import InformationCircleIcon from '@hugeicons/InformationCircleIcon'
+import Logout02Icon from '@hugeicons/Logout02Icon'
+import PolicyIcon from '@hugeicons/PolicyIcon'
+import ShieldUserIcon from '@hugeicons/ShieldUserIcon'
+import SquareArrowUp02Icon from '@hugeicons/SquareArrowUp02Icon'
+import SquareLock02Icon from '@hugeicons/SquareLock02Icon'
+import TelegramIcon from '@hugeicons/TelegramIcon'
+import UserIcon from '@hugeicons/UserIcon'
+import Wallet02Icon from '@hugeicons/Wallet02Icon'
 import { useIsFocused } from '@react-navigation/native'
 import { handleLogout, logout } from '@screens/auth/utils'
 import { useMutation } from '@tanstack/react-query'
@@ -122,28 +121,24 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='General'>
               <SettOption
                 title='Your Profile'
-                Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={UserIcon} className='bg-green-500' />}
                 arrow
                 onPress={() => navigation.navigate('YourProfile')}
               />
-              <SettOption title='Computer Science' Icon={<RoundedIcon Icon={ComputerSolidIcon} />} arrow />
+              <SettOption title='Computer Science' Icon={<RoundIcon Icon={ComputerIcon} />} arrow />
               {/* <SettOption
                 title='Weather Settings'
-                // Icon={<SunCloudAngledRainZap01SolidIcon {...ic} />}
-                Icon={<RoundedIcon Icon={SunCloudAngledRainZap01SolidIcon} className='bg-blue-500' />}
+                // Icon={<SunCloudAngledRainZap01Icon {...ic} />}
+                Icon={<RoundIcon Icon={SunCloudAngledRainZap01Icon} className='bg-blue-500' />}
                 onPress={() => navigation.navigate('WeatherSettings')}
                 arrow
               /> */}
               <SettOption
                 title='Routine Management'
-                Icon={<RoundedIcon Icon={Calendar03SolidIcon} className='bg-red-500' />}
+                Icon={<RoundIcon Icon={Calendar03Icon} className='bg-red-500' />}
                 arrow
               />
-              <SettOption
-                title='My Wallet'
-                Icon={<RoundedIcon Icon={Wallet02SolidIcon} className='bg-amber-500' />}
-                arrow
-              />
+              <SettOption title='My Wallet' Icon={<RoundIcon Icon={Wallet02Icon} className='bg-amber-500' />} arrow />
             </SettGroup>
           </Gap12>
           <AdminSettings navigation={navigation} />
@@ -151,14 +146,14 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='Devices'>
               <SettOption
                 title='Devices'
-                Icon={<RoundedIcon Icon={DeviceAccessSolidIcon} />}
+                Icon={<RoundIcon Icon={DeviceAccessIcon} />}
                 arrow
                 onPressOut={() => navigation.navigate('Devices')}
               />
               <SettOption
                 arrow
                 title='Log Out'
-                Icon={<RoundedIcon Icon={Logout02SolidIcon} className='bg-red-500' />}
+                Icon={<RoundIcon Icon={Logout02Icon} className='bg-red-500' />}
                 onPress={() => handleLogout(logoutMutation)}
               />
             </SettGroup>
@@ -167,8 +162,8 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='Password and Security'>
               <SettOption
                 title='App Lock'
-                // Icon={<SquareLock02SolidIcon {...ic} />}
-                Icon={<RoundedIcon Icon={SquareLock02SolidIcon} className='bg-green-500' />}
+                // Icon={<SquareLock02Icon {...ic} />}
+                Icon={<RoundIcon Icon={SquareLock02Icon} className='bg-green-500' />}
                 arrow
                 Right={<TxtAcc>Off</TxtAcc>}
                 onPress={() => navigation.navigate('AppLock')}
@@ -180,13 +175,13 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='For Developers'>
               <SettOption
                 title='Developer options'
-                Icon={<RoundedIcon Icon={CodeSolidIcon} className='bg-accent' />}
+                Icon={<RoundIcon Icon={CodeIcon} className='bg-accent' />}
                 onPress={() => navigation.navigate('DeveloperOptions')}
                 arrow
               />
               <SettOption
                 title='UI & Components'
-                Icon={<RoundedIcon Icon={BrushSolidIcon} className='bg-rose-500' />}
+                Icon={<RoundIcon Icon={BrushIcon} className='bg-rose-500' />}
                 onPress={() => navigation.navigate('UiAndComponents')}
                 arrow
               />
@@ -198,28 +193,28 @@ export default function Settings({ navigation }: NavProp) {
           <SettGroup title='Storage'>
             <SettOption
               title='Backup and Restore'
-              Icon={<RoundedIcon Icon={FolderFileStorageSolidIcon} className='bg-yellow-500' />}
+              Icon={<RoundIcon Icon={FolderFileStorageIcon} className='bg-yellow-500' />}
               arrow
               onPress={() => navigation.navigate('BackupAndRestore')}
             />
             {dev && (
               <SettOption
                 title='MMKV data editor'
-                Icon={<RoundedIcon Icon={EditTableSolidIcon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={EditTableIcon} className='bg-green-500' />}
                 arrow
                 onPress={() => navigation.navigate('MMKVDataList')}
               />
             )}
             <SettOption
               title='Manage Storage'
-              Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={Database02Icon} className='bg-slate-500' />}
               Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
               onPress={() => navigation.navigate('ManageStorage')}
               arrow
             />
             <SettOption
               title='Clear cache'
-              Icon={<RoundedIcon Icon={CleanSolidIcon} className='bg-amber-500' />}
+              Icon={<RoundIcon Icon={CleanIcon} className='bg-amber-500' />}
               Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
               onPress={clearCache}
               arrow
@@ -229,29 +224,29 @@ export default function Settings({ navigation }: NavProp) {
             <SettOption
               arrow
               title='Ask a question'
-              Icon={<RoundedIcon Icon={BubbleChatSolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={BubbleChatIcon} className='bg-rose-500' />}
               onPress={ask_a_question}
             />
             <SettOption
               arrow
               title='Join telegram channel'
-              Icon={<RoundedIcon Icon={TelegramSolidIcon} className='bg-sky-500' />}
+              Icon={<RoundIcon Icon={TelegramIcon} className='bg-sky-500' />}
               onPress={join_telegram_channel}
             />
             <SettOption
               arrow
               title='Privacy Policy'
-              Icon={<RoundedIcon Icon={ShieldUserSolidIcon} className='bg-green-500' />}
+              Icon={<RoundIcon Icon={ShieldUserIcon} className='bg-green-500' />}
             />
             <SettOption
               arrow
               title='Terms of Service'
-              Icon={<RoundedIcon Icon={PolicySolidIcon} className='bg-yellow-500' />}
+              Icon={<RoundIcon Icon={PolicyIcon} className='bg-yellow-500' />}
             />
             <SettOption
               arrow
               title='About'
-              Icon={<RoundedIcon Icon={InformationCircleSolidIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={InformationCircleIcon} className='bg-slate-500' />}
               onPress={() => navigation.navigate('About')}
             />
           </SettGroup>
@@ -280,7 +275,7 @@ function UpdateSettings({ navigation }: NavProp) {
           <SettGroup>
             <SettOption
               title='Version Ahead warning!'
-              Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />}
+              Icon={<RoundIcon Icon={SquareArrowUp02Icon} />}
               onPress={() => {
                 if (profile?.isAdmin) {
                   navigation.navigate('EditVersion')
@@ -303,7 +298,7 @@ function UpdateSettings({ navigation }: NavProp) {
         <SettGroup>
           <SettOption
             title={isNew ? 'Update available' : 'Check for updates'}
-            Icon={<RoundedIcon Icon={SquareArrowUp02SolidIcon} />}
+            Icon={<RoundIcon Icon={SquareArrowUp02Icon} />}
             arrow
             onPress={() => version && navigation.navigate('Update', { shouldGoBack: true })}
             Right={isNew ? <RoundNotification n={1} /> : <Txt>{`v${APP_VERSION}`}</Txt>}

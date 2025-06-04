@@ -1,4 +1,3 @@
-import { MapsLocation02SolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
@@ -8,6 +7,7 @@ import DashboardSpeed02Icon from '@hugeicons/DashboardSpeed02Icon'
 import EarthIcon from '@hugeicons/EarthIcon'
 import LatitudeIcon from '@hugeicons/LatitudeIcon'
 import LongitudeIcon from '@hugeicons/LongitudeIcon'
+import MapsLocation02Icon from '@hugeicons/MapsLocation02Icon'
 import Sent02Icon from '@hugeicons/Sent02Icon'
 import Timer02Icon from '@hugeicons/Timer02Icon'
 import { getLatitude, getLongitude, layout } from '@utils/utils'
@@ -63,7 +63,7 @@ export default function LocationDetails({ data }: { data: GeoPosition | undefine
             <SettGroup title='Actions'>
               <SettOption
                 title='View on Map'
-                Icon={<RoundIcon Icon={MapsLocation02SolidIcon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={MapsLocation02Icon} className='bg-green-500' />}
                 onPress={() =>
                   Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`)
                 }

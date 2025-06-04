@@ -1,30 +1,29 @@
-import {
-  ArtificialIntelligence04SolidIcon,
-  Calendar03SolidIcon,
-  ColorsSolidIcon,
-  ComputerSolidIcon,
-  Database02SolidIcon,
-  Image02SolidIcon,
-  ListSettingIcon,
-  LockPasswordSolidIcon,
-  MapsLocation02SolidIcon,
-  MathSolidIcon,
-  NeuralNetworkSolidIcon,
-  PaintBoardSolidIcon,
-  ReactIcon,
-  Rocket01Icon,
-  Setting07SolidIcon,
-  SoftwareLicenseSolidIcon,
-  TestTube01SolidIcon,
-} from '@assets/icons/icons'
 import { Gap12, Gap20 } from '@components/Gap'
 import KeyboardAvoid from '@components/KeyboardAvoid'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import { PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
+import ArtificialIntelligence04Icon from '@hugeicons/ArtificialIntelligence04Icon'
+import Calendar03Icon from '@hugeicons/Calendar03Icon'
+import ColorsIcon from '@hugeicons/ColorsIcon'
+import ComputerIcon from '@hugeicons/ComputerIcon'
+import { HugeIconProps } from '@hugeicons/constants'
+import Database02Icon from '@hugeicons/Database02Icon'
+import Image02Icon from '@hugeicons/Image02Icon'
+import ListSettingIcon from '@hugeicons/ListSettingIcon'
+import LockPasswordIcon from '@hugeicons/LockPasswordIcon'
+import MapsLocation02Icon from '@hugeicons/MapsLocation02Icon'
+import MathIcon from '@hugeicons/MathIcon'
+import NeuralNetworkIcon from '@hugeicons/NeuralNetworkIcon'
+import PaintBoardIcon from '@hugeicons/PaintBoardIcon'
+import ReactIcon from '@hugeicons/ReactIcon'
+import Rocket01Icon from '@hugeicons/Rocket01Icon'
+import Setting07Icon from '@hugeicons/Setting07Icon'
+import SoftwareLicenseIcon from '@hugeicons/SoftwareLicenseIcon'
+import TestTube01Icon from '@hugeicons/TestTube01Icon'
 import { Group } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
@@ -34,11 +33,10 @@ import type { RootStackParamList } from 'App'
 import React, { useMemo } from 'react'
 import { TouchableOpacity, View, useColorScheme } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
-import type { SvgProps } from 'react-native-svg'
 
 type Tool = {
   title: string
-  Icon: React.FC<SvgProps>
+  Icon: React.FC<HugeIconProps>
   to?: keyof RootStackParamList // Ensure 'to' is correctly typed
   arrow?: boolean
   className?: string
@@ -57,33 +55,33 @@ const tools: Group[] = [
     title: 'Tools',
     tools: [
       { title: 'RN Skia', Icon: ReactIcon, to: 'Skia', className: 'bg-blue-500' },
-      { title: 'Your Age', Icon: Calendar03SolidIcon, to: 'YourAge', className: 'bg-rose-500' },
-      { title: 'Random Color', Icon: PaintBoardSolidIcon, to: 'RandomColor', className: 'bg-orange-500' },
-      { title: 'Gradient Colors', Icon: ColorsSolidIcon, className: 'bg-green-500' },
+      { title: 'Your Age', Icon: Calendar03Icon, to: 'YourAge', className: 'bg-rose-500' },
+      { title: 'Random Color', Icon: PaintBoardIcon, to: 'RandomColor', className: 'bg-orange-500' },
+      { title: 'Gradient Colors', Icon: ColorsIcon, className: 'bg-green-500' },
       { title: 'Location Speed Meter', Icon: Rocket01Icon, className: 'bg-yellow-500', to: 'LocationSpeed' },
-      { title: 'Location Notes', Icon: MapsLocation02SolidIcon, className: 'bg-accent', to: 'LocationNotes' },
-      { title: 'Random Password', Icon: LockPasswordSolidIcon, className: 'bg-slate-500', to: 'RandomPassword' },
+      { title: 'Location Notes', Icon: MapsLocation02Icon, className: 'bg-accent', to: 'LocationNotes' },
+      { title: 'Random Password', Icon: LockPasswordIcon, className: 'bg-slate-500', to: 'RandomPassword' },
     ],
   },
   {
     title: 'Others',
     tools: [
-      // { title: 'Animations', Icon: Timer02SolidIcon, to: 'Animations', className: 'bg-red-500' },
-      { title: 'Test Screen', Icon: TestTube01SolidIcon, to: 'Test', className: 'bg-purple-500' },
+      // { title: 'Animations', Icon: Timer02Icon, to: 'Animations', className: 'bg-red-500' },
+      { title: 'Test Screen', Icon: TestTube01Icon, to: 'Test', className: 'bg-purple-500' },
     ],
     endText: 'Just for testing purposes. You can try them out and see how they work.',
   },
   {
     title: 'Computer Science',
     tools: [
-      { title: 'Operating System', Icon: SoftwareLicenseSolidIcon, className: 'bg-black' },
-      { title: 'Compiler Design', Icon: Setting07SolidIcon, className: 'bg-slate-500' },
-      { title: 'Computer Networks', Icon: NeuralNetworkSolidIcon, className: 'bg-green-500' },
-      { title: 'Artificial Intelligence', Icon: ArtificialIntelligence04SolidIcon, className: 'bg-rose-500' },
-      { title: 'Software Engineering', Icon: ComputerSolidIcon, className: 'bg-orange-500' },
-      { title: 'Database Management', Icon: Database02SolidIcon, className: 'bg-slate-500' },
-      { title: 'Image Processing', Icon: Image02SolidIcon, className: 'bg-yellow-500' },
-      { title: 'Numerical Methods', Icon: MathSolidIcon, className: 'bg-blue-500' },
+      { title: 'Operating System', Icon: SoftwareLicenseIcon, className: 'bg-black' },
+      { title: 'Compiler Design', Icon: Setting07Icon, className: 'bg-slate-500' },
+      { title: 'Computer Networks', Icon: NeuralNetworkIcon, className: 'bg-green-500' },
+      { title: 'Artificial Intelligence', Icon: ArtificialIntelligence04Icon, className: 'bg-rose-500' },
+      { title: 'Software Engineering', Icon: ComputerIcon, className: 'bg-orange-500' },
+      { title: 'Database Management', Icon: Database02Icon, className: 'bg-slate-500' },
+      { title: 'Image Processing', Icon: Image02Icon, className: 'bg-yellow-500' },
+      { title: 'Numerical Methods', Icon: MathIcon, className: 'bg-blue-500' },
     ],
     endText:
       'Some of these applications are in development and may not work as expected. You can try them out and see how they work.',
@@ -116,11 +114,7 @@ export default function TyrItOut({ navigation }: NavProp) {
             className='p-2.5 pb-3.5 pr-0.5 pt-2'
             onPress={() => navigation.navigate('Settings')}
           >
-            <ListSettingIcon
-              height={23}
-              width={23}
-              color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']}
-            />
+            <ListSettingIcon size={23} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
           </TouchableOpacity>
         </View>
         <Search placeholder='Search tools' value={search} onChangeText={setSearch} />
@@ -140,7 +134,7 @@ export default function TyrItOut({ navigation }: NavProp) {
                   >
                     <SettOption
                       title={tool.title}
-                      Icon={<RoundedIcon Icon={tool.Icon} className={tool.className} />}
+                      Icon={<RoundIcon Icon={tool.Icon} className={tool.className} />}
                       arrow={tool.arrow ?? true}
                       // Update onPress handlers to correctly navigate using the 'to' property
                       onPress={() => tool.to && navigation.navigate(tool.to as any)}

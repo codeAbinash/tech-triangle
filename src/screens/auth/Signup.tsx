@@ -1,24 +1,23 @@
 import { signupZodValidator, usernameStatusZodValidator } from '@/zod/auth'
 import popupStore from '@/zustand/popupStore'
-import {
-  Cancel01SolidIcon,
-  HelpCircleSolidIcon,
-  LockPasswordSolidIcon,
-  Login03SolidIcon,
-  Mail02SolidIcon,
-  StarSolidIcon,
-  TextFontSolidIcon,
-  Tick01Icon,
-} from '@assets/icons/icons'
+
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import KeyboardAvoid from '@components/KeyboardAvoid'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import { PaddingTop } from '@components/SafePadding'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
+import Cancel01Icon from '@hugeicons/Cancel01Icon'
+import HelpCircleIcon from '@hugeicons/HelpCircleIcon'
+import LockPasswordIcon from '@hugeicons/LockPasswordIcon'
+import Login03Icon from '@hugeicons/Login03Icon'
+import Mail02Icon from '@hugeicons/Mail02Icon'
+import StarIcon from '@hugeicons/StarIcon'
+import TextFontIcon from '@hugeicons/TextFontIcon'
+import Tick01Icon from '@hugeicons/Tick01Icon'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { Colors } from '@utils/colors'
@@ -114,7 +113,7 @@ export default function Signup({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Full Name'>
             <Input
-              Icon={<RoundedIcon Icon={TextFontSolidIcon} className='bg-blue-500' />}
+              Icon={<RoundIcon Icon={TextFontIcon} className='bg-blue-500' />}
               placeholder='Your Full Name'
               autoComplete='name'
               value={name}
@@ -123,7 +122,7 @@ export default function Signup({ navigation }: NavProp) {
           </SettGroup>
           <SettGroup title='Email'>
             <Input
-              Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={Mail02Icon} className='bg-rose-500' />}
               placeholder='Your Email'
               autoComplete='email'
               value={email}
@@ -133,7 +132,7 @@ export default function Signup({ navigation }: NavProp) {
           </SettGroup>
           <SettGroup title='Username'>
             <Input
-              Icon={<RoundedIcon Icon={StarSolidIcon} className='bg-amber-500' />}
+              Icon={<RoundIcon Icon={StarIcon} className='bg-amber-500' />}
               placeholder='Select a Username'
               value={username}
               autoComplete='off'
@@ -149,7 +148,7 @@ export default function Signup({ navigation }: NavProp) {
               placeholder='Enter Password'
               autoComplete='password'
               secureTextEntry={!isVisible}
-              Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-slate-500' />}
               Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
             />
           </SettGroup>
@@ -173,13 +172,13 @@ export default function Signup({ navigation }: NavProp) {
               navigation.replace('Login')
             }}
             arrow
-            Icon={<RoundedIcon Icon={Login03SolidIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={Login03Icon} className='bg-green-500' />}
           />
           <SettOption
             title='Forgot Password?'
             onPress={() => ToastAndroid.show('Relax and try to remember your password.', ToastAndroid.SHORT)}
             arrow
-            Icon={<RoundedIcon Icon={HelpCircleSolidIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={HelpCircleIcon} className='bg-rose-500' />}
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>
@@ -194,8 +193,8 @@ function UsernameStatus({ isAvail }: { isAvail: NameStatus }) {
   return (
     <>
       {isAvail === NameStatus.Checking && <ActivityIndicator size={23} color={Colors.accent} />}
-      {isAvail === NameStatus.Available && <Tick01Icon height={22} width={22} color={Colors.green[500]} />}
-      {isAvail === NameStatus.Unavailable && <Cancel01SolidIcon width={20} height={20} color={Colors.red[500]} />}
+      {isAvail === NameStatus.Available && <Tick01Icon size={22} color={Colors.green[500]} />}
+      {isAvail === NameStatus.Unavailable && <Cancel01Icon size={20} color={Colors.red[500]} />}
     </>
   )
 }

@@ -1,4 +1,5 @@
-import { PlusSignIcon, Setting07Icon } from '@assets/icons/icons'
+import PlusSignIcon from '@hugeicons/PlusSignIcon'
+import Setting07Icon from '@hugeicons/Setting07Icon'
 import { F, Medium } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
@@ -18,7 +19,7 @@ export default function Header({
         className='py-3 pr-3'
         onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: true })}
       >
-        <PlusSignIcon width={25} height={25} color={color.color} />
+        <PlusSignIcon size={25} color={color.color} />
       </TouchableOpacity>
       <View>
         {isPending && (
@@ -29,7 +30,7 @@ export default function Header({
         )}
       </View>
       <TouchableOpacity className='py-3 pl-3' onPress={() => navigation.navigate('WeatherSettings')}>
-        <Setting07Icon width={24} height={24} color={color.color} />
+        <Setting07Icon size={24} color={color.color} />
       </TouchableOpacity>
     </View>
   )

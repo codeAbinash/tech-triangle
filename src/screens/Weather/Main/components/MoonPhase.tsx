@@ -1,5 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { Moon02SolidIcon } from '@assets/icons/icons'
+import Moon02Icon from '@hugeicons/Moon02Icon'
 import { getMoonImageLink } from '@screens/Weather/api'
 import { boxFullSize, mapMoonPhaseToImage } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
@@ -21,7 +21,7 @@ export default function MoonPhase({ moonrise, moonset, phase, theme }: MoonRiseS
 
   return (
     <View className='rounded-3xl bg-black/10' style={boxFullSize}>
-      <WeatherLabel Icon={Moon02SolidIcon} color={theme.color} label={'Moon Phase'} />
+      <WeatherLabel Icon={Moon02Icon} color={theme.color} label={'Moon Phase'} />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <View className='flex-row justify-between'>
           <View className='flex-1'>

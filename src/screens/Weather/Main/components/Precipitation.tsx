@@ -1,4 +1,4 @@
-import { CloudAngledRainSolidIcon } from '@assets/icons/icons'
+import CloudAngledRainIcon from '@hugeicons/CloudAngledRainIcon'
 import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
@@ -15,7 +15,7 @@ type PrecipitationProps = {
 export default function Precipitation({ theme, rain, snow, status }: PrecipitationProps) {
   return (
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
-      <WeatherLabel Icon={CloudAngledRainSolidIcon} color={theme.color} label='Precipitation' />
+      <WeatherLabel Icon={CloudAngledRainIcon} color={theme.color} label='Precipitation' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <View className='flex-row items-end'>
           <Medium style={[{ fontSize: 28 }, theme.color]}>{rain || '0'}</Medium>

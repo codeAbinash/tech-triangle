@@ -7,7 +7,7 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettWrapper from '@components/Settings/SettWrapper'
 import Home01Icon from '@hugeicons/Home01Icon'
 import InformationCircleIcon from '@hugeicons/InformationCircleIcon'
-import Location01Icon from '@hugeicons/Location01Icon'
+import MapsLocation02Icon from '@hugeicons/MapsLocation02Icon'
 import { fetchLocation } from '@screens/LocationNotes/lib'
 import { locationNotesStore } from '@screens/LocationNotes/locationNotesStore'
 import { useQuery } from '@tanstack/react-query'
@@ -70,7 +70,7 @@ export default function NewLocationNote({ navigation }: NavProp) {
       <Gap12 className='mt-3'>
         <SettGroup title='Location Name'>
           <Input
-            Icon={<RoundIcon Icon={Location01Icon} />}
+            Icon={<RoundIcon Icon={MapsLocation02Icon} />}
             placeholder='Enter a name for this location'
             value={name}
             onChangeText={setName}

@@ -1,10 +1,10 @@
-import { Setting07SolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import Setting07Icon from '@hugeicons/Setting07Icon'
 import { Canvas, Circle, Group } from '@shopify/react-native-skia'
 import type { NavProp } from '@utils/types'
 import { View } from 'react-native'
@@ -34,7 +34,7 @@ export default function Skia({ navigation }: NavProp) {
         <SettGroup title='Sample title'>
           <SettOption
             title='A blank setting'
-            Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
+            Icon={<RoundIcon Icon={Setting07Icon} className='bg-slate-500' />}
             arrow
           />
         </SettGroup>

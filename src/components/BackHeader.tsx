@@ -1,4 +1,4 @@
-import { ArrowLeft01Icon } from '@assets/icons/icons'
+import ArrowLeft01Icon from '@hugeicons/ArrowLeft01Icon'
 import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
@@ -27,7 +27,7 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
               onPress={() => (onBackPress ? onBackPress() : navigation && navigation.goBack())}
               activeOpacity={0.7}
             >
-              <ArrowLeft01Icon width={26} height={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
+              <ArrowLeft01Icon size={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
             </TouchableOpacity>
             <SemiBold
               style={{ fontSize: 14.3, flex: 1, paddingBottom: 5 }}

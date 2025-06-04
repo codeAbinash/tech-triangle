@@ -1,12 +1,12 @@
 import popupStore from '@/zustand/popupStore'
-import { WavingHand02SolidIcon } from '@assets/icons/icons'
 import DoubleSkeleton from '@components/DoubleSkeleton'
 import { Gap12 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import WavingHand02Icon from '@hugeicons/WavingHand02Icon'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { F, Medium } from '@utils/fonts'
@@ -64,7 +64,7 @@ export default function Devices({ navigation }: NavProp) {
               onPress={handelRemove}
               className='text-red-500'
               title={isRemoving ? 'Removing...' : 'Remove All Other Devices'}
-              Icon={<RoundedIcon Icon={WavingHand02SolidIcon} className='bg-red-500' />}
+              Icon={<RoundIcon Icon={WavingHand02Icon} className='bg-red-500' />}
             />
           </SettGroup>
         )}

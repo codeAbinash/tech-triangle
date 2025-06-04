@@ -1,23 +1,21 @@
 import versionValidator from '@/zod/version'
 import popupStore from '@/zustand/popupStore'
 import versionStore from '@/zustand/versionStore'
-import {
-  FolderFileStorageSolidIcon,
-  PlusSignSolidIcon,
-  Setting07SolidIcon,
-  StarSolidIcon,
-  StarsSolidIcon,
-} from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import Press from '@components/Press'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import SingleSkeleton from '@components/SingleSkeleton'
+import FolderFileStorageIcon from '@hugeicons/FolderFileStorageIcon'
+import PlusSignIcon from '@hugeicons/PlusSignIcon'
+import Setting07Icon from '@hugeicons/Setting07Icon'
+import StarIcon from '@hugeicons/StarIcon'
+import StarsIcon from '@hugeicons/StarsIcon'
 import { queryClient } from '@query/index'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
@@ -125,7 +123,7 @@ export default function EditVersion({ navigation }: NavProp) {
             <Input
               Icon={
                 <Press activeScale={0.9} onPress={incrementMajorVersion}>
-                  <RoundedIcon Icon={Setting07SolidIcon} className='bg-gray-500' />
+                  <RoundIcon Icon={Setting07Icon} className='bg-gray-500' />
                 </Press>
               }
               placeholder='e.g. 2.6.8'
@@ -133,7 +131,7 @@ export default function EditVersion({ navigation }: NavProp) {
               onChangeText={setVersion}
               Right={
                 <Press activeScale={0.9} onPress={incrementMinorVersion}>
-                  <RoundedIcon Icon={PlusSignSolidIcon} className='bg-gray-500' />
+                  <RoundIcon Icon={PlusSignIcon} className='bg-gray-500' />
                 </Press>
               }
             />
@@ -146,7 +144,7 @@ export default function EditVersion({ navigation }: NavProp) {
             <Input
               Icon={
                 <Press activeScale={0.9} onPress={() => setVersionCode((parseInt(versionCode, 10) - 1).toString())}>
-                  <RoundedIcon Icon={StarSolidIcon} />
+                  <RoundIcon Icon={StarIcon} />
                 </Press>
               }
               placeholder='e.g. 268'
@@ -154,7 +152,7 @@ export default function EditVersion({ navigation }: NavProp) {
               onChangeText={setVersionCode}
               Right={
                 <Press activeScale={0.9} onPress={() => setVersionCode((parseInt(versionCode, 10) + 1).toString())}>
-                  <RoundedIcon Icon={PlusSignSolidIcon} />
+                  <RoundIcon Icon={PlusSignIcon} />
                 </Press>
               }
             />
@@ -170,7 +168,7 @@ export default function EditVersion({ navigation }: NavProp) {
                   activeScale={0.9}
                   onPress={() => setCriticalVersionCode((parseInt(criticalVersionCode, 10) - 1).toString())}
                 >
-                  <RoundedIcon Icon={StarSolidIcon} className='bg-red-500' />
+                  <RoundIcon Icon={StarIcon} className='bg-red-500' />
                 </Press>
               }
               placeholder='e.g. 268'
@@ -181,7 +179,7 @@ export default function EditVersion({ navigation }: NavProp) {
                   activeScale={0.9}
                   onPress={() => setCriticalVersionCode((parseInt(criticalVersionCode, 10) + 1).toString())}
                 >
-                  <RoundedIcon Icon={PlusSignSolidIcon} className='bg-red-500' />
+                  <RoundIcon Icon={PlusSignIcon} className='bg-red-500' />
                 </Press>
               }
             />
@@ -194,7 +192,7 @@ export default function EditVersion({ navigation }: NavProp) {
           ) : (
             <Input
               placeholder='e.g. 12 MB'
-              Icon={<RoundedIcon Icon={FolderFileStorageSolidIcon} className='bg-yellow-500' />}
+              Icon={<RoundIcon Icon={FolderFileStorageIcon} className='bg-yellow-500' />}
               value={size}
               onChangeText={setSize}
             />
@@ -225,7 +223,7 @@ export default function EditVersion({ navigation }: NavProp) {
               <SettOption
                 title='Add more features'
                 className='text-accent'
-                Icon={<RoundedIcon Icon={StarsSolidIcon} />}
+                Icon={<RoundIcon Icon={StarsIcon} />}
                 onPress={() => setFeatures([...features, ''])}
               />
             </>
@@ -277,13 +275,13 @@ function generateVersionUpdateMessage(
 //     <>
 //       <SettOption
 //         title='Yes'
-//         Icon={<RoundedIcon Icon={StarSolidIcon} />}
+//         Icon={<RoundIcon Icon={StarIcon} />}
 //         onPress={() => setForceUpdate(true)}
 //         Right={<Check checked={forceUpdate} />}
 //       />
 //       <SettOption
 //         title='No'
-//         Icon={<RoundedIcon Icon={StarOffSolidIcon} className='bg-red-500' />}
+//         Icon={<RoundIcon Icon={StarOffIcon} className='bg-red-500' />}
 //         onPress={() => setForceUpdate(false)}
 //         Right={<Check checked={!forceUpdate} />}
 //       />

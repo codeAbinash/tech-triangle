@@ -3,14 +3,12 @@ import FirefoxIcon from '@assets/icons/extra/firefox.svg'
 import LinuxIcon from '@assets/icons/extra/linux.svg'
 import OperaIcon from '@assets/icons/extra/opera.svg'
 import SafariIcon from '@assets/icons/extra/safari.svg'
-import {
-  AndroidSolidIcon,
-  AppleSolidIcon,
-  ChromeSolidIcon,
-  DeviceAccessSolidIcon,
-  WindowsOldSolidIcon,
-} from '@assets/icons/icons'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
+import AndroidIcon from '@hugeicons/AndroidIcon'
+import AppleIcon from '@hugeicons/AppleIcon'
+import ChromeIcon from '@hugeicons/ChromeIcon'
+import DeviceAccessIcon from '@hugeicons/DeviceAccessIcon'
+import WindowsOldIcon from '@hugeicons/WindowsOldIcon'
 import type { NU } from '@utils/types'
 export function getDate(n: number | undefined) {
   if (!n) return 'Unknown'
@@ -18,22 +16,22 @@ export function getDate(n: number | undefined) {
 }
 
 export function getDeviceIcon(os: string | NU, name: string | NU) {
-  if (os?.includes('Android')) return <RoundedIcon Icon={AndroidSolidIcon} className='bg-green-500' />
-  else if (os?.includes('iOS')) return <RoundedIcon Icon={AppleSolidIcon} className='bg-black' />
-  else if (name?.includes('Chrome')) return <RoundedIcon Icon={ChromeSolidIcon} className='bg-blue-500' />
-  else if (name?.includes('Edge')) return <RoundedIcon Icon={EdgeIcon} className='bg-cyan-500' />
-  else if (name?.includes('Opera')) return <RoundedIcon Icon={OperaIcon} className='bg-rose-600' />
-  else if (name?.includes('Firefox')) return <RoundedIcon Icon={FirefoxIcon} className='bg-orange-500' />
-  else if (name?.includes('Safari')) return <RoundedIcon Icon={SafariIcon} className='bg-blue-500' />
-  else if (os?.includes('Windows')) return <RoundedIcon Icon={WindowsOldSolidIcon} className='bg-blue-500' />
-  else if (os?.includes('Linux')) return <RoundedIcon Icon={LinuxIcon} className='bg-black' />
-  else return <RoundedIcon Icon={DeviceAccessSolidIcon} className='bg-rose-500' />
+  if (os?.includes('Android')) return <RoundIcon Icon={AndroidIcon} className='bg-green-500' />
+  else if (os?.includes('iOS')) return <RoundIcon Icon={AppleIcon} className='bg-black' />
+  else if (name?.includes('Chrome')) return <RoundIcon Icon={ChromeIcon} className='bg-blue-500' />
+  else if (name?.includes('Edge')) return <RoundIcon Icon={EdgeIcon} className='bg-cyan-500' />
+  else if (name?.includes('Opera')) return <RoundIcon Icon={OperaIcon} className='bg-rose-600' />
+  else if (name?.includes('Firefox')) return <RoundIcon Icon={FirefoxIcon} className='bg-orange-500' />
+  else if (name?.includes('Safari')) return <RoundIcon Icon={SafariIcon} className='bg-blue-500' />
+  else if (os?.includes('Windows')) return <RoundIcon Icon={WindowsOldIcon} className='bg-blue-500' />
+  else if (os?.includes('Linux')) return <RoundIcon Icon={LinuxIcon} className='bg-black' />
+  else return <RoundIcon Icon={DeviceAccessIcon} className='bg-rose-500' />
 }
 
 export function getOSIcon(os: string | NU) {
-  if (os?.includes('Android')) return <RoundedIcon Icon={AndroidSolidIcon} className='bg-green-500' />
-  else if (os?.includes('iOS')) return <RoundedIcon Icon={AppleSolidIcon} className='bg-black' />
-  else if (os?.includes('Windows')) return <RoundedIcon Icon={WindowsOldSolidIcon} className='bg-blue-500' />
-  else if (os?.includes('Linux')) return <RoundedIcon Icon={LinuxIcon} className='bg-black' />
-  else return <RoundedIcon Icon={DeviceAccessSolidIcon} className='bg-rose-500' />
+  if (os?.includes('Android')) return <RoundIcon Icon={AndroidIcon} className='bg-green-500' />
+  else if (os?.includes('iOS')) return <RoundIcon Icon={AppleIcon} className='bg-black' />
+  else if (os?.includes('Windows')) return <RoundIcon Icon={WindowsOldIcon} className='bg-blue-500' />
+  else if (os?.includes('Linux')) return <RoundIcon Icon={LinuxIcon} className='bg-black' />
+  else return <RoundIcon Icon={DeviceAccessIcon} className='bg-rose-500' />
 }

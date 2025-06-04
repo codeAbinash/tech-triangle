@@ -1,5 +1,5 @@
 import versionStore from '@/zustand/versionStore'
-import { Setting07Icon } from '@assets/icons/icons'
+import Setting07Icon from '@hugeicons/Setting07Icon'
 import { useNavigation } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { APP_VERSION_CODE } from '@utils/constants'
@@ -43,7 +43,7 @@ export default function TopArea() {
             className='relative p-1 px-2.5 pb-2.5'
             onPress={() => navigation.navigate('Settings')}
           >
-            <Setting07Icon height={24} width={24} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
+            <Setting07Icon size={24} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
             <UpdateRedDot />
           </TouchableOpacity>
         </View>

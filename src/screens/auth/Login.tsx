@@ -2,17 +2,20 @@ import { loginZodValidator } from '@/zod/auth'
 import authStore from '@/zustand/authStore'
 import popupStore from '@/zustand/popupStore'
 import Animations from '@assets/animations/animations'
-import { HelpCircleSolidIcon, LockPasswordSolidIcon, Mail02SolidIcon, UserAdd02SolidIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import KeyboardAvoid from '@components/KeyboardAvoid'
 import { Lottie } from '@components/Lottie'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import { PaddingTop } from '@components/SafePadding'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
+import HelpCircleIcon from '@hugeicons/HelpCircleIcon'
+import LockPasswordIcon from '@hugeicons/LockPasswordIcon'
+import Mail02Icon from '@hugeicons/Mail02Icon'
+import UserAdd02Icon from '@hugeicons/UserAdd02Icon'
 import { useMutation } from '@tanstack/react-query'
 import { client, updateClientHeader } from '@utils/client'
 import { W } from '@utils/dimensions'
@@ -91,7 +94,7 @@ export default function Login({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Email or Username'>
             <Input
-              Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={Mail02Icon} className='bg-rose-500' />}
               autoComplete='email'
               placeholder='Email or Username'
               value={username}
@@ -105,7 +108,7 @@ export default function Login({ navigation }: NavProp) {
               onChangeText={setPassword}
               placeholder='Password'
               secureTextEntry={!isVisible}
-              Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-slate-500' />}
               Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
             />
           </SettGroup>
@@ -130,13 +133,13 @@ export default function Login({ navigation }: NavProp) {
               navigation.replace('Signup')
             }}
             arrow
-            Icon={<RoundedIcon Icon={UserAdd02SolidIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={UserAdd02Icon} className='bg-green-500' />}
           />
           <SettOption
             title='Forgot Password?'
             onPress={() => ToastAndroid.show('Relax and try to remember your password.', ToastAndroid.SHORT)}
             arrow
-            Icon={<RoundedIcon Icon={HelpCircleSolidIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={HelpCircleIcon} className='bg-rose-500' />}
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>

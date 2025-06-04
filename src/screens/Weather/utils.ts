@@ -1,41 +1,39 @@
-import {
-  CloudAngledRainSolidIcon,
-  CloudAngledRainZapSolidIcon,
-  CloudFastWindSolidIcon,
-  CloudSolidIcon,
-  Moon02SolidIcon,
-  MoonCloudAngledRainSolidIcon,
-  MoonCloudSolidIcon,
-  SnowSolidIcon,
-  SoundcloudSolidIcon,
-  Sun03SolidIcon,
-  SunCloud02SolidIcon,
-  SunCloudAngledRain02SolidIcon,
-} from '@assets/icons/icons'
+import CloudAngledRainIcon from '@hugeicons/CloudAngledRainIcon'
+import CloudAngledRainZapIcon from '@hugeicons/CloudAngledRainZapIcon'
+import CloudFastWindIcon from '@hugeicons/CloudFastWindIcon'
+import CloudIcon from '@hugeicons/CloudIcon'
+import Moon02Icon from '@hugeicons/Moon02Icon'
+import MoonCloudAngledRainIcon from '@hugeicons/MoonCloudAngledRainIcon'
+import MoonCloudIcon from '@hugeicons/MoonCloudIcon'
+import SnowIcon from '@hugeicons/SnowIcon'
+import SoundcloudIcon from '@hugeicons/SoundcloudIcon'
+import Sun03Icon from '@hugeicons/Sun03Icon'
+import SunCloud02Icon from '@hugeicons/SunCloud02Icon'
+import SunCloudAngledRain02Icon from '@hugeicons/SunCloudAngledRain02Icon'
+import { HugeIconProps } from '@hugeicons/constants'
 import { W } from '@utils/dimensions'
 import type { WeatherIconsKeys } from '@utils/types'
-import type { SvgProps } from 'react-native-svg'
 import type { Weather } from './types'
 
-export const Icons: { [K in WeatherIconsKeys]: React.FC<SvgProps> } = {
-  '01d': Sun03SolidIcon,
-  '01n': Moon02SolidIcon,
-  '02d': SunCloud02SolidIcon,
-  '02n': MoonCloudSolidIcon,
-  '03d': CloudSolidIcon,
-  '03n': CloudSolidIcon,
-  '04d': CloudFastWindSolidIcon,
-  '04n': CloudFastWindSolidIcon,
-  '09d': CloudAngledRainSolidIcon,
-  '09n': CloudAngledRainSolidIcon,
-  '10d': SunCloudAngledRain02SolidIcon,
-  '10n': MoonCloudAngledRainSolidIcon,
-  '11d': CloudAngledRainZapSolidIcon,
-  '11n': CloudAngledRainZapSolidIcon,
-  '13d': SnowSolidIcon,
-  '13n': SnowSolidIcon,
-  '50d': SoundcloudSolidIcon,
-  '50n': SoundcloudSolidIcon,
+export const Icons: { [K in WeatherIconsKeys]: React.FC<HugeIconProps> } = {
+  '01d': Sun03Icon,
+  '01n': Moon02Icon,
+  '02d': SunCloud02Icon,
+  '02n': MoonCloudIcon,
+  '03d': CloudIcon,
+  '03n': CloudIcon,
+  '04d': CloudFastWindIcon,
+  '04n': CloudFastWindIcon,
+  '09d': CloudAngledRainIcon,
+  '09n': CloudAngledRainIcon,
+  '10d': SunCloudAngledRain02Icon,
+  '10n': MoonCloudAngledRainIcon,
+  '11d': CloudAngledRainZapIcon,
+  '11n': CloudAngledRainZapIcon,
+  '13d': SnowIcon,
+  '13n': SnowIcon,
+  '50d': SoundcloudIcon,
+  '50n': SoundcloudIcon,
 } as const
 
 export const boxSize = {

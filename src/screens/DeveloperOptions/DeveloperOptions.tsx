@@ -1,21 +1,19 @@
 import authStore from '@/zustand/authStore'
 import { devOptStore } from '@/zustand/devOptStore'
 import popupStore from '@/zustand/popupStore'
-import {
-  CleanSolidIcon,
-  CodeSolidIcon,
-  ComputerSolidIcon,
-  LockPasswordSolidIcon,
-  Timer02SolidIcon,
-} from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Toggle } from '@components/Toggle'
+import CleanIcon from '@hugeicons/CleanIcon'
+import CodeIcon from '@hugeicons/CodeIcon'
+import ComputerIcon from '@hugeicons/ComputerIcon'
+import LockPasswordIcon from '@hugeicons/LockPasswordIcon'
+import Timer02Icon from '@hugeicons/Timer02Icon'
 import { ANIM_DUR } from '@utils/constants'
 import { Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
@@ -73,7 +71,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
           <SettOption
             title='Developer Options'
             onPress={() => setEnabled(!isEnabled)}
-            Icon={<RoundedIcon Icon={CodeSolidIcon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={CodeIcon} className='bg-accent' />}
             Right={<Toggle isActive={isEnabled} />}
           />
         </SettGroup>
@@ -89,7 +87,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             <SettGroup title='General'>
               <SettOption
                 title='Toggle fab button'
-                Icon={<RoundedIcon Icon={ComputerSolidIcon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={ComputerIcon} className='bg-green-500' />}
                 Right={<Toggle isActive={isFabEnabled} />}
                 onPress={() => setFabEnabled(!isFabEnabled)}
               />
@@ -99,7 +97,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             <SettGroup title='Animation Duration'>
               <Input
                 // Icon={<Timer02Icon {...ic} />}
-                Icon={<RoundedIcon Icon={Timer02SolidIcon} className='bg-rose-500' />}
+                Icon={<RoundIcon Icon={Timer02Icon} className='bg-rose-500' />}
                 placeholder='Enter animation duration'
                 onChangeText={setAnim}
                 defaultValue={animationDuration.toString()}
@@ -129,7 +127,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             </SettText>
             <SettGroup title='Auth Token'>
               <Input
-                Icon={<RoundedIcon Icon={LockPasswordSolidIcon} className='bg-gray-500' />}
+                Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-gray-500' />}
                 placeholder='Enter auth token'
                 // onChangeText={setToken}
                 onChangeText={(text) => {
@@ -151,7 +149,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
       <SettGroup>
         <SettOption
           title='Rest Developer Options'
-          Icon={<RoundedIcon Icon={CleanSolidIcon} className='bg-amber-500' />}
+          Icon={<RoundIcon Icon={CleanIcon} className='bg-amber-500' />}
           onPress={resetDevOptions}
           arrow
         />

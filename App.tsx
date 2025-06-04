@@ -1,16 +1,12 @@
 import { devOptStore } from '@/zustand/devOptStore'
-import { CodeSolidIcon } from '@assets/icons/icons'
 import { Popups } from '@components/Popup'
 import Press from '@components/Press'
 import { AutoStatusBar } from '@components/StatusBar'
+import CodeIcon from '@hugeicons/CodeIcon'
 import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
-import { LocationNoteParamList } from '@screens/LocationNotes/LocationNote'
-import LocationNotes from '@screens/LocationNotes/LocationNotes'
-import LocationNote from '@screens/LocationNotes/LocationNote'
-import LocationTags from '@screens/LocationNotes/LocationTags'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
 import MMKVDataList from '@screens/DeveloperOptions/MMKVDataList'
@@ -18,6 +14,11 @@ import Skia from '@screens/Example/Skia'
 import Explore from '@screens/Explore/Explore'
 import Greeting from '@screens/Home/Greeting'
 import fabStyles from '@screens/Home/styles/fabStyles'
+import LocationNote, { LocationNoteParamList } from '@screens/LocationNotes/LocationNote'
+import LocationNotes from '@screens/LocationNotes/LocationNotes'
+import LocationTags from '@screens/LocationNotes/LocationTags'
+import NewLocationNote from '@screens/LocationNotes/NewLocationNote'
+import LocationSpeed from '@screens/LocationSpeed/LocationSpeed'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import type { ChartParamList } from '@screens/OS/Chart'
 import Chart from '@screens/OS/Chart'
@@ -62,8 +63,6 @@ import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import './global.css'
-import NewLocationNote from '@screens/LocationNotes/NewLocationNote'
-import LocationSpeed from '@screens/LocationSpeed/LocationSpeed'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -294,7 +293,7 @@ const FabButton = () => {
         activeScale={0.95}
         className='items-center justify-center rounded-full bg-accent'
       >
-        <CodeSolidIcon color={'white'} height={25} width={25} />
+        <CodeIcon color={'white'} size={25} />
       </Press>
     </Animated.View>
   )

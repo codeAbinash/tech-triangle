@@ -1,6 +1,6 @@
-import { ArrowRight01Icon } from '@assets/icons/icons'
+import ArrowRight01Icon from '@hugeicons/ArrowRight01Icon'
 import { Colors } from '@utils/colors'
 
 export default function RightArrow() {
-  return <ArrowRight01Icon width={22} height={22} color={Colors.zinc[500]} />
+  return <ArrowRight01Icon size={22} color={Colors.zinc[500]} />
 }

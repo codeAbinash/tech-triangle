@@ -1,21 +1,20 @@
 import popupStore from '@/zustand/popupStore'
-import {
-  AngrySolidIcon,
-  Calendar03SolidIcon,
-  Mail02SolidIcon,
-  NewReleasesSolidIcon,
-  SmileSolidIcon,
-  StarSolidIcon,
-  StarsSolidIcon,
-  UserSolidIcon,
-} from '@assets/icons/icons'
+
 import Btn from '@components/Button'
 import { Gap } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import AngryIcon from '@hugeicons/AngryIcon'
+import Calendar03Icon from '@hugeicons/Calendar03Icon'
+import Mail02Icon from '@hugeicons/Mail02Icon'
+import NewReleasesIcon from '@hugeicons/NewReleasesIcon'
+import SmileIcon from '@hugeicons/SmileIcon'
+import StarIcon from '@hugeicons/StarIcon'
+import StarsIcon from '@hugeicons/StarsIcon'
+import UserIcon from '@hugeicons/UserIcon'
 import { queryClient } from '@query/index'
 import type { RouteProp } from '@react-navigation/native'
 import { getDate } from '@screens/Settings/Devices/utils'
@@ -62,39 +61,36 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
       <Gap gap={10}>
         <SettText className='mt-3'>You can see all details of the user here.</SettText>
         <SettGroup title='Full Name'>
-          <SettOption title={name} Icon={<RoundedIcon Icon={UserSolidIcon} />} />
+          <SettOption title={name} Icon={<RoundIcon Icon={UserIcon} />} />
         </SettGroup>
 
         <SettGroup title='Username'>
-          <SettOption title={username} Icon={<RoundedIcon Icon={StarSolidIcon} className='bg-yellow-500' />} />
+          <SettOption title={username} Icon={<RoundIcon Icon={StarIcon} className='bg-yellow-500' />} />
         </SettGroup>
 
         <SettGroup title='Email'>
-          <SettOption title={email} Icon={<RoundedIcon Icon={Mail02SolidIcon} className='bg-red-500' />} />
+          <SettOption title={email} Icon={<RoundIcon Icon={Mail02Icon} className='bg-red-500' />} />
         </SettGroup>
 
         <SettGroup title='Admin'>
-          <SettOption
-            title={isAdmin ? 'Yes' : 'No'}
-            Icon={<RoundedIcon Icon={StarsSolidIcon} className='bg-slate-500' />}
-          />
+          <SettOption title={isAdmin ? 'Yes' : 'No'} Icon={<RoundIcon Icon={StarsIcon} className='bg-slate-500' />} />
         </SettGroup>
 
         <SettGroup title='OTP'>
-          <SettOption title={otp || 'Cleared'} Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />} />
+          <SettOption title={otp || 'Cleared'} Icon={<RoundIcon Icon={UserIcon} className='bg-green-500' />} />
         </SettGroup>
 
         <SettGroup title='Last OTP Sent'>
           <SettOption
             title={getDate(new Date(lastOtpSent).getTime())}
-            Icon={<RoundedIcon Icon={Calendar03SolidIcon} className='bg-red-500' />}
+            Icon={<RoundIcon Icon={Calendar03Icon} className='bg-red-500' />}
           />
         </SettGroup>
 
         <SettGroup title='Verified'>
           <SettOption
             title={isVerified ? 'Yes' : 'No'}
-            Icon={<RoundedIcon Icon={NewReleasesSolidIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={NewReleasesIcon} className='bg-blue-500' />}
           />
         </SettGroup>
 
@@ -102,10 +98,7 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
           <SettOption
             title={isBanned ? 'Yes' : 'No'}
             Icon={
-              <RoundedIcon
-                Icon={isBanned ? AngrySolidIcon : SmileSolidIcon}
-                className={isBanned ? 'bg-red-500' : 'bg-green-500'}
-              />
+              <RoundIcon Icon={isBanned ? AngryIcon : SmileIcon} className={isBanned ? 'bg-red-500' : 'bg-green-500'} />
             }
           />
         </SettGroup>

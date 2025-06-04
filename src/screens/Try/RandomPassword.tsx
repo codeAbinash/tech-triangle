@@ -1,5 +1,4 @@
 import Animations from '@assets/animations/animations'
-import { ReloadIcon } from '@assets/icons/icons'
 import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
 import { Lottie } from '@components/Lottie'
@@ -9,11 +8,12 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
+import ReloadIcon from '@hugeicons/ReloadIcon'
 import { Colors } from '@utils/colors'
 import { W } from '@utils/dimensions'
 import { Medium, SemiBold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
-import React, { memo, useCallback, useEffect, useState, JSX } from 'react'
+import React, { JSX, memo, useCallback, useEffect, useState } from 'react'
 import { ToastAndroid, TouchableOpacity, View } from 'react-native'
 
 const MAX = 50
@@ -97,7 +97,7 @@ export default function RandomPassword({ navigation }: NavProp) {
                 </SemiBold>
               </TouchableOpacity>
               <TouchableOpacity onPress={generatePassword}>
-                <ReloadIcon height={23} width={23} color={Colors.accent} />
+                <ReloadIcon size={23} color={Colors.accent} />
               </TouchableOpacity>
             </View>
           ) : (

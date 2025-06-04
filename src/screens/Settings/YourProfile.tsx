@@ -1,23 +1,22 @@
 import { profileStore } from '@/zustand/profileStore-x'
-import {
-  BabyBoyDressSolidIcon,
-  BabyGirlDressSolidIcon,
-  BirthdayCakeSolidIcon,
-  RulerSolidIcon,
-  TextFontSolidIcon,
-  TextNumberSignSolidIcon,
-  TextSolidIcon,
-  WeightScale01SolidIcon,
-} from '@assets/icons/icons'
+
 import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
+import BabyBoyDressIcon from '@hugeicons/BabyBoyDressIcon'
+import BabyGirlDressIcon from '@hugeicons/BabyGirlDressIcon'
+import BirthdayCakeIcon from '@hugeicons/BirthdayCakeIcon'
+import RulerIcon from '@hugeicons/RulerIcon'
+import TextFontIcon from '@hugeicons/TextFontIcon'
+import TextIcon from '@hugeicons/TextIcon'
+import TextNumberSignIcon from '@hugeicons/TextNumberSignIcon'
+import WeightScale01Icon from '@hugeicons/WeightScale01Icon'
 import type { NavProp } from '@utils/types'
 
 export default function YourProfile({ navigation }: NavProp) {
@@ -43,13 +42,13 @@ export default function YourProfile({ navigation }: NavProp) {
         <SettGroup title='First and Last Name'>
           <Input
             placeholder='First Name'
-            Icon={<RoundedIcon Icon={TextFontSolidIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={TextFontIcon} className='bg-blue-500' />}
             value={firstName}
             onChangeText={setFirstName}
           />
           <Input
             placeholder='Last Name'
-            Icon={<RoundedIcon Icon={TextSolidIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={TextIcon} className='bg-rose-500' />}
             value={lastName}
             onChangeText={setLastName}
           />
@@ -58,7 +57,7 @@ export default function YourProfile({ navigation }: NavProp) {
         <SettGroup title='What do you want to be called?'>
           <Input
             placeholder='Nickname'
-            Icon={<RoundedIcon Icon={TextNumberSignSolidIcon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={TextNumberSignIcon} className='bg-accent' />}
             value={nickName}
             onChangeText={setNickName}
           />
@@ -70,7 +69,7 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='dd-mm-yy'
             keyboardType='number-pad'
-            Icon={<RoundedIcon Icon={BirthdayCakeSolidIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={BirthdayCakeIcon} className='bg-green-500' />}
             value={birthday}
             onChangeText={setBirthday}
           />
@@ -80,7 +79,7 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='Height in cm'
             keyboardType='number-pad'
-            Icon={<RoundedIcon Icon={RulerSolidIcon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={RulerIcon} className='bg-accent' />}
             value={height}
             onChangeText={setHeight}
             Right={<Txt>cm</Txt>}
@@ -88,7 +87,7 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='Weight in kg'
             keyboardType='number-pad'
-            Icon={<RoundedIcon Icon={WeightScale01SolidIcon} className='bg-amber-500' />}
+            Icon={<RoundIcon Icon={WeightScale01Icon} className='bg-amber-500' />}
             value={weight}
             onChangeText={setWeight}
             Right={<Txt>kg</Txt>}
@@ -98,13 +97,13 @@ export default function YourProfile({ navigation }: NavProp) {
         <SettGroup title='Gender'>
           <SettOption
             title='Male'
-            Icon={<RoundedIcon Icon={BabyBoyDressSolidIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={BabyBoyDressIcon} className='bg-blue-500' />}
             Right={<Check checked={gender === 'Male'} />}
             onPress={() => setGender('Male')}
           />
           <SettOption
             title='Female'
-            Icon={<RoundedIcon Icon={BabyGirlDressSolidIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={BabyGirlDressIcon} className='bg-rose-500' />}
             Right={<Check checked={gender === 'Female'} />}
             onPress={() => setGender('Female')}
           />

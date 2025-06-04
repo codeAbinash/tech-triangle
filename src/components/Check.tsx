@@ -1,11 +1,11 @@
-import { Tick01Icon } from '@assets/icons/icons'
+import Tick01Icon from '@hugeicons/Tick01Icon'
+import { HugeIconProps } from '@hugeicons/constants'
 import { Colors } from '@utils/colors'
-import { SvgProps } from 'react-native-svg'
 import { ic } from './Settings/Settings'
 
 export type CheckIconProps = {
   checked: boolean
-} & SvgProps
+} & HugeIconProps
 export default function Check({ checked, ...rest }: CheckIconProps) {
   return checked ? (
     <Tick01Icon {...ic} color={Colors.accent} {...rest} />

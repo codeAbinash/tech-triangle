@@ -1,22 +1,9 @@
-import {
-  CSolidIcon,
-  JavaScriptSolidIcon,
-  JavaSolidIcon,
-  KeyboardIcon,
-  MusicNote04SolidIcon,
-  Setting07SolidIcon,
-  SidebarRightSolidIcon,
-  TextFontSolidIcon,
-  Typescript01SolidIcon,
-  VolumeHighIcon,
-  VolumeLowIcon,
-} from '@assets/icons/icons'
 import Button from '@components/Button'
 import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import Range from '@components/Range'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import Search from '@components/Search'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
@@ -24,6 +11,17 @@ import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
 import { Toggle } from '@components/Toggle'
+import CpuIcon from '@hugeicons/CpuIcon'
+import JavaIcon from '@hugeicons/JavaIcon'
+import JavaScriptIcon from '@hugeicons/JavaScriptIcon'
+import KeyboardIcon from '@hugeicons/KeyboardIcon'
+import MusicNote04Icon from '@hugeicons/MusicNote04Icon'
+import Setting07Icon from '@hugeicons/Setting07Icon'
+import SidebarRightIcon from '@hugeicons/SidebarRightIcon'
+import TextFontIcon from '@hugeicons/TextFontIcon'
+import Typescript01Icon from '@hugeicons/Typescript01Icon'
+import VolumeHighIcon from '@hugeicons/VolumeHighIcon'
+import VolumeLowIcon from '@hugeicons/VolumeLowIcon'
 import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
@@ -64,7 +62,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
               title='Sample toggle 1'
               onPress={() => setToggle1(!toggle1)}
               // Icon={<SidebarRightIcon {...ic} />}
-              Icon={<RoundedIcon Icon={SidebarRightSolidIcon} className='bg-green-500' />}
+              Icon={<RoundIcon Icon={SidebarRightIcon} className='bg-green-500' />}
               Right={<Toggle isActive={toggle1} />}
             />
             <SettOption
@@ -72,7 +70,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
               title='Sample toggle 2'
               onPress={() => setToggle2(!toggle2)}
               // Icon={<SidebarRightIcon {...ic} />}
-              Icon={<RoundedIcon Icon={SidebarRightSolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={SidebarRightIcon} className='bg-rose-500' />}
               Right={<Toggle isActive={toggle2} accent={Colors.blue[500]} />}
             />
           </SettGroup>
@@ -92,7 +90,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
           <SettGroup title='Text Inputs'>
             <Input
               // Icon={<KeyboardIcon {...ic} />}
-              Icon={<RoundedIcon Icon={KeyboardIcon} className='bg-accent' />}
+              Icon={<RoundIcon Icon={KeyboardIcon} className='bg-accent' />}
               placeholder='Type something...'
               Right={<Txt size={15}>TS</Txt>}
               value={input1}
@@ -100,7 +98,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
             />
             <Input
               accent={Colors.rose[500]}
-              Icon={<RoundedIcon Icon={TextFontSolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={TextFontIcon} className='bg-rose-500' />}
               placeholder='With red accent color...'
               onChangeText={setInput2}
               value={input2}
@@ -127,7 +125,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
         <Gap12>
           <SettGroup>
             <SettOption
-              Icon={<RoundedIcon Icon={Setting07SolidIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={Setting07Icon} className='bg-slate-500' />}
               title='Open Blank Settings '
               onPress={() => navigation.navigate('BlankSettings')}
               arrow
@@ -141,25 +139,25 @@ export default function UiAndComponents({ navigation }: NavProp) {
           <SettGroup title='Your favorite Programming Language'>
             <SettOption
               title='TypeScript'
-              Icon={<Typescript01SolidIcon color={colors.blue[500]} height={35} width={35} />}
+              Icon={<Typescript01Icon color={colors.blue[500]} size={35} />}
               onPress={() => setOption1('TypeScript')}
               Right={<Check checked={option1 === 'TypeScript'} />}
             />
             <SettOption
               title='JavaScript'
-              Icon={<JavaScriptSolidIcon color={colors.yellow[500]} height={35} width={35} />}
+              Icon={<JavaScriptIcon color={colors.yellow[500]} size={35} />}
               onPress={() => setOption1('JavaScript')}
               Right={<Check className='text-amber-500' checked={option1 === 'JavaScript'} />}
             />
             <SettOption
               title='C++'
-              Icon={<CSolidIcon color={colors.blue[500]} height={35} width={35} />}
+              Icon={<CpuIcon color={colors.blue[500]} size={35} />}
               onPress={() => setOption1('C++')}
               Right={<Check className='text-blue-500' checked={option1 === 'C++'} />}
             />
             <SettOption
               title='Java'
-              Icon={<RoundedIcon Icon={JavaSolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={JavaIcon} className='bg-rose-500' />}
               onPress={() => setOption1('Java')}
               Right={<Check className='text-red-500' checked={option1 === 'Java'} />}
             />
@@ -198,8 +196,8 @@ const RangeSliderMemo = () => {
         <Range
           value={value}
           setValue={setValue}
-          Left={<VolumeLowIcon color={Colors.accent} height={24} width={24} />}
-          Right={<VolumeHighIcon color={Colors.accent} height={24} width={24} />}
+          Left={<VolumeLowIcon color={Colors.accent} size={24} />}
+          Right={<VolumeHighIcon color={Colors.accent} size={24} />}
         />
       </View>
       <SettText>
@@ -218,7 +216,7 @@ const RangeSliderMemo2 = () => {
           value={value}
           setValue={setValue}
           accent={Colors.rose[500]}
-          Left={<RoundedIcon Icon={MusicNote04SolidIcon} className='bg-rose-500' />}
+          Left={<RoundIcon Icon={MusicNote04Icon} className='bg-rose-500' />}
         />
       </View>
       <SettText>

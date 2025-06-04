@@ -1,5 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { SortingDownSolidIcon } from '@assets/icons/icons'
+import SortingDownIcon from '@hugeicons/SortingDownIcon'
 import { boxSize } from '@screens/Weather/utils'
 import { Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
@@ -11,7 +11,7 @@ export default function Pressure({ theme, pressure, percent }: { theme: Theme; p
   const unit = weatherStore((state) => state.atmPressureUnit)
   return (
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
-      <WeatherLabel Icon={SortingDownSolidIcon} color={theme.color} label='Pressure' />
+      <WeatherLabel Icon={SortingDownIcon} color={theme.color} label='Pressure' />
       <View className='flex-1 items-center justify-center px-5 pb-4 pt-0'>
         <GradientPath theme={theme} percent={percent} />
         <View style={StyleSheet.absoluteFill} className='items-center justify-center'>

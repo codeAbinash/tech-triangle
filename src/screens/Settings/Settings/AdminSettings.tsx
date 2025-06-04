@@ -1,9 +1,10 @@
 import profileStore from '@/zustand/profileStore'
-import { StarSolidIcon, UserSolidIcon } from '@assets/icons/icons'
 import { Gap12 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
+import StarIcon from '@hugeicons/StarIcon'
+import UserIcon from '@hugeicons/UserIcon'
 import type { NavProp } from '@utils/types'
 
 export default function AdminSettings({ navigation }: NavProp) {
@@ -16,14 +17,14 @@ export default function AdminSettings({ navigation }: NavProp) {
       <SettGroup title='Admin Settings' className='pb-3.5'>
         <SettOption
           title='All users'
-          Icon={<RoundedIcon Icon={UserSolidIcon} className='bg-green-500' />}
+          Icon={<RoundIcon Icon={UserIcon} className='bg-green-500' />}
           arrow
           onPress={() => navigation.navigate('AllUsers')}
         />
         <SettOption
           title='Edit Version'
           className=''
-          Icon={<RoundedIcon Icon={StarSolidIcon} />}
+          Icon={<RoundIcon Icon={StarIcon} />}
           arrow
           onPress={() => navigation.navigate('EditVersion')}
         ></SettOption>

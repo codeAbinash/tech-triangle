@@ -1,5 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { Sun03SolidIcon } from '@assets/icons/icons'
+import Sun03Icon from '@hugeicons/Sun03Icon'
 import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
@@ -21,7 +21,7 @@ export default function SunRiseSet({ theme, now, sunrise, sunset }: SunRiseSetPr
   return (
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
       <WeatherLabel
-        Icon={Sun03SolidIcon}
+        Icon={Sun03Icon}
         color={theme.color}
         label={isDay === null ? 'Daylight' : isDay ? 'Sunset' : 'Sunrise'}
       />

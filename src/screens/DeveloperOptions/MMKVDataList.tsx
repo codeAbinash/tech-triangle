@@ -1,14 +1,15 @@
-import { Database02SolidIcon, PencilEdit02Icon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import FabIcon from '@components/FabIcon'
 import { Gap12 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import Search from '@components/Search'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import SingleSkeleton from '@components/SingleSkeleton'
+import Database02Icon from '@hugeicons/Database02Icon'
+import PencilEdit02Icon from '@hugeicons/PencilEdit02Icon'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { ls, type StorageKeys } from '@utils/storage'
@@ -74,7 +75,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
                   arrow
                   key={item}
                   numberOfLines={1}
-                  Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
+                  Icon={<RoundIcon Icon={Database02Icon} className='bg-slate-500' />}
                   onPress={() => navigation.navigate('MMKVDataEditor', { key: item as StorageKeys })}
                 />
               </Animated.View>
@@ -84,7 +85,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
                 <SettOption
                   title='Create new data'
                   onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
-                  Icon={<RoundedIcon Icon={Database02SolidIcon} className='bg-slate-500' />}
+                  Icon={<RoundIcon Icon={Database02Icon} className='bg-slate-500' />}
                   arrow
                 />
               </>
@@ -104,7 +105,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
         <View className='h-14'></View>
       </SettWrapper>
       <FabIcon
-        Icon={<PencilEdit02Icon height={25} width={25} color={Colors.white} />}
+        Icon={<PencilEdit02Icon size={25} color={Colors.white} />}
         onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
       />
     </>

@@ -1,10 +1,10 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import Animations from '@assets/animations/animations'
-import { LocationOffline01Icon } from '@assets/icons/icons'
 import Button from '@components/Button'
 import { Lottie } from '@components/Lottie'
 import { PaddingBottom } from '@components/SafePadding'
 import StackHeader from '@components/StackHeader'
+import LocationOffline01Icon from '@hugeicons/LocationOffline01Icon'
 import { type RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { Colors } from '@utils/colors'
@@ -204,7 +204,7 @@ function FetchingLocation() {
 function ErrorFetchingLocation() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
-      <LocationOffline01Icon width={28} height={28} className='text-red-500' />
+      <LocationOffline01Icon size={28} className='text-red-500' />
       <Medium className='text-center text-xs text-red-500'>Error fetching location.</Medium>
     </View>
   )
@@ -213,7 +213,7 @@ function ErrorFetchingLocation() {
 function LocationPermissionDenied() {
   return (
     <View className='items-center justify-center' style={{ gap: 12 }}>
-      <LocationOffline01Icon width={28} height={28} className='text-red-500' />
+      <LocationOffline01Icon size={28} className='text-red-500' />
       <Medium className='text-center text-xs text-red-500'>Location permission denied.</Medium>
     </View>
   )

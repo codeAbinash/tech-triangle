@@ -1,13 +1,15 @@
 import versionStore from '@/zustand/versionStore'
-import { AppIconRound, GithubSolidIcon, TelegramSolidIcon } from '@assets/icons/icons'
+import { AppIconRound } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import GithubIcon from '@hugeicons/GithubIcon'
+import TelegramIcon from '@hugeicons/TelegramIcon'
 import type { RouteProp } from '@react-navigation/native'
 import { APP_VERSION_CODE, GITHUB_REPO, join_telegram_channel } from '@utils/constants'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
@@ -57,12 +59,12 @@ export default function Update({ navigation, route }: { navigation: StackNav; ro
           <SettOption
             title='Download From Telegram'
             arrow
-            Icon={<RoundedIcon Icon={TelegramSolidIcon} className='bg-sky-500' />}
+            Icon={<RoundIcon Icon={TelegramIcon} className='bg-sky-500' />}
             onPress={join_telegram_channel}
           />
           <SettOption
             title='Download From GitHub'
-            Icon={<RoundedIcon Icon={GithubSolidIcon} className='bg-black' />}
+            Icon={<RoundIcon Icon={GithubIcon} className='bg-black' />}
             onPress={() => Linking.openURL(GITHUB_REPO)}
             arrow
           />

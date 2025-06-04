@@ -1,4 +1,5 @@
-import { CancelCircleSolidIcon, Search01Icon } from '@assets/icons/icons'
+import CancelCircleIcon from '@hugeicons/CancelCircleIcon'
+import Search01Icon from '@hugeicons/Search01Icon'
 import { Colors } from '@utils/colors'
 import { SEMIBOLD } from '@utils/fonts'
 import React, { useCallback } from 'react'
@@ -26,7 +27,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       className='w-full flex-row items-center justify-center overflow-hidden bg-zinc-100 pl-3.5 dark:bg-zinc-900'
       style={{ borderRadius: 14 }}
     >
-      <Search01Icon width={17} height={17} color={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]} />
+      <Search01Icon size={17} color={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]} />
       <TextInput
         ref={ref}
         className='flex-1 p-3 text-zinc-800 dark:text-zinc-200'
@@ -41,11 +42,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       />
       <Animated.View style={animatedStyle}>
         <TouchableOpacity className='py-2.5 pl-1 pr-3' activeOpacity={1} onPress={clearText}>
-          <CancelCircleSolidIcon
-            color={scheme === 'dark' ? Colors.zinc[600] : Colors.zinc[400]}
-            width={20}
-            height={20}
-          />
+          <CancelCircleIcon color={scheme === 'dark' ? Colors.zinc[600] : Colors.zinc[400]} size={20} />
         </TouchableOpacity>
       </Animated.View>
     </View>

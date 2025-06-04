@@ -1,5 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { TemperatureSolidIcon } from '@assets/icons/icons'
+import TemperatureIcon from '@hugeicons/TemperatureIcon'
 import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
@@ -17,7 +17,7 @@ export default function FeelsLike({ theme, feelsLike, feelsLikeStatus }: FeelsLi
   const unit = weatherStore((state) => state.temperatureUnit)
   return (
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
-      <WeatherLabel Icon={TemperatureSolidIcon} color={theme.color} label='Feels Like' />
+      <WeatherLabel Icon={TemperatureIcon} color={theme.color} label='Feels Like' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <Medium style={[{ fontSize: 37 }, theme.color]}>
           {tempConverter({ temp: feelsLike, unit: unit, degree: true })}

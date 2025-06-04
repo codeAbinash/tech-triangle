@@ -1,21 +1,22 @@
 import { verifyEmailZodValidator } from '@/zod/auth'
 import popupStore from '@/zustand/popupStore'
 import Animations from '@assets/animations/animations'
-import { BubbleChatLockSolidIcon, Login03SolidIcon, MailSend02SolidIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import KeyboardAvoid from '@components/KeyboardAvoid'
 import { Lottie } from '@components/Lottie'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import { PaddingTop } from '@components/SafePadding'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
+import BubbleChatLockIcon from '@hugeicons/BubbleChatLockIcon'
+import Login03Icon from '@hugeicons/Login03Icon'
+import MailSend02Icon from '@hugeicons/MailSend02Icon'
 import type { RouteProp } from '@react-navigation/native'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
-import { W } from '@utils/dimensions'
 import { Bold, SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { useState } from 'react'
@@ -66,7 +67,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
           <SettText className='text-blue-500'>Please check also your spam folder for the OTP.</SettText>
           <SettGroup title='Enter OTP'>
             <Input
-              Icon={<RoundedIcon Icon={BubbleChatLockSolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={BubbleChatLockIcon} className='bg-rose-500' />}
               placeholder='Enter OTP'
               keyboardType='number-pad'
               value={otp}
@@ -95,7 +96,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
               // navigation.navigate('Signup')
             }}
             arrow
-            Icon={<RoundedIcon Icon={MailSend02SolidIcon} className='bg-amber-500' />}
+            Icon={<RoundIcon Icon={MailSend02Icon} className='bg-amber-500' />}
           />
           <SettOption
             title='Login instead'
@@ -103,7 +104,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
               navigation.replace('Login')
             }}
             arrow
-            Icon={<RoundedIcon Icon={Login03SolidIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={Login03Icon} className='bg-green-500' />}
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>

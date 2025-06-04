@@ -1,5 +1,6 @@
-import { ViewIcon, ViewOffSlashIcon } from '@assets/icons/icons'
 import { ic } from '@components/Settings/Settings'
+import ViewIcon from '@hugeicons/ViewIcon'
+import ViewOffSlashIcon from '@hugeicons/ViewOffSlashIcon'
 import { TouchableOpacity } from 'react-native'
 
 export function PasswordEye({
@@ -11,7 +12,7 @@ export function PasswordEye({
 }) {
   return (
     <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
-      {isVisible ? <ViewIcon {...ic} width={24} height={24} /> : <ViewOffSlashIcon {...ic} width={24} height={24} />}
+      {isVisible ? <ViewIcon {...ic} size={24} /> : <ViewOffSlashIcon {...ic} size={24} />}
     </TouchableOpacity>
   )
 }

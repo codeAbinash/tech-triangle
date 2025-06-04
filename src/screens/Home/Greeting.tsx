@@ -1,7 +1,10 @@
-import { CpuIcon, QuillWrite02Icon, SunCloudAngledRainZap01Icon, TimeHalfPassIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import Feature from '@components/Feature'
 import { PaddingBottom } from '@components/SafePadding'
+import CpuIcon from '@hugeicons/CpuIcon'
+import QuillWrite02Icon from '@hugeicons/QuillWrite02Icon'
+import SunCloudAngledRainZap01Icon from '@hugeicons/SunCloudAngledRainZap01Icon'
+import TimeHalfPassIcon from '@hugeicons/TimeHalfPassIcon'
 import { Colors } from '@utils/colors'
 import { APP_VERSION } from '@utils/constants'
 import { Bold, Medium, SemiBold } from '@utils/fonts'
@@ -30,24 +33,24 @@ export default function Greeting({ navigation }: NavProp) {
 
           <View style={{ gap: 15 }}>
             <Feature
-              Icon={<CpuIcon height={28} width={28} color={Colors.purple['500']} />}
+              Icon={<CpuIcon size={28} color={Colors.purple['500']} />}
               title='Computer Science Experiments'
               description={
                 "Computer Science related experiments and implementation. Go to the 'Explore' tab to see more."
               }
             />
             <Feature
-              Icon={<SunCloudAngledRainZap01Icon height={28} width={28} color={Colors.blue['500']} />}
+              Icon={<SunCloudAngledRainZap01Icon size={28} color={Colors.blue['500']} />}
               title='Weather Application'
               description='A weather application that shows the current weather and forecast for the next 15 days.'
             />
             <Feature
-              Icon={<TimeHalfPassIcon height={28} width={28} color={Colors.red['500']} />}
+              Icon={<TimeHalfPassIcon size={28} color={Colors.red['500']} />}
               title='Manage Routines'
               description='A new routine manager to help you manage your daily routines and to make your life easier.'
             />
             <Feature
-              Icon={<QuillWrite02Icon height={28} width={28} color={Colors.green['500']} />}
+              Icon={<QuillWrite02Icon size={28} color={Colors.green['500']} />}
               title='Take Notes'
               description='A new notes application with a new design and a new color scheme to make it easier to find what you are looking for.'
             />

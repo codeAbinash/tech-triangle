@@ -1,4 +1,3 @@
-import { PlusSignSolidIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import { Gap12 } from '@components/Gap'
 import Press from '@components/Press'
@@ -8,8 +7,8 @@ import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
-// import MapsLocation02Icon from '@assets/icons/hugeicons/MapsLocation02Icon'
 import MapsLocation02Icon from '@hugeicons/MapsLocation02Icon'
+import PlusSignIcon from '@hugeicons/PlusSignIcon'
 import { useNavigation } from '@react-navigation/native'
 import fabStyles from '@screens/Home/styles/fabStyles'
 import { LocationNote, locationNotesStore } from '@screens/LocationNotes/locationNotesStore'
@@ -132,7 +131,7 @@ export const FabButton = () => {
         activeScale={0.95}
         className='items-center justify-center rounded-full bg-accent'
       >
-        <PlusSignSolidIcon color={'white'} height={25} width={25} />
+        <PlusSignIcon color={'white'} size={25} />
       </Press>
     </Animated.View>
   )

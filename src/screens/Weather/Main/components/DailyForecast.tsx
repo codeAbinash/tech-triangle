@@ -1,7 +1,7 @@
 import { weatherStore, type TemperatureUnit } from '@/zustand/weatherStore'
-import { Calendar03SolidIcon } from '@assets/icons/icons'
 import Btn from '@components/Button'
 import Gradient from '@components/Gradient'
+import Calendar03Icon from '@hugeicons/Calendar03Icon'
 import type { Daily, Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
@@ -43,7 +43,7 @@ export default function DailyForecast({ color, w, theme }: WeatherForecastProps)
     <>
       <Animated.View className='px-4' entering={FadeIn.duration(400)}>
         <View className='rounded-3xl bg-black/10 pb-2'>
-          <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03SolidIcon} />
+          <WeatherLabel color={color} label='7-Day Forecast' Icon={Calendar03Icon} />
           <Underline />
           {!data && <View style={{ height: 56 * 6.855 }}></View>}
           <View>
@@ -123,7 +123,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
           {day}
         </Medium>
         <View className='w-1/6 flex-row items-center'>
-          <Icon width={21} height={21} color={color.color} style={{ marginRight: 10 }} />
+          <Icon size={21} color={color.color} style={{ marginRight: 10 }} />
           <Medium
             className='text-center text-sky-500'
             style={{ display: probability ? 'flex' : 'none', fontSize: 10.5 }}

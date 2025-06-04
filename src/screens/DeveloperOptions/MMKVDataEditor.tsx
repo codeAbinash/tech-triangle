@@ -1,15 +1,16 @@
 import popupStore from '@/zustand/popupStore'
-import { Delete02SolidIcon, FloppyDiskIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import FabIcon from '@components/FabIcon'
 import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { TxtAcc } from '@components/Text'
+import Delete02Icon from '@hugeicons/Delete02Icon'
+import FloppyDiskIcon from '@hugeicons/FloppyDiskIcon'
 import type { RouteProp } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import S, { ls, type StorageKeys } from '@utils/storage'
@@ -107,7 +108,7 @@ export default function MMKVDataEditor({
               <SettOption
                 title='Delete this data'
                 className='text-red-500'
-                Icon={<RoundedIcon Icon={Delete02SolidIcon} className='bg-red-500' />}
+                Icon={<RoundIcon Icon={Delete02Icon} className='bg-red-500' />}
                 onPress={deleteData}
                 Right={<TxtAcc className='text-red-500'>{toReadableSize(value?.length || 0)}</TxtAcc>}
               />
@@ -131,7 +132,7 @@ export default function MMKVDataEditor({
         <SettText>You may need to restart the app to see the changes in the app.</SettText>
         <View className='h-12'></View>
       </SettWrapper>
-      <FabIcon Icon={<FloppyDiskIcon height={25} width={25} color={Colors.white} />} onPress={save} />
+      <FabIcon Icon={<FloppyDiskIcon size={25} color={Colors.white} />} onPress={save} />
     </>
   )
 }

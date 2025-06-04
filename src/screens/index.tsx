@@ -1,14 +1,8 @@
-import {
-  Home01Icon,
-  Home01SolidIcon,
-  Saturn01Icon,
-  Saturn01SolidIcon,
-  TestTube01Icon,
-  TestTube01SolidIcon,
-  Wallet02Icon,
-  Wallet02SolidIcon,
-} from '@assets/icons/icons'
 import { PaddingBottom } from '@components/SafePadding'
+import Home01Icon from '@hugeicons/Home01Icon'
+import Saturn01Icon from '@hugeicons/Saturn01Icon'
+import TestTube01Icon from '@hugeicons/TestTube01Icon'
+import Wallet02Icon from '@hugeicons/Wallet02Icon'
 import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
@@ -100,22 +94,22 @@ export function getColor(theme: ColorSchemeName) {
 }
 
 const screens = [
-  { name: 'HomeScreen', label: 'Home', focusedIcon: Home01SolidIcon, defaultIcon: Home01Icon, component: HomeScreen },
+  { name: 'HomeScreen', label: 'Home', focusedIcon: Home01Icon, defaultIcon: Home01Icon, component: HomeScreen },
   {
     name: 'TryItOut',
     label: 'Try it out',
-    focusedIcon: TestTube01SolidIcon,
+    focusedIcon: TestTube01Icon,
     defaultIcon: TestTube01Icon,
     component: TyrItOut,
   },
   {
     name: 'Explore',
     label: 'Explore',
-    focusedIcon: Saturn01SolidIcon,
+    focusedIcon: Saturn01Icon,
     defaultIcon: Saturn01Icon,
     component: ComingSoon,
   },
-  { name: 'Wallet', label: 'Wallet', focusedIcon: Wallet02SolidIcon, defaultIcon: Wallet02Icon, component: ComingSoon },
+  { name: 'Wallet', label: 'Wallet', focusedIcon: Wallet02Icon, defaultIcon: Wallet02Icon, component: ComingSoon },
 ]
 
 const Home = () => {

@@ -104,7 +104,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
           </Regular>
         </View>
         <View>
-          <Icon width={25} height={25} color={color.color} />
+          <Icon size={25} color={color.color} />
           <Medium style={[color, F.F11]} className='mt-0.5 capitalize'>
             {w ? w.current.weather[0]!.description : '__'}
             {/* {w.current.weather[0].icon} */}

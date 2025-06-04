@@ -1,13 +1,13 @@
-import { UserSolidIcon } from '@assets/icons/icons'
 import BackHeader from '@components/BackHeader'
 import DoubleSkeleton from '@components/DoubleSkeleton'
 import { Gap12 } from '@components/Gap'
-import RoundedIcon from '@components/RoundedIcon'
+import RoundIcon from '@components/RoundIcon'
 import Search from '@components/Search'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import UserIcon from '@hugeicons/UserIcon'
 import { useQuery } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { F, Medium } from '@utils/fonts'
@@ -56,7 +56,7 @@ export default function AllUsers({ navigation }: NavProp) {
               <SettOption
                 key={user.email}
                 title={user.name}
-                Icon={<RoundedIcon Icon={UserSolidIcon} />}
+                Icon={<RoundIcon Icon={UserIcon} />}
                 arrow
                 onPress={() => navigation.navigate('User', { user })}
               >

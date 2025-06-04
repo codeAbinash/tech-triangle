@@ -1,5 +1,6 @@
 import { weatherStore } from '@/zustand/weatherStore'
-import { Clock01SolidIcon } from '@assets/icons/icons'
+import Clock01Icon from '@hugeicons/Clock01Icon'
+import { HugeIconProps } from '@hugeicons/constants'
 import type { Weather } from '@screens/Weather/types'
 import { Icons } from '@screens/Weather/utils'
 import { Medium, Regular, SemiBold } from '@utils/fonts'
@@ -8,7 +9,6 @@ import React from 'react'
 import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
-import type { SvgProps } from 'react-native-svg'
 import type { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils'
 import WeatherLabel, { Underline } from './WeatherLabel'
 
@@ -34,7 +34,7 @@ const HourlyForecast = React.memo<HourlyWeather>(({ color, w }) => {
   return (
     <Animated.View className='mt-10 px-4' entering={FadeIn.duration(400)}>
       <View className='rounded-3xl bg-black/10'>
-        <WeatherLabel Icon={Clock01SolidIcon} color={color} label='Hourly Forecast' />
+        <WeatherLabel Icon={Clock01Icon} color={color} label='Hourly Forecast' />
         <Underline />
         <FlatList
           showsHorizontalScrollIndicator={false}
@@ -78,7 +78,7 @@ type SmallWeatherProps = {
   }
   time: number | string
   temp: string
-  Icon: React.FC<SvgProps>
+  Icon: React.FC<HugeIconProps>
   probability: number
   ap: 'AM' | 'PM' | ''
 }
@@ -95,7 +95,7 @@ function SmallWeather({ color, time, ap, temp, Icon, style, probability, ...rest
         {temp}
       </Medium>
       <View>
-        <Icon width={22} height={22} color={color.color} />
+        <Icon size={22} color={color.color} />
         {
           <SemiBold className='text-center text-sky-500' style={{ opacity: probability ? 1 : 0, fontSize: 9 }}>
             {probability}%

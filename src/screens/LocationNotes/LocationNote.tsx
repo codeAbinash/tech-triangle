@@ -101,7 +101,7 @@ export default function LocationNote({ navigation, route }: LocationNoteProps) {
             <SettOption
               title=''
               placeholder='Add a tag'
-              Icon={<RoundIcon Icon={Home01SolidIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={Home01Icon} className='bg-rose-500' />}
               onPress={() => navigation.navigate('LocationTags')}
               arrow
             />
