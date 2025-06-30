@@ -1,13 +1,22 @@
 on:
   push:
     branches:
-      - development-react-native
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Send start message to Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.BOT_TOKEN }}
+          message: |
+            Build started for commit ${{ github.sha }}
+            Commit message: ${{ github.event.head_commit.message }}
+
       - uses: actions/checkout@v4
 
       - name: set up JDK 19
@@ -48,28 +57,70 @@ jobs:
       - name: Build Android Release
         run: cd android && ./gradlew assembleRelease
 
+      - name: Rename apk files
+        run: |
+          cd android/app/build/outputs/apk/release/
+          mv app-arm64-v8a-release.apk Tech_Triangle-nightly-arm64-v8a.apk
+        # mv app-armeabi-v7a-release.apk Tech_Triangle-nightly-armeabi-v7a.apk
+        # mv app-x86-release.apk Tech_Triangle-nightly-x86.apk
+        # mv app-x86_64-release.apk Tech_Triangle-nightly-x86_64.apk
+        # mv app-universal-release.apk Tech_Triangle-nightly-universal.apk
+
+      - name: Send message to Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.BOT_TOKEN }}
+          message: |
+            ${{github.event.head_commit.message}}
+
+      - name: Send APKs to Telegram
+        run: |
+          for file in android/app/build/outputs/apk/release/Tech_Triangle-nightly-*.apk; do
+            curl -s -X POST https://api.telegram.org/bot${{ secrets.BOT_TOKEN }}/sendDocument \
+              -F chat_id=${{ secrets.CHAT_ID }} \
+              -F document=@"$file"
+          done
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: testbuddy-arm64-v8a
-          path: android/app/build/outputs/apk/release/app-arm64-v8a-release.apk
+          name: tech-triangle-arm64-v8a
+          path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
 
       # - uses: actions/upload-artifact@v4
       #   with:
       #     name: tech-triangle-armeabi-v7a
-      #     path: android/app/build/outputs/apk/release/app-armeabi-v7a-release.apk
+      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
 
       # - uses: actions/upload-artifact@v4
       #   with:
       #     name: tech-triangle-x86
-      #     path: android/app/build/outputs/apk/release/app-x86-release.apk
+      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
 
       # - uses: actions/upload-artifact@v4
       #   with:
       #     name: tech-triangle-x86_64
-      #     path: android/app/build/outputs/apk/release/app-x86_64-release.apk
+      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
 
       # - uses: actions/upload-artifact@v4
       #   with:
       #     name: tech-triangle-universal
-      #     path: android/app/build/outputs/apk/release/app-universal-release.apk
+      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
+
+      - name: Update Nightly Release
+        uses: andelf/nightly-release@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag_name: nightly
+          name: 'Tech Triangle Nightly Release $$'
+          prerelease: false
+          body: |
+            ${{github.event.head_commit.message}}
+          files: |
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
+          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
+          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
+          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
