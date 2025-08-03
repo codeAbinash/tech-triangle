@@ -62,7 +62,7 @@ import React from 'react'
 import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
-import './global.css'
+import './src/global.css'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()

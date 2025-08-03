@@ -81,3 +81,4 @@ local/
 
 debug.log
 weather.json
+tsconfig.tsbuildinfo
