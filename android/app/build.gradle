@@ -54,6 +54,7 @@ react {
     //   The list of flags to pass to the Hermes compiler. By default is "-O", "-output-source-map"
     // hermesFlags = ["-O", "-output-source-map"]
 
+     
     /* Autolinking */
     autolinkLibrariesWithApp()
 }
@@ -105,6 +106,7 @@ android {
         versionCode 15
         versionName "1.5.1"
     }
+    
     splits {
         abi {
             reset()
@@ -142,6 +144,8 @@ android {
             applicationIdSuffix ".release"
         }
     }
+
+    
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def versionCodes = ["armeabi-v7a": 1, "x86": 2, "arm64-v8a": 3, "x86_64": 4]
