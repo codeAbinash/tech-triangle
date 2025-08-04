@@ -1,4 +1,5 @@
 import S from '@utils/storage'
+import { Weather } from './types'
 
 // export const ACCUWEATHER_API_KEY = 'FqLdDZQkQofVcwsdCHX7uKdPVgWcPGHI'
 // export const ACCUWEATHER_API_KEY = 'C42OAAd8AANIyi8SLoqvq3mm59vADvRA'
@@ -101,8 +102,7 @@ export async function getLocation(lat: number, lon: number) {
 
 export async function getWeather(lat: number, lon: number) {
   console.log('Fetching weather for:', lat, lon)
-  return await (await fetch(weatherUrl(lat, lon, OPENWEATHER_API_KEY))).json()
-  // return demoWeather as Weather
+  return await (await fetch(weatherUrl(lat, lon, OPENWEATHER_API_KEY))).json() as Weather
 }
 
 export async function getAQI(lat: number, lon: number) {
