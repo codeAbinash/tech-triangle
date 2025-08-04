@@ -29,10 +29,10 @@ import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import { delayedFadeAnimationSearch, exiting, layout } from '@utils/utils'
-import type { RootStackParamList } from 'App'
 import React, { useMemo } from 'react'
 import { TouchableOpacity, View, useColorScheme } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
+import { RootStackParamList } from '../../../App'
 
 type Tool = {
   title: string

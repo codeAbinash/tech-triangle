@@ -18,7 +18,9 @@
     "install-apk": "adb install -r android/app/build/outputs/apk/debug/app-arm64-v8a-release.apk",
     "install-release-apk": "adb install -r android/app/build/outputs/apk/release/app-arm64-v8a-release.apk",
     "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "tsc": "tsc --noEmit",
+    "ts": "tsgo --noEmit"
   },
   "dependencies": {
     "@react-native-community/netinfo": "^11.4.1",
@@ -30,7 +32,7 @@
     "@tanstack/react-query": "^5.79.0",
     "clsx": "^2.1.1",
     "hono": "^4.7.11",
-    "lottie-react-native": "^7.2.2",
+    "lottie-react-native": "^7.2.5",
     "nativewind": "^4.1.23",
     "react": "19.0.0",
     "react-native": "0.79.2",
@@ -63,6 +65,7 @@
     "@types/jest": "^29.5.14",
     "@types/react": "19.0.0",
     "@types/react-test-renderer": "19.0.0",
+    "@typescript/native-preview": "^7.0.0-dev.20250803.1",
     "babel-jest": "^29.7.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^8.57.1",
