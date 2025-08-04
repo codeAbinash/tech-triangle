@@ -22,7 +22,7 @@ type HourlyWeather = {
 const HourlyForecast = React.memo<HourlyWeather>(({ color, w }) => {
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   const timeFormat = weatherStore((state) => state.weatherTimeFormat)
-  const Icon = Icons[w?.current.weather[0]!.icon || '02d']
+  const Icon = Icons[w?.current?.weather?.[0]!.icon || '02d']
   // const [data, setData] = useState<Current[] | undefined>()
   const data = w?.hourly
 
@@ -43,12 +43,12 @@ const HourlyForecast = React.memo<HourlyWeather>(({ color, w }) => {
           renderItem={({ item }) => (
             <SmallWeather
               key={item.dt}
-              Icon={Icons[item.weather[0]!.icon]}
-              time={getHour(item.dt + 3600, timeFormat)}
+              Icon={Icons[item?.weather?.[0]?.icon || '02d']}
+              time={getHour(item?.dt || 0 + 3600, timeFormat)}
               color={color}
-              ap={getAp(item.dt, timeFormat)}
-              temp={item ? tempConverter({ temp: item.temp, unit: currentUnit, degree: true }) : '__'}
-              probability={Math.round((item.pop || 0) * 100)}
+              ap={getAp(item?.dt || 0, timeFormat)}
+              temp={item ? tempConverter({ temp: item?.temp, unit: currentUnit, degree: true }) : '__'}
+              probability={Math.round((item?.pop || 0) * 100)}
             />
           )}
           ListHeaderComponent={
@@ -58,8 +58,8 @@ const HourlyForecast = React.memo<HourlyWeather>(({ color, w }) => {
                 time='Now'
                 Icon={Icon}
                 ap=''
-                temp={w ? tempConverter({ temp: w.current.temp, unit: currentUnit, degree: true }) : '__'}
-                probability={Math.round((w?.current.pop || 0) * 100)}
+                temp={w ? tempConverter({ temp: w.current?.temp, unit: currentUnit, degree: true }) : '__'}
+                probability={Math.round((w?.current?.pop || 0) * 100)}
               />
             </View>
           }

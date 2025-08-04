@@ -24,7 +24,7 @@ export default function DailyForecast({ color, w, theme }: WeatherForecastProps)
   const currentUnit = weatherStore((state) => state.temperatureUnit)
   // const [data, setData] = useState<Daily[] | undefined>()
   const daily = w?.daily
-  const currentTemp = weatherStore((state) => state.currentWeather?.current.temp)
+  const currentTemp = weatherStore((state) => state.cachedWeather?.current?.temp)
   const weeklyMinMax = useMemo(() => calculateWeeklyMinMax(daily), [daily])
   const dotPosition = useMemo(() => calculateDotPosition(currentTemp, daily && daily[0]), [currentTemp, daily])
   const [is7Day, setIs7Day] = React.useState(false)
@@ -141,8 +141,8 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
                 <View className='bg-lime h-10 rounded-full' style={{ width: `${left}%` }}></View>
                 <Gradient
                   colors={['#ffffffdd', '#ffffffdd']}
-                  className='flex-row items-center overflow-auto rounded-full'
-                  style={{ width: `${width}%`, height: 6 }}
+                  className='flex-row items-center overflow-auto'
+                  style={{ width: `${width}%`, height: 6, borderRadius: 100 }}
                 >
                   {dotPosition !== null && <DotPosition dotPosition={dotPosition} theme={theme} />}
                 </Gradient>

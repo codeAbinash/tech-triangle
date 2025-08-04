@@ -25,16 +25,16 @@ export default function WeatherTopInfo({ color, w }: WeatherTopInfoProps) {
           className='mt-4 items-start justify-start pl-5 text-center'
           style={[color, { lineHeight: 150, fontSize: 130 }]}
         >
-          {w ? tempConverter({ temp: w.current.temp, unit: currentUnit }) : '__'}
+          {w ? tempConverter({ temp: w?.current?.temp, unit: currentUnit }) : '__'}
         </Light>
         <Regular style={[color, { fontSize: 50 }]}>{currentUnit === 'K' ? '' : '°'}</Regular>
       </View>
       <Medium className='-mt-4 text-center text-sm' style={[color, { fontSize: 13 }]}>
-        {'Feels like ' + tempConverter({ temp: w?.current.feels_like || 0, unit: currentUnit, degree: true })}{' '}
+        {'Feels like ' + tempConverter({ temp: w?.current?.feels_like || 0, unit: currentUnit, degree: true })}{' '}
         {currentUnit}
       </Medium>
       <Medium className='mt-1 text-center text-base capitalize' style={[color, { fontSize: 14 }]}>
-        {w ? w.current.weather[0]!.description : '__'}
+        {w ? w.current?.weather?.[0]?.description : '__'}
       </Medium>
       {/* <Medium className='mt-0.5 text-center text-base' style={color}>
         {w ? tempConverter({ temp: w.daily[0]!.temp.min, unit: currentUnit }) : '__'}

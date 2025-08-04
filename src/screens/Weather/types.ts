@@ -1,38 +1,38 @@
 export type Weather = {
-  lat: number
-  lon: number
-  timezone: string
-  timezone_offset: number
-  current: Current
-  hourly: Current[]
+  lat?: number
+  lon?: number
+  timezone?: string
+  timezone_offset?: number
+  current?: Current
+  hourly?: Current[]
   daily: Daily[]
   alerts?: Alert[]
 } | null
 
 export interface Alert {
-  sender_name: string
-  event: string
-  start: number
-  end: number
-  description: string[]
+  sender_name?: string
+  event?: string
+  start?: number
+  end?: number
+  description?: string[]
 }
 
 export interface Current {
-  dt: number
+  dt?: number
   sunrise?: number
   sunset?: number
-  temp: number // in kelvin
-  feels_like: number
-  pressure: number
-  humidity: number
-  dew_point: number
-  uvi: number
-  clouds: number
-  visibility: number
-  wind_speed: number
-  wind_deg: number
-  wind_gust: number
-  weather: WeatherElement[]
+  temp?: number // in kelvin
+  feels_like?: number
+  pressure?: number
+  humidity?: number
+  dew_point?: number
+  uvi?: number
+  clouds?: number
+  visibility?: number
+  wind_speed?: number
+  wind_deg?: number
+  wind_gust?: number
+  weather?: WeatherElement[]
   pop?: number
   rain?: Rain
 }

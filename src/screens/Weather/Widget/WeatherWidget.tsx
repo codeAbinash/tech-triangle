@@ -1,34 +1,52 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import styles, { hw } from '@screens/Home/style'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
-import { useMutation } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
 import { F, Medium, Regular } from '@utils/fonts'
 import type { StackNav, Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native'
 import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
 import { getWeather } from '../api'
 import { Icons } from '../utils'
 
-const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
+const height = hw.height
+const width = hw.width
+
+const WeatherWidget = ({ navigation }: { navigation: StackNav }) => {
   const weatherWidgetIsActive = weatherStore((state) => state.weatherWidgetIsActive)
-  const { currentCity, currentUnit, lastUpdated, currentWeather, setCurrentWeather, setLastUpdated, weatherCacheTime } =
-    weatherStore((state) => ({
-      currentCity: state.currentCity,
-      currentUnit: state.temperatureUnit,
-      lastUpdated: state.lastUpdated,
-      currentWeather: state.currentWeather,
-      setCurrentWeather: state.setCurrentWeather,
-      setLastUpdated: state.setLastUpdated,
-      weatherCacheTime: state.weatherCacheTime,
-    }))
+  const currentCity = weatherStore((state) => state.currentCity)
+  const currentUnit = weatherStore((state) => state.temperatureUnit)
+  const lastUpdated = weatherStore((state) => state.lastUpdated)
+  const cachedWeather = weatherStore((state) => state.cachedWeather)
+  const setCachedWeather = weatherStore((state) => state.setCachedWeather)
+  const setLastUpdated = weatherStore((state) => state.setLastUpdated)
+  const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
 
-  const height = hw.height
-  const width = hw.width
+  const now = new Date().getTime()
 
-  const icon = currentWeather?.current.weather[0]!.icon || '02d'
+  const { isLoading, data } = useQuery({
+    queryKey: ['currentWeather', currentCity?.lat, currentCity?.lon],
+    queryFn: () => getWeather(currentCity?.lat || 0, currentCity?.lon || 0),
+    enabled: now - lastUpdated > weatherCacheTime,
+  })
+
+  console.log(cachedWeather)
+
+  useEffect(() => {
+    if (data?.daily) {
+      setCachedWeather(data)
+      setLastUpdated(now)
+    }
+    // Update the weather data if the query returns new data
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
+
+  const w = data || cachedWeather
+
+  const icon = w?.current?.weather?.[0]!.icon || '02d'
   const theme = WeatherColors[icon]
   const Icon = Icons[icon]
   const color = theme.color
@@ -40,32 +58,7 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
   useEffect(() => {
     startColor.value = withTiming(theme.gradient[0])
     endColor.value = withTiming(theme.gradient[1])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWeather?.current.weather[0]!.icon])
-
-  const { isPending, error, data, mutate } = useMutation({
-    mutationKey: ['currentWeather'],
-    mutationFn: () => getWeather(currentCity?.lat || 0, currentCity?.lon || 0),
-    onError: (err) => console.log(err),
-    onSuccess: (d) => {
-      setCurrentWeather(d)
-      setLastUpdated(new Date().getTime())
-    },
-  })
-  const w = data || currentWeather
-
-  const fetchResult = useCallback(async () => {
-    const now = new Date().getTime()
-    if (now - lastUpdated > weatherCacheTime) {
-      console.log('Fetching from API')
-      mutate()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastUpdated, weatherCacheTime, currentWeather])
-
-  useEffect(() => {
-    currentCity && fetchResult()
-  }, [currentCity, fetchResult])
+  }, [endColor, startColor, theme.gradient])
 
   if (!weatherWidgetIsActive) return null
   if (!currentCity)
@@ -96,30 +89,27 @@ const WeatherWidget = React.memo<{ navigation: StackNav }>(({ navigation }) => {
             <Medium className='text-sm' style={color}>
               {currentCity.name}
             </Medium>
-            {isPending && <ActivityIndicator size={15} color={color.color} />}
+            {isLoading && <ActivityIndicator size={15} color={color.color} />}
           </View>
-          <Regular style={[{ fontSize: 45, lineHeight: 65 }, color]}>
-            {w ? tempConverter({ temp: w.current.temp, unit: currentUnit }) : '__'}
+          <Regular style={[{ fontSize: 50, lineHeight: 70 }, color]}>
+            {w ? tempConverter({ temp: w.current?.temp, unit: currentUnit }) : '__'}
             {currentUnit === 'K' ? '' : '°'}
           </Regular>
         </View>
         <View>
           <Icon size={25} color={color.color} />
           <Medium style={[color, F.F11]} className='mt-0.5 capitalize'>
-            {w ? w.current.weather[0]!.description : '__'}
-            {/* {w.current.weather[0].icon} */}
+            {w ? w.current?.weather?.[0]!.description : '__'}
           </Medium>
           <Medium style={[color, F.F11]}>
-            Feels Like {w ? tempConverter({ temp: w.current.feels_like, unit: currentUnit }) : '__'}{' '}
+            Feels Like {w ? tempConverter({ temp: w.current?.feels_like, unit: currentUnit }) : '__'}{' '}
             {currentUnit === 'K' ? 'K' : '°' + currentUnit}
-            {/* {w ? tempConverter({ temp: w?.daily?.[0]?.temp?.min, unit: currentUnit, degree: true }) : '__'} /{' '} */}
-            {/* {w ? tempConverter({ temp: w?.daily?.[0]?.temp?.max, unit: currentUnit, degree: true }) : '__'} */}
           </Medium>
         </View>
       </TouchableOpacity>
     </View>
   )
-})
+}
 
 export default WeatherWidget
 

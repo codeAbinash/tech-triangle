@@ -34,8 +34,8 @@ type WeatherSettingsStore = {
   weatherWidgetIsActive: boolean
   setWeatherWidgetIsActive: (isActive: boolean) => void
   removeCurrentCityLocation: () => void
-  currentWeather: Weather
-  setCurrentWeather: (weather: Weather) => void
+  cachedWeather: Weather
+  setCachedWeather: (weather: Weather) => void
   lastUpdated: number
   setLastUpdated: (time: number) => void
   lastUpdatedAQI: number
@@ -66,8 +66,8 @@ export const weatherStore = create<WeatherSettingsStore>((set) => ({
   setOpenWeatherApiKey: (key: string) => setOpenWeatherApiKey(key, set),
   setWeatherWidgetIsActive: (isActive: boolean) => setWeatherWidgetIsActive(isActive, set),
   removeCurrentCityLocation: () => removeCurrentCityLocation(set),
-  currentWeather: getCurrentWeather(),
-  setCurrentWeather: (weather: Weather) => setCurrentWeather(weather, set),
+  cachedWeather: getCurrentWeather(),
+  setCachedWeather: (weather: Weather) => setCurrentWeather(weather, set),
   lastUpdated: getWeatherLastUpdated(),
   setLastUpdated: (time: number) => setWeatherLastUpdated(time, set),
   lastUpdatedAQI: getLastUpdatedAQI(),
@@ -126,7 +126,7 @@ function getCurrentWeather() {
 
 function setCurrentWeather(weather: Weather, set: Set) {
   S.set('WeatherCurrentWeather', JSON.stringify(weather))
-  set((state) => ({ ...state, currentWeather: weather }))
+  set((state) => ({ ...state, cachedWeather: weather }))
 }
 
 function getCurrentAQI() {

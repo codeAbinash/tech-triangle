@@ -50,7 +50,7 @@ export const minPressure = 970
 export const maxPressure = 1030
 
 export function calculatePressurePercentage(w: Weather) {
-  let percent = ((w?.current.pressure || 0) - minPressure) / (maxPressure - minPressure)
+  let percent = ((w?.current?.pressure || 0) - minPressure) / (maxPressure - minPressure)
   percent = percent >= 1 ? 0.999 : percent
   percent = percent < 0 ? 0 : percent
   return percent

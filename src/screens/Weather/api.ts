@@ -2,7 +2,7 @@ import S from '@utils/storage'
 
 // export const ACCUWEATHER_API_KEY = 'FqLdDZQkQofVcwsdCHX7uKdPVgWcPGHI'
 // export const ACCUWEATHER_API_KEY = 'C42OAAd8AANIyi8SLoqvq3mm59vADvRA'
-export const ACCUWEATHER_API_KEY = '949004d9a7086cfddfc21ef59baca2a4'
+export const ACCUWEATHER_API_KEY = 'seApxVrpXLr8jHwgVOzUDpJqbsaECaIz'
 
 export const OPENWEATHER_API_KEY = '138278b70c2b6e56abece2ddac69db6a'
 
@@ -17,8 +17,7 @@ function locationUrl(lat: number, lon: number, apiKey: string) {
 }
 
 function weatherUrl(lat: number, lon: number, apiKey: string) {
-  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}&include=aqi`
-  console.log(url)
+  const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${apiKey || OPENWEATHER_API_KEY}&include=aqi`
   return url
 }
 
@@ -101,7 +100,9 @@ export async function getLocation(lat: number, lon: number) {
 }
 
 export async function getWeather(lat: number, lon: number) {
+  console.log('Fetching weather for:', lat, lon)
   return await (await fetch(weatherUrl(lat, lon, OPENWEATHER_API_KEY))).json()
+  // return demoWeather as Weather
 }
 
 export async function getAQI(lat: number, lon: number) {

@@ -1,7 +1,7 @@
 import { weatherStore } from '@/zustand/weatherStore'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
 import { H, W } from '@utils/dimensions'
 import { F, SemiBold } from '@utils/fonts'
@@ -9,7 +9,7 @@ import type { NavProp, Theme } from '@utils/types'
 import { useCallback, useEffect, useMemo } from 'react'
 import { StatusBar, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated'
+import { useDerivedValue, useSharedValue } from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getAQI, getWeather } from '../api'
 import type { AQI, Weather } from '../types'
@@ -31,54 +31,39 @@ import WeatherTopInfo from './components/WeatherTopInfo'
 import Wind from './components/Wind'
 
 export default function WeatherScreen({ navigation }: NavProp) {
-  const { currentCity, lastUpdated, currentWeather, setCurrentWeather, setLastUpdated, weatherCacheTime } =
-    weatherStore((state) => ({
-      currentCity: state.currentCity,
-      lastUpdated: state.lastUpdated,
-      currentWeather: state.currentWeather,
-      setCurrentWeather: state.setCurrentWeather,
-      setLastUpdated: state.setLastUpdated,
-      weatherCacheTime: state.weatherCacheTime,
-    }))
+  const currentCity = weatherStore((state) => state.currentCity)
+  const lastUpdated = weatherStore((state) => state.lastUpdated)
+  const cachedWeather = weatherStore((state) => state.cachedWeather)
+  const setCachedWeather = weatherStore((state) => state.setCachedWeather)
+  const setLastUpdated = weatherStore((state) => state.setLastUpdated)
+  const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
 
-  const icon = currentWeather?.current.weather[0]!.icon || '02d'
+  const now = new Date().getTime()
+
+  const { isLoading, data } = useQuery({
+    queryKey: ['currentWeather', currentCity?.lat, currentCity?.lon],
+    queryFn: () => getWeather(currentCity?.lat || 0, currentCity?.lon || 0),
+    enabled: now - lastUpdated > weatherCacheTime,
+  })
+
+  console.log(cachedWeather)
+
+  useEffect(() => {
+    if (data?.daily) {
+      setCachedWeather(data)
+      setLastUpdated(now)
+    }
+    // Update the weather data if the query returns new data
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
+  const w = data || cachedWeather
+  const icon = w?.current?.weather?.[0]!.icon || '02d'
   const theme = WeatherColors[icon]
   const color = theme.color
 
   const startColor = useSharedValue(theme.gradient[0])
   const endColor = useSharedValue(theme.gradient[1])
   const colors = useDerivedValue(() => [startColor.value, endColor.value], [])
-
-  useEffect(() => {
-    startColor.value = withTiming(theme.gradient[0])
-    endColor.value = withTiming(theme.gradient[1])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentWeather?.current.weather[0]!.icon])
-
-  const { isPending, error, data, mutate } = useMutation({
-    mutationKey: ['currentWeather'],
-    mutationFn: () => getWeather(currentCity?.lat || 0, currentCity?.lon || 0),
-    onError: (err) => console.log(err),
-    onSuccess: (d) => {
-      setCurrentWeather(d)
-      setLastUpdated(new Date().getTime())
-    },
-  })
-  const w = data || currentWeather
-
-  const fetchResult = useCallback(async () => {
-    const now = new Date().getTime()
-    if (now - lastUpdated > weatherCacheTime) {
-      console.log('Fetching from API')
-      mutate()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastUpdated, weatherCacheTime, currentWeather])
-
-  useEffect(() => {
-    currentCity && !isPending && fetchResult()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCity])
 
   const bottom = useSafeAreaInsets().bottom
   const top = useSafeAreaInsets().top
@@ -95,7 +80,7 @@ export default function WeatherScreen({ navigation }: NavProp) {
       </Canvas>
       <View className='px-5'>
         <PaddingTop />
-        <Header navigation={navigation} color={color} isPending={isPending} />
+        <Header navigation={navigation} color={color} isPending={isLoading} />
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: bottom + 20, gap: 12 }}>
         <WeatherTopInfo color={color} w={w} />
@@ -109,18 +94,12 @@ export default function WeatherScreen({ navigation }: NavProp) {
 }
 
 function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
-  const { currentCity, lastUpdatedAQI, currentAQI, setLastUpdatedAQI, weatherCacheTime, setCurrentAQI } = weatherStore(
-    (state) => ({
-      currentCity: state.currentCity,
-      currentUnit: state.temperatureUnit,
-      lastUpdatedAQI: state.lastUpdatedAQI,
-      currentAQI: state.currentAQI,
-      setCurrentWeather: state.setCurrentWeather,
-      setLastUpdatedAQI: state.setLastUpdatedAQI,
-      weatherCacheTime: state.weatherCacheTime,
-      setCurrentAQI: state.setCurrentAQI,
-    }),
-  )
+  const currentCity = weatherStore((state) => state.currentCity)
+  const lastUpdatedAQI = weatherStore((state) => state.lastUpdatedAQI)
+  const currentAQI = weatherStore((state) => state.currentAQI)
+  const setLastUpdatedAQI = weatherStore((state) => state.setLastUpdatedAQI)
+  const weatherCacheTime = weatherStore((state) => state.weatherCacheTime)
+  const setCurrentAQI = weatherStore((state) => state.setCurrentAQI)
 
   const { mutate, isPending } = useMutation({
     mutationKey: ['currentWeatherAQI'],
@@ -133,8 +112,11 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
   })
   const aqiStatus = useMemo(() => getAQIStatus(currentAQI?.list?.[0]?.main?.aqi || 0), [currentAQI])
   const pressurePercent = useMemo(() => calculatePressurePercentage(w), [w])
-  const feelsLikeStatus = useMemo(() => getFeelsLikeStatusString(w?.current.feels_like || 0, w?.current.temp || 0), [w])
-  const visibilityStatus = useMemo(() => getVisibilityStatusString(w?.current.visibility || 10000), [w])
+  const feelsLikeStatus = useMemo(
+    () => getFeelsLikeStatusString(w?.current?.feels_like || 0, w?.current?.temp || 0),
+    [w],
+  )
+  const visibilityStatus = useMemo(() => getVisibilityStatusString(w?.current?.visibility || 10000), [w])
   const rainStatus = useMemo(() => getRainStatus(w?.daily[0]?.rain), [w])
 
   const fetchResult = useCallback(async (): Promise<AQI> => {
@@ -154,18 +136,18 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
 
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', rowGap: 12 }} className='flex-wrap px-4'>
-      <FeelsLike theme={theme} feelsLike={w?.current.feels_like || 0} feelsLikeStatus={feelsLikeStatus} />
-      <Humidity theme={theme} humidity={w?.current.humidity || 0} dew_point={w?.current.dew_point || 0} />
-      <Pressure percent={pressurePercent} pressure={w?.current.pressure || 0} theme={theme} />
-      <UVIndex uvIndex={w?.current.uvi || 0} theme={theme} />
+      <FeelsLike theme={theme} feelsLike={w?.current?.feels_like || 0} feelsLikeStatus={feelsLikeStatus} />
+      <Humidity theme={theme} humidity={w?.current?.humidity || 0} dew_point={w?.current?.dew_point || 0} />
+      <Pressure percent={pressurePercent} pressure={w?.current?.pressure || 0} theme={theme} />
+      <UVIndex uvIndex={w?.current?.uvi || 0} theme={theme} />
       <Visibility
         theme={theme}
-        visibility={(w?.current.visibility || 0) / 1000 + ' km'}
+        visibility={(w?.current?.visibility || 0) / 1000 + ' km'}
         visibilityStatus={visibilityStatus}
       />
       <Wind theme={theme} w={w} />
       <AirQualityIndex aqi={currentAQI?.list?.[0]?.main?.aqi} theme={theme} aqiStatus={aqiStatus} />
-      <Cloudiness theme={theme} clouds={w?.current.clouds || 0} />
+      <Cloudiness theme={theme} clouds={w?.current?.clouds || 0} />
       <Precipitation theme={theme} rain={w?.daily[0]?.rain} snow={w?.daily[0]?.snow} status={rainStatus} />
       <SunRiseSet theme={theme} now={w?.current?.dt} sunrise={w?.current?.sunrise} sunset={w?.current?.sunset} />
       <MoonPhase

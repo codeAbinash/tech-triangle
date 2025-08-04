@@ -46,6 +46,7 @@ import { ToastAndroid, View, useColorScheme } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import AdminSettings from './AdminSettings'
+import SunCloudAngledRainZap01Icon from '@hugeicons/SunCloudAngledRainZap01Icon'
 
 function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactNode }) {
   const [search, setSearch] = React.useState('')
@@ -126,13 +127,13 @@ export default function Settings({ navigation }: NavProp) {
                 onPress={() => navigation.navigate('YourProfile')}
               />
               <SettOption title='Computer Science' Icon={<RoundIcon Icon={ComputerIcon} />} arrow />
-              {/* <SettOption
+              <SettOption
                 title='Weather Settings'
                 // Icon={<SunCloudAngledRainZap01Icon {...ic} />}
                 Icon={<RoundIcon Icon={SunCloudAngledRainZap01Icon} className='bg-blue-500' />}
                 onPress={() => navigation.navigate('WeatherSettings')}
                 arrow
-              /> */}
+              />
               <SettOption
                 title='Routine Management'
                 Icon={<RoundIcon Icon={Calendar03Icon} className='bg-red-500' />}

@@ -15,7 +15,7 @@ export default function Wind({ theme, w }: { theme: Theme; w: Weather }) {
         <View className='items-center justify-center' style={StyleSheet.absoluteFill}>
           <View
             className='h-1 w-full rounded-full bg-white/60'
-            style={[{ transform: [{ rotate: w?.current.wind_deg + 'deg' }], width: '80%' }]}
+            style={[{ transform: [{ rotate: w?.current?.wind_deg + 'deg' }], width: '80%' }]}
           ></View>
         </View>
         <View style={StyleSheet.absoluteFill} className='items-center justify-center'>
@@ -23,7 +23,7 @@ export default function Wind({ theme, w }: { theme: Theme; w: Weather }) {
             className='items-center justify-center rounded-full'
             style={{ backgroundColor: theme.gradient[1], height: W * 0.2, width: W * 0.2 }}
           >
-            <Medium style={[{ fontSize: 15 }, theme.color]}>{w?.current.wind_speed}</Medium>
+            <Medium style={[{ fontSize: 15 }, theme.color]}>{w?.current?.wind_speed}</Medium>
             <Regular className='text-xs' style={theme.color}>
               m/s
             </Regular>

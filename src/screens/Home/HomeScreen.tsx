@@ -12,6 +12,7 @@ import { Dimensions, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import CheckVersion from './CheckVersion'
 import styles, { hw as height_weight } from './style'
+import WeatherWidget from '@screens/Weather/Widget/WeatherWidget'
 
 const { width } = Dimensions.get('window')
 
@@ -74,7 +75,7 @@ function Elements() {
       contentContainerStyle={{ gap: 12, paddingLeft: 18, paddingRight: 18, paddingTop: 5, paddingBottom: 5 }}
       snapToAlignment='center'
     >
-      {/* <WeatherWidget navigation={navigation} /> */}
+      <WeatherWidget navigation={navigation} />
       <TouchableOpacity
         style={[height_weight, styles.shadow]}
         className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
@@ -87,7 +88,7 @@ function Elements() {
         style={[height_weight, styles.shadow]}
         className='items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
         activeOpacity={0.7}
-        onPress={() => navigation.navigate('NotesWelcome')}
+        onPress={() => navigation.navigate('Weather')}
       >
         <Medium className='text-xs text-gray-800 dark:text-gray-200'>Notes</Medium>
       </TouchableOpacity>
