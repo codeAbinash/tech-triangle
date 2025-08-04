@@ -1,3 +1,4 @@
 {
-  "targetPlatform": "react-native"
+  "targetPlatform": "react-native",
+  "variants" : ["solid-rounded", "stroke-rounded"]
 }

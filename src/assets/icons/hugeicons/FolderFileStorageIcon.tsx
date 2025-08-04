@@ -1,64 +1,17 @@
 
 import React from 'react'
-import Svg, { Path } from 'react-native-svg'
-import { HugeIconProps, Variant, defaultColor, defaultSize, defaultStrokeWidth, defaultVariant } from './constants'
+import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, LinearGradient, Mask, Path, Polygon, Polyline, RadialGradient, Rect, Stop } from 'react-native-svg'
+import { Variant, HugeIconProps, defaultStrokeWidth, defaultVariant, defaultColor, defaultSize } from './constants'
 
-const iconMap: Record<Variant, React.FC<HugeIconProps>> = {
-	'stroke-rounded': StrokeRounded,
-	'stroke-standard': StrokeStandard,
-	'solid-standard': SolidStandard,
-	'duotone-rounded': DuotoneRounded,
-	'twotone-rounded': TwotoneRounded,
+const iconMap: Partial<Record<Variant, React.FC<HugeIconProps>>> = { 
 	'solid-rounded': SolidRounded,
-	'bulk-rounded': BulkRounded,
-	'stroke-sharp': StrokeSharp,
-	'solid-sharp': SolidSharp,
+	'stroke-rounded': StrokeRounded,
 }
 
 export default function FolderFileStorageIcon({ variant, ...rest }: HugeIconProps) {
-  const Component = iconMap[variant || defaultVariant]
+  const selectedVariant = variant || defaultVariant
+  const Component = iconMap[selectedVariant] || iconMap[defaultVariant] || StrokeRounded
   return <Component {...rest} />
-}
-
-function StrokeRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M12.0027 21C7.2874 21 4.92973 21 3.46487 19.5355C2 18.0711 2 15.714 2 11V7.94427C2 6.1278 2 5.21956 2.38042 4.53806C2.6516 4.05227 3.05255 3.65142 3.53848 3.38032C4.22017 3 5.12865 3 6.94562 3C8.10969 3 8.69172 3 9.20122 3.19101C10.3645 3.62712 10.8442 4.68358 11.3691 5.73313L12.0027 7M8.00164 7H16.754C18.8613 7 19.9149 7 20.6718 7.50559C20.9995 7.72447 21.2808 8.00572 21.4997 8.33329C21.8937 8.92282 21.9808 9.69244 22 11" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-<Path d="M22 18V16.7426C22 16.1295 22 15.823 21.8858 15.5473C21.7716 15.2716 21.5549 15.0549 21.1213 14.6213L20.3787 13.8787C19.9451 13.4451 19.7284 13.2284 19.4527 13.1142C19.177 13 18.8705 13 18.2574 13C16.8431 13 15.8787 13 15.4393 13.4393C15 13.8787 15 14.5858 15 16V18C15 19.4142 15 20.1213 15.4393 20.5607C15.8787 21 16.5858 21 18 21H19C20.4142 21 21.1213 21 21.5607 20.5607C22 20.1213 22 19.4142 22 18Z" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-</Svg>
-)
-}
-
-function StrokeStandard({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M8 6.99446H12.0179M12.0179 6.99446H20C21.1046 6.99446 22 7.88989 22 8.99446V11M12.0179 6.99446L9.30008 3.39718C9.11109 3.14703 8.81572 3 8.5022 3H3C2.44772 3 2 3.44772 2 4V19C2 20.1046 2.89543 21 4 21H12" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-<Path d="M21.7071 15.2071L19.7929 13.2929C19.6054 13.1054 19.351 13 19.0858 13H16C15.4477 13 15 13.4477 15 14V20C15 20.5523 15.4477 21 16 21H21C21.5523 21 22 20.5523 22 20V15.9142C22 15.649 21.8946 15.3946 21.7071 15.2071Z" stroke={color} strokeWidth={strokeWidth} strokeLinejoin="round"/>
-</Svg>
-)
-}
-
-function SolidStandard({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M14.25 14C14.25 13.0335 15.0335 12.25 16 12.25H19.0858C19.5499 12.25 19.995 12.4344 20.3232 12.7626L22.2374 14.6768C22.5656 15.005 22.75 15.4501 22.75 15.9142V20C22.75 20.9665 21.9665 21.75 21 21.75H16C15.0335 21.75 14.25 20.9665 14.25 20V14Z" fill={color}/>
-<Path d="M12.3913 6.24446L9.89849 2.94507C9.56775 2.50731 9.05086 2.25 8.5022 2.25H3C2.0335 2.25 1.25 3.0335 1.25 4V19C1.25 20.5188 2.48122 21.75 4 21.75H13V14C13 12.3431 14.3431 11 16 11H19.0858C19.8814 11 20.6445 11.3161 21.2071 11.8787L22.75 13.4216V8.99446C22.75 7.47567 21.5188 6.24446 20 6.24446H12.3913Z" fill={color}/>
-</Svg>
-)
-}
-
-function DuotoneRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path opacity="0.4" d="M13.25 21H12C7.28595 21 4.92893 21 3.46447 19.5355C2 18.0711 2 15.714 2 11V7.94427C2 6.1278 2 5.21956 2.38032 4.53806C2.65142 4.05227 3.05227 3.65142 3.53806 3.38032C4.21956 3 5.1278 3 6.94427 3C8.10802 3 8.6899 3 9.19926 3.19101C10.3079 3.60673 10.7955 4.58617 11.2932 5.58597C11.3176 5.63499 11.342 5.68407 11.3666 5.73313L12 7H16.75C18.8567 7 19.91 7 20.6667 7.50559C20.9943 7.72447 21.2755 8.00572 21.4944 8.33329C22 9.08996 22 10.1433 22 12.25C22 13.6692 22 14.8015 21.9444 15.7304C21.9293 15.6662 21.9101 15.606 21.8858 15.5473C21.7716 15.2716 21.5549 15.0549 21.1213 14.6213L20.3787 13.8787C19.9451 13.4451 19.7284 13.2284 19.4527 13.1142C19.177 13 18.8705 13 18.2574 13C16.8431 13 15.8787 13 15.4393 13.4393C15 13.8787 15 14.5858 15 16V18C15 19.4142 15 20.1213 15.4393 20.5607C15.6785 20.7999 15.9971 20.9088 16.4659 20.9585C15.5884 21 14.5372 21 13.25 21Z" fill={color}/>
-<Path d="M12.0027 21C7.2874 21 4.92973 21 3.46487 19.5355C2 18.0711 2 15.714 2 11V7.94427C2 6.1278 2 5.21956 2.38042 4.53806C2.6516 4.05227 3.05255 3.65142 3.53848 3.38032C4.22017 3 5.12865 3 6.94562 3C8.10969 3 8.69172 3 9.20122 3.19101C10.3645 3.62712 10.8442 4.68358 11.3691 5.73313L12.0027 7M8.00164 7H16.754C18.8613 7 19.9149 7 20.6718 7.50559C20.9995 7.72447 21.2808 8.00572 21.4997 8.33329C21.8937 8.92282 21.9808 9.69244 22 11" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-<Path d="M22 18V16.7426C22 16.1295 22 15.823 21.8858 15.5473C21.7716 15.2716 21.5549 15.0549 21.1213 14.6213L20.3787 13.8787C19.9451 13.4451 19.7284 13.2284 19.4527 13.1142C19.177 13 18.8705 13 18.2574 13C16.8431 13 15.8787 13 15.4393 13.4393C15 13.8787 15 14.5858 15 16V18C15 19.4142 15 20.1213 15.4393 20.5607C15.8787 21 16.5858 21 18 21H19C20.4142 21 21.1213 21 21.5607 20.5607C22 20.1213 22 19.4142 22 18Z" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-</Svg>
-)
-}
-
-function TwotoneRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path opacity="0.4" d="M12.0027 21C7.2874 21 4.92973 21 3.46487 19.5355C2 18.0711 2 15.714 2 11V7.94427C2 6.1278 2 5.21956 2.38042 4.53806C2.6516 4.05227 3.05255 3.65142 3.53848 3.38032C4.22017 3 5.12865 3 6.94562 3C8.10969 3 8.69172 3 9.20122 3.19101C10.3645 3.62712 10.8442 4.68358 11.3691 5.73313L12.0027 7M8.00164 7H16.754C18.8613 7 19.9149 7 20.6718 7.50559C20.9995 7.72447 21.2808 8.00572 21.4997 8.33329C21.8937 8.92282 21.9808 9.69244 22 11" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-<Path d="M22 18V16.7426C22 16.1295 22 15.823 21.8858 15.5473C21.7716 15.2716 21.5549 15.0549 21.1213 14.6213L20.3787 13.8787C19.9451 13.4451 19.7284 13.2284 19.4527 13.1142C19.177 13 18.8705 13 18.2574 13C16.8431 13 15.8787 13 15.4393 13.4393C15 13.8787 15 14.5858 15 16V18C15 19.4142 15 20.1213 15.4393 20.5607C15.8787 21 16.5858 21 18 21H19C20.4142 21 21.1213 21 21.5607 20.5607C22 20.1213 22 19.4142 22 18Z" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-</Svg>
-)
 }
 
 function SolidRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
@@ -69,26 +22,10 @@ function SolidRounded({ size = defaultSize, color = defaultColor, strokeWidth = 
 )
 }
 
-function BulkRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
+function StrokeRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
   return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M18.3613 12.25C18.8704 12.2492 19.3223 12.2485 19.7396 12.4214C20.1569 12.5942 20.4759 12.9142 20.8353 13.2747L21.7252 14.1646C22.0857 14.5241 22.4057 14.8431 22.5786 15.2604C22.7514 15.6777 22.7507 16.1295 22.75 16.6386V16.6386L22.7499 18.0495C22.7499 18.7143 22.7499 19.2872 22.6882 19.746C22.6221 20.2376 22.4731 20.7089 22.0908 21.0911C21.7086 21.4734 21.2373 21.6224 20.7457 21.6885C20.287 21.7502 19.7141 21.7502 19.0492 21.7501H19.0492H17.9505H17.9505C17.2856 21.7502 16.7128 21.7502 16.254 21.6885C15.7624 21.6224 15.2911 21.4734 14.9089 21.0911C14.5266 20.7089 14.3776 20.2376 14.3115 19.746C14.2498 19.2872 14.2498 18.7144 14.2498 18.0495V18.0495V15.9507V15.9507C14.2498 15.2858 14.2498 14.713 14.3115 14.2542C14.3776 13.7626 14.5266 13.2913 14.9089 12.9091C15.3172 12.5008 15.8889 12.3689 16.3961 12.31C16.9124 12.25 17.6844 12.25 18.3613 12.25Z" fill={color}/>
-<Path opacity="0.4" d="M9.46244 2.48872C8.82358 2.24915 8.11189 2.24946 7.08248 2.24992C6.20375 2.24991 5.32189 2.24994 4.74954 2.30039C4.15981 2.35238 3.64373 2.46234 3.17243 2.72535C2.56518 3.06423 2.06412 3.56529 1.72524 4.17254C1.46223 4.64384 1.35227 5.15992 1.30028 5.74965C1.24983 6.322 1.24984 7.03072 1.24985 7.90945V11.0573C1.24984 13.3657 1.24983 15.1748 1.43959 16.5863C1.63383 18.031 2.03917 19.171 2.93398 20.0658C3.82879 20.9606 4.96882 21.366 6.41355 21.5602C7.82504 21.75 9.63408 21.75 11.9425 21.75H13.2921C13.4722 21.75 13.6482 21.75 13.8202 21.7498C13.3248 21.1479 13.1477 20.4713 13.0726 19.9129C12.9996 19.37 12.9997 18.7257 12.9999 18.1087V15.8922C12.9997 15.2752 12.9996 14.6309 13.0726 14.088C13.1572 13.4586 13.3714 12.6792 14.025 12.0256C14.7473 11.3033 15.6864 11.1344 16.2519 11.0687C16.8419 11.0002 17.7916 11.0001 18.4322 11.0001C18.8885 10.9986 19.5646 10.9962 20.2179 11.2669C20.8712 11.5375 21.3477 12.0172 21.6692 12.3409L22.7485 13.4202C22.7499 13.0631 22.7498 12.6875 22.7498 12.2922C22.7499 11.2732 22.7499 10.3688 22.6828 9.70944C22.6136 9.02888 22.4667 8.43868 22.1179 7.91657C21.8443 7.50711 21.4927 7.15554 21.0832 6.88195C20.5611 6.53309 19.9709 6.38624 19.2904 6.31701C18.631 6.24994 17.8093 6.24995 16.7903 6.24996L13.2359 6.24996C12.9198 6.24996 12.7394 6.24903 12.6063 6.23527C12.5042 6.22813 12.4347 6.15251 12.4126 6.11559C12.3408 6.00265 12.0837 5.48904 11.9423 5.20631C11.4703 4.25117 10.8579 3.01201 9.46244 2.48872Z" fill={color}/>
-</Svg>
-)
-}
-
-function StrokeSharp({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M8 6.99446H12.0179M12.0179 6.99446H22V10.9972M12.0179 6.99446L9 3H2V21H12" stroke={color} strokeWidth={strokeWidth} strokeLinecap="square"/>
-<Path d="M19 13H15V21H22V16L19 13Z" stroke={color} strokeWidth={strokeWidth}/>
-</Svg>
-)
-}
-
-function SolidSharp({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M14.25 12.25H19.3107L22.75 15.6893V21.75H14.25V12.25Z" fill={color}/>
-<Path d="M9.37335 2.25H1.25V21.75H13V11H19.8284L22.75 13.9216V6.24446H12.3913L9.37335 2.25Z" fill={color}/>
+<Path d="M12.0027 21C7.2874 21 4.92973 21 3.46487 19.5355C2 18.0711 2 15.714 2 11V7.94427C2 6.1278 2 5.21956 2.38042 4.53806C2.6516 4.05227 3.05255 3.65142 3.53848 3.38032C4.22017 3 5.12865 3 6.94562 3C8.10969 3 8.69172 3 9.20122 3.19101C10.3645 3.62712 10.8442 4.68358 11.3691 5.73313L12.0027 7M8.00164 7H16.754C18.8613 7 19.9149 7 20.6718 7.50559C20.9995 7.72447 21.2808 8.00572 21.4997 8.33329C21.8937 8.92282 21.9808 9.69244 22 11" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
+<Path d="M22 18V16.7426C22 16.1295 22 15.823 21.8858 15.5473C21.7716 15.2716 21.5549 15.0549 21.1213 14.6213L20.3787 13.8787C19.9451 13.4451 19.7284 13.2284 19.4527 13.1142C19.177 13 18.8705 13 18.2574 13C16.8431 13 15.8787 13 15.4393 13.4393C15 13.8787 15 14.5858 15 16V18C15 19.4142 15 20.1213 15.4393 20.5607C15.8787 21 16.5858 21 18 21H19C20.4142 21 21.1213 21 21.5607 20.5607C22 20.1213 22 19.4142 22 18Z" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
 </Svg>
 )
 }

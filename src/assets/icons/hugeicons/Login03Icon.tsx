@@ -1,64 +1,17 @@
 
 import React from 'react'
-import Svg, { Path } from 'react-native-svg'
-import { HugeIconProps, Variant, defaultColor, defaultSize, defaultStrokeWidth, defaultVariant } from './constants'
+import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, LinearGradient, Mask, Path, Polygon, Polyline, RadialGradient, Rect, Stop } from 'react-native-svg'
+import { Variant, HugeIconProps, defaultStrokeWidth, defaultVariant, defaultColor, defaultSize } from './constants'
 
-const iconMap: Record<Variant, React.FC<HugeIconProps>> = {
-	'stroke-rounded': StrokeRounded,
-	'stroke-standard': StrokeStandard,
-	'solid-standard': SolidStandard,
-	'duotone-rounded': DuotoneRounded,
-	'twotone-rounded': TwotoneRounded,
+const iconMap: Partial<Record<Variant, React.FC<HugeIconProps>>> = { 
 	'solid-rounded': SolidRounded,
-	'bulk-rounded': BulkRounded,
-	'stroke-sharp': StrokeSharp,
-	'solid-sharp': SolidSharp,
+	'stroke-rounded': StrokeRounded,
 }
 
 export default function Login03Icon({ variant, ...rest }: HugeIconProps) {
-  const Component = iconMap[variant || defaultVariant]
+  const selectedVariant = variant || defaultVariant
+  const Component = iconMap[selectedVariant] || iconMap[defaultVariant] || StrokeRounded
   return <Component {...rest} />
-}
-
-function StrokeRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M15 17.625C14.9264 19.4769 13.3831 21.0494 11.3156 20.9988C10.8346 20.9871 10.2401 20.8194 9.05112 20.484C6.18961 19.6769 3.70555 18.3204 3.10956 15.2816C3 14.723 3 14.0944 3 12.8373L3 11.1627C3 9.90561 3 9.27704 3.10956 8.71845C3.70555 5.67963 6.18961 4.32314 9.05112 3.516C10.2401 3.18062 10.8346 3.01293 11.3156 3.00116C13.3831 2.95058 14.9264 4.52305 15 6.37499" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
-<Path d="M10 12H21M10 12C10 11.2998 11.9943 9.99153 12.5 9.5M10 12C10 12.7002 11.9943 14.0085 12.5 14.5" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-</Svg>
-)
-}
-
-function StrokeStandard({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M14 18.5L13.642 19.5741C13.289 20.6331 12.1375 21.1981 11.0839 20.8294L5.00895 18.7031C3.80569 18.282 3 17.1464 3 15.8716L3 8.12844C3 6.85361 3.80569 5.71801 5.00895 5.29687L11.0839 3.17063C12.1375 2.80188 13.289 3.36693 13.642 4.4259L14 5.5" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-<Path d="M12.5 9.5L10 12L12.5 14.5M21 12L10.6088 12" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-</Svg>
-)
-}
-
-function SolidStandard({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path fillRule="evenodd" clipRule="evenodd" d="M12.6933 4.74213C12.5168 4.21264 11.941 3.93012 11.4143 4.11449L5.3393 6.24073C4.53713 6.52149 4 7.27856 4 8.12844L4 15.8716C4 16.7214 4.53713 17.4785 5.3393 17.7593L11.4143 19.8855C11.941 20.0699 12.5168 19.7874 12.6933 19.2579L13.0513 18.1838C13.226 17.6598 13.7923 17.3767 14.3162 17.5513C14.8402 17.726 15.1233 18.2923 14.9487 18.8162L14.5906 19.8903C14.0612 21.4788 12.3339 22.3264 10.7535 21.7732L4.6786 19.647C3.07425 19.0855 2 17.5713 2 15.8716L2 8.12844C2 6.42867 3.07425 4.91453 4.6786 4.35301L10.7536 2.22678C12.3339 1.67365 14.0612 2.52123 14.5906 4.10967L14.9487 5.18377C15.1233 5.70772 14.8402 6.27404 14.3162 6.44868C13.7923 6.62333 13.226 6.34017 13.0513 5.81623L12.6933 4.74213Z" fill={color}/>
-<Path fillRule="evenodd" clipRule="evenodd" d="M12.8827 8.577C13.2564 8.73179 13.5 9.09642 13.5 9.50088V11.0009L21 11.0009C21.5523 11.0009 22 11.4486 22 12.0009C22 12.5532 21.5523 13.0009 21 13.0009H13.5V14.5009C13.5 14.9053 13.2564 15.27 12.8827 15.4248C12.509 15.5795 12.0789 15.494 11.7929 15.208L9.29289 12.708C8.90237 12.3175 8.90237 11.6843 9.29289 11.2938L11.7929 8.79378C12.0789 8.50778 12.509 8.42222 12.8827 8.577Z" fill={color}/>
-</Svg>
-)
-}
-
-function DuotoneRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path opacity="0.4" d="M3 11.1627V12.8373C3 14.0944 3 14.723 3.10956 15.2815C3.70555 18.3203 6.18961 19.6768 9.05112 20.484C10.2401 20.8194 10.8346 20.987 11.3156 20.9988C13.3831 21.0494 14.9264 19.4769 15 17.625V6.37501C14.9264 4.52307 13.3831 2.95061 11.3156 3.00119C10.8346 3.01295 10.2401 3.18064 9.05112 3.51603C6.18961 4.32316 3.70555 5.67965 3.10956 8.71846C3 9.27705 3 9.90561 3 11.1627Z" fill={color}/>
-<Path d="M15 17.625C14.9264 19.4769 13.3831 21.0494 11.3156 20.9988C10.8346 20.9871 10.2401 20.8194 9.05112 20.484C6.18961 19.6769 3.70555 18.3204 3.10956 15.2816C3 14.723 3 14.0944 3 12.8373L3 11.1627C3 9.90561 3 9.27704 3.10956 8.71845C3.70555 5.67963 6.18961 4.32314 9.05112 3.516C10.2401 3.18062 10.8346 3.01293 11.3156 3.00116C13.3831 2.95058 14.9264 4.52305 15 6.37499" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
-<Path d="M10 12H21M10 12C10 11.2998 11.9943 9.99153 12.5 9.5M10 12C10 12.7002 11.9943 14.0085 12.5 14.5" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-</Svg>
-)
-}
-
-function TwotoneRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M15 17.625C14.9264 19.4769 13.3831 21.0494 11.3156 20.9988C10.8346 20.9871 10.2401 20.8194 9.05112 20.484C6.18961 19.6769 3.70555 18.3204 3.10956 15.2816C3 14.723 3 14.0944 3 12.8373L3 11.1627C3 9.90561 3 9.27704 3.10956 8.71845C3.70555 5.67963 6.18961 4.32314 9.05112 3.516C10.2401 3.18062 10.8346 3.01293 11.3156 3.00116C13.3831 2.95058 14.9264 4.52305 15 6.37499" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
-<Path opacity="0.4" d="M10 12H21M10 12C10 11.2998 11.9943 9.99153 12.5 9.5M10 12C10 12.7002 11.9943 14.0085 12.5 14.5" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
-</Svg>
-)
 }
 
 function SolidRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
@@ -69,26 +22,10 @@ function SolidRounded({ size = defaultSize, color = defaultColor, strokeWidth = 
 )
 }
 
-function BulkRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
+function StrokeRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
   return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path opacity="0.4" fillRule="evenodd" clipRule="evenodd" d="M11.5412 2.0015C14.1631 1.93735 16.1543 3.94579 16.2492 6.3353C16.2712 6.88715 15.8416 7.35229 15.2897 7.37423C14.7379 7.39616 14.2727 6.96658 14.2508 6.41473C14.1986 5.10037 13.1031 3.96388 11.5901 4.0009C11.2681 4.00878 10.8273 4.12457 9.57262 4.47848C6.79407 5.26221 4.82159 6.4599 4.34088 8.91093C4.25456 9.35105 4.25002 9.86248 4.25002 11.1628V12.8373C4.25002 14.1375 4.25456 14.649 4.34088 15.0891C4.82159 17.5401 6.79407 18.7378 9.57261 19.5215C10.8273 19.8754 11.2681 19.9912 11.5901 19.9991C13.1031 20.0361 14.1986 18.8996 14.2508 17.5853C14.2727 17.0334 14.7379 16.6038 15.2897 16.6258C15.8416 16.6477 16.2712 17.1129 16.2492 17.6647C16.1543 20.0542 14.1631 22.0627 11.5412 21.9985C10.9317 21.9836 10.224 21.7837 9.18755 21.491C9.13575 21.4764 9.08313 21.4615 9.02967 21.4464C6.08519 20.6159 3.08955 19.1006 2.37827 15.474C2.24978 14.8189 2.24987 14.0995 2.25001 12.9538C2.25001 12.9154 2.25002 12.8766 2.25002 12.8373L2.25002 11.1628C2.25002 11.1234 2.25001 11.0846 2.25001 11.0463C2.24987 9.90053 2.24978 9.18113 2.37827 8.526C3.08955 4.89942 6.0852 3.38413 9.02967 2.55359C9.08314 2.53851 9.13576 2.52365 9.18756 2.50902C10.224 2.21629 10.9317 2.01641 11.5412 2.0015Z" fill={color}/>
-<Path d="M20.75 13.0059C21.3023 13.0059 21.75 12.5581 21.75 12.0059C21.75 11.4536 21.3023 11.0059 20.75 11.0059L13.25 11.0059L13.25 10.4116C13.2501 10.236 13.2503 10.0203 13.2282 9.84387L13.2278 9.84053C13.212 9.71408 13.1402 9.13804 12.5746 8.86368C12.0077 8.58872 11.5076 8.89065 11.3994 8.95597L10.9309 9.29511C10.5551 9.58975 10.0406 9.99545 9.64962 10.3759C9.45451 10.5657 9.25328 10.783 9.09443 11.0139C8.95323 11.2191 8.74996 11.5693 8.74996 12C8.74996 12.4307 8.95323 12.7809 9.09443 12.9861C9.25328 13.217 9.45451 13.4343 9.64962 13.6241C10.0406 14.0046 10.5551 14.4102 10.9309 14.7049L11.3994 15.044C11.5076 15.1093 12.0078 15.4113 12.5746 15.1363C13.1402 14.862 13.212 14.2859 13.2278 14.1595L13.2282 14.1561C13.2503 13.9797 13.2501 13.764 13.25 13.5884L13.25 13.0059L20.75 13.0059Z" fill={color}/>
-</Svg>
-)
-}
-
-function StrokeSharp({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path d="M15 17.9986L13 21.9973L3 17.9986L3 5.99859L13 1.99991L15 5.99859" stroke={color} strokeWidth={strokeWidth} strokeLinejoin="round"/>
-<Path d="M21 11.996H10.6916M13.0002 8.996L10 11.996L13.0002 14.996" stroke={color} strokeWidth={strokeWidth}/>
-</Svg>
-)
-}
-
-function SolidSharp({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
-  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
-<Path fillRule="evenodd" clipRule="evenodd" d="M13.1287 1.07264C13.6115 0.879578 14.1617 1.08876 14.3943 1.55382L16.3944 5.55251L14.6056 6.44718L13.0171 3.27123L4.5 6.67696L4.5 17.3227L13.0171 20.7285L14.6056 17.5525L16.3944 18.4472L14.3943 22.4459C14.1617 22.9109 13.6115 23.1201 13.1287 22.927L3.12872 18.9284C2.749 18.7765 2.5 18.4088 2.5 17.9998L2.5 5.99984C2.5 5.5909 2.749 5.22316 3.12871 5.07133L13.1287 1.07264Z" fill={color}/>
-<Path fillRule="evenodd" clipRule="evenodd" d="M12.9145 12.9972L14.2075 14.29L12.7933 15.7043L9.08594 11.9972L12.7933 8.29004L14.2075 9.7043L12.9145 10.9972H21.5002V12.9972H12.9145Z" fill={color}/>
+<Path d="M15 17.625C14.9264 19.4769 13.3831 21.0494 11.3156 20.9988C10.8346 20.9871 10.2401 20.8194 9.05112 20.484C6.18961 19.6769 3.70555 18.3204 3.10956 15.2816C3 14.723 3 14.0944 3 12.8373L3 11.1627C3 9.90561 3 9.27704 3.10956 8.71845C3.70555 5.67963 6.18961 4.32314 9.05112 3.516C10.2401 3.18062 10.8346 3.01293 11.3156 3.00116C13.3831 2.95058 14.9264 4.52305 15 6.37499" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"/>
+<Path d="M10 12H21M10 12C10 11.2998 11.9943 9.99153 12.5 9.5M10 12C10 12.7002 11.9943 14.0085 12.5 14.5" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
 </Svg>
 )
 }
