@@ -123,7 +123,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
           {day}
         </Medium>
         <View className='w-1/6 flex-row items-center'>
-          <Icon size={21} color={color.color} style={{ marginRight: 10 }} />
+          <Icon size={21} color={color.color} style={{ marginRight: 10 }} variant='solid-rounded' />
           <Medium
             className='text-center text-sky-500'
             style={{ display: probability ? 'flex' : 'none', fontSize: 10.5 }}

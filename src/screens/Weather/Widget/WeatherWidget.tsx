@@ -97,7 +97,7 @@ const WeatherWidget = ({ navigation }: { navigation: StackNav }) => {
           </Regular>
         </View>
         <View>
-          <Icon size={25} color={color.color} />
+          <Icon size={25} color={color.color} variant='solid-rounded' />
           <Medium style={[color, F.F11]} className='mt-0.5 capitalize'>
             {w ? w.current?.weather?.[0]!.description : '__'}
           </Medium>

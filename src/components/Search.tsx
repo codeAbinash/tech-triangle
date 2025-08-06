@@ -27,7 +27,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       className='w-full flex-row items-center justify-center overflow-hidden bg-zinc-100 pl-3.5 dark:bg-zinc-900'
       style={{ borderRadius: 14 }}
     >
-      <Search01Icon size={17} color={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]} />
+      <Search01Icon size={17} color={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]} variant='stroke-rounded' strokeWidth={2.5}/>
       <TextInput
         ref={ref}
         className='flex-1 p-3 text-zinc-800 dark:text-zinc-200'
@@ -42,7 +42,7 @@ export default function Search({ onChangeText, value, ...all }: TextInputProps) 
       />
       <Animated.View style={animatedStyle}>
         <TouchableOpacity className='py-2.5 pl-1 pr-3' activeOpacity={1} onPress={clearText}>
-          <CancelCircleIcon color={scheme === 'dark' ? Colors.zinc[600] : Colors.zinc[400]} size={20} />
+          <CancelCircleIcon color={scheme === 'dark' ? Colors.zinc[600] : Colors.zinc[400]} size={20} variant='solid-rounded'/>
         </TouchableOpacity>
       </Animated.View>
     </View>

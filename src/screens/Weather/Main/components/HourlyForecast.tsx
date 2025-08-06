@@ -95,7 +95,7 @@ function SmallWeather({ color, time, ap, temp, Icon, style, probability, ...rest
         {temp}
       </Medium>
       <View>
-        <Icon size={22} color={color.color} />
+        <Icon size={22} color={color.color} variant='solid-rounded' />
         {
           <SemiBold className='text-center text-sky-500' style={{ opacity: probability ? 1 : 0, fontSize: 9 }}>
             {probability}%
