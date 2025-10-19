@@ -6,3 +6,5 @@
   `iconName` is from the hugeicons website.
 
 - No need to fix formatting related issues.
+
+- You can use `bun ts` for type checking.
