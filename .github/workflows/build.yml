@@ -10,13 +10,12 @@ jobs:
 
     steps:
       - name: Send start message to Telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
-          message: |
-            Build started for commit ${{ github.sha }}
-            Commit message: ${{ github.event.head_commit.message }}
+        run: |
+          MESSAGE="Build started for commit ${{ github.sha }}
+          Commit message: ${{ github.event.head_commit.message }}"
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -d chat_id="${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${MESSAGE}"
 
       - uses: actions/checkout@v4
 
@@ -68,12 +67,11 @@ jobs:
         # mv app-universal-release.apk Tech_Triangle-nightly-universal.apk
 
       - name: Send message to Telegram
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
-          message: |
-            ${{github.event.head_commit.message}}
+        run: |
+          MESSAGE="${{ github.event.head_commit.message }}"
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -d chat_id="${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${MESSAGE}"
 
       - name: Send APKs to Telegram
         run: |
