@@ -10,6 +10,9 @@ jobs:
 
     steps:
       - name: Send start message to Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
           MESSAGE="Build started for commit ${{ github.sha }}
           Commit message: ${{ github.event.head_commit.message }}"
@@ -67,6 +70,9 @@ jobs:
         # mv app-universal-release.apk Tech_Triangle-nightly-universal.apk
 
       - name: Send message to Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.CHAT_ID }}
         run: |
           MESSAGE="${{ github.event.head_commit.message }}"
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
