@@ -1,5 +1,5 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json",
+  "extends": "@react-native/typescript-config",
   "compilerOptions": {
     "allowJs": true,
     "jsx": "react-jsx",
@@ -7,16 +7,48 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true,
+    "types": [
+      "jest"
+    ],
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@hugeicons/*": ["./src/assets/icons/hugeicons/*"],
-      "@icons/*": ["./src/assets/icons/src/*"],
-      "@images/*": ["./src/assets/images/src/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@screens/*": ["./src/screens/*"],
-      "@query/*": ["./src/query/*"],
-      "@/*": ["./src/*"]
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@hugeicons/*": [
+        "./src/assets/icons/hugeicons/*"
+      ],
+      "@icons/*": [
+        "./src/assets/icons/src/*"
+      ],
+      "@images/*": [
+        "./src/assets/images/src/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@screens/*": [
+        "./src/screens/*"
+      ],
+      "@query/*": [
+        "./src/query/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ]
     }
-  }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "nativewind-env.d.ts"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/Pods",
+    "convertIcons.ts",
+    "ic.ts"
+  ]
 }

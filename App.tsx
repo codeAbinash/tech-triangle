@@ -48,22 +48,6 @@ import RandomPassword from '@screens/Try/RandomPassword'
 import YourAge from '@screens/Try/YourAge'
 import Update, { type UpdateParamList } from '@screens/Update/Update'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
-import WeatherLocation, { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
-import WeatherSearchCity, { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
-import Login from '@screens/auth/Login'
-import Signup from '@screens/auth/Signup'
-import Verify, { type VerifyParamList } from '@screens/auth/Verify'
-import Home from '@screens/index'
-import Splash from '@screens/splash/Splash'
-import { QueryClientProvider } from '@tanstack/react-query'
-import { DarkTheme, DefaultTheme } from '@utils/themes'
-import type { StackNav } from '@utils/types'
-import React from 'react'
-import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
-import './global.css'
-import Animations from '@screens/Animations'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
 import WeatherScreen from '@screens/Weather/Main/Weather'
 import AtmPressureUnit from '@screens/Weather/Settings/AtmPressureUnit'
@@ -72,6 +56,8 @@ import TempUnit from '@screens/Weather/Settings/TempUnit'
 import TimeFormatUnit from '@screens/Weather/Settings/TimeFormatUnit'
 import WeatherScienceSettings from '@screens/Weather/Settings/WeatherSettings'
 import WindSpeedUnit from '@screens/Weather/Settings/WindSpeedUnit'
+import WeatherLocation, { type WeatherLocationParamList } from '@screens/Weather/WeatherLocation'
+import WeatherSearchCity, { type SearchCityParamList } from '@screens/Weather/WeatherSearchCity'
 import WeatherWelcome from '@screens/Weather/WeatherWelcome'
 import ApplyingModifiers from '@screens/animations/ApplyingModifiers'
 import Basic from '@screens/animations/Basic'
@@ -85,24 +71,40 @@ import ParallaxWallpaper from '@screens/animations/ParallaxWallpaper'
 import SensorAnimation from '@screens/animations/SensorAnimation'
 import StableBox from '@screens/animations/StableBox'
 import StableWallpaper from '@screens/animations/StableWallpaper'
+import Login from '@screens/auth/Login'
+import Signup from '@screens/auth/Signup'
+import Verify, { type VerifyParamList } from '@screens/auth/Verify'
+import Home from '@screens/index'
+import Splash from '@screens/splash/Splash'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { DarkTheme, DefaultTheme } from '@utils/themes'
+import type { StackNav } from '@utils/types'
+import React from 'react'
+import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
+import z from 'zod'
+import './global.css'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
   return (
-    <QueryClientProvider client={queryClient}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
+    <>
+      <AutoStatusBar scheme={scheme} />
+      <QueryClientProvider client={queryClient}>
         <SafeAreaView className='flex-1' style={{ height: height }}>
-          <AutoStatusBar scheme={scheme} />
-          <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <Popups />
-            <Navigation />
-          </NavigationContainer>
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+              <Popups />
+              <Navigation />
+            </NavigationContainer>
+          </GestureHandlerRootView>
         </SafeAreaView>
-      </GestureHandlerRootView>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </>
   )
 }
-
+z
 const { width, height } = Dimensions.get('window')
 
 const IOS_BOTTOM_STYLE: StackNavigationOptions = {
@@ -134,12 +136,13 @@ function Navigation() {
       {isFabEnabled && <FabButton />}
       <Stack.Navigator
         screenOptions={{
-          gestureEnabled: false,
+          gestureEnabled: true,
           gestureDirection: 'horizontal',
           gestureResponseDistance: width,
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}
+        initialRouteName='Abinash'
       >
         <Stack.Screen name='Splash' component={Splash} options={NO_ANIMATION} />
         <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
@@ -228,6 +231,8 @@ function Navigation() {
 }
 
 export type RootStackParamList = {
+  Abinash: undefined
+  Hello: undefined
   LocationSpeed: undefined
   NewLocationNote: undefined
   LocationNote: LocationNoteParamList
@@ -250,6 +255,8 @@ export type RootStackParamList = {
   // Animations: undefined
   DragAnimation: undefined
   Weather: undefined
+  XiaomiWeather: undefined
+  XiaomiWeatherSearchCity: undefined
   WeatherWelcome: undefined
   WeatherSearchCity: SearchCityParamList
   WeatherLocation: WeatherLocationParamList
@@ -304,7 +311,7 @@ const FabButton = () => {
     <Animated.View
       entering={ZoomIn.duration(200)}
       exiting={ZoomOut.duration(200)}
-      className='absolute bottom-7 right-5 z-10'
+      className='absolute bottom-12 right-5 z-10'
     >
       <Press
         style={fabStyles.fabShadow}

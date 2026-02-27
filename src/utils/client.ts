@@ -10,8 +10,6 @@ import { WEB } from './constants'
 let address = WEB
 // address = __DEV__ ? 'http://192.168.29.220:3000/' : WEB
 
-console.log(process.env.LOCAL)
-
 let client = (hc as typeof hcWithType)(address, {
   headers() {
     const { token } = authStore.getState()

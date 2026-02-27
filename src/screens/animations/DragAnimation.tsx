@@ -2,10 +2,9 @@ import { AppIcon } from '@assets/icons/icons'
 import { Colors } from '@utils/colors'
 import { useEffect } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler'
+import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import Animated, {
   Easing,
-  useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
@@ -21,24 +20,24 @@ export default function DragAnimation() {
 
   const rotate = useSharedValue(0)
 
-  const GestureHandler = useAnimatedGestureHandler<PanGestureHandlerGestureEvent, { x: number; y: number }>({
-    onStart: (_, ctx) => {
-      ctx.x = translateX.value
-      ctx.y = translateY.value
+  const startX = useSharedValue(0)
+  const startY = useSharedValue(0)
+
+  const panGesture = Gesture.Pan()
+    .onStart(() => {
+      startX.value = translateX.value
+      startY.value = translateY.value
       textOpacity.value = withTiming(0, { duration: 200 })
-    },
-    onActive: (event, ctx) => {
-      translateX.value = ctx.x + event.translationX
-      translateY.value = ctx.y + event.translationY
-    },
-    onEnd: () => {
+    })
+    .onUpdate((event) => {
+      translateX.value = startX.value + event.translationX
+      translateY.value = startY.value + event.translationY
+    })
+    .onEnd(() => {
       translateX.value = withSpring(0)
       translateY.value = withSpring(0)
-    },
-    onFinish: () => {
       textOpacity.value = withDelay(500, withTiming(1))
-    },
-  })
+    })
 
   const animationStyle = useAnimatedStyle(() => {
     return {
@@ -66,13 +65,13 @@ export default function DragAnimation() {
   return (
     <View style={styles.container} className='bg-gray-50 dark:bg-gray-950'>
       <View className='border border-gray-100 dark:border-gray-900' style={{ borderRadius: 23 }}>
-        <PanGestureHandler onGestureEvent={GestureHandler}>
+        <GestureDetector gesture={panGesture}>
           <Animated.View style={[styles.square, animationStyle]} className='bg-gray-100 dark:bg-gray-900'>
             <Animated.View style={animatedImageStyle}>
               <AppIcon width={80} height={80} />
             </Animated.View>
           </Animated.View>
-        </PanGestureHandler>
+        </GestureDetector>
       </View>
       <Animated.Text className='mt-5 text-gray-500' style={animatedStyleForText}>
         Drag the square
