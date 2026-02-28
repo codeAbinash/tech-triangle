@@ -5,7 +5,7 @@ import { AutoStatusBar } from '@components/StatusBar'
 import CodeIcon from '@hugeicons/CodeIcon'
 import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
-import { createNativeStackNavigator, type NativeStackNavigationOptions } from '@react-navigation/native-stack'
+import { createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
@@ -105,23 +105,23 @@ function App(): React.JSX.Element {
   )
 }
 
-const IOS_BOTTOM_STYLE: NativeStackNavigationOptions = {
+const IOS_BOTTOM_STYLE: StackNavigationOptions = {
   presentation: 'modal',
   gestureEnabled: true,
   gestureDirection: 'vertical',
 }
 
-const NO_ANIMATION: NativeStackNavigationOptions = {
+const NO_ANIMATION: StackNavigationOptions = {
   animation: 'none',
 }
 
-const SMOOTH_ANIMATION: NativeStackNavigationOptions = {
+const SMOOTH_ANIMATION: StackNavigationOptions = {
   animation: 'fade',
   gestureEnabled: true,
   gestureDirection: 'horizontal',
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>()
+const Stack = createStackNavigator<RootStackParamList>()
 
 const GestureEnabled = { gestureEnabled: true }
 
