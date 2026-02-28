@@ -5,7 +5,7 @@ import { AutoStatusBar } from '@components/StatusBar'
 import CodeIcon from '@hugeicons/CodeIcon'
 import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
-import { createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
+import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
@@ -80,7 +80,7 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { useColorScheme } from 'react-native'
+import { Dimensions, useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -105,20 +105,23 @@ function App(): React.JSX.Element {
   )
 }
 
+
+const { width, height } = Dimensions.get('window')
+
+
 const IOS_BOTTOM_STYLE: StackNavigationOptions = {
-  presentation: 'modal',
+  cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
   gestureEnabled: true,
   gestureDirection: 'vertical',
+  gestureResponseDistance: height,
 }
 
 const NO_ANIMATION: StackNavigationOptions = {
-  animation: 'none',
+  cardStyleInterpolator: CardStyleInterpolators.forNoAnimation,
 }
 
 const SMOOTH_ANIMATION: StackNavigationOptions = {
-  animation: 'fade',
-  gestureEnabled: true,
-  gestureDirection: 'horizontal',
+  cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
 }
 
 const Stack = createStackNavigator<RootStackParamList>()
@@ -132,17 +135,18 @@ function Navigation() {
       {isFabEnabled && <FabButton />}
       <Stack.Navigator
         screenOptions={{
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           gestureEnabled: true,
           gestureDirection: 'horizontal',
-          headerShown: false,
-          animation: 'slide_from_right',
+          gestureResponseDistance: width,
         }}
       >
+        <Stack.Screen name='Home' component={Home} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Splash' component={Splash} options={NO_ANIMATION} />
         <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
         <Stack.Screen name='Signup' component={Signup} options={GestureEnabled} />
         <Stack.Screen name='Verify' component={Verify} options={GestureEnabled} />
-        <Stack.Screen name='Home' component={Home} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Test' component={Test} options={GestureEnabled} />
         <Stack.Screen name='AllUsers' component={AllUsers} options={GestureEnabled} />
         <Stack.Screen name='Skia' component={Skia} options={GestureEnabled} />
