@@ -25,7 +25,7 @@
     "@shopify/react-native-skia"
   ],
   "dependencies": {
-    "@react-native-community/netinfo": "^11.4.1",
+    "@react-native-community/netinfo": "^12.0.1",
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-navigation/bottom-tabs": "^7.15.2",
     "@react-navigation/native": "^7.1.31",
@@ -36,20 +36,21 @@
     "clsx": "^2.1.1",
     "hono": "^4.7.11",
     "lottie-react-native": "7.3.6",
-    "nativewind": "^4.1.23",
     "react": "19.2.3",
-    "react-native": "0.84.0",
-    "react-native-device-info": "^14.0.4",
+    "react-native": "0.84.1",
+    "react-native-device-info": "^15.0.2",
     "react-native-geolocation-service": "^5.3.1",
     "react-native-gesture-handler": "^2.30.0",
     "react-native-linear-gradient": "^2.8.3",
-    "react-native-mmkv": "3.3.3",
+    "react-native-mmkv": "^4.1.2",
+    "react-native-nitro-modules": "^0.34.1",
     "react-native-reanimated": "4.2.2",
     "react-native-safe-area-context": "^5.7.0",
     "react-native-screens": "4.24.0",
     "react-native-svg": "^15.12.1",
     "react-native-worklets": "0.7.4",
     "tailwind-merge": "^3.3.1",
+    "uniwind": "^1.4.0",
     "zod": "^3.25.47",
     "zustand": "^5.0.7"
   },
@@ -62,10 +63,10 @@
     "@react-native-community/cli": "20.1.0",
     "@react-native-community/cli-platform-android": "20.1.0",
     "@react-native-community/cli-platform-ios": "20.1.0",
-    "@react-native/babel-preset": "0.84.0",
-    "@react-native/eslint-config": "0.84.0",
-    "@react-native/metro-config": "0.84.0",
-    "@react-native/typescript-config": "0.84.0",
+    "@react-native/babel-preset": "0.84.1",
+    "@react-native/eslint-config": "0.84.1",
+    "@react-native/metro-config": "0.84.1",
+    "@react-native/typescript-config": "0.84.1",
     "@tanstack/eslint-plugin-query": "^5.78.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^25.3.2",
@@ -81,10 +82,13 @@
     "prettier-plugin-tailwindcss": "^0.6.14",
     "react-native-svg-transformer": "^1.5.1",
     "react-test-renderer": "19.2.3",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">= 22.11.0"
+  },
+  "patchedDependencies": {
+    "react-native-mmkv@4.1.2": "patches/react-native-mmkv@4.1.2.patch"
   }
 }

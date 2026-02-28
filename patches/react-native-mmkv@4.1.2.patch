@@ -1,0 +1,19 @@
+diff --git a/android/CMakeLists.txt b/android/CMakeLists.txt
+index 33696a2ef090ae6392d093c02fca2090f379f0fa..36ed966f899904a7c1c4d98027264c40d18f751a 100644
+--- a/android/CMakeLists.txt
++++ b/android/CMakeLists.txt
+@@ -22,6 +22,14 @@ add_library(${PACKAGE_NAME} SHARED
+ # Find MMKV prefab package (from mmkv-shared gradle dependency)
+ find_package(mmkv REQUIRED CONFIG)
+ 
++# Fix MMKV 2.2.x header path (headers are in include/MMKV/ subdirectory)
++get_target_property(MMKV_INCLUDE_DIRS mmkv::mmkv INTERFACE_INCLUDE_DIRECTORIES)
++foreach(dir ${MMKV_INCLUDE_DIRS})
++  if(IS_DIRECTORY "${dir}/MMKV")
++    target_include_directories(${PACKAGE_NAME} PRIVATE "${dir}/MMKV")
++  endif()
++endforeach()
++
+ # Add Nitrogen specs :)
+ include(${CMAKE_SOURCE_DIR}/../nitrogen/generated/android/NitroMmkv+autolinking.cmake)
+ 

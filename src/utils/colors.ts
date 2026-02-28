@@ -28,7 +28,7 @@ export const Colors = {
   black: '#000',
   white: '#fff',
   accent: COL.accent,
-  appIconBg: Tailwind.theme.extend.colors.appIconBg,
+  appIconBg: '#191C21',
   slate: {
     '50': '#f8fafc',
     '100': '#f1f5f9',

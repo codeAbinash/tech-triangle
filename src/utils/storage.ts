@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
-import { MMKV } from 'react-native-mmkv'
+import { createMMKV } from 'react-native-mmkv'
 
-export const ls = new MMKV({
+export const ls = createMMKV({
   id: 'my-app-storage',
 })
 
-export const secureLs = new MMKV({
+export const secureLs = createMMKV({
   id: 'my-app-secure-storage',
   encryptionKey: '524sdr245sdes2',
 })
@@ -40,19 +40,19 @@ export function clearStorage(s: Storage) {
 }
 
 export function clearKey(key: string) {
-  ls.delete(key)
+  ls.remove(key)
 }
 
 export function clearKeys(keys: string[]) {
   keys.forEach((key) => {
-    ls.delete(key)
+    ls.remove(key)
   })
 }
 
 export function clearStartWith(startWith: string) {
   const keys = ls.getAllKeys().filter((key) => key.startsWith(startWith))
   keys.forEach((key) => {
-    ls.delete(key)
+    ls.remove(key)
   })
 }
 
@@ -187,7 +187,7 @@ function set(key: StorageKeys, value: string) {
 }
 
 function remove(key: StorageKeys) {
-  ls.delete(key)
+  ls.remove(key)
 }
 
 const S = {

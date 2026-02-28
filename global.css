@@ -1,6 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+@import 'tailwindcss';
+@import 'uniwind';
+
+@theme {
+  --color-accent: #0a84ff;
+  --color-g2: #3866D5;
+  --color-g1: #8101E9;
+  --color-app-icon-bg: #191C21;
+}
 
 .d {
   @apply border border-red-500;
