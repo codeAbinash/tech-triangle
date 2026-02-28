@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const accent = '#2cb67b'
+const accent = '#FF3B30'
 module.exports = {
   content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],

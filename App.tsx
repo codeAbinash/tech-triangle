@@ -5,7 +5,7 @@ import { AutoStatusBar } from '@components/StatusBar'
 import CodeIcon from '@hugeicons/CodeIcon'
 import { queryClient } from '@query/index'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
-import { CardStyleInterpolators, createStackNavigator, type StackNavigationOptions } from '@react-navigation/stack'
+import { createNativeStackNavigator, type NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import ComputerScienceSettings from '@screens/ComputerScience/ComputerScienceSettings'
 import DeveloperOptions from '@screens/DeveloperOptions/DeveloperOptions'
 import MMKVDataEditor, { type MMKVDataEditorParamList } from '@screens/DeveloperOptions/MMKVDataEditor'
@@ -80,10 +80,10 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { DarkTheme, DefaultTheme } from '@utils/themes'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { Dimensions, SafeAreaView, useColorScheme } from 'react-native'
+import { useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
-import z from 'zod'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import './global.css'
 
 function App(): React.JSX.Element {
@@ -91,41 +91,37 @@ function App(): React.JSX.Element {
   return (
     <>
       <AutoStatusBar scheme={scheme} />
-      <QueryClientProvider client={queryClient}>
-        <SafeAreaView className='flex-1' style={{ height: height }}>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
           <GestureHandlerRootView style={{ flex: 1 }}>
             <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
               <Popups />
               <Navigation />
             </NavigationContainer>
           </GestureHandlerRootView>
-        </SafeAreaView>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </SafeAreaProvider>
     </>
   )
 }
-z
-const { width, height } = Dimensions.get('window')
 
-const IOS_BOTTOM_STYLE: StackNavigationOptions = {
-  cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+const IOS_BOTTOM_STYLE: NativeStackNavigationOptions = {
+  presentation: 'modal',
   gestureEnabled: true,
   gestureDirection: 'vertical',
-  gestureResponseDistance: height,
 }
 
-const NO_ANIMATION: StackNavigationOptions = {
-  cardStyleInterpolator: CardStyleInterpolators.forNoAnimation,
+const NO_ANIMATION: NativeStackNavigationOptions = {
+  animation: 'none',
 }
 
-const SMOOTH_ANIMATION: StackNavigationOptions = {
-  cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+const SMOOTH_ANIMATION: NativeStackNavigationOptions = {
+  animation: 'fade',
   gestureEnabled: true,
   gestureDirection: 'horizontal',
-  gestureResponseDistance: height,
 }
 
-const Stack = createStackNavigator<RootStackParamList>()
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const GestureEnabled = { gestureEnabled: true }
 
@@ -138,11 +134,9 @@ function Navigation() {
         screenOptions={{
           gestureEnabled: true,
           gestureDirection: 'horizontal',
-          gestureResponseDistance: width,
           headerShown: false,
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          animation: 'slide_from_right',
         }}
-        initialRouteName='Abinash'
       >
         <Stack.Screen name='Splash' component={Splash} options={NO_ANIMATION} />
         <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
@@ -209,10 +203,9 @@ function Navigation() {
           name='Story'
           component={Story}
           options={{
-            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+            presentation: 'modal',
             gestureEnabled: true,
             gestureDirection: 'vertical',
-            gestureResponseDistance: height,
           }}
         />
         <Stack.Screen name='User' component={User} options={GestureEnabled} />

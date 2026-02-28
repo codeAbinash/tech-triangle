@@ -1,7 +1,7 @@
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../App'
 
-export type StackNav = StackNavigationProp<RootStackParamList>
+export type StackNav = NativeStackNavigationProp<RootStackParamList>
 export type NavProp = { navigation: StackNav }
 
 export type Theme = {
