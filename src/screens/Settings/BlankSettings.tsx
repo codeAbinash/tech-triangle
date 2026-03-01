@@ -5,6 +5,7 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import Setting07Icon from '@hugeicons/Setting07Icon'
+import { Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 
 export default function BlankSettings({ navigation }: NavProp) {

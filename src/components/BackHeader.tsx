@@ -17,7 +17,7 @@ type BackHeaderProps = ViewProps & {
 export default function BackHeader({ navigation, Right, title, Title, onBackPress }: BackHeaderProps) {
   const scheme = useColorScheme()
   return (
-    <View className='bg-white px-5 pb-0.5 pl-1 pr-6 dark:bg-zinc-950'>
+    <View className='bg-white px-5 pr-6 pb-0.5 pl-1 dark:bg-zinc-950'>
       <PaddingTop />
       <View>
         {Title || (
@@ -30,7 +30,7 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
               <ArrowLeft01Icon size={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
             </TouchableOpacity>
             <SemiBold
-              style={{ fontSize: 14.3, flex: 1, paddingBottom: 5 }}
+              style={{ fontSize: 16.3, flex: 1, paddingBottom: 5 }}
               className='mt-0.5 text-zinc-800 dark:text-zinc-200'
               numberOfLines={1}
             >

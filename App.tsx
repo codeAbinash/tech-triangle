@@ -19,6 +19,7 @@ import LocationNotes from '@screens/LocationNotes/LocationNotes'
 import LocationTags from '@screens/LocationNotes/LocationTags'
 import NewLocationNote from '@screens/LocationNotes/NewLocationNote'
 import LocationSpeed from '@screens/LocationSpeed/LocationSpeed'
+import Messages from '@screens/Messages/Messages'
 import NotesWelcome from '@screens/Notes/NotesWelcome'
 import type { ChartParamList } from '@screens/OS/Chart'
 import Chart from '@screens/OS/Chart'
@@ -222,6 +223,7 @@ function Navigation() {
         <Stack.Screen name='LocationTags' component={LocationTags} options={IOS_BOTTOM_STYLE} />
         <Stack.Screen name='LocationNote' component={LocationNote} options={GestureEnabled} />
         <Stack.Screen name='LocationSpeed' component={LocationSpeed} options={GestureEnabled} />
+        <Stack.Screen name='Messages' component={Messages} options={{ gestureEnabled: false }} />
       </Stack.Navigator>
     </>
   )
@@ -231,6 +233,7 @@ export type RootStackParamList = {
   Abinash: undefined
   Hello: undefined
   LocationSpeed: undefined
+  Messages: undefined
   NewLocationNote: undefined
   LocationNote: LocationNoteParamList
   LocationNotes: undefined

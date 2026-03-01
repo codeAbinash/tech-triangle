@@ -115,11 +115,11 @@ function Shortcuts({ navigation }: { navigation: StackNav }) {
           <Medium className='text-xs text-gray-700 dark:text-gray-300'>Location Notes</Medium>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Test')}
+          onPress={() => navigation.navigate('Messages')}
           style={[hw, styles.shadow, styles.center]}
           className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
         >
-          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Shortcut 2</Medium>
+          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Messages</Medium>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('FCFS')}
