@@ -9,7 +9,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { FlatList, TextInput, TouchableOpacity, View, useColorScheme } from 'react-native'
 import { demoMessages, newMessage, type Message } from './data'
 
-const WS_URL = 'ws://harkirat.codeabinash.workers.dev/ws'
+const WS_URL = 'wss://harkirat.codeabinash.workers.dev/ws'
 
 export default function Messages({ navigation }: NavProp) {
   const [messages, setMessages] = useState<Message[]>(demoMessages)
