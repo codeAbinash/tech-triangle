@@ -2,7 +2,8 @@ import { Colors } from '@utils/colors'
 import { SEMIBOLD } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
-import { TextInput, View, useColorScheme, type TextInputProps } from 'react-native'
+import { TextInput, type TextInputProps, View, useColorScheme } from 'react-native'
+import { MAIN_BUTTON_SIZE } from './values'
 
 type InputProps = TextInputProps & {
   accent?: string
@@ -17,7 +18,10 @@ export function Input({ Icon, Right, accent = Colors.accent, multiline, classNam
         {Icon}
         <TextInput
           className={cn('flex-1 text-zinc-800 dark:text-zinc-200', className)}
-          style={[{ marginBottom: 1, flex: 1, height: multiline ? undefined : 40, fontSize: 12.5 }, SEMIBOLD]}
+          style={[
+            { marginBottom: 1, flex: 1, height: multiline ? undefined : 40, fontSize: MAIN_BUTTON_SIZE },
+            SEMIBOLD,
+          ]}
           placeholderTextColor={scheme === 'dark' ? Colors.zinc[500] : Colors.zinc[400]}
           cursorColor={accent}
           selectionColor={accent + '77'}

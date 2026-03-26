@@ -1,3 +1,4 @@
+import { MAIN_TEXT_SIZE } from '@components/values'
 import { SemiBold } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
@@ -38,7 +39,7 @@ export function SettOption({
         <View className='p-2.5 px-0' style={{ flexShrink: 1 }}>
           <SemiBold
             className='text-left text-zinc-800 dark:text-zinc-200'
-            style={[{ fontSize: 12, paddingBottom: 2 }, !title ? { opacity: 0.5 } : {}]}
+            style={[{ fontSize: MAIN_TEXT_SIZE, paddingBottom: 2 }, !title ? { opacity: 0.5 } : {}]}
             numberOfLines={numberOfLines || 0}
           >
             {title || placeholder}

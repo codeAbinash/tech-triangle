@@ -157,7 +157,7 @@ function Boxes({ w, theme }: { w: Weather; theme: Theme }) {
         phase={w?.daily[0]?.moon_phase}
       />
       <View className='w-full items-center justify-center'>
-        <SemiBold className='mt-5 text-center opacity-50' style={[F.F10, theme.color]}>
+        <SemiBold className='mt-5 text-center opacity-50' style={[F.F13, theme.color]}>
           Powered by OpenWeatherMap
         </SemiBold>
       </View>

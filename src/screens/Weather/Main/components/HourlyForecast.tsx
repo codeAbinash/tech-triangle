@@ -91,19 +91,19 @@ function SmallWeather({ color, time, ap, temp, Icon, style, probability, ...rest
       {...rest}
       entering={FadeIn.duration(1000)}
     >
-      <Medium style={{ color: color.color, fontSize: 11 }} className='mb-1 text-center'>
+      <Medium style={{ color: color.color, fontSize: 13 }} className='mb-1 text-center'>
         {temp}
       </Medium>
       <View>
         <Icon size={22} color={color.color} variant='solid-rounded' />
         {
-          <SemiBold className='text-center text-sky-500' style={{ opacity: probability ? 1 : 0, fontSize: 9 }}>
+          <SemiBold className='text-center text-sky-500' style={{ opacity: probability ? 1 : 0, fontSize: 11 }}>
             {probability}%
           </SemiBold>
         }
-        <Medium style={{ color: color.color, fontSize: 10 }} className='text-center'>
-          {time}
-          <Regular style={{ color: color.color, fontSize: 8.5 }} className='text-center'>
+        <Medium style={{ color: color.color, fontSize: 12 }} className='text-center'>
+          {time}{' '}
+          <Regular style={{ color: color.color, fontSize: 10 }} className='text-center'>
             {ap}
           </Regular>
         </Medium>

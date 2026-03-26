@@ -74,7 +74,7 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               style={{ flex: 1, paddingTop: 13, paddingBottom: 8 }}
             >
               {options.tabBarIcon && options.tabBarIcon({ focused: isFocused, color, size: 22 })}
-              <SemiBold style={{ color, marginTop: 4, fontSize: 8.5 }}>{label as ReactNode}</SemiBold>
+              <SemiBold style={{ color, marginTop: 4, fontSize: 10 }}>{label as ReactNode}</SemiBold>
             </TouchableOpacity>
           )
         })}

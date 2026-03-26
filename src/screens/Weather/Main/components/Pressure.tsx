@@ -15,8 +15,8 @@ export default function Pressure({ theme, pressure, percent }: { theme: Theme; p
       <View className='flex-1 items-center justify-center px-5 pb-4 pt-0'>
         <GradientPath theme={theme} percent={percent} />
         <View style={StyleSheet.absoluteFill} className='items-center justify-center'>
-          <Medium style={[{ fontSize: 15 }, theme.color]}>{pressure}</Medium>
-          <Regular className='text-xs' style={theme.color}>
+          <Medium style={[{ fontSize: 17 }, theme.color]}>{pressure}</Medium>
+          <Regular className='text-sm' style={theme.color}>
             {unit}
           </Regular>
         </View>

@@ -1,7 +1,8 @@
 import { weatherStore } from '@/zustand/weatherStore'
+import { MAIN_TEXT_SIZE } from '@components/values'
 import Sun03Icon from '@hugeicons/Sun03Icon'
 import { boxSize } from '@screens/Weather/utils'
-import { F, Medium, Regular } from '@utils/fonts'
+import { Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { getAp, getHoursMinutes } from '@utils/utils'
 import { View } from 'react-native'
@@ -27,7 +28,7 @@ export default function SunRiseSet({ theme, now, sunrise, sunset }: SunRiseSetPr
       />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
         <View className='flex-row items-end'>
-          <Medium style={[{ fontSize: 28 }, theme.color]}>
+          <Medium style={[{ fontSize: 35 }, theme.color]}>
             {isDay === null
               ? '__:__'
               : isDay
@@ -38,7 +39,7 @@ export default function SunRiseSet({ theme, now, sunrise, sunset }: SunRiseSetPr
             {isDay === null ? '__' : getAp(isDay ? sunset || 0 : sunrise || 0, timeFormat)}
           </Medium>
         </View>
-        <Regular style={[theme.color, F.F12]}>
+        <Regular style={[theme.color, { fontSize: MAIN_TEXT_SIZE, lineHeight: MAIN_TEXT_SIZE * 1.3 }]}>
           Sunrise at {getHoursMinutes(sunrise || 0, timeFormat)} {getAp(sunrise || 0, timeFormat)}, sunset at{' '}
           {getHoursMinutes(sunset || 0, timeFormat)} {getAp(sunset || 0, timeFormat)}.
         </Regular>

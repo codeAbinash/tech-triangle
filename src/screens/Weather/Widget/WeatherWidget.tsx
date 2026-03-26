@@ -1,9 +1,10 @@
 import { weatherStore } from '@/zustand/weatherStore'
+import { SUB_TEXT_SIZE } from '@components/values'
 import styles, { hw } from '@screens/Home/style'
 import { Canvas, LinearGradient, Rect, vec } from '@shopify/react-native-skia'
 import { useQuery } from '@tanstack/react-query'
 import { WeatherColors } from '@utils/colors'
-import { F, Medium, Regular } from '@utils/fonts'
+import { Medium, Regular } from '@utils/fonts'
 import type { StackNav, Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import React, { useEffect } from 'react'
@@ -86,22 +87,22 @@ const WeatherWidget = ({ navigation }: { navigation: StackNav }) => {
       >
         <View>
           <View className='flex-row justify-between'>
-            <Medium className='text-sm' style={color}>
+            <Medium className='text-base' style={color}>
               {currentCity.name}
             </Medium>
             {isLoading && <ActivityIndicator size={15} color={color.color} />}
           </View>
-          <Regular style={[{ fontSize: 50, lineHeight: 70 }, color]}>
+          <Regular style={[{ fontSize: 60, lineHeight: 80 }, color]}>
             {w ? tempConverter({ temp: w.current?.temp, unit: currentUnit }) : '__'}
             {currentUnit === 'K' ? '' : '°'}
           </Regular>
         </View>
         <View>
           <Icon size={25} color={color.color} variant='solid-rounded' />
-          <Medium style={[color, F.F11]} className='mt-0.5 capitalize'>
+          <Medium style={[color, { fontSize: SUB_TEXT_SIZE }]} className='mt-0.5 capitalize'>
             {w ? w.current?.weather?.[0]!.description : '__'}
           </Medium>
-          <Medium style={[color, F.F11]}>
+          <Medium style={[color, { fontSize: SUB_TEXT_SIZE }]}>
             Feels Like {w ? tempConverter({ temp: w.current?.feels_like, unit: currentUnit }) : '__'}{' '}
             {currentUnit === 'K' ? 'K' : '°' + currentUnit}
           </Medium>

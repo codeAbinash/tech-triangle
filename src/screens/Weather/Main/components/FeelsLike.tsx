@@ -1,4 +1,5 @@
 import { weatherStore } from '@/zustand/weatherStore'
+import { MAIN_TEXT_SIZE } from '@components/values'
 import TemperatureIcon from '@hugeicons/TemperatureIcon'
 import { boxSize } from '@screens/Weather/utils'
 import { F, Medium, Regular } from '@utils/fonts'
@@ -19,10 +20,12 @@ export default function FeelsLike({ theme, feelsLike, feelsLikeStatus }: FeelsLi
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
       <WeatherLabel Icon={TemperatureIcon} color={theme.color} label='Feels Like' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
-        <Medium style={[{ fontSize: 37 }, theme.color]}>
+        <Regular style={[theme.color, { fontSize: MAIN_TEXT_SIZE, lineHeight: MAIN_TEXT_SIZE * 1.3, marginTop: 5 }]}>
+          {feelsLikeStatus}
+        </Regular>
+        <Medium style={[{ fontSize: 50 }, theme.color]}>
           {tempConverter({ temp: feelsLike, unit: unit, degree: true })}
         </Medium>
-        <Regular style={[theme.color, F.F12]}>{feelsLikeStatus}</Regular>
       </View>
     </View>
   )

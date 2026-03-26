@@ -7,6 +7,7 @@ import { Bold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import { getLocalDate } from '@utils/utils'
 import { TouchableOpacity, View, useColorScheme } from 'react-native'
+import { LARGE_HEADING_SIZE } from './values'
 
 function UpdateRedDot() {
   const version = versionStore((state) => state.version)
@@ -24,7 +25,10 @@ export default function TopArea() {
       <View className='flex-row items-center justify-between'>
         <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('Greeting')}>
           <View className='flex-row items-center'>
-            <Bold style={[{ fontSize: 16.5 }]} className='items-center justify-center text-gray-800 dark:text-gray-200'>
+            <Bold
+              style={[{ fontSize: LARGE_HEADING_SIZE }]}
+              className='items-center justify-center text-gray-800 dark:text-gray-200'
+            >
               {/* {nickName ? 'Hello ' + nickName : greetingByTime()} */}
               {getLocalDate()}
             </Bold>

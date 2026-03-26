@@ -1,10 +1,11 @@
 import { Medium } from '@utils/fonts'
 import { useMemo } from 'react'
-import { View, type TextProps } from 'react-native'
+import { type TextProps, View } from 'react-native'
+import { MAIN_TEXT_SIZE } from './values'
 
 export function TxtAcc({ children, size, style, ...rest }: TextProps & { size?: number }) {
   return (
-    <Medium className='text-accent' style={[{ fontSize: size || 11.5 }, style]} {...rest}>
+    <Medium className='text-accent' style={[{ fontSize: size || MAIN_TEXT_SIZE }, style]} {...rest}>
       {children}
     </Medium>
   )
@@ -18,7 +19,7 @@ type TxtProps = TextProps & {
 export function Txt({ children, size, style, skeleton, ...rest }: TxtProps) {
   if (skeleton) return <TxtSkeleton />
   return (
-    <Medium className='text-zinc-500' style={[{ fontSize: size || 11.5 }, style]} {...rest}>
+    <Medium className='text-zinc-500' style={[{ fontSize: size || MAIN_TEXT_SIZE }, style]} {...rest}>
       {children}
     </Medium>
   )

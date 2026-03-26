@@ -1,7 +1,8 @@
 import { weatherStore } from '@/zustand/weatherStore'
+import { MAIN_TEXT_SIZE } from '@components/values'
 import HumidityIcon from '@hugeicons/HumidityIcon'
 import { boxSize } from '@screens/Weather/utils'
-import { F, Medium, Regular } from '@utils/fonts'
+import { Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { tempConverter } from '@utils/utils'
 import { View } from 'react-native'
@@ -19,11 +20,11 @@ export default function Humidity({ humidity, theme, dew_point }: HumidityProps) 
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
       <WeatherLabel Icon={HumidityIcon} color={theme.color} label='Humidity' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
-        <Medium style={[{ fontSize: 35 }, theme.color]}>{humidity}%</Medium>
+        <Medium style={[{ fontSize: 45 }, theme.color]}>{humidity}%</Medium>
         <View className='w-full rounded-full bg-white/10'>
           <View className='h-1.5 rounded-full bg-white/70' style={{ width: `${humidity}%` }} />
         </View>
-        <Regular style={[theme.color, F.F12]}>
+        <Regular style={[theme.color, { fontSize: MAIN_TEXT_SIZE, lineHeight: MAIN_TEXT_SIZE * 1.3 }]}>
           The due point is {tempConverter({ temp: dew_point, unit: unit, degree: true })} right now.
         </Regular>
       </View>

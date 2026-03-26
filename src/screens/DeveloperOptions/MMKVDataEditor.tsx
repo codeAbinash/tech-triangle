@@ -9,6 +9,7 @@ import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { TxtAcc } from '@components/Text'
+import { MAIN_TEXT_SIZE } from '@components/values'
 import Delete02Icon from '@hugeicons/Delete02Icon'
 import FloppyDiskIcon from '@hugeicons/FloppyDiskIcon'
 import type { RouteProp } from '@react-navigation/native'
@@ -124,7 +125,7 @@ export default function MMKVDataEditor({
               value={value}
               onChangeText={setValue}
               multiline
-              style={{ fontFamily: 'monospace', fontWeight: 'bold', lineHeight: 18, fontSize: 12 }}
+              style={{ fontFamily: 'monospace', fontWeight: 'bold', lineHeight: 18, fontSize: MAIN_TEXT_SIZE }}
               autoCorrect={false}
             />
           </SettGroup>

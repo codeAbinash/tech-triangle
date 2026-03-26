@@ -1,7 +1,8 @@
 import Gradient from '@components/Gradient'
+import { MAIN_TEXT_SIZE } from '@components/values'
 import NaturalFoodIcon from '@hugeicons/NaturalFoodIcon'
 import { boxSize } from '@screens/Weather/utils'
-import { F, Medium, Regular } from '@utils/fonts'
+import { Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { View } from 'react-native'
 import WeatherLabel from './WeatherLabel'
@@ -39,12 +40,14 @@ export default function AirQualityIndex({
     <View className='aspect-square rounded-3xl bg-black/10' style={boxSize}>
       <WeatherLabel Icon={NaturalFoodIcon} color={theme.color} label='AQI' />
       <View className='flex-1 justify-between px-5 pb-4 pt-0'>
-        <Medium style={[{ fontSize: 35 }, theme.color]}>{aqi}</Medium>
+        <Medium style={[{ fontSize: 50 }, theme.color]}>{aqi}</Medium>
         <Gradient className='h-1.5 w-full flex-row rounded-full' colors={gradientColors}>
           <View style={{ width: `${aqiPercent}%` }} />
           <View className='h-1.5 w-1.5 rounded-full bg-white' />
         </Gradient>
-        <Regular style={[theme.color, F.F12]}>{aqiStatus}</Regular>
+        <Regular style={[theme.color, { fontSize: MAIN_TEXT_SIZE, lineHeight: MAIN_TEXT_SIZE * 1.3 }]}>
+          {aqiStatus}
+        </Regular>
       </View>
     </View>
   )

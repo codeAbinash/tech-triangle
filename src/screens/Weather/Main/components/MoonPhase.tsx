@@ -1,8 +1,9 @@
 import { weatherStore } from '@/zustand/weatherStore'
+import { MAIN_TEXT_SIZE } from '@components/values'
 import Moon02Icon from '@hugeicons/Moon02Icon'
 import { getMoonImageLink } from '@screens/Weather/api'
 import { boxFullSize, mapMoonPhaseToImage } from '@screens/Weather/utils'
-import { F, Medium, Regular } from '@utils/fonts'
+import { Medium, Regular } from '@utils/fonts'
 import type { Theme } from '@utils/types'
 import { getAp, getHoursMinutes } from '@utils/utils'
 import { Image, View } from 'react-native'
@@ -26,12 +27,14 @@ export default function MoonPhase({ moonrise, moonset, phase, theme }: MoonRiseS
         <View className='flex-row justify-between'>
           <View className='flex-1'>
             <Medium style={[{ fontSize: 35 }, theme.color]}>{phaseNumber}</Medium>
-            <Regular style={[theme.color, F.F12]}>{moonPhaseString(phase || 1)}</Regular>
+            <Regular style={[theme.color, { fontSize: MAIN_TEXT_SIZE, lineHeight: MAIN_TEXT_SIZE * 1.3 }]}>
+              {moonPhaseString(phase || 1)}
+            </Regular>
             {/* <View> */}
-            <Regular style={[theme.color, F.F12]}>
+            <Regular style={[theme.color, { fontSize: MAIN_TEXT_SIZE, lineHeight: MAIN_TEXT_SIZE * 1.3 }]}>
               Moonrise at {getHoursMinutes(moonrise || 0, timeFormat)} {getAp(moonrise || 0, timeFormat)},{' '}
             </Regular>
-            <Regular style={[theme.color, F.F12]}>
+            <Regular style={[theme.color, { fontSize: MAIN_TEXT_SIZE, lineHeight: MAIN_TEXT_SIZE * 1.3 }]}>
               Moonset at {getHoursMinutes(moonset || 0, timeFormat)} {getAp(moonset || 0, timeFormat)}
             </Regular>
             {/* </View> */}

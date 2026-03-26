@@ -3,8 +3,9 @@ import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import type { StackNav } from '@utils/types'
 import React from 'react'
-import { TouchableOpacity, View, useColorScheme, type ViewProps } from 'react-native'
+import { TouchableOpacity, View, type ViewProps, useColorScheme } from 'react-native'
 import { PaddingTop } from './SafePadding'
+import { HEADING_SIZE } from './values'
 
 type BackHeaderProps = ViewProps & {
   navigation?: StackNav
@@ -21,16 +22,20 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
       <PaddingTop />
       <View>
         {Title || (
-          <View className='flex-row items-center' style={{ gap: 10 }}>
+          <View className='flex-row items-center' style={{ gap: 8 }}>
             <TouchableOpacity
               className='p-3 pr-0.5'
               onPress={() => (onBackPress ? onBackPress() : navigation && navigation.goBack())}
               activeOpacity={0.7}
             >
-              <ArrowLeft01Icon size={26} color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]} />
+              <ArrowLeft01Icon
+                strokeWidth={1.7}
+                size={26}
+                color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]}
+              />
             </TouchableOpacity>
             <SemiBold
-              style={{ fontSize: 16.3, flex: 1, paddingBottom: 5 }}
+              style={{ fontSize: HEADING_SIZE, flex: 1, paddingBottom: 5 }}
               className='mt-0.5 text-zinc-800 dark:text-zinc-200'
               numberOfLines={1}
             >

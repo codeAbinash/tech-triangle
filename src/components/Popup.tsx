@@ -3,6 +3,7 @@ import { H } from '@utils/dimensions'
 import { Medium, SemiBold } from '@utils/fonts'
 import React from 'react'
 import { Modal, ScrollView, TouchableOpacity, View } from 'react-native'
+import { MAIN_TEXT_SIZE } from './values'
 
 type PopupT = {
   index: number
@@ -35,7 +36,7 @@ const Popup = React.memo<PopupT>(({ text, title, buttons, index, noClose }) => {
             <View className='px-6 pt-5'>
               <SemiBold className='text-base text-black dark:text-white'>{title}</SemiBold>
               <ScrollView style={{ maxHeight: H * 0.65, marginTop: 10 }}>
-                <Medium className='text-sm text-black dark:text-white' style={{ fontSize: 12 }}>
+                <Medium className='text-sm text-black dark:text-white' style={{ fontSize: MAIN_TEXT_SIZE }}>
                   {text}
                 </Medium>
               </ScrollView>
@@ -66,9 +67,9 @@ const PopupButton = React.memo<{ text: string; onPress?: () => void }>(({ text, 
     <TouchableOpacity
       className='min-w-20 items-center justify-center rounded-lg px-3 py-3 active:bg-black/5 dark:active:bg-white/10'
       onPress={onPress}
-      activeOpacity={1}
+      activeOpacity={0.5}
     >
-      <SemiBold className='text-black dark:text-white' style={{ fontSize: 12 }}>
+      <SemiBold className='text-black dark:text-white' style={{ fontSize: MAIN_TEXT_SIZE }}>
         {text}
       </SemiBold>
     </TouchableOpacity>

@@ -3,6 +3,7 @@ import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import TopArea from '@components/TopArea'
 import { useNavigation } from '@react-navigation/native'
+import WeatherWidget from '@screens/Weather/Widget/WeatherWidget'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
 import { Bold, Medium } from '@utils/fonts'
@@ -12,7 +13,6 @@ import { Dimensions, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import CheckVersion from './CheckVersion'
 import styles, { hw as height_weight } from './style'
-import WeatherWidget from '@screens/Weather/Widget/WeatherWidget'
 
 const { width } = Dimensions.get('window')
 
@@ -82,7 +82,7 @@ function Elements() {
         activeOpacity={0.7}
         onPress={() => navigation.navigate('RoutineWelcome')}
       >
-        <Medium className='text-xs text-gray-800 dark:text-gray-200'>Routine</Medium>
+        <Medium className='text-sm text-gray-800 dark:text-gray-200'>Routine</Medium>
       </TouchableOpacity>
       <TouchableOpacity
         style={[height_weight, styles.shadow]}
@@ -90,7 +90,7 @@ function Elements() {
         activeOpacity={0.7}
         onPress={() => navigation.navigate('Weather')}
       >
-        <Medium className='text-xs text-gray-800 dark:text-gray-200'>Notes</Medium>
+        <Medium className='text-sm text-gray-800 dark:text-gray-200'>Notes</Medium>
       </TouchableOpacity>
       <View style={[height_weight, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
       <View style={[height_weight, styles.shadow]} className='rounded-3xl bg-white dark:bg-zinc-900'></View>
@@ -112,28 +112,28 @@ function Shortcuts({ navigation }: { navigation: StackNav }) {
           style={[hw, styles.shadow, styles.center]}
           className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
         >
-          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Location Notes</Medium>
+          <Medium className='text-sm text-gray-700 dark:text-gray-300'>Location Notes</Medium>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('Messages')}
           style={[hw, styles.shadow, styles.center]}
           className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
         >
-          <Medium className='text-xs text-gray-700 dark:text-gray-300'>Messages</Medium>
+          <Medium className='text-sm text-gray-700 dark:text-gray-300'>Messages</Medium>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('FCFS')}
           style={[hw, styles.shadow, styles.center]}
           className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
         >
-          <Medium className='text-xs text-gray-700 dark:text-gray-300'>FCFS Process</Medium>
+          <Medium className='text-sm text-gray-700 dark:text-gray-300'>FCFS Process</Medium>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('SJF')}
           style={[hw, styles.shadow, styles.center]}
           className='w-1/2 rounded-2xl bg-white dark:bg-zinc-900'
         >
-          <Medium className='text-xs text-gray-700 dark:text-gray-300'>SJF Process</Medium>
+          <Medium className='text-sm text-gray-700 dark:text-gray-300'>SJF Process</Medium>
         </TouchableOpacity>
       </View>
     </View>
@@ -153,7 +153,7 @@ function Graph() {
         }}
         className='h-52 w-full items-center justify-center rounded-3xl bg-white dark:bg-zinc-900'
       >
-        <Medium className='text-xs text-gray-700 dark:text-gray-300'>Graph</Medium>
+        <Medium className='text-sm text-gray-700 dark:text-gray-300'>Graph</Medium>
       </View>
     </View>
   )

@@ -23,8 +23,8 @@ export default function Wind({ theme, w }: { theme: Theme; w: Weather }) {
             className='items-center justify-center rounded-full'
             style={{ backgroundColor: theme.gradient[1], height: W * 0.2, width: W * 0.2 }}
           >
-            <Medium style={[{ fontSize: 15 }, theme.color]}>{w?.current?.wind_speed}</Medium>
-            <Regular className='text-xs' style={theme.color}>
+            <Medium style={[{ fontSize: 17 }, theme.color]}>{w?.current?.wind_speed}</Medium>
+            <Regular className='text-sm' style={theme.color}>
               m/s
             </Regular>
           </View>

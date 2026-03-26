@@ -1,3 +1,4 @@
+import { SMALL_TEXT_SIZE } from '@components/values'
 import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import { cn, layout } from '@utils/utils'
@@ -14,7 +15,7 @@ export default function SettGroup({ children, title, className, accent = Colors.
       {title && (
         <SemiBold
           className={'px-6 pb-1.5 pt-0.5 text-accent'}
-          style={{ textTransform: 'none', opacity: 1, fontSize: 10, color: accent, marginBottom: 5 }}
+          style={{ textTransform: 'none', opacity: 1, fontSize: SMALL_TEXT_SIZE, color: accent, marginBottom: 5 }}
         >
           {title}
         </SemiBold>
