@@ -13,7 +13,7 @@ const WS_URL = 'wss://harkirat.codeabinash.workers.dev/ws'
 
 export default function Messages({ navigation }: NavProp) {
   const [messages, setMessages] = useState<Message[]>(demoMessages)
-  const [input, setInput] = useState('')
+  const [input, setInput]   = useState('')
   const [connected, setConnected] = useState(false)
   const ws = useRef<WebSocket | null>(null)
   const flatListRef = useRef<FlatList>(null)

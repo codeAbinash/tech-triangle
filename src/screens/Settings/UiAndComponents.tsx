@@ -26,7 +26,6 @@ import { Colors } from '@utils/colors'
 import type { NavProp } from '@utils/types'
 import React, { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
-import colors from 'tailwindcss/colors'
 
 export default function UiAndComponents({ navigation }: NavProp) {
   const [toggle1, setToggle1] = useState(true)
@@ -139,19 +138,19 @@ export default function UiAndComponents({ navigation }: NavProp) {
           <SettGroup title='Your favorite Programming Language'>
             <SettOption
               title='TypeScript'
-              Icon={<Typescript01Icon color={colors.blue[500]} size={35} />}
+              Icon={<Typescript01Icon color={Colors.blue[500]} size={35} />}
               onPress={() => setOption1('TypeScript')}
               Right={<Check checked={option1 === 'TypeScript'} />}
             />
             <SettOption
               title='JavaScript'
-              Icon={<JavaScriptIcon color={colors.yellow[500]} size={35} />}
+              Icon={<JavaScriptIcon color={Colors.yellow[500]} size={35} />}
               onPress={() => setOption1('JavaScript')}
               Right={<Check className='text-amber-500' checked={option1 === 'JavaScript'} />}
             />
             <SettOption
               title='C++'
-              Icon={<CpuIcon color={colors.blue[500]} size={35} />}
+              Icon={<CpuIcon color={Colors.blue[500]} size={35} />}
               onPress={() => setOption1('C++')}
               Right={<Check className='text-blue-500' checked={option1 === 'C++'} />}
             />

@@ -1,15 +1,14 @@
 import { PaddingBottom } from '@components/SafePadding'
-import { HugeIconProps } from '@hugeicons/constants'
 import Home01Icon from '@hugeicons/Home01Icon'
 import Saturn01Icon from '@hugeicons/Saturn01Icon'
 import TestTube01Icon from '@hugeicons/TestTube01Icon'
 import Wallet02Icon from '@hugeicons/Wallet02Icon'
-import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { HugeIconProps } from '@hugeicons/constants'
+import { type BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import React, { type ReactNode } from 'react'
-import { TouchableOpacity, View, useColorScheme, type ColorSchemeName } from 'react-native'
-import colors from 'tailwindcss/colors'
+import { type ColorSchemeName, TouchableOpacity, View, useColorScheme } from 'react-native'
 import HomeScreen from './Home/HomeScreen'
 import TyrItOut from './Try/TyrItOut'
 import ComingSoon from './UnderConstruction'
@@ -91,7 +90,7 @@ export function getFocusedColor(theme: ColorSchemeName) {
 }
 
 export function getColor(theme: ColorSchemeName) {
-  return theme === 'dark' ? colors.zinc[400] : colors.zinc[600]
+  return theme === 'dark' ? Colors.zinc[400] : Colors.zinc[600]
 }
 
 const screens = [
