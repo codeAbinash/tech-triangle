@@ -127,7 +127,7 @@ function DailyWeather({ d, day, currentUnit, min, max, dotPosition, theme }: Dai
           <Icon size={21} color={color.color} style={{ marginRight: 10 }} variant='solid-rounded' />
           <Medium
             className='text-center text-sky-500'
-            style={{ display: probability ? 'flex' : 'none', fontSize: 11, opacity: 0.8 }}
+            style={{ display: probability ? 'flex' : 'none', fontSize: 12, opacity: 0.8 }}
           >
             {probability}%
           </Medium>

@@ -87,12 +87,12 @@ const WeatherWidget = ({ navigation }: { navigation: StackNav }) => {
       >
         <View>
           <View className='flex-row justify-between'>
-            <Medium className='text-base' style={color}>
+            <Medium className='text-lg' style={color}>
               {currentCity.name}
             </Medium>
             {isLoading && <ActivityIndicator size={15} color={color.color} />}
           </View>
-          <Regular style={[{ fontSize: 60, lineHeight: 80 }, color]}>
+          <Regular style={[{ fontSize: 70, lineHeight: 90 }, color]}>
             {w ? tempConverter({ temp: w.current?.temp, unit: currentUnit }) : '__'}
             {currentUnit === 'K' ? '' : '°'}
           </Regular>
