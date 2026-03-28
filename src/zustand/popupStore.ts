@@ -1,15 +1,23 @@
 import { create } from 'zustand'
 
+export type ButtonVariant = 'default' | 'primary' | 'destructive'
+
+export type PopupButtonDef = {
+  text: string
+  onPress?: () => void
+  variant?: ButtonVariant
+}
+
 export type Popup = {
   text?: string
   title?: string
-  buttons?: { text: string; onPress?: () => void }[]
+  buttons?: PopupButtonDef[]
   noClose?: boolean
 }
 
 type PopupStore = {
   popups: Popup[]
-  alert: (title: string, text: string, buttons?: { text: string; onPress?: () => void }[], noClose?: boolean) => void
+  alert: (title: string, text: string, buttons?: PopupButtonDef[], noClose?: boolean) => void
   removePopup: (index: number) => void
   clear: () => void
 }

@@ -1,23 +1,27 @@
-import popupStore from '@/zustand/popupStore'
+import popupStore, { type ButtonVariant, type PopupButtonDef } from '@/zustand/popupStore'
 import { H } from '@utils/dimensions'
 import { Medium, SemiBold } from '@utils/fonts'
 import React from 'react'
 import { Modal, ScrollView, TouchableOpacity, View } from 'react-native'
-import { MAIN_TEXT_SIZE } from './values'
+import { HEADING_SIZE, MAIN_TEXT_SIZE } from './values'
 
 type PopupT = {
   index: number
   text?: string
   title?: string
-  buttons: {
-    text: string
-    onPress?: () => void
-  }[]
+  buttons: PopupButtonDef[]
   noClose?: boolean
+}
+
+const variantStyles: Record<ButtonVariant, { bg: string; text: string }> = {
+  default: { bg: 'bg-(--bg) dark:bg-zinc-800', text: 'text-black dark:text-white' },
+  primary: { bg: 'bg-blue-500', text: 'text-white' },
+  destructive: { bg: 'bg-(--bg) dark:bg-zinc-800', text: 'text-red-500' },
 }
 
 const Popup = React.memo<PopupT>(({ text, title, buttons, index, noClose }) => {
   const removePopup = popupStore((store) => store.removePopup)
+  const isRow = buttons.length === 2
 
   return (
     <View>
@@ -32,20 +36,24 @@ const Popup = React.memo<PopupT>(({ text, title, buttons, index, noClose }) => {
         }}
       >
         <View className='flex-1 items-center justify-center bg-black/40 dark:bg-black/50'>
-          <View className='w-[85%] rounded-3xl bg-white dark:bg-zinc-900'>
-            <View className='px-6 pt-5'>
-              <SemiBold className='text-xl text-black dark:text-white'>{title}</SemiBold>
-              <ScrollView style={{ maxHeight: H * 0.65, marginTop: 10 }}>
-                <Medium className='text-sm text-black dark:text-white' style={{ fontSize: MAIN_TEXT_SIZE + 1 }}>
+          <View className='w-[83%] rounded-4xl bg-white dark:bg-zinc-900'>
+            <View className='px-7 pt-6'>
+              <SemiBold className='text-black dark:text-white' style={{ fontSize: HEADING_SIZE }}>
+                {title}
+              </SemiBold>
+              <ScrollView style={{ maxHeight: H * 0.65, marginTop: 8 }}>
+                <Medium className='text-black/70 dark:text-white/70' style={{ fontSize: MAIN_TEXT_SIZE + 1 }}>
                   {text}
                 </Medium>
               </ScrollView>
             </View>
-            <View className='mt-5 flex-row flex-wrap items-center justify-end px-4 pb-5'>
-              {buttons?.map((button, i) => (
+            <View className={`mt-8 gap-2 px-5 pb-5 ${isRow ? 'flex-row' : 'flex-col'}`}>
+              {buttons.map((button, i) => (
                 <PopupButton
                   key={i}
                   text={button.text}
+                  variant={button.variant ?? 'default'}
+                  isRow={isRow}
                   onPress={() => {
                     button.onPress?.()
                     removePopup(index)
@@ -62,14 +70,22 @@ const Popup = React.memo<PopupT>(({ text, title, buttons, index, noClose }) => {
 
 export default Popup
 
-const PopupButton = React.memo<{ text: string; onPress?: () => void }>(({ text, onPress }) => {
+type PopupButtonProps = {
+  text: string
+  onPress?: () => void
+  variant: ButtonVariant
+  isRow: boolean
+}
+
+const PopupButton = React.memo<PopupButtonProps>(({ text, onPress, variant, isRow }) => {
+  const { bg, text: textColor } = variantStyles[variant]
   return (
     <TouchableOpacity
-      className='min-w-20 items-center justify-center rounded-lg px-3 py-3 active:bg-black/5 dark:active:bg-white/10'
+      className={`items-center justify-center rounded-full px-4 py-4 ${bg} ${isRow ? 'flex-1' : 'w-full'}`}
       onPress={onPress}
-      activeOpacity={0.5}
+      activeOpacity={0.75}
     >
-      <SemiBold className='text-black dark:text-white' style={{ fontSize: MAIN_TEXT_SIZE }}>
+      <SemiBold className={textColor} style={{ fontSize: MAIN_TEXT_SIZE + 1, marginBottom: 2 }}>
         {text}
       </SemiBold>
     </TouchableOpacity>

@@ -8,8 +8,8 @@ export type CheckIconProps = {
 } & HugeIconProps
 export default function Check({ checked, ...rest }: CheckIconProps) {
   return checked ? (
-    <Tick01Icon {...ic} color={Colors.accent} {...rest} />
+    <Tick01Icon strokeWidth={2} {...ic} color={Colors.accent} {...rest} />
   ) : (
-    <Tick01Icon {...ic} style={{ opacity: 0 }} />
+    <Tick01Icon strokeWidth={2} {...ic} style={{ opacity: 0 }} />
   )
 }

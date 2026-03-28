@@ -1,3 +1,4 @@
+import popupStore from '@/zustand/popupStore'
 import Button from '@components/Button'
 import Check from '@components/Check'
 import { Gap12 } from '@components/Gap'
@@ -11,6 +12,7 @@ import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt } from '@components/Text'
 import { Toggle } from '@components/Toggle'
+import BadgeInfoIcon from '@hugeicons/BadgeInfoIcon'
 import CpuIcon from '@hugeicons/CpuIcon'
 import JavaIcon from '@hugeicons/JavaIcon'
 import JavaScriptIcon from '@hugeicons/JavaScriptIcon'
@@ -84,6 +86,8 @@ export default function UiAndComponents({ navigation }: NavProp) {
           <RangeSliderMemo />
           <RangeSliderMemo2 />
         </Gap12>
+
+        <PopupAlertExample />
 
         <Gap12>
           <SettGroup title='Text Inputs'>
@@ -222,5 +226,67 @@ const RangeSliderMemo2 = () => {
         The value of the range slider is <Text className='text-rose-500'>{value}</Text>.
       </SettText>
     </SettGroup>
+  )
+}
+
+
+function PopupAlertExample() {
+  const alert = popupStore((store) => store.alert)
+  return (
+    <Gap12>
+      <SettGroup title='Popup Alert Example'>
+        <SettOption
+          title='With default OK button'
+          onPress={() => alert('Alert Title', 'This is the alert text')}
+          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          arrow
+        />
+        <SettOption
+          title='Custom buttons'
+          onPress={() => alert('Alert Title', 'This is the alert text', [{ text: 'Close', variant: 'primary' }])}
+          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          arrow
+        />
+        <SettOption
+          title='Multiple buttons and no close'
+          onPress={() =>
+            alert(
+              'Alert Title',
+              'This is the alert text',
+              [
+                { text: 'Cancel', variant: 'primary' },
+                { text: 'Delete', variant: 'destructive' },
+              ],
+              true,
+            )
+          }
+          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          arrow
+        />
+        <SettOption
+          title='More than 2 buttons'
+          onPress={() =>
+            alert(
+              'Alert Title',
+              'This is the alert text',
+              [
+                { text: 'Option 1' },
+                { text: 'Option 2' },
+                { text: 'Option 3' },
+                { text: 'Option 4', variant: 'primary' },
+                { text: 'Option 5', variant: 'destructive' },
+              ],
+              true,
+            )
+          }
+          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          arrow
+        />
+      </SettGroup>
+      <SettText>
+        These buttons will show different types of popups. You can test the popups by clicking on the buttons. The
+        popups will have different button configurations to show the flexibility of the popup component.
+      </SettText>
+    </Gap12>
   )
 }
