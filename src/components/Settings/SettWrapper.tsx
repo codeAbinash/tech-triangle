@@ -19,13 +19,18 @@ export default function SettWrapper({ Header, title, children, onBackPress, ...r
   return (
     <View className='bg flex-1'>
       <AutoStatusBar scheme={scheme} />
-      {Header ? Header : <BackHeader title={title || 'Test Title'} navigation={navigation} onBackPress={onBackPress} />}
       <KeyboardAvoid
+        stickyHeaderIndices={[0]}
         contentContainerStyle={{ paddingBottom: 20 }}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         {...rest}
       >
+        {Header ? (
+          Header
+        ) : (
+          <BackHeader title={title || 'Test Title'} navigation={navigation} onBackPress={onBackPress} />
+        )}
         <Gap20>{children}</Gap20>
         <PaddingBottom />
       </KeyboardAvoid>
