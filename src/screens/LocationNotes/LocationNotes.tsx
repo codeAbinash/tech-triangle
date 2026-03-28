@@ -98,7 +98,7 @@ function NotesList({ notes, search }: { notes: LocationNote[]; search?: string }
                 {item.description && (
                   <Medium
                     className='text-zinc-600 dark:text-zinc-400'
-                    style={{ fontSize: 10.5, flexShrink: 1, flex: 0.5, flexGrow: 0 }}
+                    style={{ fontSize: 12, flexShrink: 1, flex: 0.5, flexGrow: 0 }}
                     numberOfLines={1}
                   >
                     {item.description}

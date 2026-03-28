@@ -1,4 +1,4 @@
-import { MAIN_TEXT_SIZE } from '@components/values'
+import { GAP_SETT_ICON_TEXT, MAIN_TEXT_SIZE } from '@components/values'
 import { SemiBold } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
@@ -34,7 +34,7 @@ export function SettOption({
       style={[{ gap: 10 }]}
       {...rest}
     >
-      <View className='flex-row items-center justify-center' style={{ gap: 22, flexShrink: 1 }}>
+      <View className='flex-row items-center justify-center' style={{ gap: GAP_SETT_ICON_TEXT, flexShrink: 1 }}>
         {Icon}
         <View className='p-2.5 px-0' style={{ flexShrink: 1 }}>
           <SemiBold
@@ -54,3 +54,4 @@ export function SettOption({
     </TouchableOpacity>
   )
 }
+  

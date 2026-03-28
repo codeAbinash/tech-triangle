@@ -3,7 +3,7 @@ import { SEMIBOLD } from '@utils/fonts'
 import { cn } from '@utils/utils'
 import React from 'react'
 import { TextInput, type TextInputProps, View, useColorScheme } from 'react-native'
-import { MAIN_BUTTON_SIZE } from './values'
+import { GAP_SETT_ICON_TEXT, MAIN_BUTTON_SIZE } from './values'
 
 type InputProps = TextInputProps & {
   accent?: string
@@ -14,7 +14,7 @@ export function Input({ Icon, Right, accent = Colors.accent, multiline, classNam
   const scheme = useColorScheme()
   return (
     <View className='flex-row items-center justify-between px-6' style={{ gap: 10 }}>
-      <View className='flex-1 flex-row items-center' style={{ gap: 22 }}>
+      <View className='flex-1 flex-row items-center' style={{ gap: GAP_SETT_ICON_TEXT - 4 }}>
         {Icon}
         <TextInput
           className={cn('flex-1 text-zinc-800 dark:text-zinc-200', className)}

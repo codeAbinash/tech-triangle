@@ -65,7 +65,7 @@ const WeatherWidget = ({ navigation }: { navigation: StackNav }) => {
   if (!currentCity)
     return (
       <WeatherWithText
-        text={'Tap to set \n up weather'}
+        text={'Tap to set \nup weather'}
         onPress={() => navigation.navigate('WeatherWelcome')}
         theme={theme}
       />
@@ -133,7 +133,7 @@ const WeatherWithText = React.memo<{ text: string; onPress?: () => void; theme: 
         activeOpacity={0.7}
         onPress={onPress}
       >
-        <Medium style={color} className='text-center text-xs'>
+        <Medium style={color} className='text-center text-base'>
           {text}
         </Medium>
       </TouchableOpacity>
