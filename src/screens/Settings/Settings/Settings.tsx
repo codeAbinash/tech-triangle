@@ -114,7 +114,7 @@ export default function Settings({ navigation }: NavProp) {
         <SettingsHeader title='Settings' />
         <Gap20>
           <Gap12>
-            <SettText className='mt-3'>
+            <SettText>
               Hello {user?.name.split(' ')[0]}, Go to each section to customize your experience. All settings are saved
               automatically.
             </SettText>

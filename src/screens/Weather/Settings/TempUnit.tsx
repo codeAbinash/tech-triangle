@@ -17,7 +17,7 @@ export default function TempUnit({ navigation }: NavProp) {
   return (
     <SettWrapper title='Temperature Unit'>
       <Gap12>
-        <SettText className='mt-3'>Select the unit of temperature you want to use.</SettText>
+        <SettText>Select the unit of temperature you want to use.</SettText>
         <SettGroup>
           <SettOption
             title='Celsius'

@@ -48,7 +48,7 @@ export default function AllUsers({ navigation }: NavProp) {
       }
     >
       <Gap12>
-        <SettText className='mt-3'>You can see all users here. Also you can add or remove users.</SettText>
+        <SettText>You can see all users here. Also you can add or remove users.</SettText>
         <SettGroup title='All users'>
           {isPending && <DoubleSkeleton n={12} />}
           {data?.data?.map((user, i) => (

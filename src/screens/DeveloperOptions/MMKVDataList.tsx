@@ -12,7 +12,7 @@ import Database02Icon from '@hugeicons/Database02Icon'
 import PencilEdit02Icon from '@hugeicons/PencilEdit02Icon'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
-import { ls, type StorageKeys } from '@utils/storage'
+import { type StorageKeys, ls } from '@utils/storage'
 import type { NavProp } from '@utils/types'
 import { delayedFadeAnimationSearch, exiting, layout } from '@utils/utils'
 import React, { useEffect } from 'react'
@@ -60,7 +60,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
         }
       >
         <Gap12>
-          <SettText className='mt-3'>You may need to restart the app to see the changes in the app.</SettText>
+          <SettText>You may need to restart the app to see the changes in the app.</SettText>
 
           <SettGroup title='Stored keys' className='pb-4'>
             {searchResults?.map((item, i) => (

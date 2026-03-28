@@ -46,7 +46,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
     <SettWrapper title='UI & Components'>
       <>
         <Gap12>
-          <SettText className='mt-3'>This is a test screen to show the different settings components</SettText>
+          <SettText>This is a test screen to show the different settings components</SettText>
           <SettGroup title='Search bar'>
             <Gap12 className='px-5 pb-4'>
               <Search placeholder='Search placeholder' value={search} onChangeText={setSearch} />

@@ -16,7 +16,7 @@ export default function DistanceUnit({ navigation }: NavProp) {
   return (
     <SettWrapper title='Distance Unit'>
       <Gap12>
-        <SettText className='mt-3'>Select the unit of distance you want to use.</SettText>
+        <SettText>Select the unit of distance you want to use.</SettText>
         <SettGroup>
           <SettOption
             title='Meter'

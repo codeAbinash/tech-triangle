@@ -64,7 +64,7 @@ export default function randomPasswordGenerator({ navigation }: NavProp) {
   return (
     <SettWrapper title='Blank Settings'>
       <Gap12>
-        <SettText className='mt-3'>Beginning Text</SettText>
+        <SettText>Beginning Text</SettText>
         <SettGroup title='Sample title'>
           <SettOption
             title='A blank setting'

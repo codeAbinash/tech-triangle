@@ -38,7 +38,7 @@ export default function YourProfile({ navigation }: NavProp) {
   return (
     <SettWrapper title='Your Profile'>
       <Gap12>
-        <SettText className='mt-3'>Enter your details below to get the best experience from the app.</SettText>
+        <SettText>Enter your details below to get the best experience from the app.</SettText>
         <SettGroup title='First and Last Name'>
           <Input
             placeholder='First Name'

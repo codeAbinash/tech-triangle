@@ -59,7 +59,7 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
   return (
     <SettWrapper title={username}>
       <Gap gap={10}>
-        <SettText className='mt-3'>You can see all details of the user here.</SettText>
+        <SettText>You can see all details of the user here.</SettText>
         <SettGroup title='Full Name'>
           <SettOption title={name} Icon={<RoundIcon Icon={UserIcon} />} />
         </SettGroup>

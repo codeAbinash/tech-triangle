@@ -25,9 +25,7 @@ export default function ManageStorage({ navigation }: NavProp) {
   return (
     <SettWrapper title='Manage Storage'>
       <Gap12>
-        <SettText className='mt-3'>
-          Manage different types of storage in the app. This screen is under development.
-        </SettText>
+        <SettText>Manage different types of storage in the app. This screen is under development.</SettText>
       </Gap12>
       <View className='px-5'>
         <View className='w-full flex-row'>

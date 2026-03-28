@@ -84,7 +84,7 @@ export default function MMKVDataEditor({
         }
       >
         <Gap12>
-          <SettText className='mt-3'>Make sure you click on the save icon to save the data.</SettText>
+          <SettText>Make sure you click on the save icon to save the data.</SettText>
           {isNew && (
             <>
               <SettGroup title='Key'>

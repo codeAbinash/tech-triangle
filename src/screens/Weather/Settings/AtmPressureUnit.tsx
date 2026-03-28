@@ -13,7 +13,7 @@ export default function AtmPressureUnit({ navigation }: NavProp) {
   return (
     <SettWrapper title='Atmospheric Pressure Unit'>
       <Gap12>
-        <SettText className='mt-3'>Select the unit of atmospheric pressure you want to use.</SettText>
+        <SettText>Select the unit of atmospheric pressure you want to use.</SettText>
         <SettGroup>
           <SettOption
             title='Hectopascal (hPa)'

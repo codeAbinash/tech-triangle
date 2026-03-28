@@ -57,7 +57,7 @@ export default function FCFS({ navigation }: NavProp) {
     <>
       <SettWrapper title='FCFS Process Scheduling'>
         <Gap12 className='pb-8'>
-          <SettText className='mt-3'>
+          <SettText>
             FCFS (First Come First Serve) is a scheduling algorithm that schedules according to the arrival time of the
             processes.
           </SettText>

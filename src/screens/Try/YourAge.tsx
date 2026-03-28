@@ -35,7 +35,7 @@ export default function YourAge({ navigation }: NavProp) {
   return (
     <SettWrapper title='Your Age'>
       <Gap12>
-        <SettText className='mt-3'>Here you can see your age in years, months, days etc.</SettText>
+        <SettText>Here you can see your age in years, months, days etc.</SettText>
         <Medium className='mt-6 text-center text-3xl text-black/70 dark:text-white/70'>{second}s</Medium>
       </Gap12>
     </SettWrapper>

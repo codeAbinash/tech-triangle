@@ -111,7 +111,7 @@ export default function EditVersion({ navigation }: NavProp) {
     <SettWrapper title='Edit Version'>
       <Gap12>
         <View>
-          <SettText className='mt-3'>
+          <SettText>
             Current APK version is <Text className='text-blue-500'>{APP_VERSION}</Text> and code is{' '}
             <Text className='text-blue-500'>{APP_VERSION_CODE}</Text>. You can update the version and code below.
           </SettText>

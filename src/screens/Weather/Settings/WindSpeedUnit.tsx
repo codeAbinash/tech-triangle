@@ -19,7 +19,7 @@ export default function WindSpeedUnit({ navigation }: NavProp) {
   return (
     <SettWrapper title='Wind Speed Unit'>
       <Gap12>
-        <SettText className='mt-3'>Select the unit of wind speed you want to use.</SettText>
+        <SettText>Select the unit of wind speed you want to use.</SettText>
         <SettGroup>
           <SettOption
             title='Kilometer per hour (kph)'

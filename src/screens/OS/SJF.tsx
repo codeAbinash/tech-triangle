@@ -57,7 +57,7 @@ export default function SJF({ navigation }: NavProp) {
     <>
       <SettWrapper title='SJF Process Scheduling'>
         <Gap12 className='pb-8'>
-          <SettText className='mt-3'>
+          <SettText>
             SJF (Shortest Job First) is a scheduling algorithm that selects the process with the smallest burst time.
           </SettText>
           <ProcessForm processes={processes} setProcesses={setProcesses} />

@@ -27,7 +27,7 @@ import TemperatureIcon from '@hugeicons/TemperatureIcon'
 import { useIsFocused } from '@react-navigation/native'
 import { Colors } from '@utils/colors'
 import { WEATHER_CACHE_TIME } from '@utils/constants'
-import { clearStorage, getStorageSize, WeatherCache, WeatherStorage } from '@utils/storage'
+import { WeatherCache, WeatherStorage, clearStorage, getStorageSize } from '@utils/storage'
 import type { NavProp, StackNav } from '@utils/types'
 import { getDistanceUnit, getLatitude, getTempName, msToMin, screenDelay, toReadableSize } from '@utils/utils'
 import React, { useCallback, useEffect } from 'react'
@@ -76,7 +76,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
   return (
     <SettWrapper title='Weather Settings'>
       <Gap12>
-        <SettText className='mt-3'>Customize the weather settings to your preference.</SettText>
+        <SettText>Customize the weather settings to your preference.</SettText>
         <SettGroup title='General Settings'>
           <SettOption
             activeOpacity={0.8}
