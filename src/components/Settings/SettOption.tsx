@@ -28,7 +28,7 @@ export function SettOption({
 }: SettOptionProps) {
   return (
     <TouchableOpacity
-      className={cn('flex-row items-center justify-between px-6', className)}
+      className={cn('flex-row items-center justify-between px-5', className)}
       onPress={onPress}
       activeOpacity={0.7}
       style={[{ gap: 10 }]}

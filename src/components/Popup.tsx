@@ -32,11 +32,11 @@ const Popup = React.memo<PopupT>(({ text, title, buttons, index, noClose }) => {
         }}
       >
         <View className='flex-1 items-center justify-center bg-black/40 dark:bg-black/50'>
-          <View className='w-[85%] rounded-xl bg-white dark:bg-zinc-900'>
+          <View className='w-[85%] rounded-3xl bg-white dark:bg-zinc-900'>
             <View className='px-6 pt-5'>
-              <SemiBold className='text-base text-black dark:text-white'>{title}</SemiBold>
+              <SemiBold className='text-xl text-black dark:text-white'>{title}</SemiBold>
               <ScrollView style={{ maxHeight: H * 0.65, marginTop: 10 }}>
-                <Medium className='text-sm text-black dark:text-white' style={{ fontSize: MAIN_TEXT_SIZE }}>
+                <Medium className='text-sm text-black dark:text-white' style={{ fontSize: MAIN_TEXT_SIZE + 1 }}>
                   {text}
                 </Medium>
               </ScrollView>

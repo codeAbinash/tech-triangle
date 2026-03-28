@@ -18,7 +18,7 @@ type BackHeaderProps = ViewProps & {
 export default function BackHeader({ navigation, Right, title, Title, onBackPress }: BackHeaderProps) {
   const scheme = useColorScheme()
   return (
-    <View className='bg-white px-5 pr-6 pb-0.5 pl-1 dark:bg-zinc-950'>
+    <View className='bg-card px-5 pr-6 pb-0.5 pl-1'>
       <PaddingTop />
       <View>
         {Title || (
@@ -29,8 +29,8 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
               activeOpacity={0.7}
             >
               <ArrowLeft01Icon
-                strokeWidth={1.7}
-                size={26}
+                strokeWidth={1.75}
+                size={27}
                 color={scheme === 'dark' ? Colors.zinc[200] : Colors.zinc[800]}
               />
             </TouchableOpacity>

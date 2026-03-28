@@ -6,7 +6,7 @@ import { AutoStatusBar } from '@components/StatusBar'
 import { useNavigation } from '@react-navigation/native'
 import { StackNav } from '@utils/types'
 import React from 'react'
-import { ScrollViewProps, useColorScheme, View } from 'react-native'
+import { ScrollViewProps, View, useColorScheme } from 'react-native'
 
 type SettWrapperProps = ScrollViewProps & {
   Header?: React.ReactNode

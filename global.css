@@ -9,7 +9,12 @@
   --color-g2: #3866D5;
   --color-g1: #8101E9;
   --color-app-icon-bg: #191C21;
+
+  --bg:  #f2f2f3;
+  --bg-card: #fff;
+  --bg-card-dark: #0d0d0f;
 }
+
 
 .d {
   @apply border border-red-500;
@@ -20,5 +25,9 @@
 }
 
 .bg {
-  @apply bg-zinc-100 dark:bg-black;
+  @apply bg-(--bg) dark:bg-black;
+}
+
+.bg-card {
+  @apply bg-(--bg-card) dark:bg-(--bg-card-dark);
 }

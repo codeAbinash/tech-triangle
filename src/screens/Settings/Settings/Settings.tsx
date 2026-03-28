@@ -28,6 +28,7 @@ import PolicyIcon from '@hugeicons/PolicyIcon'
 import ShieldUserIcon from '@hugeicons/ShieldUserIcon'
 import SquareArrowUp02Icon from '@hugeicons/SquareArrowUp02Icon'
 import SquareLock02Icon from '@hugeicons/SquareLock02Icon'
+import SunCloudAngledRainZap01Icon from '@hugeicons/SunCloudAngledRainZap01Icon'
 import TelegramIcon from '@hugeicons/TelegramIcon'
 import UserIcon from '@hugeicons/UserIcon'
 import Wallet02Icon from '@hugeicons/Wallet02Icon'
@@ -46,12 +47,11 @@ import { ToastAndroid, View, useColorScheme } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import AdminSettings from './AdminSettings'
-import SunCloudAngledRainZap01Icon from '@hugeicons/SunCloudAngledRainZap01Icon'
 
 function SettingsHeader({ title, Title }: { title?: string; Title?: React.ReactNode }) {
   const [search, setSearch] = React.useState('')
   return (
-    <View style={{ gap: 5 }} className='bg-white px-5 pb-3 dark:bg-zinc-950'>
+    <View style={{ gap: 5 }} className='bg-card px-5 pb-3 '>
       {Title}
       <Bold style={{ fontSize: 24 }} className='mt-3 text-zinc-800 dark:text-zinc-200'>
         {title}
@@ -103,7 +103,7 @@ export default function Settings({ navigation }: NavProp) {
   }
 
   return (
-    <View className='flex-1 bg-white dark:bg-zinc-950'>
+    <View className='flex-1 bg-card'>
       <PaddingTop />
       <ScrollView
         contentContainerStyle={{ paddingBottom: 30, backgroundColor: scheme === 'dark' ? 'black' : Colors.zinc[100] }}

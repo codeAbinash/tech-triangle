@@ -1,4 +1,4 @@
-import { SMALL_TEXT_SIZE } from '@components/values'
+import { SUB_TEXT_SIZE } from '@components/values'
 import { Colors } from '@utils/colors'
 import { SemiBold } from '@utils/fonts'
 import { cn, layout } from '@utils/utils'
@@ -11,11 +11,18 @@ type SettGroupProps = ViewProps & {
 }
 export default function SettGroup({ children, title, className, accent = Colors.accent, ...rest }: SettGroupProps) {
   return (
-    <Animated.View className={cn('bg-white py-3 dark:bg-zinc-950', className)} layout={layout} {...rest}>
+    <Animated.View
+      className={cn('bg-card py-3  mx-3.5 ', className)}
+      layout={layout}
+      {...rest}
+      style={{
+        borderRadius: 20,
+      }}
+    >
       {title && (
         <SemiBold
           className={'px-6 pb-1.5 pt-0.5 text-accent'}
-          style={{ textTransform: 'none', opacity: 1, fontSize: SMALL_TEXT_SIZE, color: accent, marginBottom: 5 }}
+          style={{ textTransform: 'none', opacity: 1, fontSize: SUB_TEXT_SIZE, color: accent, marginBottom: 5 }}
         >
           {title}
         </SemiBold>
