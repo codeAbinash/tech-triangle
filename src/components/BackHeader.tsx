@@ -29,7 +29,7 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
             className='items-center justify-center rounded-full bg-card'
             style={{ width: 42, height: 42 }}
             onPress={() => (onBackPress ? onBackPress() : navigation?.goBack())}
-            activeOpacity={0.95}
+            activeOpacity={0.93}
             activeScale={0.92}
           >
             <ArrowLeft01Icon

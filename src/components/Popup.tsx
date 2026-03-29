@@ -35,7 +35,7 @@ const Popup = React.memo<PopupT>(({ text, title, buttons, index, noClose }) => {
           if (!noClose) removePopup(index)
         }}
       >
-        <View className='flex-1 items-center justify-center bg-black/40 dark:bg-black/50'>
+        <View className='flex-1 items-center justify-center bg-black/35 dark:bg-black/50'>
           <View className='w-[83%] rounded-4xl bg-white dark:bg-zinc-900'>
             <View className='px-7 pt-6'>
               <SemiBold className='text-black dark:text-white' style={{ fontSize: HEADING_SIZE }}>
@@ -83,7 +83,7 @@ const PopupButton = React.memo<PopupButtonProps>(({ text, onPress, variant, isRo
     <TouchableOpacity
       className={`items-center justify-center rounded-full px-4 py-4 ${bg} ${isRow ? 'flex-1' : 'w-full'}`}
       onPress={onPress}
-      activeOpacity={0.75}
+      activeOpacity={0.7}
     >
       <SemiBold className={textColor} style={{ fontSize: MAIN_TEXT_SIZE + 1, marginBottom: 2 }}>
         {text}
