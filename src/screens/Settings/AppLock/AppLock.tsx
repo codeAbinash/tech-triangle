@@ -4,10 +4,10 @@ import { Gap12 } from '@components/Gap'
 import { Input } from '@components/Input'
 import RoundIcon from '@components/RoundIcon'
 import SettGroup from '@components/Settings/SettGroup'
-import { ic } from '@components/Settings/Settings'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
 import SettWrapper from '@components/Settings/SettWrapper'
+import { ic } from '@components/Settings/Settings'
 import { Toggle } from '@components/Toggle'
 import LockPasswordIcon from '@hugeicons/LockPasswordIcon'
 import SquareLock02Icon from '@hugeicons/SquareLock02Icon'
@@ -44,7 +44,7 @@ export default function AppLock({ navigation }: NavProp) {
         <SettGroup title='App Lock Settings'>
           <SettOption
             title='App Lock'
-            Icon={<RoundIcon Icon={SquareLock02Icon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={SquareLock02Icon} gradient='green' />}
             Right={<Toggle isActive={isAppLockEnabled} accent={Colors.green['500']} />}
             onPress={handleAppLockPress}
           />
@@ -60,7 +60,7 @@ export default function AppLock({ navigation }: NavProp) {
             placeholder='Password'
             secureTextEntry={!isVisible}
             // Icon={<LockPasswordIcon {...ic} />}
-            Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={LockPasswordIcon} gradient='rose' />}
             Right={
               <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
                 {isVisible ? <ViewIcon {...ic} size={24} /> : <ViewOffSlashIcon {...ic} size={24} />}
@@ -71,7 +71,7 @@ export default function AppLock({ navigation }: NavProp) {
         <SettGroup title='Confirm Password'>
           <Input
             placeholder='Confirm Password'
-            Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={LockPasswordIcon} gradient='rose' />}
             secureTextEntry={!isVisible}
             value={confirmPassword}
             onChangeText={setConfirmPassword}

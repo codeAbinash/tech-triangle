@@ -21,19 +21,19 @@ export default function TempUnit({ navigation }: NavProp) {
         <SettGroup>
           <SettOption
             title='Celsius'
-            Icon={<RoundIcon Icon={CelsiusIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={CelsiusIcon} gradient='blue' />}
             Right={<Check checked={temperatureUnit === 'C'} />}
             onPress={() => setTmpUnit('C')}
           />
           <SettOption
             title='Fahrenheit'
-            Icon={<RoundIcon Icon={FahrenheitIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={FahrenheitIcon} gradient='green' />}
             Right={<Check checked={temperatureUnit === 'F'} />}
             onPress={() => setTmpUnit('F')}
           />
           <SettOption
             title='Kelvin'
-            Icon={<RoundIcon Icon={TemperatureIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={TemperatureIcon} gradient='rose' />}
             Right={<Check checked={temperatureUnit === 'K'} />}
             onPress={() => setTmpUnit('K')}
           />

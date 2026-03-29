@@ -16,22 +16,22 @@ export function getDate(n: number | undefined) {
 }
 
 export function getDeviceIcon(os: string | NU, name: string | NU) {
-  if (os?.includes('Android')) return <RoundIcon Icon={AndroidIcon} className='bg-green-500' />
+  if (os?.includes('Android')) return <RoundIcon Icon={AndroidIcon} gradient='green' />
   else if (os?.includes('iOS')) return <RoundIcon Icon={AppleIcon} className='bg-black' />
-  else if (name?.includes('Chrome')) return <RoundIcon Icon={ChromeIcon} className='bg-blue-500' />
-  else if (name?.includes('Edge')) return <RoundIcon Icon={EdgeIcon} className='bg-cyan-500' />
-  else if (name?.includes('Opera')) return <RoundIcon Icon={OperaIcon} className='bg-rose-600' />
-  else if (name?.includes('Firefox')) return <RoundIcon Icon={FirefoxIcon} className='bg-orange-500' />
-  else if (name?.includes('Safari')) return <RoundIcon Icon={SafariIcon} className='bg-blue-500' />
-  else if (os?.includes('Windows')) return <RoundIcon Icon={WindowsOldIcon} className='bg-blue-500' />
+  else if (name?.includes('Chrome')) return <RoundIcon Icon={ChromeIcon} gradient='blue' />
+  else if (name?.includes('Edge')) return <RoundIcon Icon={EdgeIcon} gradient='cyan' />
+  else if (name?.includes('Opera')) return <RoundIcon Icon={OperaIcon} gradient='rose' />
+  else if (name?.includes('Firefox')) return <RoundIcon Icon={FirefoxIcon} gradient='orange' />
+  else if (name?.includes('Safari')) return <RoundIcon Icon={SafariIcon} gradient='blue' />
+  else if (os?.includes('Windows')) return <RoundIcon Icon={WindowsOldIcon} gradient='blue' />
   else if (os?.includes('Linux')) return <RoundIcon Icon={LinuxIcon} className='bg-black' />
-  else return <RoundIcon Icon={DeviceAccessIcon} className='bg-rose-500' />
+  else return <RoundIcon Icon={DeviceAccessIcon} gradient='rose' />
 }
 
 export function getOSIcon(os: string | NU) {
-  if (os?.includes('Android')) return <RoundIcon Icon={AndroidIcon} className='bg-green-500' />
+  if (os?.includes('Android')) return <RoundIcon Icon={AndroidIcon} gradient='green' />
   else if (os?.includes('iOS')) return <RoundIcon Icon={AppleIcon} className='bg-black' />
-  else if (os?.includes('Windows')) return <RoundIcon Icon={WindowsOldIcon} className='bg-blue-500' />
+  else if (os?.includes('Windows')) return <RoundIcon Icon={WindowsOldIcon} gradient='blue' />
   else if (os?.includes('Linux')) return <RoundIcon Icon={LinuxIcon} className='bg-black' />
-  else return <RoundIcon Icon={DeviceAccessIcon} className='bg-rose-500' />
+  else return <RoundIcon Icon={DeviceAccessIcon} gradient='rose' />
 }

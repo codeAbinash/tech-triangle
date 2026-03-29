@@ -75,7 +75,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
                   arrow
                   key={item}
                   numberOfLines={1}
-                  Icon={<RoundIcon Icon={Database02Icon} className='bg-slate-500' />}
+                  Icon={<RoundIcon Icon={Database02Icon} gradient='slate' />}
                   onPress={() => navigation.navigate('MMKVDataEditor', { key: item as StorageKeys })}
                 />
               </Animated.View>
@@ -85,7 +85,7 @@ export default function MMKVDataList({ navigation }: NavProp) {
                 <SettOption
                   title='Create new data'
                   onPress={() => navigation.navigate('MMKVDataEditor', { new: true })}
-                  Icon={<RoundIcon Icon={Database02Icon} className='bg-slate-500' />}
+                  Icon={<RoundIcon Icon={Database02Icon} gradient='slate' />}
                   arrow
                 />
               </>

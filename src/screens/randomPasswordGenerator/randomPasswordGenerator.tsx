@@ -66,11 +66,7 @@ export default function randomPasswordGenerator({ navigation }: NavProp) {
       <Gap12>
         <SettText>Beginning Text</SettText>
         <SettGroup title='Sample title'>
-          <SettOption
-            title='A blank setting'
-            Icon={<RoundIcon Icon={Setting07Icon} className='bg-slate-500' />}
-            arrow
-          />
+          <SettOption title='A blank setting' Icon={<RoundIcon Icon={Setting07Icon} gradient='slate' />} arrow />
         </SettGroup>
         <SettText>Sample text</SettText>
       </Gap12>

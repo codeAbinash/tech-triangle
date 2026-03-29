@@ -9,7 +9,7 @@ import SettWrapper from '@components/Settings/SettWrapper'
 import InformationCircleIcon from '@hugeicons/InformationCircleIcon'
 import MapsLocation02Icon from '@hugeicons/MapsLocation02Icon'
 import { RouteProp } from '@react-navigation/native'
-import { locationNotesStore, type LocationNote } from '@screens/LocationNotes/locationNotesStore'
+import { type LocationNote, locationNotesStore } from '@screens/LocationNotes/locationNotesStore'
 import type { StackNav } from '@utils/types'
 import { useCallback, useEffect, useState } from 'react'
 import { BackHandler, View } from 'react-native'
@@ -94,14 +94,14 @@ export default function LocationNote({ navigation, route }: LocationNoteProps) {
               numberOfLines={10}
               value={description}
               onChangeText={setDescription}
-              Icon={<RoundIcon Icon={InformationCircleIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={InformationCircleIcon} gradient='slate' />}
             />
           </SettGroup>
           {/* <SettGroup title='Tag'>
             <SettOption
               title=''
               placeholder='Add a tag'
-              Icon={<RoundIcon Icon={Home01Icon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={Home01Icon} gradient='rose' />}
               onPress={() => navigation.navigate('LocationTags')}
               arrow
             />

@@ -123,7 +123,7 @@ export default function EditVersion({ navigation }: NavProp) {
             <Input
               Icon={
                 <Press activeScale={0.9} onPress={incrementMajorVersion}>
-                  <RoundIcon Icon={Setting07Icon} className='bg-gray-500' />
+                  <RoundIcon Icon={Setting07Icon} gradient='slate' />
                 </Press>
               }
               placeholder='e.g. 2.6.8'
@@ -131,7 +131,7 @@ export default function EditVersion({ navigation }: NavProp) {
               onChangeText={setVersion}
               Right={
                 <Press activeScale={0.9} onPress={incrementMinorVersion}>
-                  <RoundIcon Icon={PlusSignIcon} className='bg-gray-500' />
+                  <RoundIcon Icon={PlusSignIcon} gradient='slate' />
                 </Press>
               }
             />
@@ -168,7 +168,7 @@ export default function EditVersion({ navigation }: NavProp) {
                   activeScale={0.9}
                   onPress={() => setCriticalVersionCode((parseInt(criticalVersionCode, 10) - 1).toString())}
                 >
-                  <RoundIcon Icon={StarIcon} className='bg-red-500' />
+                  <RoundIcon Icon={StarIcon} gradient='red' />
                 </Press>
               }
               placeholder='e.g. 268'
@@ -179,7 +179,7 @@ export default function EditVersion({ navigation }: NavProp) {
                   activeScale={0.9}
                   onPress={() => setCriticalVersionCode((parseInt(criticalVersionCode, 10) + 1).toString())}
                 >
-                  <RoundIcon Icon={PlusSignIcon} className='bg-red-500' />
+                  <RoundIcon Icon={PlusSignIcon} gradient='red' />
                 </Press>
               }
             />
@@ -192,7 +192,7 @@ export default function EditVersion({ navigation }: NavProp) {
           ) : (
             <Input
               placeholder='e.g. 12 MB'
-              Icon={<RoundIcon Icon={FolderFileStorageIcon} className='bg-yellow-500' />}
+              Icon={<RoundIcon Icon={FolderFileStorageIcon} gradient='yellow' />}
               value={size}
               onChangeText={setSize}
             />

@@ -17,7 +17,7 @@ export default function AdminSettings({ navigation }: NavProp) {
       <SettGroup title='Admin Settings' className='pb-3.5'>
         <SettOption
           title='All users'
-          Icon={<RoundIcon Icon={UserIcon} className='bg-green-500' />}
+          Icon={<RoundIcon Icon={UserIcon} gradient='green' />}
           arrow
           onPress={() => navigation.navigate('AllUsers')}
         />

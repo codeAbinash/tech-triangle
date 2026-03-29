@@ -83,16 +83,11 @@ export default function NewLocationNote({ navigation }: NavProp) {
             numberOfLines={10}
             value={description}
             onChangeText={setDescription}
-            Icon={<RoundIcon Icon={InformationCircleIcon} className='bg-slate-500' />}
+            Icon={<RoundIcon Icon={InformationCircleIcon} gradient='slate' />}
           />
         </SettGroup>
         <SettGroup title='Tag'>
-          <SettOption
-            title=''
-            placeholder='Add a tag'
-            Icon={<RoundIcon Icon={Home01Icon} className='bg-rose-500' />}
-            arrow
-          />
+          <SettOption title='' placeholder='Add a tag' Icon={<RoundIcon Icon={Home01Icon} gradient='rose' />} arrow />
         </SettGroup>
         <LocationDetails data={data} />
         <View className='gap-8 px-5'>

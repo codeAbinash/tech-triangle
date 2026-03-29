@@ -42,13 +42,13 @@ export default function YourProfile({ navigation }: NavProp) {
         <SettGroup title='First and Last Name'>
           <Input
             placeholder='First Name'
-            Icon={<RoundIcon Icon={TextFontIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={TextFontIcon} gradient='blue' />}
             value={firstName}
             onChangeText={setFirstName}
           />
           <Input
             placeholder='Last Name'
-            Icon={<RoundIcon Icon={TextIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={TextIcon} gradient='rose' />}
             value={lastName}
             onChangeText={setLastName}
           />
@@ -57,7 +57,7 @@ export default function YourProfile({ navigation }: NavProp) {
         <SettGroup title='What do you want to be called?'>
           <Input
             placeholder='Nickname'
-            Icon={<RoundIcon Icon={TextNumberSignIcon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={TextNumberSignIcon} gradient='accent' />}
             value={nickName}
             onChangeText={setNickName}
           />
@@ -69,7 +69,7 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='dd-mm-yy'
             keyboardType='number-pad'
-            Icon={<RoundIcon Icon={BirthdayCakeIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={BirthdayCakeIcon} gradient='green' />}
             value={birthday}
             onChangeText={setBirthday}
           />
@@ -79,7 +79,7 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='Height in cm'
             keyboardType='number-pad'
-            Icon={<RoundIcon Icon={RulerIcon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={RulerIcon} gradient='accent' />}
             value={height}
             onChangeText={setHeight}
             Right={<Txt>cm</Txt>}
@@ -87,7 +87,7 @@ export default function YourProfile({ navigation }: NavProp) {
           <Input
             placeholder='Weight in kg'
             keyboardType='number-pad'
-            Icon={<RoundIcon Icon={WeightScale01Icon} className='bg-amber-500' />}
+            Icon={<RoundIcon Icon={WeightScale01Icon} gradient='amber' />}
             value={weight}
             onChangeText={setWeight}
             Right={<Txt>kg</Txt>}
@@ -97,13 +97,13 @@ export default function YourProfile({ navigation }: NavProp) {
         <SettGroup title='Gender'>
           <SettOption
             title='Male'
-            Icon={<RoundIcon Icon={BabyBoyDressIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={BabyBoyDressIcon} gradient='blue' />}
             Right={<Check checked={gender === 'Male'} />}
             onPress={() => setGender('Male')}
           />
           <SettOption
             title='Female'
-            Icon={<RoundIcon Icon={BabyGirlDressIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={BabyGirlDressIcon} gradient='rose' />}
             Right={<Check checked={gender === 'Female'} />}
             onPress={() => setGender('Female')}
           />

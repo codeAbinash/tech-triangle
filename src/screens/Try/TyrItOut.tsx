@@ -1,6 +1,6 @@
 import { Gap12, Gap20 } from '@components/Gap'
 import KeyboardAvoid from '@components/KeyboardAvoid'
-import RoundIcon from '@components/RoundIcon'
+import RoundIcon, { type GradientName } from '@components/RoundIcon'
 import { PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
 import SettGroup from '@components/Settings/SettGroup'
@@ -10,7 +10,6 @@ import ArtificialIntelligence04Icon from '@hugeicons/ArtificialIntelligence04Ico
 import Calendar03Icon from '@hugeicons/Calendar03Icon'
 import ColorsIcon from '@hugeicons/ColorsIcon'
 import ComputerIcon from '@hugeicons/ComputerIcon'
-import { HugeIconProps } from '@hugeicons/constants'
 import Database02Icon from '@hugeicons/Database02Icon'
 import Image02Icon from '@hugeicons/Image02Icon'
 import ListSettingIcon from '@hugeicons/ListSettingIcon'
@@ -24,6 +23,7 @@ import Rocket01Icon from '@hugeicons/Rocket01Icon'
 import Setting07Icon from '@hugeicons/Setting07Icon'
 import SoftwareLicenseIcon from '@hugeicons/SoftwareLicenseIcon'
 import TestTube01Icon from '@hugeicons/TestTube01Icon'
+import { HugeIconProps } from '@hugeicons/constants'
 import { Group } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
 import { Bold } from '@utils/fonts'
@@ -39,6 +39,7 @@ type Tool = {
   Icon: React.FC<HugeIconProps>
   to?: keyof RootStackParamList // Ensure 'to' is correctly typed
   arrow?: boolean
+  gradient?: GradientName
   className?: string
 }
 
@@ -54,20 +55,20 @@ const tools: Group[] = [
     startText: 'Here are some tools related to computer science. You can try them out and see how they work.',
     title: 'Tools',
     tools: [
-      { title: 'RN Skia', Icon: ReactIcon, to: 'Skia', className: 'bg-blue-500' },
-      { title: 'Your Age', Icon: Calendar03Icon, to: 'YourAge', className: 'bg-rose-500' },
-      { title: 'Random Color', Icon: PaintBoardIcon, to: 'RandomColor', className: 'bg-orange-500' },
-      { title: 'Gradient Colors', Icon: ColorsIcon, className: 'bg-green-500' },
-      { title: 'Location Speed Meter', Icon: Rocket01Icon, className: 'bg-yellow-500', to: 'LocationSpeed' },
-      { title: 'Location Notes', Icon: MapsLocation02Icon, className: 'bg-accent', to: 'LocationNotes' },
-      { title: 'Random Password', Icon: LockPasswordIcon, className: 'bg-slate-500', to: 'RandomPassword' },
+      { title: 'RN Skia', Icon: ReactIcon, to: 'Skia', gradient: 'blue' },
+      { title: 'Your Age', Icon: Calendar03Icon, to: 'YourAge', gradient: 'rose' },
+      { title: 'Random Color', Icon: PaintBoardIcon, to: 'RandomColor', gradient: 'orange' },
+      { title: 'Gradient Colors', Icon: ColorsIcon, gradient: 'green' },
+      { title: 'Location Speed Meter', Icon: Rocket01Icon, gradient: 'yellow', to: 'LocationSpeed' },
+      { title: 'Location Notes', Icon: MapsLocation02Icon, gradient: 'accent', to: 'LocationNotes' },
+      { title: 'Random Password', Icon: LockPasswordIcon, gradient: 'slate', to: 'RandomPassword' },
     ],
   },
   {
     title: 'Others',
     tools: [
-      // { title: 'Animations', Icon: Timer02Icon, to: 'Animations', className: 'bg-red-500' },
-      { title: 'Test Screen', Icon: TestTube01Icon, to: 'Test', className: 'bg-purple-500' },
+      // { title: 'Animations', Icon: Timer02Icon, to: 'Animations', gradient: 'red' },
+      { title: 'Test Screen', Icon: TestTube01Icon, to: 'Test', gradient: 'purple' },
     ],
     endText: 'Just for testing purposes. You can try them out and see how they work.',
   },
@@ -75,13 +76,13 @@ const tools: Group[] = [
     title: 'Computer Science',
     tools: [
       { title: 'Operating System', Icon: SoftwareLicenseIcon, className: 'bg-black' },
-      { title: 'Compiler Design', Icon: Setting07Icon, className: 'bg-slate-500' },
-      { title: 'Computer Networks', Icon: NeuralNetworkIcon, className: 'bg-green-500' },
-      { title: 'Artificial Intelligence', Icon: ArtificialIntelligence04Icon, className: 'bg-rose-500' },
-      { title: 'Software Engineering', Icon: ComputerIcon, className: 'bg-orange-500' },
-      { title: 'Database Management', Icon: Database02Icon, className: 'bg-slate-500' },
-      { title: 'Image Processing', Icon: Image02Icon, className: 'bg-yellow-500' },
-      { title: 'Numerical Methods', Icon: MathIcon, className: 'bg-blue-500' },
+      { title: 'Compiler Design', Icon: Setting07Icon, gradient: 'slate' },
+      { title: 'Computer Networks', Icon: NeuralNetworkIcon, gradient: 'green' },
+      { title: 'Artificial Intelligence', Icon: ArtificialIntelligence04Icon, gradient: 'rose' },
+      { title: 'Software Engineering', Icon: ComputerIcon, gradient: 'orange' },
+      { title: 'Database Management', Icon: Database02Icon, gradient: 'slate' },
+      { title: 'Image Processing', Icon: Image02Icon, gradient: 'yellow' },
+      { title: 'Numerical Methods', Icon: MathIcon, gradient: 'blue' },
     ],
     endText:
       'Some of these applications are in development and may not work as expected. You can try them out and see how they work.',
@@ -134,7 +135,7 @@ export default function TyrItOut({ navigation }: NavProp) {
                   >
                     <SettOption
                       title={tool.title}
-                      Icon={<RoundIcon Icon={tool.Icon} className={tool.className} />}
+                      Icon={<RoundIcon Icon={tool.Icon} gradient={tool.gradient} className={tool.className} />}
                       arrow={tool.arrow ?? true}
                       // Update onPress handlers to correctly navigate using the 'to' property
                       onPress={() => tool.to && navigation.navigate(tool.to as any)}

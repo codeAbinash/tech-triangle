@@ -94,7 +94,7 @@ export default function Login({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Email or Username'>
             <Input
-              Icon={<RoundIcon Icon={Mail02Icon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={Mail02Icon} gradient='rose' />}
               autoComplete='email'
               placeholder='Email or Username'
               value={username}
@@ -108,7 +108,7 @@ export default function Login({ navigation }: NavProp) {
               onChangeText={setPassword}
               placeholder='Password'
               secureTextEntry={!isVisible}
-              Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={LockPasswordIcon} gradient='slate' />}
               Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
             />
           </SettGroup>
@@ -133,13 +133,13 @@ export default function Login({ navigation }: NavProp) {
               navigation.replace('Signup')
             }}
             arrow
-            Icon={<RoundIcon Icon={UserAdd02Icon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={UserAdd02Icon} gradient='green' />}
           />
           <SettOption
             title='Forgot Password?'
             onPress={() => ToastAndroid.show('Relax and try to remember your password.', ToastAndroid.SHORT)}
             arrow
-            Icon={<RoundIcon Icon={HelpCircleIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={HelpCircleIcon} gradient='rose' />}
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>

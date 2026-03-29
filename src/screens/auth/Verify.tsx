@@ -67,7 +67,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
           <SettText className='text-blue-500'>Please check also your spam folder for the OTP.</SettText>
           <SettGroup title='Enter OTP'>
             <Input
-              Icon={<RoundIcon Icon={BubbleChatLockIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={BubbleChatLockIcon} gradient='rose' />}
               placeholder='Enter OTP'
               keyboardType='number-pad'
               value={otp}
@@ -96,7 +96,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
               // navigation.navigate('Signup')
             }}
             arrow
-            Icon={<RoundIcon Icon={MailSend02Icon} className='bg-amber-500' />}
+            Icon={<RoundIcon Icon={MailSend02Icon} gradient='amber' />}
           />
           <SettOption
             title='Login instead'
@@ -104,7 +104,7 @@ export default function Verify({ navigation, route }: { navigation: StackNav; ro
               navigation.replace('Login')
             }}
             arrow
-            Icon={<RoundIcon Icon={Login03Icon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={Login03Icon} gradient='green' />}
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>

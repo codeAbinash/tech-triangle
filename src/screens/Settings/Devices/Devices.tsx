@@ -64,7 +64,7 @@ export default function Devices({ navigation }: NavProp) {
               onPress={handelRemove}
               className='text-red-500'
               title={isRemoving ? 'Removing...' : 'Remove All Other Devices'}
-              Icon={<RoundIcon Icon={WavingHand02Icon} className='bg-red-500' />}
+              Icon={<RoundIcon Icon={WavingHand02Icon} gradient='red' />}
             />
           </SettGroup>
         )}

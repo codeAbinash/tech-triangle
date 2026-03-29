@@ -59,7 +59,7 @@ export default function Update({ navigation, route }: { navigation: StackNav; ro
           <SettOption
             title='Download From Telegram'
             arrow
-            Icon={<RoundIcon Icon={TelegramIcon} className='bg-sky-500' />}
+            Icon={<RoundIcon Icon={TelegramIcon} gradient='sky' />}
             onPress={join_telegram_channel}
           />
           <SettOption

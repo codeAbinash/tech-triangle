@@ -109,7 +109,7 @@ export default function MMKVDataEditor({
               <SettOption
                 title='Delete this data'
                 className='text-red-500'
-                Icon={<RoundIcon Icon={Delete02Icon} className='bg-red-500' />}
+                Icon={<RoundIcon Icon={Delete02Icon} gradient='red' />}
                 onPress={deleteData}
                 Right={<TxtAcc className='text-red-500'>{toReadableSize(value?.length || 0)}</TxtAcc>}
               />

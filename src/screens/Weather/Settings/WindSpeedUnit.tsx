@@ -24,31 +24,31 @@ export default function WindSpeedUnit({ navigation }: NavProp) {
           <SettOption
             title='Kilometer per hour (kph)'
             Right={<Check checked={windSpeedUnit === 'kph'} />}
-            Icon={<RoundIcon Icon={SlowWindsIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={SlowWindsIcon} gradient='green' />}
             onPress={() => setWindSpeedUnit('kph')}
           />
           <SettOption
             title='Miles per hour (mph)'
             Right={<Check checked={windSpeedUnit === 'mph'} />}
-            Icon={<RoundIcon Icon={SlowWindsIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={SlowWindsIcon} gradient='blue' />}
             onPress={() => setWindSpeedUnit('mph')}
           />
           <SettOption
             title='Meter per second (m/s)'
             Right={<Check checked={windSpeedUnit === 'm/s'} />}
-            Icon={<RoundIcon Icon={SunCloudFastWind01Icon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={SunCloudFastWind01Icon} gradient='rose' />}
             onPress={() => setWindSpeedUnit('m/s')}
           />
           <SettOption
             title='Knot (kn)'
             Right={<Check checked={windSpeedUnit === 'kn'} />}
-            Icon={<RoundIcon Icon={CloudSlowWindIcon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={CloudSlowWindIcon} gradient='accent' />}
             onPress={() => setWindSpeedUnit('kn')}
           />
           <SettOption
             title='Beaufort Scale'
             Right={<Check checked={windSpeedUnit === 'bft'} />}
-            Icon={<RoundIcon Icon={WindPowerIcon} className='bg-amber-500' />}
+            Icon={<RoundIcon Icon={WindPowerIcon} gradient='amber' />}
             onPress={() => setWindSpeedUnit('bft')}
           />
         </SettGroup>

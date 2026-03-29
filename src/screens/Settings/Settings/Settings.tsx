@@ -122,24 +122,20 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='General'>
               <SettOption
                 title='Your Profile'
-                Icon={<RoundIcon Icon={UserIcon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={UserIcon} gradient='green' />}
                 arrow
                 onPress={() => navigation.navigate('YourProfile')}
               />
-              <SettOption title='Computer Science' Icon={<RoundIcon Icon={ComputerIcon} />} arrow />
+              <SettOption title='Computer Science' Icon={<RoundIcon Icon={ComputerIcon} gradient={'indigo'} />} arrow />
               <SettOption
                 title='Weather Settings'
                 // Icon={<SunCloudAngledRainZap01Icon {...ic} />}
-                Icon={<RoundIcon Icon={SunCloudAngledRainZap01Icon} className='bg-blue-500' />}
+                Icon={<RoundIcon Icon={SunCloudAngledRainZap01Icon} gradient='blue' />}
                 onPress={() => navigation.navigate('WeatherSettings')}
                 arrow
               />
-              <SettOption
-                title='Routine Management'
-                Icon={<RoundIcon Icon={Calendar03Icon} className='bg-red-500' />}
-                arrow
-              />
-              <SettOption title='My Wallet' Icon={<RoundIcon Icon={Wallet02Icon} className='bg-amber-500' />} arrow />
+              <SettOption title='Routine Management' Icon={<RoundIcon Icon={Calendar03Icon} gradient='red' />} arrow />
+              <SettOption title='My Wallet' Icon={<RoundIcon Icon={Wallet02Icon} gradient='amber' />} arrow />
             </SettGroup>
           </Gap12>
           <AdminSettings navigation={navigation} />
@@ -147,14 +143,14 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='Devices'>
               <SettOption
                 title='Devices'
-                Icon={<RoundIcon Icon={DeviceAccessIcon} />}
+                Icon={<RoundIcon Icon={DeviceAccessIcon} gradient={'sky'} />}
                 arrow
                 onPressOut={() => navigation.navigate('Devices')}
               />
               <SettOption
                 arrow
                 title='Log Out'
-                Icon={<RoundIcon Icon={Logout02Icon} className='bg-red-500' />}
+                Icon={<RoundIcon Icon={Logout02Icon} gradient='red' />}
                 onPress={() => handleLogout(logoutMutation)}
               />
             </SettGroup>
@@ -164,7 +160,7 @@ export default function Settings({ navigation }: NavProp) {
               <SettOption
                 title='App Lock'
                 // Icon={<SquareLock02Icon {...ic} />}
-                Icon={<RoundIcon Icon={SquareLock02Icon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={SquareLock02Icon} gradient='green' />}
                 arrow
                 Right={<TxtAcc>Off</TxtAcc>}
                 onPress={() => navigation.navigate('AppLock')}
@@ -176,13 +172,13 @@ export default function Settings({ navigation }: NavProp) {
             <SettGroup title='For Developers'>
               <SettOption
                 title='Developer options'
-                Icon={<RoundIcon Icon={CodeIcon} className='bg-accent' />}
+                Icon={<RoundIcon Icon={CodeIcon} gradient='accent' />}
                 onPress={() => navigation.navigate('DeveloperOptions')}
                 arrow
               />
               <SettOption
                 title='UI & Components'
-                Icon={<RoundIcon Icon={BrushIcon} className='bg-rose-500' />}
+                Icon={<RoundIcon Icon={BrushIcon} gradient='rose' />}
                 onPress={() => navigation.navigate('UiAndComponents')}
                 arrow
               />
@@ -194,28 +190,28 @@ export default function Settings({ navigation }: NavProp) {
           <SettGroup title='Storage'>
             <SettOption
               title='Backup and Restore'
-              Icon={<RoundIcon Icon={FolderFileStorageIcon} className='bg-yellow-500' />}
+              Icon={<RoundIcon Icon={FolderFileStorageIcon} gradient='yellow' />}
               arrow
               onPress={() => navigation.navigate('BackupAndRestore')}
             />
             {dev && (
               <SettOption
                 title='MMKV data editor'
-                Icon={<RoundIcon Icon={EditTableIcon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={EditTableIcon} gradient='green' />}
                 arrow
                 onPress={() => navigation.navigate('MMKVDataList')}
               />
             )}
             <SettOption
               title='Manage Storage'
-              Icon={<RoundIcon Icon={Database02Icon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={Database02Icon} gradient='slate' />}
               Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
               onPress={() => navigation.navigate('ManageStorage')}
               arrow
             />
             <SettOption
               title='Clear cache'
-              Icon={<RoundIcon Icon={CleanIcon} className='bg-amber-500' />}
+              Icon={<RoundIcon Icon={CleanIcon} gradient='amber' />}
               Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
               onPress={clearCache}
               arrow
@@ -225,29 +221,21 @@ export default function Settings({ navigation }: NavProp) {
             <SettOption
               arrow
               title='Ask a question'
-              Icon={<RoundIcon Icon={BubbleChatIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={BubbleChatIcon} gradient='rose' />}
               onPress={ask_a_question}
             />
             <SettOption
               arrow
               title='Join telegram channel'
-              Icon={<RoundIcon Icon={TelegramIcon} className='bg-sky-500' />}
+              Icon={<RoundIcon Icon={TelegramIcon} gradient='sky' />}
               onPress={join_telegram_channel}
             />
-            <SettOption
-              arrow
-              title='Privacy Policy'
-              Icon={<RoundIcon Icon={ShieldUserIcon} className='bg-green-500' />}
-            />
-            <SettOption
-              arrow
-              title='Terms of Service'
-              Icon={<RoundIcon Icon={PolicyIcon} className='bg-yellow-500' />}
-            />
+            <SettOption arrow title='Privacy Policy' Icon={<RoundIcon Icon={ShieldUserIcon} gradient='green' />} />
+            <SettOption arrow title='Terms of Service' Icon={<RoundIcon Icon={PolicyIcon} gradient='yellow' />} />
             <SettOption
               arrow
               title='About'
-              Icon={<RoundIcon Icon={InformationCircleIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={InformationCircleIcon} gradient='slate' />}
               onPress={() => navigation.navigate('About')}
             />
           </SettGroup>

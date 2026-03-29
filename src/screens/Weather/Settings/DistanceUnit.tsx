@@ -22,13 +22,13 @@ export default function DistanceUnit({ navigation }: NavProp) {
             title='Meter'
             Right={<Check checked={distanceUnit === 'm'} />}
             onPress={() => setDistUnit('m')}
-            Icon={<RoundIcon Icon={RulerIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={RulerIcon} gradient='blue' />}
           />
           <SettOption
             title='Feet'
             Right={<Check checked={distanceUnit === 'ft'} />}
             onPress={() => setDistUnit('ft')}
-            Icon={<RoundIcon Icon={Road02Icon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={Road02Icon} gradient='rose' />}
           />
         </SettGroup>
       </Gap12>

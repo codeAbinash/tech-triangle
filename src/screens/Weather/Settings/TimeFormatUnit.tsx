@@ -21,13 +21,13 @@ export default function TimeFormatUnit({ navigation }: NavProp) {
             title='12 Hour'
             Right={<Check checked={timeFormatUnit === '12h'} />}
             onPress={() => setWeatherTimeFormat('12h')}
-            Icon={<RoundIcon Icon={Clock01Icon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={Clock01Icon} gradient='blue' />}
           />
           <SettOption
             title='24 Hour'
             Right={<Check checked={timeFormatUnit === '24h'} />}
             onPress={() => setWeatherTimeFormat('24h')}
-            Icon={<RoundIcon Icon={Clock01Icon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={Clock01Icon} gradient='rose' />}
           />
         </SettGroup>
       </Gap12>

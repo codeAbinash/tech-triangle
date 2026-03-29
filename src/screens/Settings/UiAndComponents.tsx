@@ -63,7 +63,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
               title='Sample toggle 1'
               onPress={() => setToggle1(!toggle1)}
               // Icon={<SidebarRightIcon {...ic} />}
-              Icon={<RoundIcon Icon={SidebarRightIcon} className='bg-green-500' />}
+              Icon={<RoundIcon Icon={SidebarRightIcon} gradient='green' />}
               Right={<Toggle isActive={toggle1} />}
             />
             <SettOption
@@ -71,7 +71,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
               title='Sample toggle 2'
               onPress={() => setToggle2(!toggle2)}
               // Icon={<SidebarRightIcon {...ic} />}
-              Icon={<RoundIcon Icon={SidebarRightIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={SidebarRightIcon} gradient='rose' />}
               Right={<Toggle isActive={toggle2} accent={Colors.blue[500]} />}
             />
           </SettGroup>
@@ -93,7 +93,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
           <SettGroup title='Text Inputs'>
             <Input
               // Icon={<KeyboardIcon {...ic} />}
-              Icon={<RoundIcon Icon={KeyboardIcon} className='bg-accent' />}
+              Icon={<RoundIcon Icon={KeyboardIcon} gradient='accent' />}
               placeholder='Type something...'
               Right={<Txt size={15}>TS</Txt>}
               value={input1}
@@ -101,7 +101,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
             />
             <Input
               accent={Colors.rose[500]}
-              Icon={<RoundIcon Icon={TextFontIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={TextFontIcon} gradient='rose' />}
               placeholder='With red accent color...'
               onChangeText={setInput2}
               value={input2}
@@ -128,7 +128,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
         <Gap12>
           <SettGroup>
             <SettOption
-              Icon={<RoundIcon Icon={Setting07Icon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={Setting07Icon} gradient='slate' />}
               title='Open Blank Settings '
               onPress={() => navigation.navigate('BlankSettings')}
               arrow
@@ -160,7 +160,7 @@ export default function UiAndComponents({ navigation }: NavProp) {
             />
             <SettOption
               title='Java'
-              Icon={<RoundIcon Icon={JavaIcon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={JavaIcon} gradient='rose' />}
               onPress={() => setOption1('Java')}
               Right={<Check className='text-red-500' checked={option1 === 'Java'} />}
             />
@@ -219,7 +219,7 @@ const RangeSliderMemo2 = () => {
           value={value}
           setValue={setValue}
           accent={Colors.rose[500]}
-          Left={<RoundIcon Icon={MusicNote04Icon} className='bg-rose-500' />}
+          Left={<RoundIcon Icon={MusicNote04Icon} gradient='rose' />}
         />
       </View>
       <SettText>
@@ -238,13 +238,13 @@ function PopupAlertExample() {
         <SettOption
           title='With default OK button'
           onPress={() => alert('Alert Title', 'This is the alert text')}
-          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          Icon={<RoundIcon Icon={BadgeInfoIcon} gradient='slate' />}
           arrow
         />
         <SettOption
           title='Custom buttons'
           onPress={() => alert('Alert Title', 'This is the alert text', [{ text: 'Close', variant: 'primary' }])}
-          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          Icon={<RoundIcon Icon={BadgeInfoIcon} gradient='slate' />}
           arrow
         />
         <SettOption
@@ -260,7 +260,7 @@ function PopupAlertExample() {
               true,
             )
           }
-          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          Icon={<RoundIcon Icon={BadgeInfoIcon} gradient='slate' />}
           arrow
         />
         <SettOption
@@ -279,7 +279,7 @@ function PopupAlertExample() {
               true,
             )
           }
-          Icon={<RoundIcon Icon={BadgeInfoIcon} className='bg-slate-500' />}
+          Icon={<RoundIcon Icon={BadgeInfoIcon} gradient='slate' />}
           arrow
         />
       </SettGroup>

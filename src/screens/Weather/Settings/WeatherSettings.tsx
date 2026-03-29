@@ -83,20 +83,20 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             title='Weather widget'
             onPress={() => setWeatherWidgetIsActive(!weatherWidgetIsActive)}
             // Icon={<DashboardSquare02Icon {...ic} />}
-            Icon={<RoundIcon Icon={DashboardSquare02Icon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={DashboardSquare02Icon} gradient='blue' />}
             Right={<Toggle isActive={weatherWidgetIsActive} accent={Colors.blue[500]} />}
           />
           <SettOption
             title='Current City'
             // Icon={<City03Icon {...ic} />}
-            Icon={<RoundIcon Icon={City03Icon} className='bg-slate-500' />}
+            Icon={<RoundIcon Icon={City03Icon} gradient='slate' />}
             arrow
             Right={<Txt>{currentCity?.name || 'Not set'}</Txt>}
             onPress={() => navigation.navigate('WeatherSearchCity', { shouldGoBack: true })}
           />
           <SettOption
             title='Location'
-            Icon={<RoundIcon Icon={MapsLocation02Icon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={MapsLocation02Icon} gradient='green' />}
             // Icon={<MapsLocation02Icon {...ic} />}
             arrow
             Right={
@@ -114,14 +114,14 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
             <>
               <SettOption
                 title='Manual edit data'
-                Icon={<RoundIcon Icon={PencilEdit02Icon} className='bg-yellow-500' />}
+                Icon={<RoundIcon Icon={PencilEdit02Icon} gradient='yellow' />}
                 arrow
                 onPress={() => navigation.navigate('MMKVDataEditor', { key: 'WeatherCurrentCity' })}
               ></SettOption>
               <SettOption
                 title='Remove location data'
                 className='text-red-500'
-                Icon={<RoundIcon Icon={Delete02Icon} className='bg-red-500' />}
+                Icon={<RoundIcon Icon={Delete02Icon} gradient='red' />}
                 // Icon={<Delete02Icon className='text-red-500' {...ic} />}
                 onPress={removeLocation}
               />
@@ -135,7 +135,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         <SettGroup title='Accuweather API key'>
           <Input
             // Icon={<Key01Icon {...ic} />}
-            Icon={<RoundIcon Icon={Key01Icon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={Key01Icon} gradient='blue' />}
             placeholder='Enter Accuweather API key'
             onChangeText={setAccuApiKey}
             defaultValue={accuApiKey}
@@ -158,7 +158,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
         <SettGroup title='OpenweatherMap API key'>
           <Input
             // Icon={<Key01Icon {...ic} />}
-            Icon={<RoundIcon Icon={Key01Icon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={Key01Icon} gradient='blue' />}
             placeholder='Enter OpenweatherMap API key'
             onChangeText={setOwApiKey}
             defaultValue={owApiKey}
@@ -177,7 +177,7 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
           <SettGroup title='Weather Cache Time'>
             <Input
               // Icon={<DatabaseRestoreIcon {...ic} />}
-              Icon={<RoundIcon Icon={DatabaseRestoreIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={DatabaseRestoreIcon} gradient='slate' />}
               Right={<Txt>ms</Txt>}
               defaultValue={weatherCacheTime.toString()}
               onChangeText={(val) => setCacheTime(val)}
@@ -198,13 +198,13 @@ export default function WeatherScienceSettings({ navigation }: NavProp) {
       <SettGroup title='Data Management'>
         <SettOption
           title='Clear search cache'
-          Icon={<RoundIcon Icon={CleanIcon} className='bg-amber-500' />}
+          Icon={<RoundIcon Icon={CleanIcon} gradient='amber' />}
           Right={<TxtAcc>{toReadableSize(searchCache)}</TxtAcc>}
           onPress={clearCache}
         />
         <SettOption
           title='Clear all weather data'
-          Icon={<RoundIcon Icon={Database02Icon} className='bg-red-500' />}
+          Icon={<RoundIcon Icon={Database02Icon} gradient='red' />}
           Right={<TxtAcc>{toReadableSize(weatherSize)}</TxtAcc>}
         />
       </SettGroup>
@@ -223,7 +223,7 @@ function Units({ navigation }: { navigation: StackNav }) {
       <SettGroup title={'Units'}>
         <SettOption
           arrow
-          Icon={<RoundIcon Icon={TemperatureIcon} className='bg-rose-500' />}
+          Icon={<RoundIcon Icon={TemperatureIcon} gradient='rose' />}
           title='Temperature Unit'
           Right={<Txt>{getTempName(temperatureUnit)}</Txt>}
           onPress={() => navigation.navigate('TempUnit')}
@@ -232,28 +232,28 @@ function Units({ navigation }: { navigation: StackNav }) {
           arrow
           title='Distance Unit'
           Right={<Txt>{getDistanceUnit(distanceUnit)}</Txt>}
-          Icon={<RoundIcon Icon={RulerIcon} className='bg-blue-500' />}
+          Icon={<RoundIcon Icon={RulerIcon} gradient='blue' />}
           onPress={() => navigation.navigate('DistanceUnit')}
         />
         <SettOption
           arrow
           title='Wind Speed Unit'
           Right={<Txt>{windSpeedUnit}</Txt>}
-          Icon={<RoundIcon Icon={FastWindIcon} className='bg-green-500' />}
+          Icon={<RoundIcon Icon={FastWindIcon} gradient='green' />}
           onPress={() => navigation.navigate('WindSpeedUnit')}
         />
         <SettOption
           arrow
           title='Atmospheric Pressure Unit'
           Right={<Txt>{atmPressureUnit}</Txt>}
-          Icon={<RoundIcon Icon={SortingDownIcon} className='bg-slate-500' />}
+          Icon={<RoundIcon Icon={SortingDownIcon} gradient='slate' />}
           onPress={() => navigation.navigate('AtmPressureUnit')}
         />
         <SettOption
           arrow
           title='Weather Time Format'
           Right={<Txt>{timeFormat === '12h' ? '12 Hour' : '24 Hour'}</Txt>}
-          Icon={<RoundIcon Icon={Clock01Icon} className='bg-yellow-500' />}
+          Icon={<RoundIcon Icon={Clock01Icon} gradient='yellow' />}
           onPress={() => navigation.navigate('TimeFormatUnit')}
         />
       </SettGroup>

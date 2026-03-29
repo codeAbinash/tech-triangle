@@ -113,7 +113,7 @@ export default function Signup({ navigation }: NavProp) {
         <Gap12>
           <SettGroup title='Full Name'>
             <Input
-              Icon={<RoundIcon Icon={TextFontIcon} className='bg-blue-500' />}
+              Icon={<RoundIcon Icon={TextFontIcon} gradient='blue' />}
               placeholder='Your Full Name'
               autoComplete='name'
               value={name}
@@ -122,7 +122,7 @@ export default function Signup({ navigation }: NavProp) {
           </SettGroup>
           <SettGroup title='Email'>
             <Input
-              Icon={<RoundIcon Icon={Mail02Icon} className='bg-rose-500' />}
+              Icon={<RoundIcon Icon={Mail02Icon} gradient='rose' />}
               placeholder='Your Email'
               autoComplete='email'
               value={email}
@@ -132,7 +132,7 @@ export default function Signup({ navigation }: NavProp) {
           </SettGroup>
           <SettGroup title='Username'>
             <Input
-              Icon={<RoundIcon Icon={StarIcon} className='bg-amber-500' />}
+              Icon={<RoundIcon Icon={StarIcon} gradient='amber' />}
               placeholder='Select a Username'
               value={username}
               autoComplete='off'
@@ -148,7 +148,7 @@ export default function Signup({ navigation }: NavProp) {
               placeholder='Enter Password'
               autoComplete='password'
               secureTextEntry={!isVisible}
-              Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-slate-500' />}
+              Icon={<RoundIcon Icon={LockPasswordIcon} gradient='slate' />}
               Right={<PasswordEye isVisible={isVisible} setIsVisible={setIsVisible} />}
             />
           </SettGroup>
@@ -172,13 +172,13 @@ export default function Signup({ navigation }: NavProp) {
               navigation.replace('Login')
             }}
             arrow
-            Icon={<RoundIcon Icon={Login03Icon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={Login03Icon} gradient='green' />}
           />
           <SettOption
             title='Forgot Password?'
             onPress={() => ToastAndroid.show('Relax and try to remember your password.', ToastAndroid.SHORT)}
             arrow
-            Icon={<RoundIcon Icon={HelpCircleIcon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={HelpCircleIcon} gradient='rose' />}
           />
         </SettGroup>
         <SettText className='mt-5 text-center'>

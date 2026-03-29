@@ -25,22 +25,22 @@ export default function LocationDetails({ data }: { data: GeoPosition | undefine
         <SettGroup title='Location Details'>
           <SettOption
             title='Latitude'
-            Icon={<RoundIcon Icon={LongitudeIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={LongitudeIcon} gradient='blue' />}
             Right={<Txt skeleton={latitude === undefined}>{getLatitude(latitude || 0)}</Txt>}
           />
           <SettOption
             title='Longitude'
-            Icon={<RoundIcon Icon={LatitudeIcon} className='bg-green-500' />}
+            Icon={<RoundIcon Icon={LatitudeIcon} gradient='green' />}
             Right={<Txt skeleton={longitude === undefined}>{getLongitude(longitude || 0)}</Txt>}
           />
           <SettOption
             title='Accuracy'
-            Icon={<RoundIcon Icon={DashboardSpeed02Icon} className='bg-rose-500' />}
+            Icon={<RoundIcon Icon={DashboardSpeed02Icon} gradient='rose' />}
             Right={<Txt skeleton={accuracy === undefined}>{accuracy?.toFixed(0)} m</Txt>}
           />
           <SettOption
             title='Altitude'
-            Icon={<RoundIcon Icon={EarthIcon} className='bg-blue-500' />}
+            Icon={<RoundIcon Icon={EarthIcon} gradient='blue' />}
             Right={
               <Txt skeleton={altitude === undefined}>
                 {altitude?.toFixed(0)} m ± {altitudeAccuracy?.toFixed(0)} m
@@ -49,12 +49,12 @@ export default function LocationDetails({ data }: { data: GeoPosition | undefine
           />
           {/* <SettOption
             title='Speed'
-            Icon={<RoundIcon Icon={Rocket01Icon} className='bg-orange-500' />}
+            Icon={<RoundIcon Icon={Rocket01Icon} gradient='orange' />}
             Right={<Txt skeleton={speed === undefined}>{speed?.toFixed(0)} m/s</Txt>}
           /> */}
           <SettOption
             title='Timestamp'
-            Icon={<RoundIcon Icon={Timer02Icon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={Timer02Icon} gradient='accent' />}
             Right={<Txt skeleton={timestamp === undefined}>{new Date(timestamp || 0).toLocaleString()}</Txt>}
           />
         </SettGroup>
@@ -63,7 +63,7 @@ export default function LocationDetails({ data }: { data: GeoPosition | undefine
             <SettGroup title='Actions'>
               <SettOption
                 title='View on Map'
-                Icon={<RoundIcon Icon={MapsLocation02Icon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={MapsLocation02Icon} gradient='green' />}
                 onPress={() =>
                   Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`)
                 }
@@ -71,7 +71,7 @@ export default function LocationDetails({ data }: { data: GeoPosition | undefine
               />
               <SettOption
                 title='Share Location'
-                Icon={<RoundIcon Icon={Sent02Icon} className='bg-blue-500' />}
+                Icon={<RoundIcon Icon={Sent02Icon} gradient='blue' />}
                 onPress={() =>
                   Share.share({
                     message: shareMessage(latitude || 0, longitude || 0, timestamp),

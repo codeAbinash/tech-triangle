@@ -65,33 +65,30 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
         </SettGroup>
 
         <SettGroup title='Username'>
-          <SettOption title={username} Icon={<RoundIcon Icon={StarIcon} className='bg-yellow-500' />} />
+          <SettOption title={username} Icon={<RoundIcon Icon={StarIcon} gradient='yellow' />} />
         </SettGroup>
 
         <SettGroup title='Email'>
-          <SettOption title={email} Icon={<RoundIcon Icon={Mail02Icon} className='bg-red-500' />} />
+          <SettOption title={email} Icon={<RoundIcon Icon={Mail02Icon} gradient='red' />} />
         </SettGroup>
 
         <SettGroup title='Admin'>
-          <SettOption title={isAdmin ? 'Yes' : 'No'} Icon={<RoundIcon Icon={StarsIcon} className='bg-slate-500' />} />
+          <SettOption title={isAdmin ? 'Yes' : 'No'} Icon={<RoundIcon Icon={StarsIcon} gradient='slate' />} />
         </SettGroup>
 
         <SettGroup title='OTP'>
-          <SettOption title={otp || 'Cleared'} Icon={<RoundIcon Icon={UserIcon} className='bg-green-500' />} />
+          <SettOption title={otp || 'Cleared'} Icon={<RoundIcon Icon={UserIcon} gradient='green' />} />
         </SettGroup>
 
         <SettGroup title='Last OTP Sent'>
           <SettOption
             title={getDate(new Date(lastOtpSent).getTime())}
-            Icon={<RoundIcon Icon={Calendar03Icon} className='bg-red-500' />}
+            Icon={<RoundIcon Icon={Calendar03Icon} gradient='red' />}
           />
         </SettGroup>
 
         <SettGroup title='Verified'>
-          <SettOption
-            title={isVerified ? 'Yes' : 'No'}
-            Icon={<RoundIcon Icon={NewReleasesIcon} className='bg-blue-500' />}
-          />
+          <SettOption title={isVerified ? 'Yes' : 'No'} Icon={<RoundIcon Icon={NewReleasesIcon} gradient='blue' />} />
         </SettGroup>
 
         <SettGroup title='Banned'>

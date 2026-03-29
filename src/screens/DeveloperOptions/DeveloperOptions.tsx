@@ -71,7 +71,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
           <SettOption
             title='Developer Options'
             onPress={() => setEnabled(!isEnabled)}
-            Icon={<RoundIcon Icon={CodeIcon} className='bg-accent' />}
+            Icon={<RoundIcon Icon={CodeIcon} gradient='accent' />}
             Right={<Toggle isActive={isEnabled} />}
           />
         </SettGroup>
@@ -87,7 +87,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             <SettGroup title='General'>
               <SettOption
                 title='Toggle fab button'
-                Icon={<RoundIcon Icon={ComputerIcon} className='bg-green-500' />}
+                Icon={<RoundIcon Icon={ComputerIcon} gradient='green' />}
                 Right={<Toggle isActive={isFabEnabled} />}
                 onPress={() => setFabEnabled(!isFabEnabled)}
               />
@@ -97,7 +97,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             <SettGroup title='Animation Duration'>
               <Input
                 // Icon={<Timer02Icon {...ic} />}
-                Icon={<RoundIcon Icon={Timer02Icon} className='bg-rose-500' />}
+                Icon={<RoundIcon Icon={Timer02Icon} gradient='rose' />}
                 placeholder='Enter animation duration'
                 onChangeText={setAnim}
                 defaultValue={animationDuration.toString()}
@@ -127,7 +127,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
             </SettText>
             <SettGroup title='Auth Token'>
               <Input
-                Icon={<RoundIcon Icon={LockPasswordIcon} className='bg-gray-500' />}
+                Icon={<RoundIcon Icon={LockPasswordIcon} gradient='slate' />}
                 placeholder='Enter auth token'
                 // onChangeText={setToken}
                 onChangeText={(text) => {
@@ -149,7 +149,7 @@ export default function DeveloperOptions({ navigation }: NavProp) {
       <SettGroup>
         <SettOption
           title='Rest Developer Options'
-          Icon={<RoundIcon Icon={CleanIcon} className='bg-amber-500' />}
+          Icon={<RoundIcon Icon={CleanIcon} gradient='amber' />}
           onPress={resetDevOptions}
           arrow
         />
