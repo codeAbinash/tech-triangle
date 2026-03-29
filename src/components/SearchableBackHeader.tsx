@@ -74,9 +74,9 @@ export default function SearchableBackHeader({
   )
 
   const icon = searching ? (
-    <Cancel01Icon size={ICON_SIZE} color={iconColor} strokeWidth={2.2} />
+    <Cancel01Icon size={ICON_SIZE} color={iconColor} strokeWidth={2.1} />
   ) : (
-    <Search01Icon size={ICON_SIZE} color={iconColor} strokeWidth={2.2} />
+    <Search01Icon size={ICON_SIZE} color={iconColor} strokeWidth={2.1} />
   )
 
   return (

@@ -1,8 +1,7 @@
-import BackHeader from '@components/BackHeader'
 import DoubleSkeleton from '@components/DoubleSkeleton'
 import { Gap12 } from '@components/Gap'
 import RoundIcon from '@components/RoundIcon'
-import Search from '@components/Search'
+import SearchableBackHeader from '@components/SearchableBackHeader'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
@@ -14,7 +13,7 @@ import { F, Medium } from '@utils/fonts'
 import type { NavProp } from '@utils/types'
 import { delayedFadeAnimation, print } from '@utils/utils'
 import React, { useEffect } from 'react'
-import { ToastAndroid, View } from 'react-native'
+import { ToastAndroid } from 'react-native'
 import Animated from 'react-native-reanimated'
 
 export default function AllUsers({ navigation }: NavProp) {
@@ -39,12 +38,13 @@ export default function AllUsers({ navigation }: NavProp) {
   return (
     <SettWrapper
       Header={
-        <>
-          <BackHeader title='All users' navigation={navigation} />
-          <View className='bg-white px-5 pb-4 dark:bg-zinc-950'>
-            <Search placeholder='Search user' value={search} onChangeText={(text) => setSearch(text)} />
-          </View>
-        </>
+        <SearchableBackHeader
+          title='All users'
+          navigation={navigation}
+          value={search}
+          onChangeText={(text) => setSearch(text)}
+          placeholder='Search user'
+        />
       }
     >
       <Gap12>

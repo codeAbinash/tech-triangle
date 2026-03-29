@@ -8,7 +8,7 @@ export default function Test({ navigation }: NavProp) {
   return (
     <>
       <SettWrapper title='Test Screen'>
-        <SettText className='mt-5'>This is a test screen</SettText>
+        <SettText>This is a test screen</SettText>
         <SettGroup title='Normal Input'>
           <Input placeholder='Test Input' />
         </SettGroup>

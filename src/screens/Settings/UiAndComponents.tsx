@@ -6,6 +6,7 @@ import { Input } from '@components/Input'
 import Range from '@components/Range'
 import RoundIcon from '@components/RoundIcon'
 import Search from '@components/Search'
+import SearchableBackHeader from '@components/SearchableBackHeader'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
@@ -43,7 +44,18 @@ export default function UiAndComponents({ navigation }: NavProp) {
   }, [option1])
 
   return (
-    <SettWrapper title='UI & Components'>
+    <SettWrapper
+      title='UI & Components'
+      Header={
+        <SearchableBackHeader
+          title='UI & Components'
+          navigation={navigation}
+          onChangeText={(text) => setSearch(text)}
+          value={search}
+          placeholder='Search components...'
+        />
+      }
+    >
       <>
         <Gap12>
           <SettText>This is a test screen to show the different settings components</SettText>

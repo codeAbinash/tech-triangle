@@ -3,9 +3,11 @@ import KeyboardAvoid from '@components/KeyboardAvoid'
 import RoundIcon, { type GradientName } from '@components/RoundIcon'
 import { PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
+import SearchableBackHeader from '@components/SearchableBackHeader'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import ArtificialIntelligence04Icon from '@hugeicons/ArtificialIntelligence04Icon'
 import Calendar03Icon from '@hugeicons/Calendar03Icon'
 import ColorsIcon from '@hugeicons/ColorsIcon'
@@ -105,53 +107,50 @@ export default function TyrItOut({ navigation }: NavProp) {
   const searchedTools = useMemo(() => searchTools(search), [search])
 
   return (
-    <>
-      <PaddingTop />
-      <View className='px-5 pb-3'>
-        <View className='my-1 flex-row items-center justify-between'>
-          <Bold className='mb-1 mt-2 text-xl text-gray-800 dark:text-gray-200'>Try it out</Bold>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            className='p-2.5 pb-3.5 pr-0.5 pt-2'
-            onPress={() => navigation.navigate('Settings')}
-          >
-            <ListSettingIcon size={23} color={theme === 'dark' ? Colors.zinc['300'] : Colors.zinc['700']} />
-          </TouchableOpacity>
-        </View>
-        <Search placeholder='Search tools' value={search} onChangeText={setSearch} />
-      </View>
-      <KeyboardAvoid className='flex-1 bg-zinc-100 pt-4 dark:bg-black' contentContainerStyle={{ paddingBottom: 50 }}>
-        <Gap20>
-          {searchedTools.map((group, index) => (
-            <Gap12 key={index}>
-              {group.startText && <SettText>{group.startText}</SettText>}
-              <SettGroup title={group.title}>
-                {group.tools.map((tool, i) => (
-                  <Animated.View
-                    key={i}
-                    entering={delayedFadeAnimationSearch(search, i)}
-                    exiting={exiting}
-                    layout={layout}
-                  >
-                    <SettOption
-                      title={tool.title}
-                      Icon={<RoundIcon Icon={tool.Icon} gradient={tool.gradient} className={tool.className} />}
-                      arrow={tool.arrow ?? true}
-                      // Update onPress handlers to correctly navigate using the 'to' property
-                      onPress={() => tool.to && navigation.navigate(tool.to as any)}
-                    />
-                  </Animated.View>
-                ))}
-              </SettGroup>
-              {group.endText && <SettText>{group.endText}</SettText>}
-            </Gap12>
-          ))}
-          {searchedTools.length === 0 && (
-            <SettText className='text-center'>No tools found. Try searching for something else.</SettText>
-          )}
-        </Gap20>
-      </KeyboardAvoid>
-    </>
+    <SettWrapper
+      title='Try it out'
+      Header={
+        <SearchableBackHeader
+          title='Try it out'
+          navigation={navigation}
+          onChangeText={(text) => setSearch(text)}
+          value={search}
+          placeholder='Search tools'
+        />
+      }
+    >
+      {/* <KeyboardAvoid className='flex-1 bg-zinc-100 dark:bg-black' contentContainerStyle={{ paddingBottom: 50 }}> */}
+      <Gap20>
+        {searchedTools.map((group, index) => (
+          <Gap12 key={index}>
+            {group.startText && <SettText>{group.startText}</SettText>}
+            <SettGroup title={group.title}>
+              {group.tools.map((tool, i) => (
+                <Animated.View
+                  key={i}
+                  entering={delayedFadeAnimationSearch(search, i)}
+                  exiting={exiting}
+                  layout={layout}
+                >
+                  <SettOption
+                    title={tool.title}
+                    Icon={<RoundIcon Icon={tool.Icon} gradient={tool.gradient} className={tool.className} />}
+                    arrow={tool.arrow ?? true}
+                    // Update onPress handlers to correctly navigate using the 'to' property
+                    onPress={() => tool.to && navigation.navigate(tool.to as any)}
+                  />
+                </Animated.View>
+              ))}
+            </SettGroup>
+            {group.endText && <SettText>{group.endText}</SettText>}
+          </Gap12>
+        ))}
+        {searchedTools.length === 0 && (
+          <SettText className='text-center'>No tools found. Try searching for something else.</SettText>
+        )}
+      </Gap20>
+      {/* </KeyboardAvoid> */}
+    </SettWrapper>
   )
 }
 

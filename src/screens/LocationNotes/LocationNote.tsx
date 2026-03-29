@@ -78,7 +78,7 @@ export default function LocationNote({ navigation, route }: LocationNoteProps) {
   return (
     <>
       <SettWrapper title={name || 'Location Note'}>
-        <Gap12 className='mt-3'>
+        <Gap12>
           <SettGroup title='Location Name'>
             <Input
               Icon={<RoundIcon Icon={MapsLocation02Icon} />}

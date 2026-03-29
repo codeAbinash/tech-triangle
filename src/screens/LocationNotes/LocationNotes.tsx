@@ -3,6 +3,7 @@ import { Gap12 } from '@components/Gap'
 import Press from '@components/Press'
 import RoundIcon from '@components/RoundIcon'
 import Search from '@components/Search'
+import SearchableBackHeader from '@components/SearchableBackHeader'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
@@ -49,16 +50,13 @@ export default function LocationNotes({ navigation }: NavProp) {
       <SettWrapper
         title='Location Notes'
         Header={
-          <>
-            <BackHeader title='Location Notes' navigation={navigation} />
-            <View className='bg-white px-5 pb-4 dark:bg-zinc-950'>
-              <Search
-                placeholder='Search by title or description'
-                value={search}
-                onChangeText={(text) => setSearch(text)}
-              />
-            </View>
-          </>
+          <SearchableBackHeader
+            title='Location Notes'
+            navigation={navigation}
+            onChangeText={(text) => setSearch(text)}
+            value={search}
+            placeholder='Search notes...'
+          />
         }
       >
         <NoLocationNotes notes={searchResults} search={search} />
@@ -74,7 +72,7 @@ function NotesList({ notes, search }: { notes: LocationNote[]; search?: string }
   if (!notes || notes.length === 0) return null
   return (
     <Gap12>
-      <SettText className='mt-3.5'>
+      <SettText>
         {notes.length === 0
           ? ''
           : `Found ${notes.length} note${notes.length > 1 ? 's' : ''}. Tap on a note to view details.`}
