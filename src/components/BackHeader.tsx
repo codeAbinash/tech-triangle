@@ -13,11 +13,12 @@ type BackHeaderProps = ViewProps & {
   navigation?: StackNav
   title?: string
   Title?: React.ReactNode
+  Center?: React.ReactNode
   Right?: React.ReactNode
   onBackPress?: () => void
 }
 
-export default function BackHeader({ navigation, Right, title, Title, onBackPress }: BackHeaderProps) {
+export default function BackHeader({ navigation, Right, Center, title, Title, onBackPress }: BackHeaderProps) {
   const scheme = useColorScheme()
   const card = scheme === 'dark' ? '#000000' : '#f2f2f3'
   return (
@@ -39,13 +40,15 @@ export default function BackHeader({ navigation, Right, title, Title, onBackPres
               style={{ marginRight: 2 }}
             />
           </Press>
-          <SemiBold
-            style={{ fontSize: HEADING_SIZE, textAlign: 'center', paddingBottom: 5 }}
-            className='text'
-            numberOfLines={1}
-          >
-            {title}
-          </SemiBold>
+          {Center ?? (
+            <SemiBold
+              style={{ fontSize: HEADING_SIZE, textAlign: 'center', paddingBottom: 5 }}
+              className='text'
+              numberOfLines={1}
+            >
+              {title}
+            </SemiBold>
+          )}
           {Right ?? <View style={{ height: 42, width: 42 }} />}
         </View>
       )}

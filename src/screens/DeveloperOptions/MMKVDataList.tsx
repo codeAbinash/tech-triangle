@@ -1,8 +1,7 @@
-import BackHeader from '@components/BackHeader'
 import FabIcon from '@components/FabIcon'
 import { Gap12 } from '@components/Gap'
 import RoundIcon from '@components/RoundIcon'
-import Search from '@components/Search'
+import SearchableBackHeader from '@components/SearchableBackHeader'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
@@ -51,12 +50,13 @@ export default function MMKVDataList({ navigation }: NavProp) {
     <>
       <SettWrapper
         Header={
-          <>
-            <BackHeader title='MMKV data editor' navigation={navigation} />
-            <View className='bg-white px-5 pb-4 dark:bg-zinc-950'>
-              <Search placeholder='Search keys' value={search} onChangeText={(text) => setSearch(text)} />
-            </View>
-          </>
+          <SearchableBackHeader
+            title='MMKV data editor'
+            navigation={navigation}
+            onChangeText={(text) => setSearch(text)}
+            value={search}
+            placeholder='Search MMKV keys...'
+          />
         }
       >
         <Gap12>
