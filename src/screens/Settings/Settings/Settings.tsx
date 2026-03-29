@@ -8,9 +8,11 @@ import RoundIcon from '@components/RoundIcon'
 import RoundNotification from '@components/RoundNotification'
 import { PaddingBottom, PaddingTop } from '@components/SafePadding'
 import Search from '@components/Search'
+import SearchableBackHeader from '@components/SearchableBackHeader'
 import SettGroup from '@components/Settings/SettGroup'
 import { SettOption } from '@components/Settings/SettOption'
 import SettText from '@components/Settings/SettText'
+import SettWrapper from '@components/Settings/SettWrapper'
 import { Txt, TxtAcc } from '@components/Text'
 import BrushIcon from '@hugeicons/BrushIcon'
 import BubbleChatIcon from '@hugeicons/BubbleChatIcon'
@@ -36,7 +38,6 @@ import { useIsFocused } from '@react-navigation/native'
 import { handleLogout, logout } from '@screens/auth/utils'
 import { useMutation } from '@tanstack/react-query'
 import { client } from '@utils/client'
-import { Colors } from '@utils/colors'
 import { APP_VERSION, APP_VERSION_CODE, ask_a_question, join_telegram_channel } from '@utils/constants'
 import { Bold } from '@utils/fonts'
 import { Caches, clearStorage, getStartWithSize, getStorageSize } from '@utils/storage'
@@ -44,7 +45,6 @@ import type { NavProp } from '@utils/types'
 import { screenDelay, toReadableSize } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { ToastAndroid, View, useColorScheme } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import AdminSettings from './AdminSettings'
 
@@ -103,149 +103,140 @@ export default function Settings({ navigation }: NavProp) {
   }
 
   return (
-    <View className='flex-1 bg-card'>
-      <PaddingTop />
-      <ScrollView
-        contentContainerStyle={{ paddingBottom: 30, backgroundColor: scheme === 'dark' ? 'black' : Colors.zinc[100] }}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps='always'
-      >
-        <SettingsHeader title='Settings' />
-        <Gap20>
-          <Gap12>
-            <SettText>
-              Hello {user?.name.split(' ')[0]}, Go to each section to customize your experience. All settings are saved
-              automatically.
-            </SettText>
-            <UpdateSettings navigation={navigation} />
-            <SettGroup title='General'>
-              <SettOption
-                title='Your Profile'
-                Icon={<RoundIcon Icon={UserIcon} gradient='green' />}
-                arrow
-                onPress={() => navigation.navigate('YourProfile')}
-              />
-              <SettOption title='Computer Science' Icon={<RoundIcon Icon={ComputerIcon} gradient={'indigo'} />} arrow />
-              <SettOption
-                title='Weather Settings'
-                // Icon={<SunCloudAngledRainZap01Icon {...ic} />}
-                Icon={<RoundIcon Icon={SunCloudAngledRainZap01Icon} gradient='blue' />}
-                onPress={() => navigation.navigate('WeatherSettings')}
-                arrow
-              />
-              <SettOption title='Routine Management' Icon={<RoundIcon Icon={Calendar03Icon} gradient='red' />} arrow />
-              <SettOption title='My Wallet' Icon={<RoundIcon Icon={Wallet02Icon} gradient='amber' />} arrow />
-            </SettGroup>
-          </Gap12>
-          <AdminSettings navigation={navigation} />
-          <Gap12>
-            <SettGroup title='Devices'>
-              <SettOption
-                title='Devices'
-                Icon={<RoundIcon Icon={DeviceAccessIcon} gradient={'sky'} />}
-                arrow
-                onPressOut={() => navigation.navigate('Devices')}
-              />
-              <SettOption
-                arrow
-                title='Log Out'
-                Icon={<RoundIcon Icon={Logout02Icon} gradient='red' />}
-                onPress={() => handleLogout(logoutMutation)}
-              />
-            </SettGroup>
-          </Gap12>
-          <Gap12>
-            <SettGroup title='Password and Security'>
-              <SettOption
-                title='App Lock'
-                // Icon={<SquareLock02Icon {...ic} />}
-                Icon={<RoundIcon Icon={SquareLock02Icon} gradient='green' />}
-                arrow
-                Right={<TxtAcc>Off</TxtAcc>}
-                onPress={() => navigation.navigate('AppLock')}
-              />
-            </SettGroup>
-            <SettText>Enable app lock to protect your data.</SettText>
-          </Gap12>
-          <Gap12>
-            <SettGroup title='For Developers'>
-              <SettOption
-                title='Developer options'
-                Icon={<RoundIcon Icon={CodeIcon} gradient='accent' />}
-                onPress={() => navigation.navigate('DeveloperOptions')}
-                arrow
-              />
-              <SettOption
-                title='UI & Components'
-                Icon={<RoundIcon Icon={BrushIcon} gradient='rose' />}
-                onPress={() => navigation.navigate('UiAndComponents')}
-                arrow
-              />
-            </SettGroup>
-            <SettText>
-              These options are intended for developers and may cause unexpected behavior. Use them with caution.
-            </SettText>
-          </Gap12>
-          <SettGroup title='Storage'>
-            <SettOption
-              title='Backup and Restore'
-              Icon={<RoundIcon Icon={FolderFileStorageIcon} gradient='yellow' />}
-              arrow
-              onPress={() => navigation.navigate('BackupAndRestore')}
-            />
-            {dev && (
-              <SettOption
-                title='MMKV data editor'
-                Icon={<RoundIcon Icon={EditTableIcon} gradient='green' />}
-                arrow
-                onPress={() => navigation.navigate('MMKVDataList')}
-              />
-            )}
-            <SettOption
-              title='Manage Storage'
-              Icon={<RoundIcon Icon={Database02Icon} gradient='slate' />}
-              Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
-              onPress={() => navigation.navigate('ManageStorage')}
-              arrow
-            />
-            <SettOption
-              title='Clear cache'
-              Icon={<RoundIcon Icon={CleanIcon} gradient='amber' />}
-              Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
-              onPress={clearCache}
-              arrow
-            />
-          </SettGroup>
-          <SettGroup title='Help & Support'>
-            <SettOption
-              arrow
-              title='Ask a question'
-              Icon={<RoundIcon Icon={BubbleChatIcon} gradient='rose' />}
-              onPress={ask_a_question}
-            />
-            <SettOption
-              arrow
-              title='Join telegram channel'
-              Icon={<RoundIcon Icon={TelegramIcon} gradient='sky' />}
-              onPress={join_telegram_channel}
-            />
-            <SettOption arrow title='Privacy Policy' Icon={<RoundIcon Icon={ShieldUserIcon} gradient='green' />} />
-            <SettOption arrow title='Terms of Service' Icon={<RoundIcon Icon={PolicyIcon} gradient='yellow' />} />
-            <SettOption
-              arrow
-              title='About'
-              Icon={<RoundIcon Icon={InformationCircleIcon} gradient='slate' />}
-              onPress={() => navigation.navigate('About')}
-            />
-          </SettGroup>
-          <SettText className='text-center'>
-            Version v{APP_VERSION} ({APP_VERSION_CODE})
+    <SettWrapper Header={<SearchableBackHeader title='Settings' placeholder='Search settings' />}>
+      <Gap20>
+        <Gap12>
+          <SettText>
+            Hello {user?.name.split(' ')[0]}, Go to each section to customize your experience. All settings are saved
+            automatically.
           </SettText>
-        </Gap20>
-        <PaddingBottom />
-      </ScrollView>
-    </View>
+          <UpdateSettings navigation={navigation} />
+          <SettGroup title='General'>
+            <SettOption
+              title='Your Profile'
+              Icon={<RoundIcon Icon={UserIcon} gradient='green' />}
+              arrow
+              onPress={() => navigation.navigate('YourProfile')}
+            />
+            <SettOption title='Computer Science' Icon={<RoundIcon Icon={ComputerIcon} gradient={'indigo'} />} arrow />
+            <SettOption
+              title='Weather Settings'
+              // Icon={<SunCloudAngledRainZap01Icon {...ic} />}
+              Icon={<RoundIcon Icon={SunCloudAngledRainZap01Icon} gradient='blue' />}
+              onPress={() => navigation.navigate('WeatherSettings')}
+              arrow
+            />
+            <SettOption title='Routine Management' Icon={<RoundIcon Icon={Calendar03Icon} gradient='red' />} arrow />
+            <SettOption title='My Wallet' Icon={<RoundIcon Icon={Wallet02Icon} gradient='amber' />} arrow />
+          </SettGroup>
+        </Gap12>
+        <AdminSettings navigation={navigation} />
+        <Gap12>
+          <SettGroup title='Devices'>
+            <SettOption
+              title='Devices'
+              Icon={<RoundIcon Icon={DeviceAccessIcon} gradient={'sky'} />}
+              arrow
+              onPressOut={() => navigation.navigate('Devices')}
+            />
+            <SettOption
+              arrow
+              title='Log Out'
+              Icon={<RoundIcon Icon={Logout02Icon} gradient='red' />}
+              onPress={() => handleLogout(logoutMutation)}
+            />
+          </SettGroup>
+        </Gap12>
+        <Gap12>
+          <SettGroup title='Password and Security'>
+            <SettOption
+              title='App Lock'
+              // Icon={<SquareLock02Icon {...ic} />}
+              Icon={<RoundIcon Icon={SquareLock02Icon} gradient='green' />}
+              arrow
+              Right={<TxtAcc>Off</TxtAcc>}
+              onPress={() => navigation.navigate('AppLock')}
+            />
+          </SettGroup>
+          <SettText>Enable app lock to protect your data.</SettText>
+        </Gap12>
+        <Gap12>
+          <SettGroup title='For Developers'>
+            <SettOption
+              title='Developer options'
+              Icon={<RoundIcon Icon={CodeIcon} gradient='accent' />}
+              onPress={() => navigation.navigate('DeveloperOptions')}
+              arrow
+            />
+            <SettOption
+              title='UI & Components'
+              Icon={<RoundIcon Icon={BrushIcon} gradient='rose' />}
+              onPress={() => navigation.navigate('UiAndComponents')}
+              arrow
+            />
+          </SettGroup>
+          <SettText>
+            These options are intended for developers and may cause unexpected behavior. Use them with caution.
+          </SettText>
+        </Gap12>
+        <SettGroup title='Storage'>
+          <SettOption
+            title='Backup and Restore'
+            Icon={<RoundIcon Icon={FolderFileStorageIcon} gradient='yellow' />}
+            arrow
+            onPress={() => navigation.navigate('BackupAndRestore')}
+          />
+          {dev && (
+            <SettOption
+              title='MMKV data editor'
+              Icon={<RoundIcon Icon={EditTableIcon} gradient='green' />}
+              arrow
+              onPress={() => navigation.navigate('MMKVDataList')}
+            />
+          )}
+          <SettOption
+            title='Manage Storage'
+            Icon={<RoundIcon Icon={Database02Icon} gradient='slate' />}
+            Right={<TxtAcc>{toReadableSize(totalSize)}</TxtAcc>}
+            onPress={() => navigation.navigate('ManageStorage')}
+            arrow
+          />
+          <SettOption
+            title='Clear cache'
+            Icon={<RoundIcon Icon={CleanIcon} gradient='amber' />}
+            Right={<TxtAcc>{toReadableSize(totalCache)}</TxtAcc>}
+            onPress={clearCache}
+            arrow
+          />
+        </SettGroup>
+        <SettGroup title='Help & Support'>
+          <SettOption
+            arrow
+            title='Ask a question'
+            Icon={<RoundIcon Icon={BubbleChatIcon} gradient='rose' />}
+            onPress={ask_a_question}
+          />
+          <SettOption
+            arrow
+            title='Join telegram channel'
+            Icon={<RoundIcon Icon={TelegramIcon} gradient='sky' />}
+            onPress={join_telegram_channel}
+          />
+          <SettOption arrow title='Privacy Policy' Icon={<RoundIcon Icon={ShieldUserIcon} gradient='green' />} />
+          <SettOption arrow title='Terms of Service' Icon={<RoundIcon Icon={PolicyIcon} gradient='yellow' />} />
+          <SettOption
+            arrow
+            title='About'
+            Icon={<RoundIcon Icon={InformationCircleIcon} gradient='slate' />}
+            onPress={() => navigation.navigate('About')}
+          />
+        </SettGroup>
+        <SettText className='text-center'>
+          Version v{APP_VERSION} ({APP_VERSION_CODE})
+        </SettText>
+      </Gap20>
+      <PaddingBottom />
+    </SettWrapper>
   )
 }
 

@@ -23,8 +23,8 @@ type SearchableBackHeaderProps = {
   navigation?: StackNav
   title?: string
   onBackPress?: () => void
-  value: string
-  onChangeText: (text: string) => void
+  value?: string
+  onChangeText?: (text: string) => void
   placeholder?: string
 }
 
@@ -61,7 +61,7 @@ export default function SearchableBackHeader({
   }
 
   const closeSearch = () => {
-    onChangeText('')
+    onChangeText?.('')
     setSearching(false)
   }
 
