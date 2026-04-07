@@ -12,7 +12,7 @@ type SettGroupProps = ViewProps & {
 export default function SettGroup({ children, title, className, accent = Colors.accent, ...rest }: SettGroupProps) {
   return (
     <Animated.View
-      className={cn('bg-card py-3  mx-3.5 ', className)}
+      className={cn('bg-card py-3 mx-3.5 ', className)}
       layout={layout}
       {...rest}
       style={{
@@ -21,7 +21,7 @@ export default function SettGroup({ children, title, className, accent = Colors.
     >
       {title && (
         <SemiBold
-          className={'px-6 pb-1.5 pt-0.5 text-accent'}
+          className={'px-5 pb-1.5 text-accent'}
           style={{ textTransform: 'none', opacity: 1, fontSize: SUB_TEXT_SIZE, color: accent, marginBottom: 5 }}
         >
           {title}
