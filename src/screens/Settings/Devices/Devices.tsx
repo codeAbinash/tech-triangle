@@ -72,7 +72,7 @@ export default function Devices({ navigation }: NavProp) {
         {data && data.data && data.data.devices.length > 0 && (
           <SettGroup title='Other Devices'>
             {isPending && <DoubleSkeleton n={10} />}
-            {data.data.devices.map((device, i) => (
+            {data.data.devices.map((device: Device, i: number) => (
               <Animated.View key={device?.id} entering={delayedFadeAnimation(i)}>
                 <Device key={i} navigation={navigation} device={device} isSelf={false} />
               </Animated.View>

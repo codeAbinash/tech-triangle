@@ -15,6 +15,7 @@ import { delayedFadeAnimation, print } from '@utils/utils'
 import React, { useEffect } from 'react'
 import { ToastAndroid } from 'react-native'
 import Animated from 'react-native-reanimated'
+import type { UserT } from './User'
 
 export default function AllUsers({ navigation }: NavProp) {
   const [search, setSearch] = React.useState('')
@@ -25,7 +26,7 @@ export default function AllUsers({ navigation }: NavProp) {
   })
 
   useEffect(() => {
-    if (data?.status === false) {
+    if (!data?.success && data?.message) {
       ToastAndroid.show(data.message, ToastAndroid.SHORT)
       navigation.goBack()
     }
@@ -51,7 +52,7 @@ export default function AllUsers({ navigation }: NavProp) {
         <SettText>You can see all users here. Also you can add or remove users.</SettText>
         <SettGroup title='All users'>
           {isPending && <DoubleSkeleton n={12} />}
-          {data?.data?.map((user, i) => (
+          {data?.data?.map((user: UserT, i: number) => (
             <Animated.View key={user.email} entering={delayedFadeAnimation(i)}>
               <SettOption
                 key={user.email}

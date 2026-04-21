@@ -23,7 +23,9 @@ import { client } from '@utils/client'
 import type { StackNav } from '@utils/types'
 import { ToastAndroid, View } from 'react-native'
 
-export type UserT = Awaited<ReturnType<Awaited<ReturnType<typeof client.api.admin.users.all.$post>>['json']>>['data'][0]
+export type UserT = NonNullable<
+  Awaited<ReturnType<Awaited<ReturnType<typeof client.api.admin.users.all.$post>>['json']>>['data']
+>[0]
 
 type ParamList = {
   User: UserParamList
@@ -42,7 +44,7 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
     mutationKey: ['removeUser', _id],
     mutationFn: async () => await (await client.api.admin.users.delete.$post({ form: { id: _id || '' } })).json(),
     onSuccess: (d) => {
-      if (!d.status) return alert('Error', d.message)
+      if (!d.success) return alert('Error', d.message)
       queryClient.invalidateQueries({ queryKey: ['allUsers'] })
       ToastAndroid.show('User removed successfully', ToastAndroid.SHORT)
       navigation.goBack()
@@ -82,7 +84,7 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
 
         <SettGroup title='Last OTP Sent'>
           <SettOption
-            title={getDate(new Date(lastOtpSent).getTime())}
+            title={getDate(new Date(lastOtpSent!).getTime())}
             Icon={<RoundIcon Icon={Calendar03Icon} gradient='red' />}
           />
         </SettGroup>

@@ -15,15 +15,15 @@ export default function CheckVersion({ navigation }: NavProp) {
 
   useEffect(() => {
     if (data && data.status) {
-      const isForceUpdate = APP_VERSION_CODE < data.data?.criticalVersionCode
+      const isForceUpdate = APP_VERSION_CODE < Number(data.data?.criticalVersionCode)
 
       // Update the local version store
       setVersion({
-        features: data.data?.features,
-        size: data.data?.size,
-        version: data.data?.version,
-        versionCode: data.data?.versionCode,
-        criticalVersionCode: data.data?.criticalVersionCode,
+        features: data.data?.features || [],
+        size: data.data?.size.toString() || '0',
+        version: data.data?.version.toString() || '0.0.0',
+        versionCode: Number(data.data?.versionCode),
+        criticalVersionCode: Number(data.data?.criticalVersionCode),
       })
 
       if (isForceUpdate) {

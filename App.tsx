@@ -143,8 +143,8 @@ function Navigation() {
           gestureResponseDistance: width,
         }}
       >
-        <Stack.Screen name='Home' component={Home} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Splash' component={Splash} options={NO_ANIMATION} />
+        <Stack.Screen name='Home' component={Home} options={SMOOTH_ANIMATION} />
         <Stack.Screen name='Login' component={Login} options={GestureEnabled} />
         <Stack.Screen name='Signup' component={Signup} options={GestureEnabled} />
         <Stack.Screen name='Verify' component={Verify} options={GestureEnabled} />

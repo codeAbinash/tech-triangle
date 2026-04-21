@@ -43,9 +43,9 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
 
   const { mutate: logoutMutation } = useMutation({
     mutationKey: ['logout'],
-    mutationFn: async () => await (await client.api.logout.$post()).json(),
+    mutationFn: async () => await (await client.api.auth.logout.$post()).json(),
     onSuccess: (d) => {
-      if (!d.status) ToastAndroid.show('Error logging out!', ToastAndroid.SHORT)
+      if (!d.success) ToastAndroid.show('Error logging out!', ToastAndroid.SHORT)
       logout()
     },
   })
@@ -58,7 +58,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
   async function onSuccess() {
     if (data) {
       queryClient.invalidateQueries({ queryKey: ['devices'] })
-      if (data.status) {
+      if (data.success) {
         ToastAndroid.show('Device removed successfully', ToastAndroid.SHORT)
         navigation.goBack()
       } else {

@@ -23,8 +23,8 @@ export default function HomeScreen({ navigation }: { navigation: StackNav }) {
     mutationKey: ['user'],
     mutationFn: async () => await (await client.api.profile.$get()).json(),
     onSuccess: (data) => {
-      if (!data || !data.status) return
-      setUser(data.data)
+      if (!data || !data.success) return
+      if (data.data) setUser(data.data)
     },
   })
 

@@ -53,8 +53,7 @@ export default function Signup({ navigation }: NavProp) {
     mutationKey: ['login'],
     mutationFn: async (data: SignupParams) => await (await client.api.auth.signup.$post({ form: { ...data } })).json(),
     onSuccess: (data) => {
-      console.log(data)
-      if (!data.status) return alert('Error', data.message)
+      if (!data.success) return alert('Error', data.message)
       navigation.replace('Verify', { username })
     },
     onError: (error) => {
@@ -69,7 +68,7 @@ export default function Signup({ navigation }: NavProp) {
       await (await client.api.auth.username.status.$post({ form: { username: u } })).json(),
     onSuccess: (data) => {
       console.log(data)
-      setStatus(data.status ? NameStatus.Available : NameStatus.Unavailable)
+      setStatus(data.success ? NameStatus.Available : NameStatus.Unavailable)
     },
     onError: (error) => {
       console.log(error)

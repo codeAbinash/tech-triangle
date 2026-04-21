@@ -44,6 +44,13 @@ type LoginParams = {
   deviceOs: string
 }
 
+
+// const login = client.api.auth.login.$post({
+//   form: {
+
+//   }
+// })
+
 export default function Login({ navigation }: NavProp) {
   const { setToken } = authStore()
   const [username, setUsername] = useState('')
@@ -57,10 +64,11 @@ export default function Login({ navigation }: NavProp) {
     mutationKey: ['login'],
     mutationFn: async (data: LoginParams) => await (await client.api.auth.login.$post({ form: { ...data } })).json(),
     onSuccess: (data) => {
-      if (data.verificationRequired) return navigation.replace('Verify', { username })
-      if (!data.status) return alert('Error', data.message)
+      if (!data.success) return alert('Error', data.message || 'Login failed')
+      if (data.data?.verificationRequired) return navigation.replace('Verify', { username })
+
       if (data.data?.token) {
-        // Navigate to home screen
+        //   Navigate to home screen
         setToken(data.data.token)
         S.set('isOpenedApp', 'true')
         updateClientHeader(data.data.token)

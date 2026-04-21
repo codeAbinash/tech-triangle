@@ -17,6 +17,7 @@ export function handleLogout(logoutMutation: () => void) {
     { text: 'Cancel' },
     {
       text: 'Log out',
+      variant: 'destructive',
       onPress() {
         logoutMutation()
         alert('Please wait', 'Please wait while we log you out', [], true)

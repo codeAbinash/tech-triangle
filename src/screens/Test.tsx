@@ -15,7 +15,9 @@ export default function Test({ navigation }: NavProp) {
         <SettGroup title='Multiline Input (8)'>
           <Input multiline placeholder='Test Input' numberOfLines={8} />
         </SettGroup>
+        {/* <HelloWorld /> */}
       </SettWrapper>
     </>
   )
 }
+ 

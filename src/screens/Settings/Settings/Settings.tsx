@@ -6,7 +6,7 @@ import versionStore from '@/zustand/versionStore'
 import { Gap, Gap12, Gap20 } from '@components/Gap'
 import RoundIcon from '@components/RoundIcon'
 import RoundNotification from '@components/RoundNotification'
-import { PaddingBottom, PaddingTop } from '@components/SafePadding'
+import { PaddingBottom } from '@components/SafePadding'
 import Search from '@components/Search'
 import SearchableBackHeader from '@components/SearchableBackHeader'
 import SettGroup from '@components/Settings/SettGroup'
@@ -73,9 +73,10 @@ export default function Settings({ navigation }: NavProp) {
 
   const { mutate: logoutMutation } = useMutation({
     mutationKey: ['logout'],
-    mutationFn: async () => await (await client.api.logout.$post()).json(),
+    mutationFn: async () => await (await client.api.auth.logout.$post()).json(),
     onSuccess: (d) => {
-      if (!d.status) ToastAndroid.show('Error logging out!', ToastAndroid.SHORT)
+      console.log(d)
+      if (!d.success) ToastAndroid.show('Error logging out!', ToastAndroid.SHORT)
       logout()
     },
   })
