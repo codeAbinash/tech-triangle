@@ -63,6 +63,7 @@ export default function MMKVDataEditor({
       { text: 'Cancel' },
       {
         text: 'Delete',
+        variant: 'destructive',
         onPress: () => {
           ls.remove(key as StorageKeys)
           navigation.goBack()

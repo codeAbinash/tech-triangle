@@ -72,7 +72,7 @@ export default function EditVersion({ navigation }: NavProp) {
     alert(
       'Warning!',
       `You are about to set the critical version code to ${criticalVersionCode} which is greater than the current version code ${APP_VERSION_CODE}. This will force the users to update the app. Also this application cannot be opened until the update is done. Are you sure you have uploaded the new APK? Are you sure you want to force update?`,
-      [{ text: 'No, cancel' }, { text: 'Yes, force update', onPress: update }],
+      [{ text: 'No, cancel' }, { text: 'Yes, force update', variant: 'destructive', onPress: update }],
     )
   }
 

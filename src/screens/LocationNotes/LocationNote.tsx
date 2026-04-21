@@ -51,6 +51,7 @@ export default function LocationNote({ navigation, route }: LocationNoteProps) {
       { text: 'Cancel' },
       {
         text: 'Delete',
+        variant: 'destructive',
         onPress: () => {
           deleteNote(data.location.timestamp)
           navigation.goBack()

@@ -79,7 +79,7 @@ export default function Device({ navigation, route }: { navigation: StackNav; ro
     }
     alert('Remove Device', 'Are you sure you want to remove this device?', [
       { text: 'Cancel' },
-      { text: 'Remove', onPress: () => mutate() },
+      { text: 'Remove', variant: 'destructive', onPress: () => mutate() },
     ])
   }
 

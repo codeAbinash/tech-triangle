@@ -94,6 +94,7 @@ export default function Settings({ navigation }: NavProp) {
     alert('Are you sure?', 'Do you want to clear all cache?', [
       {
         text: 'Yes',
+        variant: 'destructive',
         onPress() {
           clearStorage(Caches)
           setTotalCache(0)

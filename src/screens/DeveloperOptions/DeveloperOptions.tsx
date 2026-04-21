@@ -42,21 +42,18 @@ export default function DeveloperOptions({ navigation }: NavProp) {
   }, [])
 
   const resetDevOptions = useCallback(() => {
-    alert(
-      'Reset Developer Options',
-      'This will reset all developer options to default. This action cannot be undone.',
-      [
-        { text: 'Cancel' },
-        {
-          text: 'Reset',
-          onPress: () => {
-            clearDevOptions()
-            setAnimError('')
-            navigation.goBack()
-          },
+    alert('Reset Developer Options', 'This will reset all developer options to default. This action cannot be undone.', [
+      { text: 'Cancel' },
+      {
+        text: 'Reset',
+        variant: 'destructive',
+        onPress: () => {
+          clearDevOptions()
+          setAnimError('')
+          navigation.goBack()
         },
-      ],
-    )
+      },
+    ])
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

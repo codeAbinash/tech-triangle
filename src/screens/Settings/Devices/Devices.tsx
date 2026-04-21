@@ -45,7 +45,7 @@ export default function Devices({ navigation }: NavProp) {
   function handelRemove() {
     alert('Remove Device', 'Are you sure you want to remove all other devices?', [
       { text: 'Cancel' },
-      { text: 'Remove', onPress: () => mutate() },
+      { text: 'Remove', variant: 'destructive', onPress: () => mutate() },
     ])
   }
 

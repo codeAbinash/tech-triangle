@@ -54,7 +54,7 @@ export default function User({ navigation, route }: { navigation: StackNav; rout
   function handleRemove() {
     alert('Delete this user?', 'Are you sure you want to delete this user? This action cannot be undone.', [
       { text: 'Cancel' },
-      { text: 'Delete', onPress: () => mutate() },
+      { text: 'Delete', variant: 'destructive', onPress: () => mutate() },
     ])
   }
 
