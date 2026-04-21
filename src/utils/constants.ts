@@ -17,4 +17,4 @@ export function join_telegram_channel() {
 
 export const GITHUB_REPO = 'https://github.com/codeAbinash/tech-triangle'
 export const GITHUB_LATEST_RELEASE = 'https://github.com/codeAbinash/tech-triangle/releases/latest'
-export const WEB = 'https://techtriangle.vercel.app/'
+export const WEB = 'https://ttb.codeabinash.workers.dev/'

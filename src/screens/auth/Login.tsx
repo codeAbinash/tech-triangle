@@ -44,13 +44,6 @@ type LoginParams = {
   deviceOs: string
 }
 
-
-// const login = client.api.auth.login.$post({
-//   form: {
-
-//   }
-// })
-
 export default function Login({ navigation }: NavProp) {
   const { setToken } = authStore()
   const [username, setUsername] = useState('')

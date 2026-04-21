@@ -8,7 +8,7 @@ import { hc } from 'hono/dist/client/client'
 import { WEB } from './constants'
 
 let address = WEB
-// address = __DEV__ ? 'http://192.168.29.220:3000/' : WEB
+address = __DEV__ ? 'http://192.168.29.220:8787' : WEB
 
 let client = (hc as typeof hcWithType)(address, {
   headers() {
