@@ -1,0 +1,33 @@
+
+import React from 'react'
+import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, LinearGradient, Mask, Path, Polygon, Polyline, RadialGradient, Rect, Stop } from 'react-native-svg'
+import {type Variant, type HugeIconProps, defaultStrokeWidth, defaultVariant, defaultColor, defaultSize } from './constants'
+
+const iconMap: Partial<Record<Variant, React.FC<HugeIconProps>>> = { 
+	'solid-rounded': SolidRounded,
+	'stroke-rounded': StrokeRounded,
+}
+
+export default function PlaneIcon({ variant, ...rest }: HugeIconProps) {
+  const selectedVariant = variant || defaultVariant
+  const Component = iconMap[selectedVariant] || iconMap[defaultVariant] || StrokeRounded
+  return <Component {...rest} />
+}
+
+function SolidRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
+  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
+<Path d="M21.011 6.55957C21.4843 6.08613 21.7502 5.44389 21.7502 4.77441C21.7501 3.38024 20.6199 2.25016 19.2258 2.25C18.5564 2.25 17.9141 2.51597 17.4407 2.98926L7.13597 13.293H4.98949L4.96733 13.293C4.89854 13.293 4.83676 13.2929 4.77855 13.2939L4.59398 13.3027C4.39664 13.3191 4.20125 13.3569 4.01195 13.415C3.90014 13.4494 3.79296 13.4923 3.65557 13.5472L3.64183 13.5527L3.63878 13.554C3.40504 13.6475 3.19629 13.731 3.03832 13.8057C2.92555 13.859 2.72759 13.9553 2.56957 14.124L2.50414 14.2012C2.13313 14.691 2.17244 15.378 2.59691 15.8223C2.78538 16.0195 3.03811 16.1084 3.17308 16.1543C3.32947 16.2074 3.53155 16.2625 3.75827 16.3243L3.80101 16.3359L6.83519 17.1641L7.6643 20.1992L7.67592 20.2419C7.73773 20.4686 7.79281 20.6707 7.84594 20.8271C7.8918 20.9621 7.98073 21.2148 8.17797 21.4033C8.62228 21.8278 9.30924 21.8672 9.79906 21.4961C10.0164 21.3314 10.1336 21.0909 10.1946 20.9619C10.2693 20.8038 10.3529 20.5949 10.4465 20.361L10.4475 20.3584L10.4531 20.3445C10.508 20.2072 10.5509 20.1 10.5852 19.9883C10.6433 19.799 10.6811 19.6036 10.6975 19.4062C10.7075 19.2856 10.7063 19.1662 10.7063 19.0107V16.8643L21.011 6.55957Z" fill={color}/>
+<Path d="M17.7504 18.3125C17.7504 18.8765 17.619 19.4331 17.3666 19.9375C16.8063 21.0568 15.1922 21.0089 14.6986 19.8584L13.1313 16.2051L17.7504 11.5869V18.3125Z" fill={color}/>
+<Path d="M7.79239 10.8672L4.142 9.30176C2.99142 8.80826 2.94356 7.19407 4.0629 6.63379L4.2543 6.54492C4.70643 6.35066 5.19435 6.25001 5.6879 6.25H12.4115L7.79239 10.8672Z" fill={color}/>
+</Svg>
+)
+}
+
+function StrokeRounded({ size = defaultSize, color = defaultColor, strokeWidth = defaultStrokeWidth, className, style }: HugeIconProps) {
+  return (<Svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" fill="none">
+<Path d="M10.637 16.8238L20.3868 7.07406C20.7794 6.68143 21 6.1489 21 5.59363C21 4.43735 20.0626 3.5 18.9064 3.5C18.3511 3.5 17.8186 3.72058 17.4259 4.11321L7.67619 13.863H5.63905C5.2648 13.863 5.07768 13.863 4.89646 13.8971C4.7879 13.9176 4.68124 13.9471 4.57761 13.9854C4.40465 14.0494 4.24419 14.1457 3.92328 14.3382C3.34739 14.6837 3.05945 14.8565 3.01249 15.0613C2.98553 15.1788 3.00255 15.3021 3.06032 15.408C3.16096 15.5924 3.48493 15.6807 4.13286 15.8574L7.67619 16.8238L8.64256 20.3671C8.81926 21.0151 8.90762 21.339 9.09202 21.4397C9.19787 21.4975 9.3212 21.5145 9.43874 21.4875C9.6435 21.4406 9.81626 21.1526 10.1618 20.5767C10.3543 20.2558 10.4506 20.0954 10.5146 19.9224C10.5529 19.8188 10.5824 19.7121 10.6029 19.6035C10.637 19.4223 10.637 19.2352 10.637 18.861V16.8238Z" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
+<Path d="M17.5 10V17.9457C17.5 18.6356 17.3125 19.3125 16.9575 19.9041C16.5581 20.5698 15.5727 20.5029 15.2669 19.7893L13 14.5" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
+<Path d="M14.5 7H6.55434C5.86444 7 5.18751 7.1875 4.59592 7.54245C3.93025 7.94186 3.99713 8.92734 4.71066 9.23314L10 11.5" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"/>
+</Svg>
+)
+}

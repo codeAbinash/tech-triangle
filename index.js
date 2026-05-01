@@ -4,7 +4,7 @@
 
 import { AppRegistry, Text, TextInput } from 'react-native'
 import 'react-native-gesture-handler'
-import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated'
+import { ReanimatedLogLevel, configureReanimatedLogger } from 'react-native-reanimated'
 import App from './App'
 import { name as appName } from './app.json'
 

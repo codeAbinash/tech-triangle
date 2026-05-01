@@ -12,6 +12,7 @@ import { type ColorSchemeName, TouchableOpacity, View, useColorScheme } from 're
 import HomeScreen from './Home/HomeScreen'
 import TyrItOut from './Try/TyrItOut'
 import ComingSoon from './UnderConstruction'
+import Wallet from './Wallet/Wallet'
 
 const Tab = createBottomTabNavigator()
 
@@ -47,6 +48,12 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               target: route.key,
               canPreventDefault: true,
             })
+
+            const customOnPress = screens[index]?.onPress
+            if (customOnPress) {
+              customOnPress(navigation)
+              return
+            }
 
             if (!isFocused && !event.defaultPrevented) {
               navigation.navigate(route.name, route.params)
@@ -109,7 +116,16 @@ const screens = [
     defaultIcon: Saturn01Icon,
     component: ComingSoon,
   },
-  { name: 'Wallet', label: 'Wallet', focusedIcon: Wallet02Icon, defaultIcon: Wallet02Icon, component: ComingSoon },
+  {
+    name: 'WalletTab',
+    label: 'Wallet',
+    focusedIcon: Wallet02Icon,
+    defaultIcon: Wallet02Icon,
+    component: Wallet,
+    onPress: (navigation: BottomTabBarProps['navigation']) => {
+      navigation.navigate('Wallet')
+    },
+  },
 ]
 
 const Home = () => {

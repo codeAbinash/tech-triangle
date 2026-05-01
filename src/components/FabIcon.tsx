@@ -1,15 +1,18 @@
+import { cn } from '@utils/utils'
 import React from 'react'
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import Press from './Press'
 
 export type FabIconProps = { Icon?: React.ReactNode } & TouchableOpacityProps
 
-export default function FabIcon({ style, Icon, ...rest }: FabIconProps) {
+export default function FabIcon({ style, Icon, className, ...rest }: FabIconProps) {
   const bottom = useSafeAreaInsets().bottom
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      className='flex-row items-center justify-center rounded-full bg-accent'
+    <Press
+      activeOpacity={0.95}
+      activeScale={0.95}
+      className={cn('flex-row items-center justify-center rounded-full bg-accent', className)}
       style={[
         {
           marginBottom: bottom + 5,
@@ -32,6 +35,6 @@ export default function FabIcon({ style, Icon, ...rest }: FabIconProps) {
       {...rest}
     >
       {Icon}
-    </TouchableOpacity>
+    </Press>
   )
 }

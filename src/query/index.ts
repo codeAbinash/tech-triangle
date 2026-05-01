@@ -3,7 +3,7 @@ import popupStore from '@/zustand/popupStore'
 import NetInfo from '@react-native-community/netinfo'
 import { useFocusEffect } from '@react-navigation/native'
 import { logout } from '@screens/auth/utils'
-import { onlineManager, QueryClient, type NotifyOnChangeProps } from '@tanstack/react-query'
+import { MutationCache, type NotifyOnChangeProps, QueryClient, onlineManager } from '@tanstack/react-query'
 import React from 'react'
 
 // Online Status Manager
@@ -101,6 +101,16 @@ export const queryClient = new QueryClient({
       },
     },
   },
+  mutationCache: new MutationCache({
+    onSettled: (data, _error, _variables, context, mutation) => {
+      const invalidates = mutation.meta?.invalidates
+      if (invalidates) queryClient.invalidateQueries({ queryKey: invalidates })
+    },
+    onError: (error, _variables, _context, mutation) => {
+      if (mutation.meta?.message?.error) {
+      }
+    },
+  }),
 })
 
 function handleUnauthorized(data: ServerResponse) {

@@ -48,6 +48,12 @@ import RandomColor from '@screens/Try/RandomColor'
 import RandomPassword from '@screens/Try/RandomPassword'
 import YourAge from '@screens/Try/YourAge'
 import Update, { type UpdateParamList } from '@screens/Update/Update'
+import AddExpense, { type WalletAddExpenseParamList } from '@screens/Wallet/AddExpense'
+import EditSource, { type WalletEditSourceParamList } from '@screens/Wallet/EditSource'
+import EditTag, { type WalletEditTagParamList } from '@screens/Wallet/EditTag'
+import SelectTagIcon from '@screens/Wallet/SelectTagIcon/SelectTagIcon'
+import Sources from '@screens/Wallet/Sources'
+import Tags from '@screens/Wallet/Tags'
 import type { ConfirmCityParamList } from '@screens/Weather/ConfirmCity'
 import ConfirmCity from '@screens/Weather/ConfirmCity'
 import WeatherScreen from '@screens/Weather/Main/Weather'
@@ -86,6 +92,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import './global.css'
+import Wallet from '@screens/Wallet/Wallet'
 
 function App(): React.JSX.Element {
   const scheme = useColorScheme()
@@ -224,12 +231,21 @@ function Navigation() {
         <Stack.Screen name='LocationNote' component={LocationNote} options={GestureEnabled} />
         <Stack.Screen name='LocationSpeed' component={LocationSpeed} options={GestureEnabled} />
         <Stack.Screen name='Messages' component={Messages} options={{ gestureEnabled: false }} />
+        <Stack.Screen name='Wallet' component={Wallet} options={GestureEnabled} />
+        <Stack.Screen name='WalletAddExpense' component={AddExpense} options={GestureEnabled} />
+        <Stack.Screen name='WalletSources' component={Sources} options={GestureEnabled} />
+        <Stack.Screen name='WalletEditSource' component={EditSource} options={GestureEnabled} />
+        <Stack.Screen name='WalletTags' component={Tags} options={GestureEnabled} />
+        <Stack.Screen name='WalletEditTag' component={EditTag} options={GestureEnabled} />
+        <Stack.Screen name='WalletSelectTagIcon' component={SelectTagIcon} options={IOS_BOTTOM_STYLE} />
       </Stack.Navigator>
     </>
   )
 }
 
 export type RootStackParamList = {
+  Wallet: undefined
+  WalletSelectTagIcon: undefined
   Abinash: undefined
   Hello: undefined
   LocationSpeed: undefined
@@ -303,6 +319,11 @@ export type RootStackParamList = {
   Chart: ChartParamList
   Onboarding: undefined
   Skia: undefined
+  WalletAddExpense: WalletAddExpenseParamList
+  WalletSources: undefined
+  WalletEditSource: WalletEditSourceParamList
+  WalletTags: undefined
+  WalletEditTag: WalletEditTagParamList
 }
 
 const FabButton = () => {
