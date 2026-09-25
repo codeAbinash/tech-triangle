@@ -18,7 +18,13 @@ export const LIGHT = {
 
 export function Medium({ children, style, ...props }: TextProps) {
   return (
-    <Text style={[MEDIUM, style]} {...props}>
+    <Text
+      style={[
+        //MEDIUM,
+        style,
+      ]}
+      {...props}
+    >
       {children}
     </Text>
   )
@@ -26,7 +32,13 @@ export function Medium({ children, style, ...props }: TextProps) {
 
 export function Regular({ children, style, ...props }: TextProps) {
   return (
-    <Text style={[REGULAR, style]} {...props}>
+    <Text
+      style={[
+        //REGULAR,
+        style,
+      ]}
+      {...props}
+    >
       {children}
     </Text>
   )
@@ -34,7 +46,13 @@ export function Regular({ children, style, ...props }: TextProps) {
 
 export function SemiBold({ children, style, ...props }: TextProps) {
   return (
-    <Text style={[SEMIBOLD, style]} {...props}>
+    <Text
+      style={[
+        //SEMIBOLD,
+        style,
+      ]}
+      {...props}
+    >
       {children}
     </Text>
   )
@@ -42,7 +60,13 @@ export function SemiBold({ children, style, ...props }: TextProps) {
 
 export function Bold({ children, style, ...props }: TextProps) {
   return (
-    <Text style={[BOLD, style]} {...props}>
+    <Text
+      style={[
+        //BOLD,
+        style,
+      ]}
+      {...props}
+    >
       {children}
     </Text>
   )
@@ -50,7 +74,13 @@ export function Bold({ children, style, ...props }: TextProps) {
 
 export function Light({ children, style, ...props }: TextProps) {
   return (
-    <Text style={[LIGHT, style]} {...props}>
+    <Text
+      style={[
+        //LIGHT,
+        style,
+      ]}
+      {...props}
+    >
       {children}
     </Text>
   )
