@@ -1,3 +1,4 @@
+import { FontWeight } from '@shopify/react-native-skia'
 import { StyleSheet, Text, type TextProps } from 'react-native'
 
 export const REGULAR = {
@@ -22,6 +23,9 @@ export function Medium({ children, style, ...props }: TextProps) {
       style={[
         //MEDIUM,
         style,
+        {
+          fontWeight: '500',
+        },
       ]}
       {...props}
     >
@@ -36,6 +40,9 @@ export function Regular({ children, style, ...props }: TextProps) {
       style={[
         //REGULAR,
         style,
+        {
+          fontWeight: '400',
+        },
       ]}
       {...props}
     >
@@ -50,6 +57,9 @@ export function SemiBold({ children, style, ...props }: TextProps) {
       style={[
         //SEMIBOLD,
         style,
+        {
+          fontWeight: '600',
+        },
       ]}
       {...props}
     >
@@ -64,6 +74,9 @@ export function Bold({ children, style, ...props }: TextProps) {
       style={[
         //BOLD,
         style,
+        {
+          fontWeight: '700',
+        },
       ]}
       {...props}
     >
@@ -78,6 +91,9 @@ export function Light({ children, style, ...props }: TextProps) {
       style={[
         //LIGHT,
         style,
+        {
+          fontWeight: '300',
+        },
       ]}
       {...props}
     >
