@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android  --active-arch-only",
+    "android": "react-native run-android  --active-arch-only && adb shell monkey -p com.techtriangle.debug -c android.intent.category.LAUNCHER 1",
     "ios": "react-native run-ios",
     "lint": "eslint . --fix",
     "format": "prettier --write .",
