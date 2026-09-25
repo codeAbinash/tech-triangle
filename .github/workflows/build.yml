@@ -63,11 +63,7 @@ jobs:
       - name: Rename apk files
         run: |
           cd android/app/build/outputs/apk/release/
-          mv app-arm64-v8a-release.apk Tech_Triangle-nightly-arm64-v8a.apk
-        # mv app-armeabi-v7a-release.apk Tech_Triangle-nightly-armeabi-v7a.apk
-        # mv app-x86-release.apk Tech_Triangle-nightly-x86.apk
-        # mv app-x86_64-release.apk Tech_Triangle-nightly-x86_64.apk
-        # mv app-universal-release.apk Tech_Triangle-nightly-universal.apk
+          mv app-release.apk Tech_Triangle-nightly-release.apk
 
       - name: Send message to Telegram
         env:
@@ -90,28 +86,9 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: tech-triangle-arm64-v8a
-          path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
+          name: tech-triangle-release
+          path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-release.apk
 
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: tech-triangle-armeabi-v7a
-      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
-
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: tech-triangle-x86
-      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
-
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: tech-triangle-x86_64
-      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
-
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: tech-triangle-universal
-      #     path: android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
 
       - name: Update Nightly Release
         uses: andelf/nightly-release@main
@@ -124,8 +101,4 @@ jobs:
           body: |
             ${{github.event.head_commit.message}}
           files: |
-            android/app/build/outputs/apk/release/Tech_Triangle-nightly-arm64-v8a.apk
-          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-armeabi-v7a.apk
-          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86.apk
-          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-x86_64.apk
-          # android/app/build/outputs/apk/release/Tech_Triangle-nightly-universal.apk
+            android/app/build/outputs/apk/release/Tech_Triangle-nightly-release.apk
