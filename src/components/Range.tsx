@@ -1,8 +1,9 @@
+import { interpolateColors } from '@shopify/react-native-skia'
 import { Colors } from '@utils/colors'
 import React, { useCallback, useEffect, useState } from 'react'
 import { StyleSheet, View, type LayoutChangeEvent } from 'react-native'
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler'
-import Animated, { runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
+import Animated, { runOnJS, useAnimatedStyle, useSharedValue, withTiming, interpolateColor  } from 'react-native-reanimated'
 
 type RangeProps = {
   value: number
@@ -32,20 +33,31 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
   }, [value])
 
   const pan = Gesture.Pan()
-    .onBegin(() => (scale.value = withTiming(1.1)))
+    .onBegin(() => (scale.value = withTiming(1.2)))
     .onChange((event) => {
       offset.value += event.changeX
       offset.value = Math.min(Math.max(offset.value, 0), containerWidth)
+    })
+    .onFinalize(() => {
+      scale.value = withTiming(1)
       const percentage = offset.value / containerWidth
       runOnJS(setValue)(percentage)
     })
-    .onFinalize(() => (scale.value = withTiming(1)))
 
   const animatedStyles = useAnimatedStyle(
     () => ({ transform: [{ translateX: offset.value }, { scale: scale.value }] }),
     [offset, scale],
   )
   const widthStyle = useAnimatedStyle(() => ({ width: offset.value }), [offset])
+
+  const backgroundColorStyle = useAnimatedStyle(
+    () => ({ backgroundColor: interpolateColor(scale.value, [1, 1.2], ['white', '#ffffff99']),
+      shadowColor: interpolateColor(scale.value, [1, 1.2], [Colors.black, 'transparent']),
+      shadowOpacity: interpolateColor(scale.value, [1, 1.2], [0.1, 0]),
+      borderColor: interpolateColor(scale.value, [1, 1.2], ['transparent', Colors.neutral[900] + '08']),
+     }),
+    [scale, accent],
+  )
 
   const handleLayout = useCallback((event: LayoutChangeEvent) => {
     const { width } = event.nativeEvent.layout
@@ -70,7 +82,7 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
                 />
               </View>
             </View>
-            <Animated.View style={[styles.circle, animatedStyles]} className='bg-white' />
+            <Animated.View style={[styles.circle, animatedStyles, backgroundColorStyle]} className='bg-white' />
           </View>
         </GestureDetector>
       </GestureHandlerRootView>
@@ -81,16 +93,15 @@ export default function Range({ value, setValue, Left, Right, accent = Colors.ac
 
 const styles = StyleSheet.create({
   circle: {
-    height: 24,
-    width: 24,
+    height: 25,
+    width: 36,
     borderRadius: 500,
-    shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
     shadowRadius: 3.84,
+    borderWidth: 1,
     elevation: 5,
   },
-  container: { height: 3.2, paddingLeft: 12, paddingEnd: 12 },
+  container: { height: 3.2, paddingLeft: 14, paddingEnd: 14 },
 })
 
 // function increaseValue() {

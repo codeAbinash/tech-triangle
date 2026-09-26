@@ -241,7 +241,6 @@ const RangeSliderMemo2 = () => {
   )
 }
 
-
 function PopupAlertExample() {
   const alert = popupStore((store) => store.alert)
   return (
